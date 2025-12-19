@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kk">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ұлы Дала Есептері (Тест)</title>
+    <title>Ұлы Дала Есептері (Тест) | VisualMath</title>
+    <meta name="description" content="«Ұлы Дала Есептері» – ұлттық нақыштағы интерактивті математикалық ойын
+
+Бұл жоба – қазақтың ұлттық ойындары (Асық ату, Тоғызқұмалақ, Көкпар, Теңге ілу) мен математикалық логиканы ұштастырған бірегей веб-қосымша. Оқушылар есептерді шығару арқылы деңгейден деңгейге өтіп, «батыр» атағы үшін жарысады.">
 
     
     <meta name="google-adsense-account" content="ca-pub-9724842226086594">
@@ -12,36 +15,40 @@
         crossorigin="anonymous"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
         .task-content {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #f3f4f6;
-             
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
             position: relative;
             padding: 2rem 1rem;
-             
         }
 
         .task-content iframe {
             width: 100%;
             max-width: 1200px;
-             
-            height: 75vh;
-             
-            min-height: 500px;
-             
+            height: 70vh;
+            min-height: 450px;
             border: none;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-radius: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
             background: white;
         }
 
          
         #fullscreenWrapper:fullscreen {
-            background-color: #f3f4f6;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
             padding: 1rem;
             display: flex;
             flex-direction: column;
@@ -57,28 +64,48 @@
             width: 100%;
             max-width: none;
         }
-    </style>
 
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100 min-h-screen flex flex-col">
 
-    <nav class="bg-indigo-600 text-white p-3 shadow-md sticky top-0 z-10 w-full">
-        <div class="flex justify-between items-center w-full">
-            <span class="font-bold text-lg">Ұлы Дала Есептері (Тест)</span>
+    
+    <nav class="gradient-bg text-white p-3 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <span class="font-bold text-lg truncate max-w-[200px] sm:max-w-none">Ұлы Дала Есептері (Тест)</span>
+            </div>
             <a href="/lesson/9"
-                class="bg-white text-indigo-600 px-4 py-1 rounded hover:bg-gray-100 text-sm font-semibold transition duration-300">
-                &larr; Сабаққа оралу
+                class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium">
+                <span>←</span>
+                <span class="hidden sm:inline">Сабаққа оралу</span>
             </a>
         </div>
     </nav>
 
     <main class="flex-grow task-content">
 
-
-        
-        
-        
         
         <div id="fullscreenWrapper" class="w-full flex flex-col items-center">
             <iframe id="taskIframe" srcdoc="&lt;!DOCTYPE html&gt;
@@ -487,27 +514,27 @@
 &lt;/html&gt;"></iframe>
 
             
-            <div class="mt-4 flex gap-4">
+            <div class="mt-6 flex gap-4">
                 
                 <button id="openFsBtn" onclick="openFullscreen()"
-                    class="flex items-center gap-2 bg-indigo-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition duration-300 shadow-md">
+                    class="btn-primary flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                     </svg>
-                    Толық экранға ашу
+                    <span>Толық экран</span>
                 </button>
 
                 
                 <button id="closeFsBtn" onclick="closeFullscreen()"
-                    class="hidden flex items-center gap-2 bg-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700 transition duration-300 shadow-md">
+                    class="hidden btn-danger flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M6 18L18 6M6 6l12 12" />
                     </svg>
-                    Қалыпты экран
+                    <span>Кішірейту</span>
                 </button>
             </div>
         </div>
@@ -520,9 +547,9 @@
             function openFullscreen() {
                 if (elem.requestFullscreen) {
                     elem.requestFullscreen();
-                } else if (elem.webkitRequestFullscreen) {  
+                } else if (elem.webkitRequestFullscreen) {
                     elem.webkitRequestFullscreen();
-                } else if (elem.msRequestFullscreen) {  
+                } else if (elem.msRequestFullscreen) {
                     elem.msRequestFullscreen();
                 }
             }
@@ -530,9 +557,9 @@
             function closeFullscreen() {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {  
+                } else if (document.webkitExitFullscreen) {
                     document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {  
+                } else if (document.msExitFullscreen) {
                     document.msExitFullscreen();
                 }
             }
@@ -554,8 +581,12 @@
 
         
         
-        <div class="bg-indigo-50 p-6 rounded-xl w-full mt-6 shadow-sm border border-indigo-100">
-            <div class="text-indigo-900 text-lg leading-relaxed whitespace-pre-wrap text-left max-w-4xl mx-auto">«Ұлы Дала Есептері» – ұлттық нақыштағы интерактивті математикалық ойын
+        <div class="bg-white p-6 rounded-2xl w-full mt-8 shadow-lg border border-purple-100 max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-2xl">📋</span>
+                <h3 class="text-xl font-bold text-gray-800">Тапсырма сипаттамасы</h3>
+            </div>
+            <div class="text-gray-700 leading-relaxed whitespace-pre-wrap">«Ұлы Дала Есептері» – ұлттық нақыштағы интерактивті математикалық ойын
 
 Бұл жоба – қазақтың ұлттық ойындары (Асық ату, Тоғызқұмалақ, Көкпар, Теңге ілу) мен математикалық логиканы ұштастырған бірегей веб-қосымша. Оқушылар есептерді шығару арқылы деңгейден деңгейге өтіп, «батыр» атағы үшін жарысады.</div>
         </div>
@@ -571,15 +602,19 @@
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white p-8 mt-auto relative z-10">
+    <footer class="bg-gray-900 text-white p-8 mt-auto relative z-10">
         <div class="container mx-auto text-center">
-            <p>&copy; 2024 MathEdu. Барлық құқықтар қорғалған.</p>
-            <div class="mt-4 space-x-4">
-                <a href="/privacy" class="hover:text-gray-300 underline">Құпиялылық саясаты</a>
-                <a href="/terms" class="hover:text-gray-300 underline">Пайдалану шарттары</a>
+            <div class="text-2xl mb-4">📐 VisualMath</div>
+            <p class="text-gray-400 mb-4">&copy; 2024 VisualMath. Барлық құқықтар қорғалған.</p>
+            <div class="space-x-6">
+                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Құпиялылық
+                    саясаты</a>
+                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Пайдалану
+                    шарттары</a>
             </div>
         </div>
     </footer>
 </body>
 
 </html>
+
