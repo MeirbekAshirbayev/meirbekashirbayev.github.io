@@ -1,0 +1,15 @@
+
+# Binaries
+*.exe
+*.dll
+
+# Database
+*.db
+
+# Helper files
+.gemini
+debug_output.txt
+
+# Editor
+.vscode
+.idea
