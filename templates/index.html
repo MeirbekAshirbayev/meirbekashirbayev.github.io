@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/mysitecheck/">
     <title>Math Learning</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -14,7 +13,7 @@
     <!-- Navbar -->
     <nav class="bg-indigo-600 text-white p-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold">MathEdu</a>
+            <a href="./" class="text-2xl font-bold">MathEdu</a>
             <!-- Admin button removed. Access via /admin directly -->
         </div>
     </nav>
@@ -40,7 +39,7 @@
             <!-- Example Grades -->
             <!-- Dynamic Grades -->
             {{ range .Grades }}
-            <a href="/grade/{{ . }}"
+            <a href="grade/{{ . }}"
                 class="block p-8 bg-white border-2 border-indigo-100 rounded-xl shadow-sm hover:shadow-md hover:border-indigo-500 hover:scale-105 transition-all duration-200">
                 <span class="text-4xl font-bold text-indigo-600">{{ . }}</span>
                 <span class="block text-gray-500 mt-2">Сынып</span>
@@ -56,8 +55,8 @@
         <div class="container mx-auto text-center">
             <p>&copy; 2024 MathEdu. Барлық құқықтар қорғалған.</p>
             <div class="mt-4 space-x-4">
-                <a href="/privacy" class="hover:text-gray-300 underline">Құпиялылық саясаты</a>
-                <a href="/terms" class="hover:text-gray-300 underline">Пайдалану шарттары</a>
+                <a href="privacy" class="hover:text-gray-300 underline">Құпиялылық саясаты</a>
+                <a href="terms" class="hover:text-gray-300 underline">Пайдалану шарттары</a>
             </div>
         </div>
     </footer>
