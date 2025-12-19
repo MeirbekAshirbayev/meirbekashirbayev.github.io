@@ -12,9 +12,9 @@
 
     <nav class="bg-indigo-600 text-white p-4 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="../" class="text-2xl font-bold">MathEdu</a>
+            <a href="../../" class="text-2xl font-bold">MathEdu</a>
             <div>
-                <a href="../" class="mr-4 hover:underline">Басты бетке оралу</a>
+                <a href="../../" class="mr-4 hover:underline">Басты бетке оралу</a>
             </div>
         </div>
     </nav>
@@ -25,7 +25,7 @@
         {{ if .Lessons }}
         <div class="grid gap-4">
             {{ range .Lessons }}
-            <a href="../lesson/{{ .ID }}"
+            <a href="../../lesson/{{ .ID }}"
                 class="group block bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md hover:border-indigo-400 transition-all">
                 <div class="flex items-center justify-between">
                     <h2 class="text-xl font-semibold text-gray-700 group-hover:text-indigo-600">{{ .Title }}</h2>
@@ -37,7 +37,7 @@
         {{ else }}
         <div class="text-center py-12 bg-white rounded-lg shadow-sm">
             <p class="text-gray-500 text-lg">Бұл сынып үшін сабақтар әзірге жоқ.</p>
-            <a href="../" class="text-indigo-600 hover:underline mt-2 inline-block">Артқа қайту</a>
+            <a href="../../" class="text-indigo-600 hover:underline mt-2 inline-block">Артқа қайту</a>
         </div>
         {{ end }}
     </main>
@@ -46,8 +46,8 @@
         <div class="container mx-auto text-center">
             <p>&copy; 2024 MathEdu. Барлық құқықтар қорғалған.</p>
             <div class="mt-4 space-x-4">
-                <a href="../privacy" class="hover:text-gray-300 underline">Құпиялылық саясаты</a>
-                <a href="../terms" class="hover:text-gray-300 underline">Пайдалану шарттары</a>
+                <a href="../../privacy" class="hover:text-gray-300 underline">Құпиялылық саясаты</a>
+                <a href="../../terms" class="hover:text-gray-300 underline">Пайдалану шарттары</a>
             </div>
         </div>
     </footer>
