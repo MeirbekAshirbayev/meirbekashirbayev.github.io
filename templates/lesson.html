@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Lesson.Title }}</title>
+
+    <!-- Google AdSense Verification -->
+    <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXXX">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXXX"
+        crossorigin="anonymous"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .embed-container {
@@ -33,8 +39,9 @@
 
     <nav class="bg-white text-indigo-600 p-4 shadow-md sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="../../" class="text-2xl font-bold">MathEdu</a>
-            <a href="../../grade/{{ .Lesson.Grade }}" class="hover:underline">&larr; {{ .Lesson.Grade }}-Сыныпқа
+            <a href="{{ path " /" }}" class="text-2xl font-bold">MathEdu</a>
+            <a href="{{ path " /grade/" }}{{ .Lesson.Grade }}" class="hover:underline">&larr; {{ .Lesson.Grade
+                }}-Сыныпқа
                 оралу</a>
         </div>
     </nav>
@@ -65,9 +72,13 @@
         </div>
         {{ end }}
 
-        <!-- AdSense Placeholder -->
-        <div class="my-8 bg-gray-200 h-32 flex items-center justify-center rounded-lg text-gray-500">
-            AdSense Орны
+        <!-- AdSense Display Ad #1 -->
+        <div class="my-8">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+                data-ad-slot="YYYYYYYYYY" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
 
         <!-- Interactive Tasks Button List -->
@@ -76,7 +87,7 @@
             <h2 class="text-2xl font-bold text-gray-800">Интерактивті Тапсырмалар</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {{ range .Lesson.Tasks }}
-                <a href="../../task/{{ .ID }}" target="_blank"
+                <a href="{{ path " /task/" }}{{ .ID }}" target="_blank"
                     class="block bg-white p-6 rounded-xl shadow-md border-2 border-transparent hover:border-indigo-500 hover:shadow-lg transition-all text-center">
                     <span class="block text-4xl mb-2">🎮</span>
                     <h3 class="text-xl font-bold text-indigo-700 mb-2">{{ .Title }}</h3>
@@ -87,9 +98,13 @@
         </div>
         {{ end }}
 
-        <!-- AdSense Placeholder -->
-        <div class="my-8 bg-gray-200 h-32 flex items-center justify-center rounded-lg text-gray-500">
-            AdSense Орны
+        <!-- AdSense Display Ad #2 -->
+        <div class="my-8">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXXX"
+                data-ad-slot="ZZZZZZZZZZ" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
 
     </main>
@@ -98,8 +113,8 @@
         <div class="container mx-auto text-center">
             <p>&copy; 2024 MathEdu. Барлық құқықтар қорғалған.</p>
             <div class="mt-4 space-x-4">
-                <a href="../../privacy" class="hover:text-gray-300 underline">Құпиялылық саясаты</a>
-                <a href="../../terms" class="hover:text-gray-300 underline">Пайдалану шарттары</a>
+                <a href="{{ path " /privacy" }}" class="hover:text-gray-300 underline">Құпиялылық саясаты</a>
+                <a href="{{ path " /terms" }}" class="hover:text-gray-300 underline">Пайдалану шарттары</a>
             </div>
         </div>
     </footer>

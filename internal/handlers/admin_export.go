@@ -20,7 +20,7 @@ func AdminExportHandler(c *gin.Context) {
 	// Save to "site_export" to be very clear
 	distDir := filepath.Join(cwd, "docs")
 
-	if err := builder.BuildSite(distDir); err != nil {
+	if err := builder.BuildSite(distDir, "/mysitecheck"); err != nil {
 		c.String(http.StatusInternalServerError, "Export Failed: %v", err)
 		return
 	}

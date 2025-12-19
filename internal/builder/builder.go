@@ -36,7 +36,8 @@ func RenderToFile(path string, tmplName string, data interface{}, funcMap templa
 }
 
 // BuildSite generates the static site in the outputDir
-func BuildSite(outputDir string) error {
+// Set basePath to "/mysitecheck" for GitHub Pages or "/" for root deployment
+func BuildSite(outputDir string, basePath string) error {
 	// 1. Clean/Create Dir
 	if err := os.RemoveAll(outputDir); err != nil {
 		return fmt.Errorf("failed to clear output dir: %v", err)
@@ -45,9 +46,20 @@ func BuildSite(outputDir string) error {
 		return fmt.Errorf("failed to create output dir: %v", err)
 	}
 
+	// Ensure basePath ends without trailing slash for consistency
+	if basePath != "/" && len(basePath) > 0 && basePath[len(basePath)-1] == '/' {
+		basePath = basePath[:len(basePath)-1]
+	}
+
 	funcMap := template.FuncMap{
 		"safe": func(s string) template.HTML {
 			return template.HTML(s)
+		},
+		"path": func(p string) string {
+			if basePath == "/" {
+				return p
+			}
+			return basePath + p
 		},
 	}
 

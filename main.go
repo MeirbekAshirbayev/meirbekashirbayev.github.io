@@ -27,6 +27,10 @@ func main() {
 		"safe": func(s string) template.HTML {
 			return template.HTML(s)
 		},
+		"path": func(p string) string {
+			// For localhost, use paths as-is (no prefix)
+			return p
+		},
 	})
 
 	r.LoadHTMLGlob("templates/*")
