@@ -10,6 +10,25 @@
     <meta name="keywords"
         content="{{ .Lesson.Title }}, {{ .Lesson.Grade }} сынып, презентация, ppt, слайд, қазақша, математика, жүктеу, тегін">
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ .Lesson.Title }} - Презентация (Слайд) | VisualMath">
+    <meta property="og:description"
+        content="{{ .Lesson.Title }} - {{ .Lesson.Grade }} сыныпқа арналған презентация (PPT) және сабақ жоспары.">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LearningResource",
+      "name": "{{ .Lesson.Title }}",
+      "description": "{{ .Lesson.Description }}",
+      "educationalLevel": "{{ .Lesson.Grade }} Grade",
+      "inLanguage": "kk",
+      "learningResourceType": "Presentation"
+    }
+    </script>
+
     <!-- Google AdSense Verification -->
     <meta name="google-adsense-account" content="ca-pub-9724842226086594">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"

@@ -8,6 +8,23 @@
     <meta name="description" content="{{ .Task.Description }}">
     <meta name="keywords" content="{{ .Task.Title }}, математика, есеп, тапсырма, visual math">
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ .Task.Title }} | VisualMath">
+    <meta property="og:description" content="{{ .Task.Description }}">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "{{ .Task.Title }}",
+      "description": "{{ .Task.Description }}",
+      "inLanguage": "kk",
+      "educationalUse": "Assignment"
+    }
+    </script>
+
     <!-- Google AdSense Verification -->
     <meta name="google-adsense-account" content="ca-pub-9724842226086594">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"
