@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Lesson.Title }} | VisualMath</title>
-    <meta name="description" content="{{ .Lesson.Description }}">
+    <title>{{ .Lesson.Title }} - Презентация (Слайд) | VisualMath</title>
+    <meta name="description"
+        content="{{ .Lesson.Title }} - {{ .Lesson.Grade }} сыныпқа арналған презентация (PPT) және сабақ жоспары. Қазақша слайдтарды тегін, онлайн көру. {{ .Lesson.Description }}">
     <meta name="keywords"
-        content="{{ .Lesson.Title }}, математика, {{ .Lesson.Grade }} сынып, сабақ, презентация, есептер">
+        content="{{ .Lesson.Title }}, {{ .Lesson.Grade }} сынып, презентация, ppt, слайд, қазақша, математика, жүктеу, тегін">
 
     <!-- Google AdSense Verification -->
     <meta name="google-adsense-account" content="ca-pub-9724842226086594">
@@ -89,7 +90,7 @@
                 <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
                     <span class="text-white text-lg">📊</span>
                 </div>
-                <h2 class="text-xl font-bold text-gray-800">Презентация</h2>
+                <h2 class="text-xl font-bold text-gray-800">Презентация (PPT/Слайд)</h2>
             </div>
             <div class="embed-container">
                 <iframe loading="lazy" src="{{ .Lesson.CanvaEmbedURL }}" allowfullscreen="allowfullscreen"
