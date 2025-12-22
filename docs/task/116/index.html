@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Координаталық сәуле мергені | VisualMath</title>
+    <meta name="description" content="«Координаталық сәуле мергені» — 5-сынып оқушыларына арналған интерактивті математикалық ойын. Бұл тапсырманың негізгі мақсаты — оқушыларға жай бөлшектер мен аралас сандарды координаталық сәуле бойында кескіндеуді үйрету.
+
+Ойын барысында экранда кездейсоқ түрде 0-ден 4-ке дейінгі аралықтағы сандар (жай бөлшектер мен аралас сандар кезектесіп) пайда болады. Оқушының міндеті — берілген санның сәуледегі нақты орнын тінтуірмен дәл нұсқау.
+
+Бағдарлама жауаптың дұрыстығын бірден тексеріп, «Тамаша!», «Жақын» немесе «Қате» деп кері байланыс береді. Қате кеткен жағдайда дұрыс нүктені жасыл түспен көрсетеді. Бұл әдіс оқушылардың математикалық көз мөлшерін дамытып, бөлшектердің шамасын көрнекі түрде қабылдауға және олардың бүтін сандар арасындағы орналасу ретін терең түсінуге көмектеседі.">
+    <meta name="keywords" content="Координаталық сәуле мергені, математика, есеп, тапсырма, visual math">
+
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Координаталық сәуле мергені | VisualMath">
+    <meta property="og:description" content="«Координаталық сәуле мергені» — 5-сынып оқушыларына арналған интерактивті математикалық ойын. Бұл тапсырманың негізгі мақсаты — оқушыларға жай бөлшектер мен аралас сандарды координаталық сәуле бойында кескіндеуді үйрету.
+
+Ойын барысында экранда кездейсоқ түрде 0-ден 4-ке дейінгі аралықтағы сандар (жай бөлшектер мен аралас сандар кезектесіп) пайда болады. Оқушының міндеті — берілген санның сәуледегі нақты орнын тінтуірмен дәл нұсқау.
+
+Бағдарлама жауаптың дұрыстығын бірден тексеріп, «Тамаша!», «Жақын» немесе «Қате» деп кері байланыс береді. Қате кеткен жағдайда дұрыс нүктені жасыл түспен көрсетеді. Бұл әдіс оқушылардың математикалық көз мөлшерін дамытып, бөлшектердің шамасын көрнекі түрде қабылдауға және олардың бүтін сандар арасындағы орналасу ретін терең түсінуге көмектеседі.">
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "Координаталық сәуле мергені",
+      "description": "«Координаталық сәуле мергені» — 5-сынып оқушыларына арналған интерактивті математикалық ойын. Бұл тапсырманың негізгі мақсаты — оқушыларға жай бөлшектер мен аралас сандарды координаталық сәуле бойында кескіндеуді үйрету.\r\n\r\nОйын барысында экранда кездейсоқ түрде 0-ден 4-ке дейінгі аралықтағы сандар (жай бөлшектер мен аралас сандар кезектесіп) пайда болады. Оқушының міндеті — берілген санның сәуледегі нақты орнын тінтуірмен дәл нұсқау.\r\n\r\nБағдарлама жауаптың дұрыстығын бірден тексеріп, «Тамаша!», «Жақын» немесе «Қате» деп кері байланыс береді. Қате кеткен жағдайда дұрыс нүктені жасыл түспен көрсетеді. Бұл әдіс оқушылардың математикалық көз мөлшерін дамытып, бөлшектердің шамасын көрнекі түрде қабылдауға және олардың бүтін сандар арасындағы орналасу ретін терең түсінуге көмектеседі.",
+      "inLanguage": "kk",
+      "educationalUse": "Assignment"
+    }
+    </script>
+
+    
+    <meta name="google-adsense-account" content="ca-pub-9724842226086594">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .task-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .task-content iframe {
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh;
+            min-height: 450px;
+            border: none;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            background: white;
+        }
+
+         
+        #fullscreenWrapper:fullscreen {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #fullscreenWrapper:fullscreen iframe {
+            height: 90vh;
+            width: 100%;
+            max-width: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    
+    <nav class="gradient-bg text-white p-3 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <span class="font-bold text-lg truncate max-w-[200px] sm:max-w-none">Координаталық сәуле мергені</span>
+            </div>
+            <a href="/lesson/27"
+                class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium">
+                <span>←</span>
+                <span class="hidden sm:inline">Сабаққа оралу</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow task-content">
+
+        
+        <div id="fullscreenWrapper" class="w-full flex flex-col items-center">
+            <iframe id="taskIframe" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Координаталық сәуле мергені&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            cursor: crosshair;
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            min-height: 200px; /* Биіктікті бекіту */
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            touch-action: none; 
+        }
+        .fraction {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+        .fraction-top {
+            border-bottom: 2px solid currentColor;
+            display: block;
+            padding: 0 2px;
+        }
+        .fraction-bottom {
+            display: block;
+            padding: 0 2px;
+        }
+        .mixed-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e40af;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div class=&#34;w-full max-w-4xl bg-white rounded-xl shadow-lg border border-blue-100 p-6 animate-fade-in&#34;&gt;
+        &lt;!-- Header --&gt;
+        &lt;div class=&#34;text-center mb-6&#34;&gt;
+            &lt;h1 class=&#34;text-3xl font-bold text-blue-800 mb-2&#34;&gt;Координаталық сәуле мергені&lt;/h1&gt;
+            &lt;p class=&#34;text-gray-600&#34;&gt;Берілген бөлшекті сәуле бойынан дұрыс тап!&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Start Screen --&gt;
+        &lt;div id=&#34;start-screen&#34; class=&#34;text-center py-6&#34;&gt;
+            &lt;div class=&#34;mb-6 flex justify-center&#34;&gt;
+                &lt;i data-lucide=&#34;target&#34; class=&#34;w-24 h-24 text-blue-500&#34;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;h2 class=&#34;text-xl mb-4 font-semibold text-gray-700&#34;&gt;Ережелер:&lt;/h2&gt;
+            &lt;ul class=&#34;text-left max-w-md mx-auto mb-8 space-y-2 text-gray-600 list-disc pl-5&#34;&gt;
+                &lt;li&gt;Экранда жай бөлшек немесе аралас сан шығады.&lt;/li&gt;
+                &lt;li&gt;Координаталық сәуледен сол санның орнын басу керек.&lt;/li&gt;
+                &lt;li&gt;Неғұрлым дәл тапсаң, соғұрлым көп ұпай аласың.&lt;/li&gt;
+                &lt;li&gt;Барлығы 10 сұрақ.&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;button id=&#34;start-btn&#34; class=&#34;px-8 py-3 bg-blue-600 text-white rounded-full text-lg font-bold hover:bg-blue-700 transition shadow-lg flex items-center gap-2 mx-auto&#34;&gt;
+                Ойынды бастау &lt;i data-lucide=&#34;arrow-right&#34;&gt;&lt;/i&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Game Screen --&gt;
+        &lt;div id=&#34;game-screen&#34; class=&#34;bg-gray-50 rounded-lg p-4 hidden&#34;&gt;
+            &lt;div class=&#34;flex justify-between items-center mb-4 px-4&#34;&gt;
+                &lt;div class=&#34;text-lg font-semibold text-gray-700&#34;&gt;
+                    Сұрақ: &lt;span id=&#34;question-count&#34; class=&#34;text-blue-600&#34;&gt;1/10&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;text-lg font-semibold text-gray-700&#34;&gt;
+                    Ұпай: &lt;span id=&#34;score-display&#34; class=&#34;text-green-600&#34;&gt;0&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Task Display --&gt;
+            &lt;div class=&#34;flex flex-col items-center mb-8&#34;&gt;
+                &lt;div class=&#34;text-xl text-gray-600 mb-2&#34;&gt;Мына санды тап:&lt;/div&gt;
+                &lt;div id=&#34;task-display&#34; class=&#34;bg-white px-8 py-4 rounded-xl shadow-sm border border-blue-200 min-w-[150px] flex justify-center&#34;&gt;
+                    &lt;!-- Javascript will insert fraction here --&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Canvas --&gt;
+            &lt;div class=&#34;canvas-container&#34;&gt;
+                &lt;canvas id=&#34;game-canvas&#34;&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Feedback &amp; Next Button --&gt;
+            &lt;div class=&#34;mt-6 text-center h-20&#34;&gt;
+                &lt;p id=&#34;feedback-msg&#34; class=&#34;text-xl font-bold opacity-0 transition-opacity duration-300&#34;&gt;&lt;/p&gt;
+                &lt;button id=&#34;next-btn&#34; class=&#34;mt-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition items-center gap-2 mx-auto hidden&#34;&gt;
+                    Келесі сұрақ &lt;i data-lucide=&#34;arrow-right&#34; width=&#34;18&#34;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;text-center text-sm text-gray-400 mt-4&#34;&gt;
+                Көмек: Санды дәл табу үшін бүтін сандардың арасын көз мөлшерімен бөліп көр.
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Result Screen --&gt;
+        &lt;div id=&#34;result-screen&#34; class=&#34;text-center py-10 hidden&#34;&gt;
+            &lt;div class=&#34;mb-6 flex justify-center&#34;&gt;
+                &lt;i data-lucide=&#34;trophy&#34; class=&#34;w-24 h-24 text-yellow-500&#34;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-2&#34;&gt;Ойын аяқталды!&lt;/h2&gt;
+            &lt;p class=&#34;text-xl text-gray-600 mb-6&#34;&gt;
+                Сенің жалпы ұпайың: &lt;span id=&#34;final-score&#34; class=&#34;font-bold text-blue-600&#34;&gt;0&lt;/span&gt; / 100
+            &lt;/p&gt;
+            
+            &lt;div id=&#34;result-message&#34; class=&#34;mb-8&#34;&gt;&lt;/div&gt;
+
+            &lt;button id=&#34;restart-btn&#34; class=&#34;px-8 py-3 bg-blue-600 text-white rounded-full text-lg font-bold hover:bg-blue-700 transition shadow-lg flex items-center gap-2 mx-auto&#34;&gt;
+                &lt;i data-lucide=&#34;refresh-cw&#34;&gt;&lt;/i&gt; Қайта ойнау
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- CONSTANTS &amp; STATE ---
+        const TOTAL_QUESTIONS = 10;
+        const RANGE_MAX = 4;
+        
+        let state = {
+            phase: &#39;start&#39;, // start, playing, feedback, result
+            score: 0,
+            questionCount: 0,
+            currentTask: null,
+            userGuess: null,
+            canvasWidth: 800
+        };
+
+        // --- DOM ELEMENTS ---
+        const screens = {
+            start: document.getElementById(&#39;start-screen&#39;),
+            game: document.getElementById(&#39;game-screen&#39;),
+            result: document.getElementById(&#39;result-screen&#39;)
+        };
+        const canvas = document.getElementById(&#39;game-canvas&#39;);
+        const ctx = canvas.getContext(&#39;2d&#39;);
+        const startBtn = document.getElementById(&#39;start-btn&#39;);
+        const nextBtn = document.getElementById(&#39;next-btn&#39;);
+        const restartBtn = document.getElementById(&#39;restart-btn&#39;);
+        const taskDisplay = document.getElementById(&#39;task-display&#39;);
+        const feedbackMsg = document.getElementById(&#39;feedback-msg&#39;);
+        const scoreDisplay = document.getElementById(&#39;score-display&#39;);
+        const questionCountDisplay = document.getElementById(&#39;question-count&#39;);
+        const finalScoreDisplay = document.getElementById(&#39;final-score&#39;);
+        const resultMessage = document.getElementById(&#39;result-message&#39;);
+
+        // --- INITIALIZATION ---
+        function init() {
+            lucide.createIcons();
+            
+            startBtn.addEventListener(&#39;click&#39;, startGame);
+            nextBtn.addEventListener(&#39;click&#39;, nextQuestion);
+            restartBtn.addEventListener(&#39;click&#39;, startGame);
+            canvas.addEventListener(&#39;click&#39;, handleCanvasClick);
+            
+            window.addEventListener(&#39;resize&#39;, handleResize);
+            // We don&#39;t call handleResize here immediately for width, 
+            // as the container might be hidden.
+        }
+
+        function handleResize() {
+            if (canvas.parentElement) {
+                const newWidth = canvas.parentElement.clientWidth;
+                // Тек ені 0-ден үлкен болса ғана жаңартамыз
+                if (newWidth &gt; 0) {
+                    state.canvasWidth = newWidth;
+                    draw();
+                }
+            }
+        }
+
+        // --- GAME LOGIC ---
+
+        function startGame() {
+            state.score = 0;
+            state.questionCount = 1;
+            state.phase = &#39;playing&#39;;
+            
+            updateUI();
+            switchScreen(&#39;game&#39;);
+            
+            // МАҢЫЗДЫ ТҮЗЕТУ: Экран ашылғаннан кейін өлшемді қайта есептеу керек
+            // &#34;setTimeout&#34; браузерге экранды салып үлгеруге мүмкіндік береді
+            setTimeout(() =&gt; {
+                handleResize();
+                generateTask(&#39;proper&#39;); // 1-сұрақ әрқашан жай бөлшек
+            }, 50);
+        }
+
+        function switchScreen(screenName) {
+            Object.values(screens).forEach(el =&gt; el.classList.add(&#39;hidden&#39;));
+            screens[screenName].classList.remove(&#39;hidden&#39;);
+        }
+
+        function generateTask(specificType = null) {
+            let type = specificType;
+            if (!type) {
+                const types = [&#39;proper&#39;, &#39;mixed&#39;];
+                type = types[Math.floor(Math.random() * types.length)];
+            }
+
+            let integer = 0;
+            let numerator = 1;
+            let denominator = 2;
+            const denominators = [2, 3, 4, 5, 8, 10];
+            denominator = denominators[Math.floor(Math.random() * denominators.length)];
+
+            if (type === &#39;proper&#39;) {
+                integer = 0;
+                numerator = Math.floor(Math.random() * (denominator - 1)) &#43; 1;
+            } else {
+                // Аралас сан: 1 мен 3 арасында (0 болмауы керек)
+                integer = Math.floor(Math.random() * (RANGE_MAX - 1)) &#43; 1;
+                numerator = Math.floor(Math.random() * (denominator - 1)) &#43; 1;
+            }
+
+            const value = integer &#43; (numerator / denominator);
+
+            state.currentTask = { integer, numerator, denominator, value, type };
+            state.userGuess = null;
+            state.phase = &#39;playing&#39;;
+
+            renderTask();
+            resetFeedback();
+            draw();
+            updateUI();
+        }
+
+        function renderTask() {
+            const task = state.currentTask;
+            let html = `&lt;div class=&#34;mixed-number&#34;&gt;`;
+            
+            if (task.integer &gt; 0) {
+                html &#43;= `&lt;span&gt;${task.integer}&lt;/span&gt;`;
+            }
+            
+            html &#43;= `
+                &lt;div class=&#34;fraction&#34;&gt;
+                    &lt;span class=&#34;fraction-top&#34;&gt;${task.numerator}&lt;/span&gt;
+                    &lt;span class=&#34;fraction-bottom&#34;&gt;${task.denominator}&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;`;
+            
+            taskDisplay.innerHTML = html;
+        }
+
+        function handleCanvasClick(e) {
+            if (state.phase !== &#39;playing&#39;) return;
+
+            const rect = canvas.getBoundingClientRect();
+            
+            // ТҮЗЕТУ: Масштабтау коэффиценті (Scale Fix)
+            const scaleX = canvas.width / rect.width;
+            const x = (e.clientX - rect.left) * scaleX;
+
+            const padding = 40;
+            const effectiveWidth = state.canvasWidth - (padding * 2);
+            const unitPixels = effectiveWidth / (RANGE_MAX &#43; 0.5);
+
+            let value = (x - padding) / unitPixels;
+
+            if (value &lt; 0) value = 0;
+            if (value &gt; RANGE_MAX &#43; 0.5) value = RANGE_MAX &#43; 0.5;
+
+            state.userGuess = value;
+            checkAnswer(value);
+        }
+
+        function checkAnswer(guessValue) {
+            const diff = Math.abs(guessValue - state.currentTask.value);
+            let points = 0;
+            let msg = &#39;&#39;;
+            let colorClass = &#39;&#39;;
+
+            if (diff &lt; 0.05) {
+                points = 10;
+                msg = &#34;Тамаша! Өте дәл!&#34;;
+                colorClass = &#39;text-green-600&#39;;
+            } else if (diff &lt; 0.15) {
+                points = 7;
+                msg = &#34;Жарайсың! Дұрыс!&#34;;
+                colorClass = &#39;text-green-600&#39;;
+            } else if (diff &lt; 0.3) {
+                points = 3;
+                msg = &#34;Жақын, бірақ дәлірек болу керек.&#34;;
+                colorClass = &#39;text-yellow-600&#39;;
+            } else {
+                points = 0;
+                msg = &#34;Қате. Қайтадан мұқият қара.&#34;;
+                colorClass = &#39;text-red-500&#39;;
+            }
+
+            state.score &#43;= points;
+            state.phase = &#39;feedback&#39;;
+            
+            showFeedback(msg, colorClass);
+            draw();
+            updateUI();
+        }
+
+        function nextQuestion() {
+            if (state.questionCount &gt;= TOTAL_QUESTIONS) {
+                showResult();
+            } else {
+                state.questionCount&#43;&#43;;
+                // Кезектестіру: Тақ -&gt; proper, Жұп -&gt; mixed
+                const nextType = state.questionCount % 2 === 0 ? &#39;mixed&#39; : &#39;proper&#39;;
+                generateTask(nextType);
+            }
+        }
+
+        function showResult() {
+            state.phase = &#39;result&#39;;
+            switchScreen(&#39;result&#39;);
+            finalScoreDisplay.textContent = state.score;
+
+            let badge = &#39;&#39;;
+            if (state.score &gt;= 80) {
+                badge = &#39;&lt;span class=&#34;px-4 py-2 bg-green-100 text-green-800 rounded-full font-bold&#34;&gt;Өте тамаша нәтиже! Математик! 🌟&lt;/span&gt;&#39;;
+            } else if (state.score &gt;= 50) {
+                badge = &#39;&lt;span class=&#34;px-4 py-2 bg-blue-100 text-blue-800 rounded-full font-bold&#34;&gt;Жақсы нәтиже! 👍&lt;/span&gt;&#39;;
+            } else {
+                badge = &#39;&lt;span class=&#34;px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full font-bold&#34;&gt;Әлі де жаттығу керек! 📚&lt;/span&gt;&#39;;
+            }
+            resultMessage.innerHTML = badge;
+        }
+
+        // --- DRAWING LOGIC ---
+
+        function draw() {
+            const height = 200;
+            
+            // Тексеру: егер ені жоқ болса, сурет салмау керек
+            if (!state.canvasWidth || state.canvasWidth &lt;= 0) return;
+
+            canvas.width = state.canvasWidth;
+            canvas.height = height;
+
+            const padding = 40;
+            const effectiveWidth = state.canvasWidth - (padding * 2);
+            const unitPixels = effectiveWidth / (RANGE_MAX &#43; 0.5);
+            const lineY = height / 2;
+
+            // Clear
+            ctx.clearRect(0, 0, canvas.width, height);
+            ctx.font = &#39;16px sans-serif&#39;;
+            ctx.textAlign = &#39;center&#39;;
+            ctx.textBaseline = &#39;top&#39;;
+
+            // Негізгі сызық
+            ctx.beginPath();
+            ctx.moveTo(padding, lineY);
+            ctx.lineTo(state.canvasWidth - padding, lineY);
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = &#39;#374151&#39;;
+            ctx.stroke();
+
+            // Стрелка ұшы
+            ctx.beginPath();
+            ctx.moveTo(state.canvasWidth - padding, lineY);
+            ctx.lineTo(state.canvasWidth - padding - 15, lineY - 10);
+            ctx.lineTo(state.canvasWidth - padding - 15, lineY &#43; 10);
+            ctx.fillStyle = &#39;#374151&#39;;
+            ctx.fill();
+            
+            // &#34;x&#34;
+            ctx.fillStyle = &#39;#374151&#39;;
+            ctx.fillText(&#34;x&#34;, state.canvasWidth - padding, lineY &#43; 20);
+
+            // Штрихтар
+            for (let i = 0; i &lt;= RANGE_MAX; i&#43;&#43;) {
+                const x = padding &#43; (i * unitPixels);
+                
+                ctx.beginPath();
+                ctx.moveTo(x, lineY - 10);
+                ctx.lineTo(x, lineY &#43; 10);
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = &#39;#000&#39;;
+                ctx.stroke();
+
+                ctx.fillStyle = &#39;#000&#39;;
+                ctx.font = &#39;bold 20px sans-serif&#39;;
+                ctx.fillText(i.toString(), x, lineY &#43; 20);
+            }
+
+            // User Guess
+            if (state.userGuess !== null) {
+                const guessX = padding &#43; (state.userGuess * unitPixels);
+                
+                ctx.beginPath();
+                ctx.arc(guessX, lineY, 8, 0, Math.PI * 2);
+                ctx.fillStyle = &#39;#EF4444&#39;;
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.moveTo(guessX, lineY);
+                ctx.lineTo(guessX, lineY - 40);
+                ctx.strokeStyle = &#39;#EF4444&#39;;
+                ctx.stroke();
+                
+                ctx.fillStyle = &#39;#EF4444&#39;;
+                ctx.font = &#39;16px sans-serif&#39;;
+                ctx.fillText(&#34;Сенің жауабың&#34;, guessX, lineY - 60);
+            }
+
+            // Correct Answer (Feedback phase)
+            if (state.phase === &#39;feedback&#39; &amp;&amp; state.currentTask) {
+                const correctX = padding &#43; (state.currentTask.value * unitPixels);
+                
+                ctx.beginPath();
+                ctx.arc(correctX, lineY, 8, 0, Math.PI * 2);
+                ctx.fillStyle = &#39;#10B981&#39;;
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(correctX, lineY);
+                ctx.lineTo(correctX, lineY - 40);
+                ctx.strokeStyle = &#39;#10B981&#39;;
+                ctx.stroke();
+
+                ctx.fillStyle = &#39;#10B981&#39;;
+                ctx.font = &#39;bold 16px sans-serif&#39;;
+                
+                const task = state.currentTask;
+                const fractionText = task.integer &gt; 0 
+                    ? `${task.integer} ${task.numerator}/${task.denominator}`
+                    : `${task.numerator}/${task.denominator}`;
+                    
+                ctx.fillText(fractionText, correctX, lineY - 60);
+            }
+        }
+
+        // --- UI HELPERS ---
+
+        function updateUI() {
+            scoreDisplay.textContent = state.score;
+            questionCountDisplay.textContent = `${state.questionCount}/${TOTAL_QUESTIONS}`;
+            
+            if (state.phase === &#39;feedback&#39;) {
+                nextBtn.classList.remove(&#39;hidden&#39;);
+                nextBtn.style.display = &#39;flex&#39;; // Lucide icon fix
+            } else {
+                nextBtn.classList.add(&#39;hidden&#39;);
+                nextBtn.style.display = &#39;none&#39;;
+            }
+            
+            // Re-render icons after display changes
+            lucide.createIcons();
+        }
+
+        function showFeedback(msg, colorClass) {
+            feedbackMsg.textContent = msg;
+            feedbackMsg.className = `text-xl font-bold ${colorClass} opacity-100 transition-opacity duration-300`;
+        }
+
+        function resetFeedback() {
+            feedbackMsg.classList.remove(&#39;opacity-100&#39;);
+            feedbackMsg.classList.add(&#39;opacity-0&#39;);
+            nextBtn.classList.add(&#39;hidden&#39;);
+        }
+
+        // Start
+        init();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"></iframe>
+
+            
+            <div class="mt-6 flex gap-4">
+                
+                <button id="openFsBtn" onclick="openFullscreen()"
+                    class="btn-primary flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                    </svg>
+                    <span>Толық экран</span>
+                </button>
+
+                
+                <button id="closeFsBtn" onclick="closeFullscreen()"
+                    class="hidden btn-danger flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <span>Кішірейту</span>
+                </button>
+            </div>
+        </div>
+
+        <script>
+            var elem = document.getElementById("fullscreenWrapper");
+            var openBtn = document.getElementById("openFsBtn");
+            var closeBtn = document.getElementById("closeFsBtn");
+
+            function openFullscreen() {
+                if (elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            function closeFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+
+            function updateButtons() {
+                if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                    openBtn.classList.add("hidden");
+                    closeBtn.classList.remove("hidden");
+                } else {
+                    openBtn.classList.remove("hidden");
+                    closeBtn.classList.add("hidden");
+                }
+            }
+
+            document.addEventListener("fullscreenchange", updateButtons);
+            document.addEventListener("webkitfullscreenchange", updateButtons);
+            document.addEventListener("msfullscreenchange", updateButtons);
+        </script>
+
+        
+        
+        <div class="bg-white p-6 rounded-2xl w-full mt-8 shadow-lg border border-purple-100 max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-2xl">📋</span>
+                <h3 class="text-xl font-bold text-gray-800">Тапсырма сипаттамасы</h3>
+            </div>
+            <div class="text-gray-700 leading-relaxed whitespace-pre-wrap">«Координаталық сәуле мергені» — 5-сынып оқушыларына арналған интерактивті математикалық ойын. Бұл тапсырманың негізгі мақсаты — оқушыларға жай бөлшектер мен аралас сандарды координаталық сәуле бойында кескіндеуді үйрету.
+
+Ойын барысында экранда кездейсоқ түрде 0-ден 4-ке дейінгі аралықтағы сандар (жай бөлшектер мен аралас сандар кезектесіп) пайда болады. Оқушының міндеті — берілген санның сәуледегі нақты орнын тінтуірмен дәл нұсқау.
+
+Бағдарлама жауаптың дұрыстығын бірден тексеріп, «Тамаша!», «Жақын» немесе «Қате» деп кері байланыс береді. Қате кеткен жағдайда дұрыс нүктені жасыл түспен көрсетеді. Бұл әдіс оқушылардың математикалық көз мөлшерін дамытып, бөлшектердің шамасын көрнекі түрде қабылдауға және олардың бүтін сандар арасындағы орналасу ретін терең түсінуге көмектеседі.</div>
+        </div>
+        
+
+        
+        <div class="w-full max-w-4xl mx-auto my-8 px-4">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9724842226086594"
+                data-ad-slot="WWWWWWWWWW" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white p-8 mt-auto relative z-10">
+        <div class="container mx-auto text-center">
+            <div class="text-2xl mb-4">📐 VisualMath</div>
+            <p class="text-gray-400 mb-4">&copy; 2024 VisualMath. Барлық құқықтар қорғалған.</p>
+            <div class="space-x-6">
+                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Құпиялылық
+                    саясаты</a>
+                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Пайдалану
+                    шарттары</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
