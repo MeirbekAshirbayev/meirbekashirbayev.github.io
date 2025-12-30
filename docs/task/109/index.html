@@ -1,35 +1,17 @@
 <!DOCTYPE html>
-<html lang="kk">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сиқырлы Бақша | VisualMath</title>
-    <meta name="description" content="Бұл HTML файлда «Сиқырлы Бақша» атты интерактивті математикалық ойынның коды берілген. Ойын оқушыларға жай бөлшектер тақырыбын қызықты жолмен түсіндіреді.
-
-Функционалы екі режимнен тұрады:
-1. Зертхана: Оқушы алым мен бөлімді өзгертіп, бөлшектің визуалды моделін (дөңгелек диаграмма) және оқылуын зерттейді.
-2. Ойын: Үш түрлі тапсырманы орындайды:
-- Берілген бөлшекке сәйкес гүл егу;
-- Сурет бойынша бөлшекті анықтау;
-- Бөлу амалын бөлшек түрінде жазу (жаңа тақырып).
-
-Файлды браузерде ашу арқылы бірден қолдануға болады, қосымша орнатуды қажет етпейді.">
-    <meta name="keywords" content="Сиқырлы Бақша, математика, есеп, тапсырма, visual math">
+    <meta name="description" content="Интерактивное задание по математике">
+    <meta name="keywords" content="Сиқырлы Бақша, математика, задача, задание, visual math">
 
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="Сиқырлы Бақша | VisualMath">
-    <meta property="og:description" content="Бұл HTML файлда «Сиқырлы Бақша» атты интерактивті математикалық ойынның коды берілген. Ойын оқушыларға жай бөлшектер тақырыбын қызықты жолмен түсіндіреді.
-
-Функционалы екі режимнен тұрады:
-1. Зертхана: Оқушы алым мен бөлімді өзгертіп, бөлшектің визуалды моделін (дөңгелек диаграмма) және оқылуын зерттейді.
-2. Ойын: Үш түрлі тапсырманы орындайды:
-- Берілген бөлшекке сәйкес гүл егу;
-- Сурет бойынша бөлшекті анықтау;
-- Бөлу амалын бөлшек түрінде жазу (жаңа тақырып).
-
-Файлды браузерде ашу арқылы бірден қолдануға болады, қосымша орнатуды қажет етпейді.">
+    <meta property="og:description" content="Интерактивное задание по математике">
 
     
     <script type="application/ld+json">
@@ -37,8 +19,8 @@
       "@context": "https://schema.org",
       "@type": "Quiz",
       "name": "Сиқырлы Бақша",
-      "description": "Бұл HTML файлда «Сиқырлы Бақша» атты интерактивті математикалық ойынның коды берілген. Ойын оқушыларға жай бөлшектер тақырыбын қызықты жолмен түсіндіреді.\r\n\r\nФункционалы екі режимнен тұрады:\r\n1. Зертхана: Оқушы алым мен бөлімді өзгертіп, бөлшектің визуалды моделін (дөңгелек диаграмма) және оқылуын зерттейді.\r\n2. Ойын: Үш түрлі тапсырманы орындайды:\r\n- Берілген бөлшекке сәйкес гүл егу;\r\n- Сурет бойынша бөлшекті анықтау;\r\n- Бөлу амалын бөлшек түрінде жазу (жаңа тақырып).\r\n\r\nФайлды браузерде ашу арқылы бірден қолдануға болады, қосымша орнатуды қажет етпейді.",
-      "inLanguage": "kk",
+      "description": "Интерактивное задание по математике",
+      "inLanguage": "ru",
       "educationalUse": "Assignment"
     }
     </script>
@@ -81,7 +63,9 @@
         }
 
          
-        #fullscreenWrapper:fullscreen {
+        #fullscreenWrapper:fullscreen,
+        #fullscreenWrapperKz:fullscreen,
+        #fullscreenWrapperRu:fullscreen {
             background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
             padding: 1rem;
             display: flex;
@@ -93,8 +77,10 @@
             overflow: hidden;
         }
 
-        #fullscreenWrapper:fullscreen iframe {
-            height: 90vh;
+        #fullscreenWrapper:fullscreen iframe,
+        #fullscreenWrapperKz:fullscreen iframe,
+        #fullscreenWrapperRu:fullscreen iframe {
+            height: 95vh;
             width: 100%;
             max-width: none;
         }
@@ -133,7 +119,7 @@
             <a href="/lesson/22"
                 class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium">
                 <span>←</span>
-                <span class="hidden sm:inline">Сабаққа оралу</span>
+                <span class="hidden sm:inline">Назад к уроку</span>
             </a>
         </div>
     </nav>
@@ -141,8 +127,13 @@
     <main class="flex-grow task-content">
 
         
-        <div id="fullscreenWrapper" class="w-full flex flex-col items-center">
-            <iframe id="taskIframe" srcdoc="&lt;!DOCTYPE html&gt;
+        <div class="w-full max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Интерактивные задания</h2>
+
+            
+            
+            <div id="fullscreenWrapper" class="w-full flex flex-col items-center">
+                <iframe id="taskIframe" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&#34;kk&#34;&gt;
 &lt;head&gt;
     &lt;meta charset=&#34;UTF-8&#34;&gt;
@@ -582,44 +573,48 @@
     &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;"></iframe>
-
-            
-            <div class="mt-6 flex gap-4">
-                
-                <button id="openFsBtn" onclick="openFullscreen()"
-                    class="btn-primary flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                    </svg>
-                    <span>Толық экран</span>
-                </button>
-
-                
-                <button id="closeFsBtn" onclick="closeFullscreen()"
-                    class="hidden btn-danger flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    <span>Кішірейту</span>
-                </button>
             </div>
+            
         </div>
 
+        
+        
+        <div class="mt-6 flex gap-4 justify-center">
+            
+            <button id="openFsBtn" onclick="openFullscreen()"
+                class="btn-primary flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+                <span>Полный экран</span>
+            </button>
+
+            
+            <button id="closeFsBtn" onclick="closeFullscreen()"
+                class="hidden btn-danger flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <span>Свернуть</span>
+            </button>
+        </div>
+        
+
         <script>
+            
             var elem = document.getElementById("fullscreenWrapper");
             var openBtn = document.getElementById("openFsBtn");
             var closeBtn = document.getElementById("closeFsBtn");
 
             function openFullscreen() {
-                if (elem.requestFullscreen) {
+                if (elem && elem.requestFullscreen) {
                     elem.requestFullscreen();
-                } else if (elem.webkitRequestFullscreen) {
+                } else if (elem && elem.webkitRequestFullscreen) {
                     elem.webkitRequestFullscreen();
-                } else if (elem.msRequestFullscreen) {
+                } else if (elem && elem.msRequestFullscreen) {
                     elem.msRequestFullscreen();
                 }
             }
@@ -635,12 +630,38 @@
             }
 
             function updateButtons() {
-                if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-                    openBtn.classList.add("hidden");
-                    closeBtn.classList.remove("hidden");
-                } else {
-                    openBtn.classList.remove("hidden");
-                    closeBtn.classList.add("hidden");
+                if (openBtn && closeBtn) {
+                    if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                        openBtn.classList.add("hidden");
+                        closeBtn.classList.remove("hidden");
+                    } else {
+                        openBtn.classList.remove("hidden");
+                        closeBtn.classList.add("hidden");
+                    }
+                }
+            }
+
+            
+            function openFullscreenKz() {
+                var elemKz = document.getElementById("fullscreenWrapperKz");
+                if (elemKz && elemKz.requestFullscreen) {
+                    elemKz.requestFullscreen();
+                } else if (elemKz && elemKz.webkitRequestFullscreen) {
+                    elemKz.webkitRequestFullscreen();
+                } else if (elemKz && elemKz.msRequestFullscreen) {
+                    elemKz.msRequestFullscreen();
+                }
+            }
+
+            
+            function openFullscreenRu() {
+                var elemRu = document.getElementById("fullscreenWrapperRu");
+                if (elemRu && elemRu.requestFullscreen) {
+                    elemRu.requestFullscreen();
+                } else if (elemRu && elemRu.webkitRequestFullscreen) {
+                    elemRu.webkitRequestFullscreen();
+                } else if (elemRu && elemRu.msRequestFullscreen) {
+                    elemRu.msRequestFullscreen();
                 }
             }
 
@@ -653,19 +674,19 @@
         
         <div class="bg-white p-6 rounded-2xl w-full mt-8 shadow-lg border border-purple-100 max-w-4xl mx-auto">
             <div class="flex items-center gap-3 mb-4">
-                <span class="text-2xl">📋</span>
-                <h3 class="text-xl font-bold text-gray-800">Тапсырма сипаттамасы</h3>
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                    <span class="text-white text-lg">📋</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Описание задания</h3>
             </div>
-            <div class="text-gray-700 leading-relaxed whitespace-pre-wrap">Бұл HTML файлда «Сиқырлы Бақша» атты интерактивті математикалық ойынның коды берілген. Ойын оқушыларға жай бөлшектер тақырыбын қызықты жолмен түсіндіреді.
-
-Функционалы екі режимнен тұрады:
-1. Зертхана: Оқушы алым мен бөлімді өзгертіп, бөлшектің визуалды моделін (дөңгелек диаграмма) және оқылуын зерттейді.
-2. Ойын: Үш түрлі тапсырманы орындайды:
-- Берілген бөлшекке сәйкес гүл егу;
-- Сурет бойынша бөлшекті анықтау;
-- Бөлу амалын бөлшек түрінде жазу (жаңа тақырып).
-
-Файлды браузерде ашу арқылы бірден қолдануға болады, қосымша орнатуды қажет етпейді.</div>
+            <div class="text-gray-700 leading-relaxed prose max-w-none">
+                
+<div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
+    <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
+    <p class="text-gray-600 mt-2">💡 Если задание кажется сложным, попробуйте ещё раз!</p>
+</div>
+            </div>
         </div>
         
 
@@ -682,12 +703,12 @@
     <footer class="bg-gray-900 text-white p-8 mt-auto relative z-10">
         <div class="container mx-auto text-center">
             <div class="text-2xl mb-4">📐 VisualMath</div>
-            <p class="text-gray-400 mb-4">&copy; 2024 VisualMath. Барлық құқықтар қорғалған.</p>
+            <p class="text-gray-400 mb-4">&copy; 2024 VisualMath. Все права защищены.</p>
             <div class="space-x-6">
-                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Құпиялылық
-                    саясаты</a>
-                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Пайдалану
-                    шарттары</a>
+                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Политика
+                    конфиденциальности</a>
+                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Условия
+                    использования</a>
             </div>
         </div>
     </footer>
