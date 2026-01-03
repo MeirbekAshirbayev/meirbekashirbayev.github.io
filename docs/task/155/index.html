@@ -132,8 +132,23 @@
 
             
             
-            <div id="fullscreenWrapper" class="w-full flex flex-col items-center">
-                <iframe id="taskIframe" srcdoc="&lt;!DOCTYPE html&gt;
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇰🇿
+                            Казахский</span>
+                        <button onclick="openFullscreenKz()"
+                            class="text-blue-600 hover:text-blue-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperKz">
+                        <iframe id="taskIframeKz" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&#34;kk&#34;&gt;
 &lt;head&gt;
     &lt;meta charset=&#34;UTF-8&#34;&gt;
@@ -714,34 +729,456 @@
         updateSimulation();
     &lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;"></iframe>
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇷🇺
+                            Русский</span>
+                        <button onclick="openFullscreenRu()" class="text-red-600 hover:text-red-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperRu">
+                        <iframe id="taskIframeRu" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Движение по реке: Виртуальная Лаборатория&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;link href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&#34; rel=&#34;stylesheet&#34;&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f9ff;
+        }
+        
+        /* Sky Background */
+        .sky-bg {
+            background: linear-gradient(to bottom, #bae6fd 0%, #e0f2fe 100%);
+        }
+
+        /* Water Surface */
+        .river-surface {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 45%;
+            background: repeating-linear-gradient(
+                90deg,
+                #3b82f6 0px,
+                #60a5fa 50px,
+                #3b82f6 100px
+            );
+            background-size: 200% 100%;
+            animation: flow 3s linear infinite;
+            border-top: 3px solid rgba(255,255,255,0.5);
+            z-index: 10;
+        }
+
+        @keyframes flow {
+            0% { background-position: 100% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        .boat-mover {
+            position: absolute;
+            bottom: 35%;
+            z-index: 20;
+            transition: left 0.1s linear;
+        }
+
+        .boat-bob {
+            animation: bob 2s ease-in-out infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .boat-icon {
+            transform: scaleX(-1);
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+        }
+
+        .water-splash {
+            position: absolute;
+            bottom: -5px;
+            width: 60px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            filter: blur(2px);
+            animation: splash 1s infinite alternate;
+        }
+        @keyframes splash {
+            0% { transform: scale(0.9); opacity: 0.5; }
+            100% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .vector-arrow {
+            position: relative;
+            height: 14px; 
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            transition: width 0.3s ease, background-color 0.3s;
+            font-size: 10px;
+            color: white;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .vector-arrow::after {
+            content: &#39;&#39;;
+            position: absolute;
+            right: -8px;
+            top: 0; 
+            width: 0; 
+            height: 0; 
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 8px solid;
+            border-left-color: inherit;
+        }
+
+        .vector-arrow.left {
+            flex-direction: row-reverse;
+        }
+
+        .vector-arrow.left::after {
+            right: auto;
+            left: -8px;
+            border-left: none;
+            border-right: 8px solid;
+            border-right-color: inherit;
+        }
+        
+        .bg-blue-500::after { border-left-color: #3b82f6; }
+        .bg-green-500::after { border-left-color: #22c55e; }
+        .bg-red-500::after { border-left-color: #ef4444; }
+        
+        .vector-arrow.left.bg-blue-500::after { border-right-color: #3b82f6; border-left-color: transparent; }
+        .vector-arrow.left.bg-red-500::after { border-right-color: #ef4444; border-left-color: transparent; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen flex flex-col&#34;&gt;
+
+    &lt;header class=&#34;bg-blue-600 text-white p-4 shadow-md&#34;&gt;
+        &lt;div class=&#34;container mx-auto flex justify-between items-center&#34;&gt;
+            &lt;h1 class=&#34;text-2xl font-bold&#34;&gt;&lt;i class=&#34;fas fa-ship mr-2&#34;&gt;&lt;/i&gt;Лаборатория: Движение по реке&lt;/h1&gt;
+            &lt;div class=&#34;space-x-4&#34;&gt;
+                &lt;button onclick=&#34;switchTab(&#39;simulation&#39;)&#34; id=&#34;btn-sim&#34; class=&#34;px-4 py-2 bg-white text-blue-600 rounded-lg font-bold shadow transition hover:bg-blue-50&#34;&gt;Симуляция&lt;/button&gt;
+                &lt;button onclick=&#34;switchTab(&#39;tasks&#39;)&#34; id=&#34;btn-tasks&#34; class=&#34;px-4 py-2 bg-blue-500 text-white rounded-lg font-bold shadow transition hover:bg-blue-400&#34;&gt;Задачи&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;main class=&#34;flex-grow container mx-auto p-4 flex flex-col items-center&#34;&gt;
+
+        &lt;div id=&#34;simulation-panel&#34; class=&#34;w-full max-w-4xl bg-white rounded-xl shadow-lg p-6 space-y-6&#34;&gt;
+            &lt;div class=&#34;text-center mb-4&#34;&gt;
+                &lt;h2 class=&#34;text-xl font-bold text-gray-800&#34;&gt;Визуальная лаборатория&lt;/h2&gt;
+                &lt;p class=&#34;text-gray-600&#34;&gt;Изменяйте скорости и наблюдайте за векторами&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;relative w-full h-80 border-4 border-blue-300 rounded-xl overflow-hidden sky-bg shadow-inner&#34;&gt;
+                &lt;i class=&#34;fas fa-cloud text-white text-4xl absolute top-4 left-10 opacity-80&#34;&gt;&lt;/i&gt;
+                &lt;i class=&#34;fas fa-sun text-yellow-400 text-5xl absolute top-4 right-4 animate-pulse&#34;&gt;&lt;/i&gt;
+
+                &lt;div id=&#34;river&#34; class=&#34;river-surface&#34;&gt;&lt;/div&gt;
+                
+                &lt;div class=&#34;absolute bottom-2 w-full flex justify-between px-4 text-xs text-white font-mono font-bold z-30 drop-shadow-md&#34;&gt;
+                    &lt;span&gt;0 км&lt;/span&gt;
+                    &lt;span&gt;25 км&lt;/span&gt;
+                    &lt;span&gt;50 км&lt;/span&gt;
+                    &lt;span&gt;75 км&lt;/span&gt;
+                    &lt;span&gt;100 км&lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;div id=&#34;boat&#34; class=&#34;boat-mover flex flex-col items-center&#34; style=&#34;left: 10%; width: 100px;&#34;&gt;
+                    &lt;div class=&#34;boat-bob relative&#34;&gt;
+                        &lt;div class=&#34;absolute -top-16 w-80 flex flex-col items-center pointer-events-none&#34;&gt;
+                            &lt;div class=&#34;w-full flex justify-center relative h-6 mb-1&#34;&gt;
+                                &lt;div id=&#34;vec-vm&#34; class=&#34;vector-arrow bg-green-500 text-white&#34; title=&#34;Собственная скорость&#34;&gt;
+                                    &lt;span class=&#34;drop-shadow-md&#34;&gt;V собств.&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;w-full flex justify-center relative h-6 mb-1&#34;&gt;
+                                &lt;div id=&#34;vec-va&#34; class=&#34;vector-arrow bg-blue-500 text-white&#34; title=&#34;Скорость течения&#34;&gt;
+                                    &lt;span class=&#34;drop-shadow-md&#34;&gt;V теч.&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;span id=&#34;speed-label&#34; class=&#34;text-xs font-bold bg-white px-3 py-1 rounded shadow mt-2 text-gray-800 border border-blue-200&#34;&gt;0 км/ч&lt;/span&gt;
+                        &lt;/div&gt;
+
+                        &lt;svg viewBox=&#34;0 0 200 100&#34; class=&#34;w-24 h-12 text-gray-700 relative z-20 boat-icon mt-4 fill-current&#34;&gt;
+                            &lt;path d=&#34;M10,60 Q10,90 60,90 H180 L190,60 Z&#34; /&gt;
+                            &lt;path d=&#34;M50,60 L70,30 H140 L140,60 Z&#34; /&gt;
+                            &lt;rect x=&#34;185&#34; y=&#34;50&#34; width=&#34;10&#34; height=&#34;30&#34; rx=&#34;2&#34; /&gt;
+                            &lt;path d=&#34;M20,65 L180,65&#34; stroke=&#34;white&#34; stroke-width=&#34;3&#34; fill=&#34;none&#34;/&gt;
+                        &lt;/svg&gt;
+                        &lt;div class=&#34;text-xs font-bold text-gray-700 mt-1 bg-white/70 px-2 rounded backdrop-blur-sm&#34;&gt;Наш Катер&lt;/div&gt;
+                        &lt;div class=&#34;water-splash z-10&#34;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&#34;absolute right-0 top-0 bottom-0 w-2 bg-red-500 opacity-50 border-l-2 border-white flex items-center justify-center z-20&#34;&gt;
+                    &lt;span class=&#34;transform -rotate-90 text-white font-bold whitespace-nowrap drop-shadow-md&#34;&gt;ФИНИШ (100 км)&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-50 p-4 rounded-lg&#34;&gt;
+                &lt;div class=&#34;space-y-4&#34;&gt;
+                    &lt;div&gt;
+                        &lt;label class=&#34;block text-sm font-bold text-gray-700 mb-1&#34;&gt;
+                            &lt;span class=&#34;text-green-600&#34;&gt;●&lt;/span&gt; Собственная скорость катера ($V_c$): 
+                            &lt;span id=&#34;val-vm&#34; class=&#34;text-green-600 font-bold text-lg&#34;&gt;15&lt;/span&gt; км/ч
+                        &lt;/label&gt;
+                        &lt;input type=&#34;range&#34; id=&#34;input-vm&#34; min=&#34;0&#34; max=&#34;40&#34; value=&#34;15&#34; class=&#34;w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-green-600&#34;&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;label class=&#34;block text-sm font-bold text-gray-700 mb-1&#34;&gt;
+                            &lt;span class=&#34;text-blue-500&#34;&gt;●&lt;/span&gt; Скорость течения реки ($V_т$): 
+                            &lt;span id=&#34;val-va&#34; class=&#34;text-blue-500 font-bold text-lg&#34;&gt;5&lt;/span&gt; км/ч
+                        &lt;/label&gt;
+                        &lt;input type=&#34;range&#34; id=&#34;input-va&#34; min=&#34;0&#34; max=&#34;20&#34; value=&#34;5&#34; class=&#34;w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-500&#34;&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&#34;flex flex-col justify-between space-y-4&#34;&gt;
+                    &lt;div class=&#34;flex items-center justify-center space-x-4 bg-white p-2 rounded shadow&#34;&gt;
+                        &lt;label class=&#34;flex items-center cursor-pointer&#34;&gt;
+                            &lt;input type=&#34;radio&#34; name=&#34;direction&#34; value=&#34;downstream&#34; checked class=&#34;form-radio h-5 w-5 text-blue-600&#34; onchange=&#34;updateSimulation()&#34;&gt;
+                            &lt;span class=&#34;ml-2 font-medium&#34;&gt;По течению &lt;i class=&#34;fas fa-long-arrow-alt-right text-blue-500&#34;&gt;&lt;/i&gt;&lt;/span&gt;
+                        &lt;/label&gt;
+                        &lt;div class=&#34;w-px h-6 bg-gray-300&#34;&gt;&lt;/div&gt;
+                        &lt;label class=&#34;flex items-center cursor-pointer&#34;&gt;
+                            &lt;input type=&#34;radio&#34; name=&#34;direction&#34; value=&#34;upstream&#34; class=&#34;form-radio h-5 w-5 text-red-600&#34; onchange=&#34;updateSimulation()&#34;&gt;
+                            &lt;span class=&#34;ml-2 font-medium&#34;&gt;Против течения &lt;i class=&#34;fas fa-long-arrow-alt-left text-red-500&#34;&gt;&lt;/i&gt;&lt;/span&gt;
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex space-x-2&#34;&gt;
+                        &lt;button onclick=&#34;startAnimation()&#34; id=&#34;btn-start&#34; class=&#34;flex-1 bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-bold shadow-lg transition transform hover:-translate-y-1&#34;&gt;
+                            &lt;i class=&#34;fas fa-play mr-2&#34;&gt;&lt;/i&gt; Плыть!
+                        &lt;/button&gt;
+                        &lt;button onclick=&#34;resetSimulation()&#34; class=&#34;bg-gray-500 hover:bg-gray-600 text-white px-4 py-3 rounded-lg font-bold shadow transition&#34;&gt;
+                            &lt;i class=&#34;fas fa-undo&#34;&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;info-box&#34; class=&#34;bg-blue-50 border-l-4 border-blue-500 p-4 rounded text-sm text-blue-800&#34;&gt;
+                &lt;h4 class=&#34;font-bold mb-1&#34;&gt;&lt;i class=&#34;fas fa-lightbulb text-yellow-500 mr-2&#34;&gt;&lt;/i&gt;Правило:&lt;/h4&gt;
+                &lt;p id=&#34;rule-text&#34;&gt;При движении по течению скорости складываются.&lt;/p&gt;
+                &lt;div id=&#34;warning-msg&#34; class=&#34;hidden mt-2 text-red-600 font-bold bg-red-100 p-2 rounded border border-red-200&#34;&gt;
+                    &lt;i class=&#34;fas fa-exclamation-triangle mr-1&#34;&gt;&lt;/i&gt; Внимание: Скорость течения больше скорости катера! Катер сносит назад!
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;tasks-panel&#34; class=&#34;hidden w-full max-w-2xl bg-white rounded-xl shadow-lg p-6&#34;&gt;
+            &lt;div class=&#34;flex justify-between items-center mb-6&#34;&gt;
+                &lt;h2 class=&#34;text-xl font-bold text-gray-800&#34;&gt;Интерактивные задачи&lt;/h2&gt;
+                &lt;span class=&#34;bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-0.5 rounded-full&#34;&gt;Уровень: &lt;span id=&#34;level-indicator&#34;&gt;1&lt;/span&gt;/5&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;bg-gray-50 p-6 rounded-xl border-2 border-dashed border-gray-300 mb-6 text-center&#34;&gt;
+                &lt;div id=&#34;task-visual&#34; class=&#34;mb-4 h-32 relative flex items-center justify-center overflow-hidden rounded bg-blue-100&#34;&gt;&lt;/div&gt;
+                &lt;p id=&#34;task-question&#34; class=&#34;text-lg font-medium text-gray-800 mb-4&#34;&gt;Загрузка задачи...&lt;/p&gt;
+                &lt;div class=&#34;flex justify-center items-center space-x-2 mb-4&#34;&gt;
+                    &lt;input type=&#34;number&#34; id=&#34;task-answer&#34; placeholder=&#34;?&#34; class=&#34;w-24 text-center text-xl font-bold p-2 border-2 border-blue-300 rounded-lg focus:outline-none focus:border-blue-500&#34;&gt;
+                    &lt;span class=&#34;text-xl font-bold text-gray-600&#34;&gt;км/ч&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;button onclick=&#34;checkAnswer()&#34; class=&#34;bg-blue-600 text-white px-8 py-2 rounded-full font-bold shadow hover:bg-blue-700 transition&#34;&gt;Проверить&lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;feedback-area&#34; class=&#34;hidden p-4 rounded-lg text-center font-bold mb-4&#34;&gt;&lt;/div&gt;
+            &lt;div class=&#34;flex justify-between&#34;&gt;
+                 &lt;button onclick=&#34;prevLevel()&#34; class=&#34;text-gray-500 hover:text-gray-700 font-medium text-sm&#34;&gt;Назад&lt;/button&gt;
+                 &lt;button onclick=&#34;nextLevel()&#34; id=&#34;next-btn&#34; class=&#34;hidden text-blue-600 hover:text-blue-800 font-bold text-sm&#34;&gt;Далее &lt;i class=&#34;fas fa-arrow-right&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+
+    &lt;footer class=&#34;bg-gray-800 text-white text-center p-4 mt-auto&#34;&gt;
+        &lt;p class=&#34;text-sm opacity-70&#34;&gt;© 2025 Интерактивное обучение | Математика 5 класс&lt;/p&gt;
+    &lt;/footer&gt;
+
+    &lt;script&gt;
+        // --- LOGIC FOR SIMULATION ---
+        const boat = document.getElementById(&#39;boat&#39;);
+        const river = document.getElementById(&#39;river&#39;);
+        const inputVm = document.getElementById(&#39;input-vm&#39;);
+        const inputVa = document.getElementById(&#39;input-va&#39;);
+        const valVm = document.getElementById(&#39;val-vm&#39;);
+        const valVa = document.getElementById(&#39;val-va&#39;);
+        const vecVm = document.getElementById(&#39;vec-vm&#39;);
+        const vecVa = document.getElementById(&#39;vec-va&#39;);
+        const speedLabel = document.getElementById(&#39;speed-label&#39;);
+        const ruleText = document.getElementById(&#39;rule-text&#39;);
+        const warningMsg = document.getElementById(&#39;warning-msg&#39;);
+        const btnStart = document.getElementById(&#39;btn-start&#39;);
+
+        let isAnimating = false;
+        let animationId;
+        let boatPositionX = 10; 
+
+        function updateSimulation() {
+            const vm = parseInt(inputVm.value);
+            const va = parseInt(inputVa.value);
+            const direction = document.querySelector(&#39;input[name=&#34;direction&#34;]:checked&#39;).value;
+            
+            valVm.textContent = vm;
+            valVa.textContent = va;
+
+            let totalSpeed = 0;
+            const pxPerKm = 5; 
+            
+            vecVm.style.width = `${vm * pxPerKm}px`;
+            warningMsg.classList.add(&#39;hidden&#39;);
+
+            if (direction === &#39;downstream&#39;) {
+                totalSpeed = vm &#43; va;
+                ruleText.innerHTML = `При движении по течению: &lt;br&gt; &lt;strong&gt;V собств. &#43; V теч. = ${vm} &#43; ${va} = ${totalSpeed} км/ч&lt;/strong&gt;`;
+                vecVa.className = &#34;vector-arrow bg-blue-500 text-white&#34;;
+                vecVa.style.width = `${va * pxPerKm}px`;
+                river.style.animationDirection = &#39;normal&#39;; 
+            } else { 
+                totalSpeed = vm - va;
+                ruleText.innerHTML = `При движении против течения: &lt;br&gt; &lt;strong&gt;V собств. - V теч. = ${vm} - ${va} = ${totalSpeed} км/ч&lt;/strong&gt;`;
+                vecVa.className = &#34;vector-arrow bg-red-500 text-white left&#34;;
+                vecVa.style.width = `${va * pxPerKm}px`;
+                if (totalSpeed &lt; 0) warningMsg.classList.remove(&#39;hidden&#39;);
+                river.style.animationDirection = &#39;reverse&#39;;
+            }
+
+            speedLabel.textContent = `Итоговая скорость: ${Math.abs(totalSpeed)} км/ч`;
+            return totalSpeed;
+        }
+
+        function startAnimation() {
+            if (isAnimating) return;
+            isAnimating = true;
+            btnStart.disabled = true;
+            btnStart.classList.add(&#39;opacity-50&#39;);
+            boatPositionX = 10;
+            let lastTime = performance.now();
+
+            function step(time) {
+                if (!isAnimating) return;
+                const dt = (time - lastTime) / 1000;
+                lastTime = time;
+                const speed = updateSimulation(); 
+                boatPositionX &#43;= (speed * dt * 1.5);
+
+                if (boatPositionX &gt; 90) {
+                    boatPositionX = 90;
+                    isAnimating = false;
+                    btnStart.disabled = false;
+                    btnStart.classList.remove(&#39;opacity-50&#39;);
+                    alert(&#34;Финиш достигнут!&#34;);
+                } else if (boatPositionX &lt; 5) {
+                    boatPositionX = 5;
+                }
+                boat.style.left = `${boatPositionX}%`;
+                animationId = requestAnimationFrame(step);
+            }
+            animationId = requestAnimationFrame(step);
+        }
+
+        function resetSimulation() {
+            isAnimating = false;
+            cancelAnimationFrame(animationId);
+            boatPositionX = 10;
+            boat.style.left = &#39;10%&#39;;
+            btnStart.disabled = false;
+            btnStart.classList.remove(&#39;opacity-50&#39;);
+            updateSimulation();
+        }
+
+        inputVm.addEventListener(&#39;input&#39;, updateSimulation);
+        inputVa.addEventListener(&#39;input&#39;, updateSimulation);
+
+        // --- TASKS LOGIC ---
+        let currentLevel = 0;
+        const levels = [
+            { text: &#34;Собственная скорость катера 12 км/ч. Скорость течения 3 км/ч. Найдите скорость катера по течению.&#34;, vm: 12, va: 3, calc: (vm, va) =&gt; vm &#43; va, hint: &#34;Формула: V по теч. = V собств. &#43; V теч.&#34; },
+            { text: &#34;Катер в стоячей воде идет 20 км/ч. Скорость течения 4 км/ч. Найдите скорость против течения.&#34;, vm: 20, va: 4, calc: (vm, va) =&gt; vm - va, hint: &#34;Формула: V пр. теч. = V собств. - V теч.&#34; },
+            { text: &#34;Скорость по течению 18 км/ч. Скорость течения 3 км/ч. Найдите собственную скорость.&#34;, correct: 15, hint: &#34;V собств = V по теч - V теч (18 - 3)&#34; },
+            { text: &#34;Скорость против течения 10 км/ч. Собственная скорость 14 км/ч. Найдите скорость течения.&#34;, correct: 4, hint: &#34;V теч = V собств - V пр. теч (14 - 10)&#34; },
+            { text: &#34;Скорость по течению 20 км/ч, а против течения 16 км/ч. Найдите скорость течения реки.&#34;, correct: 2, hint: &#34;Формула: (V по теч. - V пр. теч.) / 2&#34; }
+        ];
+
+        function loadLevel(index) {
+            currentLevel = index;
+            document.getElementById(&#39;level-indicator&#39;).textContent = index &#43; 1;
+            document.getElementById(&#39;task-question&#39;).textContent = levels[index].text;
+            document.getElementById(&#39;task-answer&#39;).value = &#39;&#39;;
+            document.getElementById(&#39;feedback-area&#39;).className = &#34;hidden p-4 rounded-lg text-center font-bold mb-4&#34;;
+            document.getElementById(&#39;next-btn&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;task-visual&#39;).innerHTML = `&lt;svg viewBox=&#34;0 0 200 100&#34; class=&#34;w-32 h-16 text-gray-700 z-10 boat-icon fill-current&#34;&gt;&lt;path d=&#34;M10,60 Q10,90 60,90 H180 L190,60 Z&#34; /&gt;&lt;path d=&#34;M50,60 L70,30 H140 L140,60 Z&#34; /&gt;&lt;rect x=&#34;185&#34; y=&#34;50&#34; width=&#34;10&#34; height=&#34;30&#34; rx=&#34;2&#34; /&gt;&lt;path d=&#34;M20,65 L180,65&#34; stroke=&#34;white&#34; stroke-width=&#34;3&#34; fill=&#34;none&#34;/&gt;&lt;/svg&gt;`;
+        }
+
+        function checkAnswer() {
+            const userVal = parseFloat(document.getElementById(&#39;task-answer&#39;).value);
+            const level = levels[currentLevel];
+            let correctVal = level.calc ? level.calc(level.vm, level.va) : level.correct;
+            const feedback = document.getElementById(&#39;feedback-area&#39;);
+            if (userVal === correctVal) {
+                feedback.textContent = &#34;Отлично! Правильно!&#34;;
+                feedback.className = &#34;block bg-green-100 text-green-700 p-4 rounded-lg text-center font-bold mb-4 border border-green-300&#34;;
+                if (currentLevel &lt; levels.length - 1) document.getElementById(&#39;next-btn&#39;).classList.remove(&#39;hidden&#39;);
+            } else {
+                feedback.innerHTML = `Ошибка! &lt;br&gt; &lt;span class=&#34;text-sm font-normal text-gray-700&#34;&gt;${level.hint}&lt;/span&gt;`;
+                feedback.className = &#34;block bg-red-100 text-red-700 p-4 rounded-lg text-center font-bold mb-4 border border-red-300&#34;;
+            }
+        }
+
+        function nextLevel() { if (currentLevel &lt; levels.length - 1) loadLevel(currentLevel &#43; 1); }
+        function prevLevel() { if (currentLevel &gt; 0) loadLevel(currentLevel - 1); }
+
+        function switchTab(tabId) {
+            document.getElementById(&#39;simulation-panel&#39;).classList.toggle(&#39;hidden&#39;, tabId !== &#39;simulation&#39;);
+            document.getElementById(&#39;tasks-panel&#39;).classList.toggle(&#39;hidden&#39;, tabId !== &#39;tasks&#39;);
+            document.getElementById(&#39;btn-sim&#39;).className = tabId === &#39;simulation&#39; ? &#34;px-4 py-2 bg-white text-blue-600 rounded-lg font-bold shadow&#34; : &#34;px-4 py-2 bg-blue-500 text-white rounded-lg font-bold shadow&#34;;
+            document.getElementById(&#39;btn-tasks&#39;).className = tabId === &#39;tasks&#39; ? &#34;px-4 py-2 bg-white text-blue-600 rounded-lg font-bold shadow&#34; : &#34;px-4 py-2 bg-blue-500 text-white rounded-lg font-bold shadow&#34;;
+            if(tabId === &#39;tasks&#39;) loadLevel(currentLevel);
+        }
+
+        updateSimulation();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
             </div>
             
         </div>
 
         
         
-        <div class="mt-6 flex gap-4 justify-center">
-            
-            <button id="openFsBtn" onclick="openFullscreen()"
-                class="btn-primary flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                </svg>
-                <span>Полный экран</span>
-            </button>
-
-            
-            <button id="closeFsBtn" onclick="closeFullscreen()"
-                class="hidden btn-danger flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                <span>Свернуть</span>
-            </button>
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            💡 Екі тілде де қол жетімді / Доступно на двух языках
         </div>
         
 
@@ -823,10 +1260,49 @@
                 <h3 class="text-xl font-bold text-gray-800">Описание задания</h3>
             </div>
             <div class="text-gray-700 leading-relaxed prose max-w-none">
-                
-<div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
-    <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
-    <p class="text-gray-600 mt-2">💡 Если задание кажется сложным, попробуйте ещё раз!</p>
+                <div class="space-y-4 font-sans">
+    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
+        <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
+        <p class="text-gray-600 mt-2">💡 Если задание кажется сложным, попробуйте ещё раз!</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <h4 class="font-bold text-blue-800 mb-2 flex items-center gap-2">
+                🚤 По течению
+            </h4>
+            <p class="text-xs text-blue-900 leading-relaxed">
+                Река "помогает" катеру, поэтому скорости <b>складываются</b>: <br>
+                <span class="font-bold text-blue-700">V по теч. = V собств. + V теч.</span>
+            </p>
+        </div>
+
+        <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+            <h4 class="font-bold text-red-800 mb-2 flex items-center gap-2">
+                🚣 Против течения
+            </h4>
+            <p class="text-xs text-red-900 leading-relaxed">
+                Река "мешает" катеру, поэтому скорость течения <b>вычитается</b>: <br>
+                <span class="font-bold text-red-700">V пр. теч. = V собств. – V теч.</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400">
+        <h4 class="font-bold text-amber-800 text-sm mb-1">Как найти скорость течения?</h4>
+        <p class="text-xs text-amber-900 italic">
+            Если известны обе скорости, используй формулу: <br>
+            <b>V теч. = (V по теч. – V пр. теч.) ÷ 2</b>
+        </p>
+    </div>
+
+    [Image of boat motion relative to river current vectors]
+
+    <div class="bg-gray-100 p-3 rounded-lg text-center border border-gray-300 shadow-inner">
+        <p class="text-xs font-mono text-gray-600">
+            В стоячей воде (озере) скорость равна <span class="text-indigo-600 font-bold">V собственной</span>
+        </p>
+    </div>
 </div>
             </div>
         </div>

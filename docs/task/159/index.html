@@ -132,8 +132,23 @@
 
             
             
-            <div id="fullscreenWrapper" class="w-full flex flex-col items-center">
-                <iframe id="taskIframe" srcdoc="&lt;!DOCTYPE html&gt;
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇰🇿
+                            Казахский</span>
+                        <button onclick="openFullscreenKz()"
+                            class="text-blue-600 hover:text-blue-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperKz">
+                        <iframe id="taskIframeKz" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&#34;kk&#34;&gt;
 &lt;head&gt;
     &lt;meta charset=&#34;UTF-8&#34;&gt;
@@ -655,34 +670,423 @@
         }
     &lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;"></iframe>
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇷🇺
+                            Русский</span>
+                        <button onclick="openFullscreenRu()" class="text-red-600 hover:text-red-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperRu">
+                        <iframe id="taskIframeRu" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Смешанные числа: Задачи из жизни&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;link href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&#34; rel=&#34;stylesheet&#34;&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Comic&#43;Neue:wght@400;700&amp;display=swap&#39;);
+        body {
+            font-family: &#39;Comic Neue&#39;, cursive, sans-serif;
+            background-color: #f0f9ff;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        .animate-bounce-short {
+            animation: bounce 0.5s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        
+        /* Стили для красивых дробей */
+        .fraction-container {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 4px;
+        }
+        .whole-number {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-right: 4px;
+        }
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.85em;
+            font-weight: bold;
+            line-height: 1;
+        }
+        .numerator {
+            border-bottom: 2px solid currentColor;
+            padding: 0 2px;
+            width: 100%;
+            text-align: center;
+        }
+        .denominator {
+            padding: 0 2px;
+            width: 100%;
+            text-align: center;
+        }
+        .fraction-only {
+            font-size: 1.2em;
+        }
+        
+        /* Стили для визуализации пиццы */
+        .pizza-slice {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid #d97706;
+            position: relative;
+            background: conic-gradient(
+                #fcd34d 0deg 90deg, 
+                #fbbf24 90deg 92deg,
+                #fcd34d 92deg 180deg,
+                #fbbf24 180deg 182deg,
+                #fcd34d 182deg 270deg,
+                #fbbf24 270deg 272deg,
+                #fcd34d 272deg 360deg
+            );
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .pizza-slice::after {
+            content: &#39;&#39;;
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            right: 15%;
+            bottom: 15%;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ef4444 10%, transparent 10%),
+                        radial-gradient(circle, #ef4444 10%, transparent 10%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.6;
+        }
+
+        .pizza-3-slice {
+            background: conic-gradient(
+                #fcd34d 0deg 270deg, 
+                transparent 270deg 360deg
+            );
+            border-right-color: transparent; 
+            border-bottom-color: transparent;
+            transform: rotate(-45deg); 
+        }
+        
+        .juice-group {
+            display: flex;
+            background: rgba(255, 166, 0, 0.2);
+            border: 2px dashed orange;
+            border-radius: 10px;
+            padding: 5px;
+            margin: 0 5px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-blue-50 min-h-screen flex items-center justify-center p-4&#34;&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;max-w-3xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-blue-400&#34;&gt;
+        
+        &lt;div id=&#34;start-screen&#34; class=&#34;p-8 text-center space-y-6&#34;&gt;
+            &lt;h1 class=&#34;text-4xl font-bold text-blue-600 mb-4&#34;&gt;Мир смешанных чисел 🌍&lt;/h1&gt;
+            &lt;div class=&#34;flex justify-center mb-6&#34;&gt;
+                &lt;span class=&#34;text-6xl animate-bounce-short&#34;&gt;🍕&lt;/span&gt;
+                &lt;span class=&#34;text-6xl animate-bounce-short delay-100&#34;&gt;🍫&lt;/span&gt;
+                &lt;span class=&#34;text-6xl animate-bounce-short delay-200&#34;&gt;🥤&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;p class=&#34;text-xl text-gray-600&#34;&gt;Ребята! Сегодня мы научимся преобразовывать числа и применять их в жизни.&lt;/p&gt;
+            &lt;div class=&#34;bg-yellow-100 p-4 rounded-xl text-lg text-yellow-800 font-bold border-2 border-yellow-300 inline-block&#34;&gt;
+                Дроби теперь пишутся красиво, как в учебнике! 
+                &lt;span class=&#34;fraction-container&#34;&gt;&lt;span class=&#34;whole-number&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;fraction&#34;&gt;&lt;span class=&#34;numerator&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;denominator&#34;&gt;2&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;br&gt;
+            &lt;button onclick=&#34;startGame()&#34; class=&#34;bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-8 rounded-full text-2xl transition shadow-lg transform active:scale-95 mt-4&#34;&gt;
+                Начать! 🚀
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;game-screen&#34; class=&#34;hidden&#34;&gt;
+            &lt;div class=&#34;bg-blue-100 p-4 flex justify-between items-center border-b-2 border-blue-200&#34;&gt;
+                &lt;span class=&#34;font-bold text-blue-700 text-lg&#34;&gt;Уровень: &lt;span id=&#34;level-display&#34;&gt;1&lt;/span&gt;/10&lt;/span&gt;
+                &lt;div class=&#34;flex space-x-1&#34; id=&#34;stars-container&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;p-6&#34;&gt;
+                &lt;div id=&#34;question-container&#34; class=&#34;space-y-6&#34;&gt;&lt;/div&gt;
+                &lt;div id=&#34;feedback-area&#34; class=&#34;mt-6 hidden p-4 rounded-xl text-center text-lg font-bold&#34;&gt;&lt;/div&gt;
+                &lt;button id=&#34;next-btn&#34; onclick=&#34;nextLevel()&#34; class=&#34;hidden w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-xl transition&#34;&gt;
+                    Следующий вопрос ➡️
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;result-screen&#34; class=&#34;hidden p-8 text-center space-y-6&#34;&gt;
+            &lt;h2 class=&#34;text-3xl font-bold text-purple-600&#34;&gt;Отличный результат! 🎉&lt;/h2&gt;
+            &lt;div class=&#34;text-8xl mb-4&#34;&gt;🏆&lt;/div&gt;
+            &lt;p class=&#34;text-xl text-gray-700&#34;&gt;Ты научился работать со смешанными числами и неправильными дробями!&lt;/p&gt;
+            &lt;div id=&#34;final-score&#34; class=&#34;text-2xl font-bold text-green-600 my-4&#34;&gt;&lt;/div&gt;
+            &lt;button onclick=&#34;location.reload()&#34; class=&#34;bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-3 px-8 rounded-full text-xl shadow-lg&#34;&gt;
+                Играть снова 🔄
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        function makeFraction(whole, num, den) {
+            let html = &#39;&lt;span class=&#34;fraction-container&#34;&gt;&#39;;
+            if (whole) html &#43;= `&lt;span class=&#34;whole-number&#34;&gt;${whole}&lt;/span&gt;`;
+            html &#43;= `&lt;span class=&#34;fraction ${!whole ? &#39;fraction-only&#39; : &#39;&#39;}&#34;&gt;&lt;span class=&#34;numerator&#34;&gt;${num}&lt;/span&gt;&lt;span class=&#34;denominator&#34;&gt;${den}&lt;/span&gt;&lt;/span&gt;`;
+            html &#43;= &#39;&lt;/span&gt;&#39;;
+            return html;
+        }
+
+        const levels = [
+            {
+                id: 1,
+                title: &#34;Яблоки для друзей 🍎&#34;,
+                description: `У нас есть 5 яблок. Их нужно поровну разделить между 2 друзьями. Сколько яблок получит каждый?`,
+                visual: `&lt;div class=&#34;flex justify-center space-x-2 mb-4&#34;&gt;&lt;span class=&#34;text-4xl&#34;&gt;🍎&lt;/span&gt;&lt;span class=&#34;text-4xl&#34;&gt;🍎&lt;/span&gt;&lt;span class=&#34;text-4xl border-l-2 border-r-2 border-dashed px-2 border-gray-400&#34;&gt;🍎&lt;/span&gt;&lt;span class=&#34;text-4xl&#34;&gt;🍎&lt;/span&gt;&lt;span class=&#34;text-4xl&#34;&gt;🍎&lt;/span&gt;&lt;/div&gt;`,
+                options: [
+                    { text: &#34;2 яблока&#34;, isCorrect: false },
+                    { text: makeFraction(2, 1, 2) &#43; &#34; (Две целых одна вторая)&#34;, isCorrect: true },
+                    { text: &#34;3 яблока&#34;, isCorrect: false },
+                    { text: makeFraction(null, 5, 2) &#43; &#34; (Верно, но это не смешанное число)&#34;, isCorrect: false }
+                ],
+                explanation: `Верно! Если 5 разделить на 2, получится: ${makeFraction(2, 1, 2)}.`
+            },
+            {
+                id: 2,
+                title: &#34;Вечеринка с пиццей 🍕&#34;,
+                description: &#34;На столе осталось 7 кусочков пиццы. Если одна целая пицца состоит из 4 кусочков, сколько это будет пицц?&#34;,
+                visual: `&lt;div class=&#34;flex flex-col items-center gap-4 mb-4&#34;&gt;&lt;div class=&#34;flex items-end gap-6&#34;&gt;&lt;div class=&#34;flex flex-col items-center&#34;&gt;&lt;div class=&#34;pizza-slice&#34;&gt;&lt;/div&gt;&lt;span class=&#34;text-sm font-bold mt-2 text-orange-700&#34;&gt;1 целая (4/4)&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;flex flex-col items-center&#34;&gt;&lt;div class=&#34;pizza-slice pizza-3-slice&#34;&gt;&lt;/div&gt;&lt;span class=&#34;text-sm font-bold mt-2 text-orange-700&#34;&gt;3 куска (3/4)&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`,
+                options: [
+                    { text: makeFraction(1, 1, 4), isCorrect: false },
+                    { text: makeFraction(1, 3, 4), isCorrect: true },
+                    { text: makeFraction(2, 1, 4), isCorrect: false },
+                    { text: makeFraction(null, 7, 2), isCorrect: false }
+                ],
+                explanation: `Отлично! 1 целая пицца и еще 3 кусочка. Ответ: ${makeFraction(1, 3, 4)}.`
+            },
+            {
+                id: 3,
+                title: &#34;Спортивный марафон 🏃‍♂️&#34;,
+                description: &#34;Али пробежал 3 полных круга и еще половину последнего круга. Запиши это в виде смешанного числа.&#34;,
+                visual: `&lt;div class=&#34;flex justify-center text-3xl mb-2&#34;&gt;🔄 🔄 🔄 🏁(1/2)&lt;/div&gt;`,
+                options: [
+                    { text: makeFraction(3, 1, 4), isCorrect: false },
+                    { text: makeFraction(3, 1, 2), isCorrect: true },
+                    { text: makeFraction(4, 1, 2), isCorrect: false },
+                    { text: makeFraction(2, 1, 2), isCorrect: false }
+                ],
+                explanation: `Молодец! 3 целых и половина: ${makeFraction(3, 1, 2)}.`
+            },
+            {
+                id: 4,
+                title: &#34;Время кино 🎬&#34;,
+                description: &#34;Кино длилось 90 минут (60 мин &#43; 30 мин). Сколько это в часах?&#34;,
+                visual: `&lt;div class=&#34;text-center text-4xl mb-4&#34;&gt;⏰ 90 мин&lt;/div&gt;`,
+                options: [
+                    { text: makeFraction(1, 1, 4) &#43; &#34; часа&#34;, isCorrect: false },
+                    { text: makeFraction(1, 1, 2) &#43; &#34; часа&#34;, isCorrect: true },
+                    { text: makeFraction(2, 1, 2) &#43; &#34; часа&#34;, isCorrect: false },
+                    { text: &#34;2 часа&#34;, isCorrect: false }
+                ],
+                explanation: `В точку! 60 мин = 1 час, 30 мин = полчаса. Ответ: ${makeFraction(1, 1, 2)} часа.`
+            },
+            {
+                id: 5,
+                title: &#34;Делим шоколад (Смешанное -&gt; Неправильная) 🍫&#34;,
+                description: `Мама купила ${makeFraction(2, 1, 2)} плитки шоколада. Если разломить каждую целую плитку пополам, сколько всего половинок получится?`,
+                visual: `&lt;div class=&#34;flex flex-col items-center&#34;&gt;&lt;div class=&#34;flex items-center space-x-4 mb-2&#34;&gt;&lt;div class=&#34;w-16 h-8 bg-amber-700 rounded border-2 border-white text-white text-xs flex items-center justify-center&#34;&gt;1&lt;/div&gt;&lt;div class=&#34;w-16 h-8 bg-amber-700 rounded border-2 border-white text-white text-xs flex items-center justify-center&#34;&gt;2&lt;/div&gt;&lt;div class=&#34;w-8 h-8 bg-amber-700 rounded border-2 border-white text-white text-xs flex items-center justify-center&#34;&gt;1/2&lt;/div&gt;&lt;/div&gt;&lt;div class=&#34;text-2xl text-gray-400&#34;&gt;⬇️ Делим на части ⬇️&lt;/div&gt;&lt;div class=&#34;flex items-center space-x-1 mt-2&#34;&gt;&lt;div class=&#34;w-8 h-8 bg-amber-600 rounded text-white text-xs flex items-center justify-center&#34;&gt;1/2&lt;/div&gt;&lt;div class=&#34;w-8 h-8 bg-amber-600 rounded text-white text-xs flex items-center justify-center&#34;&gt;1/2&lt;/div&gt;&lt;div class=&#34;w-8 h-8 bg-amber-600 rounded text-white text-xs flex items-center justify-center&#34;&gt;1/2&lt;/div&gt;&lt;div class=&#34;w-8 h-8 bg-amber-600 rounded text-white text-xs flex items-center justify-center&#34;&gt;1/2&lt;/div&gt;&lt;div class=&#34;w-8 h-8 bg-amber-600 rounded text-white text-xs flex items-center justify-center&#34;&gt;1/2&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`,
+                options: [
+                    { text: makeFraction(null, 5, 2), isCorrect: true },
+                    { text: makeFraction(null, 4, 2), isCorrect: false },
+                    { text: makeFraction(null, 3, 2), isCorrect: false },
+                    { text: makeFraction(null, 6, 2), isCorrect: false }
+                ],
+                explanation: `Превосходно! Формула: (2 × 2) &#43; 1 = 5. Ответ: ${makeFraction(null, 5, 2)}.`
+            },
+            {
+                id: 6,
+                title: &#34;Разливаем сок (Неправильная -&gt; Смешанное) 🥤&#34;,
+                description: `У нас есть 14 маленьких стаканов сока. Если 3 маленьких стакана наполняют 1 большой кувшин, сколько полных кувшинов получится?`,
+                visual: `&lt;div class=&#34;text-center mb-4&#34;&gt;&lt;div class=&#34;inline-block bg-orange-100 px-4 py-2 rounded-lg border border-orange-300 mb-2&#34;&gt;Группируем 14 стаканов по 3&lt;/div&gt;&lt;div class=&#34;flex flex-wrap justify-center gap-2 items-center text-xl&#34;&gt;&lt;div class=&#34;juice-group&#34;&gt;🥤🥤🥤&lt;/div&gt;&lt;div class=&#34;juice-group&#34;&gt;🥤🥤🥤&lt;/div&gt;&lt;div class=&#34;juice-group&#34;&gt;🥤🥤🥤&lt;/div&gt;&lt;div class=&#34;juice-group&#34;&gt;🥤🥤🥤&lt;/div&gt;&lt;div class=&#34;bg-gray-100 p-2 rounded border border-gray-300&#34;&gt;🥤🥤&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`,
+                options: [
+                    { text: makeFraction(5, 1, 3), isCorrect: false },
+                    { text: makeFraction(4, 2, 3), isCorrect: true },
+                    { text: makeFraction(4, 1, 3), isCorrect: false },
+                    { text: makeFraction(3, 2, 3), isCorrect: false }
+                ],
+                explanation: `Здорово! 14 делим на 3: получается 4 целых (полных кувшина) и 2 стакана в остатке. Ответ: ${makeFraction(4, 2, 3)}.`
+            },
+            {
+                id: 7,
+                title: &#34;Апельсины (Неправильная -&gt; Смешанное) 🍊&#34;,
+                description: `В корзине 9 половинок апельсина. Сколько это целых апельсинов?`,
+                visual: `&lt;div class=&#34;flex flex-wrap justify-center gap-2 mb-4 text-4xl text-orange-500&#34;&gt;&lt;span&gt;🍊&lt;/span&gt;&lt;span&gt;🍊&lt;/span&gt;&lt;span&gt;🍊&lt;/span&gt;&lt;span&gt;🍊&lt;/span&gt;&lt;span&gt;🍊&lt;/span&gt;&lt;span&gt;🍊&lt;/span&gt;&lt;span&gt;🍊&lt;/span&gt;&lt;span&gt;🍊&lt;/span&gt;&lt;span&gt;🍊&lt;/span&gt;&lt;div class=&#34;w-full text-sm text-gray-500 mt-2 text-center&#34;&gt;(всего 9 половинок)&lt;/div&gt;&lt;/div&gt;`,
+                options: [
+                    { text: makeFraction(3, 1, 2), isCorrect: false },
+                    { text: makeFraction(4, 1, 2), isCorrect: true },
+                    { text: makeFraction(5, 1, 2), isCorrect: false },
+                    { text: makeFraction(4, 1, 4), isCorrect: false }
+                ],
+                explanation: `Правильно! 9 делим на 2: 4 целых и 1 половинка остается. Ответ: ${makeFraction(4, 1, 2)}.`
+            },
+            {
+                id: 8,
+                title: &#34;Отрезаем ленту (Смешанное -&gt; Неправильная) 🧶&#34;,
+                description: `У нас есть лента длиной ${makeFraction(3, 1, 4)} метра. Если разрезать её на кусочки по ${makeFraction(null, 1, 4)} метра, сколько кусочков получится?`,
+                visual: `&lt;div class=&#34;w-full bg-gray-200 h-8 rounded-full relative mb-6 mt-4 border-2 border-gray-400&#34;&gt;&lt;div class=&#34;absolute top-0 left-0 bg-blue-400 h-full rounded-l-full&#34; style=&#34;width: 81%&#34;&gt;&lt;/div&gt;&lt;div class=&#34;absolute -top-6 left-0 text-xs font-bold&#34;&gt;0&lt;/div&gt;&lt;div class=&#34;absolute -top-6 left-1/4 text-xs font-bold&#34;&gt;1м&lt;/div&gt;&lt;div class=&#34;absolute -top-6 left-2/4 text-xs font-bold&#34;&gt;2м&lt;/div&gt;&lt;div class=&#34;absolute -top-6 left-3/4 text-xs font-bold&#34;&gt;3м&lt;/div&gt;&lt;/div&gt;`,
+                options: [
+                    { text: &#34;13 кусочков&#34;, isCorrect: true },
+                    { text: &#34;12 кусочков&#34;, isCorrect: false },
+                    { text: &#34;11 кусочков&#34;, isCorrect: false },
+                    { text: &#34;7 кусочков&#34;, isCorrect: false }
+                ],
+                explanation: `Великолепно! Формула: (3 × 4) &#43; 1 = 13. Всего получится 13 маленьких частей.`
+            },
+            {
+                id: 9,
+                title: &#34;Каникулы (Неправильная -&gt; Смешанное) 🗓️&#34;,
+                description: `Каникулы длились 10 дней. В одной неделе 7 дней. Сколько недель длились каникулы?`,
+                visual: `&lt;div class=&#34;text-8xl text-center mb-4 text-blue-300&#34;&gt;📅&lt;/div&gt;`,
+                options: [
+                    { text: makeFraction(1, 2, 7), isCorrect: false },
+                    { text: makeFraction(1, 3, 7), isCorrect: true },
+                    { text: makeFraction(2, 1, 7), isCorrect: false },
+                    { text: &#34;2 недели&#34;, isCorrect: false }
+                ],
+                explanation: `Верно! 10 дней = 7 дней (1 неделя) &#43; 3 дня. Ответ: ${makeFraction(1, 3, 7)} недели.`
+            },
+            {
+                id: 10,
+                title: &#34;Режем торт (Смешанное -&gt; Неправильная) 🎂&#34;,
+                description: `На столе ${makeFraction(2, 3, 8)} торта. Если каждый торт разрезан на 8 кусков, сколько всего кусочков на столе?`,
+                visual: `&lt;div class=&#34;flex justify-center gap-4 text-6xl mb-4&#34;&gt;&lt;span&gt;🎂&lt;/span&gt;&lt;span&gt;🎂&lt;/span&gt;&lt;span class=&#34;text-4xl opacity-50&#34;&gt;🍰&lt;/span&gt;&lt;/div&gt;`,
+                options: [
+                    { text: &#34;16 кусков&#34;, isCorrect: false },
+                    { text: &#34;19 кусков&#34;, isCorrect: true },
+                    { text: &#34;21 кусок&#34;, isCorrect: false },
+                    { text: &#34;11 кусков&#34;, isCorrect: false }
+                ],
+                explanation: `Блестяще! Формула: (2 × 8) &#43; 3 = 19. Всего 19 кусочков торта.`
+            }
+        ];
+
+        let currentLevel = 0;
+        let score = 0;
+
+        function startGame() {
+            document.getElementById(&#39;start-screen&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;game-screen&#39;).classList.remove(&#39;hidden&#39;);
+            loadLevel();
+        }
+
+        function loadLevel() {
+            const level = levels[currentLevel];
+            document.getElementById(&#39;level-display&#39;).innerText = level.id;
+            const starsContainer = document.getElementById(&#39;stars-container&#39;);
+            starsContainer.innerHTML = &#39;&#39;;
+            for(let i=0; i&lt;levels.length; i&#43;&#43;) {
+                starsContainer.innerHTML &#43;= `&lt;span class=&#34;${i &lt; score ? &#39;text-yellow-400&#39; : &#39;text-gray-300&#39;} text-xl&#34;&gt;★&lt;/span&gt;`;
+            }
+
+            let optionsHtml = &#39;&#39;;
+            level.options.forEach((opt, index) =&gt; {
+                optionsHtml &#43;= `
+                    &lt;button onclick=&#34;checkAnswer(${index})&#34; class=&#34;option-btn w-full bg-white border-2 border-blue-200 hover:bg-blue-50 hover:border-blue-400 text-gray-700 font-bold py-4 px-4 rounded-xl transition mb-3 text-left shadow-sm flex items-center&#34;&gt;
+                        &lt;span class=&#34;mr-3 text-blue-500 font-bold text-xl&#34;&gt;${String.fromCharCode(65&#43;index)})&lt;/span&gt;
+                        &lt;span class=&#34;text-lg&#34;&gt;${opt.text}&lt;/span&gt;
+                    &lt;/button&gt;
+                `;
+            });
+
+            document.getElementById(&#39;question-container&#39;).innerHTML = `
+                &lt;div class=&#34;bg-white rounded-xl&#34;&gt;
+                    &lt;h3 class=&#34;text-2xl font-bold text-blue-600 mb-2&#34;&gt;${level.title}&lt;/h3&gt;
+                    &lt;div class=&#34;bg-gray-50 p-4 rounded-xl border border-gray-200 mb-4 min-h-[150px] flex flex-col items-center justify-center&#34;&gt;
+                        ${level.visual}
+                    &lt;/div&gt;
+                    &lt;p class=&#34;text-lg text-gray-800 mb-6 font-medium leading-relaxed&#34;&gt;${level.description}&lt;/p&gt;
+                    &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-4&#34;&gt;${optionsHtml}&lt;/div&gt;
+                &lt;/div&gt;
+            `;
+            document.getElementById(&#39;feedback-area&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;next-btn&#39;).classList.add(&#39;hidden&#39;);
+        }
+
+        function checkAnswer(selectedIndex) {
+            const level = levels[currentLevel];
+            const buttons = document.querySelectorAll(&#39;.option-btn&#39;);
+            const feedbackEl = document.getElementById(&#39;feedback-area&#39;);
+            buttons.forEach(btn =&gt; btn.disabled = true);
+
+            if (level.options[selectedIndex].isCorrect) {
+                score&#43;&#43;;
+                buttons[selectedIndex].classList.add(&#39;bg-green-100&#39;, &#39;border-green-500&#39;, &#39;text-green-900&#39;);
+                feedbackEl.innerHTML = `&lt;span class=&#34;text-green-600 text-3xl&#34;&gt;✅&lt;/span&gt;&lt;br&gt;${level.explanation}`;
+                feedbackEl.className = &#34;mt-6 p-4 rounded-xl text-center bg-green-50 border border-green-200 block&#34;;
+            } else {
+                buttons[selectedIndex].classList.add(&#39;bg-red-100&#39;, &#39;border-red-500&#39;, &#39;text-red-900&#39;);
+                level.options.forEach((opt, idx) =&gt; {
+                    if (opt.isCorrect) buttons[idx].classList.add(&#39;bg-green-100&#39;, &#39;border-green-500&#39;);
+                });
+                feedbackEl.innerHTML = `&lt;span class=&#34;text-red-500 text-3xl&#34;&gt;❌&lt;/span&gt;&lt;br&gt;Ой! Ошибочка. Правильный ответ был другой. &lt;br&gt;&lt;span class=&#34;text-sm text-gray-600&#34;&gt;${level.explanation}&lt;/span&gt;`;
+                feedbackEl.className = &#34;mt-6 p-4 rounded-xl text-center bg-red-50 border border-red-200 block&#34;;
+            }
+            document.getElementById(&#39;next-btn&#39;).classList.remove(&#39;hidden&#39;);
+        }
+
+        function nextLevel() {
+            currentLevel&#43;&#43;;
+            if (currentLevel &lt; levels.length) loadLevel();
+            else showResults();
+        }
+
+        function showResults() {
+            document.getElementById(&#39;game-screen&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;result-screen&#39;).classList.remove(&#39;hidden&#39;);
+            const finalScoreEl = document.getElementById(&#39;final-score&#39;);
+            if (score === levels.length) finalScoreEl.innerHTML = `Великолепно! ${score}/${levels.length} &lt;br&gt; Ты мастер смешанных чисел! 🌟`;
+            else if (score &gt;= levels.length / 2) finalScoreEl.innerHTML = `Хорошо! ${score}/${levels.length} &lt;br&gt; Но можно еще потренироваться! 👍`;
+            else finalScoreEl.innerHTML = `Ты старался! ${score}/${levels.length} &lt;br&gt; Нужно повторить тему! 📚`;
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
             </div>
             
         </div>
 
         
         
-        <div class="mt-6 flex gap-4 justify-center">
-            
-            <button id="openFsBtn" onclick="openFullscreen()"
-                class="btn-primary flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                </svg>
-                <span>Полный экран</span>
-            </button>
-
-            
-            <button id="closeFsBtn" onclick="closeFullscreen()"
-                class="hidden btn-danger flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                <span>Свернуть</span>
-            </button>
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            💡 Екі тілде де қол жетімді / Доступно на двух языках
         </div>
         
 
@@ -764,10 +1168,63 @@
                 <h3 class="text-xl font-bold text-gray-800">Описание задания</h3>
             </div>
             <div class="text-gray-700 leading-relaxed prose max-w-none">
-                
-<div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
-    <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
-    <p class="text-gray-600 mt-2">💡 Если задание кажется сложным, попробуйте ещё раз!</p>
+                <div class="space-y-4 font-sans">
+    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
+        <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
+        <p class="text-gray-600 mt-2">💡 Если задание кажется сложным, попробуйте ещё раз!</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <h4 class="font-bold text-blue-800 mb-2 flex items-center gap-2">
+                🔄 В неправильную дробь
+            </h4>
+            <p class="text-xs text-blue-900 leading-relaxed">
+                Умножь <b>целую часть</b> на знаменатель и прибавь числитель. Знаменатель оставь прежним.
+            </p>
+            <div class="mt-2 p-2 bg-white rounded border border-blue-100 text-[10px] font-mono text-center">
+                Пример: 2 ½ = (2×2+1)/2 = 5/2
+            </div>
+        </div>
+
+        <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+            <h4 class="font-bold text-green-800 mb-2 flex items-center gap-2">
+                🧩 Выделение целой части
+            </h4>
+            <p class="text-xs text-green-900 leading-relaxed">
+                Раздели числитель на знаменатель. <b>Частное</b> — целая часть, <b>остаток</b> — новый числитель.
+            </p>
+            <div class="mt-2 p-2 bg-white rounded border border-green-100 text-[10px] font-mono text-center">
+                Пример: 7/3 = 7÷3 = 2 (ост. 1) = 2 ⅓
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400">
+        <h4 class="font-bold text-amber-800 text-sm mb-1">Запомни:</h4>
+        <p class="text-xs text-amber-900">
+            Любое натуральное число можно представить как дробь со знаменателем <b>1</b>. <br>
+            Например: <b>5 = 5/1</b>.
+        </p>
+    </div>
+
+    
+
+    <div class="bg-gray-100 p-3 rounded-lg flex items-center justify-between border border-gray-300 shadow-inner">
+        <span class="text-[10px] text-gray-600 font-bold uppercase">Тип числа:</span>
+        <div class="flex gap-4">
+            <div class="flex items-center gap-1">
+                <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                <span class="text-[10px] text-gray-700">Смешанное (2 ½)</span>
+            </div>
+            <div class="flex items-center gap-1">
+                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                <span class="text-[10px] text-gray-700">Неправильное (5/2)</span>
+            </div>
+        </div>
+    </div>
 </div>
             </div>
         </div>

@@ -132,8 +132,23 @@
 
             
             
-            <div id="fullscreenWrapper" class="w-full flex flex-col items-center">
-                <iframe id="taskIframe" srcdoc="&lt;!DOCTYPE html&gt;
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇰🇿
+                            Казахский</span>
+                        <button onclick="openFullscreenKz()"
+                            class="text-blue-600 hover:text-blue-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperKz">
+                        <iframe id="taskIframeKz" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&#34;kk&#34;&gt;
 &lt;head&gt;
     &lt;meta charset=&#34;UTF-8&#34;&gt;
@@ -509,34 +524,313 @@
 
     &lt;/script&gt;
 &lt;/body&gt;
-&lt;/html&gt;"></iframe>
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇷🇺
+                            Русский</span>
+                        <button onclick="openFullscreenRu()" class="text-red-600 hover:text-red-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperRu">
+                        <iframe id="taskIframeRu" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Тест по дробям&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4 font-sans&#34;&gt;
+
+    &lt;div id=&#34;app-container&#34; class=&#34;bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden border border-indigo-100 min-h-[400px]&#34;&gt;
+        &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- Данные и Помощники ---
+
+        function getFractionHtml(n, d) {
+            return `&lt;span class=&#34;inline-flex flex-col items-center justify-center align-middle mx-1 font-bold text-lg text-indigo-800&#34; style=&#34;vertical-align: middle; display: inline-flex;&#34;&gt;
+                &lt;span class=&#34;border-b-2 border-indigo-800 px-1 leading-none pb-0.5&#34;&gt;${n}&lt;/span&gt;
+                &lt;span class=&#34;leading-none pt-0.5&#34;&gt;${d}&lt;/span&gt;
+            &lt;/span&gt;`;
+        }
+
+        const questions = [
+            {
+                id: 1,
+                level: &#34;Легкий&#34;,
+                question: &#34;Марат разделил пиццу на 8 равных частей и съел 3 части. Какой дробью выражается съеденная часть?&#34;,
+                options: [&#34;Правильная дробь&#34;, &#34;Неправильная дробь&#34;, &#34;Равна 1&#34;],
+                correct: &#34;Правильная дробь&#34;,
+                explanation: `Это дробь ${getFractionHtml(3, 8)}. Так как числитель (3) меньше знаменателя (8) — это правильная дробь. Она меньше целой пиццы.`,
+                iconName: &#34;pie-chart&#34;,
+                iconColor: &#34;text-orange-500&#34;
+            },
+            {
+                id: 2,
+                level: &#34;Легкий&#34;,
+                question: &#34;Урок длится 45 минут, но учитель сегодня проводил его 50 минут. Если записать время дробью, какой она будет?&#34;,
+                options: [&#34;Правильная дробь&#34;, &#34;Неправильная дробь&#34;, &#34;Равна 1&#34;],
+                correct: &#34;Неправильная дробь&#34;,
+                explanation: `Это дробь ${getFractionHtml(50, 45)}. Числитель (50) больше знаменателя (45). Такая дробь называется неправильной.`,
+                iconName: &#34;clock&#34;,
+                iconColor: &#34;text-blue-500&#34;
+            },
+            {
+                id: 3,
+                level: &#34;Легкий&#34;,
+                question: &#34;В коробке 10 яиц. Аскар купил их все (все 10). Как описать эту ситуацию дробью?&#34;,
+                options: [&#34;Меньше 1 (Правильная)&#34;, &#34;Равна 1 (Неправильная)&#34;, &#34;Равна 0&#34;],
+                correct: &#34;Равна 1 (Неправильная)&#34;,
+                explanation: `Это дробь ${getFractionHtml(10, 10)}. Если числитель равен знаменателю — это неправильная дробь, и она равна 1 (полная коробка).`,
+                iconName: &#34;check-circle&#34;,
+                iconColor: &#34;text-green-500&#34;
+            },
+            {
+                id: 4,
+                level: &#34;Средний&#34;,
+                question: &#34;Айжан разделила стакан на 5 частей и наполнила сахаром 4 из них. Насыпала ли она целый стакан сахара?&#34;,
+                options: [&#34;Да, целый стакан&#34;, &#34;Нет, не целый&#34;, &#34;Полтора стакана&#34;],
+                correct: &#34;Нет, не целый&#34;,
+                explanation: `Это дробь ${getFractionHtml(4, 5)}. Она правильная (4 &lt; 5), а любая правильная дробь меньше 1. Значит, стакан не полон.`,
+                iconName: &#34;coffee&#34;,
+                iconColor: &#34;text-yellow-700&#34;
+            },
+            {
+                id: 5,
+                level: &#34;Средний&#34;,
+                question: &#34;Беговая дорожка состоит из 6 этапов. Спортсмен случайно пробежал 7 этапов. Что можно сказать о дистанции?&#34;,
+                options: [&#34;Не добежал до финиша&#34;, &#34;Прибежал ровно к финишу&#34;, &#34;Пробежал больше финиша&#34;],
+                correct: &#34;Пробежал больше финиша&#34;,
+                explanation: `Это дробь ${getFractionHtml(7, 6)} — неправильная дробь (7 &gt; 6). Она больше 1. Спортсмен пробежал больше плана.`,
+                iconName: &#34;award&#34;,
+                iconColor: &#34;text-yellow-500&#34;
+            },
+            {
+                id: 6,
+                level: &#34;Средний&#34;,
+                question: &#34;Строителю нужна доска, числитель которой 9, а знаменатель 9. Какая доска ему нужна?&#34;,
+                options: [&#34;9-метровая&#34;, &#34;1-метровая&#34;, &#34;Половина метра&#34;],
+                correct: &#34;1-метровая&#34;,
+                explanation: `Дробь ${getFractionHtml(9, 9)}. Если 9 разделить на 9, получится 1. Неправильная дробь с равными частями всегда равна 1 целому.`,
+                iconName: &#34;ruler&#34;,
+                iconColor: &#34;text-gray-500&#34;
+            },
+            {
+                id: 7,
+                level: &#34;Трудный&#34;,
+                question: &#34;В библиотеке 100 книг. Но ученики запросили 120 книг. Как понять эту ситуацию через дробь?&#34;,
+                options: [&#34;Книг достаточно (Правильная)&#34;, &#34;Книг не хватает (Неправильная)&#34;, &#34;Количество книг совпало&#34;],
+                correct: &#34;Книг не хватает (Неправильная)&#34;,
+                explanation: `Это дробь ${getFractionHtml(120, 100)}. Запрос (120) больше наличия (100). Это означает &#39;дефицит&#39; или превышение нормы.`,
+                iconName: &#34;book-open&#34;,
+                iconColor: &#34;text-indigo-500&#34;
+            },
+            {
+                id: 8,
+                level: &#34;Трудный&#34;,
+                question: &#34;Торт обычно режут на 8 кусков. На столе лежит 15 кусков. Сколько целых тортов на столе?&#34;,
+                options: [&#34;Меньше 1 торта&#34;, &#34;Больше 1 торта&#34;, &#34;Ровно 2 торта&#34;],
+                correct: &#34;Больше 1 торта&#34;,
+                explanation: `Это дробь ${getFractionHtml(15, 8)}. 15 больше 8, значит, это больше 1 целого торта (почти 2 торта).`,
+                iconName: &#34;pie-chart&#34;,
+                iconColor: &#34;text-pink-500&#34;
+            },
+            {
+                id: 9,
+                level: &#34;Трудный&#34;,
+                question: &#34;В кошельке 4 монеты. Если считать каждую монету за 1 целое, как записать 4 монеты дробью?&#34;,
+                options: [&#34;Неправильная дробь&#34;, &#34;Правильная дробь&#34;, &#34;Меньше 1&#34;],
+                correct: &#34;Неправильная дробь&#34;,
+                explanation: `Это дробь ${getFractionHtml(4, 1)}. 4 &gt; 1, поэтому это неправильная дробь. Любое целое число можно записать как дробь со знаменателем 1.`,
+                iconName: &#34;dollar-sign&#34;,
+                iconColor: &#34;text-green-600&#34;
+            },
+            {
+                id: 10,
+                level: &#34;Трудный&#34;,
+                question: &#34;Какое утверждение ВЕРНО?&#34;,
+                options: [&#34;Правильная дробь всегда больше 1&#34;, &#34;Неправильная дробь всегда больше правильной&#34;, &#34;У правильной дроби числитель больше&#34;],
+                correct: &#34;Неправильная дробь всегда больше правильной&#34;,
+                explanation: &#34;Правильная дробь &lt; 1, а неправильная ≥ 1. Поэтому любая неправильная дробь больше любой правильной.&#34;,
+                iconName: &#34;check-circle&#34;,
+                iconColor: &#34;text-purple-500&#34;
+            }
+        ];
+
+        // --- Управление состоянием ---
+        const state = {
+            currentQuestionIndex: 0,
+            score: 0,
+            showResult: false,
+            isFinished: false,
+            selectedAnswer: null,
+            isCorrect: null
+        };
+
+        const appContainer = document.getElementById(&#39;app-container&#39;);
+
+        function handleAnswerClick(option) {
+            if (state.showResult) return;
+            const currentQuestion = questions[state.currentQuestionIndex];
+            const correct = option === currentQuestion.correct;
+            state.selectedAnswer = option;
+            state.isCorrect = correct;
+            state.showResult = true;
+            if (correct) state.score&#43;&#43;;
+            renderApp();
+        }
+
+        function handleNextQuestion() {
+            if (state.currentQuestionIndex &lt; questions.length - 1) {
+                state.currentQuestionIndex&#43;&#43;;
+                state.showResult = false;
+                state.selectedAnswer = null;
+                state.isCorrect = null;
+                renderApp();
+            } else {
+                state.isFinished = true;
+                renderApp();
+            }
+        }
+
+        function restartQuiz() {
+            state.currentQuestionIndex = 0;
+            state.score = 0;
+            state.showResult = false;
+            state.isFinished = false;
+            state.selectedAnswer = null;
+            state.isCorrect = null;
+            renderApp();
+        }
+
+        function renderFinishedScreen() {
+            let message = &#34;&#34;;
+            let messageColor = &#34;&#34;;
+            if (state.score === 10) {
+                message = &#34;Великолепно! Ты мастер дробей! 🏆&#34;;
+                messageColor = &#34;text-green-600&#34;;
+            } else if (state.score &gt;= 7) {
+                message = &#34;Хороший результат! Но есть что повторить. 👍&#34;;
+                messageColor = &#34;text-blue-600&#34;;
+            } else {
+                message = &#34;Нужно больше тренироваться! Не сдавайся! 💪&#34;;
+                messageColor = &#34;text-orange-500&#34;;
+            }
+
+            return `
+                &lt;div class=&#34;p-8 text-center animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex justify-center mb-6&#34;&gt;&lt;i data-lucide=&#34;award&#34; class=&#34;w-24 h-24 text-yellow-400&#34;&gt;&lt;/i&gt;&lt;/div&gt;
+                    &lt;h2 class=&#34;text-3xl font-bold text-indigo-800 mb-4&#34;&gt;Тест завершен!&lt;/h2&gt;
+                    &lt;p class=&#34;text-gray-600 text-lg mb-6&#34;&gt;Ваш результат: &lt;span class=&#34;font-bold text-indigo-600 text-2xl&#34;&gt;${state.score} / ${questions.length}&lt;/span&gt;&lt;/p&gt;
+                    &lt;div class=&#34;mb-8&#34;&gt;&lt;p class=&#34;${messageColor} font-bold text-xl&#34;&gt;${message}&lt;/p&gt;&lt;/div&gt;
+                    &lt;button onclick=&#34;restartQuiz()&#34; class=&#34;w-full py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg hover:bg-indigo-700 flex items-center justify-center gap-2 shadow-lg cursor-pointer&#34;&gt;
+                        &lt;i data-lucide=&#34;refresh-ccw&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt; Начать заново
+                    &lt;/button&gt;
+                &lt;/div&gt;`;
+        }
+
+        function renderQuizScreen() {
+            const currentQuestion = questions[state.currentQuestionIndex];
+            const progressWidth = ((state.currentQuestionIndex &#43; 1) / questions.length) * 100;
+            let levelBadgeClass = currentQuestion.level === &#34;Легкий&#34; ? &#34;bg-green-500&#34; : (currentQuestion.level === &#34;Средний&#34; ? &#34;bg-yellow-500&#34; : &#34;bg-red-500&#34;);
+
+            const optionsHtml = currentQuestion.options.map(option =&gt; {
+                let btnClass = &#34;w-full p-4 rounded-xl text-left border-2 transition-all duration-200 text-lg font-medium relative &#34;;
+                let iconHtml = &#34;&#34;;
+                if (state.showResult) {
+                    if (option === currentQuestion.correct) {
+                        btnClass &#43;= &#34;bg-green-100 border-green-500 text-green-800&#34;;
+                        iconHtml = `&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-6 h-6 text-green-600 absolute right-4 top-1/2 -translate-y-1/2&#34;&gt;&lt;/i&gt;`;
+                    } else if (option === state.selectedAnswer) {
+                        btnClass &#43;= &#34;bg-red-100 border-red-500 text-red-800&#34;;
+                        iconHtml = `&lt;i data-lucide=&#34;x-circle&#34; class=&#34;w-6 h-6 text-red-600 absolute right-4 top-1/2 -translate-y-1/2&#34;&gt;&lt;/i&gt;`;
+                    } else btnClass &#43;= &#34;bg-gray-50 border-gray-200 text-gray-400 opacity-60&#34;;
+                } else btnClass &#43;= &#34;bg-white border-gray-200 hover:border-indigo-400 hover:bg-indigo-50 text-gray-700 cursor-pointer&#34;;
+
+                return `&lt;button class=&#34;${btnClass}&#34; ${state.showResult ? &#39;disabled&#39; : &#39;&#39;} onclick=&#34;handleAnswerClick(&#39;${option.replace(/&#39;/g, &#34;\\&#39;&#34;)}&#39;)&#34;&gt;
+                    &lt;span class=&#34;pr-8 block&#34;&gt;${option}&lt;/span&gt;${iconHtml}&lt;/button&gt;`;
+            }).join(&#39;&#39;);
+
+            let resultHtml = state.showResult ? `
+                &lt;div class=&#34;rounded-xl p-5 mb-6 animate-fade-in ${state.isCorrect ? &#39;bg-green-50 border-green-200&#39; : &#39;bg-red-50 border-red-200&#39;}&#34;&gt;
+                    &lt;div class=&#34;flex items-center gap-2 mb-2&#34;&gt;
+                        &lt;span class=&#34;font-bold ${state.isCorrect ? &#39;text-green-700&#39; : &#39;text-red-700&#39;} flex items-center gap-2&#34;&gt;
+                            &lt;i data-lucide=&#34;${state.isCorrect ? &#39;check-circle&#39; : &#39;x-circle&#39;}&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt; ${state.isCorrect ? &#39;Верно!&#39; : &#39;Ошибка!&#39;}
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&#34;text-gray-700 leading-relaxed&#34;&gt;&lt;span class=&#34;font-bold text-indigo-700&#34;&gt;Объяснение: &lt;/span&gt;${currentQuestion.explanation}&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;button onclick=&#34;handleNextQuestion()&#34; class=&#34;w-full py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg hover:bg-indigo-700 flex items-center justify-center gap-2 shadow-lg cursor-pointer&#34;&gt;
+                    ${state.currentQuestionIndex === questions.length - 1 ? &#39;Посмотреть итог&#39; : &#39;Следующий вопрос&#39;} &lt;i data-lucide=&#34;chevron-right&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt;
+                &lt;/button&gt;` : &#34;&#34;;
+
+            return `
+                &lt;div&gt;
+                    &lt;div class=&#34;bg-indigo-600 p-6 text-white relative&#34;&gt;
+                        &lt;div class=&#34;flex justify-between items-center mb-4&#34;&gt;
+                            &lt;span class=&#34;bg-indigo-800 px-3 py-1 rounded-full text-sm&#34;&gt;Вопрос ${state.currentQuestionIndex &#43; 1}/${questions.length}&lt;/span&gt;
+                            &lt;span class=&#34;px-3 py-1 rounded-full text-sm font-bold ${levelBadgeClass}&#34;&gt;${currentQuestion.level}&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;h-2 bg-indigo-900/30 rounded-full overflow-hidden&#34;&gt;
+                            &lt;div class=&#34;h-full bg-yellow-400 transition-all duration-500&#34; style=&#34;width: ${progressWidth}%&#34;&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;p-6&#34;&gt;
+                        &lt;div class=&#34;flex items-start gap-4 mb-6&#34;&gt;
+                            &lt;div class=&#34;bg-indigo-50 p-3 rounded-2xl shrink-0&#34;&gt;&lt;i data-lucide=&#34;${currentQuestion.iconName}&#34; class=&#34;w-8 h-8 ${currentQuestion.iconColor}&#34;&gt;&lt;/i&gt;&lt;/div&gt;
+                            &lt;h2 class=&#34;text-xl font-bold text-gray-800 leading-snug&#34;&gt;${currentQuestion.question}&lt;/h2&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;space-y-3 mb-6&#34;&gt;${optionsHtml}&lt;/div&gt;
+                        ${resultHtml}
+                    &lt;/div&gt;
+                &lt;/div&gt;`;
+        }
+
+        function renderApp() {
+            appContainer.innerHTML = state.isFinished ? renderFinishedScreen() : renderQuizScreen();
+            lucide.createIcons();
+        }
+
+        window.handleAnswerClick = handleAnswerClick;
+        window.handleNextQuestion = handleNextQuestion;
+        window.restartQuiz = restartQuiz;
+        renderApp();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
             </div>
             
         </div>
 
         
         
-        <div class="mt-6 flex gap-4 justify-center">
-            
-            <button id="openFsBtn" onclick="openFullscreen()"
-                class="btn-primary flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
-                </svg>
-                <span>Полный экран</span>
-            </button>
-
-            
-            <button id="closeFsBtn" onclick="closeFullscreen()"
-                class="hidden btn-danger flex items-center gap-2 text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-                <span>Свернуть</span>
-            </button>
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            💡 Екі тілде де қол жетімді / Доступно на двух языках
         </div>
         
 
@@ -618,10 +912,58 @@
                 <h3 class="text-xl font-bold text-gray-800">Описание задания</h3>
             </div>
             <div class="text-gray-700 leading-relaxed prose max-w-none">
-                
-<div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
-    <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
-    <p class="text-gray-600 mt-2">💡 Если задание кажется сложным, попробуйте ещё раз!</p>
+                <div class="space-y-4 font-sans">
+    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
+        <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
+        <p class="text-gray-600 mt-2">💡 Если задание кажется сложным, попробуйте ещё раз!</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <h4 class="font-bold text-blue-800 mb-2 flex items-center gap-2">
+                ✅ Правильная дробь
+            </h4>
+            <p class="text-xs text-blue-900 leading-relaxed">
+                Числитель <b>меньше</b> знаменателя. Такая дробь всегда <b>меньше 1</b>.
+            </p>
+            <div class="mt-2 p-2 bg-white rounded border border-blue-100 text-[10px] font-mono text-center">
+                Пример: 3/5 < 1
+            </div>
+        </div>
+
+        <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+            <h4 class="font-bold text-orange-800 mb-2 flex items-center gap-2">
+                🛑 Неправильная дробь
+            </h4>
+            <p class="text-xs text-orange-900 leading-relaxed">
+                Числитель <b>больше</b> или <b>равен</b> знаменателю. Она всегда <b>≥ 1</b>.
+            </p>
+            <div class="mt-2 p-2 bg-white rounded border border-orange-100 text-[10px] font-mono text-center">
+                Пример: 7/4 > 1 или 5/5 = 1
+            </div>
+        </div>
+    </div>
+
+    [Image of proper and improper fraction visual models with comparison to one whole]
+
+    <div class="bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-400">
+        <h4 class="font-bold text-indigo-800 text-sm mb-1">Лайфхак для теста:</h4>
+        <p class="text-xs text-indigo-900">
+            Если видишь, что сверху число "тяжелее" (больше), чем снизу — значит дробь <b>неправильная</b>!
+        </p>
+    </div>
+
+    <div class="bg-gray-100 p-3 rounded-lg flex items-center justify-around border border-gray-300 shadow-inner text-[10px] font-bold uppercase tracking-wider">
+        <div class="flex flex-col items-center text-blue-600">
+            <span>Правильная</span>
+            <span class="text-lg">☁️ < 1</span>
+        </div>
+        <div class="h-8 w-px bg-gray-300"></div>
+        <div class="flex flex-col items-center text-orange-600">
+            <span>Неправильная</span>
+            <span class="text-lg">⛰️ ≥ 1</span>
+        </div>
+    </div>
 </div>
             </div>
         </div>
