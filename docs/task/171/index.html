@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сызықтық теңдеулер тренажеры | VisualMath</title>
+    <meta name="description" content="Интерактивное задание по математике">
+    <meta name="keywords" content="Сызықтық теңдеулер тренажеры, математика, задача, задание, visual math">
+
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Сызықтық теңдеулер тренажеры | VisualMath">
+    <meta property="og:description" content="Интерактивное задание по математике">
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "Сызықтық теңдеулер тренажеры",
+      "description": "Интерактивное задание по математике",
+      "inLanguage": "ru",
+      "educationalUse": "Assignment"
+    }
+    </script>
+
+    
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    
+    <meta name="google-adsense-account" content="ca-pub-9724842226086594">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .task-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .task-content iframe {
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh;
+            min-height: 450px;
+            border: none;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            background: white;
+        }
+
+         
+        #fullscreenWrapper:fullscreen,
+        #fullscreenWrapperKz:fullscreen,
+        #fullscreenWrapperRu:fullscreen {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #fullscreenWrapper:fullscreen iframe,
+        #fullscreenWrapperKz:fullscreen iframe,
+        #fullscreenWrapperRu:fullscreen iframe {
+            height: 95vh;
+            width: 100%;
+            max-width: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    
+    <nav class="gradient-bg text-white p-3 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <span class="font-bold text-lg truncate max-w-[200px] sm:max-w-none">Сызықтық теңдеулер тренажеры</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="/about"
+                    class="flex items-center gap-1 bg-white/10 hover:bg-white/20 px-2 py-1.5 rounded-lg transition-colors text-xs font-semibold">
+                    <span class="text-sm">💎</span>
+                    <span class="hidden lg:inline">О нас</span>
+                </a>
+                <a href="/lesson/64"
+                    class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium">
+                    <span>←</span>
+                    <span class="hidden sm:inline">Назад к уроку</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow task-content">
+
+        
+        <div class="w-full max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Интерактивные задания</h2>
+
+            
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇰🇿
+                            Казахский</span>
+                        <button onclick="openFullscreenKz()"
+                            class="text-blue-600 hover:text-blue-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperKz">
+                        <iframe id="taskIframeKz" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Сызықтық теңдеулер тренажеры&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=Fira&#43;Code:wght@400;500&amp;display=swap&#39;);
+        
+        body {
+            font-family: &#39;Inter&#39;, sans-serif;
+            background-color: #f8fafc;
+        }
+        .math-font {
+            font-family: &#39;Fira Code&#39;, monospace;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Теңдеудің бір жолға сыюын қамтамасыз ететін стильдер */
+        .equation-container {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        .equation-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen flex items-center justify-center p-4&#34;&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;max-w-2xl w-full bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden&#34;&gt;
+        &lt;!-- Progress Bar Container --&gt;
+        &lt;div class=&#34;h-2 bg-slate-100 w-full&#34;&gt;
+            &lt;div id=&#34;progress-bar&#34; class=&#34;h-full bg-indigo-500 transition-all duration-500&#34; style=&#34;width: 0%&#34;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Header --&gt;
+        &lt;div class=&#34;p-6 bg-indigo-600 text-white flex justify-between items-center&#34;&gt;
+            &lt;div&gt;
+                &lt;h1 class=&#34;text-xl font-extrabold tracking-tight&#34;&gt;Математика тренажеры&lt;/h1&gt;
+                &lt;p class=&#34;text-indigo-100 text-xs opacity-80 uppercase tracking-widest font-semibold mt-1&#34;&gt;Бір айнымалысы бар сызықтық теңдеулер&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;text-right&#34;&gt;
+                &lt;span id=&#34;level-badge&#34; class=&#34;px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white text-indigo-600&#34;&gt;Деңгей&lt;/span&gt;
+                &lt;div id=&#34;score-display&#34; class=&#34;text-sm font-medium mt-1&#34;&gt;Ұпай: 0/12&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Game Screen --&gt;
+        &lt;div id=&#34;game-screen&#34; class=&#34;p-8&#34;&gt;
+            &lt;div class=&#34;text-center mb-10 overflow-hidden&#34;&gt;
+                &lt;p class=&#34;text-slate-400 text-xs font-bold uppercase mb-4 tracking-widest&#34;&gt;Теңдеуді шешіңіз&lt;/p&gt;
+                &lt;!-- Контейнер: айналдыру мүмкіндігі бар, бірақ бір жолда --&gt;
+                &lt;div class=&#34;equation-container overflow-x-auto pb-2&#34;&gt;
+                    &lt;div id=&#34;equation-display&#34; class=&#34;math-font text-3xl md:text-4xl font-bold text-slate-800 tracking-tight leading-relaxed whitespace-nowrap inline-block min-w-full&#34;&gt;
+                        0 = 0
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;input-area&#34; class=&#34;space-y-4 max-w-sm mx-auto&#34;&gt;
+                &lt;input type=&#34;text&#34; id=&#34;user-input&#34; 
+                    class=&#34;w-full p-5 bg-slate-50 border-2 border-slate-200 rounded-2xl text-2xl text-center focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-50/50 transition-all&#34;
+                    placeholder=&#34;Жауабы...&#34; autocomplete=&#34;off&#34;&gt;
+                &lt;button id=&#34;check-btn&#34; 
+                    class=&#34;w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-2xl transition-all shadow-lg shadow-indigo-100 active:scale-95 disabled:opacity-50&#34;&gt;
+                    Тексеру
+                &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Feedback Area --&gt;
+            &lt;div id=&#34;feedback-area&#34; class=&#34;hidden mt-8 space-y-4 fade-in&#34;&gt;
+                &lt;!-- Result alert --&gt;
+                &lt;div id=&#34;result-box&#34; class=&#34;p-4 rounded-2xl flex items-center gap-4 border-2&#34;&gt;
+                    &lt;div id=&#34;result-icon&#34;&gt;&lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;h3 id=&#34;result-title&#34; class=&#34;font-bold&#34;&gt;&lt;/h3&gt;
+                        &lt;p id=&#34;result-msg&#34; class=&#34;text-sm opacity-90&#34;&gt;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Solution Steps --&gt;
+                &lt;div id=&#34;solution-box&#34; class=&#34;hidden bg-slate-50 border border-slate-200 p-6 rounded-2xl&#34;&gt;
+                    &lt;h4 class=&#34;text-indigo-600 font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2&#34;&gt;
+                        &lt;svg class=&#34;w-4 h-4&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;2&#34; d=&#34;M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;
+                        Толық шығару жолы:
+                    &lt;/h4&gt;
+                    &lt;div id=&#34;steps-list&#34; class=&#34;math-font space-y-3 text-slate-700 font-medium overflow-x-auto whitespace-nowrap equation-container&#34;&gt;
+                        &lt;!-- Steps injected here --&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;button id=&#34;next-btn&#34; 
+                    class=&#34;w-full bg-slate-900 hover:bg-black text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-2&#34;&gt;
+                    Келесі тапсырма 
+                    &lt;svg class=&#34;w-5 h-5&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;2&#34; d=&#34;M14 5l7 7m0 0l-7 7m7-7H3&#34;&gt;&lt;/path&gt;&lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Finish Screen --&gt;
+        &lt;div id=&#34;finish-screen&#34; class=&#34;hidden p-12 text-center fade-in&#34;&gt;
+            &lt;div class=&#34;w-24 h-24 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6&#34;&gt;
+                &lt;svg class=&#34;w-12 h-12 text-yellow-600&#34; fill=&#34;currentColor&#34; viewBox=&#34;0 0 20 20&#34;&gt;&lt;path d=&#34;M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;h2 class=&#34;text-3xl font-black text-slate-800 mb-2&#34;&gt;Тренажер аяқталды!&lt;/h2&gt;
+            &lt;p class=&#34;text-slate-500 mb-8&#34;&gt;Сызықтық теңдеулер тақырыбын меңгердіңіз.&lt;/p&gt;
+            &lt;div class=&#34;text-6xl font-black text-indigo-600 mb-10&#34; id=&#34;final-score&#34;&gt;0 / 12&lt;/div&gt;
+            &lt;button onclick=&#34;location.reload()&#34; class=&#34;bg-indigo-600 text-white font-bold px-10 py-4 rounded-2xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100&#34;&gt;
+                Қайта бастау
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const questions = [
+            // Жеңіл (1-4)
+            { eq: &#34;5x = 25&#34;, ans: &#34;5&#34;, level: &#34;Жеңіл&#34;, steps: [&#34;5x = 25&#34;, &#34;x = 25 / 5&#34;, &#34;x = 5&#34;], expl: &#34;Екі жағын 5-ке бөлеміз.&#34; },
+            { eq: &#34;x &#43; 12 = 30&#34;, ans: &#34;18&#34;, level: &#34;Жеңіл&#34;, steps: [&#34;x &#43; 12 = 30&#34;, &#34;x = 30 - 12&#34;, &#34;x = 18&#34;], expl: &#34;12-ні оң жаққа минуспен өткіземіз.&#34; },
+            { eq: &#34;2x - 8 = 10&#34;, ans: &#34;9&#34;, level: &#34;Жеңіл&#34;, steps: [&#34;2x - 8 = 10&#34;, &#34;2x = 10 &#43; 8&#34;, &#34;2x = 18&#34;, &#34;x = 9&#34;], expl: &#34;-8-ді оң жаққа плюспен өткізіп, 2-ге бөлеміз.&#34; },
+            { eq: &#34;0.4x = 8&#34;, ans: &#34;20&#34;, level: &#34;Жеңіл&#34;, steps: [&#34;0.4x = 8&#34;, &#34;x = 8 / 0.4&#34;, &#34;x = 20&#34;], expl: &#34;Екі жағын 0.4-ке бөлеміз.&#34; },
+            
+            // Орташа (5-8)
+            { eq: &#34;3(x - 2) = 12&#34;, ans: &#34;6&#34;, level: &#34;Орташа&#34;, steps: [&#34;3x - 6 = 12&#34;, &#34;3x = 18&#34;, &#34;x = 6&#34;], expl: &#34;Жақшаны ашып, бос мүшені өткіземіз.&#34; },
+            { eq: &#34;7x &#43; 2 = 4x &#43; 11&#34;, ans: &#34;3&#34;, level: &#34;Орташа&#34;, steps: [&#34;7x - 4x = 11 - 2&#34;, &#34;3x = 9&#34;, &#34;x = 3&#34;], expl: &#34;Айнымалыларды сол жаққа жинаймыз.&#34; },
+            { eq: &#34;15 - 2x = 3x&#34;, ans: &#34;3&#34;, level: &#34;Орташа&#34;, steps: [&#34;-2x - 3x = -15&#34;, &#34;-5x = -15&#34;, &#34;x = 3&#34;], expl: &#34;3x-ті солға, 15-ті оңға өткіземіз.&#34; },
+            { eq: &#34;0.5x &#43; 3 = 10&#34;, ans: &#34;14&#34;, level: &#34;Орташа&#34;, steps: [&#34;0.5x = 7&#34;, &#34;x = 7 / 0.5&#34;, &#34;x = 14&#34;], expl: &#34;0.5-ке бөлу 2-ге көбейтумен тең.&#34; },
+
+            // Күрделі (9-12)
+            { 
+                eq: &#34;4x &#43; 5(3 - 2x) = 5 - 11x&#34;, 
+                ans: &#34;-2&#34;, 
+                level: &#34;Күрделі&#34;, 
+                steps: [
+                    &#34;4x &#43; 15 - 10x = 5 - 11x&#34;, 
+                    &#34;-6x &#43; 15 = 5 - 11x&#34;, 
+                    &#34;-6x &#43; 11x = 5 - 15&#34;, 
+                    &#34;5x = -10&#34;, 
+                    &#34;x = -2&#34;
+                ], 
+                expl: &#34;Жақшаны ашып, ұқсас мүшелерді біріктіріп, белгісізді табамыз.&#34; 
+            },
+            { 
+                eq: &#34;19 - 2(3x &#43; 8) = 2x - 37&#34;, 
+                ans: &#34;5&#34;, 
+                level: &#34;Күрделі&#34;, 
+                steps: [
+                    &#34;19 - 6x - 16 = 2x - 37&#34;, 
+                    &#34;3 - 6x = 2x - 37&#34;, 
+                    &#34;-6x - 2x = -37 - 3&#34;, 
+                    &#34;-8x = -40&#34;, 
+                    &#34;x = 5&#34;
+                ], 
+                expl: &#34;Жақша алдындағы -2-ні көбейткенде таңбаларға мұқият болыңыз.&#34; 
+            },
+            { 
+                eq: &#34;8x &#43; 3(7 - 2x) = 4x &#43; 3&#34;, 
+                ans: &#34;9&#34;, 
+                level: &#34;Күрделі&#34;, 
+                steps: [
+                    &#34;8x &#43; 21 - 6x = 4x &#43; 3&#34;, 
+                    &#34;2x &#43; 21 = 4x &#43; 3&#34;, 
+                    &#34;2x - 4x = 3 - 21&#34;, 
+                    &#34;-2x = -18&#34;, 
+                    &#34;x = 9&#34;
+                ], 
+                expl: &#34;Жақшаны ашып, айнымалыларды бір жаққа жинақтаңыз.&#34; 
+            },
+            { 
+                eq: &#34;23 - 4(3x &#43; 8) = 1 - 17x&#34;, 
+                ans: &#34;2&#34;, 
+                level: &#34;Күрделі&#34;, 
+                steps: [
+                    &#34;23 - 12x - 32 = 1 - 17x&#34;, 
+                    &#34;-9 - 12x = 1 - 17x&#34;, 
+                    &#34;-12x &#43; 17x = 1 &#43; 9&#34;, 
+                    &#34;5x = 10&#34;, 
+                    &#34;x = 2&#34;
+                ], 
+                expl: &#34;Соңғы қадамда 10 санын 5-ке бөлеміз.&#34; 
+            }
+        ];
+
+        let currentIdx = 0;
+        let score = 0;
+
+        // Elements
+        const eqEl = document.getElementById(&#39;equation-display&#39;);
+        const inputEl = document.getElementById(&#39;user-input&#39;);
+        const checkBtn = document.getElementById(&#39;check-btn&#39;);
+        const feedbackArea = document.getElementById(&#39;feedback-area&#39;);
+        const resultBox = document.getElementById(&#39;result-box&#39;);
+        const resultTitle = document.getElementById(&#39;result-title&#39;);
+        const resultMsg = document.getElementById(&#39;result-msg&#39;);
+        const solutionBox = document.getElementById(&#39;solution-box&#39;);
+        const stepsList = document.getElementById(&#39;steps-list&#39;);
+        const nextBtn = document.getElementById(&#39;next-btn&#39;);
+        const scoreEl = document.getElementById(&#39;score-display&#39;);
+        const progBar = document.getElementById(&#39;progress-bar&#39;);
+        const levelBadge = document.getElementById(&#39;level-badge&#39;);
+
+        function loadQuestion() {
+            const q = questions[currentIdx];
+            eqEl.textContent = q.eq;
+            inputEl.value = &#39;&#39;;
+            inputEl.disabled = false;
+            checkBtn.disabled = false;
+            feedbackArea.classList.add(&#39;hidden&#39;);
+            solutionBox.classList.add(&#39;hidden&#39;);
+            
+            levelBadge.textContent = q.level;
+            if(q.level === &#34;Жеңіл&#34;) levelBadge.className = &#34;px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-green-100 text-green-700&#34;;
+            else if(q.level === &#34;Орташа&#34;) levelBadge.className = &#34;px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-100 text-orange-700&#34;;
+            else levelBadge.className = &#34;px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700&#34;;
+
+            updateUI();
+            inputEl.focus();
+        }
+
+        function updateUI() {
+            scoreEl.textContent = `Ұпай: ${score}/${questions.length}`;
+            const progress = ((currentIdx) / questions.length) * 100;
+            progBar.style.width = `${progress}%`;
+        }
+
+        function checkAnswer() {
+            const q = questions[currentIdx];
+            const userAns = inputEl.value.trim().replace(&#39;,&#39;, &#39;.&#39;);
+            const isCorrect = userAns === q.ans;
+
+            inputEl.disabled = true;
+            checkBtn.disabled = true;
+            feedbackArea.classList.remove(&#39;hidden&#39;);
+
+            if (isCorrect) {
+                score&#43;&#43;;
+                resultBox.className = &#34;p-4 rounded-2xl flex items-center gap-4 border-2 bg-green-50 border-green-200 text-green-800&#34;;
+                resultTitle.textContent = &#34;Дұрыс!&#34;;
+                resultMsg.textContent = &#34;Керемет, келесіге өтіңіз.&#34;;
+                document.getElementById(&#39;result-icon&#39;).innerHTML = &#39;&lt;svg class=&#34;w-8 h-8&#34; fill=&#34;currentColor&#34; viewBox=&#34;0 0 20 20&#34;&gt;&lt;path fill-rule=&#34;evenodd&#34; d=&#34;M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z&#34; clip-rule=&#34;evenodd&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#39;;
+            } else {
+                resultBox.className = &#34;p-4 rounded-2xl flex items-center gap-4 border-2 bg-red-50 border-red-200 text-red-800&#34;;
+                resultTitle.textContent = &#34;Қате жауап&#34;;
+                resultMsg.textContent = `Дұрыс жауабы: ${q.ans}`;
+                document.getElementById(&#39;result-icon&#39;).innerHTML = &#39;&lt;svg class=&#34;w-8 h-8&#34; fill=&#34;currentColor&#34; viewBox=&#34;0 0 20 20&#34;&gt;&lt;path fill-rule=&#34;evenodd&#34; d=&#34;M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z&#34; clip-rule=&#34;evenodd&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#39;;
+                
+                solutionBox.classList.remove(&#39;hidden&#39;);
+                stepsList.innerHTML = q.steps.map((s, i) =&gt; `
+                    &lt;div class=&#34;flex items-start gap-3&#34;&gt;
+                        &lt;span class=&#34;text-slate-300 text-sm mt-1&#34;&gt;${i&#43;1}.&lt;/span&gt;
+                        &lt;span&gt;${s}&lt;/span&gt;
+                    &lt;/div&gt;
+                `).join(&#39;&#39;);
+                stepsList.innerHTML &#43;= `&lt;div class=&#34;mt-4 pt-3 border-t border-slate-200 text-slate-500 text-sm italic&#34;&gt;Ереже: ${q.expl}&lt;/div&gt;`;
+            }
+            updateUI();
+        }
+
+        function nextQuestion() {
+            currentIdx&#43;&#43;;
+            if (currentIdx &lt; questions.length) {
+                loadQuestion();
+            } else {
+                showFinish();
+            }
+        }
+
+        function showFinish() {
+            document.getElementById(&#39;game-screen&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;finish-screen&#39;).classList.remove(&#39;hidden&#39;);
+            document.getElementById(&#39;final-score&#39;).textContent = `${score} / ${questions.length}`;
+            progBar.style.width = &#34;100%&#34;;
+        }
+
+        checkBtn.addEventListener(&#39;click&#39;, checkAnswer);
+        nextBtn.addEventListener(&#39;click&#39;, nextQuestion);
+        inputEl.addEventListener(&#39;keypress&#39;, (e) =&gt; {
+            if(e.key === &#39;Enter&#39; &amp;&amp; !checkBtn.disabled) checkAnswer();
+        });
+
+        loadQuestion();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇷🇺
+                            Русский</span>
+                        <button onclick="openFullscreenRu()" class="text-red-600 hover:text-red-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperRu">
+                        <iframe id="taskIframeRu" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Тренажер по линейным уравнениям&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=Fira&#43;Code:wght@400;500&amp;display=swap&#39;);
+        
+        body {
+            font-family: &#39;Inter&#39;, sans-serif;
+            background-color: #f8fafc;
+        }
+        .math-font {
+            font-family: &#39;Fira Code&#39;, monospace;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Стили для обеспечения размещения уравнения в одну строку */
+        .equation-container {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none;  /* IE and Edge */
+        }
+        .equation-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen flex items-center justify-center p-4&#34;&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;max-w-2xl w-full bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden&#34;&gt;
+        &lt;!-- Progress Bar Container --&gt;
+        &lt;div class=&#34;h-2 bg-slate-100 w-full&#34;&gt;
+            &lt;div id=&#34;progress-bar&#34; class=&#34;h-full bg-indigo-500 transition-all duration-500&#34; style=&#34;width: 0%&#34;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Header --&gt;
+        &lt;div class=&#34;p-6 bg-indigo-600 text-white flex justify-between items-center&#34;&gt;
+            &lt;div&gt;
+                &lt;h1 class=&#34;text-xl font-extrabold tracking-tight&#34;&gt;Математический тренажер&lt;/h1&gt;
+                &lt;p class=&#34;text-indigo-100 text-xs opacity-80 uppercase tracking-widest font-semibold mt-1&#34;&gt;Линейные уравнения с одной переменной&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;text-right&#34;&gt;
+                &lt;span id=&#34;level-badge&#34; class=&#34;px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white text-indigo-600&#34;&gt;Уровень&lt;/span&gt;
+                &lt;div id=&#34;score-display&#34; class=&#34;text-sm font-medium mt-1&#34;&gt;Баллы: 0/12&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Game Screen --&gt;
+        &lt;div id=&#34;game-screen&#34; class=&#34;p-8&#34;&gt;
+            &lt;div class=&#34;text-center mb-10 overflow-hidden&#34;&gt;
+                &lt;p class=&#34;text-slate-400 text-xs font-bold uppercase mb-4 tracking-widest&#34;&gt;Решите уравнение&lt;/p&gt;
+                &lt;!-- Контейнер: возможность прокрутки, но в одну строку --&gt;
+                &lt;div class=&#34;equation-container overflow-x-auto pb-2&#34;&gt;
+                    &lt;div id=&#34;equation-display&#34; class=&#34;math-font text-3xl md:text-4xl font-bold text-slate-800 tracking-tight leading-relaxed whitespace-nowrap inline-block min-w-full&#34;&gt;
+                        0 = 0
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;input-area&#34; class=&#34;space-y-4 max-w-sm mx-auto&#34;&gt;
+                &lt;input type=&#34;text&#34; id=&#34;user-input&#34; 
+                    class=&#34;w-full p-5 bg-slate-50 border-2 border-slate-200 rounded-2xl text-2xl text-center focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-50/50 transition-all&#34;
+                    placeholder=&#34;Ваш ответ...&#34; autocomplete=&#34;off&#34;&gt;
+                &lt;button id=&#34;check-btn&#34; 
+                    class=&#34;w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-2xl transition-all shadow-lg shadow-indigo-100 active:scale-95 disabled:opacity-50&#34;&gt;
+                    Проверить
+                &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Feedback Area --&gt;
+            &lt;div id=&#34;feedback-area&#34; class=&#34;hidden mt-8 space-y-4 fade-in&#34;&gt;
+                &lt;!-- Result alert --&gt;
+                &lt;div id=&#34;result-box&#34; class=&#34;p-4 rounded-2xl flex items-center gap-4 border-2&#34;&gt;
+                    &lt;div id=&#34;result-icon&#34;&gt;&lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;h3 id=&#34;result-title&#34; class=&#34;font-bold&#34;&gt;&lt;/h3&gt;
+                        &lt;p id=&#34;result-msg&#34; class=&#34;text-sm opacity-90&#34;&gt;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Solution Steps --&gt;
+                &lt;div id=&#34;solution-box&#34; class=&#34;hidden bg-slate-50 border border-slate-200 p-6 rounded-2xl&#34;&gt;
+                    &lt;h4 class=&#34;text-indigo-600 font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2&#34;&gt;
+                        &lt;svg class=&#34;w-4 h-4&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;2&#34; d=&#34;M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;
+                        Полное решение:
+                    &lt;/h4&gt;
+                    &lt;div id=&#34;steps-list&#34; class=&#34;math-font space-y-3 text-slate-700 font-medium overflow-x-auto whitespace-nowrap equation-container&#34;&gt;
+                        &lt;!-- Steps injected here --&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;button id=&#34;next-btn&#34; 
+                    class=&#34;w-full bg-slate-900 hover:bg-black text-white font-bold py-4 rounded-2xl transition-all flex items-center justify-center gap-2&#34;&gt;
+                    Следующее задание 
+                    &lt;svg class=&#34;w-5 h-5&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;2&#34; d=&#34;M14 5l7 7m0 0l-7 7m7-7H3&#34;&gt;&lt;/path&gt;&lt;/svg&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Finish Screen --&gt;
+        &lt;div id=&#34;finish-screen&#34; class=&#34;hidden p-12 text-center fade-in&#34;&gt;
+            &lt;div class=&#34;w-24 h-24 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-6&#34;&gt;
+                &lt;svg class=&#34;w-12 h-12 text-yellow-600&#34; fill=&#34;currentColor&#34; viewBox=&#34;0 0 20 20&#34;&gt;&lt;path d=&#34;M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;
+            &lt;/div&gt;
+            &lt;h2 class=&#34;text-3xl font-black text-slate-800 mb-2&#34;&gt;Тренажер завершен!&lt;/h2&gt;
+            &lt;p class=&#34;text-slate-500 mb-8&#34;&gt;Вы успешно освоили тему линейных уравнений.&lt;/p&gt;
+            &lt;div class=&#34;text-6xl font-black text-indigo-600 mb-10&#34; id=&#34;final-score&#34;&gt;0 / 12&lt;/div&gt;
+            &lt;button onclick=&#34;location.reload()&#34; class=&#34;bg-indigo-600 text-white font-bold px-10 py-4 rounded-2xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100&#34;&gt;
+                Начать заново
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const questions = [
+            // Легкий (1-4)
+            { eq: &#34;5x = 25&#34;, ans: &#34;5&#34;, level: &#34;Легкий&#34;, steps: [&#34;5x = 25&#34;, &#34;x = 25 / 5&#34;, &#34;x = 5&#34;], expl: &#34;Делим обе части уравнения на 5.&#34; },
+            { eq: &#34;x &#43; 12 = 30&#34;, ans: &#34;18&#34;, level: &#34;Легкий&#34;, steps: [&#34;x &#43; 12 = 30&#34;, &#34;x = 30 - 12&#34;, &#34;x = 18&#34;], expl: &#34;Переносим 12 в правую часть с противоположным знаком.&#34; },
+            { eq: &#34;2x - 8 = 10&#34;, ans: &#34;9&#34;, level: &#34;Легкий&#34;, steps: [&#34;2x - 8 = 10&#34;, &#34;2x = 10 &#43; 8&#34;, &#34;2x = 18&#34;, &#34;x = 9&#34;], expl: &#34;Переносим -8 вправо со знаком плюс, затем делим на 2.&#34; },
+            { eq: &#34;0.4x = 8&#34;, ans: &#34;20&#34;, level: &#34;Легкий&#34;, steps: [&#34;0.4x = 8&#34;, &#34;x = 8 / 0.4&#34;, &#34;x = 20&#34;], expl: &#34;Делим обе части на коэффициент 0.4.&#34; },
+            
+            // Средний (5-8)
+            { eq: &#34;3(x - 2) = 12&#34;, ans: &#34;6&#34;, level: &#34;Средний&#34;, steps: [&#34;3x - 6 = 12&#34;, &#34;3x = 18&#34;, &#34;x = 6&#34;], expl: &#34;Раскрываем скобки и переносим свободный член.&#34; },
+            { eq: &#34;7x &#43; 2 = 4x &#43; 11&#34;, ans: &#34;3&#34;, level: &#34;Средний&#34;, steps: [&#34;7x - 4x = 11 - 2&#34;, &#34;3x = 9&#34;, &#34;x = 3&#34;], expl: &#34;Группируем слагаемые с переменной в левой части.&#34; },
+            { eq: &#34;15 - 2x = 3x&#34;, ans: &#34;3&#34;, level: &#34;Средний&#34;, steps: [&#34;-2x - 3x = -15&#34;, &#34;-5x = -15&#34;, &#34;x = 3&#34;], expl: &#34;Переносим 3x влево, а 15 вправо.&#34; },
+            { eq: &#34;0.5x &#43; 3 = 10&#34;, ans: &#34;14&#34;, level: &#34;Средний&#34;, steps: [&#34;0.5x = 7&#34;, &#34;x = 7 / 0.5&#34;, &#34;x = 14&#34;], expl: &#34;Деление на 0.5 равносильно умножению на 2.&#34; },
+
+            // Сложный (9-12)
+            { 
+                eq: &#34;4x &#43; 5(3 - 2x) = 5 - 11x&#34;, 
+                ans: &#34;-2&#34;, 
+                level: &#34;Сложный&#34;, 
+                steps: [
+                    &#34;4x &#43; 15 - 10x = 5 - 11x&#34;, 
+                    &#34;-6x &#43; 15 = 5 - 11x&#34;, 
+                    &#34;-6x &#43; 11x = 5 - 15&#34;, 
+                    &#34;5x = -10&#34;, 
+                    &#34;x = -2&#34;
+                ], 
+                expl: &#34;Раскрываем скобки, приводим подобные слагаемые и находим неизвестное.&#34; 
+            },
+            { 
+                eq: &#34;19 - 2(3x &#43; 8) = 2x - 37&#34;, 
+                ans: &#34;5&#34;, 
+                level: &#34;Сложный&#34;, 
+                steps: [
+                    &#34;19 - 6x - 16 = 2x - 37&#34;, 
+                    &#34;3 - 6x = 2x - 37&#34;, 
+                    &#34;-6x - 2x = -37 - 3&#34;, 
+                    &#34;-8x = -40&#34;, 
+                    &#34;x = 5&#34;
+                ], 
+                expl: &#34;Будьте внимательны при умножении на -2 перед скобками.&#34; 
+            },
+            { 
+                eq: &#34;8x &#43; 3(7 - 2x) = 4x &#43; 3&#34;, 
+                ans: &#34;9&#34;, 
+                level: &#34;Сложный&#34;, 
+                steps: [
+                    &#34;8x &#43; 21 - 6x = 4x &#43; 3&#34;, 
+                    &#34;2x &#43; 21 = 4x &#43; 3&#34;, 
+                    &#34;2x - 4x = 3 - 21&#34;, 
+                    &#34;-2x = -18&#34;, 
+                    &#34;x = 9&#34;
+                ], 
+                expl: &#34;Раскройте скобки и соберите переменные в одной части уравнения.&#34; 
+            },
+            { 
+                eq: &#34;23 - 4(3x &#43; 8) = 1 - 17x&#34;, 
+                ans: &#34;2&#34;, 
+                level: &#34;Сложный&#34;, 
+                steps: [
+                    &#34;23 - 12x - 32 = 1 - 17x&#34;, 
+                    &#34;-9 - 12x = 1 - 17x&#34;, 
+                    &#34;-12x &#43; 17x = 1 &#43; 9&#34;, 
+                    &#34;5x = 10&#34;, 
+                    &#34;x = 2&#34;
+                ], 
+                expl: &#34;На последнем этапе делим 10 на коэффициент 5.&#34; 
+            }
+        ];
+
+        let currentIdx = 0;
+        let score = 0;
+
+        // Elements
+        const eqEl = document.getElementById(&#39;equation-display&#39;);
+        const inputEl = document.getElementById(&#39;user-input&#39;);
+        const checkBtn = document.getElementById(&#39;check-btn&#39;);
+        const feedbackArea = document.getElementById(&#39;feedback-area&#39;);
+        const resultBox = document.getElementById(&#39;result-box&#39;);
+        const resultTitle = document.getElementById(&#39;result-title&#39;);
+        const resultMsg = document.getElementById(&#39;result-msg&#39;);
+        const solutionBox = document.getElementById(&#39;solution-box&#39;);
+        const stepsList = document.getElementById(&#39;steps-list&#39;);
+        const nextBtn = document.getElementById(&#39;next-btn&#39;);
+        const scoreEl = document.getElementById(&#39;score-display&#39;);
+        const progBar = document.getElementById(&#39;progress-bar&#39;);
+        const levelBadge = document.getElementById(&#39;level-badge&#39;);
+
+        function loadQuestion() {
+            const q = questions[currentIdx];
+            eqEl.textContent = q.eq;
+            inputEl.value = &#39;&#39;;
+            inputEl.disabled = false;
+            checkBtn.disabled = false;
+            feedbackArea.classList.add(&#39;hidden&#39;);
+            solutionBox.classList.add(&#39;hidden&#39;);
+            
+            levelBadge.textContent = q.level;
+            if(q.level === &#34;Легкий&#34;) levelBadge.className = &#34;px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-green-100 text-green-700&#34;;
+            else if(q.level === &#34;Средний&#34;) levelBadge.className = &#34;px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-orange-100 text-orange-700&#34;;
+            else levelBadge.className = &#34;px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-red-100 text-red-700&#34;;
+
+            updateUI();
+            inputEl.focus();
+        }
+
+        function updateUI() {
+            scoreEl.textContent = `Баллы: ${score}/${questions.length}`;
+            const progress = ((currentIdx) / questions.length) * 100;
+            progBar.style.width = `${progress}%`;
+        }
+
+        function checkAnswer() {
+            const q = questions[currentIdx];
+            const userAns = inputEl.value.trim().replace(&#39;,&#39;, &#39;.&#39;);
+            const isCorrect = userAns === q.ans;
+
+            inputEl.disabled = true;
+            checkBtn.disabled = true;
+            feedbackArea.classList.remove(&#39;hidden&#39;);
+
+            if (isCorrect) {
+                score&#43;&#43;;
+                resultBox.className = &#34;p-4 rounded-2xl flex items-center gap-4 border-2 bg-green-50 border-green-200 text-green-800&#34;;
+                resultTitle.textContent = &#34;Правильно!&#34;;
+                resultMsg.textContent = &#34;Отлично, переходите к следующему.&#34;;
+                document.getElementById(&#39;result-icon&#39;).innerHTML = &#39;&lt;svg class=&#34;w-8 h-8&#34; fill=&#34;currentColor&#34; viewBox=&#34;0 0 20 20&#34;&gt;&lt;path fill-rule=&#34;evenodd&#34; d=&#34;M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z&#34; clip-rule=&#34;evenodd&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#39;;
+            } else {
+                resultBox.className = &#34;p-4 rounded-2xl flex items-center gap-4 border-2 bg-red-50 border-red-200 text-red-800&#34;;
+                resultTitle.textContent = &#34;Неверный ответ&#34;;
+                resultMsg.textContent = `Правильный ответ: ${q.ans}`;
+                document.getElementById(&#39;result-icon&#39;).innerHTML = &#39;&lt;svg class=&#34;w-8 h-8&#34; fill=&#34;currentColor&#34; viewBox=&#34;0 0 20 20&#34;&gt;&lt;path fill-rule=&#34;evenodd&#34; d=&#34;M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z&#34; clip-rule=&#34;evenodd&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#39;;
+                
+                solutionBox.classList.remove(&#39;hidden&#39;);
+                stepsList.innerHTML = q.steps.map((s, i) =&gt; `
+                    &lt;div class=&#34;flex items-start gap-3&#34;&gt;
+                        &lt;span class=&#34;text-slate-300 text-sm mt-1&#34;&gt;${i&#43;1}.&lt;/span&gt;
+                        &lt;span&gt;${s}&lt;/span&gt;
+                    &lt;/div&gt;
+                `).join(&#39;&#39;);
+                stepsList.innerHTML &#43;= `&lt;div class=&#34;mt-4 pt-3 border-t border-slate-200 text-slate-500 text-sm italic&#34;&gt;Правило: ${q.expl}&lt;/div&gt;`;
+            }
+            updateUI();
+        }
+
+        function nextQuestion() {
+            currentIdx&#43;&#43;;
+            if (currentIdx &lt; questions.length) {
+                loadQuestion();
+            } else {
+                showFinish();
+            }
+        }
+
+        function showFinish() {
+            document.getElementById(&#39;game-screen&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;finish-screen&#39;).classList.remove(&#39;hidden&#39;);
+            document.getElementById(&#39;final-score&#39;).textContent = `${score} / ${questions.length}`;
+            progBar.style.width = &#34;100%&#34;;
+        }
+
+        checkBtn.addEventListener(&#39;click&#39;, checkAnswer);
+        nextBtn.addEventListener(&#39;click&#39;, nextQuestion);
+        inputEl.addEventListener(&#39;keypress&#39;, (e) =&gt; {
+            if(e.key === &#39;Enter&#39; &amp;&amp; !checkBtn.disabled) checkAnswer();
+        });
+
+        loadQuestion();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+        
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            💡 Екі тілде де қол жетімді / Доступно на двух языках
+        </div>
+        
+
+        <script>
+            
+            var elem = document.getElementById("fullscreenWrapper");
+            var openBtn = document.getElementById("openFsBtn");
+            var closeBtn = document.getElementById("closeFsBtn");
+
+            function openFullscreen() {
+                if (elem && elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem && elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem && elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            function closeFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+
+            function updateButtons() {
+                if (openBtn && closeBtn) {
+                    if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                        openBtn.classList.add("hidden");
+                        closeBtn.classList.remove("hidden");
+                    } else {
+                        openBtn.classList.remove("hidden");
+                        closeBtn.classList.add("hidden");
+                    }
+                }
+            }
+
+            
+            function openFullscreenKz() {
+                var elemKz = document.getElementById("fullscreenWrapperKz");
+                if (elemKz && elemKz.requestFullscreen) {
+                    elemKz.requestFullscreen();
+                } else if (elemKz && elemKz.webkitRequestFullscreen) {
+                    elemKz.webkitRequestFullscreen();
+                } else if (elemKz && elemKz.msRequestFullscreen) {
+                    elemKz.msRequestFullscreen();
+                }
+            }
+
+            
+            function openFullscreenRu() {
+                var elemRu = document.getElementById("fullscreenWrapperRu");
+                if (elemRu && elemRu.requestFullscreen) {
+                    elemRu.requestFullscreen();
+                } else if (elemRu && elemRu.webkitRequestFullscreen) {
+                    elemRu.webkitRequestFullscreen();
+                } else if (elemRu && elemRu.msRequestFullscreen) {
+                    elemRu.msRequestFullscreen();
+                }
+            }
+
+            document.addEventListener("fullscreenchange", updateButtons);
+            document.addEventListener("webkitfullscreenchange", updateButtons);
+            document.addEventListener("msfullscreenchange", updateButtons);
+        </script>
+
+        
+        
+        <div class="bg-white p-6 rounded-2xl w-full mt-8 shadow-lg border border-purple-100 max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-4">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                    <span class="text-white text-lg">📋</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Описание задания</h3>
+            </div>
+            <div class="text-gray-700 leading-relaxed prose max-w-none">
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg border border-purple-100 mb-6">
+    <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
+    <p class="text-gray-600 text-sm mt-2">💡 Решите уравнение и введите полученное значение в поле ниже. Для проверки нажмите кнопку «Проверить» или клавишу Enter.</p>
+</div>
+            </div>
+        </div>
+        
+
+        
+        <div class="w-full max-w-4xl mx-auto my-8 px-4">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9724842226086594"
+                data-ad-slot="7527178719" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white p-8 mt-auto relative z-10">
+        <div class="container mx-auto text-center">
+            <div class="text-2xl mb-4">📐 VisualMath</div>
+            <p class="text-gray-400 mb-4">&copy; 2026 VisualMath. Все права защищены.</p>
+            <div class="space-x-6">
+                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Политика
+                    конфиденциальности</a>
+                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Условия
+                    использования</a>
+                <a href="/about" class="text-gray-400 hover:text-white transition-colors">О нас</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
