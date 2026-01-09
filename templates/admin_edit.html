@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="kk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сабақты Өңдеу</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function addTask() {
+            const container = document.getElementById('tasks-container');
+            const div = document.createElement('div');
+            div.className = "mb-4 border p-4 rounded bg-gray-50";
+            div.innerHTML = `
+                <div class="grid grid-cols-2 gap-2 mb-2">
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-1">🇰🇿 Тапсырма Аты (Қазақша)</label>
+                        <input type="text" name="task_titles[]" class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="Мысалы: Геометриялық Пазл">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-bold mb-1">🇷🇺 Тапсырма Аты (Орысша)</label>
+                        <input type="text" name="task_titles_ru[]" class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm" placeholder="Например: Геометрическая Головоломка">
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label class="block text-gray-700 font-bold mb-1">🇰🇿 HTML Коды (Қазақша)</label>
+                    <textarea name="task_codes[]" class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm" rows="3" placeholder="<iframe src='...'></iframe>"></textarea>
+                </div>
+                <div class="mb-2">
+                    <label class="block text-gray-700 font-bold mb-1">🇷🇺 HTML Коды (Орысша)</label>
+                    <textarea name="task_codes_ru[]" class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm" rows="3" placeholder="<iframe src='...'></iframe>"></textarea>
+                </div>
+                <div class="mb-2">
+                    <label class="block text-gray-700 font-bold mb-1">🇷🇺 Тапсырма Сипаттамасы (Орысша HTML)</label>
+                    <textarea name="task_descriptions_ru[]" class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm" rows="3" placeholder="<p>Описание задания...</p>"></textarea>
+                </div>
+                <button type="button" onclick="this.parentElement.remove()" class="text-red-500 text-sm mt-2 hover:underline">Тапсырманы Өшіру</button>
+            `;
+            container.appendChild(div);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set the selected grade
+            const gradeSelect = document.getElementById('grade-select');
+            gradeSelect.value = "{{ .Lesson.Grade }}";
+        });
+    </script>
+</head>
+
+<body class="bg-gray-100 min-h-screen font-sans flex flex-col">
+
+    <nav class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto">
+            <a href="/admin" class="font-bold hover:text-gray-300">&larr; Басқару панеліне оралу</a>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 max-w-2xl flex-grow">
+        <h1 class="text-3xl font-bold text-gray-800 mb-8">Сабақты Өңдеу</h1>
+
+        <form action="/admin/edit/{{ .Lesson.ID }}" method="POST" class="bg-white p-8 rounded-lg shadow-lg">
+
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2">Сынып</label>
+                    <select id="grade-select" name="grade"
+                        class="w-full border p-2 rounded focus:ring-2 focus:ring-indigo-500">
+                        <option value="5">5-Сынып</option>
+                        <option value="6">6-Сынып</option>
+                        <option value="7">7-Сынып</option>
+                        <option value="8">8-Сынып</option>
+                        <option value="9">9-Сынып</option>
+                        <option value="10">10-Сынып</option>
+                        <option value="11">11-Сынып</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-bold mb-2">🇰🇿 Тақырып (Қазақша)</label>
+                    <input type="text" name="title" required
+                        class="w-full border p-2 rounded focus:ring-2 focus:ring-indigo-500"
+                        value="{{ .Lesson.Title }}">
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 font-bold mb-2">🇷🇺 Тақырып (Орысша)</label>
+                <input type="text" name="title_ru" class="w-full border p-2 rounded focus:ring-2 focus:ring-indigo-500"
+                    value="{{ .Lesson.TitleRu }}" placeholder="Орысша тақырып (мыс: Натуральные числа)">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 font-bold mb-2">🇰🇿 Canva Сілтемесі (Қазақша)</label>
+                <input type="text" name="canva_url" required
+                    class="w-full border p-2 rounded focus:ring-2 focus:ring-indigo-500"
+                    value="{{ .Lesson.CanvaEmbedURL }}">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 font-bold mb-2">🇷🇺 Canva Сілтемесі (Орысша)</label>
+                <input type="text" name="canva_url_ru"
+                    class="w-full border p-2 rounded focus:ring-2 focus:ring-indigo-500"
+                    value="{{ .Lesson.CanvaEmbedURLRu }}" placeholder="Орысша презентация сілтемесі">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 font-bold mb-2">Сорттау реті</label>
+                <p class="text-xs text-gray-500 mb-2">Мысалы: 1.1→101, 1.10→110, 2.1→201, 3.5→305</p>
+                <input type="number" name="sort_order" value="{{ .Lesson.SortOrder }}"
+                    class="w-full border p-2 rounded focus:ring-2 focus:ring-indigo-500" placeholder="101">
+            </div>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 font-bold mb-2">🇷🇺 Орысша Теория (HTML/CSS/JS)</label>
+                <p class="text-xs text-gray-500 mb-2">Презентация астындағы орысша мазмұн. HTML/CSS/JS қолдануға болады.
+                </p>
+                <textarea name="theory_ru" rows="10"
+                    class="w-full border p-2 rounded focus:ring-2 focus:ring-indigo-500 font-mono text-sm"
+                    placeholder="<div class='p-4'><h3>Теория</h3><p>Объяснение на русском...</p></div>">{{ .Lesson.TheoryRu }}</textarea>
+            </div>
+
+            <hr class="my-6 border-gray-200">
+
+            <div id="tasks-container" class="mb-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-4">Интерактивті Тапсырмалар</h3>
+
+                {{ range .Lesson.Tasks }}
+                <div class="mb-4 border p-4 rounded bg-gray-50">
+                    <div class="grid grid-cols-2 gap-2 mb-2">
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-1">🇰🇿 Тапсырма Аты (Қазақша)</label>
+                            <input type="text" name="task_titles[]"
+                                class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
+                                value="{{ .Title }}">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-bold mb-1">🇷🇺 Тапсырма Аты (Орысша)</label>
+                            <input type="text" name="task_titles_ru[]"
+                                class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
+                                value="{{ .TitleRu }}" placeholder="Орысша атау">
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="block text-gray-700 font-bold mb-1">🇰🇿 HTML Коды (Қазақша)</label>
+                        <textarea name="task_codes[]"
+                            class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm"
+                            rows="3">{{ .Code }}</textarea>
+                    </div>
+                    <div class="mb-2">
+                        <label class="block text-gray-700 font-bold mb-1">🇷🇺 HTML Коды (Орысша)</label>
+                        <textarea name="task_codes_ru[]"
+                            class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm"
+                            rows="3">{{ .CodeRu }}</textarea>
+                    </div>
+                    <div class="mb-2">
+                        <label class="block text-gray-700 font-bold mb-1">🇷🇺 Тапсырма Сипаттамасы (Орысша
+                            HTML)</label>
+                        <textarea name="task_descriptions_ru[]"
+                            class="w-full border p-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm"
+                            rows="3" placeholder="<p>Описание задания...</p>">{{ .DescriptionRu }}</textarea>
+                    </div>
+                    <button type="button" onclick="this.parentElement.remove()"
+                        class="text-red-500 text-sm mt-2 hover:underline">Тапсырманы Өшіру</button>
+                </div>
+                {{ end }}
+
+                <!-- If no tasks, show one empty one? No, let user add one. -->
+            </div>
+
+            <button type="button" onclick="addTask()"
+                class="mb-8 bg-indigo-100 text-indigo-700 px-4 py-2 rounded hover:bg-indigo-200 font-medium w-full border-dashed border-2 border-indigo-200">
+                + Тағы Тапсырма Қосу
+            </button>
+
+            <button type="submit"
+                class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition shadow-md">
+                Сабақты Жаңарту
+            </button>
+        </form>
+    </main>
+
+</body>
+
+</html>

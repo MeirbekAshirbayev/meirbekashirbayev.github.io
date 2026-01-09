@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Grade }}-класс Презентации (PPT) и Задания | VisualMath</title>
+    <meta name="description"
+        content="{{ .Grade }}-класс математика. Готовые презентации (PPT), слайды и интерактивные задания. Бесплатно скачать.">
+    <meta name="keywords" content="{{ .Grade }} класс, математика, презентация, ppt, слайд, задачи, урок, visual math">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ .Grade }}-класс Презентации (PPT) и Задания | VisualMath">
+    <meta property="og:description"
+        content="{{ .Grade }}-класс математика. Готовые презентации (PPT), слайды и интерактивные задания.">
+
+    <!-- Favicon -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E38F1VR05Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E38F1VR05Z');
+    </script>
+
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-9724842226086594">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="gradient-bg text-white p-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="{{ path " /" }}" class="text-2xl font-bold flex items-center gap-2">
+                <span class="text-3xl">📐</span>
+                <span>VisualMath</span>
+            </a>
+            <div class="flex items-center gap-3">
+                <a href="{{ path " /about" }}"
+                    class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-2 rounded-lg transition-colors text-sm font-semibold">
+                    <span>💎</span>
+                    <span class="hidden md:inline">О нас</span>
+                </a>
+                <a href="{{ path " /" }}"
+                    class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors">
+                    <span>←</span>
+                    <span class="hidden sm:inline">На главную</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="gradient-bg text-white py-12 px-4">
+        <div class="container mx-auto text-center">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-4">
+                <span class="text-4xl font-bold">{{ .Grade }}</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold">{{ .Grade }}-класс Темы</h1>
+            <p class="text-white/80 mt-2">Выберите тему и начните обучение</p>
+        </div>
+    </section>
+
+    <main class="flex-grow container mx-auto px-4 py-8">
+
+        <!-- Educational Introduction / Образовательное введение -->
+        <div class="max-w-4xl mx-auto mb-12">
+            <div class="bg-white p-8 md:p-10 rounded-2xl shadow-lg">
+                <div class="text-center mb-6">
+                    <div class="text-4xl mb-3">{{ if eq .Grade 5 }}📐{{ else }}📚{{ end }}</div>
+                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">Математика для {{ .Grade }} класса
+                    </h2>
+                    <p class="text-gray-600">{{ if eq .Grade 5 }}Полный курс математики согласно обновленной программе
+                        РК{{ else }}Курс математики согласно обновленной программе РК{{ end }}</p>
+                </div>
+
+                {{ if eq .Grade 6 }}
+                <div
+                    class="bg-gradient-to-r from-yellow-50 to-amber-50 p-6 rounded-xl border-l-4 border-yellow-500 mb-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-3xl">🚧</span>
+                        <h3 class="font-bold text-yellow-900 text-xl">Материалы активно добавляются!</h3>
+                    </div>
+                    <p class="text-gray-700 leading-relaxed">
+                        Мы активно работаем над расширением библиотеки уроков для 6 класса. Уже доступны первые темы, и
+                        каждую неделю мы добавляем новые материалы. Следите за обновлениями!
+                    </p>
+                </div>
+                {{ end }}
+
+                <div class="prose max-w-none text-gray-700 space-y-6">
+                    <p class="text-lg leading-relaxed">
+                        Добро пожаловать в раздел математики для {{ .Grade }} класса! Здесь вы найдете {{ if eq .Grade 5
+                        }}все необходимые материалы для успешного освоения программы:{{ else }}интерактивные презентации
+                        на казахском и русском языках,{{ end }} подробные теоретические объяснения и практические
+                        задания. Все уроки разработаны в соответствии с обновленным содержанием образования Республики
+                        Казахстан.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        {{ if .Lessons }}
+        <div class="grid gap-4 max-w-3xl mx-auto">
+            {{ range .Lessons }}
+            <a href="{{ path " /lesson/" }}{{ .ID }}"
+                class="card-hover group flex items-center gap-4 bg-white p-5 rounded-xl shadow-sm border-2 border-transparent hover:border-purple-400">
+
+                <!-- Icon Badge -->
+                <div class="flex-shrink-0 w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
+                    <span class="text-white text-xl">📖</span>
+                </div>
+
+                <!-- Content -->
+                <div class="flex-grow">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs">🇰🇿</span>
+                        <h2 class="text-lg font-semibold text-gray-800 group-hover:text-purple-600 transition-colors">
+                            {{ .Title }}
+                        </h2>
+                    </div>
+                    {{ if .TitleRu }}
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs">🇷🇺</span>
+                        <p class="text-gray-600 text-sm">{{ .TitleRu }}</p>
+                    </div>
+                    {{ end }}
+                </div>
+
+                <!-- Arrow -->
+                <div
+                    class="flex-shrink-0 text-gray-400 group-hover:text-purple-600 group-hover:translate-x-1 transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                        </path>
+                    </svg>
+                </div>
+            </a>
+            {{ end }}
+        </div>
+        {{ else }}
+        <div class="text-center py-16 bg-white rounded-2xl shadow-sm max-w-md mx-auto">
+            <div class="text-6xl mb-4">📚</div>
+            <p class="text-gray-500 text-lg mb-4">Для этого класса уроки ещё не добавлены.</p>
+            <a href="{{ path " /" }}"
+                class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-medium">
+                <span>←</span>
+                <span>Назад</span>
+            </a>
+        </div>
+        {{ end }}
+
+        <!--AdSense Display Ad-->
+        <div class="max-w-3xl mx-auto mt-8">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9724842226086594"
+                data-ad-slot="7527178719" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    <!-- Social Sharing Section / Әлеуметтік бөлісу бөлімі -->
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 md:p-8 rounded-2xl shadow-lg border-2 border-purple-200">
+            <!-- Icon and Heading -->
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center animate-pulse">
+                    <span class="text-2xl">📢</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center">Поделитесь с коллегами!</h3>
+            </div>
+
+            <!-- Bilingual Message -->
+            <div class="space-y-2 mb-6 text-center">
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇰🇿</span>
+                    <span>Сайттың дамуына үлес қосу үшін, мұғалімдер чатында бөлісіңіз!</span>
+                </p>
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇷🇺</span>
+                    <span>Помогите развитию сайта — поделитесь в чатах учителей!</span>
+                </p>
+            </div>
+
+            <!-- Share Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <!-- WhatsApp Button -->
+                <a id="shareWhatsApp" href="#"
+                    class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
+
+                <!-- Telegram Button -->
+                <a id="shareTelegram" href="#"
+                    class="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                    </svg>
+                    <span>Telegram</span>
+                </a>
+
+                <!-- Generic Share Button -->
+                <button id="shareGeneric"
+                    class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                    <span>Поделиться</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Share Functionality -->
+    <script>
+        (function () {
+            const pageUrl = window.location.href;
+            const pageTitle = document.title;
+            const shareMessage = `📐 VisualMath - ${pageTitle}\n\nБесплатные презентации и задания по математике!\nМатематика бойынша тегін презентациялар және тапсырмалар!\n\n`;
+
+            // WhatsApp Share
+            document.getElementById('shareWhatsApp').addEventListener('click', function (e) {
+                e.preventDefault();
+                const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage + pageUrl)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+
+            // Telegram Share
+            document.getElementById('shareTelegram').addEventListener('click', function (e) {
+                e.preventDefault();
+                const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareMessage)}`;
+                window.open(telegramUrl, '_blank');
+            });
+
+            // Generic Share (Web Share API or Copy Link)
+            document.getElementById('shareGeneric').addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: pageTitle,
+                            text: shareMessage,
+                            url: pageUrl
+                        });
+                    } catch (err) {
+                        if (err.name !== 'AbortError') {
+                            copyToClipboard();
+                        }
+                    }
+                } else {
+                    copyToClipboard();
+                }
+            });
+
+            function copyToClipboard() {
+                const textToCopy = shareMessage + pageUrl;
+                navigator.clipboard.writeText(textToCopy).then(function () {
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                }, function (err) {
+                    // Fallback for older browsers
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                });
+            }
+        })();
+    </script>
+
+    <footer class="bg-gray-900 text-white p-8 mt-auto">
+        <div class="container mx-auto text-center">
+            <div class="text-2xl mb-4">📐 VisualMath</div>
+            <p class="text-gray-400 mb-4">&copy; 2026 VisualMath. Все права защищены.</p>
+            <div class="space-x-6">
+                <a href="{{ path " /privacy" }}" class="text-gray-400 hover:text-white transition-colors">Политика
+                    конфиденциальности</a>
+                <a href="{{ path " /terms" }}" class="text-gray-400 hover:text-white transition-colors">Условия
+                    использования</a>
+                <a href="{{ path " /about" }}" class="text-gray-400 hover:text-white transition-colors">О нас</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
