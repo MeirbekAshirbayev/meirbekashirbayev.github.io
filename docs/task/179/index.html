@@ -25,9 +25,18 @@
     }
     </script>
 
-    
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    
+    <link rel="canonical" href="https://meirbekashirbayev.github.io/task/179" />
+
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E38F1VR05Z"></script>
@@ -1166,202 +1175,60 @@
                 <h3 class="text-xl font-bold text-gray-800">Описание задания</h3>
             </div>
             <div class="text-gray-700 leading-relaxed prose max-w-none">
-                <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 md:p-8 rounded-lg font-sans">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-        .math-lab-container { font-family: 'Inter', sans-serif; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        input[type="range"] { accent-color: #2563eb; }
-    </style>
+                <div class="space-y-6 text-gray-700">
+    <section>
+        <h3 class="text-lg font-bold text-purple-700 flex items-center">
+            <span class="mr-2">📌</span> Общая цель
+        </h3>
+        <p class="mt-1">Данный программный модуль предназначен для визуализации и практического освоения темы «Числовые неравенства». Виджет позволяет учащимся не просто зазубривать правила, а экспериментально проверять математические закономерности через интерактивное взаимодействие.</p>
+    </section>
 
-    <div class="math-lab-container max-w-5xl mx-auto">
-        
-        <div class="bg-white/70 backdrop-blur-sm p-4 rounded-xl mb-6 border border-purple-100 shadow-sm">
-            <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
-            <p class="text-gray-600 mt-1 text-sm">💡 Если задание кажется сложным, попробуйте ещё раз!</p>
-        </div>
+    <section>
+        <h3 class="text-lg font-bold text-purple-700 flex items-center">
+            <span class="mr-2">🏗️</span> Техническая структура
+        </h3>
+        <ul class="list-disc ml-6 mt-2 space-y-1">
+            <li><strong>Tailwind CSS:</strong> Обеспечивает современный адаптивный дизайн, который корректно отображается как на компьютерах, так и на планшетах.</li>
+            <li><strong>Vanilla JavaScript:</strong> Управляет всей логикой: от переключения вкладок до динамических вычислений и работы тестовой системы.</li>
+            <li><strong>Интерактивные элементы:</strong> Использование ползунков (range input) позволяет учащимся мгновенно видеть изменения результатов при смене входных данных.</li>
+        </ul>
+    </section>
 
-        <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200">
-            
-            <nav class="flex bg-slate-900 text-white p-2">
-                <button onclick="switchTab('theory')" id="btn-theory" class="tab-btn flex-1 flex items-center justify-center py-3 rounded-xl transition-all bg-blue-600 shadow-lg">
-                    <span class="font-semibold">Теория</span>
-                </button>
-                <button onclick="switchTab('lab')" id="btn-lab" class="tab-btn flex-1 flex items-center justify-center py-3 rounded-xl transition-all hover:bg-slate-800 opacity-70">
-                    <span class="font-semibold">Лаборатория</span>
-                </button>
-                <button onclick="switchTab('trainer')" id="btn-trainer" class="tab-btn flex-1 flex items-center justify-center py-3 rounded-xl transition-all hover:bg-slate-800 opacity-70">
-                    <span class="font-semibold">Тренажер</span>
-                </button>
-            </nav>
-
-            <div class="p-6 md:p-10">
-                
-                <div id="theory" class="tab-content active space-y-6">
-                    <h2 class="text-2xl font-black text-slate-800">Числовые неравенства</h2>
-                    <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-xl">
-                        <p class="text-lg text-blue-900">
-                            Если разность <strong>a − b</strong> положительна, то <strong>a > b</strong>. <br>
-                            Если разность <strong>a − b</strong> отрицательна, то <strong>a < b</strong>.
-                        </p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100">
-                            <p class="text-emerald-700 font-bold italic">a − b > 0  ⟹  a > b</p>
-                        </div>
-                        <div class="p-4 bg-rose-50 rounded-xl border border-rose-100">
-                            <p class="text-rose-700 font-bold italic">a − b < 0  ⟹  a < b</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="lab" class="tab-content space-y-8">
-                    <div class="grid md:grid-cols-2 gap-6 items-center">
-                        <div class="space-y-4">
-                            <div class="bg-slate-50 p-4 rounded-xl">
-                                <label class="text-xs font-bold text-slate-500 uppercase">Число a: <span id="val-a-num" class="text-blue-600 text-lg">7</span></label>
-                                <input type="range" id="slide-a" min="-10" max="10" value="7" class="w-full mt-2">
-                            </div>
-                            <div class="bg-slate-50 p-4 rounded-xl">
-                                <label class="text-xs font-bold text-slate-500 uppercase">Число b: <span id="val-b-num" class="text-emerald-600 text-lg">4</span></label>
-                                <input type="range" id="slide-b" min="-10" max="10" value="4" class="w-full mt-2">
-                            </div>
-                        </div>
-                        <div class="bg-slate-900 text-white p-8 rounded-2xl text-center">
-                            <p class="text-slate-400 text-xs mb-2">РАЗНОСТЬ:</p>
-                            <div class="text-3xl font-mono" id="lab-calc">7 − 4 = 3</div>
-                        </div>
-                    </div>
-
-                    
-                    <div class="relative h-20 bg-slate-50 rounded-xl flex items-center px-6">
-                        <div class="w-full h-1 bg-slate-300 rounded-full"></div>
-                        <div id="marker-a" class="absolute transition-all duration-300 text-center" style="left: 85%">
-                            <div class="w-6 h-6 bg-blue-600 rounded-full border-2 border-white shadow mx-auto"></div>
-                            <span class="text-xs font-bold text-blue-600">a</span>
-                        </div>
-                        <div id="marker-b" class="absolute transition-all duration-300 text-center" style="left: 70%">
-                            <div class="w-6 h-6 bg-emerald-600 rounded-full border-2 border-white shadow mx-auto"></div>
-                            <span class="text-xs font-bold text-emerald-600">b</span>
-                        </div>
-                    </div>
-
-                    <div id="lab-result" class="text-center p-6 bg-white border-2 border-slate-900 rounded-2xl text-2xl font-black">
-                        7 > 4
-                    </div>
-                </div>
-
-                <div id="trainer" class="tab-content space-y-6">
-                    <div id="q-box">
-                        <div class="flex justify-between text-xs font-bold text-slate-400 mb-4">
-                            <span id="q-progress">ВОПРОС 1 / 3</span>
-                            <span id="q-score">БАЛЛЫ: 0</span>
-                        </div>
-                        <div id="q-text" class="text-xl font-bold mb-6 p-6 bg-slate-50 rounded-2xl border text-center"></div>
-                        <div id="q-options" class="grid gap-3"></div>
-                        <div id="q-feedback" class="hidden mt-6 p-4 rounded-xl border-2 font-bold"></div>
-                        <button id="q-next" class="hidden w-full mt-4 py-3 bg-slate-900 text-white rounded-xl font-bold">Следующий вопрос</button>
-                    </div>
-                    <div id="res-box" class="hidden text-center py-10">
-                        <h3 class="text-3xl font-black mb-4">Результат</h3>
-                        <div id="res-percent" class="text-6xl font-black text-blue-600 mb-2">0%</div>
-                        <button onclick="resetTrainer()" class="mt-6 px-8 py-3 bg-blue-600 text-white rounded-xl font-bold">Начать заново</button>
-                    </div>
-                </div>
-
+    <section>
+        <h3 class="text-lg font-bold text-purple-700 flex items-center">
+            <span class="mr-2">🎮</span> Функциональные разделы
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4 mt-3">
+            <div class="bg-white/50 p-3 rounded-xl border border-purple-100 shadow-sm">
+                <p class="font-bold text-blue-600">1. Теория</p>
+                <p class="text-sm italic">Фундамент знаний.</p>
+                <p class="text-xs mt-1">Краткое и наглядное изложение основного правила: сравнение чисел через их разность.</p>
+            </div>
+            <div class="bg-white/50 p-3 rounded-xl border border-purple-100 shadow-sm">
+                <p class="font-bold text-emerald-600">2. Лаборатория</p>
+                <p class="text-sm italic">Активное исследование.</p>
+                <p class="text-xs mt-1">Визуальная числовая прямая, где положение точек меняется в реальном времени. Помогает понять связь между вычитанием и порядком чисел.</p>
+            </div>
+            <div class="bg-white/50 p-3 rounded-xl border border-purple-100 shadow-sm">
+                <p class="font-bold text-pink-600">3. Тренажер</p>
+                <p class="text-sm italic">Закрепление успеха.</p>
+                <p class="text-xs mt-1">Интерактивный тест с системой мгновенной проверки. После каждого ответа ученик получает подробное объяснение решения.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        // Табтарды ауыстыру
-        function switchTab(id) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(b => {
-                b.classList.remove('bg-blue-600', 'shadow-lg');
-                b.classList.add('opacity-70', 'hover:bg-slate-800');
-            });
-            document.getElementById(id).classList.add('active');
-            document.getElementById('btn-' + id).classList.add('bg-blue-600', 'shadow-lg');
-            document.getElementById('btn-' + id).classList.remove('opacity-70');
-            if(id === 'trainer') resetTrainer();
-        }
+    
 
-        // Лаборатория логикасы
-        const sA = document.getElementById('slide-a');
-        const sB = document.getElementById('slide-b');
-        function updateLab() {
-            const a = parseInt(sA.value);
-            const b = parseInt(sB.value);
-            document.getElementById('val-a-num').innerText = a;
-            document.getElementById('val-b-num').innerText = b;
-            document.getElementById('lab-calc').innerText = `${a} − (${b}) = ${a - b}`;
-            document.getElementById('marker-a').style.left = ((a + 10) * 4.5 + 5) + '%';
-            document.getElementById('marker-b').style.left = ((b + 10) * 4.5 + 5) + '%';
-            const sign = a > b ? '>' : (a < b ? '<' : '=');
-            document.getElementById('lab-result').innerText = `${a} ${sign} ${b}`;
-        }
-        sA.oninput = updateLab;
-        sB.oninput = updateLab;
-
-        // Тренажер деректері
-        const questions = [
-            { t: "Сравните: -5 и -8", o: ["-5 > -8", "-5 < -8", "-5 = -8"], c: 0, e: "На числовой прямой -5 правее, чем -8." },
-            { t: "Если a - b = -2, то:", o: ["a > b", "a < b", "a = b"], c: 1, e: "Разность отрицательна, значит первое число меньше." },
-            { t: "Сравните: 0.5 и 1/2", o: ["0.5 > 1/2", "0.5 < 1/2", "0.5 = 1/2"], c: 2, e: "Это равные числа." }
-        ];
-        let qIdx = 0, score = 0;
-
-        function resetTrainer() {
-            qIdx = 0; score = 0;
-            document.getElementById('q-box').classList.remove('hidden');
-            document.getElementById('res-box').classList.add('hidden');
-            showQuestion();
-        }
-
-        function showQuestion() {
-            const q = questions[qIdx];
-            document.getElementById('q-progress').innerText = `ВОПРОС ${qIdx + 1} / ${questions.length}`;
-            document.getElementById('q-text').innerText = q.t;
-            const optCont = document.getElementById('q-options');
-            optCont.innerHTML = '';
-            q.options.forEach((o, i) => {
-                const b = document.createElement('button');
-                b.className = "p-4 border-2 rounded-xl text-left hover:bg-slate-50 transition-all font-semibold";
-                b.innerText = o;
-                b.onclick = () => checkAns(i);
-                optCont.appendChild(b);
-            });
-            document.getElementById('q-feedback').classList.add('hidden');
-            document.getElementById('q-next').classList.add('hidden');
-        }
-
-        function checkAns(idx) {
-            const q = questions[qIdx];
-            const isCorrect = idx === q.c;
-            if(isCorrect) score++;
-            const f = document.getElementById('q-feedback');
-            f.innerText = isCorrect ? "Правильно! " + q.e : "Неверно. " + q.e;
-            f.className = `mt-6 p-4 rounded-xl border-2 font-bold ${isCorrect ? 'bg-emerald-50 border-emerald-500 text-emerald-700' : 'bg-rose-50 border-rose-500 text-rose-700'}`;
-            f.classList.remove('hidden');
-            document.getElementById('q-next').classList.remove('hidden');
-            document.querySelectorAll('#q-options button').forEach(b => b.disabled = true);
-        }
-
-        document.getElementById('q-next').onclick = () => {
-            qIdx++;
-            if(qIdx < questions.length) showQuestion();
-            else {
-                document.getElementById('q-box').classList.add('hidden');
-                document.getElementById('res-box').classList.remove('hidden');
-                document.getElementById('res-percent').innerText = Math.round((score/questions.length)*100) + "%";
-            }
-        };
-
-        updateLab();
-    </script>
+    <section>
+        <h3 class="text-lg font-bold text-purple-700 flex items-center">
+            <span class="mr-2">⭐</span> Ключевые преимущества
+        </h3>
+        <ul class="list-disc ml-6 mt-2 space-y-1">
+            <li><strong>Динамичность:</strong> Все элементы (вычисления, знаки неравенств, положение точек) обновляются мгновенно без перезагрузки страницы.</li>
+            <li><strong>Обратная связь:</strong> Тренажер не просто фиксирует ошибку, а обучает, предоставляя логическое обоснование правильного ответа.</li>
+            <li><strong>Эстетика:</strong> Использование мягкой цветовой палитры и градиентов снижает зрительную нагрузку и повышает вовлеченность ученика.</li>
+        </ul>
+    </section>
 </div>
             </div>
         </div>
