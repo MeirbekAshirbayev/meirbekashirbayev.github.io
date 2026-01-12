@@ -142,7 +142,7 @@
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="/" class="text-2xl font-bold flex items-center gap-2 text-purple-600">
-                <span class="text-3xl">📐</span>
+                <span class="text-3xl" role="img" aria-label="Математика геометрия">📐</span>
                 <span>VisualMath</span>
             </a>
             <div class="flex items-center gap-3">
@@ -161,6 +161,18 @@
     </nav>
 
     <main class="container mx-auto px-4 py-8 max-w-4xl flex-grow">
+
+        
+        <nav aria-label="Breadcrumb" class="mb-4">
+            <ol class="flex items-center gap-2 text-sm text-gray-600">
+                <li><a href="/" class="hover:text-purple-600 transition-colors">Главная</a></li>
+                <li><span class="text-gray-400">›</span></li>
+                <li><a href="/grade/5"
+                        class="hover:text-purple-600 transition-colors">5-класс</a></li>
+                <li><span class="text-gray-400">›</span></li>
+                <li class="text-gray-800 font-medium">3.15 Задачи на совместную работу</li>
+            </ol>
+        </nav>
 
         
         <div class="mb-8">
@@ -203,10 +215,12 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">3.15 Бірлесіп орындалатын жұмыстарға қатысты есептер</h2>
                 <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
-                            <span class="text-white text-lg">📊</span>
+                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center" role="img"
+                            aria-label="Презентация иконкасы">
+                            <span class="text-white text-lg" role="img" aria-label="Слайды">📊</span>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">🇰🇿 Презентация (Қазақша)</h3>
+                        <h3 class="text-xl font-bold text-gray-800"><span role="img"
+                                aria-label="Қазақстан тілі">🇰🇿</span> Презентация (Қазақша)</h3>
                     </div>
                     <div class="embed-container">
                         <iframe loading="lazy" src="https://www.canva.com/design/DAG3m0kvrUY/Aw6eiWsX5XdKM_k98tOIuA/view?embed" allowfullscreen="allowfullscreen"
@@ -220,10 +234,12 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">3.15 Задачи на совместную работу</h2>
                 <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
-                            <span class="text-white text-lg">📊</span>
+                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center" role="img"
+                            aria-label="Презентация иконкасы">
+                            <span class="text-white text-lg" role="img" aria-label="Слайды">📊</span>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">🇷🇺 Презентация (Русский)</h3>
+                        <h3 class="text-xl font-bold text-gray-800"><span role="img"
+                                aria-label="Русский язык">🇷🇺</span> Презентация (Русский)</h3>
                     </div>
                     <div class="embed-container">
                         <iframe loading="lazy" src="https://www.canva.com/design/DAG9EFrj6Gk/hMLbgvmbJbgIRzAty33CXA/view?embed" allowfullscreen="allowfullscreen"
@@ -352,6 +368,44 @@
 
         
         
+
+        
+        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-2xl mt-8 border-2 border-indigo-200">
+            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span role="img" aria-label="Навигация">🧭</span>
+                Навигация по урокам
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <a href="/grade/5"
+                    class="flex items-center gap-2 bg-white hover:bg-purple-50 p-4 rounded-xl border-2 border-transparent hover:border-purple-400 transition-all">
+                    <span role="img" aria-label="Назад к классу">📚</span>
+                    <div>
+                        <div class="text-sm text-gray-500">Все уроки</div>
+                        <div class="font-bold text-gray-800">5-класс</div>
+                    </div>
+                </a>
+                <a href="/"
+                    class="flex items-center gap-2 bg-white hover:bg-blue-50 p-4 rounded-xl border-2 border-transparent hover:border-blue-400 transition-all">
+                    <span role="img" aria-label="Главная страница">🏠</span>
+                    <div>
+                        <div class="text-sm text-gray-500">Вернуться</div>
+                        <div class="font-bold text-gray-800">Главная</div>
+                    </div>
+                </a>
+                <a href="/about"
+                    class="flex items-center gap-2 bg-white hover:bg-green-50 p-4 rounded-xl border-2 border-transparent hover:border-green-400 transition-all">
+                    <span role="img" aria-label="О проекте">💎</span>
+                    <div>
+                        <div class="text-sm text-gray-500">О проекте</div>
+                        <div class="font-bold text-gray-800">VisualMath</div>
+                    </div>
+                </a>
+            </div>
+            <div class="mt-4 text-center text-sm text-gray-600">
+                💡 Совет: добавьте сайт в закладки для быстрого доступа
+            </div>
+        </div>
+
 
         
         <div class="mb-8">
