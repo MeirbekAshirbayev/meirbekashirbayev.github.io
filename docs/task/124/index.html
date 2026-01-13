@@ -834,6 +834,27 @@
             document.addEventListener("fullscreenchange", updateButtons);
             document.addEventListener("webkitfullscreenchange", updateButtons);
             document.addEventListener("msfullscreenchange", updateButtons);
+
+            
+            (function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const lang = urlParams.get('lang'); 
+
+                if (lang === 'kz') {
+                    
+                    const ruBlock = document.querySelector('.russian-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (ruBlock) ruBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                } else if (lang === 'ru') {
+                    
+                    const kzBlock = document.querySelector('.kazakh-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (kzBlock) kzBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                }
+                
+            })();
         </script>
 
         
