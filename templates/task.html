@@ -25,9 +25,18 @@
     }
     </script>
 
-    <!-- Favicon -->
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://meirbekashirbayev.github.io/task/{{ .Task.ID }}" />
+
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E38F1VR05Z"></script>
@@ -154,7 +163,7 @@
             <!-- Both languages available: show side by side -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Kazakh Task -->
-                <div class="bg-white p-4 rounded-2xl shadow-lg">
+                <div class="bg-white p-4 rounded-2xl shadow-lg kazakh-block">
                     <div class="flex items-center justify-between mb-4">
                         <span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇰🇿
                             Казахский</span>
@@ -174,7 +183,7 @@
                 </div>
 
                 <!-- Russian Task -->
-                <div class="bg-white p-4 rounded-2xl shadow-lg">
+                <div class="bg-white p-4 rounded-2xl shadow-lg russian-block">
                     <div class="flex items-center justify-between mb-4">
                         <span class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇷🇺
                             Русский</span>
@@ -301,6 +310,27 @@
             document.addEventListener("fullscreenchange", updateButtons);
             document.addEventListener("webkitfullscreenchange", updateButtons);
             document.addEventListener("msfullscreenchange", updateButtons);
+
+            // Language filter based on URL parameter
+            (function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const lang = urlParams.get('lang'); // 'kz' or 'ru'
+
+                if (lang === 'kz') {
+                    // Show only Kazakh, hide Russian
+                    const ruBlock = document.querySelector('.russian-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (ruBlock) ruBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                } else if (lang === 'ru') {
+                    // Show only Russian, hide Kazakh
+                    const kzBlock = document.querySelector('.kazakh-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (kzBlock) kzBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                }
+                // If lang is not specified or invalid, show both (default behavior)
+            })();
         </script>
 
         <!-- Russian Task Description (from database) -->

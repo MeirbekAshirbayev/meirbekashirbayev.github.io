@@ -11,6 +11,9 @@
     <meta name="keywords"
         content="{{ .Lesson.Title }}, {{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }}, {{ end }}{{ .Lesson.Grade }} класс, {{ .Lesson.Grade }} сынып, презентация, ppt, слайд, математика, урок, сабақ">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://meirbekashirbayev.github.io/lesson/{{ .Lesson.ID }}" />
+
     <!-- AMP Version Link -->
     <link rel="amphtml" href="{{ path " /lesson/" }}{{ .Lesson.ID }}/amp.html">
 
@@ -21,22 +24,63 @@
     <meta property="og:description"
         content="{{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }} - {{ end }}{{ .Lesson.Grade }} класс математика. Готовая презентация (PPT) и интерактивные задания.">
 
-    <!-- Schema.org -->
+    <!-- Schema.org - Course -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LearningResource",
-      "name": "{{ .Lesson.Title }}",
-      "description": "{{ .Lesson.Description }}",
-      "educationalLevel": "{{ .Lesson.Grade }} Grade",
-      "inLanguage": "ru",
-      "learningResourceType": "Presentation"
+      "@type": "Course",
+      "name": "{{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }}{{ else }}{{ .Lesson.Title }}{{ end }}",
+      "description": "{{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }} - {{ end }}{{ .Lesson.Title }}. {{ .Lesson.Grade }} класс математика. Готовая презентация (PPT), слайды и интерактивные задания.",
+      "provider": {
+        "@type": "Organization",
+        "name": "VisualMath",
+        "url": "https://meirbekashirbayev.github.io"
+      },
+      "educationalLevel": "Grade {{ .Lesson.Grade }}",
+      "inLanguage": ["kk", "ru"],
+      "learningResourceType": "Презентация",
+      "teaches": "Математика",
+      "keywords": "{{ .Lesson.Grade }} класс математика презентация, ppt скачать бесплатно, слайды, {{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }}{{ end }}"
+    }
+    </script>
+
+    <!-- Schema.org - BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://meirbekashirbayev.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ .Lesson.Grade }}-класс",
+          "item": "https://meirbekashirbayev.github.io/grade/{{ .Lesson.Grade }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }}{{ else }}{{ .Lesson.Title }}{{ end }}"
+        }
+      ]
     }
     </script>
 
     <!-- Favicon -->
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E38F1VR05Z"></script>
@@ -98,7 +142,7 @@
     <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="{{ path " /" }}" class="text-2xl font-bold flex items-center gap-2 text-purple-600">
-                <span class="text-3xl">📐</span>
+                <span class="text-3xl" role="img" aria-label="Математика геометрия">📐</span>
                 <span>VisualMath</span>
             </a>
             <div class="flex items-center gap-3">
@@ -118,6 +162,19 @@
 
     <main class="container mx-auto px-4 py-8 max-w-4xl flex-grow">
 
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="Breadcrumb" class="mb-4">
+            <ol class="flex items-center gap-2 text-sm text-gray-600">
+                <li><a href="{{ path " /" }}" class="hover:text-purple-600 transition-colors">Главная</a></li>
+                <li><span class="text-gray-400">›</span></li>
+                <li><a href="{{ path " /grade/" }}{{ .Lesson.Grade }}"
+                        class="hover:text-purple-600 transition-colors">{{ .Lesson.Grade }}-класс</a></li>
+                <li><span class="text-gray-400">›</span></li>
+                <li class="text-gray-800 font-medium">{{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }}{{ else }}{{
+                    .Lesson.Title }}{{ end }}</li>
+            </ol>
+        </nav>
+
         <!-- Lesson Title -->
         <div class="mb-8">
             <div class="flex items-center gap-2 text-purple-600 text-sm font-medium mb-2">
@@ -126,7 +183,7 @@
                 <span>Урок</span>
             </div>
             <h1 class="text-3xl md:text-4xl font-bold text-gray-900">{{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }}{{
-                else }}{{ .Lesson.Title }}{{ end }}</h1>
+                else }}{{ .Lesson.Title }}{{ end }} - {{ .Lesson.Grade }} класс презентация</h1>
         </div>
 
         <!-- Intro Section for SEO / AdSense -->
@@ -160,10 +217,12 @@
                 <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{{ .Lesson.Title }}</h2>
                 <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
-                            <span class="text-white text-lg">📊</span>
+                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center" role="img"
+                            aria-label="Презентация иконкасы">
+                            <span class="text-white text-lg" role="img" aria-label="Слайды">📊</span>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">🇰🇿 Презентация (Қазақша)</h3>
+                        <h3 class="text-xl font-bold text-gray-800"><span role="img"
+                                aria-label="Қазақстан тілі">🇰🇿</span> Презентация (Қазақша)</h3>
                     </div>
                     <div class="embed-container">
                         <iframe loading="lazy" src="{{ .Lesson.CanvaEmbedURL }}" allowfullscreen="allowfullscreen"
@@ -179,10 +238,12 @@
                     else }}Русская версия{{ end }}</h2>
                 <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
                     <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
-                            <span class="text-white text-lg">📊</span>
+                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center" role="img"
+                            aria-label="Презентация иконкасы">
+                            <span class="text-white text-lg" role="img" aria-label="Слайды">📊</span>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">🇷🇺 Презентация (Русский)</h3>
+                        <h3 class="text-xl font-bold text-gray-800"><span role="img"
+                                aria-label="Русский язык">🇷🇺</span> Презентация (Русский)</h3>
                     </div>
                     <div class="embed-container">
                         <iframe loading="lazy" src="{{ .Lesson.CanvaEmbedURLRu }}" allowfullscreen="allowfullscreen"
@@ -303,26 +364,179 @@
                 <h2 class="text-2xl font-bold text-gray-800">Интерактивные задания</h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {{ range .Lesson.Tasks }}
-                <a href="{{ path " /task/" }}{{ .ID }}" target="_blank"
-                    class="card-hover block bg-white p-6 rounded-2xl shadow-md border-2 border-transparent hover:border-purple-400">
-                    <div class="flex items-center gap-4">
-                        <div
-                            class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <span class="text-2xl">🎯</span>
+            <div class="space-y-8">
+                {{ range $index, $task := .Lesson.Tasks }}
+                <!-- Task Title -->
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold text-gray-900 text-center">{{ if $task.TitleRu }}{{ $task.TitleRu }}{{
+                        else }}{{ $task.Title }}{{ end }}</h3>
+                </div>
+
+                <!-- Two Column Layout for Tasks -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Kazakh Version -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-purple-200">
+                        <!-- Task Header - Kazakh -->
+                        <div class="bg-gradient-to-r from-blue-500 to-cyan-600 p-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl">🇰🇿</span>
+                                    <h4 class="text-lg font-bold text-white">Қазақша</h4>
+                                </div>
+                                <button onclick="openTaskFullscreen('{{ $task.ID }}')"
+                                    class="flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg transition-all transform hover:scale-105">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4">
+                                        </path>
+                                    </svg>
+                                    <span class="hidden lg:inline text-sm">Толық экран</span>
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-gray-800">{{ if .TitleRu }}{{ .TitleRu }}{{ else }}{{
-                                .Title }}{{ end }}</h3>
-                            <p class="text-sm text-gray-500">Откроется в новом окне</p>
+
+                        <!-- Embedded Task - Kazakh -->
+                        <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
+                            <iframe id="taskFrame{{ $task.ID }}" src="{{ path " /task/" }}{{ $task.ID }}?lang=kz"
+                                class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Footer - Kazakh -->
+                        <div class="bg-gray-50 p-2 border-t border-gray-200">
+                            <a href="{{ path " /task/" }}{{ $task.ID }}" target="_blank"
+                                class="text-blue-600 hover:text-blue-800 font-medium flex items-center justify-center gap-1 text-sm">
+                                <span>Жаңа терезеде ашу</span>
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
                         </div>
                     </div>
-                </a>
+
+                    <!-- Russian Version -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-purple-200">
+                        <!-- Task Header - Russian -->
+                        <div class="bg-gradient-to-r from-red-500 to-pink-600 p-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl">🇷🇺</span>
+                                    <h4 class="text-lg font-bold text-white">Русский</h4>
+                                </div>
+                                <button onclick="openTaskFullscreen('{{ $task.ID }}')"
+                                    class="flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg transition-all transform hover:scale-105">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4">
+                                        </path>
+                                    </svg>
+                                    <span class="hidden lg:inline text-sm">Полный экран</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Embedded Task - Russian -->
+                        <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
+                            <iframe id="taskFrame{{ $task.ID }}_ru" src="{{ path " /task/" }}{{ $task.ID }}?lang=ru"
+                                class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Footer - Russian -->
+                        <div class="bg-gray-50 p-2 border-t border-gray-200">
+                            <a href="{{ path " /task/" }}{{ $task.ID }}" target="_blank"
+                                class="text-red-600 hover:text-red-800 font-medium flex items-center justify-center gap-1 text-sm">
+                                <span>Открыть в новом окне</span>
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hint below both tasks -->
+                <div class="text-center text-sm text-gray-600 mt-2">
+                    <span>💡</span>
+                    <span>Орындап болғаннан кейін келесі тапсырмаға өтіңіз / После выполнения переходите к следующему
+                        заданию</span>
+                </div>
                 {{ end }}
             </div>
         </div>
+
+        <!-- Fullscreen JavaScript -->
+        <script>
+            function openTaskFullscreen(taskId) {
+                // Check if we're already in fullscreen mode
+                if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                    // Exit fullscreen
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                } else {
+                    // Enter fullscreen
+                    const iframe = document.getElementById('taskFrame' + taskId);
+                    if (iframe && iframe.requestFullscreen) {
+                        iframe.requestFullscreen();
+                    } else if (iframe && iframe.webkitRequestFullscreen) {
+                        iframe.webkitRequestFullscreen();
+                    } else if (iframe && iframe.msRequestFullscreen) {
+                        iframe.msRequestFullscreen();
+                    } else {
+                        // Fallback: open in new window if fullscreen is not supported
+                        window.open('{{ path "/task/" }}' + taskId, '_blank');
+                    }
+                }
+            }
+        </script>
         {{ end }}
+
+        <!-- Internal Navigation / Lesson Navigation -->
+        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-2xl mt-8 border-2 border-indigo-200">
+            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span role="img" aria-label="Навигация">🧭</span>
+                Навигация по урокам
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <a href="{{ path " /grade/" }}{{ .Lesson.Grade }}"
+                    class="flex items-center gap-2 bg-white hover:bg-purple-50 p-4 rounded-xl border-2 border-transparent hover:border-purple-400 transition-all">
+                    <span role="img" aria-label="Назад к классу">📚</span>
+                    <div>
+                        <div class="text-sm text-gray-500">Все уроки</div>
+                        <div class="font-bold text-gray-800">{{ .Lesson.Grade }}-класс</div>
+                    </div>
+                </a>
+                <a href="{{ path " /" }}"
+                    class="flex items-center gap-2 bg-white hover:bg-blue-50 p-4 rounded-xl border-2 border-transparent hover:border-blue-400 transition-all">
+                    <span role="img" aria-label="Главная страница">🏠</span>
+                    <div>
+                        <div class="text-sm text-gray-500">Вернуться</div>
+                        <div class="font-bold text-gray-800">Главная</div>
+                    </div>
+                </a>
+                <a href="{{ path " /about" }}"
+                    class="flex items-center gap-2 bg-white hover:bg-green-50 p-4 rounded-xl border-2 border-transparent hover:border-green-400 transition-all">
+                    <span role="img" aria-label="О проекте">💎</span>
+                    <div>
+                        <div class="text-sm text-gray-500">О проекте</div>
+                        <div class="font-bold text-gray-800">VisualMath</div>
+                    </div>
+                </a>
+            </div>
+            <div class="mt-4 text-center text-sm text-gray-600">
+                💡 Совет: добавьте сайт в закладки для быстрого доступа
+            </div>
+        </div>
+
 
         <!-- Social Sharing Section / Әлеуметтік бөлісу бөлімі -->
         <div class="mb-8">
