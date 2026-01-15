@@ -637,7 +637,8 @@
                         </div>
 
                         
-                        <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
+                        <div id="fsContainer128" class="relative bg-gray-50 group"
+                            style="padding-bottom: 75%; height: 0;">
                             <iframe id="taskFrame128" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&#34;kk&#34;&gt;
 &lt;head&gt;
@@ -1029,6 +1030,16 @@
 &lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
+                            
+                            <button id="exitBtn128" onclick="closeTaskFullscreen()"
+                                class="hidden absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-700 transition-colors z-50 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                                <span>Шығу</span>
+                            </button>
                         </div>
 
                         
@@ -1067,7 +1078,8 @@
                         </div>
 
                         
-                        <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
+                        <div id="fsContainer128_ru" class="relative bg-gray-50 group"
+                            style="padding-bottom: 75%; height: 0;">
                             <iframe id="taskFrame128_ru" srcdoc="&lt;!DOCTYPE html&gt;
 &lt;html lang=&#34;ru&#34;&gt;
 &lt;head&gt;
@@ -1447,6 +1459,16 @@
 &lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
+                            
+                            <button id="exitBtn128_ru" onclick="closeTaskFullscreen()"
+                                class="hidden absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-700 transition-colors z-50 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                                <span>Закрыть</span>
+                            </button>
                         </div>
 
                         
@@ -1479,30 +1501,57 @@
             function openTaskFullscreen(taskId, lang) {
                 
                 if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-                    
-                    if (document.exitFullscreen) {
-                        document.exitFullscreen();
-                    } else if (document.webkitExitFullscreen) {
-                        document.webkitExitFullscreen();
-                    } else if (document.msExitFullscreen) {
-                        document.msExitFullscreen();
-                    }
+                    closeTaskFullscreen();
                 } else {
                     
-                    const iframeId = lang === 'ru' ? 'taskFrame' + taskId + '_ru' : 'taskFrame' + taskId;
-                    const iframe = document.getElementById(iframeId);
+                    const containerId = lang === 'ru' ? 'fsContainer' + taskId + '_ru' : 'fsContainer' + taskId;
+                    const exitBtnId = lang === 'ru' ? 'exitBtn' + taskId + '_ru' : 'exitBtn' + taskId;
 
-                    if (iframe && iframe.requestFullscreen) {
-                        iframe.requestFullscreen();
-                    } else if (iframe && iframe.webkitRequestFullscreen) {
-                        iframe.webkitRequestFullscreen();
-                    } else if (iframe && iframe.msRequestFullscreen) {
-                        iframe.msRequestFullscreen();
+                    const container = document.getElementById(containerId);
+                    const exitBtn = document.getElementById(exitBtnId);
+
+                    if (container) {
+                        if (container.requestFullscreen) {
+                            container.requestFullscreen();
+                        } else if (container.webkitRequestFullscreen) {
+                            container.webkitRequestFullscreen();
+                        } else if (container.msRequestFullscreen) {
+                            container.msRequestFullscreen();
+                        }
+
+                        
+                        if (exitBtn) {
+                            exitBtn.classList.remove('hidden');
+
+                            
+                            const onFullscreenChange = () => {
+                                if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                                    exitBtn.classList.add('hidden');
+                                    document.removeEventListener('fullscreenchange', onFullscreenChange);
+                                    document.removeEventListener('webkitfullscreenchange', onFullscreenChange);
+                                    document.removeEventListener('msfullscreenchange', onFullscreenChange);
+                                }
+                            };
+
+                            document.addEventListener('fullscreenchange', onFullscreenChange);
+                            document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+                            document.addEventListener('msfullscreenchange', onFullscreenChange);
+                        }
                     } else {
                         
                         const langParam = lang ? '?lang=' + lang : '';
                         window.open('\/task\/' + taskId + langParam, '_blank');
                     }
+                }
+            }
+
+            function closeTaskFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
                 }
             }
         </script>
