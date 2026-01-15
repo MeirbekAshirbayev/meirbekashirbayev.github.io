@@ -414,7 +414,492 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame147" src="/task/147?lang=kz"
+                            <iframe id="taskFrame147" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Сандар Тізбегі: Интерактивті Тапсырмалар&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;link href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&#34; rel=&#34;stylesheet&#34;&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap&#39;);
+        body {
+            font-family: &#39;Nunito&#39;, sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+        }
+        .card-enter {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .option-btn:hover {
+            transform: translateY(-2px);
+        }
+        .hint-anim {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen flex items-center justify-center p-4&#34;&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;w-full max-w-2xl bg-white rounded-3xl shadow-xl overflow-hidden relative min-h-[500px] flex flex-col&#34;&gt;
+        
+        &lt;!-- Header / Progress Bar --&gt;
+        &lt;div class=&#34;bg-indigo-600 p-6 text-white&#34; id=&#34;header-section&#34;&gt;
+            &lt;div class=&#34;flex justify-between items-center mb-4&#34;&gt;
+                &lt;h1 class=&#34;text-2xl font-bold flex items-center gap-2&#34;&gt;
+                    &lt;i class=&#34;fas fa-layer-group&#34;&gt;&lt;/i&gt; Сандар Тізбегі
+                &lt;/h1&gt;
+                &lt;span class=&#34;bg-indigo-500 px-3 py-1 rounded-full text-sm font-semibold&#34; id=&#34;level-badge&#34;&gt;А Деңгейі&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;w-full bg-indigo-800 rounded-full h-2.5&#34;&gt;
+                &lt;div id=&#34;progress-bar&#34; class=&#34;bg-yellow-400 h-2.5 rounded-full transition-all duration-500&#34; style=&#34;width: 0%&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;flex justify-between text-xs mt-2 opacity-80&#34;&gt;
+                &lt;span id=&#34;question-count&#34;&gt;1 / 15&lt;/span&gt;
+                &lt;span id=&#34;score-display&#34;&gt;Ұпай: 0&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Content Area --&gt;
+        &lt;div class=&#34;flex-1 p-8 flex flex-col justify-center items-center&#34; id=&#34;content-area&#34;&gt;
+            &lt;!-- Start Screen --&gt;
+            &lt;div id=&#34;start-screen&#34; class=&#34;text-center w-full&#34;&gt;
+                &lt;div class=&#34;mb-6 text-indigo-600 text-6xl&#34;&gt;
+                    &lt;i class=&#34;fas fa-brain&#34;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-4&#34;&gt;Біліміңді тексерейік!&lt;/h2&gt;
+                &lt;p class=&#34;text-gray-600 mb-8 text-lg&#34;&gt;Сандар тізбегі тақырыбы бойынша деңгейлік тапсырмалар.&lt;/p&gt;
+                &lt;button onclick=&#34;startGame()&#34; class=&#34;bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold text-xl hover:bg-indigo-700 transition shadow-lg transform hover:scale-105&#34;&gt;
+                    Бастау &lt;i class=&#34;fas fa-arrow-right ml-2&#34;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Question Screen (Hidden by default) --&gt;
+            &lt;div id=&#34;quiz-screen&#34; class=&#34;hidden w-full card-enter&#34;&gt;
+                &lt;div class=&#34;mb-2&#34;&gt;
+                    &lt;span class=&#34;text-indigo-600 font-bold text-sm uppercase tracking-wider mb-2 block&#34; id=&#34;q-category&#34;&gt;Санат&lt;/span&gt;
+                    &lt;h3 class=&#34;text-xl md:text-2xl font-bold text-gray-800 leading-snug&#34; id=&#34;q-text&#34;&gt;Сұрақ мәтіні осында&lt;/h3&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Hint Section --&gt;
+                &lt;div class=&#34;w-full mb-6 mt-2&#34;&gt;
+                    &lt;button id=&#34;hint-btn&#34; onclick=&#34;toggleHint()&#34; class=&#34;text-sm text-indigo-500 font-bold hover:text-indigo-700 focus:outline-none flex items-center gap-2 transition-colors&#34;&gt;
+                        &lt;i class=&#34;far fa-lightbulb&#34;&gt;&lt;/i&gt; Көмек керек пе?
+                    &lt;/button&gt;
+                    &lt;div id=&#34;hint-content&#34; class=&#34;hidden mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-gray-700 hint-anim&#34;&gt;
+                        &lt;span class=&#34;font-bold text-yellow-600&#34;&gt;💡 Нұсқау:&lt;/span&gt; &lt;span id=&#34;q-hint-text&#34;&gt;&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div id=&#34;options-container&#34; class=&#34;space-y-3 w-full mb-6&#34;&gt;
+                    &lt;!-- Options or Input will be injected here --&gt;
+                &lt;/div&gt;
+
+                &lt;div id=&#34;feedback-area&#34; class=&#34;hidden mb-4 p-4 rounded-lg w-full text-center font-bold&#34;&gt;&lt;/div&gt;
+
+                &lt;div class=&#34;flex justify-end w-full&#34;&gt;
+                    &lt;button id=&#34;submit-btn&#34; onclick=&#34;checkAnswer()&#34; class=&#34;bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-700 transition&#34;&gt;Тексеру&lt;/button&gt;
+                    &lt;button id=&#34;next-btn&#34; onclick=&#34;nextQuestion()&#34; class=&#34;hidden bg-green-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-green-600 transition flex items-center gap-2&#34;&gt;
+                        Келесі &lt;i class=&#34;fas fa-chevron-right&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Result Screen (Hidden by default) --&gt;
+            &lt;div id=&#34;result-screen&#34; class=&#34;hidden text-center w-full card-enter&#34;&gt;
+                &lt;div class=&#34;mb-6 text-yellow-400 text-6xl&#34; id=&#34;result-icon&#34;&gt;
+                    &lt;i class=&#34;fas fa-trophy&#34;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-2&#34;&gt;Нәтиже&lt;/h2&gt;
+                &lt;p class=&#34;text-gray-600 mb-6 text-xl&#34; id=&#34;final-message&#34;&gt;Жарайсың!&lt;/p&gt;
+                
+                &lt;div class=&#34;bg-gray-100 p-6 rounded-xl mb-8 max-w-sm mx-auto&#34;&gt;
+                    &lt;div class=&#34;flex justify-between items-center mb-2&#34;&gt;
+                        &lt;span class=&#34;text-gray-600&#34;&gt;Дұрыс жауаптар:&lt;/span&gt;
+                        &lt;span class=&#34;font-bold text-green-600 text-xl&#34; id=&#34;final-score&#34;&gt;0&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex justify-between items-center&#34;&gt;
+                        &lt;span class=&#34;text-gray-600&#34;&gt;Дәлдік:&lt;/span&gt;
+                        &lt;span class=&#34;font-bold text-indigo-600 text-xl&#34; id=&#34;final-percent&#34;&gt;0%&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;button onclick=&#34;restartGame()&#34; class=&#34;bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition&#34;&gt;
+                    &lt;i class=&#34;fas fa-redo mr-2&#34;&gt;&lt;/i&gt; Қайта тапсыру
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // Questions Data derived from the user&#39;s PDF content
+        const questions = [
+            // Level A
+            {
+                id: 1,
+                level: &#39;A&#39;,
+                category: &#39;Заңдылықты табу&#39;,
+                question: &#34;Тізбек: 4, 9, 14, 19, ... Келесі сан қандай?&#34;,
+                hint: &#34;Тізбек әр қадам сайын 5-ке өсіп отыр. 19 &#43; 5 = ?&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;23&#34;, &#34;24&#34;, &#34;25&#34;, &#34;29&#34;],
+                answer: &#34;24&#34;,
+                explanation: &#34;Әр санға 5 қосылып отыр (19 &#43; 5 = 24).&#34;
+            },
+            {
+                id: 2,
+                level: &#39;A&#39;,
+                category: &#39;Мүшелерді атау&#39;,
+                question: &#34;Тізбек: 10, 20, 30, 40, 50, 60. Бесінші мүшесі (a₅) нешеге тең?&#34;,
+                hint: &#34;Тізбектегі бесінші тұрған санды санаңыз.&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;40&#34;, &#34;50&#34;, &#34;60&#34;, &#34;30&#34;],
+                answer: &#34;50&#34;,
+                explanation: &#34;Тізбектің бесінші тұрған саны - 50.&#34;
+            },
+            {
+                id: 3,
+                level: &#39;A&#39;,
+                category: &#39;Жоқ санды тап&#39;,
+                question: &#34;Бос орынға қандай сан келеді? 100, 95, 90, ..., 80&#34;,
+                hint: &#34;Сандар 5-ке азайып (кеміп) жатыр. 90-нан 5-ті азайтыңыз.&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;85&#34;,
+                explanation: &#34;Сандар 5-ке кеміп отыр. 90 - 5 = 85.&#34;
+            },
+            {
+                id: 4,
+                level: &#39;A&#39;,
+                category: &#39;Формуламен жұмыс&#39;,
+                question: &#34;Формула: aₙ = n &#43; 5. Тізбектің 3-ші мүшесін (a₃) тап.&#34;,
+                hint: &#34;Формуладағы n-нің орнына 3 санын қойып есептеңіз: 3 &#43; 5 = ?&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;3&#34;, &#34;5&#34;, &#34;8&#34;, &#34;15&#34;],
+                answer: &#34;8&#34;,
+                explanation: &#34;a₃ = 3 &#43; 5 = 8.&#34;
+            },
+            {
+                id: 5,
+                level: &#39;A&#39;,
+                category: &#39;Тұрақты тізбек&#39;,
+                question: &#34;Тізбек: 7, 7, 7, 7... Оның 25-ші мүшесі нешеге тең?&#34;,
+                hint: &#34;Бұл тұрақты тізбек, мұнда барлық сандар бірдей болады.&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;25&#34;, &#34;7&#34;, &#34;175&#34;, &#34;0&#34;],
+                answer: &#34;7&#34;,
+                explanation: &#34;Тұрақты тізбекте барлық мүшелер бірдей.&#34;
+            },
+            // Level B
+            {
+                id: 6,
+                level: &#39;B&#39;,
+                category: &#39;Сиқырлы формула&#39;,
+                question: &#34;Формула: aₙ = 3n - 1. Тізбектің 10-шы мүшесін (a₁₀) есепте.&#34;,
+                hint: &#34;n орнына 10 қойыңыз. Алдымен көбейту (3*10), сосын азайту (-1) орындалады.&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;29&#34;,
+                explanation: &#34;a₁₀ = 3(10) - 1 = 30 - 1 = 29.&#34;
+            },
+            {
+                id: 7,
+                level: &#39;B&#39;,
+                category: &#39;Қатені тап&#39;,
+                question: &#34;Мына тізбектегі артық (қате) санды тап: 2, 4, 8, 14, 32, 64.&#34;,
+                hint: &#34;Әр сан алдыңғысынан екі есе үлкен болуы керек. Қай сан бұл ережені бұзып тұр?&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;8&#34;, &#34;14&#34;, &#34;32&#34;, &#34;64&#34;],
+                answer: &#34;14&#34;,
+                explanation: &#34;2, 4, 8, 16, 32... болуы керек еді. 14 қате.&#34;
+            },
+            {
+                id: 8,
+                level: &#39;B&#39;,
+                category: &#39;Кері есеп&#39;,
+                question: &#34;aₙ = 5n формуласы бойынша қай мүше 45-ке тең? (n-ді тап)&#34;,
+                hint: &#34;Қандай санды 5-ке көбейтсе 45 шығады?&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;9&#34;,
+                explanation: &#34;5n = 45, демек n = 9.&#34;
+            },
+            {
+                id: 9,
+                level: &#39;B&#39;,
+                category: &#39;Арифметикалық секіріс&#39;,
+                question: &#34;a₁ = 6, әр мүше алдыңғысынан 4-ке артық. 5-ші мүшесін тап.&#34;,
+                hint: &#34;Тізбекті жазып көріңіз: 6, 10, 14... келесі екеуін табыңыз.&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;22&#34;,
+                explanation: &#34;6, 10, 14, 18, 22.&#34;
+            },
+            {
+                id: 10,
+                level: &#39;B&#39;,
+                category: &#39;Сәйкестендіру&#39;,
+                question: &#34;aₙ = 2n формуласы қай тізбекке сәйкес келеді?&#34;,
+                hint: &#34;n=1 болғанда 2, n=2 болғанда 4 шығады. Бұл жұп сандар.&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;1, 3, 5...&#34;, &#34;2, 4, 6...&#34;, &#34;1, 4, 9...&#34;],
+                answer: &#34;2, 4, 6...&#34;,
+                explanation: &#34;n=1 болса 2, n=2 болса 4. Бұл жұп сандар.&#34;
+            },
+            // Level C
+            {
+                id: 11,
+                level: &#39;C&#39;,
+                category: &#39;Формуланы тап&#39;,
+                question: &#34;Тізбек: 3, 5, 7, 9... Жалпы мүше формуласы қандай?&#34;,
+                hint: &#34;n=1 болғанда жауабы 3 шығатын формуланы іздеңіз. (Мысалы, 2*1&#43;1=3)&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;aₙ = n &#43; 2&#34;, &#34;aₙ = 2n &#43; 1&#34;, &#34;aₙ = 3n&#34;],
+                answer: &#34;aₙ = 2n &#43; 1&#34;,
+                explanation: &#34;n=1: 2(1)&#43;1=3; n=2: 2(2)&#43;1=5.&#34;
+            },
+            {
+                id: 12,
+                level: &#39;C&#39;,
+                category: &#39;Фибоначчи заңдылығы&#39;,
+                question: &#34;1, 1, 2, 3, 5, 8, 13... Келесі сан қандай?&#34;,
+                hint: &#34;Әр сан алдыңғы екі санның қосындысына тең. Соңғы екі санды қосыңыз (8 &#43; 13).&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;21&#34;,
+                explanation: &#34;8 &#43; 13 = 21.&#34;
+            },
+            {
+                id: 13,
+                level: &#39;C&#39;,
+                category: &#39;Өмірдегі математика&#39;,
+                question: &#34;Арман 1-ші күні 5 рет тартылды, әр күн сайын 2-ге арттырды. 7-ші күні неше рет тартылады?&#34;,
+                hint: &#34;Бұл 6 рет қосу деген сөз. 5 &#43; 2 &#43; 2 &#43; 2 &#43; 2 &#43; 2 &#43; 2 = ?&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;17&#34;,
+                explanation: &#34;5 &#43; (6 күн × 2) = 5 &#43; 12 = 17.&#34;
+            },
+            {
+                id: 14,
+                level: &#39;C&#39;,
+                category: &#39;Логикалық жұмбақ&#39;,
+                question: &#34;1, 4, 27, 16, 125, 36, ... Келесі сан?&#34;,
+                hint: &#34;Тақ орындар: 1³, 3³, 5³... Жұп орындар: 2², 4², 6². Келесі кезек 7-ші орын (тақ), демек 7³.&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;343&#34;,
+                explanation: &#34;7-ші орын (тақ) -&gt; 7³ = 343.&#34;
+            },
+            {
+                id: 15,
+                level: &#39;C&#39;,
+                category: &#39;Шығармашылық&#39;,
+                question: &#34;Бұл бонус сұрақ! Өз тізбегіңді құрастырсаң, оның 5-ші мүшесін осында жаз (кез келген сан).&#34;,
+                hint: &#34;Ешқандай шектеу жоқ! Мысалы, 10-нан бастап 10-ға өсірсең: 10, 20, 30, 40, 50.&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;*&#34;, // Wildcard answer
+                explanation: &#34;Керемет! Өз тізбегіңді жасау - нағыз математиктің ісі.&#34;
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = [];
+
+        // DOM Elements
+        const startScreen = document.getElementById(&#39;start-screen&#39;);
+        const quizScreen = document.getElementById(&#39;quiz-screen&#39;);
+        const resultScreen = document.getElementById(&#39;result-screen&#39;);
+        const contentArea = document.getElementById(&#39;content-area&#39;);
+        
+        const qCategory = document.getElementById(&#39;q-category&#39;);
+        const qText = document.getElementById(&#39;q-text&#39;);
+        
+        // Hint elements
+        const hintBtn = document.getElementById(&#39;hint-btn&#39;);
+        const hintContent = document.getElementById(&#39;hint-content&#39;);
+        const qHintText = document.getElementById(&#39;q-hint-text&#39;);
+
+        const optionsContainer = document.getElementById(&#39;options-container&#39;);
+        const feedbackArea = document.getElementById(&#39;feedback-area&#39;);
+        const submitBtn = document.getElementById(&#39;submit-btn&#39;);
+        const nextBtn = document.getElementById(&#39;next-btn&#39;);
+        
+        const levelBadge = document.getElementById(&#39;level-badge&#39;);
+        const progressBar = document.getElementById(&#39;progress-bar&#39;);
+        const questionCount = document.getElementById(&#39;question-count&#39;);
+        const scoreDisplay = document.getElementById(&#39;score-display&#39;);
+
+        function startGame() {
+            startScreen.classList.add(&#39;hidden&#39;);
+            quizScreen.classList.remove(&#39;hidden&#39;);
+            currentQuestionIndex = 0;
+            score = 0;
+            updateUI();
+        }
+
+        function updateUI() {
+            const currentQ = questions[currentQuestionIndex];
+            
+            // Update Header
+            levelBadge.textContent = `${currentQ.level} Деңгейі`;
+            levelBadge.className = `px-3 py-1 rounded-full text-sm font-semibold text-white ${
+                currentQ.level === &#39;A&#39; ? &#39;bg-green-500&#39; : 
+                currentQ.level === &#39;B&#39; ? &#39;bg-yellow-500&#39; : &#39;bg-red-500&#39;
+            }`;
+            
+            questionCount.textContent = `${currentQuestionIndex &#43; 1} / ${questions.length}`;
+            scoreDisplay.textContent = `Ұпай: ${score}`;
+            const progress = ((currentQuestionIndex) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            // Reset Question Area
+            qCategory.textContent = currentQ.category;
+            qText.textContent = currentQ.question;
+            
+            // Reset Hints
+            hintBtn.classList.remove(&#39;hidden&#39;);
+            hintContent.classList.add(&#39;hidden&#39;);
+            qHintText.textContent = currentQ.hint;
+            
+            optionsContainer.innerHTML = &#39;&#39;;
+            feedbackArea.className = &#39;hidden mb-4 p-4 rounded-lg w-full text-center font-bold&#39;;
+            feedbackArea.innerHTML = &#39;&#39;;
+            
+            submitBtn.classList.remove(&#39;hidden&#39;);
+            nextBtn.classList.add(&#39;hidden&#39;);
+
+            // Render Options
+            if (currentQ.type === &#39;multiple&#39;) {
+                currentQ.options.forEach(opt =&gt; {
+                    const btn = document.createElement(&#39;button&#39;);
+                    btn.className = &#39;option-btn w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-indigo-500 hover:bg-indigo-50 transition font-semibold text-gray-700&#39;;
+                    btn.textContent = opt;
+                    btn.onclick = () =&gt; selectOption(btn);
+                    optionsContainer.appendChild(btn);
+                });
+            } else if (currentQ.type === &#39;input&#39;) {
+                const input = document.createElement(&#39;input&#39;);
+                input.type = &#39;number&#39;;
+                input.placeholder = &#39;Жауабыңызды жазыңыз...&#39;;
+                input.className = &#39;w-full p-4 rounded-xl border-2 border-gray-300 focus:border-indigo-500 focus:outline-none text-lg&#39;;
+                input.id = &#39;user-input&#39;;
+                optionsContainer.appendChild(input);
+            }
+        }
+
+        function toggleHint() {
+            hintBtn.classList.add(&#39;hidden&#39;);
+            hintContent.classList.remove(&#39;hidden&#39;);
+        }
+
+        function selectOption(btn) {
+            // Remove active class from all
+            const buttons = optionsContainer.querySelectorAll(&#39;button&#39;);
+            buttons.forEach(b =&gt; b.classList.remove(&#39;bg-indigo-600&#39;, &#39;text-white&#39;, &#39;border-indigo-600&#39;));
+            buttons.forEach(b =&gt; b.classList.add(&#39;text-gray-700&#39;, &#39;border-gray-200&#39;));
+
+            // Add to selected
+            btn.classList.remove(&#39;text-gray-700&#39;, &#39;border-gray-200&#39;, &#39;hover:bg-indigo-50&#39;);
+            btn.classList.add(&#39;bg-indigo-600&#39;, &#39;text-white&#39;, &#39;border-indigo-600&#39;, &#39;selected&#39;);
+        }
+
+        function checkAnswer() {
+            const currentQ = questions[currentQuestionIndex];
+            let userVal = &#39;&#39;;
+
+            if (currentQ.type === &#39;multiple&#39;) {
+                const selected = optionsContainer.querySelector(&#39;.selected&#39;);
+                if (!selected) return; // Do nothing if nothing selected
+                userVal = selected.textContent;
+            } else {
+                const input = document.getElementById(&#39;user-input&#39;);
+                if (!input.value) return;
+                userVal = input.value.trim();
+            }
+
+            // Logic check
+            let isCorrect = false;
+            if (currentQ.answer === &#39;*&#39;) {
+                isCorrect = true; // Bonus question always correct
+            } else {
+                isCorrect = userVal.toLowerCase() === currentQ.answer.toLowerCase();
+            }
+
+            // Show feedback
+            feedbackArea.classList.remove(&#39;hidden&#39;);
+            if (isCorrect) {
+                score&#43;&#43;;
+                feedbackArea.classList.add(&#39;bg-green-100&#39;, &#39;text-green-700&#39;);
+                feedbackArea.innerHTML = `&lt;i class=&#34;fas fa-check-circle&#34;&gt;&lt;/i&gt; Дұрыс! ${currentQ.explanation}`;
+                playSound(&#39;correct&#39;);
+            } else {
+                feedbackArea.classList.add(&#39;bg-red-100&#39;, &#39;text-red-700&#39;);
+                feedbackArea.innerHTML = `&lt;i class=&#34;fas fa-times-circle&#34;&gt;&lt;/i&gt; Қате. Дұрыс жауап: ${currentQ.answer}. &lt;br&gt;&lt;span class=&#34;text-sm font-normal&#34;&gt;${currentQ.explanation}&lt;/span&gt;`;
+                playSound(&#39;incorrect&#39;);
+            }
+
+            // Disable inputs
+            if (currentQ.type === &#39;multiple&#39;) {
+                const buttons = optionsContainer.querySelectorAll(&#39;button&#39;);
+                buttons.forEach(b =&gt; b.disabled = true);
+            } else {
+                document.getElementById(&#39;user-input&#39;).disabled = true;
+            }
+
+            scoreDisplay.textContent = `Ұпай: ${score}`;
+            submitBtn.classList.add(&#39;hidden&#39;);
+            nextBtn.classList.remove(&#39;hidden&#39;);
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex&#43;&#43;;
+            if (currentQuestionIndex &lt; questions.length) {
+                updateUI();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizScreen.classList.add(&#39;hidden&#39;);
+            resultScreen.classList.remove(&#39;hidden&#39;);
+            
+            const percentage = Math.round((score / questions.length) * 100);
+            document.getElementById(&#39;final-score&#39;).textContent = `${score} / ${questions.length}`;
+            document.getElementById(&#39;final-percent&#39;).textContent = `${percentage}%`;
+
+            const messageEl = document.getElementById(&#39;final-message&#39;);
+            const iconEl = document.getElementById(&#39;result-icon&#39;);
+
+            if (percentage &gt;= 90) {
+                messageEl.textContent = &#34;Керемет! Сіз сандар тізбегін толық меңгеріп алдыңыз!&#34;;
+                iconEl.className = &#34;mb-6 text-yellow-400 text-6xl animate-bounce&#34;;
+                iconEl.innerHTML = &#39;&lt;i class=&#34;fas fa-crown&#34;&gt;&lt;/i&gt;&#39;;
+            } else if (percentage &gt;= 70) {
+                messageEl.textContent = &#34;Жақсы нәтиже! Тақырыпты жақсы түсіндіңіз.&#34;;
+                iconEl.className = &#34;mb-6 text-blue-400 text-6xl&#34;;
+                iconEl.innerHTML = &#39;&lt;i class=&#34;fas fa-star&#34;&gt;&lt;/i&gt;&#39;;
+            } else {
+                messageEl.textContent = &#34;Көңіліңді түсірме! Тағы бір қайталап көрсең, бәрі шығады.&#34;;
+                iconEl.className = &#34;mb-6 text-gray-400 text-6xl&#34;;
+                iconEl.innerHTML = &#39;&lt;i class=&#34;fas fa-book-open&#34;&gt;&lt;/i&gt;&#39;;
+            }
+        }
+
+        function restartGame() {
+            resultScreen.classList.add(&#39;hidden&#39;);
+            startGame();
+        }
+
+        function playSound(type) {
+            // Placeholder for sound logic
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -456,7 +941,416 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame147_ru" src="/task/147?lang=ru"
+                            <iframe id="taskFrame147_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Числовые последовательности: Интерактив&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;link href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&#34; rel=&#34;stylesheet&#34;&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap&#39;);
+        body {
+            font-family: &#39;Nunito&#39;, sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+        }
+        .card-enter {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .option-btn:hover {
+            transform: translateY(-2px);
+        }
+        .hint-anim {
+            animation: fadeIn 0.3s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen flex items-center justify-center p-4&#34;&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;w-full max-w-2xl bg-white rounded-3xl shadow-xl overflow-hidden relative min-h-[500px] flex flex-col&#34;&gt;
+        
+        &lt;div class=&#34;bg-indigo-600 p-6 text-white&#34; id=&#34;header-section&#34;&gt;
+            &lt;div class=&#34;flex justify-between items-center mb-4&#34;&gt;
+                &lt;h1 class=&#34;text-2xl font-bold flex items-center gap-2&#34;&gt;
+                    &lt;i class=&#34;fas fa-layer-group&#34;&gt;&lt;/i&gt; Числовые последовательности
+                &lt;/h1&gt;
+                &lt;span class=&#34;bg-indigo-500 px-3 py-1 rounded-full text-sm font-semibold&#34; id=&#34;level-badge&#34;&gt;Уровень А&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;w-full bg-indigo-800 rounded-full h-2.5&#34;&gt;
+                &lt;div id=&#34;progress-bar&#34; class=&#34;bg-yellow-400 h-2.5 rounded-full transition-all duration-500&#34; style=&#34;width: 0%&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;flex justify-between text-xs mt-2 opacity-80&#34;&gt;
+                &lt;span id=&#34;question-count&#34;&gt;1 / 15&lt;/span&gt;
+                &lt;span id=&#34;score-display&#34;&gt;Баллы: 0&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;flex-1 p-8 flex flex-col justify-center items-center&#34; id=&#34;content-area&#34;&gt;
+            &lt;div id=&#34;start-screen&#34; class=&#34;text-center w-full&#34;&gt;
+                &lt;div class=&#34;mb-6 text-indigo-600 text-6xl&#34;&gt;
+                    &lt;i class=&#34;fas fa-brain&#34;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-4&#34;&gt;Проверь свои знания!&lt;/h2&gt;
+                &lt;p class=&#34;text-gray-600 mb-8 text-lg&#34;&gt;Уровневые задания по теме «Числовые последовательности».&lt;/p&gt;
+                &lt;button onclick=&#34;startGame()&#34; class=&#34;bg-indigo-600 text-white px-8 py-3 rounded-xl font-bold text-xl hover:bg-indigo-700 transition shadow-lg transform hover:scale-105&#34;&gt;
+                    Начать &lt;i class=&#34;fas fa-arrow-right ml-2&#34;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;quiz-screen&#34; class=&#34;hidden w-full card-enter&#34;&gt;
+                &lt;div class=&#34;mb-2&#34;&gt;
+                    &lt;span class=&#34;text-indigo-600 font-bold text-sm uppercase tracking-wider mb-2 block&#34; id=&#34;q-category&#34;&gt;Категория&lt;/span&gt;
+                    &lt;h3 class=&#34;text-xl md:text-2xl font-bold text-gray-800 leading-snug&#34; id=&#34;q-text&#34;&gt;Текст вопроса&lt;/h3&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&#34;w-full mb-6 mt-2&#34;&gt;
+                    &lt;button id=&#34;hint-btn&#34; onclick=&#34;toggleHint()&#34; class=&#34;text-sm text-indigo-500 font-bold hover:text-indigo-700 focus:outline-none flex items-center gap-2 transition-colors&#34;&gt;
+                        &lt;i class=&#34;far fa-lightbulb&#34;&gt;&lt;/i&gt; Нужна подсказка?
+                    &lt;/button&gt;
+                    &lt;div id=&#34;hint-content&#34; class=&#34;hidden mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-gray-700 hint-anim&#34;&gt;
+                        &lt;span class=&#34;font-bold text-yellow-600&#34;&gt;💡 Совет:&lt;/span&gt; &lt;span id=&#34;q-hint-text&#34;&gt;&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div id=&#34;options-container&#34; class=&#34;space-y-3 w-full mb-6&#34;&gt;
+                    &lt;/div&gt;
+
+                &lt;div id=&#34;feedback-area&#34; class=&#34;hidden mb-4 p-4 rounded-lg w-full text-center font-bold&#34;&gt;&lt;/div&gt;
+
+                &lt;div class=&#34;flex justify-end w-full&#34;&gt;
+                    &lt;button id=&#34;submit-btn&#34; onclick=&#34;checkAnswer()&#34; class=&#34;bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-700 transition&#34;&gt;Проверить&lt;/button&gt;
+                    &lt;button id=&#34;next-btn&#34; onclick=&#34;nextQuestion()&#34; class=&#34;hidden bg-green-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-green-600 transition flex items-center gap-2&#34;&gt;
+                        Далее &lt;i class=&#34;fas fa-chevron-right&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;result-screen&#34; class=&#34;hidden text-center w-full card-enter&#34;&gt;
+                &lt;div class=&#34;mb-6 text-yellow-400 text-6xl&#34; id=&#34;result-icon&#34;&gt;
+                    &lt;i class=&#34;fas fa-trophy&#34;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-2&#34;&gt;Результат&lt;/h2&gt;
+                &lt;p class=&#34;text-gray-600 mb-6 text-xl&#34; id=&#34;final-message&#34;&gt;Молодец!&lt;/p&gt;
+                
+                &lt;div class=&#34;bg-gray-100 p-6 rounded-xl mb-8 max-w-sm mx-auto&#34;&gt;
+                    &lt;div class=&#34;flex justify-between items-center mb-2&#34;&gt;
+                        &lt;span class=&#34;text-gray-600&#34;&gt;Верных ответов:&lt;/span&gt;
+                        &lt;span class=&#34;font-bold text-green-600 text-xl&#34; id=&#34;final-score&#34;&gt;0&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex justify-between items-center&#34;&gt;
+                        &lt;span class=&#34;text-gray-600&#34;&gt;Точность:&lt;/span&gt;
+                        &lt;span class=&#34;font-bold text-indigo-600 text-xl&#34; id=&#34;final-percent&#34;&gt;0%&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;button onclick=&#34;restartGame()&#34; class=&#34;bg-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-indigo-700 transition&#34;&gt;
+                    &lt;i class=&#34;fas fa-redo mr-2&#34;&gt;&lt;/i&gt; Пройти еще раз
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const questions = [
+            // Level A
+            {
+                id: 1,
+                level: &#39;A&#39;,
+                category: &#39;Поиск закономерности&#39;,
+                question: &#34;Последовательность: 4, 9, 14, 19, ... Какое число следующее?&#34;,
+                hint: &#34;Число увеличивается на 5 на каждом шагу. 19 &#43; 5 = ?&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;23&#34;, &#34;24&#34;, &#34;25&#34;, &#34;29&#34;],
+                answer: &#34;24&#34;,
+                explanation: &#34;Каждое следующее число на 5 больше предыдущего (19 &#43; 5 = 24).&#34;
+            },
+            {
+                id: 2,
+                level: &#39;A&#39;,
+                category: &#39;Члены последовательности&#39;,
+                question: &#34;Ряд: 10, 20, 30, 40, 50, 60. Чему равен пятый член (a₅)?&#34;,
+                hint: &#34;Посчитайте по порядку пятое число в ряду.&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;40&#34;, &#34;50&#34;, &#34;60&#34;, &#34;30&#34;],
+                answer: &#34;50&#34;,
+                explanation: &#34;Пятое число в данной последовательности — 50.&#34;
+            },
+            {
+                id: 3,
+                level: &#39;A&#39;,
+                category: &#39;Пропущенное число&#39;,
+                question: &#34;Какое число должно быть на месте пропуска? 100, 95, 90, ..., 80&#34;,
+                hint: &#34;Числа уменьшаются на 5. Вычтите 5 из 90.&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;85&#34;,
+                explanation: &#34;Последовательность убывает на 5. 90 - 5 = 85.&#34;
+            },
+            {
+                id: 4,
+                level: &#39;A&#39;,
+                category: &#39;Работа с формулой&#39;,
+                question: &#34;Формула: aₙ = n &#43; 5. Найдите 3-й член последовательности (a₃).&#34;,
+                hint: &#34;Подставьте 3 вместо n в формулу: 3 &#43; 5 = ?&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;3&#34;, &#34;5&#34;, &#34;8&#34;, &#34;15&#34;],
+                answer: &#34;8&#34;,
+                explanation: &#34;a₃ = 3 &#43; 5 = 8.&#34;
+            },
+            {
+                id: 5,
+                level: &#39;A&#39;,
+                category: &#39;Постоянная последовательность&#39;,
+                question: &#34;Ряд: 7, 7, 7, 7... Чему равен его 25-й член?&#34;,
+                hint: &#34;Это стационарная последовательность, где все числа одинаковы.&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;25&#34;, &#34;7&#34;, &#34;175&#34;, &#34;0&#34;],
+                answer: &#34;7&#34;,
+                explanation: &#34;В постоянной последовательности все члены равны между собой.&#34;
+            },
+            // Level B
+            {
+                id: 6,
+                level: &#39;B&#39;,
+                category: &#39;Магическая формула&#39;,
+                question: &#34;Формула: aₙ = 3n - 1. Вычислите 10-й член (a₁₀).&#34;,
+                hint: &#34;Подставьте 10 вместо n. Сначала умножение (3*10), затем вычитание.&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;29&#34;,
+                explanation: &#34;a₁₀ = 3(10) - 1 = 30 - 1 = 29.&#34;
+            },
+            {
+                id: 7,
+                level: &#39;B&#39;,
+                category: &#39;Найди ошибку&#39;,
+                question: &#34;Найдите лишнее (неверное) число: 2, 4, 8, 14, 32, 64.&#34;,
+                hint: &#34;Каждое число должно быть в два раза больше предыдущего. Какое число нарушает правило?&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;8&#34;, &#34;14&#34;, &#34;32&#34;, &#34;64&#34;],
+                answer: &#34;14&#34;,
+                explanation: &#34;Вместо 14 должно быть 16 (8 * 2 = 16).&#34;
+            },
+            {
+                id: 8,
+                level: &#39;B&#39;,
+                category: &#39;Обратная задача&#39;,
+                question: &#34;В формуле aₙ = 5n какой номер (n) имеет член, равный 45?&#34;,
+                hint: &#34;Какое число нужно умножить на 5, чтобы получить 45?&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;9&#34;,
+                explanation: &#34;5n = 45, следовательно n = 9.&#34;
+            },
+            {
+                id: 9,
+                level: &#39;B&#39;,
+                category: &#39;Арифметический шаг&#39;,
+                question: &#34;a₁ = 6, каждый член на 4 больше предыдущего. Найдите 5-й член.&#34;,
+                hint: &#34;Запишите ряд: 6, 10, 14... и найдите два следующих числа.&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;22&#34;,
+                explanation: &#34;Ряд выглядит так: 6, 10, 14, 18, 22.&#34;
+            },
+            {
+                id: 10,
+                level: &#39;B&#39;,
+                category: &#39;Соответствие&#39;,
+                question: &#34;Какой последовательности соответствует формула aₙ = 2n?&#34;,
+                hint: &#34;При n=1 получим 2, при n=2 — 4. Это ряд четных чисел.&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;1, 3, 5...&#34;, &#34;2, 4, 6...&#34;, &#34;1, 4, 9...&#34;],
+                answer: &#34;2, 4, 6...&#34;,
+                explanation: &#34;Подставляя n=1, 2, 3... получаем четные числа.&#34;
+            },
+            // Level C
+            {
+                id: 11,
+                level: &#39;C&#39;,
+                category: &#39;Найди формулу&#39;,
+                question: &#34;Ряд: 3, 5, 7, 9... Какова формула общего члена?&#34;,
+                hint: &#34;Ищите формулу, которая при n=1 дает 3. (Например, 2*1&#43;1=3)&#34;,
+                type: &#39;multiple&#39;,
+                options: [&#34;aₙ = n &#43; 2&#34;, &#34;aₙ = 2n &#43; 1&#34;, &#34;aₙ = 3n&#34;],
+                answer: &#34;aₙ = 2n &#43; 1&#34;,
+                explanation: &#34;n=1: 2(1)&#43;1=3; n=2: 2(2)&#43;1=5.&#34;
+            },
+            {
+                id: 12,
+                level: &#39;C&#39;,
+                category: &#39;Закономерность Фибоначчи&#39;,
+                question: &#34;1, 1, 2, 3, 5, 8, 13... Какое число следующее?&#34;,
+                hint: &#34;Каждое число равно сумме двух предыдущих. Сложите последние два: 8 &#43; 13.&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;21&#34;,
+                explanation: &#34;8 &#43; 13 = 21. Это числа Фибоначчи.&#34;
+            },
+            {
+                id: 13,
+                level: &#39;C&#39;,
+                category: &#39;Математика в жизни&#39;,
+                question: &#34;Арман в 1-й день подтянулся 5 раз и каждый день увеличивал результат на 2. Сколько раз он подтянется на 7-й день?&#34;,
+                hint: &#34;Это 5 плюс 6 прибавлений по 2: 5 &#43; 6 * 2 = ?&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;17&#34;,
+                explanation: &#34;5 &#43; (6 дней × 2) = 5 &#43; 12 = 17.&#34;
+            },
+            {
+                id: 14,
+                level: &#39;C&#39;,
+                category: &#39;Логическая головоломка&#39;,
+                question: &#34;1, 4, 27, 16, 125, 36, ... Какое следующее число?&#34;,
+                hint: &#34;На нечетных местах стоят кубы: 1³, 3³, 5³... На четных — квадраты: 2², 4², 6². Какое число будет на 7-м месте?&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;343&#34;,
+                explanation: &#34;7-е место (нечетное) -&gt; 7³ = 343.&#34;
+            },
+            {
+                id: 15,
+                level: &#39;C&#39;,
+                category: &#39;Творческое задание&#39;,
+                question: &#34;Это бонусный вопрос! Придумай свою последовательность и напиши здесь число, которое будет её 5-м членом.&#34;,
+                hint: &#34;Ограничений нет! Например, если ряд идет через 10: 10, 20, 30, 40, 50.&#34;,
+                type: &#39;input&#39;,
+                answer: &#34;*&#34;,
+                explanation: &#34;Отлично! Создавать свои закономерности — это работа настоящего математика.&#34;
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        const startScreen = document.getElementById(&#39;start-screen&#39;);
+        const quizScreen = document.getElementById(&#39;quiz-screen&#39;);
+        const resultScreen = document.getElementById(&#39;result-screen&#39;);
+        const qCategory = document.getElementById(&#39;q-category&#39;);
+        const qText = document.getElementById(&#39;q-text&#39;);
+        const hintBtn = document.getElementById(&#39;hint-btn&#39;);
+        const hintContent = document.getElementById(&#39;hint-content&#39;);
+        const qHintText = document.getElementById(&#39;q-hint-text&#39;);
+        const optionsContainer = document.getElementById(&#39;options-container&#39;);
+        const feedbackArea = document.getElementById(&#39;feedback-area&#39;);
+        const submitBtn = document.getElementById(&#39;submit-btn&#39;);
+        const nextBtn = document.getElementById(&#39;next-btn&#39;);
+        const levelBadge = document.getElementById(&#39;level-badge&#39;);
+        const progressBar = document.getElementById(&#39;progress-bar&#39;);
+        const questionCount = document.getElementById(&#39;question-count&#39;);
+        const scoreDisplay = document.getElementById(&#39;score-display&#39;);
+
+        function startGame() {
+            startScreen.classList.add(&#39;hidden&#39;);
+            quizScreen.classList.remove(&#39;hidden&#39;);
+            currentQuestionIndex = 0;
+            score = 0;
+            updateUI();
+        }
+
+        function updateUI() {
+            const currentQ = questions[currentQuestionIndex];
+            levelBadge.textContent = `Уровень ${currentQ.level}`;
+            levelBadge.className = `px-3 py-1 rounded-full text-sm font-semibold text-white ${
+                currentQ.level === &#39;A&#39; ? &#39;bg-green-500&#39; : 
+                currentQ.level === &#39;B&#39; ? &#39;bg-yellow-500&#39; : &#39;bg-red-500&#39;
+            }`;
+            questionCount.textContent = `${currentQuestionIndex &#43; 1} / ${questions.length}`;
+            scoreDisplay.textContent = `Баллы: ${score}`;
+            progressBar.style.width = `${((currentQuestionIndex) / questions.length) * 100}%`;
+            qCategory.textContent = currentQ.category;
+            qText.textContent = currentQ.question;
+            hintBtn.classList.remove(&#39;hidden&#39;);
+            hintContent.classList.add(&#39;hidden&#39;);
+            qHintText.textContent = currentQ.hint;
+            optionsContainer.innerHTML = &#39;&#39;;
+            feedbackArea.className = &#39;hidden mb-4 p-4 rounded-lg w-full text-center font-bold&#39;;
+            submitBtn.classList.remove(&#39;hidden&#39;);
+            nextBtn.classList.add(&#39;hidden&#39;);
+
+            if (currentQ.type === &#39;multiple&#39;) {
+                currentQ.options.forEach(opt =&gt; {
+                    const btn = document.createElement(&#39;button&#39;);
+                    btn.className = &#39;option-btn w-full text-left p-4 rounded-xl border-2 border-gray-200 hover:border-indigo-500 hover:bg-indigo-50 transition font-semibold text-gray-700&#39;;
+                    btn.textContent = opt;
+                    btn.onclick = () =&gt; selectOption(btn);
+                    optionsContainer.appendChild(btn);
+                });
+            } else {
+                const input = document.createElement(&#39;input&#39;);
+                input.type = &#39;number&#39;;
+                input.placeholder = &#39;Введите ответ...&#39;;
+                input.className = &#39;w-full p-4 rounded-xl border-2 border-gray-300 focus:border-indigo-500 focus:outline-none text-lg&#39;;
+                input.id = &#39;user-input&#39;;
+                optionsContainer.appendChild(input);
+            }
+        }
+
+        function toggleHint() {
+            hintBtn.classList.add(&#39;hidden&#39;);
+            hintContent.classList.remove(&#39;hidden&#39;);
+        }
+
+        function selectOption(btn) {
+            optionsContainer.querySelectorAll(&#39;button&#39;).forEach(b =&gt; b.classList.remove(&#39;bg-indigo-600&#39;, &#39;text-white&#39;, &#39;border-indigo-600&#39;, &#39;selected&#39;));
+            btn.classList.add(&#39;bg-indigo-600&#39;, &#39;text-white&#39;, &#39;border-indigo-600&#39;, &#39;selected&#39;);
+        }
+
+        function checkAnswer() {
+            const currentQ = questions[currentQuestionIndex];
+            let userVal = &#39;&#39;;
+            if (currentQ.type === &#39;multiple&#39;) {
+                const selected = optionsContainer.querySelector(&#39;.selected&#39;);
+                if (!selected) return;
+                userVal = selected.textContent;
+            } else {
+                const input = document.getElementById(&#39;user-input&#39;);
+                if (!input.value) return;
+                userVal = input.value.trim();
+            }
+
+            let isCorrect = currentQ.answer === &#39;*&#39; || userVal === currentQ.answer;
+            feedbackArea.classList.remove(&#39;hidden&#39;);
+            if (isCorrect) {
+                score&#43;&#43;;
+                feedbackArea.classList.add(&#39;bg-green-100&#39;, &#39;text-green-700&#39;);
+                feedbackArea.innerHTML = `&lt;i class=&#34;fas fa-check-circle&#34;&gt;&lt;/i&gt; Верно! ${currentQ.explanation}`;
+            } else {
+                feedbackArea.classList.add(&#39;bg-red-100&#39;, &#39;text-red-700&#39;);
+                feedbackArea.innerHTML = `&lt;i class=&#34;fas fa-times-circle&#34;&gt;&lt;/i&gt; Неверно. Правильный ответ: ${currentQ.answer}. &lt;br&gt;&lt;span class=&#34;text-sm font-normal&#34;&gt;${currentQ.explanation}&lt;/span&gt;`;
+            }
+            submitBtn.classList.add(&#39;hidden&#39;);
+            nextBtn.classList.remove(&#39;hidden&#39;);
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex&#43;&#43;;
+            if (currentQuestionIndex &lt; questions.length) updateUI();
+            else showResults();
+        }
+
+        function showResults() {
+            quizScreen.classList.add(&#39;hidden&#39;);
+            resultScreen.classList.remove(&#39;hidden&#39;);
+            const pct = Math.round((score / questions.length) * 100);
+            document.getElementById(&#39;final-score&#39;).textContent = `${score} / ${questions.length}`;
+            document.getElementById(&#39;final-percent&#39;).textContent = `${pct}%`;
+            const message = document.getElementById(&#39;final-message&#39;);
+            if (pct &gt;= 90) message.textContent = &#34;Превосходно! Ты мастер последовательностей!&#34;;
+            else if (pct &gt;= 70) message.textContent = &#34;Хороший результат! Ты хорошо понял тему.&#34;;
+            else message.textContent = &#34;Неплохо, но стоит повторить еще раз!&#34;;
+        }
+
+        function restartGame() {
+            resultScreen.classList.add(&#39;hidden&#39;);
+            startGame();
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

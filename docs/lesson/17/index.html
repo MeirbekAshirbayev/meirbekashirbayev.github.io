@@ -417,7 +417,337 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame150" src="/task/150?lang=kz"
+                            <iframe id="taskFrame150" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Сандар сыры: Бөлінгіштіктің сиқырлы әлемі&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Comic Sans MS&#39;, &#39;Verdana&#39;, sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 700px; /* Контейнер сәл кеңейтілді */
+            padding: 30px;
+            text-align: center;
+            border: 4px solid #4A90E2;
+        }
+        h1 {
+            color: #4A90E2;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            height: 20px; /* Прогресс бар сәл қалыңдады */
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #7ED321;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .question-box {
+            background-color: #f0f8ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            font-size: 1.5em; /* Сұрақ шрифті үлкейді */
+            color: #333;
+            line-height: 1.4;
+        }
+        .math-expr {
+            font-weight: bold;
+            font-size: 1.3em; /* Формулалар үлкейді */
+            color: #D0021B;
+            display: block;
+            margin: 15px 0;
+        }
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+        .btn {
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            padding: 20px; /* Батырма іші кеңейді */
+            border-radius: 15px;
+            font-size: 1.6em; /* ЖАУАП ӘРІПТЕРІ ҮЛКЕЙТІЛДІ */
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+            font-family: inherit;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn:hover {
+            background-color: #357ABD;
+            transform: translateY(-2px);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .feedback {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.3em; /* Түсіндірме мәтіні үлкейді */
+            display: none;
+        }
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+        .feedback.wrong {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+        .next-btn {
+            background-color: #F5A623;
+            margin-top: 25px;
+            display: none;
+            width: 100%; /* Батырманы толық еніне создық */
+            font-size: 1.8em; /* &#34;Келесі&#34; сөзі өте үлкен болды */
+            animation: pulse 1.5s infinite;
+        }
+        .next-btn:hover {
+            background-color: #D48806;
+            animation: none;
+        }
+        .result-screen {
+            display: none;
+        }
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            background-color: #4A90E2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4em;
+            margin: 30px auto;
+            border: 6px solid #F5A623;
+        }
+        .restart-btn {
+            background-color: #7ED321;
+            font-size: 1.5em;
+        }
+        .restart-btn:hover {
+            background-color: #5C9E14;
+        }
+        
+        /* Animation */
+        @keyframes pop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(245, 166, 35, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0); }
+        }
+        .anim {
+            animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&#34;container&#34;&gt;
+    &lt;div id=&#34;game-screen&#34;&gt;
+        &lt;h1&gt;🔍 Сандар Ізшісі&lt;/h1&gt;
+        &lt;div class=&#34;progress-bar&#34;&gt;
+            &lt;div class=&#34;progress&#34; id=&#34;progress&#34;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div id=&#34;question-container&#34; class=&#34;anim&#34;&gt;
+            &lt;!-- Question will appear here --&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;feedback&#34; class=&#34;feedback&#34;&gt;&lt;/div&gt;
+        &lt;!-- Келесі сұрақ батырмасы --&gt;
+        &lt;button id=&#34;next-btn&#34; class=&#34;btn next-btn&#34; onclick=&#34;nextQuestion()&#34;&gt;Келесі сұрақ ➡️&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&#34;result-screen&#34; class=&#34;result-screen anim&#34;&gt;
+        &lt;h1&gt;Ойын Аяқталды! 🎉&lt;/h1&gt;
+        &lt;p style=&#34;font-size: 1.5em;&#34;&gt;Сіздің нәтижеңіз:&lt;/p&gt;
+        &lt;div class=&#34;score-circle&#34; id=&#34;final-score&#34;&gt;0/10&lt;/div&gt;
+        &lt;p id=&#34;result-message&#34; style=&#34;font-size: 1.4em; margin-bottom: 30px;&#34;&gt;&lt;/p&gt;
+        &lt;button class=&#34;btn restart-btn&#34; onclick=&#34;restartGame()&#34;&gt;Қайта ойнау 🔄&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    const questions = [
+        {
+            text: &#34;Көбейтіндінің бөлінгіштігін тексер: &lt;span class=&#39;math-expr&#39;&gt;25 \u22C5 17&lt;/span&gt; көбейтіндісі 5-ке бөліне ме?&#34;,
+            options: [&#34;Иә, бөлінеді&#34;, &#34;Жоқ, бөлінбейді&#34;, &#34;Білмеймін&#34;],
+            correct: 0,
+            explanation: &#34;✅ Дұрыс! 25 саны 5-ке бөлінетіндіктен (25 : 5 = 5), бүкіл көбейтінді де 5-ке бөлінеді.&#34;
+        },
+        {
+            text: &#34;Қосындының бөлінгіштігі: &lt;span class=&#39;math-expr&#39;&gt;12 &#43; 18&lt;/span&gt; қосындысы 6-ға бөліне ме?&#34;,
+            options: [&#34;Иә, бөлінеді&#34;, &#34;Жоқ, бөлінбейді&#34;],
+            correct: 0,
+            explanation: &#34;✅ Керемет! 12 де 6-ға бөлінеді, 18 де 6-ға бөлінеді. Демек, қосынды да бөлінеді.&#34;
+        },
+        {
+            text: &#34;Қателікті тап! &lt;span class=&#39;math-expr&#39;&gt;20 &#43; 4&lt;/span&gt; қосындысы 5-ке бөліне ме?&#34;,
+            options: [&#34;Иә&#34;, &#34;Жоқ&#34;],
+            correct: 1,
+            explanation: &#34;⛔️ Дұрыс жауап: Жоқ. 20 саны 5-ке бөлінеді, бірақ 4 саны 5-ке бөлінбейді. Екеуі де бөлінуі керек еді.&#34;
+        },
+        {
+            text: &#34;Айырманың қасиеті: &lt;span class=&#39;math-expr&#39;&gt;88 - 33&lt;/span&gt; айырмасы 11-ге бөліне ме?&#34;,
+            options: [&#34;Иә&#34;, &#34;Жоқ&#34;],
+            correct: 0,
+            explanation: &#34;✅ Дұрыс! 88 де, 33 те 11-ге бөлінеді. Сондықтан айырма да бөлінеді.&#34;
+        },
+        {
+            text: &#34;Сиқырлы қорап: Бір қорапта 100 кәмпит бар (5-ке бөлінеді). Осындай &lt;span class=&#39;math-expr&#39;&gt;7 қораптағы&lt;/span&gt; кәмпиттер саны 5-ке бөліне ме?&#34;,
+            options: [&#34;Әрине, бөлінеді&#34;, &#34;Жоқ&#34;, &#34;Санап көру керек&#34;],
+            correct: 0,
+            explanation: &#34;✅ Дұрыс! Бір қорап бөлінсе, 7 қорап та бөлінеді (Көбейтінді қасиеті).&#34;
+        },
+        {
+            text: &#34;Логикалық сұрақ: Сыныпта 24 ұл және 13 қыз бар. Оларды 4 топқа тең бөлуге бола ма?&#34;,
+            options: [&#34;Болады&#34;, &#34;Болмайды&#34;],
+            correct: 1,
+            explanation: &#34;⛔️ Болмайды. 24 (ұл) 4-ке бөлінеді, бірақ 13 (қыз) 4-ке бөлінбейді. Сондықтан жалпы қосынды бөлінбейді.&#34;
+        },
+        {
+            text: &#34;&lt;span class=&#39;math-expr&#39;&gt;x&lt;/span&gt;-ті тап! Егер &lt;span class=&#39;math-expr&#39;&gt;15 &#43; x&lt;/span&gt; қосындысы 5-ке бөлінсе, &lt;span class=&#39;math-expr&#39;&gt;x&lt;/span&gt; қандай сан болуы мүмкін?&#34;,
+            options: [&#34;7&#34;, &#34;10&#34;, &#34;4&#34;, &#34;12&#34;],
+            correct: 1,
+            explanation: &#34;✅ Дұрыс! 15 саны 5-ке бөлінеді. Қосынды бөлінуі үшін &lt;span class=&#39;math-expr&#39;&gt;x&lt;/span&gt; те 5-ке бөлінетін сан (10) болуы керек.&#34;
+        },
+        {
+            text: &#34;Көбейтінді және әріптер: &lt;span class=&#39;math-expr&#39;&gt;19 \u22C5 a&lt;/span&gt; өрнегі 19-ға бөліне ме?&#34;,
+            options: [&#34;Иә, әрқашан бөлінеді&#34;, &#34;Тек a=1 болса&#34;, &#34;Жоқ&#34;],
+            correct: 0,
+            explanation: &#34;✅ Дұрыс! Көбейткіштердің біреуі (19) 19-ға бөлініп тұр, демек &lt;span class=&#39;math-expr&#39;&gt;a&lt;/span&gt; қандай сан болса да, нәтиже бөлінеді.&#34;
+        },
+        {
+            text: &#34;Тұзақ сұрақ! 3 саны 5-ке бөлінбейді. 7 саны да 5-ке бөлінбейді. Ал &lt;span class=&#39;math-expr&#39;&gt;3 &#43; 7&lt;/span&gt; қосындысы 5-ке бөліне ме?&#34;,
+            options: [&#34;Бөлінбейді&#34;, &#34;Бөлінеді&#34;],
+            correct: 1,
+            explanation: &#34;😲 Күтпеген жағдай! Ереже бойынша кепілдік жоқ, БІРАҚ есептеп көрсек: 3&#43;7=10. Ал 10 саны 5-ке бөлінеді! Кейде екі &#39;тентек&#39; сан қосылып, &#39;тәртіпті&#39; сан шығуы мүмкін.&#34;
+        },
+        {
+            text: &#34;Қорытынды тест: Қай өрнек 9-ға бөлінбейді?&#34;,
+            options: [&#34;18 &#43; 27&#34;, &#34;9 \u22C5 100&#34;, &#34;36 - 9&#34;, &#34;10 &#43; 18&#34;],
+            correct: 3,
+            explanation: &#34;✅ Дұрыс! 18 тоғызға бөлінеді, бірақ 10 тоғызға бөлінбейді. Сондықтан 10&#43;18 тоғызға бөлінбейді.&#34;
+        }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function loadQuestion() {
+        const q = questions[currentQuestion];
+        const container = document.getElementById(&#34;question-container&#34;);
+        
+        let html = `&lt;div class=&#34;question-box&#34;&gt;${q.text}&lt;/div&gt;&lt;div class=&#34;options&#34;&gt;`;
+        
+        q.options.forEach((opt, index) =&gt; {
+            html &#43;= `&lt;button class=&#34;btn&#34; onclick=&#34;checkAnswer(${index}, this)&#34;&gt;${opt}&lt;/button&gt;`;
+        });
+        
+        html &#43;= `&lt;/div&gt;`;
+        container.innerHTML = html;
+        
+        // Reset feedback
+        document.getElementById(&#34;feedback&#34;).style.display = &#34;none&#34;;
+        document.getElementById(&#34;feedback&#34;).className = &#34;feedback&#34;;
+        document.getElementById(&#34;next-btn&#34;).style.display = &#34;none&#34;;
+        
+        // Update progress
+        document.getElementById(&#34;progress&#34;).style.width = `${((currentQuestion) / questions.length) * 100}%`;
+    }
+
+    function checkAnswer(selectedIndex, btnElement) {
+        // Disable all buttons
+        const buttons = document.querySelectorAll(&#34;.options .btn&#34;);
+        buttons.forEach(btn =&gt; btn.disabled = true);
+
+        const q = questions[currentQuestion];
+        const feedback = document.getElementById(&#34;feedback&#34;);
+        
+        if (selectedIndex === q.correct) {
+            score&#43;&#43;;
+            btnElement.style.backgroundColor = &#34;#7ED321&#34;; // Green
+            feedback.innerHTML = q.explanation;
+            feedback.className = &#34;feedback correct&#34;;
+        } else {
+            btnElement.style.backgroundColor = &#34;#D0021B&#34;; // Red
+            feedback.innerHTML = q.explanation;
+            feedback.className = &#34;feedback wrong&#34;;
+            // Highlight correct answer
+            buttons[q.correct].style.backgroundColor = &#34;#7ED321&#34;;
+        }
+        
+        feedback.style.display = &#34;block&#34;;
+        document.getElementById(&#34;next-btn&#34;).style.display = &#34;inline-block&#34;;
+    }
+
+    function nextQuestion() {
+        currentQuestion&#43;&#43;;
+        if (currentQuestion &lt; questions.length) {
+            loadQuestion();
+        } else {
+            showResults();
+        }
+    }
+
+    function showResults() {
+        document.getElementById(&#34;game-screen&#34;).style.display = &#34;none&#34;;
+        document.getElementById(&#34;result-screen&#34;).style.display = &#34;block&#34;;
+        document.getElementById(&#34;final-score&#34;).innerText = `${score}/${questions.length}`;
+        
+        let msg = &#34;&#34;;
+        if (score === 10) msg = &#34;Керемет! Сіз нағыз математиксіз! 🏆&#34;;
+        else if (score &gt;= 7) msg = &#34;Жақсы нәтиже! Тақырыпты жақсы түсіндіңіз. 👍&#34;;
+        else msg = &#34;Тағы да қайталап көрейік! Сіздің қолыңыздан келеді! 💪&#34;;
+        
+        document.getElementById(&#34;result-message&#34;).innerText = msg;
+    }
+
+    function restartGame() {
+        currentQuestion = 0;
+        score = 0;
+        document.getElementById(&#34;result-screen&#34;).style.display = &#34;none&#34;;
+        document.getElementById(&#34;game-screen&#34;).style.display = &#34;block&#34;;
+        loadQuestion();
+    }
+
+    // Start game
+    loadQuestion();
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -459,7 +789,328 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame150_ru" src="/task/150?lang=ru"
+                            <iframe id="taskFrame150_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Тайны чисел: Волшебный мир делимости&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Comic Sans MS&#39;, &#39;Verdana&#39;, sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 700px;
+            padding: 30px;
+            text-align: center;
+            border: 4px solid #4A90E2;
+        }
+        h1 {
+            color: #4A90E2;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            height: 20px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background-color: #7ED321;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .question-box {
+            background-color: #f0f8ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            font-size: 1.5em;
+            color: #333;
+            line-height: 1.4;
+        }
+        .math-expr {
+            font-weight: bold;
+            font-size: 1.3em;
+            color: #D0021B;
+            display: block;
+            margin: 15px 0;
+        }
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+        .btn {
+            background-color: #4A90E2;
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.6em;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+            font-family: inherit;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .btn:hover {
+            background-color: #357ABD;
+            transform: translateY(-2px);
+        }
+        .btn:active {
+            transform: translateY(0);
+        }
+        .feedback {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 15px;
+            font-size: 1.3em;
+            display: none;
+        }
+        .feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 2px solid #c3e6cb;
+        }
+        .feedback.wrong {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+        }
+        .next-btn {
+            background-color: #F5A623;
+            margin-top: 25px;
+            display: none;
+            width: 100%;
+            font-size: 1.8em;
+            animation: pulse 1.5s infinite;
+        }
+        .next-btn:hover {
+            background-color: #D48806;
+            animation: none;
+        }
+        .result-screen {
+            display: none;
+        }
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            background-color: #4A90E2;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4em;
+            margin: 30px auto;
+            border: 6px solid #F5A623;
+        }
+        .restart-btn {
+            background-color: #7ED321;
+            font-size: 1.5em;
+        }
+        .restart-btn:hover {
+            background-color: #5C9E14;
+        }
+        
+        @keyframes pop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(245, 166, 35, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.7); }
+        }
+        .anim {
+            animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&#34;container&#34;&gt;
+    &lt;div id=&#34;game-screen&#34;&gt;
+        &lt;h1&gt;🔍 Искатель Чисел&lt;/h1&gt;
+        &lt;div class=&#34;progress-bar&#34;&gt;
+            &lt;div class=&#34;progress&#34; id=&#34;progress&#34;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div id=&#34;question-container&#34; class=&#34;anim&#34;&gt;
+            &lt;/div&gt;
+
+        &lt;div id=&#34;feedback&#34; class=&#34;feedback&#34;&gt;&lt;/div&gt;
+        &lt;button id=&#34;next-btn&#34; class=&#34;btn next-btn&#34; onclick=&#34;nextQuestion()&#34;&gt;Следующий вопрос ➡️&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&#34;result-screen&#34; class=&#34;result-screen anim&#34;&gt;
+        &lt;h1&gt;Игра Окончена! 🎉&lt;/h1&gt;
+        &lt;p style=&#34;font-size: 1.5em;&#34;&gt;Твой результат:&lt;/p&gt;
+        &lt;div class=&#34;score-circle&#34; id=&#34;final-score&#34;&gt;0/10&lt;/div&gt;
+        &lt;p id=&#34;result-message&#34; style=&#34;font-size: 1.4em; margin-bottom: 30px;&#34;&gt;&lt;/p&gt;
+        &lt;button class=&#34;btn restart-btn&#34; onclick=&#34;restartGame()&#34;&gt;Играть снова 🔄&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    const questions = [
+        {
+            text: &#34;Проверь делимость произведения: делится ли &lt;span class=&#39;math-expr&#39;&gt;25 \u22C5 17&lt;/span&gt; на 5?&#34;,
+            options: [&#34;Да, делится&#34;, &#34;Нет, не делится&#34;, &#34;Не знаю&#34;],
+            correct: 0,
+            explanation: &#34;✅ Правильно! Так как число 25 делится на 5 (25 : 5 = 5), то и все произведение делится на 5.&#34;
+        },
+        {
+            text: &#34;Делимость суммы: делится ли сумма &lt;span class=&#39;math-expr&#39;&gt;12 &#43; 18&lt;/span&gt; на 6?&#34;,
+            options: [&#34;Да, делится&#34;, &#34;Нет, не делится&#34;],
+            correct: 0,
+            explanation: &#34;✅ Отлично! И 12 делится на 6, и 18 делится на 6. Значит, сумма тоже делится.&#34;
+        },
+        {
+            text: &#34;Найди ошибку! Делится ли сумма &lt;span class=&#39;math-expr&#39;&gt;20 &#43; 4&lt;/span&gt; на 5?&#34;,
+            options: [&#34;Да&#34;, &#34;Нет&#34;],
+            correct: 1,
+            explanation: &#34;⛔️ Правильный ответ: Нет. Число 20 делится на 5, но 4 не делится на 5. Чтобы сумма делилась, оба слагаемых должны делиться.&#34;
+        },
+        {
+            text: &#34;Свойство разности: делится ли разность &lt;span class=&#39;math-expr&#39;&gt;88 - 33&lt;/span&gt; на 11?&#34;,
+            options: [&#34;Да&#34;, &#34;Нет&#34;],
+            correct: 0,
+            explanation: &#34;✅ Верно! И 88, и 33 делятся на 11. Поэтому разность тоже делится.&#34;
+        },
+        {
+            text: &#34;Волшебная коробка: в одной коробке 100 конфет (делится на 5). Делится ли общее число конфет в &lt;span class=&#39;math-expr&#39;&gt;7 таких коробках&lt;/span&gt; на 5?&#34;,
+            options: [&#34;Конечно, делится&#34;, &#34;Нет&#34;, &#34;Нужно посчитать&#34;],
+            correct: 0,
+            explanation: &#34;✅ Правильно! Если содержимое одной коробки делится на 5, то любое количество таких коробок тоже будет делиться (свойство произведения).&#34;
+        },
+        {
+            text: &#34;Логический вопрос: в классе 24 мальчика и 13 девочек. Можно ли их разделить на 4 равные группы?&#34;,
+            options: [&#34;Можно&#34;, &#34;Нельзя&#34;],
+            correct: 1,
+            explanation: &#34;⛔️ Нельзя. 24 (мальчика) делится на 4, но 13 (девочек) — нет. Поэтому общая сумма не разделится на 4 без остатка.&#34;
+        },
+        {
+            text: &#34;Найди &lt;span class=&#39;math-expr&#39;&gt;x&lt;/span&gt;! Если сумма &lt;span class=&#39;math-expr&#39;&gt;15 &#43; x&lt;/span&gt; делится на 5, каким может быть &lt;span class=&#39;math-expr&#39;&gt;x&lt;/span&gt;?&#34;,
+            options: [&#34;7&#34;, &#34;10&#34;, &#34;4&#34;, &#34;12&#34;],
+            correct: 1,
+            explanation: &#34;✅ Верно! 15 делится на 5. Чтобы вся сумма делилась, &lt;span class=&#39;math-expr&#39;&gt;x&lt;/span&gt; тоже должен делиться на 5 (например, 10).&#34;
+        },
+        {
+            text: &#34;Произведение и буквы: делится ли выражение &lt;span class=&#39;math-expr&#39;&gt;19 \u22C5 a&lt;/span&gt; на 19?&#34;,
+            options: [&#34;Да, всегда&#34;, &#34;Только если a=1&#34;, &#34;Нет&#34;],
+            correct: 0,
+            explanation: &#34;✅ Правильно! Один из множителей (19) делится на 19, значит, каким бы ни было число &lt;span class=&#39;math-expr&#39;&gt;a&lt;/span&gt;, результат разделится.&#34;
+        },
+        {
+            text: &#34;Вопрос-ловушка! 3 не делится на 5. 7 тоже не делится на 5. А делится ли сумма &lt;span class=&#39;math-expr&#39;&gt;3 &#43; 7&lt;/span&gt; на 5?&#34;,
+            options: [&#34;Не делится&#34;, &#34;Делится&#34;],
+            correct: 1,
+            explanation: &#34;😲 Сюрприз! Свойство не гарантирует делимость, НО если посчитать: 3&#43;7=10. А 10 делится на 5! Иногда два &#39;непослушных&#39; числа вместе дают отличный результат.&#34;
+        },
+        {
+            text: &#34;Итоговый тест: какое выражение НЕ делится на 9?&#34;,
+            options: [&#34;18 &#43; 27&#34;, &#34;9 \u22C5 100&#34;, &#34;36 - 9&#34;, &#34;10 &#43; 18&#34;],
+            correct: 3,
+            explanation: &#34;✅ Верно! 18 делится на 9, но 10 — нет. Поэтому сумма 10&#43;18 не разделится на 9.&#34;
+        }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    function loadQuestion() {
+        const q = questions[currentQuestion];
+        const container = document.getElementById(&#34;question-container&#34;);
+        
+        let html = `&lt;div class=&#34;question-box&#34;&gt;${q.text}&lt;/div&gt;&lt;div class=&#34;options&#34;&gt;`;
+        
+        q.options.forEach((opt, index) =&gt; {
+            html &#43;= `&lt;button class=&#34;btn&#34; onclick=&#34;checkAnswer(${index}, this)&#34;&gt;${opt}&lt;/button&gt;`;
+        });
+        
+        html &#43;= `&lt;/div&gt;`;
+        container.innerHTML = html;
+        
+        document.getElementById(&#34;feedback&#34;).style.display = &#34;none&#34;;
+        document.getElementById(&#34;feedback&#34;).className = &#34;feedback&#34;;
+        document.getElementById(&#34;next-btn&#34;).style.display = &#34;none&#34;;
+        
+        document.getElementById(&#34;progress&#34;).style.width = `${((currentQuestion) / questions.length) * 100}%`;
+    }
+
+    function checkAnswer(selectedIndex, btnElement) {
+        const buttons = document.querySelectorAll(&#34;.options .btn&#34;);
+        buttons.forEach(btn =&gt; btn.disabled = true);
+
+        const q = questions[currentQuestion];
+        const feedback = document.getElementById(&#34;feedback&#34;);
+        
+        if (selectedIndex === q.correct) {
+            score&#43;&#43;;
+            btnElement.style.backgroundColor = &#34;#7ED321&#34;; 
+            feedback.innerHTML = q.explanation;
+            feedback.className = &#34;feedback correct&#34;;
+        } else {
+            btnElement.style.backgroundColor = &#34;#D0021B&#34;; 
+            feedback.innerHTML = q.explanation;
+            feedback.className = &#34;feedback wrong&#34;;
+            buttons[q.correct].style.backgroundColor = &#34;#7ED321&#34;;
+        }
+        
+        feedback.style.display = &#34;block&#34;;
+        document.getElementById(&#34;next-btn&#34;).style.display = &#34;inline-block&#34;;
+    }
+
+    function nextQuestion() {
+        currentQuestion&#43;&#43;;
+        if (currentQuestion &lt; questions.length) {
+            loadQuestion();
+        } else {
+            showResults();
+        }
+    }
+
+    function showResults() {
+        document.getElementById(&#34;game-screen&#34;).style.display = &#34;none&#34;;
+        document.getElementById(&#34;result-screen&#34;).style.display = &#34;block&#34;;
+        document.getElementById(&#34;final-score&#34;).innerText = `${score}/${questions.length}`;
+        
+        let msg = &#34;&#34;;
+        if (score === 10) msg = &#34;Превосходно! Ты настоящий знаток математики! 🏆&#34;;
+        else if (score &gt;= 7) msg = &#34;Хороший результат! Ты отлично понял тему. 👍&#34;;
+        else msg = &#34;Давай попробуем еще раз! У тебя обязательно получится! 💪&#34;;
+        
+        document.getElementById(&#34;result-message&#34;).innerText = msg;
+    }
+
+    function restartGame() {
+        currentQuestion = 0;
+        score = 0;
+        document.getElementById(&#34;result-screen&#34;).style.display = &#34;none&#34;;
+        document.getElementById(&#34;game-screen&#34;).style.display = &#34;block&#34;;
+        loadQuestion();
+    }
+
+    loadQuestion();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

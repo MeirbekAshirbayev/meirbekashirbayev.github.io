@@ -418,7 +418,364 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame153" src="/task/153?lang=kz"
+                            <iframe id="taskFrame153" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Сандарды Бөлшектеу&lt;/title&gt;
+    &lt;!-- Tailwind CSS (Дизайн үшін) --&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        /* Анимациялар */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+            50% { transform: translateY(0); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-bounce-custom { animation: bounce 1s infinite; }
+        .animate-zoom-in { animation: zoomIn 0.3s ease-out forwards; }
+        
+        /* Хабарлама анимациясы */
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-br from-indigo-100 to-purple-200 p-4 font-sans select-none&#34;&gt;
+
+    &lt;div class=&#34;max-w-md mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-indigo-300 relative&#34;&gt;
+        
+        &lt;!-- Header --&gt;
+        &lt;div class=&#34;bg-indigo-600 p-4 text-white flex justify-between items-center&#34;&gt;
+            &lt;h1 class=&#34;text-xl font-bold flex items-center gap-2&#34;&gt;
+                &lt;span&gt;🔢&lt;/span&gt; Сандарды Бөлшектеу
+            &lt;/h1&gt;
+            &lt;div class=&#34;bg-indigo-800 px-3 py-1 rounded-full text-sm font-mono&#34;&gt;
+                Ұпай: &lt;span id=&#34;score-display&#34;&gt;0&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Confetti Container --&gt;
+        &lt;div id=&#34;confetti-container&#34; class=&#34;absolute inset-0 pointer-events-none hidden z-50 flex justify-center pt-20&#34;&gt;
+            &lt;div class=&#34;animate-bounce-custom text-5xl&#34;&gt;🎉 ⭐ ✨&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 1. Menu Screen --&gt;
+        &lt;div id=&#34;screen-menu&#34; class=&#34;p-8 flex flex-col items-center text-center space-y-6&#34;&gt;
+            &lt;div class=&#34;w-32 h-32 bg-indigo-100 rounded-full flex items-center justify-center mb-4&#34;&gt;
+                &lt;span class=&#34;text-6xl&#34;&gt;🧩&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;h2 class=&#34;text-2xl font-bold text-gray-800&#34;&gt;Математикалық Ойын&lt;/h2&gt;
+            &lt;div class=&#34;text-gray-600 space-y-2&#34;&gt;
+                &lt;p&gt;Құрама сандарды жай көбейткіштерге (2, 3, 5, 7...) жіктеп үйрен!&lt;/p&gt;
+                &lt;div class=&#34;bg-yellow-50 border border-yellow-200 p-3 rounded-lg text-sm text-yellow-800 font-semibold&#34;&gt;
+                    ⚠️ Ереже: Бөлгіштерді қатаң түрде өсу ретімен таңдау керек!&lt;br&gt;
+                    (Мысалы: 12 = 2 ∙ 2 ∙ 3)
+                &lt;/div&gt;
+                &lt;span class=&#34;text-sm text-indigo-500 font-semibold mt-2 block&#34;&gt;2.7 Тақырыбы бойынша&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;button onclick=&#34;startGame()&#34; class=&#34;w-full bg-green-500 hover:bg-green-600 text-white text-xl font-bold py-4 rounded-xl shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2&#34;&gt;
+                ▶️ Ойынды Бастау
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 2. Game Screen --&gt;
+        &lt;div id=&#34;screen-game&#34; class=&#34;p-6 hidden&#34;&gt;
+            &lt;!-- Level Info --&gt;
+            &lt;div class=&#34;flex justify-between text-gray-500 text-sm font-bold mb-4&#34;&gt;
+                &lt;span id=&#34;level-display&#34;&gt;Деңгей: 1/10&lt;/span&gt;
+                &lt;span&gt;Мақсат: &lt;span id=&#34;target-number-display&#34;&gt;0&lt;/span&gt; жіктеу&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Current Number --&gt;
+            &lt;div class=&#34;flex flex-col items-center mb-8&#34;&gt;
+                &lt;div class=&#34;text-sm text-gray-500 mb-1&#34;&gt;Қазіргі сан:&lt;/div&gt;
+                &lt;div id=&#34;current-number-display&#34; class=&#34;text-6xl font-black text-indigo-700 transition-all duration-300&#34;&gt;
+                    0
+                &lt;/div&gt;
+                &lt;div id=&#34;done-message&#34; class=&#34;text-green-500 font-bold text-xl mt-2 animate-bounce-custom hidden&#34;&gt;
+                    Дайын!
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Factors Area --&gt;
+            &lt;div class=&#34;bg-gray-50 rounded-xl p-4 mb-6 min-h-[80px] border-2 border-dashed border-gray-300&#34;&gt;
+                &lt;div class=&#34;text-xs text-gray-400 uppercase tracking-wider mb-2 text-center&#34;&gt;Жиналған жай көбейткіштер:&lt;/div&gt;
+                &lt;div id=&#34;factors-container&#34; class=&#34;flex flex-wrap gap-2 justify-center items-center&#34;&gt;
+                    &lt;span class=&#34;text-gray-300 italic&#34;&gt;Әзірше бос...&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Message Area --&gt;
+            &lt;div id=&#34;message-area&#34; class=&#34;text-center mb-4 min-h-[1.5rem] font-bold text-gray-600&#34;&gt;
+                Санды өсу ретімен жіктеңіз!
+            &lt;/div&gt;
+
+            &lt;!-- Prime Buttons Grid --&gt;
+            &lt;div id=&#34;controls-area&#34; class=&#34;grid grid-cols-4 gap-3&#34;&gt;
+                &lt;!-- Buttons will be injected here by JS --&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Level Complete Actions --&gt;
+            &lt;div id=&#34;level-won-actions&#34; class=&#34;hidden flex flex-col gap-3&#34;&gt;
+                &lt;div class=&#34;bg-green-100 border border-green-300 p-4 rounded-xl text-center mb-2&#34;&gt;
+                    &lt;h3 className=&#34;text-green-800 font-bold text-lg mb-1&#34;&gt;Керемет!&lt;/h3&gt;
+                    &lt;p id=&#34;result-equation&#34; class=&#34;text-green-700 font-mono&#34;&gt;&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;button onclick=&#34;nextLevel()&#34; class=&#34;w-full bg-indigo-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-indigo-700 transition flex justify-center items-center gap-2&#34;&gt;
+                    Келесі деңгей ⏩
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 3. Finished Screen --&gt;
+        &lt;div id=&#34;screen-finished&#34; class=&#34;p-8 hidden flex-col items-center text-center&#34;&gt;
+            &lt;div class=&#34;text-6xl mb-6&#34;&gt;🏆&lt;/div&gt;
+            &lt;h2 class=&#34;text-3xl font-bold text-indigo-900 mb-2&#34;&gt;Құттықтаймыз!&lt;/h2&gt;
+            &lt;p class=&#34;text-gray-600 mb-6&#34;&gt;Сіз барлық деңгейден сүрінбей өттіңіз!&lt;/p&gt;
+            
+            &lt;div class=&#34;bg-gray-100 p-6 rounded-xl w-full mb-6&#34;&gt;
+                &lt;div class=&#34;text-gray-500 text-sm uppercase&#34;&gt;Сіздің нәтижеңіз&lt;/div&gt;
+                &lt;div class=&#34;text-4xl font-black text-indigo-600&#34;&gt;&lt;span id=&#34;final-score&#34;&gt;0&lt;/span&gt; ұпай&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;button onclick=&#34;startGame()&#34; class=&#34;w-full bg-blue-500 text-white py-3 rounded-xl font-bold hover:bg-blue-600 transition flex justify-center items-center gap-2&#34;&gt;
+                🔄 Қайта бастау
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Footer --&gt;
+        &lt;div class=&#34;bg-gray-50 p-3 text-center text-xs text-gray-400 border-t&#34;&gt;
+            Математика 5-6 сынып | Жай көбейткіштерге жіктеу
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- ДЕРЕКТЕР ---
+        const PRIMES = [2, 3, 5, 7, 11, 13, 17, 19];
+        const LEVELS = [
+            { level: 1, number: 12 },
+            { level: 2, number: 18 },
+            { level: 3, number: 30 },
+            { level: 4, number: 45 },
+            { level: 5, number: 60 },
+            { level: 6, number: 75 },
+            { level: 7, number: 84 },
+            { level: 8, number: 126 },
+            { level: 9, number: 154 },
+            { level: 10, number: 2310 }
+        ];
+
+        // --- ЖАҒДАЙ (STATE) ---
+        let gameState = {
+            levelIndex: 0,
+            targetNumber: 0,
+            currentNumber: 0,
+            factors: [],
+            score: 0
+        };
+
+        // --- DOM ЭЛЕМЕНТТЕРІ ---
+        const screens = {
+            menu: document.getElementById(&#39;screen-menu&#39;),
+            game: document.getElementById(&#39;screen-game&#39;),
+            finished: document.getElementById(&#39;screen-finished&#39;)
+        };
+        const els = {
+            score: document.getElementById(&#39;score-display&#39;),
+            finalScore: document.getElementById(&#39;final-score&#39;),
+            level: document.getElementById(&#39;level-display&#39;),
+            targetNum: document.getElementById(&#39;target-number-display&#39;),
+            currentNum: document.getElementById(&#39;current-number-display&#39;),
+            factorsContainer: document.getElementById(&#39;factors-container&#39;),
+            message: document.getElementById(&#39;message-area&#39;),
+            controls: document.getElementById(&#39;controls-area&#39;),
+            wonActions: document.getElementById(&#39;level-won-actions&#39;),
+            doneMessage: document.getElementById(&#39;done-message&#39;),
+            confetti: document.getElementById(&#39;confetti-container&#39;),
+            resultEquation: document.getElementById(&#39;result-equation&#39;)
+        };
+
+        // --- ФУНКЦИЯЛАР ---
+
+        function showScreen(screenName) {
+            Object.values(screens).forEach(el =&gt; el.classList.add(&#39;hidden&#39;));
+            if(screenName === &#39;menu&#39;) screens.menu.classList.remove(&#39;hidden&#39;);
+            if(screenName === &#39;game&#39;) screens.game.classList.remove(&#39;hidden&#39;);
+            if(screenName === &#39;finished&#39;) screens.finished.classList.remove(&#39;hidden&#39;);
+        }
+
+        function startGame() {
+            gameState.levelIndex = 0;
+            gameState.score = 0;
+            updateScoreDisplay();
+            showScreen(&#39;game&#39;);
+            loadLevel(0);
+        }
+
+        function loadLevel(index) {
+            if (index &gt;= LEVELS.length) {
+                finishGame();
+                return;
+            }
+
+            // Reset Level State
+            const lvl = LEVELS[index];
+            gameState.levelIndex = index;
+            gameState.targetNumber = lvl.number;
+            gameState.currentNumber = lvl.number;
+            gameState.factors = [];
+
+            // UI Updates
+            els.level.textContent = `Деңгей: ${index &#43; 1}/${LEVELS.length}`;
+            els.targetNum.textContent = lvl.number;
+            els.currentNum.textContent = lvl.number;
+            els.currentNum.className = &#34;text-6xl font-black text-indigo-700 transition-all duration-300&#34;; // Reset colors
+            
+            els.doneMessage.classList.add(&#39;hidden&#39;);
+            els.wonActions.classList.add(&#39;hidden&#39;);
+            els.controls.classList.remove(&#39;hidden&#39;);
+            els.confetti.classList.add(&#39;hidden&#39;);
+
+            renderFactors();
+            showMessage(&#39;Санды өсу ретімен (кішісінен үлкеніне) жіктеңіз!&#39;, &#39;neutral&#39;);
+            renderButtons();
+        }
+
+        function renderButtons() {
+            els.controls.innerHTML = &#39;&#39;;
+            PRIMES.forEach(prime =&gt; {
+                const btn = document.createElement(&#39;button&#39;);
+                btn.textContent = prime;
+                btn.className = &#34;aspect-square rounded-xl bg-blue-100 text-blue-800 text-xl font-bold hover:bg-blue-200 active:bg-blue-300 transition shadow-sm border-b-4 border-blue-200 active:border-b-0 active:translate-y-1 flex items-center justify-center&#34;;
+                btn.onclick = () =&gt; handlePrimeClick(prime);
+                els.controls.appendChild(btn);
+            });
+        }
+
+        function renderFactors() {
+            els.factorsContainer.innerHTML = &#39;&#39;;
+            if (gameState.factors.length === 0) {
+                els.factorsContainer.innerHTML = &#39;&lt;span class=&#34;text-gray-300 italic&#34;&gt;Әзірше бос...&lt;/span&gt;&#39;;
+                return;
+            }
+
+            gameState.factors.forEach((factor, idx) =&gt; {
+                // Шар
+                const ball = document.createElement(&#39;div&#39;);
+                ball.className = &#34;w-10 h-10 rounded-full bg-orange-400 text-white flex items-center justify-center font-bold text-lg shadow-md animate-zoom-in&#34;;
+                ball.textContent = factor;
+                els.factorsContainer.appendChild(ball);
+
+                // Көбейту белгісі
+                if (idx &lt; gameState.factors.length - 1) {
+                    const times = document.createElement(&#39;span&#39;);
+                    times.className = &#34;text-gray-400 font-bold&#34;;
+                    times.textContent = &#34;×&#34;;
+                    els.factorsContainer.appendChild(times);
+                }
+            });
+        }
+
+        function showMessage(text, type) {
+            els.message.textContent = text;
+            els.message.className = &#34;text-center mb-4 min-h-[1.5rem] font-bold transition-all &#34;;
+            
+            if (type === &#39;success&#39;) els.message.classList.add(&#39;text-green-600&#39;);
+            else if (type === &#39;error&#39;) {
+                els.message.classList.add(&#39;text-red-500&#39;, &#39;shake&#39;);
+                // Анимацияны қайта ойнату үшін
+                setTimeout(() =&gt; els.message.classList.remove(&#39;shake&#39;), 500);
+            }
+            else els.message.classList.add(&#39;text-gray-600&#39;);
+        }
+
+        function updateScoreDisplay() {
+            els.score.textContent = gameState.score;
+            els.finalScore.textContent = gameState.score;
+        }
+
+        function handlePrimeClick(prime) {
+            const currentNum = gameState.currentNumber;
+
+            // Ең кіші бөлгішті табу (Өсу ретін сақтау үшін)
+            let smallestDivisor = null;
+            for (let p of PRIMES) {
+                if (currentNum % p === 0) {
+                    smallestDivisor = p;
+                    break;
+                }
+            }
+
+            if (prime === smallestDivisor) {
+                // ДҰРЫС
+                const newNum = currentNum / prime;
+                gameState.currentNumber = newNum;
+                gameState.factors.push(prime);
+                // Сұрыптаудың қажеті жоқ, себебі біз әрқашан ең кішісін сұрап отырмыз, бірақ сақтық үшін:
+                gameState.factors.sort((a, b) =&gt; a - b);
+                
+                gameState.score &#43;= 10;
+                updateScoreDisplay();
+
+                els.currentNum.textContent = newNum;
+                showMessage(`Дұрыс! ${currentNum} ÷ ${prime} = ${newNum}`, &#39;success&#39;);
+                renderFactors();
+
+                // Деңгей бітті ме?
+                if (newNum === 1) {
+                    levelComplete();
+                }
+
+            } else if (currentNum % prime === 0) {
+                // Бөлінеді, бірақ кішісі емес
+                showMessage(`Қате! Бөлгіштерді өсу ретімен таңдаңыз. Алдымен ${smallestDivisor} санына бөліңіз.`, &#39;error&#39;);
+                gameState.score = Math.max(0, gameState.score - 5);
+                updateScoreDisplay();
+                els.currentNum.classList.add(&#39;text-red-500&#39;);
+                setTimeout(() =&gt; els.currentNum.classList.remove(&#39;text-red-500&#39;), 500);
+
+            } else {
+                // Мүлдем бөлінбейді
+                showMessage(`Қате! ${currentNum} саны ${prime}-ге бөлінбейді.`, &#39;error&#39;);
+                gameState.score = Math.max(0, gameState.score - 5);
+                updateScoreDisplay();
+                els.currentNum.classList.add(&#39;text-red-500&#39;);
+                setTimeout(() =&gt; els.currentNum.classList.remove(&#39;text-red-500&#39;), 500);
+            }
+        }
+
+        function levelComplete() {
+            els.confetti.classList.remove(&#39;hidden&#39;);
+            els.controls.classList.add(&#39;hidden&#39;);
+            els.wonActions.classList.remove(&#39;hidden&#39;);
+            els.doneMessage.classList.remove(&#39;hidden&#39;);
+            
+            showMessage(`Тамаша! ${gameState.targetNumber} саны жіктелді!`, &#39;success&#39;);
+            els.resultEquation.textContent = `${gameState.targetNumber} = ${gameState.factors.join(&#39; · &#39;)}`;
+        }
+
+        function nextLevel() {
+            gameState.levelIndex&#43;&#43;;
+            loadLevel(gameState.levelIndex);
+        }
+
+        function finishGame() {
+            showScreen(&#39;finished&#39;);
+        }
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -460,7 +817,321 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame153_ru" src="/task/153?lang=ru"
+                            <iframe id="taskFrame153_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Разложение чисел на множители&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        /* Анимации */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+            50% { transform: translateY(0); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+        }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-bounce-custom { animation: bounce 1s infinite; }
+        .animate-zoom-in { animation: zoomIn 0.3s ease-out forwards; }
+        
+        /* Анимация ошибки */
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-br from-indigo-100 to-purple-200 p-4 font-sans select-none&#34;&gt;
+
+    &lt;div class=&#34;max-w-md mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden border-4 border-indigo-300 relative&#34;&gt;
+        
+        &lt;div class=&#34;bg-indigo-600 p-4 text-white flex justify-between items-center&#34;&gt;
+            &lt;h1 class=&#34;text-xl font-bold flex items-center gap-2&#34;&gt;
+                &lt;span&gt;🔢&lt;/span&gt; Разложение чисел
+            &lt;/h1&gt;
+            &lt;div class=&#34;bg-indigo-800 px-3 py-1 rounded-full text-sm font-mono&#34;&gt;
+                Очки: &lt;span id=&#34;score-display&#34;&gt;0&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;confetti-container&#34; class=&#34;absolute inset-0 pointer-events-none hidden z-50 flex justify-center pt-20&#34;&gt;
+            &lt;div class=&#34;animate-bounce-custom text-5xl&#34;&gt;🎉 ⭐ ✨&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;screen-menu&#34; class=&#34;p-8 flex flex-col items-center text-center space-y-6&#34;&gt;
+            &lt;div class=&#34;w-32 h-32 bg-indigo-100 rounded-full flex items-center justify-center mb-4&#34;&gt;
+                &lt;span class=&#34;text-6xl&#34;&gt;🧩&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;h2 class=&#34;text-2xl font-bold text-gray-800&#34;&gt;Математическая игра&lt;/h2&gt;
+            &lt;div class=&#34;text-gray-600 space-y-2&#34;&gt;
+                &lt;p&gt;Научись раскладывать составные числа на простые множители (2, 3, 5, 7...)!&lt;/p&gt;
+                &lt;div class=&#34;bg-yellow-50 border border-yellow-200 p-3 rounded-lg text-sm text-yellow-800 font-semibold text-left&#34;&gt;
+                    ⚠️ Правило: Выбирай делители строго в порядке возрастания!&lt;br&gt;
+                    (Например: 12 = 2 ∙ 2 ∙ 3)
+                &lt;/div&gt;
+                &lt;span class=&#34;text-sm text-indigo-500 font-semibold mt-2 block&#34;&gt;По теме 2.7 Разложение на множители&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;button onclick=&#34;startGame()&#34; class=&#34;w-full bg-green-500 hover:bg-green-600 text-white text-xl font-bold py-4 rounded-xl shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2&#34;&gt;
+                ▶️ Начать игру
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;screen-game&#34; class=&#34;p-6 hidden&#34;&gt;
+            &lt;div class=&#34;flex justify-between text-gray-500 text-sm font-bold mb-4&#34;&gt;
+                &lt;span id=&#34;level-display&#34;&gt;Уровень: 1/10&lt;/span&gt;
+                &lt;span&gt;Цель: разложить &lt;span id=&#34;target-number-display&#34;&gt;0&lt;/span&gt;&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;flex flex-col items-center mb-8&#34;&gt;
+                &lt;div class=&#34;text-sm text-gray-500 mb-1&#34;&gt;Текущее число:&lt;/div&gt;
+                &lt;div id=&#34;current-number-display&#34; class=&#34;text-6xl font-black text-indigo-700 transition-all duration-300&#34;&gt;
+                    0
+                &lt;/div&gt;
+                &lt;div id=&#34;done-message&#34; class=&#34;text-green-500 font-bold text-xl mt-2 animate-bounce-custom hidden&#34;&gt;
+                    Готово!
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;bg-gray-50 rounded-xl p-4 mb-6 min-h-[80px] border-2 border-dashed border-gray-300&#34;&gt;
+                &lt;div class=&#34;text-xs text-gray-400 uppercase tracking-wider mb-2 text-center&#34;&gt;Собранные множители:&lt;/div&gt;
+                &lt;div id=&#34;factors-container&#34; class=&#34;flex flex-wrap gap-2 justify-center items-center&#34;&gt;
+                    &lt;span class=&#34;text-gray-300 italic&#34;&gt;Пока пусто...&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;message-area&#34; class=&#34;text-center mb-4 min-h-[1.5rem] font-bold text-gray-600&#34;&gt;
+                Разложи число в порядке возрастания!
+            &lt;/div&gt;
+
+            &lt;div id=&#34;controls-area&#34; class=&#34;grid grid-cols-4 gap-3&#34;&gt;
+                &lt;/div&gt;
+
+            &lt;div id=&#34;level-won-actions&#34; class=&#34;hidden flex flex-col gap-3&#34;&gt;
+                &lt;div class=&#34;bg-green-100 border border-green-300 p-4 rounded-xl text-center mb-2&#34;&gt;
+                    &lt;h3 class=&#34;text-green-800 font-bold text-lg mb-1&#34;&gt;Отлично!&lt;/h3&gt;
+                    &lt;p id=&#34;result-equation&#34; class=&#34;text-green-700 font-mono&#34;&gt;&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;button onclick=&#34;nextLevel()&#34; class=&#34;w-full bg-indigo-600 text-white py-3 rounded-xl font-bold shadow-lg hover:bg-indigo-700 transition flex justify-center items-center gap-2&#34;&gt;
+                    Следующий уровень ⏩
+                &lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;screen-finished&#34; class=&#34;p-8 hidden flex-col items-center text-center&#34;&gt;
+            &lt;div class=&#34;text-6xl mb-6&#34;&gt;🏆&lt;/div&gt;
+            &lt;h2 class=&#34;text-3xl font-bold text-indigo-900 mb-2&#34;&gt;Поздравляем!&lt;/h2&gt;
+            &lt;p class=&#34;text-gray-600 mb-6&#34;&gt;Ты успешно прошел все уровни!&lt;/p&gt;
+            
+            &lt;div class=&#34;bg-gray-100 p-6 rounded-xl w-full mb-6&#34;&gt;
+                &lt;div class=&#34;text-gray-500 text-sm uppercase&#34;&gt;Твой результат&lt;/div&gt;
+                &lt;div class=&#34;text-4xl font-black text-indigo-600&#34;&gt;&lt;span id=&#34;final-score&#34;&gt;0&lt;/span&gt; очков&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;button onclick=&#34;startGame()&#34; class=&#34;w-full bg-blue-500 text-white py-3 rounded-xl font-bold hover:bg-blue-600 transition flex justify-center items-center gap-2&#34;&gt;
+                🔄 Начать заново
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;bg-gray-50 p-3 text-center text-xs text-gray-400 border-t&#34;&gt;
+            Математика 5-6 класс | Разложение на простые множители
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const PRIMES = [2, 3, 5, 7, 11, 13, 17, 19];
+        const LEVELS = [
+            { level: 1, number: 12 },
+            { level: 2, number: 18 },
+            { level: 3, number: 30 },
+            { level: 4, number: 45 },
+            { level: 5, number: 60 },
+            { level: 6, number: 75 },
+            { level: 7, number: 84 },
+            { level: 8, number: 126 },
+            { level: 9, number: 154 },
+            { level: 10, number: 2310 }
+        ];
+
+        let gameState = {
+            levelIndex: 0,
+            targetNumber: 0,
+            currentNumber: 0,
+            factors: [],
+            score: 0
+        };
+
+        const screens = {
+            menu: document.getElementById(&#39;screen-menu&#39;),
+            game: document.getElementById(&#39;screen-game&#39;),
+            finished: document.getElementById(&#39;screen-finished&#39;)
+        };
+        const els = {
+            score: document.getElementById(&#39;score-display&#39;),
+            finalScore: document.getElementById(&#39;final-score&#39;),
+            level: document.getElementById(&#39;level-display&#39;),
+            targetNum: document.getElementById(&#39;target-number-display&#39;),
+            currentNum: document.getElementById(&#39;current-number-display&#39;),
+            factorsContainer: document.getElementById(&#39;factors-container&#39;),
+            message: document.getElementById(&#39;message-area&#39;),
+            controls: document.getElementById(&#39;controls-area&#39;),
+            wonActions: document.getElementById(&#39;level-won-actions&#39;),
+            doneMessage: document.getElementById(&#39;done-message&#39;),
+            confetti: document.getElementById(&#39;confetti-container&#39;),
+            resultEquation: document.getElementById(&#39;result-equation&#39;)
+        };
+
+        function showScreen(screenName) {
+            Object.values(screens).forEach(el =&gt; el.classList.add(&#39;hidden&#39;));
+            screens[screenName].classList.remove(&#39;hidden&#39;);
+        }
+
+        function startGame() {
+            gameState.levelIndex = 0;
+            gameState.score = 0;
+            updateScoreDisplay();
+            showScreen(&#39;game&#39;);
+            loadLevel(0);
+        }
+
+        function loadLevel(index) {
+            if (index &gt;= LEVELS.length) {
+                finishGame();
+                return;
+            }
+            const lvl = LEVELS[index];
+            gameState.levelIndex = index;
+            gameState.targetNumber = lvl.number;
+            gameState.currentNumber = lvl.number;
+            gameState.factors = [];
+
+            els.level.textContent = `Уровень: ${index &#43; 1}/${LEVELS.length}`;
+            els.targetNum.textContent = lvl.number;
+            els.currentNum.textContent = lvl.number;
+            els.currentNum.className = &#34;text-6xl font-black text-indigo-700 transition-all duration-300&#34;;
+            
+            els.doneMessage.classList.add(&#39;hidden&#39;);
+            els.wonActions.classList.add(&#39;hidden&#39;);
+            els.controls.classList.remove(&#39;hidden&#39;);
+            els.confetti.classList.add(&#39;hidden&#39;);
+
+            renderFactors();
+            showMessage(&#39;Разложи число, начиная с самого маленького простого делителя!&#39;, &#39;neutral&#39;);
+            renderButtons();
+        }
+
+        function renderButtons() {
+            els.controls.innerHTML = &#39;&#39;;
+            PRIMES.forEach(prime =&gt; {
+                const btn = document.createElement(&#39;button&#39;);
+                btn.textContent = prime;
+                btn.className = &#34;aspect-square rounded-xl bg-blue-100 text-blue-800 text-xl font-bold hover:bg-blue-200 active:bg-blue-300 transition shadow-sm border-b-4 border-blue-200 active:border-b-0 active:translate-y-1 flex items-center justify-center&#34;;
+                btn.onclick = () =&gt; handlePrimeClick(prime);
+                els.controls.appendChild(btn);
+            });
+        }
+
+        function renderFactors() {
+            els.factorsContainer.innerHTML = &#39;&#39;;
+            if (gameState.factors.length === 0) {
+                els.factorsContainer.innerHTML = &#39;&lt;span class=&#34;text-gray-300 italic&#34;&gt;Пока пусто...&lt;/span&gt;&#39;;
+                return;
+            }
+            gameState.factors.forEach((factor, idx) =&gt; {
+                const ball = document.createElement(&#39;div&#39;);
+                ball.className = &#34;w-10 h-10 rounded-full bg-orange-400 text-white flex items-center justify-center font-bold text-lg shadow-md animate-zoom-in&#34;;
+                ball.textContent = factor;
+                els.factorsContainer.appendChild(ball);
+
+                if (idx &lt; gameState.factors.length - 1) {
+                    const times = document.createElement(&#39;span&#39;);
+                    times.className = &#34;text-gray-400 font-bold&#34;;
+                    times.textContent = &#34;×&#34;;
+                    els.factorsContainer.appendChild(times);
+                }
+            });
+        }
+
+        function showMessage(text, type) {
+            els.message.textContent = text;
+            els.message.className = &#34;text-center mb-4 min-h-[1.5rem] font-bold transition-all &#34;;
+            if (type === &#39;success&#39;) els.message.classList.add(&#39;text-green-600&#39;);
+            else if (type === &#39;error&#39;) {
+                els.message.classList.add(&#39;text-red-500&#39;, &#39;shake&#39;);
+                setTimeout(() =&gt; els.message.classList.remove(&#39;shake&#39;), 500);
+            }
+            else els.message.classList.add(&#39;text-gray-600&#39;);
+        }
+
+        function updateScoreDisplay() {
+            els.score.textContent = gameState.score;
+            els.finalScore.textContent = gameState.score;
+        }
+
+        function handlePrimeClick(prime) {
+            const currentNum = gameState.currentNumber;
+            let smallestDivisor = null;
+            for (let p of PRIMES) {
+                if (currentNum % p === 0) {
+                    smallestDivisor = p;
+                    break;
+                }
+            }
+
+            if (prime === smallestDivisor) {
+                const newNum = currentNum / prime;
+                gameState.currentNumber = newNum;
+                gameState.factors.push(prime);
+                gameState.score &#43;= 10;
+                updateScoreDisplay();
+                els.currentNum.textContent = newNum;
+                showMessage(`Правильно! ${currentNum} ÷ ${prime} = ${newNum}`, &#39;success&#39;);
+                renderFactors();
+                if (newNum === 1) levelComplete();
+            } else if (currentNum % prime === 0) {
+                showMessage(`Ошибка! Нужно выбирать самый маленький делитель. Сначала дели на ${smallestDivisor}.`, &#39;error&#39;);
+                gameState.score = Math.max(0, gameState.score - 5);
+                updateScoreDisplay();
+                animateError();
+            } else {
+                showMessage(`Ошибка! Число ${currentNum} не делится на ${prime}.`, &#39;error&#39;);
+                gameState.score = Math.max(0, gameState.score - 5);
+                updateScoreDisplay();
+                animateError();
+            }
+        }
+
+        function animateError() {
+            els.currentNum.classList.add(&#39;text-red-500&#39;);
+            setTimeout(() =&gt; els.currentNum.classList.remove(&#39;text-red-500&#39;), 500);
+        }
+
+        function levelComplete() {
+            els.confetti.classList.remove(&#39;hidden&#39;);
+            els.controls.classList.add(&#39;hidden&#39;);
+            els.wonActions.classList.remove(&#39;hidden&#39;);
+            els.doneMessage.classList.remove(&#39;hidden&#39;);
+            showMessage(`Ура! Число ${gameState.targetNumber} разложено!`, &#39;success&#39;);
+            els.resultEquation.textContent = `${gameState.targetNumber} = ${gameState.factors.join(&#39; · &#39;)}`;
+        }
+
+        function nextLevel() {
+            gameState.levelIndex&#43;&#43;;
+            loadLevel(gameState.levelIndex);
+        }
+
+        function finishGame() {
+            showScreen(&#39;finished&#39;);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

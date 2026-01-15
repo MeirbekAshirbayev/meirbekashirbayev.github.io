@@ -412,7 +412,573 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame161" src="/task/161?lang=kz"
+                            <iframe id="taskFrame161" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Секіргіш Бақа - Ортақ Бөлім&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+            50% { transform: translateY(0); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+        }
+        .animate-bounce-custom {
+            animation: bounce 1s infinite;
+        }
+        .frog-transition {
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        /* fade-in классын алып тастадым немесе тек қажет жерде қолданамын */
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-b from-cyan-300 to-blue-500 flex flex-col items-center p-2 md:p-4 overflow-y-auto relative&#34;&gt;
+
+    &lt;!-- Background Stars --&gt;
+    &lt;div class=&#34;absolute top-10 left-10 text-white/40 pointer-events-none&#34;&gt;
+        &lt;svg width=&#34;40&#34; height=&#34;40&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;currentColor&#34; stroke=&#34;none&#34;&gt;&lt;polygon points=&#34;12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2&#34;&gt;&lt;/polygon&gt;&lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;div class=&#34;absolute top-20 right-20 text-white/30 pointer-events-none&#34;&gt;
+        &lt;svg width=&#34;60&#34; height=&#34;60&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;currentColor&#34; stroke=&#34;none&#34;&gt;&lt;polygon points=&#34;12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2&#34;&gt;&lt;/polygon&gt;&lt;/svg&gt;
+    &lt;/div&gt;
+
+    &lt;!-- App Container --&gt;
+    &lt;div id=&#34;app&#34; class=&#34;w-full max-w-4xl flex-1 flex flex-col items-center relative gap-4 z-10 pb-8&#34;&gt;
+        &lt;!-- Content will be injected here by JS --&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Footer --&gt;
+    &lt;div class=&#34;mt-4 text-white/70 text-xs text-center pb-2 z-0&#34;&gt;
+        5-сынып | Математика | Ортақ бөлімді табу
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- State Management ---
+        const state = {
+            gameState: &#39;start&#39;,
+            step: &#39;denominator&#39;,
+            problemNumber: 1,
+            totalProblems: 10,
+            score: 0,
+            fraction1: { whole: 0, num: 1, den: 2 },
+            fraction2: { whole: 0, num: 1, den: 3 },
+            options: [],
+            userInput: &#39;&#39;,
+            frogPosition: 0,
+            message: &#39;&#39;
+        };
+
+        // --- Utility Functions ---
+        function generateRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min &#43; 1)) &#43; min;
+        }
+        
+        function gcd(a, b) {
+            if (!b) return a;
+            return gcd(b, a % b);
+        }
+
+        function lcm(a, b) {
+            return (a * b) / gcd(a, b);
+        }
+
+        function isInputMode() {
+            return state.problemNumber &gt; 5;
+        }
+
+        // --- Game Logic ---
+
+        function initGame() {
+            state.score = 0;
+            state.problemNumber = 1;
+            state.gameState = &#39;start&#39;;
+            generateProblem();
+        }
+
+        function generateProblem() {
+            const trickyPairs = [
+                [6, 8], [6, 15], [8, 12], [9, 12], [9, 15], [10, 12], [10, 15],
+                [12, 15], [12, 16], [12, 18], [12, 20], [14, 21], [15, 20],
+                [15, 25], [16, 20], [16, 24], [18, 24], [18, 27], [20, 25], 
+                [20, 30], [24, 30], [24, 36]
+            ];
+
+            let d1, d2;
+            const useTricky = Math.random() &lt; (state.problemNumber &gt; 5 ? 0.85 : 0.6);
+
+            if (useTricky) {
+                const pair = trickyPairs[generateRandomInt(0, trickyPairs.length - 1)];
+                if (Math.random() &gt; 0.5) { d1 = pair[0]; d2 = pair[1]; } 
+                else { d1 = pair[1]; d2 = pair[0]; }
+            } else {
+                d1 = generateRandomInt(4, 15);
+                d2 = generateRandomInt(4, 15);
+                let attempts = 0;
+                
+                while ((d1 === d2 || gcd(d1, d2) === 1) &amp;&amp; attempts &lt; 50) {
+                    d2 = generateRandomInt(4, 15);
+                    attempts&#43;&#43;;
+                    if (attempts % 10 === 0) {
+                        d1 = generateRandomInt(4, 15);
+                    }
+                }
+                
+                if (d1 === d2 || gcd(d1, d2) === 1) {
+                    d1 = 6; d2 = 8;
+                }
+            }
+
+            let n1 = generateRandomInt(1, d1 - 1);
+            while (gcd(n1, d1) !== 1) n1 = generateRandomInt(1, d1 - 1);
+            
+            let n2 = generateRandomInt(1, d2 - 1);
+            while (gcd(n2, d2) !== 1) n2 = generateRandomInt(1, d2 - 1);
+
+            const w1 = Math.random() &gt; 0.7 ? generateRandomInt(1, 5) : 0;
+            const w2 = Math.random() &gt; 0.7 ? generateRandomInt(1, 5) : 0;
+
+            state.fraction1 = { whole: w1, num: n1, den: d1 };
+            state.fraction2 = { whole: w2, num: n2, den: d2 };
+            state.step = &#39;denominator&#39;;
+            state.frogPosition = 0;
+            state.userInput = &#39;&#39;;
+            state.gameState = &#39;playing&#39;;
+
+            const modeText = isInputMode() ? &#39;есептеп жаз&#39; : &#39;таңда&#39;;
+            state.message = `${state.problemNumber}-тапсырма: Алдымен екі бөлшекке ОРТАҚ БӨЛІМ ${modeText}!`;
+
+            const correctLCM = lcm(d1, d2);
+            if (!isInputMode()) {
+                generateOptions(&#39;denominator&#39;, correctLCM, d1, d2);
+            }
+            
+            render();
+            // Scroll logic
+            setTimeout(() =&gt; {
+                const appDiv = document.getElementById(&#39;app&#39;);
+                if(appDiv) {
+                     window.scrollTo({ top: appDiv.scrollHeight, behavior: &#39;smooth&#39; });
+                }
+            }, 500);
+        }
+
+        function generateOptions(currentStep, correctVal, d1, d2) {
+            const opts = new Set();
+            opts.add(correctVal);
+            let safetyCounter = 0;
+
+            while (opts.size &lt; 3 &amp;&amp; safetyCounter &lt; 50) {
+                safetyCounter&#43;&#43;;
+                let fake;
+                if (currentStep === &#39;denominator&#39;) {
+                    const r = Math.random();
+                    if (r &lt; 0.4 &amp;&amp; d2) fake = d1 * d2;
+                    else if (r &lt; 0.7 &amp;&amp; d2) fake = Math.max(d1, d2);
+                    else fake = correctVal &#43; (d1 || 2) * generateRandomInt(1, 3);
+                } else {
+                    const r = Math.random();
+                    if (r &lt; 0.5) fake = correctVal &#43; generateRandomInt(1, 3);
+                    else fake = correctVal - generateRandomInt(1, 3);
+                }
+
+                if (fake &gt; 0 &amp;&amp; fake !== correctVal) {
+                    opts.add(fake);
+                }
+            }
+            while (opts.size &lt; 3) {
+                 opts.add(correctVal &#43; opts.size &#43; 1);
+            }
+
+            state.options = Array.from(opts).sort(() =&gt; Math.random() - 0.5);
+        }
+
+        // --- Interaction Handlers ---
+
+        function handleOptionClick(val) {
+            const correctLCM = lcm(state.fraction1.den, state.fraction2.den);
+
+            if (state.step === &#39;denominator&#39;) {
+                if (val === correctLCM) {
+                    state.message = &#39;Дұрыс! Енді 1-ші бөлшектің алымын тап.&#39;;
+                    state.step = &#39;numerator1&#39;;
+                    state.frogPosition = 1;
+                    
+                    const correctNum1 = state.fraction1.num * (correctLCM / state.fraction1.den);
+                    generateOptions(&#39;numerator1&#39;, correctNum1, state.fraction1.den);
+                } else {
+                    state.message = &#39;Қате! Ең кіші ортақ еселікті тап.&#39;;
+                }
+            } else if (state.step === &#39;numerator1&#39;) {
+                const correctNum1 = state.fraction1.num * (correctLCM / state.fraction1.den);
+                if (val === correctNum1) {
+                    state.message = &#39;Керемет! Енді 2-ші бөлшектің алымын тап.&#39;;
+                    state.step = &#39;numerator2&#39;;
+                    state.frogPosition = 2;
+                    
+                    const correctNum2 = state.fraction2.num * (correctLCM / state.fraction2.den);
+                    generateOptions(&#39;numerator2&#39;, correctNum2, state.fraction2.den);
+                } else {
+                    state.message = &#39;Қате! Алымды дұрыс есепте.&#39;;
+                }
+            } else if (state.step === &#39;numerator2&#39;) {
+                const correctNum2 = state.fraction2.num * (correctLCM / state.fraction2.den);
+                if (val === correctNum2) {
+                    handleSuccess();
+                    return; 
+                } else {
+                    state.message = &#39;Қате! Алымды дұрыс есепте.&#39;;
+                }
+            }
+            render();
+        }
+
+        function handleKeypadPress(key) {
+            if (key === &#39;DEL&#39;) {
+                state.userInput = state.userInput.slice(0, -1);
+            } else if (key === &#39;OK&#39;) {
+                checkAnswerInput();
+            } else {
+                if (state.userInput.length &lt; 3) {
+                    state.userInput &#43;= key;
+                }
+            }
+            render();
+        }
+
+        function checkAnswerInput() {
+            const val = parseInt(state.userInput);
+            if (isNaN(val)) return;
+
+            const correctLCM = lcm(state.fraction1.den, state.fraction2.den);
+
+            if (state.step === &#39;denominator&#39;) {
+                if (val === correctLCM) {
+                    state.message = &#39;Дұрыс! Енді 1-ші бөлшектің алымын есептеп жаз.&#39;;
+                    state.step = &#39;numerator1&#39;;
+                    state.frogPosition = 1;
+                    state.userInput = &#39;&#39;;
+                } else {
+                    if (val % correctLCM === 0 &amp;&amp; val &gt; correctLCM) {
+                        state.message = `Бұл ортақ еселік, бірақ ЕҢ КІШІСІ емес. Кішірек санды ізде!`;
+                    } else {
+                        state.message = `Қате! ${state.fraction1.den} және ${state.fraction2.den} сандарының ЕКОЕ-сін тап.`;
+                    }
+                    state.userInput = &#39;&#39;;
+                }
+            } else if (state.step === &#39;numerator1&#39;) {
+                const correctNum1 = state.fraction1.num * (correctLCM / state.fraction1.den);
+                if (val === correctNum1) {
+                    state.message = &#39;Керемет! Енді 2-ші бөлшектің алымын есептеп жаз.&#39;;
+                    state.step = &#39;numerator2&#39;;
+                    state.frogPosition = 2;
+                    state.userInput = &#39;&#39;;
+                } else {
+                    state.message = `Қате! ${correctLCM} ÷ ${state.fraction1.den} = ${correctLCM/state.fraction1.den}. Енді ${state.fraction1.num} × ${correctLCM/state.fraction1.den} = ?`;
+                    state.userInput = &#39;&#39;;
+                }
+            } else if (state.step === &#39;numerator2&#39;) {
+                const correctNum2 = state.fraction2.num * (correctLCM / state.fraction2.den);
+                if (val === correctNum2) {
+                    handleSuccess();
+                    return;
+                } else {
+                    state.message = `Қате! ${correctLCM} ÷ ${state.fraction2.den} = ${correctLCM/state.fraction2.den}. Енді ${state.fraction2.num} × ${correctLCM/state.fraction2.den} = ?`;
+                    state.userInput = &#39;&#39;;
+                }
+            }
+        }
+
+        function handleSuccess() {
+            state.score&#43;&#43;;
+            state.gameState = &#39;success&#39;;
+            state.frogPosition = 3;
+            state.userInput = &#39;&#39;;
+            
+            if (state.problemNumber &gt;= state.totalProblems) {
+                state.message = &#39;Жарайсың! Барлық тапсырма орындалды!&#39;;
+            } else {
+                state.message = &#39;Жарайсың! Барлығы дұрыс!&#39;;
+            }
+            render();
+        }
+
+        function nextProblem() {
+            if (state.problemNumber &gt;= state.totalProblems) {
+                state.gameState = &#39;finished&#39;;
+                render();
+            } else {
+                state.problemNumber&#43;&#43;;
+                generateProblem();
+            }
+        }
+
+        // --- Rendering ---
+
+        function getFractionHTML(f, stepName) {
+            const correctLCM = lcm(state.fraction1.den, state.fraction2.den);
+            const correctNum = f.num * (correctLCM / f.den);
+            
+            let numContent = &#39;?&#39;;
+            let denomContent = &#39;?&#39;;
+            let isActive = false;
+            let containerClass = &#34;border-white&#34;;
+            let numClass = &#34;text-blue-600&#34;;
+            let denClass = &#34;text-gray-900&#34;;
+
+            if (state.gameState === &#39;success&#39; || state.gameState === &#39;finished&#39;) {
+                numContent = correctNum;
+                denomContent = correctLCM;
+                denClass = &#34;text-blue-900&#34;;
+            } else {
+                // Denom Logic
+                if (state.step === &#39;denominator&#39;) {
+                    isActive = true;
+                    denomContent = isInputMode() ? (state.userInput === &#39;&#39; ? &#39;&lt;span class=&#34;animate-pulse&#34;&gt;?&lt;/span&gt;&#39; : state.userInput) : &#39;?&#39;;
+                    denClass = &#34;text-blue-900&#34;;
+                } else {
+                    denomContent = correctLCM;
+                    denClass = &#34;text-blue-900&#34;;
+                    
+                    // Numerator Logic
+                    if (state.step === stepName) {
+                         isActive = true;
+                         numContent = isInputMode() ? (state.userInput === &#39;&#39; ? &#39;&lt;span class=&#34;animate-pulse&#34;&gt;?&lt;/span&gt;&#39; : state.userInput) : &#39;?&#39;;
+                         numClass = &#34;text-blue-900&#34;;
+                    } else if (stepName === &#39;numerator1&#39; &amp;&amp; state.step === &#39;numerator2&#39;) {
+                        numContent = correctNum;
+                    }
+                }
+            }
+
+            if (isActive) {
+                containerClass = &#34;border-yellow-400 bg-yellow-50/90 ring-4 ring-yellow-200 scale-105&#34;;
+            }
+
+            return `
+                &lt;div class=&#34;flex flex-col items-center&#34;&gt;
+                    &lt;div class=&#34;flex items-center font-bold text-3xl md:text-5xl text-gray-800 bg-white/60 p-3 rounded-xl backdrop-blur-sm border-2 shadow-sm transition-all duration-300 ${containerClass}&#34;&gt;
+                        ${f.whole &gt; 0 ? `&lt;span class=&#34;mr-3 text-blue-700 font-extrabold&#34;&gt;${f.whole}&lt;/span&gt;` : &#39;&#39;}
+                        &lt;div class=&#34;flex flex-col items-center min-w-[3rem]&#34;&gt;
+                            &lt;span class=&#34;transition-colors duration-300 ${numClass}&#34;&gt;${numContent}&lt;/span&gt;
+                            &lt;div class=&#34;w-full h-1 bg-gray-800 my-1 rounded-full&#34;&gt;&lt;/div&gt;
+                            &lt;span class=&#34;transition-colors duration-300 ${denClass}&#34;&gt;${denomContent}&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderHeader() {
+            return `
+                &lt;div class=&#34;w-full max-w-4xl flex justify-between items-center mb-4 z-10 sticky top-0 pt-2 z-30&#34;&gt;
+                    &lt;div class=&#34;bg-white/90 backdrop-blur px-4 py-2 rounded-2xl shadow-lg border-2 border-cyan-200&#34;&gt;
+                        &lt;h1 class=&#34;text-xl font-bold text-cyan-700 flex items-center gap-2&#34;&gt;
+                            🐸 Секіргіш Бақа &lt;span class=&#34;text-sm font-normal text-gray-500 ml-2&#34;&gt;| ${state.problemNumber}/${state.totalProblems}&lt;/span&gt;
+                        &lt;/h1&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;bg-yellow-400 text-yellow-900 px-4 py-2 rounded-2xl shadow-lg font-bold flex items-center gap-2 border-2 border-yellow-200&#34;&gt;
+                        &lt;svg width=&#34;20&#34; height=&#34;20&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M6 9H4.5a2.5 2.5 0 0 1 0-5H6&#34;/&gt;&lt;path d=&#34;M18 9h1.5a2.5 2.5 0 0 0 0-5H18&#34;/&gt;&lt;path d=&#34;M4 22h16&#34;/&gt;&lt;path d=&#34;M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22&#34;/&gt;&lt;path d=&#34;M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22&#34;/&gt;&lt;path d=&#34;M18 2H6v7a6 6 0 0 0 12 0V2Z&#34;/&gt;&lt;/svg&gt;
+                        ${state.score}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderProblemArea() {
+             // animate-in және fade-in кластарын алып тастадым, себебі олар жыпылықтауды тудырды
+             return `
+                &lt;div class=&#34;w-full bg-white/30 rounded-3xl p-4 md:p-6 backdrop-blur-md border-4 border-white/40 shadow-xl flex flex-col items-center gap-4&#34;&gt;
+                    
+                    &lt;div class=&#34;bg-white px-4 md:px-6 py-2 rounded-full shadow-lg z-20 -mt-8 border border-blue-100 min-w-[200px] text-center&#34;&gt;
+                        &lt;p class=&#34;text-md md:text-lg font-bold text-blue-800&#34;&gt;${state.message}&lt;/p&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;flex flex-col md:flex-row items-center gap-6 md:gap-16 w-full justify-center&#34;&gt;
+                        
+                        &lt;div class=&#34;flex gap-4 items-center opacity-70 scale-90 grayscale-[30%]&#34;&gt;
+                            ${getStaticFractionHTML(state.fraction1)}
+                            &lt;span class=&#34;text-2xl font-bold text-white&#34;&gt;&amp;&lt;/span&gt;
+                            ${getStaticFractionHTML(state.fraction2)}
+                        &lt;/div&gt;
+
+                        &lt;div class=&#34;hidden md:block text-white/80&#34;&gt;
+                            &lt;svg width=&#34;40&#34; height=&#34;20&#34; viewBox=&#34;0 0 40 20&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;3&#34;&gt;
+                                &lt;path d=&#34;M0 10 H35 M25 2 L35 10 L25 18&#34; /&gt;
+                            &lt;/svg&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class=&#34;flex gap-6 items-center bg-white/40 p-3 rounded-2xl shadow-inner border border-white/50&#34;&gt;
+                            ${getFractionHTML(state.fraction1, &#39;numerator1&#39;)}
+                            &lt;span class=&#34;text-4xl font-black text-blue-900 drop-shadow-sm&#34;&gt;&amp;&lt;/span&gt;
+                            ${getFractionHTML(state.fraction2, &#39;numerator2&#39;)}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function getStaticFractionHTML(f) {
+            return `
+                &lt;div class=&#34;flex flex-col items-center&#34;&gt;
+                    &lt;span class=&#34;text-xs font-bold text-white mb-1&#34;&gt;Берілгені&lt;/span&gt;
+                    &lt;div class=&#34;flex items-center font-bold text-2xl text-gray-800 bg-gray-100/50 p-2 rounded-lg&#34;&gt;
+                        ${f.whole &gt; 0 ? `&lt;span class=&#34;mr-2&#34;&gt;${f.whole}&lt;/span&gt;` : &#39;&#39;}
+                        &lt;div class=&#34;flex flex-col items-center&#34;&gt;
+                            &lt;span&gt;${f.num}&lt;/span&gt;
+                            &lt;div class=&#34;w-full h-1 bg-gray-600 my-1&#34;&gt;&lt;/div&gt;
+                            &lt;span&gt;${f.den}&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderControlsArea() {
+            const positions = [&#39;5%&#39;, &#39;33%&#39;, &#39;60%&#39;, &#39;88%&#39;];
+            const frogLeft = positions[state.frogPosition];
+            const frogScale = state.gameState === &#39;success&#39; ? 1.3 : 1;
+            const frogTranslateY = state.frogPosition === 3 ? &#39;-10px&#39; : &#39;0px&#39;;
+
+            const p1Color = state.frogPosition &gt;= 1 ? &#39;bg-green-600 shadow-[0_0_15px_rgba(34,197,94,0.6)]&#39; : &#39;bg-green-900&#39;;
+            const p2Color = state.frogPosition &gt;= 2 ? &#39;bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.6)]&#39; : &#39;bg-green-900&#39;;
+            const p3Color = state.frogPosition &gt;= 3 ? &#39;bg-yellow-500 shadow-[0_0_20px_rgba(234,179,8,0.6)]&#39; : &#39;bg-green-900&#39;;
+            const p3Border = state.frogPosition &gt;= 3 ? &#39;border-yellow-200&#39; : &#39;border-transparent&#39;;
+
+            let controlsHTML = &#39;&#39;;
+
+            // fade-in кластарын контейнерлерден алып тастадым
+            if (state.gameState === &#39;success&#39;) {
+                const btnText = state.problemNumber &gt;= state.totalProblems ? &#39;Нәтижені көру&#39; : &#39;Келесі есеп&#39;;
+                controlsHTML = `
+                    &lt;button onclick=&#34;window.nextProblem()&#34; class=&#34;bg-yellow-400 hover:bg-yellow-300 text-yellow-900 font-bold py-2 px-8 rounded-full shadow-xl flex items-center gap-3 transform hover:scale-105 transition-all text-lg border-b-4 border-yellow-600 active:border-b-0 active:translate-y-1&#34;&gt;
+                        &lt;svg width=&#34;20&#34; height=&#34;20&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;currentColor&#34; stroke=&#34;none&#34;&gt;&lt;polygon points=&#34;5 3 19 12 5 21 5 3&#34;/&gt;&lt;/svg&gt; 
+                        ${btnText}
+                    &lt;/button&gt;
+                `;
+            } else if (!isInputMode()) {
+                // Test Mode
+                controlsHTML = `&lt;div class=&#34;grid grid-cols-3 gap-3 w-full h-full pb-4 px-2&#34;&gt;
+                    ${state.options.map((opt) =&gt; `
+                        &lt;button onclick=&#34;window.handleOptionClick(${opt})&#34; class=&#34;bg-white hover:bg-green-50 text-green-700 font-black text-xl rounded-xl shadow-md border-b-4 border-green-200 active:border-b-0 active:translate-y-1 transition-all flex items-center justify-center hover:scale-105 h-10 md:h-12&#34;&gt;
+                            ${opt}
+                        &lt;/button&gt;
+                    `).join(&#39;&#39;)}
+                &lt;/div&gt;`;
+            } else {
+                // Keypad Mode
+                controlsHTML = `&lt;div class=&#34;flex gap-2 w-full justify-center h-full pb-4 px-2&#34;&gt;
+                     &lt;div class=&#34;grid grid-cols-5 gap-2 w-full max-w-lg&#34;&gt;
+                         ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(num =&gt; `
+                             &lt;button onclick=&#34;window.handleKeypadPress(&#39;${num}&#39;)&#34; class=&#34;bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold text-lg rounded-lg shadow-sm border-b-2 border-blue-300 active:border-b-0 active:translate-y-0.5 transition-all h-8 md:h-10&#34;&gt;
+                                 ${num}
+                             &lt;/button&gt;
+                         `).join(&#39;&#39;)}
+                     &lt;/div&gt;
+                     &lt;div class=&#34;flex flex-col gap-2 w-20&#34;&gt;
+                         &lt;button onclick=&#34;window.handleKeypadPress(&#39;DEL&#39;)&#34; class=&#34;flex-1 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg shadow-sm flex items-center justify-center border-b-2 border-red-300 active:border-b-0 active:translate-y-0.5 h-8 md:h-10&#34;&gt;
+                             &lt;svg width=&#34;20&#34; height=&#34;20&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&gt;&lt;path d=&#34;M3 6h18&#34;/&gt;&lt;path d=&#34;M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6&#34;/&gt;&lt;path d=&#34;M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2&#34;/&gt;&lt;/svg&gt;
+                         &lt;/button&gt;
+                         &lt;button onclick=&#34;window.handleKeypadPress(&#39;OK&#39;)&#34; class=&#34;flex-1 bg-green-500 hover:bg-green-400 text-white font-bold rounded-lg shadow-md flex items-center justify-center border-b-4 border-green-700 active:border-b-0 active:translate-y-1 h-8 md:h-10&#34;&gt;
+                             &lt;svg width=&#34;20&#34; height=&#34;20&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&gt;&lt;path d=&#34;M22 11.08V12a10 10 0 1 1-5.93-9.14&#34;/&gt;&lt;polyline points=&#34;22 4 12 14.01 9 11.01&#34;/&gt;&lt;/svg&gt;
+                         &lt;/button&gt;
+                     &lt;/div&gt;
+                &lt;/div&gt;`;
+            }
+
+            // Adjust overall height to be less rigid
+            return `
+                &lt;div class=&#34;w-full min-h-[300px] relative flex flex-col justify-end pb-4 mt-2&#34;&gt;
+                     &lt;!-- Pond --&gt;
+                     &lt;div class=&#34;absolute inset-0 top-6 bg-blue-600/20 rounded-t-full rounded-b-3xl backdrop-blur-sm border-t-4 border-blue-300/50&#34;&gt;&lt;/div&gt;
+
+                     &lt;!-- Pads - made smaller on mobile --&gt;
+                     &lt;div class=&#34;relative z-10 flex justify-between items-end px-4 md:px-20 h-24 mb-14 md:mb-16&#34;&gt;
+                         &lt;div class=&#34;relative flex flex-col items-center group&#34;&gt;
+                            &lt;div class=&#34;w-16 md:w-20 h-5 md:h-6 bg-green-800 rounded-[50%] opacity-60&#34;&gt;&lt;/div&gt;
+                            &lt;span class=&#34;text-white text-[10px] md:text-xs font-bold absolute -bottom-5 opacity-70&#34;&gt;Бастау&lt;/span&gt;
+                         &lt;/div&gt;
+                         &lt;div class=&#34;relative flex flex-col items-center&#34;&gt;
+                            &lt;div class=&#34;w-20 md:w-24 h-6 md:h-8 transition-colors duration-300 ${p1Color} rounded-[50%] shadow-lg&#34;&gt;&lt;/div&gt;
+                            &lt;span class=&#34;text-white text-[10px] md:text-xs font-bold absolute -bottom-5&#34;&gt;Ортақ бөлім&lt;/span&gt;
+                         &lt;/div&gt;
+                         &lt;div class=&#34;relative flex flex-col items-center&#34;&gt;
+                            &lt;div class=&#34;w-20 md:w-24 h-6 md:h-8 transition-colors duration-300 ${p2Color} rounded-[50%] shadow-lg&#34;&gt;&lt;/div&gt;
+                            &lt;span class=&#34;text-white text-[10px] md:text-xs font-bold absolute -bottom-5&#34;&gt;1-ші Алым&lt;/span&gt;
+                         &lt;/div&gt;
+                         &lt;div class=&#34;relative flex flex-col items-center&#34;&gt;
+                            &lt;div class=&#34;w-20 md:w-24 h-6 md:h-8 transition-colors duration-300 ${p3Color} rounded-[50%] shadow-lg border-2 ${p3Border}&#34;&gt;&lt;/div&gt;
+                            &lt;span class=&#34;text-white text-[10px] md:text-xs font-bold absolute -bottom-5&#34;&gt;2-ші Алым&lt;/span&gt;
+                         &lt;/div&gt;
+
+                         &lt;!-- FROG --&gt;
+                         &lt;div class=&#34;absolute frog-transition text-5xl md:text-6xl drop-shadow-2xl z-20&#34;
+                            style=&#34;left: ${frogLeft}; bottom: 10px; transform: translate(-50%, ${frogTranslateY}) scale(${frogScale});&#34;&gt;
+                            🐸
+                         &lt;/div&gt;
+                     &lt;/div&gt;
+
+                     &lt;!-- Interaction Area --&gt;
+                     &lt;div class=&#34;w-full max-w-2xl mx-auto z-20 h-auto md:h-40 flex justify-center items-center&#34;&gt;
+                        ${controlsHTML}
+                     &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderFinishedScreen() {
+             return `
+                &lt;div class=&#34;fixed inset-0 bg-gradient-to-b from-purple-400 to-blue-600 flex flex-col items-center justify-center p-4 z-50 overflow-y-auto&#34;&gt;
+                     &lt;div class=&#34;bg-white/90 p-8 rounded-3xl shadow-2xl text-center max-w-md w-full animate-in zoom-in my-auto&#34;&gt;
+                         &lt;div class=&#34;flex justify-center mb-4&#34;&gt;
+                             &lt;svg width=&#34;64&#34; height=&#34;64&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;#FACC15&#34; stroke=&#34;#FACC15&#34; class=&#34;animate-bounce-custom&#34;&gt;&lt;polygon points=&#34;12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2&#34;&gt;&lt;/polygon&gt;&lt;/svg&gt;
+                         &lt;/div&gt;
+                         &lt;h1 class=&#34;text-3xl font-bold text-blue-900 mb-2&#34;&gt;Ойын аяқталды!&lt;/h1&gt;
+                         &lt;p class=&#34;text-gray-600 mb-6 text-lg&#34;&gt;Сіздің нәтижеңіз:&lt;/p&gt;
+                         &lt;div class=&#34;text-6xl font-black text-blue-600 mb-8&#34;&gt;${state.score} / ${state.totalProblems}&lt;/div&gt;
+                         
+                         &lt;button onclick=&#34;window.initGame()&#34; class=&#34;w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 transform active:scale-95 transition-all&#34;&gt;
+                            &lt;svg width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&gt;&lt;path d=&#34;M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8&#34;/&gt;&lt;path d=&#34;M3 3v5h5&#34;/&gt;&lt;/svg&gt;
+                            Қайтадан бастау
+                         &lt;/button&gt;
+                     &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function render() {
+            const app = document.getElementById(&#39;app&#39;);
+            
+            if (state.gameState === &#39;finished&#39;) {
+                app.innerHTML = renderFinishedScreen();
+                return;
+            }
+
+            app.innerHTML = `
+                ${renderHeader()}
+                ${renderProblemArea()}
+                ${renderControlsArea()}
+            `;
+        }
+
+        // --- EXPOSE TO WINDOW ---
+        // This is critical for inline onclick handlers to work reliably
+        window.handleOptionClick = handleOptionClick;
+        window.handleKeypadPress = handleKeypadPress;
+        window.nextProblem = nextProblem;
+        window.initGame = initGame;
+
+        // Start the game
+        initGame();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -454,7 +1020,328 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame161_ru" src="/task/161?lang=ru"
+                            <iframe id="taskFrame161_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Прыгающая лягушка - Общий знаменатель&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+            50% { transform: translateY(0); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+        }
+        .animate-bounce-custom {
+            animation: bounce 1s infinite;
+        }
+        .frog-transition {
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-b from-cyan-300 to-blue-500 flex flex-col items-center p-2 md:p-4 overflow-y-auto relative&#34;&gt;
+
+    &lt;div class=&#34;absolute top-10 left-10 text-white/40 pointer-events-none&#34;&gt;
+        &lt;svg width=&#34;40&#34; height=&#34;40&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;currentColor&#34;&gt;&lt;polygon points=&#34;12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2&#34;&gt;&lt;/polygon&gt;&lt;/svg&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;w-full max-w-4xl flex-1 flex flex-col items-center relative gap-4 z-10 pb-8&#34;&gt;
+        &lt;/div&gt;
+
+    &lt;div class=&#34;mt-4 text-white/70 text-xs text-center pb-2 z-0&#34;&gt;
+        5 класс | Математика | Приведение к общему знаменателю
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- Управление состоянием ---
+        const state = {
+            gameState: &#39;start&#39;,
+            step: &#39;denominator&#39;,
+            problemNumber: 1,
+            totalProblems: 10,
+            score: 0,
+            fraction1: { whole: 0, num: 1, den: 2 },
+            fraction2: { whole: 0, num: 1, den: 3 },
+            options: [],
+            userInput: &#39;&#39;,
+            frogPosition: 0,
+            message: &#39;&#39;
+        };
+
+        // --- Вспомогательные функции ---
+        function generateRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min &#43; 1)) &#43; min;
+        }
+        
+        function gcd(a, b) {
+            if (!b) return a;
+            return gcd(b, a % b);
+        }
+
+        function lcm(a, b) {
+            return (a * b) / gcd(a, b);
+        }
+
+        function isInputMode() {
+            return state.problemNumber &gt; 5;
+        }
+
+        // --- Логика игры ---
+
+        function initGame() {
+            state.score = 0;
+            state.problemNumber = 1;
+            state.gameState = &#39;start&#39;;
+            generateProblem();
+        }
+
+        function generateProblem() {
+            const trickyPairs = [
+                [6, 8], [6, 15], [8, 12], [9, 12], [9, 15], [10, 12], [10, 15],
+                [12, 15], [12, 16], [12, 18], [12, 20], [14, 21], [15, 20],
+                [15, 25], [16, 20], [16, 24], [18, 24], [18, 27], [20, 25]
+            ];
+
+            let d1, d2;
+            const useTricky = Math.random() &lt; (state.problemNumber &gt; 5 ? 0.85 : 0.6);
+
+            if (useTricky) {
+                const pair = trickyPairs[generateRandomInt(0, trickyPairs.length - 1)];
+                if (Math.random() &gt; 0.5) { d1 = pair[0]; d2 = pair[1]; } 
+                else { d1 = pair[1]; d2 = pair[0]; }
+            } else {
+                d1 = generateRandomInt(4, 15);
+                d2 = generateRandomInt(4, 15);
+                while (d1 === d2 || gcd(d1, d2) === 1) {
+                    d2 = generateRandomInt(4, 15);
+                }
+            }
+
+            let n1 = generateRandomInt(1, d1 - 1);
+            while (gcd(n1, d1) !== 1) n1 = generateRandomInt(1, d1 - 1);
+            
+            let n2 = generateRandomInt(1, d2 - 1);
+            while (gcd(n2, d2) !== 1) n2 = generateRandomInt(1, d2 - 1);
+
+            state.fraction1 = { whole: Math.random() &gt; 0.7 ? generateRandomInt(1, 5) : 0, num: n1, den: d1 };
+            state.fraction2 = { whole: Math.random() &gt; 0.7 ? generateRandomInt(1, 5) : 0, num: n2, den: d2 };
+            state.step = &#39;denominator&#39;;
+            state.frogPosition = 0;
+            state.userInput = &#39;&#39;;
+            state.gameState = &#39;playing&#39;;
+
+            const modeText = isInputMode() ? &#39;вычисли и введи&#39; : &#39;выбери&#39;;
+            state.message = `Задача №${state.problemNumber}: Сначала ${modeText} ОБЩИЙ ЗНАМЕНАТЕЛЬ!`;
+
+            if (!isInputMode()) {
+                generateOptions(&#39;denominator&#39;, lcm(d1, d2), d1, d2);
+            }
+            render();
+        }
+
+        function generateOptions(currentStep, correctVal, d1, d2) {
+            const opts = new Set();
+            opts.add(correctVal);
+            while (opts.size &lt; 3) {
+                let fake;
+                if (currentStep === &#39;denominator&#39;) {
+                    fake = Math.random() &lt; 0.5 ? d1 * d2 : correctVal &#43; d1;
+                } else {
+                    fake = correctVal &#43; (Math.random() &lt; 0.5 ? 1 : -1) * generateRandomInt(1, 3);
+                }
+                if (fake &gt; 0 &amp;&amp; fake !== correctVal) opts.add(fake);
+            }
+            state.options = Array.from(opts).sort(() =&gt; Math.random() - 0.5);
+        }
+
+        // --- Обработчики ---
+
+        function handleOptionClick(val) {
+            const commonDen = lcm(state.fraction1.den, state.fraction2.den);
+            if (state.step === &#39;denominator&#39;) {
+                if (val === commonDen) {
+                    state.message = &#39;Верно! Теперь найди числитель 1-й дроби.&#39;;
+                    state.step = &#39;numerator1&#39;;
+                    state.frogPosition = 1;
+                    generateOptions(&#39;numerator1&#39;, state.fraction1.num * (commonDen / state.fraction1.den));
+                } else state.message = &#39;Неверно! Найди НОК знаменателей.&#39;;
+            } else if (state.step === &#39;numerator1&#39;) {
+                const correctNum1 = state.fraction1.num * (commonDen / state.fraction1.den);
+                if (val === correctNum1) {
+                    state.message = &#39;Отлично! Теперь числитель 2-й дроби.&#39;;
+                    state.step = &#39;numerator2&#39;;
+                    state.frogPosition = 2;
+                    generateOptions(&#39;numerator2&#39;, state.fraction2.num * (commonDen / state.fraction2.den));
+                } else state.message = &#39;Ошибка! Умножь на доп. множитель.&#39;;
+            } else if (state.step === &#39;numerator2&#39;) {
+                if (val === state.fraction2.num * (commonDen / state.fraction2.den)) handleSuccess();
+                else state.message = &#39;Почти! Проверь умножение.&#39;;
+            }
+            render();
+        }
+
+        function handleKeypadPress(key) {
+            if (key === &#39;DEL&#39;) state.userInput = state.userInput.slice(0, -1);
+            else if (key === &#39;OK&#39;) checkAnswerInput();
+            else if (state.userInput.length &lt; 3) state.userInput &#43;= key;
+            render();
+        }
+
+        function checkAnswerInput() {
+            const val = parseInt(state.userInput);
+            const commonDen = lcm(state.fraction1.den, state.fraction2.den);
+            if (state.step === &#39;denominator&#39;) {
+                if (val === commonDen) {
+                    state.message = &#39;Да! Теперь вычисли числитель 1-й дроби.&#39;;
+                    state.step = &#39;numerator1&#39;;
+                    state.frogPosition = 1;
+                } else state.message = &#39;Неверный знаменатель. Нужен НОК!&#39;;
+            } else if (state.step === &#39;numerator1&#39;) {
+                if (val === state.fraction1.num * (commonDen / state.fraction1.den)) {
+                    state.message = &#39;Верно! Теперь числитель 2-й дроби.&#39;;
+                    state.step = &#39;numerator2&#39;;
+                    state.frogPosition = 2;
+                } else state.message = &#39;Неправильно. Умножь старый числитель на доп. множитель.&#39;;
+            } else if (state.step === &#39;numerator2&#39;) {
+                if (val === state.fraction2.num * (commonDen / state.fraction2.den)) handleSuccess();
+                else state.message = &#39;Ошибка во второй дроби. Попробуй еще раз.&#39;;
+            }
+            state.userInput = &#39;&#39;;
+            render();
+        }
+
+        function handleSuccess() {
+            state.score&#43;&#43;;
+            state.gameState = &#39;success&#39;;
+            state.frogPosition = 3;
+            state.message = state.problemNumber &gt;= state.totalProblems ? &#39;Ура! Ты прошел все испытания!&#39; : &#39;Отлично! Все правильно!&#39;;
+            render();
+        }
+
+        function nextProblem() {
+            if (state.problemNumber &gt;= state.totalProblems) state.gameState = &#39;finished&#39;;
+            else { state.problemNumber&#43;&#43;; generateProblem(); }
+            render();
+        }
+
+        // --- Отрисовка ---
+
+        function getFractionHTML(f, stepName) {
+            const commonDen = lcm(state.fraction1.den, state.fraction2.den);
+            const correctNum = f.num * (commonDen / f.den);
+            let n = &#39;?&#39;, d = &#39;?&#39;, isActive = false;
+
+            if (state.gameState === &#39;success&#39;) { n = correctNum; d = commonDen; }
+            else {
+                if (state.step === &#39;denominator&#39;) { d = isInputMode() ? (state.userInput || &#39;?&#39;) : &#39;?&#39;; isActive = true; }
+                else {
+                    d = commonDen;
+                    if (state.step === stepName) { n = isInputMode() ? (state.userInput || &#39;?&#39;) : &#39;?&#39;; isActive = true; }
+                    else if (stepName === &#39;numerator1&#39; &amp;&amp; state.step === &#39;numerator2&#39;) n = correctNum;
+                }
+            }
+
+            return `
+                &lt;div class=&#34;flex items-center font-bold text-3xl md:text-5xl text-gray-800 bg-white/60 p-3 rounded-xl backdrop-blur-sm border-2 ${isActive ? &#39;border-yellow-400 bg-yellow-50 scale-105 ring-4 ring-yellow-200&#39; : &#39;border-white&#39;} shadow-sm transition-all duration-300&#34;&gt;
+                    ${f.whole &gt; 0 ? `&lt;span class=&#34;mr-3 text-blue-700&#34;&gt;${f.whole}&lt;/span&gt;` : &#39;&#39;}
+                    &lt;div class=&#34;flex flex-col items-center min-w-[3rem]&#34;&gt;
+                        &lt;span class=&#34;${isActive &amp;&amp; state.step.includes(&#39;numerator&#39;) ? &#39;text-blue-900&#39; : &#39;text-blue-600&#39;}&#34;&gt;${n}&lt;/span&gt;
+                        &lt;div class=&#34;w-full h-1 bg-gray-800 my-1 rounded-full&#34;&gt;&lt;/div&gt;
+                        &lt;span class=&#34;${isActive &amp;&amp; state.step === &#39;denominator&#39; ? &#39;text-blue-900&#39; : &#39;text-gray-900&#39;}&#34;&gt;${d}&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;`;
+        }
+
+        function render() {
+            const app = document.getElementById(&#39;app&#39;);
+            if (state.gameState === &#39;finished&#39;) {
+                app.innerHTML = `
+                    &lt;div class=&#34;fixed inset-0 bg-gradient-to-b from-purple-400 to-blue-600 flex flex-col items-center justify-center p-4 z-50&#34;&gt;
+                        &lt;div class=&#34;bg-white/90 p-8 rounded-3xl shadow-2xl text-center max-w-md w-full&#34;&gt;
+                            &lt;h1 class=&#34;text-3xl font-bold text-blue-900 mb-2&#34;&gt;Игра окончена!&lt;/h1&gt;
+                            &lt;div class=&#34;text-6xl font-black text-blue-600 mb-8&#34;&gt;${state.score} / ${state.totalProblems}&lt;/div&gt;
+                            &lt;button onclick=&#34;window.initGame()&#34; class=&#34;w-full bg-blue-600 text-white font-bold py-4 rounded-xl shadow-lg&#34;&gt;Начать заново&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;`;
+                return;
+            }
+
+            app.innerHTML = `
+                &lt;div class=&#34;w-full max-w-4xl flex justify-between items-center mb-4 sticky top-0 pt-2 z-30&#34;&gt;
+                    &lt;div class=&#34;bg-white/90 backdrop-blur px-4 py-2 rounded-2xl shadow-lg border-2 border-cyan-200&#34;&gt;
+                        &lt;h1 class=&#34;text-xl font-bold text-cyan-700&#34;&gt;🐸 Лягушка-прыгунья &lt;span class=&#34;text-sm font-normal text-gray-400&#34;&gt;| ${state.problemNumber}/${state.totalProblems}&lt;/span&gt;&lt;/h1&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;bg-yellow-400 text-yellow-900 px-4 py-2 rounded-2xl shadow-lg font-bold border-2 border-yellow-200&#34;&gt;⭐ ${state.score}&lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&#34;w-full bg-white/30 rounded-3xl p-4 md:p-6 backdrop-blur-md border-4 border-white/40 shadow-xl flex flex-col items-center gap-4&#34;&gt;
+                    &lt;div class=&#34;bg-white px-6 py-2 rounded-full shadow-lg -mt-10 border border-blue-100&#34;&gt;&lt;p class=&#34;font-bold text-blue-800&#34;&gt;${state.message}&lt;/p&gt;&lt;/div&gt;
+                    &lt;div class=&#34;flex flex-col md:flex-row items-center gap-6 w-full justify-center&#34;&gt;
+                        &lt;div class=&#34;flex gap-4 items-center opacity-60 scale-90&#34;&gt;
+                            ${renderStaticFraction(state.fraction1)} &lt;span class=&#34;text-2xl font-bold text-white&#34;&gt;&amp;&lt;/span&gt; ${renderStaticFraction(state.fraction2)}
+                        &lt;/div&gt;
+                        &lt;div class=&#34;flex gap-6 items-center bg-white/40 p-3 rounded-2xl border border-white/50&#34;&gt;
+                            ${getFractionHTML(state.fraction1, &#39;numerator1&#39;)} &lt;span class=&#34;text-4xl font-black text-blue-900&#34;&gt;&amp;&lt;/span&gt; ${getFractionHTML(state.fraction2, &#39;numerator2&#39;)}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&#34;w-full min-h-[300px] relative flex flex-col justify-end pb-4 mt-2&#34;&gt;
+                    &lt;div class=&#34;absolute inset-0 top-6 bg-blue-600/20 rounded-t-full rounded-b-3xl border-t-4 border-blue-300/50&#34;&gt;&lt;/div&gt;
+                    &lt;div class=&#34;relative z-10 flex justify-between items-end px-4 md:px-20 h-24 mb-16&#34;&gt;
+                        ${[0,1,2,3].map(i =&gt; `&lt;div class=&#34;w-20 h-6 ${state.frogPosition &gt;= i ? &#39;bg-green-500&#39; : &#39;bg-green-900&#39;} rounded-[50%] shadow-lg&#34;&gt;&lt;/div&gt;`).join(&#39;&#39;)}
+                        &lt;div class=&#34;absolute frog-transition text-5xl md:text-6xl z-20&#34; style=&#34;left: ${[&#39;5%&#39;, &#39;33%&#39;, &#39;60%&#39;, &#39;88%&#39;][state.frogPosition]}; bottom: 10px; transform: translate(-50%, 0);&#34;&gt;🐸&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;w-full max-w-2xl mx-auto z-20 flex justify-center items-center&#34;&gt;
+                        ${renderControls()}
+                    &lt;/div&gt;
+                &lt;/div&gt;`;
+        }
+
+        function renderStaticFraction(f) {
+            return `
+                &lt;div class=&#34;flex flex-col items-center&#34;&gt;
+                    &lt;span class=&#34;text-xs font-bold text-white mb-1&#34;&gt;Дано&lt;/span&gt;
+                    &lt;div class=&#34;flex items-center font-bold text-2xl text-gray-800 bg-gray-100/50 p-2 rounded-lg&#34;&gt;
+                        ${f.whole &gt; 0 ? `&lt;span class=&#34;mr-2&#34;&gt;${f.whole}&lt;/span&gt;` : &#39;&#39;}
+                        &lt;div class=&#34;flex flex-col items-center&#34;&gt;&lt;span&gt;${f.num}&lt;/span&gt;&lt;div class=&#34;w-full h-0.5 bg-gray-600 my-0.5&#34;&gt;&lt;/div&gt;&lt;span&gt;${f.den}&lt;/span&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;`;
+        }
+
+        function renderControls() {
+            if (state.gameState === &#39;success&#39;) {
+                return `&lt;button onclick=&#34;window.nextProblem()&#34; class=&#34;bg-yellow-400 hover:bg-yellow-300 text-yellow-900 font-bold py-3 px-10 rounded-full shadow-xl transition-all text-xl border-b-4 border-yellow-600&#34;&gt;Дальше ⏩&lt;/button&gt;`;
+            }
+            if (!isInputMode()) {
+                return `&lt;div class=&#34;grid grid-cols-3 gap-3 w-full px-2&#34;&gt;${state.options.map(opt =&gt; `&lt;button onclick=&#34;window.handleOptionClick(${opt})&#34; class=&#34;bg-white hover:bg-green-50 text-green-700 font-black text-2xl py-3 rounded-xl shadow-md border-b-4 border-green-200 transition-all&#34;&gt;${opt}&lt;/button&gt;`).join(&#39;&#39;)}&lt;/div&gt;`;
+            }
+            return `
+                &lt;div class=&#34;flex gap-2 w-full justify-center px-2&#34;&gt;
+                    &lt;div class=&#34;grid grid-cols-5 gap-2 flex-1 max-w-sm&#34;&gt;
+                        ${[1,2,3,4,5,6,7,8,9,0].map(n =&gt; `&lt;button onclick=&#34;window.handleKeypadPress(&#39;${n}&#39;)&#34; class=&#34;bg-blue-100 text-blue-800 font-bold py-2 rounded-lg border-b-2 border-blue-300 text-xl&#34;&gt;${n}&lt;/button&gt;`).join(&#39;&#39;)}
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex flex-col gap-2&#34;&gt;
+                        &lt;button onclick=&#34;window.handleKeypadPress(&#39;DEL&#39;)&#34; class=&#34;bg-red-100 text-red-700 p-3 rounded-lg border-b-2 border-red-300&#34;&gt;⌫&lt;/button&gt;
+                        &lt;button onclick=&#34;window.handleKeypadPress(&#39;OK&#39;)&#34; class=&#34;bg-green-500 text-white p-3 rounded-lg border-b-4 border-green-700&#34;&gt;OK&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;`;
+        }
+
+        window.handleOptionClick = handleOptionClick;
+        window.handleKeypadPress = handleKeypadPress;
+        window.nextProblem = nextProblem;
+        window.initGame = initGame;
+        initGame();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

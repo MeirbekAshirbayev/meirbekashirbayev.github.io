@@ -404,7 +404,639 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame170" src="/task/170?lang=kz"
+                            <iframe id="taskFrame170" srcdoc="&lt;!DOCTYPE htmСанды теңдіктер: Интерактивті зертханаl&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;!-- Иконкалар үшін FontAwesome қалдырылды --&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css&#34;&gt;
+    &lt;style&gt;
+        /* БАЗАЛЫҚ СТИЛЬДЕР */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            background: #dbeafe;
+            color: var(--primary-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        /* ТАБТАР (TABS) */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .tab-btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #f8fafc;
+        }
+
+        /* КАРТОЧКАЛАР */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            display: none; /* Әдепкі бойынша жасырын */
+        }
+
+        .card.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #334155;
+        }
+
+        .description {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* ТАРАЗЫ СТИЛЬДЕРІ */
+        .balance-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #beam-group {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: 200px 100px;
+        }
+
+        .pan-content {
+            font-weight: bold;
+            font-size: 22px;
+            fill: white;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #f8fafc;
+        }
+
+        .btn-blue { color: var(--primary); border-color: #dbeafe; }
+        .btn-blue:hover { background: #eff6ff; border-color: var(--primary); }
+        
+        .btn-red { color: var(--danger); border-color: #fee2e2; }
+        .btn-red:hover { background: #fef2f2; border-color: var(--danger); }
+        
+        .btn-amber { color: #d97706; border-color: #fef3c7; }
+        .btn-amber:hover { background: #fffbeb; border-color: #fbbf24; }
+
+        .status-bar {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 500;
+            width: 100%;
+        }
+
+        /* ТАСЫМАЛДАУ СТИЛЬДЕРІ */
+        .sandbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .drop-zone {
+            flex: 1;
+            min-width: 250px;
+            min-height: 120px;
+            border: 2px dashed var(--border);
+            border-radius: 20px;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
+            transition: background 0.3s;
+        }
+
+        .drop-zone.drag-over {
+            background: #eff6ff;
+            border-color: var(--primary);
+        }
+
+        .equal-sign {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .term {
+            padding: 12px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            cursor: grab;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            user-select: none;
+        }
+
+        .term:active { cursor: grabbing; }
+        .term.pos { background: var(--primary); }
+        .term.neg { background: var(--danger); }
+
+        .zero {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #e2e8f0;
+        }
+
+        .example-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .nav-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover { background: #e2e8f0; }
+
+        /* ТЕСТ СТИЛЬДЕРІ */
+        .quiz-item {
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .opt-btn {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover { background: #f8fafc; border-color: var(--primary); }
+        .opt-btn.selected { background: #eff6ff; border-color: var(--primary); color: var(--primary-dark); }
+        .opt-btn.correct { background: #dcfce7; border-color: var(--success); color: #065f46; }
+        .opt-btn.wrong { background: #fee2e2; border-color: var(--danger); color: #991b1b; }
+
+        .submit-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .main-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .main-btn:active { transform: scale(0.98); }
+
+        #score-display {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--success);
+            display: none;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div class=&#34;container&#34;&gt;
+        &lt;header&gt;
+            &lt;h1&gt;Математикалық зертхана&lt;/h1&gt;
+            &lt;span class=&#34;badge&#34;&gt;6.2.2.1 Санды теңдіктер қасиеттері&lt;/span&gt;
+        &lt;/header&gt;
+
+        &lt;!-- Tabs --&gt;
+        &lt;nav class=&#34;tabs&#34;&gt;
+            &lt;button class=&#34;tab-btn active&#34; onclick=&#34;showTab(&#39;balance&#39;)&#34;&gt;
+                &lt;i class=&#34;fa-solid fa-scale-balanced&#34;&gt;&lt;/i&gt; Таразы
+            &lt;/button&gt;
+            &lt;button class=&#34;tab-btn&#34; onclick=&#34;showTab(&#39;move&#39;)&#34;&gt;
+                &lt;i class=&#34;fa-solid fa-arrows-left-right&#34;&gt;&lt;/i&gt; Тасымалдау
+            &lt;/button&gt;
+            &lt;button class=&#34;tab-btn&#34; onclick=&#34;showTab(&#39;quiz&#39;)&#34;&gt;
+                &lt;i class=&#34;fa-solid fa-clipboard-check&#34;&gt;&lt;/i&gt; Тест
+            &lt;/button&gt;
+        &lt;/nav&gt;
+
+        &lt;!-- Tab 1: Balance --&gt;
+        &lt;section id=&#34;balance&#34; class=&#34;card active&#34;&gt;
+            &lt;h2&gt;Виртуалды таразы&lt;/h2&gt;
+            &lt;p class=&#34;description&#34;&gt;Екі жаққа бірдей амал қолданыңыз. Тепе-теңдік сақтала ма?&lt;/p&gt;
+            
+            &lt;div class=&#34;balance-box&#34;&gt;
+                &lt;svg viewBox=&#34;0 0 400 280&#34; width=&#34;100%&#34; max-width=&#34;500&#34;&gt;
+                    &lt;!-- Pillar --&gt;
+                    &lt;rect x=&#34;180&#34; y=&#34;230&#34; width=&#34;40&#34; height=&#34;30&#34; rx=&#34;6&#34; fill=&#34;#475569&#34; /&gt;
+                    &lt;rect x=&#34;194&#34; y=&#34;100&#34; width=&#34;12&#34; height=&#34;135&#34; fill=&#34;#64748b&#34; /&gt;
+                    &lt;circle cx=&#34;200&#34; cy=&#34;100&#34; r=&#34;10&#34; fill=&#34;#1e293b&#34; /&gt;
+                    
+                    &lt;!-- Beam --&gt;
+                    &lt;g id=&#34;beam-group&#34;&gt;
+                        &lt;rect x=&#34;50&#34; y=&#34;94&#34; width=&#34;300&#34; height=&#34;12&#34; rx=&#34;6&#34; fill=&#34;#1e293b&#34; /&gt;
+                        &lt;!-- Left --&gt;
+                        &lt;g&gt;
+                            &lt;line x1=&#34;50&#34; y1=&#34;100&#34; x2=&#34;50&#34; y2=&#34;180&#34; stroke=&#34;#94a3b8&#34; stroke-width=&#34;2&#34; /&gt;
+                            &lt;path d=&#34;M10 180 Q50 220 90 180&#34; fill=&#34;#3b82f6&#34; /&gt;
+                            &lt;text x=&#34;50&#34; y=&#34;202&#34; text-anchor=&#34;middle&#34; class=&#34;pan-content&#34; id=&#34;l-text&#34;&gt;10&lt;/text&gt;
+                        &lt;/g&gt;
+                        &lt;!-- Right --&gt;
+                        &lt;g&gt;
+                            &lt;line x1=&#34;350&#34; y1=&#34;100&#34; x2=&#34;350&#34; y2=&#34;180&#34; stroke=&#34;#94a3b8&#34; stroke-width=&#34;2&#34; /&gt;
+                            &lt;path d=&#34;M310 180 Q350 220 390 180&#34; fill=&#34;#10b981&#34; /&gt;
+                            &lt;text x=&#34;350&#34; y=&#34;202&#34; text-anchor=&#34;middle&#34; class=&#34;pan-content&#34; id=&#34;r-text&#34;&gt;10&lt;/text&gt;
+                        &lt;/g&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+
+                &lt;div class=&#34;controls&#34;&gt;
+                    &lt;button class=&#34;btn btn-blue&#34; onclick=&#34;modifyBalance(&#39;add&#39;, 10)&#34;&gt;&#43;10 Қосу&lt;/button&gt;
+                    &lt;button class=&#34;btn btn-red&#34; onclick=&#34;modifyBalance(&#39;sub&#39;, 5)&#34;&gt;-5 Азайту&lt;/button&gt;
+                    &lt;button class=&#34;btn btn-amber&#34; onclick=&#34;modifyBalance(&#39;mul&#39;, 2)&#34;&gt;×2 Көбейту&lt;/button&gt;
+                    &lt;button class=&#34;btn&#34; onclick=&#34;resetBalance()&#34;&gt;Жаңарту&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div id=&#34;balance-status&#34; class=&#34;status-bar&#34;&gt;Бастау үшін батырманы басыңыз&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Tab 2: Number Moving --&gt;
+        &lt;section id=&#34;move&#34; class=&#34;card&#34;&gt;
+            &lt;div class=&#34;example-nav&#34;&gt;
+                &lt;button class=&#34;nav-btn&#34; onclick=&#34;changeExample(-1)&#34;&gt;&lt;i class=&#34;fa-solid fa-chevron-left&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+                &lt;h2 id=&#34;ex-title&#34; style=&#34;margin:0&#34;&gt;12 &#43; 8 = 20&lt;/h2&gt;
+                &lt;button class=&#34;nav-btn&#34; onclick=&#34;changeExample(1)&#34;&gt;&lt;i class=&#34;fa-solid fa-chevron-right&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;p class=&#34;description&#34;&gt;Сандарды теңдіктің кез келген жағына тасымалдаңыз. Таңба қалай өзгереді?&lt;/p&gt;
+
+            &lt;div class=&#34;sandbox&#34;&gt;
+                &lt;div id=&#34;left-zone&#34; class=&#34;drop-zone&#34; ondragover=&#34;onDragOver(event)&#34; ondrop=&#34;onDrop(event, &#39;left&#39;)&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;equal-sign&#34;&gt;=&lt;/div&gt;
+                &lt;div id=&#34;right-zone&#34; class=&#34;drop-zone&#34; ondragover=&#34;onDragOver(event)&#34; ondrop=&#34;onDrop(event, &#39;right&#39;)&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;move-log&#34; class=&#34;status-bar&#34; style=&#34;background:#eff6ff; color:#1d4ed8; border:none; display:none;&#34;&gt;
+                &lt;i class=&#34;fa-solid fa-circle-info&#34;&gt;&lt;/i&gt; Таңба ауыстыру ережесі орындалды!
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;!-- Tab 3: Quiz --&gt;
+        &lt;section id=&#34;quiz&#34; class=&#34;card&#34;&gt;
+            &lt;h2&gt;Біліміңді тексер&lt;/h2&gt;
+            &lt;div id=&#34;quiz-list&#34;&gt;&lt;/div&gt;
+            &lt;div class=&#34;submit-container&#34;&gt;
+                &lt;button id=&#34;check-btn&#34; class=&#34;main-btn&#34; onclick=&#34;evaluateQuiz()&#34;&gt;Жауаптарды тексеру&lt;/button&gt;
+                &lt;div id=&#34;score-display&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- 1. ТАБТАРДЫ БАСҚАРУ ---
+        function showTab(tabId) {
+            // Күйлерді тазалау
+            document.querySelectorAll(&#39;.card&#39;).forEach(c =&gt; c.classList.remove(&#39;active&#39;));
+            document.querySelectorAll(&#39;.tab-btn&#39;).forEach(b =&gt; b.classList.remove(&#39;active&#39;));
+
+            // Белсенді табты көрсету
+            document.getElementById(tabId).classList.add(&#39;active&#39;);
+            event.currentTarget.classList.add(&#39;active&#39;);
+        }
+
+        // --- 2. ТАРАЗЫ ЛОГИКАСЫ ---
+        let leftValue = 10;
+        let rightValue = 10;
+
+        function modifyBalance(type, val) {
+            const beam = document.getElementById(&#39;beam-group&#39;);
+            const status = document.getElementById(&#39;balance-status&#39;);
+
+            if (type === &#39;add&#39;) { leftValue &#43;= val; rightValue &#43;= val; }
+            if (type === &#39;sub&#39;) { leftValue -= val; rightValue -= val; }
+            if (type === &#39;mul&#39;) { leftValue *= val; rightValue *= val; }
+
+            document.getElementById(&#39;l-text&#39;).textContent = leftValue;
+            document.getElementById(&#39;r-text&#39;).textContent = rightValue;
+
+            // Анимация (тербеліс)
+            beam.style.transform = &#39;rotate(-3deg)&#39;;
+            setTimeout(() =&gt; beam.style.transform = &#39;rotate(3deg)&#39;, 150);
+            setTimeout(() =&gt; beam.style.transform = &#39;rotate(0deg)&#39;, 300);
+
+            status.innerHTML = `&lt;strong&gt;${leftValue} = ${rightValue}&lt;/strong&gt;. Теңдік сақталды!`;
+        }
+
+        function resetBalance() {
+            leftValue = 10;
+            rightValue = 10;
+            document.getElementById(&#39;l-text&#39;).textContent = &#39;10&#39;;
+            document.getElementById(&#39;r-text&#39;).textContent = &#39;10&#39;;
+            document.getElementById(&#39;balance-status&#39;).textContent = &#39;Қалпына келтірілді.&#39;;
+        }
+
+        // --- 3. ТАСЫМАЛДАУ ЛОГИКАСЫ ---
+        const examples = [
+            { title: &#34;12 &#43; 8 = 20&#34;, left: [12, 8], right: [20] },
+            { title: &#34;45 &#43; 15 = 60&#34;, left: [45, 15], right: [60] },
+            { title: &#34;100 - 30 = 70&#34;, left: [100, -30], right: [70] },
+            { title: &#34;15 &#43; 25 = 40&#34;, left: [15, 25], right: [40] }
+        ];
+        let currentEx = 0;
+
+        function initExample() {
+            const ex = examples[currentEx];
+            document.getElementById(&#39;ex-title&#39;).textContent = ex.title;
+            const lZone = document.getElementById(&#39;left-zone&#39;);
+            const rZone = document.getElementById(&#39;right-zone&#39;);
+            lZone.innerHTML = &#39;&#39;;
+            rZone.innerHTML = &#39;&#39;;
+
+            ex.left.forEach(v =&gt; lZone.appendChild(createTerm(v, &#39;left&#39;)));
+            ex.right.forEach(v =&gt; rZone.appendChild(createTerm(v, &#39;right&#39;)));
+            updateVisuals();
+        }
+
+        function createTerm(val, side) {
+            const div = document.createElement(&#39;div&#39;);
+            const abs = Math.abs(val);
+            const isNeg = val &lt; 0;
+            div.className = `term ${isNeg ? &#39;neg&#39; : &#39;pos&#39;}`;
+            div.draggable = true;
+            div.textContent = abs;
+            div.dataset.value = abs;
+            div.dataset.side = side;
+            div.id = &#39;t-&#39; &#43; Math.random().toString(36).substr(2, 5);
+            
+            div.ondragstart = (e) =&gt; {
+                e.dataTransfer.setData(&#39;text&#39;, e.target.id);
+                e.target.style.opacity = &#39;0.5&#39;;
+            };
+            div.ondragend = (e) =&gt; e.target.style.opacity = &#39;1&#39;;
+
+            return div;
+        }
+
+        function onDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add(&#39;drag-over&#39;);
+        }
+
+        function onDrop(e, targetSide) {
+            e.preventDefault();
+            e.currentTarget.classList.remove(&#39;drag-over&#39;);
+            const id = e.dataTransfer.getData(&#39;text&#39;);
+            const el = document.getElementById(id);
+            const originalSide = el.dataset.side;
+
+            if (originalSide !== targetSide) {
+                // Таңба ауыстыру логикасы
+                const isNeg = el.classList.contains(&#39;neg&#39;);
+                if (isNeg) {
+                    el.classList.replace(&#39;neg&#39;, &#39;pos&#39;);
+                } else {
+                    el.classList.replace(&#39;pos&#39;, &#39;neg&#39;);
+                }
+                el.dataset.side = targetSide;
+                document.getElementById(&#39;move-log&#39;).style.display = &#39;block&#39;;
+            }
+
+            e.currentTarget.appendChild(el);
+            updateVisuals();
+        }
+
+        function updateVisuals() {
+            [&#39;left-zone&#39;, &#39;right-zone&#39;].forEach(zid =&gt; {
+                const zone = document.getElementById(zid);
+                const items = Array.from(zone.querySelectorAll(&#39;.term&#39;));
+                
+                // Егер бос болса - 0 қосу
+                if (items.length === 0) {
+                    if (!zone.querySelector(&#39;.zero&#39;)) {
+                        const z = document.createElement(&#39;span&#39;);
+                        z.className = &#39;zero&#39;;
+                        z.textContent = &#39;0&#39;;
+                        zone.appendChild(z);
+                    }
+                } else {
+                    const z = zone.querySelector(&#39;.zero&#39;);
+                    if (z) z.remove();
+
+                    // Таңбаларды (&#43;/-) мәтін ретінде реттеу
+                    items.forEach((item, idx) =&gt; {
+                        const val = item.dataset.value;
+                        const isNeg = item.classList.contains(&#39;neg&#39;);
+                        if (idx === 0) {
+                            item.textContent = isNeg ? &#39;-&#39; &#43; val : val;
+                        } else {
+                            item.textContent = isNeg ? &#39;- &#39; &#43; val : &#39;&#43; &#39; &#43; val;
+                        }
+                    });
+                }
+            });
+        }
+
+        function changeExample(dir) {
+            currentEx = (currentEx &#43; dir &#43; examples.length) % examples.length;
+            document.getElementById(&#39;move-log&#39;).style.display = &#39;none&#39;;
+            initExample();
+        }
+
+        // --- 4. ТЕСТ ЛОГИКАСЫ ---
+        const quizData = [
+            { q: &#34;Егер a = b болса, a &#43; 10 = b &#43; ? тура болуы үшін ? орнында не болу керек?&#34;, a: [&#34;10&#34;, &#34;0&#34;, &#34;5&#34;, &#34;a&#34;], c: 0 },
+            { q: &#34;x &#43; 5 = 15 теңдігінде 5-ті оң жаққа өткізгенде таңбасы қалай өзгереді?&#34;, a: [&#34;Өзгермейді&#34;, &#34;Плюс болады&#34;, &#34;Минус болады&#34;, &#34;Бөлу болады&#34;], c: 2 },
+            { q: &#34;Тура санды теңдіктің екі жағын да 0-ге бөлуге бола ма?&#34;, a: [&#34;Болады&#34;, &#34;Болмайды&#34;, &#34;Тек бір жағын&#34;, &#34;Тек бүтін сан болса&#34;], c: 1 },
+            { q: &#34;12 = 12 теңдігінің екі жағын да 3-ке көбейтсек, нәтиже қандай?&#34;, a: &#34;36 = 36&#34;, a: [&#34;12 = 12&#34;, &#34;36 = 36&#34;, &#34;4 = 4&#34;, &#34;15 = 15&#34;], c: 1 },
+            { q: &#34;Мүшелеп қосу қасиеті: a=b және c=d болса, онда...&#34;, a: [&#34;a&#43;c = b&#43;d&#34;, &#34;a-c = b&#43;d&#34;, &#34;ac = bd&#34;, &#34;a/c = b/d&#34;], c: 0 }
+        ];
+
+        let userSelections = {};
+
+        function initQuiz() {
+            const list = document.getElementById(&#39;quiz-list&#39;);
+            quizData.forEach((data, qIdx) =&gt; {
+                const item = document.createElement(&#39;div&#39;);
+                item.className = &#39;quiz-item&#39;;
+                item.innerHTML = `
+                    &lt;span class=&#34;quiz-question&#34;&gt;${qIdx &#43; 1}. ${data.q}&lt;/span&gt;
+                    &lt;div class=&#34;options&#34; id=&#34;options-${qIdx}&#34;&gt;
+                        ${data.a.map((opt, oIdx) =&gt; `
+                            &lt;button class=&#34;opt-btn&#34; onclick=&#34;selectOption(${qIdx}, ${oIdx})&#34;&gt;
+                                ${String.fromCharCode(65 &#43; oIdx)}) ${opt}
+                            &lt;/button&gt;
+                        `).join(&#39;&#39;)}
+                    &lt;/div&gt;
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function selectOption(qIdx, oIdx) {
+            userSelections[qIdx] = oIdx;
+            const btns = document.getElementById(`options-${qIdx}`).querySelectorAll(&#39;.opt-btn&#39;);
+            btns.forEach((b, i) =&gt; {
+                b.classList.remove(&#39;selected&#39;);
+                if (i === oIdx) b.classList.add(&#39;selected&#39;);
+            });
+        }
+
+        function evaluateQuiz() {
+            let score = 0;
+            quizData.forEach((data, qIdx) =&gt; {
+                const btns = document.getElementById(`options-${qIdx}`).querySelectorAll(&#39;.opt-btn&#39;);
+                const correctIdx = data.c;
+                const userIdx = userSelections[qIdx];
+
+                btns.forEach((b, i) =&gt; {
+                    b.disabled = true;
+                    if (i === correctIdx) b.classList.add(&#39;correct&#39;);
+                    if (i === userIdx &amp;&amp; i !== correctIdx) b.classList.add(&#39;wrong&#39;);
+                });
+
+                if (userIdx === correctIdx) score&#43;&#43;;
+            });
+
+            const display = document.getElementById(&#39;score-display&#39;);
+            display.style.display = &#39;block&#39;;
+            display.textContent = `Нәтиже: ${score} / ${quizData.length}`;
+            document.getElementById(&#39;check-btn&#39;).style.display = &#39;none&#39;;
+        }
+
+        // Жүктеу
+        window.onload = () =&gt; {
+            initExample();
+            initQuiz();
+        };
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -446,7 +1078,623 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame170_ru" src="/task/170?lang=ru"
+                            <iframe id="taskFrame170_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Числовые равенства: Интерактивная лаборатория&lt;/title&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css&#34;&gt;
+    &lt;style&gt;
+        /* БАЗОВЫЕ СТИЛИ */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            background: #dbeafe;
+            color: var(--primary-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        /* ТАБЫ (TABS) */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: #fff;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .tab-btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #f8fafc;
+        }
+
+        /* КАРТОЧКИ */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            display: none; 
+        }
+
+        .card.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #334155;
+        }
+
+        .description {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* СТИЛИ ВЕСОВ */
+        .balance-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #beam-group {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: 200px 100px;
+        }
+
+        .pan-content {
+            font-weight: bold;
+            font-size: 22px;
+            fill: white;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #f8fafc;
+        }
+
+        .btn-blue { color: var(--primary); border-color: #dbeafe; }
+        .btn-blue:hover { background: #eff6ff; border-color: var(--primary); }
+        
+        .btn-red { color: var(--danger); border-color: #fee2e2; }
+        .btn-red:hover { background: #fef2f2; border-color: var(--danger); }
+        
+        .btn-amber { color: #d97706; border-color: #fef3c7; }
+        .btn-amber:hover { background: #fffbeb; border-color: #fbbf24; }
+
+        .status-bar {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 500;
+            width: 100%;
+        }
+
+        /* СТИЛИ ПЕРЕНОСА */
+        .sandbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .drop-zone {
+            flex: 1;
+            min-width: 250px;
+            min-height: 120px;
+            border: 2px dashed var(--border);
+            border-radius: 20px;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            gap: 10px;
+            flex-wrap: wrap;
+            transition: background 0.3s;
+        }
+
+        .drop-zone.drag-over {
+            background: #eff6ff;
+            border-color: var(--primary);
+        }
+
+        .equal-sign {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .term {
+            padding: 12px 20px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            cursor: grab;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            user-select: none;
+        }
+
+        .term:active { cursor: grabbing; }
+        .term.pos { background: var(--primary); }
+        .term.neg { background: var(--danger); }
+
+        .zero {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #e2e8f0;
+        }
+
+        .example-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .nav-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover { background: #e2e8f0; }
+
+        /* СТИЛИ ТЕСТА */
+        .quiz-item {
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .opt-btn {
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .opt-btn:hover { background: #f8fafc; border-color: var(--primary); }
+        .opt-btn.selected { background: #eff6ff; border-color: var(--primary); color: var(--primary-dark); }
+        .opt-btn.correct { background: #dcfce7; border-color: var(--success); color: #065f46; }
+        .opt-btn.wrong { background: #fee2e2; border-color: var(--danger); color: #991b1b; }
+
+        .submit-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .main-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .main-btn:active { transform: scale(0.98); }
+
+        #score-display {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--success);
+            display: none;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div class=&#34;container&#34;&gt;
+        &lt;header&gt;
+            &lt;h1&gt;Математическая лаборатория&lt;/h1&gt;
+            &lt;span class=&#34;badge&#34;&gt;6.2.2.1 Свойства числовых равенств&lt;/span&gt;
+        &lt;/header&gt;
+
+        &lt;nav class=&#34;tabs&#34;&gt;
+            &lt;button class=&#34;tab-btn active&#34; onclick=&#34;showTab(&#39;balance&#39;)&#34;&gt;
+                &lt;i class=&#34;fa-solid fa-scale-balanced&#34;&gt;&lt;/i&gt; Весы
+            &lt;/button&gt;
+            &lt;button class=&#34;tab-btn&#34; onclick=&#34;showTab(&#39;move&#39;)&#34;&gt;
+                &lt;i class=&#34;fa-solid fa-arrows-left-right&#34;&gt;&lt;/i&gt; Перенос
+            &lt;/button&gt;
+            &lt;button class=&#34;tab-btn&#34; onclick=&#34;showTab(&#39;quiz&#39;)&#34;&gt;
+                &lt;i class=&#34;fa-solid fa-clipboard-check&#34;&gt;&lt;/i&gt; Тест
+            &lt;/button&gt;
+        &lt;/nav&gt;
+
+        &lt;section id=&#34;balance&#34; class=&#34;card active&#34;&gt;
+            &lt;h2&gt;Виртуальные весы&lt;/h2&gt;
+            &lt;p class=&#34;description&#34;&gt;Примените одинаковое действие к обеим частям. Сохранится ли равновесие?&lt;/p&gt;
+            
+            &lt;div class=&#34;balance-box&#34;&gt;
+                &lt;svg viewBox=&#34;0 0 400 280&#34; width=&#34;100%&#34; max-width=&#34;500&#34;&gt;
+                    &lt;rect x=&#34;180&#34; y=&#34;230&#34; width=&#34;40&#34; height=&#34;30&#34; rx=&#34;6&#34; fill=&#34;#475569&#34; /&gt;
+                    &lt;rect x=&#34;194&#34; y=&#34;100&#34; width=&#34;12&#34; height=&#34;135&#34; fill=&#34;#64748b&#34; /&gt;
+                    &lt;circle cx=&#34;200&#34; cy=&#34;100&#34; r=&#34;10&#34; fill=&#34;#1e293b&#34; /&gt;
+                    
+                    &lt;g id=&#34;beam-group&#34;&gt;
+                        &lt;rect x=&#34;50&#34; y=&#34;94&#34; width=&#34;300&#34; height=&#34;12&#34; rx=&#34;6&#34; fill=&#34;#1e293b&#34; /&gt;
+                        &lt;g&gt;
+                            &lt;line x1=&#34;50&#34; y1=&#34;100&#34; x2=&#34;50&#34; y2=&#34;180&#34; stroke=&#34;#94a3b8&#34; stroke-width=&#34;2&#34; /&gt;
+                            &lt;path d=&#34;M10 180 Q50 220 90 180&#34; fill=&#34;#3b82f6&#34; /&gt;
+                            &lt;text x=&#34;50&#34; y=&#34;202&#34; text-anchor=&#34;middle&#34; class=&#34;pan-content&#34; id=&#34;l-text&#34;&gt;10&lt;/text&gt;
+                        &lt;/g&gt;
+                        &lt;g&gt;
+                            &lt;line x1=&#34;350&#34; y1=&#34;100&#34; x2=&#34;350&#34; y2=&#34;180&#34; stroke=&#34;#94a3b8&#34; stroke-width=&#34;2&#34; /&gt;
+                            &lt;path d=&#34;M310 180 Q350 220 390 180&#34; fill=&#34;#10b981&#34; /&gt;
+                            &lt;text x=&#34;350&#34; y=&#34;202&#34; text-anchor=&#34;middle&#34; class=&#34;pan-content&#34; id=&#34;r-text&#34;&gt;10&lt;/text&gt;
+                        &lt;/g&gt;
+                    &lt;/g&gt;
+                &lt;/svg&gt;
+
+                &lt;div class=&#34;controls&#34;&gt;
+                    &lt;button class=&#34;btn btn-blue&#34; onclick=&#34;modifyBalance(&#39;add&#39;, 10)&#34;&gt;&#43;10 Добавить&lt;/button&gt;
+                    &lt;button class=&#34;btn btn-red&#34; onclick=&#34;modifyBalance(&#39;sub&#39;, 5)&#34;&gt;-5 Вычесть&lt;/button&gt;
+                    &lt;button class=&#34;btn btn-amber&#34; onclick=&#34;modifyBalance(&#39;mul&#39;, 2)&#34;&gt;×2 Умножить&lt;/button&gt;
+                    &lt;button class=&#34;btn&#34; onclick=&#34;resetBalance()&#34;&gt;Сброс&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div id=&#34;balance-status&#34; class=&#34;status-bar&#34;&gt;Нажмите на кнопку, чтобы начать&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&#34;move&#34; class=&#34;card&#34;&gt;
+            &lt;div class=&#34;example-nav&#34;&gt;
+                &lt;button class=&#34;nav-btn&#34; onclick=&#34;changeExample(-1)&#34;&gt;&lt;i class=&#34;fa-solid fa-chevron-left&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+                &lt;h2 id=&#34;ex-title&#34; style=&#34;margin:0&#34;&gt;12 &#43; 8 = 20&lt;/h2&gt;
+                &lt;button class=&#34;nav-btn&#34; onclick=&#34;changeExample(1)&#34;&gt;&lt;i class=&#34;fa-solid fa-chevron-right&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;p class=&#34;description&#34;&gt;Переносите числа в любую часть равенства. Как меняется знак?&lt;/p&gt;
+
+            &lt;div class=&#34;sandbox&#34;&gt;
+                &lt;div id=&#34;left-zone&#34; class=&#34;drop-zone&#34; ondragover=&#34;onDragOver(event)&#34; ondrop=&#34;onDrop(event, &#39;left&#39;)&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;equal-sign&#34;&gt;=&lt;/div&gt;
+                &lt;div id=&#34;right-zone&#34; class=&#34;drop-zone&#34; ondragover=&#34;onDragOver(event)&#34; ondrop=&#34;onDrop(event, &#39;right&#39;)&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;move-log&#34; class=&#34;status-bar&#34; style=&#34;background:#eff6ff; color:#1d4ed8; border:none; display:none;&#34;&gt;
+                &lt;i class=&#34;fa-solid fa-circle-info&#34;&gt;&lt;/i&gt; Правило переноса с противоположным знаком выполнено!
+            &lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;section id=&#34;quiz&#34; class=&#34;card&#34;&gt;
+            &lt;h2&gt;Проверь свои знания&lt;/h2&gt;
+            &lt;div id=&#34;quiz-list&#34;&gt;&lt;/div&gt;
+            &lt;div class=&#34;submit-container&#34;&gt;
+                &lt;button id=&#34;check-btn&#34; class=&#34;main-btn&#34; onclick=&#34;evaluateQuiz()&#34;&gt;Проверить ответы&lt;/button&gt;
+                &lt;div id=&#34;score-display&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- 1. УПРАВЛЕНИЕ ВКЛАДКАМИ ---
+        function showTab(tabId) {
+            document.querySelectorAll(&#39;.card&#39;).forEach(c =&gt; c.classList.remove(&#39;active&#39;));
+            document.querySelectorAll(&#39;.tab-btn&#39;).forEach(b =&gt; b.classList.remove(&#39;active&#39;));
+
+            document.getElementById(tabId).classList.add(&#39;active&#39;);
+            event.currentTarget.classList.add(&#39;active&#39;);
+        }
+
+        // --- 2. ЛОГИКА ВЕСОВ ---
+        let leftValue = 10;
+        let rightValue = 10;
+
+        function modifyBalance(type, val) {
+            const beam = document.getElementById(&#39;beam-group&#39;);
+            const status = document.getElementById(&#39;balance-status&#39;);
+
+            if (type === &#39;add&#39;) { leftValue &#43;= val; rightValue &#43;= val; }
+            if (type === &#39;sub&#39;) { leftValue -= val; rightValue -= val; }
+            if (type === &#39;mul&#39;) { leftValue *= val; rightValue *= val; }
+
+            document.getElementById(&#39;l-text&#39;).textContent = leftValue;
+            document.getElementById(&#39;r-text&#39;).textContent = rightValue;
+
+            beam.style.transform = &#39;rotate(-3deg)&#39;;
+            setTimeout(() =&gt; beam.style.transform = &#39;rotate(3deg)&#39;, 150);
+            setTimeout(() =&gt; beam.style.transform = &#39;rotate(0deg)&#39;, 300);
+
+            status.innerHTML = `&lt;strong&gt;${leftValue} = ${rightValue}&lt;/strong&gt;. Равенство сохранено!`;
+        }
+
+        function resetBalance() {
+            leftValue = 10;
+            rightValue = 10;
+            document.getElementById(&#39;l-text&#39;).textContent = &#39;10&#39;;
+            document.getElementById(&#39;r-text&#39;).textContent = &#39;10&#39;;
+            document.getElementById(&#39;balance-status&#39;).textContent = &#39;Значения сброшены.&#39;;
+        }
+
+        // --- 3. ЛОГИКА ПЕРЕНОСА ---
+        const examples = [
+            { title: &#34;12 &#43; 8 = 20&#34;, left: [12, 8], right: [20] },
+            { title: &#34;45 &#43; 15 = 60&#34;, left: [45, 15], right: [60] },
+            { title: &#34;100 - 30 = 70&#34;, left: [100, -30], right: [70] },
+            { title: &#34;15 &#43; 25 = 40&#34;, left: [15, 25], right: [40] }
+        ];
+        let currentEx = 0;
+
+        function initExample() {
+            const ex = examples[currentEx];
+            document.getElementById(&#39;ex-title&#39;).textContent = ex.title;
+            const lZone = document.getElementById(&#39;left-zone&#39;);
+            const rZone = document.getElementById(&#39;right-zone&#39;);
+            lZone.innerHTML = &#39;&#39;;
+            rZone.innerHTML = &#39;&#39;;
+
+            ex.left.forEach(v =&gt; lZone.appendChild(createTerm(v, &#39;left&#39;)));
+            ex.right.forEach(v =&gt; rZone.appendChild(createTerm(v, &#39;right&#39;)));
+            updateVisuals();
+        }
+
+        function createTerm(val, side) {
+            const div = document.createElement(&#39;div&#39;);
+            const abs = Math.abs(val);
+            const isNeg = val &lt; 0;
+            div.className = `term ${isNeg ? &#39;neg&#39; : &#39;pos&#39;}`;
+            div.draggable = true;
+            div.textContent = abs;
+            div.dataset.value = abs;
+            div.dataset.side = side;
+            div.id = &#39;t-&#39; &#43; Math.random().toString(36).substr(2, 5);
+            
+            div.ondragstart = (e) =&gt; {
+                e.dataTransfer.setData(&#39;text&#39;, e.target.id);
+                e.target.style.opacity = &#39;0.5&#39;;
+            };
+            div.ondragend = (e) =&gt; e.target.style.opacity = &#39;1&#39;;
+
+            return div;
+        }
+
+        function onDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add(&#39;drag-over&#39;);
+        }
+
+        function onDrop(e, targetSide) {
+            e.preventDefault();
+            e.currentTarget.classList.remove(&#39;drag-over&#39;);
+            const id = e.dataTransfer.getData(&#39;text&#39;);
+            const el = document.getElementById(id);
+            const originalSide = el.dataset.side;
+
+            if (originalSide !== targetSide) {
+                const isNeg = el.classList.contains(&#39;neg&#39;);
+                if (isNeg) {
+                    el.classList.replace(&#39;neg&#39;, &#39;pos&#39;);
+                } else {
+                    el.classList.replace(&#39;pos&#39;, &#39;neg&#39;);
+                }
+                el.dataset.side = targetSide;
+                document.getElementById(&#39;move-log&#39;).style.display = &#39;block&#39;;
+            }
+
+            e.currentTarget.appendChild(el);
+            updateVisuals();
+        }
+
+        function updateVisuals() {
+            [&#39;left-zone&#39;, &#39;right-zone&#39;].forEach(zid =&gt; {
+                const zone = document.getElementById(zid);
+                const items = Array.from(zone.querySelectorAll(&#39;.term&#39;));
+                
+                if (items.length === 0) {
+                    if (!zone.querySelector(&#39;.zero&#39;)) {
+                        const z = document.createElement(&#39;span&#39;);
+                        z.className = &#39;zero&#39;;
+                        z.textContent = &#39;0&#39;;
+                        zone.appendChild(z);
+                    }
+                } else {
+                    const z = zone.querySelector(&#39;.zero&#39;);
+                    if (z) z.remove();
+
+                    items.forEach((item, idx) =&gt; {
+                        const val = item.dataset.value;
+                        const isNeg = item.classList.contains(&#39;neg&#39;);
+                        if (idx === 0) {
+                            item.textContent = isNeg ? &#39;-&#39; &#43; val : val;
+                        } else {
+                            item.textContent = isNeg ? &#39;- &#39; &#43; val : &#39;&#43; &#39; &#43; val;
+                        }
+                    });
+                }
+            });
+        }
+
+        function changeExample(dir) {
+            currentEx = (currentEx &#43; dir &#43; examples.length) % examples.length;
+            document.getElementById(&#39;move-log&#39;).style.display = &#39;none&#39;;
+            initExample();
+        }
+
+        // --- 4. ЛОГИКА ТЕСТА ---
+        const quizData = [
+            { q: &#34;Если a = b, то что должно быть на месте ?, чтобы равенство a &#43; 10 = b &#43; ? было верным?&#34;, a: [&#34;10&#34;, &#34;0&#34;, &#34;5&#34;, &#34;a&#34;], c: 0 },
+            { q: &#34;В равенстве x &#43; 5 = 15, как изменится знак числа 5 при переносе в правую часть?&#34;, a: [&#34;Не изменится&#34;, &#34;Станет плюсом&#34;, &#34;Станет минусом&#34;, &#34;Станет делением&#34;], c: 2 },
+            { q: &#34;Можно ли делить обе части верного числового равенства на 0?&#34;, a: [&#34;Можно&#34;, &#34;Нельзя&#34;, &#34;Только одну часть&#34;, &#34;Только если это целое число&#34;], c: 1 },
+            { q: &#34;Если обе части равенства 12 = 12 умножить на 3, какой результат получится?&#34;, a: [&#34;12 = 12&#34;, &#34;36 = 36&#34;, &#34;4 = 4&#34;, &#34;15 = 15&#34;], c: 1 },
+            { q: &#34;Свойство почленного сложения: если a = b и c = d, то...&#34;, a: [&#34;a &#43; c = b &#43; d&#34;, &#34;a - c = b &#43; d&#34;, &#34;ac = bd&#34;, &#34;a / c = b / d&#34;], c: 0 }
+        ];
+
+        let userSelections = {};
+
+        function initQuiz() {
+            const list = document.getElementById(&#39;quiz-list&#39;);
+            quizData.forEach((data, qIdx) =&gt; {
+                const item = document.createElement(&#39;div&#39;);
+                item.className = &#39;quiz-item&#39;;
+                item.innerHTML = `
+                    &lt;span class=&#34;quiz-question&#34;&gt;${qIdx &#43; 1}. ${data.q}&lt;/span&gt;
+                    &lt;div class=&#34;options&#34; id=&#34;options-${qIdx}&#34;&gt;
+                        ${data.a.map((opt, oIdx) =&gt; `
+                            &lt;button class=&#34;opt-btn&#34; onclick=&#34;selectOption(${qIdx}, ${oIdx})&#34;&gt;
+                                ${String.fromCharCode(65 &#43; oIdx)}) ${opt}
+                            &lt;/button&gt;
+                        `).join(&#39;&#39;)}
+                    &lt;/div&gt;
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        function selectOption(qIdx, oIdx) {
+            userSelections[qIdx] = oIdx;
+            const btns = document.getElementById(`options-${qIdx}`).querySelectorAll(&#39;.opt-btn&#39;);
+            btns.forEach((b, i) =&gt; {
+                b.classList.remove(&#39;selected&#39;);
+                if (i === oIdx) b.classList.add(&#39;selected&#39;);
+            });
+        }
+
+        function evaluateQuiz() {
+            let score = 0;
+            quizData.forEach((data, qIdx) =&gt; {
+                const btns = document.getElementById(`options-${qIdx}`).querySelectorAll(&#39;.opt-btn&#39;);
+                const correctIdx = data.c;
+                const userIdx = userSelections[qIdx];
+
+                btns.forEach((b, i) =&gt; {
+                    b.disabled = true;
+                    if (i === correctIdx) b.classList.add(&#39;correct&#39;);
+                    if (i === userIdx &amp;&amp; i !== correctIdx) b.classList.add(&#39;wrong&#39;);
+                });
+
+                if (userIdx === correctIdx) score&#43;&#43;;
+            });
+
+            const display = document.getElementById(&#39;score-display&#39;);
+            display.style.display = &#39;block&#39;;
+            display.textContent = `Результат: ${score} / ${quizData.length}`;
+            document.getElementById(&#39;check-btn&#39;).style.display = &#39;none&#39;;
+        }
+
+        window.onload = () =&gt; {
+            initExample();
+            initQuiz();
+        };
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

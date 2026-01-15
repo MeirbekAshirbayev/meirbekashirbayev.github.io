@@ -408,7 +408,412 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame133" src="/task/133?lang=kz"
+                            <iframe id="taskFrame133" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Сандар Әлеміне Саяхат&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;font-sans antialiased text-gray-800 bg-gray-50&#34;&gt;
+    &lt;!-- min-h-screen класы min-h-[90vh] деп өзгертілді --&gt;
+    &lt;div id=&#34;app&#34; class=&#34;min-h-[90vh] transition-colors duration-500 shadow-xl rounded-b-3xl overflow-hidden&#34;&gt;
+        &lt;!-- Content will be injected here by JavaScript --&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- DATA &amp; STATE ---
+        const levels = [
+            // LEVEL 1: Simple Comparison
+            {
+                id: 1,
+                type: &#39;comparison&#39;,
+                title: &#39;1-деңгей: Сандар Бәйгесі&#39;,
+                description: &#39;Бос орынға тиісті таңбаны қой (&lt;, &gt;, =).&#39;,
+                question: &#39;6234 және 895&#39;,
+                left: 6234,
+                right: 895,
+                correctAnswer: &#39;&gt;&#39;,
+                hint: &#39;Цифрлар санын санап көр: төрт таңбалы сан үш таңбалы саннан әрқашан үлкен.&#39;,
+                bg: &#39;bg-blue-100&#39;
+            },
+            {
+                id: 2,
+                type: &#39;comparison&#39;,
+                title: &#39;1-деңгей: Сандар Бәйгесі&#39;,
+                description: &#39;Қайсысы үлкен?&#39;,
+                question: &#39;54 329 және 54 392&#39;,
+                left: &#39;54 329&#39;,
+                right: &#39;54 392&#39;,
+                correctAnswer: &#39;&lt;&#39;,
+                hint: &#39;Мыңдықтар бірдей болса, жүздіктер мен ондықтарға назар аудар.&#39;,
+                bg: &#39;bg-blue-100&#39;
+            },
+            
+            // LEVEL 2: Units of Measurement
+            {
+                id: 3,
+                type: &#39;units&#39;,
+                title: &#39;2-деңгей: Өлшемдер Әлемі&#39;,
+                description: &#39;Ұзындықты салыстыр:&#39;,
+                question: &#39;95 см ... 1 м&#39;,
+                left: &#39;95 см&#39;,
+                right: &#39;1 м&#39;,
+                correctAnswer: &#39;&lt;&#39;,
+                hint: &#39;Есіңе сақта: 1 метр = 100 см, ал 95 см одан кіші.&#39;,
+                bg: &#39;bg-green-100&#39;
+            },
+            {
+                id: 4,
+                type: &#39;units&#39;,
+                title: &#39;2-деңгей: Өлшемдер Әлемі&#39;,
+                description: &#39;Уақытты бағала:&#39;,
+                question: &#39;2 сағ ... 100 мин&#39;,
+                left: &#39;2 сағ&#39;,
+                right: &#39;100 мин&#39;,
+                correctAnswer: &#39;&gt;&#39;,
+                hint: &#39;1 сағатта 60 минут бар, ал 2 сағатта ше?&#39;,
+                bg: &#39;bg-green-100&#39;
+            },
+
+            // LEVEL 3: Logic Puzzle
+            {
+                id: 5,
+                type: &#39;logic_football&#39;,
+                title: &#39;3-деңгей: Логикалық Детектив&#39;,
+                description: &#39;Жарыс жеңімпазын тап!&#39;,
+                scenario: `Мектеп жарысына Асқар, Болат, Қанат және Данияр қатысты.
+                1) Асқар, Болат, Қанат үшеуінің біреуі жеңімпаз атанды.
+                2) Болат, Қанат және Данияр үшеуінің біреуі жеңімпаз атанды.
+                3) Қанат жеңімпаз емес.
+                Сұрақ: Жарыста кім жеңді?`,
+                options: [&#39;Асқар&#39;, &#39;Болат&#39;, &#39;Қанат&#39;, &#39;Данияр&#39;],
+                correctAnswer: &#39;Болат&#39;,
+                hint: &#39;Екі топта да бар және &#34;жеңімпаз емес&#34; деген шартқа қайшы келмейтін оқушыны ізде.&#39;,
+                bg: &#39;bg-yellow-100&#39;
+            },
+
+            // LEVEL 4: PISA Style
+            {
+                id: 6,
+                type: &#39;logic_market&#39;,
+                title: &#39;4-деңгей: Мектеп жәрмеңкесі (PISA)&#39;,
+                description: &#39;Заттардың құнын салыстыр.&#39;,
+                scenario: `Кеңсе тауарларының бағасы:
+                • 2 дәптер &#43; 3 қалам = 18 қарындашқа тең.
+                • 3 дәптер &#43; 1 қалам = 13 қарындашқа тең.
+                Сұрақ: Қай зат қымбат: дәптер ме, әлде қалам ба?`,
+                options: [&#39;Дәптер қымбат&#39;, &#39;Қалам қымбат&#39;, &#39;Бағалары тең&#39;, &#39;Анықтау мүмкін емес&#39;],
+                correctAnswer: &#39;Қалам қымбат&#39;,
+                hint: `Есептеулер арқылы мынадай нәтиже шығады:
+                1 дәптер = 3 қарындашқа тең.
+                1 қалам = 4 қарындашқа тең.
+
+                Тексеру:
+                1-ші шарт: 2 · 3 (дәптер) &#43; 3 · 4 (қалам) = 6 &#43; 12 = 18 қарындаш. (Дұрыс)
+                2-ші шарт: 3 · 3 (дәптер) &#43; 1 · 4 (қалам) = 9 &#43; 4 = 13 қарындаш. (Дұрыс)
+
+                Қорытынды: Қалам (4 қарындаш) дәптерден (3 қарындаш) қымбат.`,
+                bg: &#39;bg-purple-100&#39;
+            }
+        ];
+
+        let state = {
+            gameState: &#39;welcome&#39;, // welcome, playing, result
+            currentLevel: 0,
+            score: 0,
+            showFeedback: false,
+            isCorrect: false,
+            selectedOption: null
+        };
+
+        // --- ICONS (SVG) ---
+        const icons = {
+            star: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;currentColor&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polygon points=&#34;12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2&#34;/&gt;&lt;/svg&gt;`,
+            play: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polygon points=&#34;5 3 19 12 5 21 5 3&#34;/&gt;&lt;/svg&gt;`,
+            check: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polyline points=&#34;20 6 9 17 4 12&#34;/&gt;&lt;/svg&gt;`,
+            x: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;line x1=&#34;18&#34; y1=&#34;6&#34; x2=&#34;6&#34; y2=&#34;18&#34;/&gt;&lt;line x1=&#34;6&#34; y1=&#34;6&#34; x2=&#34;18&#34; y2=&#34;18&#34;/&gt;&lt;/svg&gt;`,
+            trophy: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M8 21h8m-4-9v9m-4.8-9A6 6 0 1 1 16.8 12H7.2zM2 9a6 6 0 0 1 6-2m14 2a6 6 0 0 0-6-2&#34;/&gt;&lt;/svg&gt;`,
+            arrowRight: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;line x1=&#34;5&#34; y1=&#34;12&#34; x2=&#34;19&#34; y2=&#34;12&#34;/&gt;&lt;polyline points=&#34;12 5 19 12 12 19&#34;/&gt;&lt;/svg&gt;`,
+            brain: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z&#34;/&gt;&lt;path d=&#34;M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z&#34;/&gt;&lt;/svg&gt;`,
+            activity: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polyline points=&#34;22 12 18 12 15 21 9 3 6 12 2 12&#34;/&gt;&lt;/svg&gt;`
+        };
+
+        // --- RENDER FUNCTIONS ---
+        const app = document.getElementById(&#39;app&#39;);
+
+        function render() {
+            app.innerHTML = &#39;&#39;;
+            
+            if (state.gameState === &#39;welcome&#39;) {
+                renderWelcome();
+            } else if (state.gameState === &#39;playing&#39;) {
+                renderGame();
+            } else if (state.gameState === &#39;result&#39;) {
+                renderResult();
+            }
+        }
+
+        function renderWelcome() {
+            // Мұнда min-h-screen орнына min-h-[90vh] қойылды
+            app.className = &#34;min-h-[90vh] bg-gradient-to-b from-blue-400 to-indigo-600 flex items-center justify-center p-4 font-sans rounded-b-3xl&#34;;
+            app.innerHTML = `
+                &lt;div class=&#34;bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center transform transition hover:scale-105 duration-300&#34;&gt;
+                    &lt;div class=&#34;flex justify-center mb-6&#34;&gt;
+                        &lt;div class=&#34;bg-yellow-400 p-4 rounded-full shadow-lg&#34;&gt;
+                            &lt;div class=&#34;w-12 h-12 text-white animate-pulse&#34;&gt;${icons.star}&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;h1 class=&#34;text-3xl font-bold text-gray-800 mb-4&#34;&gt;Сандар Әлеміне Саяхат&lt;/h1&gt;
+                    &lt;p class=&#34;text-gray-600 mb-8 text-lg&#34;&gt;
+                        Оқулықтағы есептерді интерактивті түрде шешіп, логикаңды сынап көр! PISA тапсырмалары сені күтуде.
+                    &lt;/p&gt;
+                    &lt;button onclick=&#34;handleStart()&#34; class=&#34;w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center text-xl shadow-lg transition-all active:scale-95 cursor-pointer&#34;&gt;
+                        &lt;span class=&#34;mr-2&#34;&gt;${icons.play}&lt;/span&gt; Бастау
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderResult() {
+            // Мұнда min-h-screen орнына min-h-[90vh] қойылды
+            app.className = &#34;min-h-[90vh] bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center p-4 rounded-b-3xl&#34;;
+            
+            const maxScore = levels.length * 10;
+            const message = state.score === maxScore 
+                ? &#34;Тамаша! Сен нағыз математиксің!&#34; 
+                : &#34;Жақсы нәтиже! Бірақ әлі де жаттығу керек.&#34;;
+
+            app.innerHTML = `
+                &lt;div class=&#34;bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;w-24 h-24 text-yellow-500 mx-auto mb-6&#34;&gt;${icons.trophy}&lt;/div&gt;
+                    &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-2&#34;&gt;Құттықтаймыз!&lt;/h2&gt;
+                    &lt;p class=&#34;text-xl text-gray-600 mb-6&#34;&gt;Сіздің нәтижеңіз:&lt;/p&gt;
+                    &lt;div class=&#34;text-5xl font-black text-indigo-600 mb-8&#34;&gt;
+                        ${state.score} / ${maxScore}
+                    &lt;/div&gt;
+                    &lt;p class=&#34;mb-8 text-gray-500&#34;&gt;${message}&lt;/p&gt;
+                    &lt;button onclick=&#34;handleStart()&#34; class=&#34;w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors cursor-pointer&#34;&gt;
+                        Қайта ойнау
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderGame() {
+            const currentQ = levels[state.currentLevel];
+            // Мұнда min-h-screen орнына min-h-[90vh] қойылды
+            app.className = `min-h-[90vh] ${currentQ.bg} flex flex-col items-center justify-center p-4 transition-colors duration-500 rounded-b-3xl`;
+
+            // Badge text
+            let badgeText = &#39;&#39;;
+            if (currentQ.type === &#39;logic_football&#39;) badgeText = &#39;⚽ Спорттық логика&#39;;
+            else if (currentQ.type === &#39;logic_market&#39;) badgeText = &#39;🛍️ PISA Тапсырмасы&#39;;
+            else if (currentQ.type === &#39;comparison&#39;) badgeText = &#39;🔢 Сандарды салыстыру&#39;;
+            else if (currentQ.type === &#39;units&#39;) badgeText = &#39;📏 Өлшем бірліктері&#39;;
+
+            // Content Area Logic
+            let contentHtml = &#39;&#39;;
+            if (currentQ.type === &#39;comparison&#39; || currentQ.type === &#39;units&#39;) {
+                // Comparison Template
+                let buttonsHtml = &#39;&#39;;
+                if (!state.showFeedback) {
+                    buttonsHtml = `
+                        &lt;button onclick=&#34;checkAnswer(&#39;&lt;&#39;)&#34; class=&#34;w-12 h-12 md:w-16 md:h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 text-2xl font-bold&#34;&gt;&amp;lt;&lt;/button&gt;
+                        &lt;button onclick=&#34;checkAnswer(&#39;=&#39;)&#34; class=&#34;w-12 h-12 md:w-16 md:h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 text-2xl font-bold&#34;&gt;=&lt;/button&gt;
+                        &lt;button onclick=&#34;checkAnswer(&#39;&gt;&#39;)&#34; class=&#34;w-12 h-12 md:w-16 md:h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 text-2xl font-bold&#34;&gt;&amp;gt;&lt;/button&gt;
+                    `;
+                } else {
+                    const resultColor = state.isCorrect ? &#39;bg-green-500&#39; : &#39;bg-red-500&#39;;
+                    buttonsHtml = `
+                        &lt;div class=&#34;w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-xl ${resultColor}&#34;&gt;
+                            ${state.selectedOption}
+                        &lt;/div&gt;
+                    `;
+                }
+
+                contentHtml = `
+                    &lt;div class=&#34;flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-2xl md:text-4xl font-black text-gray-700 my-8&#34;&gt;
+                        &lt;div class=&#34;bg-gray-100 p-4 rounded-xl min-w-[120px] text-center shadow-inner border-2 border-gray-200&#34;&gt;
+                            ${currentQ.left}
+                        &lt;/div&gt;
+                        &lt;div class=&#34;flex gap-2&#34;&gt;
+                            ${buttonsHtml}
+                        &lt;/div&gt;
+                        &lt;div class=&#34;bg-gray-100 p-4 rounded-xl min-w-[120px] text-center shadow-inner border-2 border-gray-200&#34;&gt;
+                            ${currentQ.right}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+            } else {
+                // Logic/Text Template
+                const optionsHtml = currentQ.options.map((option, idx) =&gt; {
+                    let btnClass = &#39;bg-white border-2 border-gray-200 hover:border-indigo-500 hover:bg-indigo-50 text-gray-700 shadow-sm&#39;;
+                    let iconHtml = &#39;&#39;;
+                    
+                    if (state.showFeedback) {
+                        if (option === currentQ.correctAnswer) {
+                            btnClass = &#39;bg-green-100 border-2 border-green-500 text-green-800&#39;;
+                            iconHtml = `&lt;span class=&#34;text-green-600&#34;&gt;${icons.check}&lt;/span&gt;`;
+                        } else if (option === state.selectedOption &amp;&amp; !state.isCorrect) {
+                            btnClass = &#39;bg-red-100 border-2 border-red-500 text-red-800&#39;;
+                            iconHtml = `&lt;span class=&#34;text-red-600&#34;&gt;${icons.x}&lt;/span&gt;`;
+                        }
+                    }
+
+                    return `
+                        &lt;button 
+                            onclick=&#34;checkAnswer(&#39;${option.replace(/&#39;/g, &#34;\\&#39;&#34;)}&#39;)&#34; 
+                            ${state.showFeedback ? &#39;disabled&#39; : &#39;&#39;}
+                            class=&#34;p-4 rounded-xl font-semibold text-lg transition-all text-left flex items-center justify-between ${btnClass} w-full&#34;
+                        &gt;
+                            ${option}
+                            ${iconHtml}
+                        &lt;/button&gt;
+                    `;
+                }).join(&#39;&#39;);
+
+                contentHtml = `
+                    &lt;div class=&#34;space-y-6&#34;&gt;
+                        &lt;div class=&#34;bg-blue-50 p-6 rounded-xl border border-blue-100 text-lg leading-relaxed text-gray-800 whitespace-pre-line&#34;&gt;
+                            ${currentQ.scenario}
+                        &lt;/div&gt;
+                        &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-4&#34;&gt;
+                            ${optionsHtml}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+            }
+
+            // Feedback Section
+            let feedbackHtml = &#39;&#39;;
+            let nextButtonHtml = &#39;&#39;;
+            if (state.showFeedback) {
+                const fbColor = state.isCorrect ? &#39;bg-green-100 text-green-800&#39; : &#39;bg-red-100 text-red-800&#39;;
+                const fbIcon = state.isCorrect ? icons.check : icons.brain;
+                const fbText = state.isCorrect ? &#39;Керемет! Дұрыс жауап.&#39; : &#39;Қате жауап.&#39;;
+                const hintText = !state.isCorrect ? `&lt;p class=&#34;mt-1 whitespace-pre-line text-sm md:text-base&#34;&gt;${currentQ.hint}&lt;/p&gt;` : &#39;&#39;;
+
+                feedbackHtml = `
+                    &lt;div class=&#34;rounded-xl p-4 mb-6 animate-fade-in ${fbColor}&#34;&gt;
+                        &lt;div class=&#34;flex items-start gap-3&#34;&gt;
+                            &lt;div class=&#34;w-6 h-6 mt-1&#34;&gt;${fbIcon}&lt;/div&gt;
+                            &lt;div&gt;
+                                &lt;p class=&#34;font-bold text-lg&#34;&gt;${fbText}&lt;/p&gt;
+                                ${hintText}
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+
+                nextButtonHtml = `
+                    &lt;div class=&#34;flex justify-end&#34;&gt;
+                        &lt;button onclick=&#34;nextLevel()&#34; class=&#34;bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg flex items-center text-lg transition-transform active:scale-95&#34;&gt;
+                            Келесі &lt;span class=&#34;ml-2&#34;&gt;${icons.arrowRight}&lt;/span&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                `;
+            }
+
+            app.innerHTML = `
+                &lt;!-- Header --&gt;
+                &lt;div class=&#34;w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl p-4 mb-6 flex justify-between items-center shadow-md&#34;&gt;
+                    &lt;div class=&#34;flex items-center space-x-2&#34;&gt;
+                        &lt;span class=&#34;text-indigo-600&#34;&gt;${icons.activity}&lt;/span&gt;
+                        &lt;span class=&#34;font-bold text-indigo-800&#34;&gt;Деңгей ${state.currentLevel &#43; 1}/${levels.length}&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex items-center space-x-2&#34;&gt;
+                        &lt;span class=&#34;text-yellow-500 fill-current&#34;&gt;${icons.star}&lt;/span&gt;
+                        &lt;span class=&#34;font-bold text-gray-800&#34;&gt;${state.score} ұпай&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Main Card --&gt;
+                &lt;div class=&#34;bg-white rounded-3xl shadow-xl p-6 md:p-10 max-w-2xl w-full relative overflow-hidden animate-fade-in&#34;&gt;
+                    &lt;!-- Badge --&gt;
+                    &lt;div class=&#34;absolute top-0 right-0 bg-indigo-100 text-indigo-800 px-4 py-2 rounded-bl-2xl font-bold text-sm&#34;&gt;
+                        ${badgeText}
+                    &lt;/div&gt;
+
+                    &lt;h2 class=&#34;text-2xl font-bold text-gray-800 mb-2 mt-2&#34;&gt;${currentQ.title}&lt;/h2&gt;
+                    &lt;p class=&#34;text-gray-500 mb-6&#34;&gt;${currentQ.description}&lt;/p&gt;
+
+                    &lt;!-- Content --&gt;
+                    &lt;div class=&#34;mb-8&#34;&gt;
+                        ${contentHtml}
+                    &lt;/div&gt;
+
+                    &lt;!-- Feedback --&gt;
+                    ${feedbackHtml}
+
+                    &lt;!-- Next Button --&gt;
+                    ${nextButtonHtml}
+                &lt;/div&gt;
+            `;
+        }
+
+        // --- GAME LOGIC ---
+
+        function handleStart() {
+            state.gameState = &#39;playing&#39;;
+            state.currentLevel = 0;
+            state.score = 0;
+            state.showFeedback = false;
+            render();
+        }
+
+        function checkAnswer(answer) {
+            // Prevent double clicking
+            if(state.showFeedback) return;
+
+            const currentQ = levels[state.currentLevel];
+            state.selectedOption = answer;
+            
+            const correct = answer === currentQ.correctAnswer;
+            state.isCorrect = correct;
+            state.showFeedback = true;
+
+            if (correct) {
+                state.score &#43;= 10;
+            }
+            render();
+        }
+
+        function nextLevel() {
+            state.showFeedback = false;
+            state.selectedOption = null;
+            if (state.currentLevel &lt; levels.length - 1) {
+                state.currentLevel&#43;&#43;;
+                state.gameState = &#39;playing&#39;;
+            } else {
+                state.gameState = &#39;result&#39;;
+            }
+            render();
+        }
+
+        // Initial Render
+        render();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -450,7 +855,330 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame133_ru" src="/task/133?lang=ru"
+                            <iframe id="taskFrame133_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Путешествие в Мир Чисел&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;font-sans antialiased text-gray-800 bg-gray-50&#34;&gt;
+    &lt;div id=&#34;app&#34; class=&#34;min-h-[90vh] transition-colors duration-500 shadow-xl rounded-b-3xl overflow-hidden&#34;&gt;
+        &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- DATA &amp; STATE ---
+        const levels = [
+            // LEVEL 1: Simple Comparison
+            {
+                id: 1,
+                type: &#39;comparison&#39;,
+                title: &#39;Уровень 1: Гонка Чисел&#39;,
+                description: &#39;Поставь подходящий знак в пустое поле (&lt;, &gt;, =).&#39;,
+                question: &#39;6234 и 895&#39;,
+                left: 6234,
+                right: 895,
+                correctAnswer: &#39;&gt;&#39;,
+                hint: &#39;Посчитай количество цифр: четырехзначное число всегда больше трехзначного.&#39;,
+                bg: &#39;bg-blue-100&#39;
+            },
+            {
+                id: 2,
+                type: &#39;comparison&#39;,
+                title: &#39;Уровень 1: Гонка Чисел&#39;,
+                description: &#39;Какое число больше?&#39;,
+                question: &#39;54 329 и 54 392&#39;,
+                left: &#39;54 329&#39;,
+                right: &#39;54 392&#39;,
+                correctAnswer: &#39;&lt;&#39;,
+                hint: &#39;Если тысячи одинаковые, обрати внимание на сотни и десятки.&#39;,
+                bg: &#39;bg-blue-100&#39;
+            },
+            
+            // LEVEL 2: Units of Measurement
+            {
+                id: 3,
+                type: &#39;units&#39;,
+                title: &#39;Уровень 2: Мир Измерений&#39;,
+                description: &#39;Сравни длину:&#39;,
+                question: &#39;95 см ... 1 м&#39;,
+                left: &#39;95 см&#39;,
+                right: &#39;1 м&#39;,
+                correctAnswer: &#39;&lt;&#39;,
+                hint: &#39;Помни: 1 метр = 100 см, а 95 см меньше этого значения.&#39;,
+                bg: &#39;bg-green-100&#39;
+            },
+            {
+                id: 4,
+                type: &#39;units&#39;,
+                title: &#39;Уровень 2: Мир Измерений&#39;,
+                description: &#39;Оцени время:&#39;,
+                question: &#39;2 ч ... 100 мин&#39;,
+                left: &#39;2 ч&#39;,
+                right: &#39;100 мин&#39;,
+                correctAnswer: &#39;&gt;&#39;,
+                hint: &#39;В 1 часе 60 минут, а сколько минут в 2 часах?&#39;,
+                bg: &#39;bg-green-100&#39;
+            },
+
+            // LEVEL 3: Logic Puzzle
+            {
+                id: 5,
+                type: &#39;logic_football&#39;,
+                title: &#39;Уровень 3: Логический Детектив&#39;,
+                description: &#39;Найди победителя соревнований!&#39;,
+                scenario: `В школьных соревнованиях участвовали Аскар, Болат, Канат и Данияр.
+                1) Один из троих — Аскар, Болат или Канат — стал победителем.
+                2) Один из троих — Болат, Канат или Данияр — стал победителем.
+                3) Канат не является победителем.
+                Вопрос: Кто победил в соревнованиях?`,
+                options: [&#39;Аскар&#39;, &#39;Болат&#39;, &#39;Канат&#39;, &#39;Данияр&#39;],
+                correctAnswer: &#39;Болат&#39;,
+                hint: &#39;Ищи ученика, который есть в обеих группах и не противоречит условию &#34;не победитель&#34;.&#39;,
+                bg: &#39;bg-yellow-100&#39;
+            },
+
+            // LEVEL 4: PISA Style
+            {
+                id: 6,
+                type: &#39;logic_market&#39;,
+                title: &#39;Уровень 4: Школьная ярмарка (PISA)&#39;,
+                description: &#39;Сравни стоимость предметов.&#39;,
+                scenario: `Цены на канцтовары:
+                • 2 тетради &#43; 3 ручки = цене 18 карандашей.
+                • 3 тетради &#43; 1 ручка = цене 13 карандашей.
+                Вопрос: Что дороже: тетрадь или ручка?`,
+                options: [&#39;Тетрадь дороже&#39;, &#39;Ручка дороже&#39;, &#39;Цены равны&#39;, &#39;Определить невозможно&#39;],
+                correctAnswer: &#39;Ручка дороже&#39;,
+                hint: `Путем вычислений получаем:
+                1 тетрадь = 3 карандашам.
+                1 ручка = 4 карандашам.
+
+                Проверка:
+                1-е условие: 2 · 3 &#43; 3 · 4 = 6 &#43; 12 = 18. (Верно)
+                2-е условие: 3 · 3 &#43; 1 · 4 = 9 &#43; 4 = 13. (Верно)
+
+                Вывод: Ручка (4 карандаша) дороже тетради (3 карандаша).`,
+                bg: &#39;bg-purple-100&#39;
+            }
+        ];
+
+        let state = {
+            gameState: &#39;welcome&#39;,
+            currentLevel: 0,
+            score: 0,
+            showFeedback: false,
+            isCorrect: false,
+            selectedOption: null
+        };
+
+        const icons = {
+            star: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;currentColor&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polygon points=&#34;12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2&#34;/&gt;&lt;/svg&gt;`,
+            play: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polygon points=&#34;5 3 19 12 5 21 5 3&#34;/&gt;&lt;/svg&gt;`,
+            check: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polyline points=&#34;20 6 9 17 4 12&#34;/&gt;&lt;/svg&gt;`,
+            x: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;line x1=&#34;18&#34; y1=&#34;6&#34; x2=&#34;6&#34; y2=&#34;18&#34;/&gt;&lt;line x1=&#34;6&#34; y1=&#34;6&#34; x2=&#34;18&#34; y2=&#34;18&#34;/&gt;&lt;/svg&gt;`,
+            trophy: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M8 21h8m-4-9v9m-4.8-9A6 6 0 1 1 16.8 12H7.2zM2 9a6 6 0 0 1 6-2m14 2a6 6 0 0 0-6-2&#34;/&gt;&lt;/svg&gt;`,
+            arrowRight: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;line x1=&#34;5&#34; y1=&#34;12&#34; x2=&#34;19&#34; y2=&#34;12&#34;/&gt;&lt;polyline points=&#34;12 5 19 12 12 19&#34;/&gt;&lt;/svg&gt;`,
+            brain: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z&#34;/&gt;&lt;path d=&#34;M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z&#34;/&gt;&lt;/svg&gt;`,
+            activity: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polyline points=&#34;22 12 18 12 15 21 9 3 6 12 2 12&#34;/&gt;&lt;/svg&gt;`
+        };
+
+        const app = document.getElementById(&#39;app&#39;);
+
+        function render() {
+            app.innerHTML = &#39;&#39;;
+            if (state.gameState === &#39;welcome&#39;) renderWelcome();
+            else if (state.gameState === &#39;playing&#39;) renderGame();
+            else if (state.gameState === &#39;result&#39;) renderResult();
+        }
+
+        function renderWelcome() {
+            app.className = &#34;min-h-[90vh] bg-gradient-to-b from-blue-400 to-indigo-600 flex items-center justify-center p-4 font-sans rounded-b-3xl&#34;;
+            app.innerHTML = `
+                &lt;div class=&#34;bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center transform transition hover:scale-105 duration-300&#34;&gt;
+                    &lt;div class=&#34;flex justify-center mb-6&#34;&gt;
+                        &lt;div class=&#34;bg-yellow-400 p-4 rounded-full shadow-lg&#34;&gt;
+                            &lt;div class=&#34;w-12 h-12 text-white animate-pulse&#34;&gt;${icons.star}&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;h1 class=&#34;text-3xl font-bold text-gray-800 mb-4&#34;&gt;Путешествие в Мир Чисел&lt;/h1&gt;
+                    &lt;p class=&#34;text-gray-600 mb-8 text-lg&#34;&gt;
+                        Решай интерактивные задачи, проверяй свою логику и готовься к заданиям PISA!
+                    &lt;/p&gt;
+                    &lt;button onclick=&#34;handleStart()&#34; class=&#34;w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center text-xl shadow-lg transition-all active:scale-95 cursor-pointer&#34;&gt;
+                        &lt;span class=&#34;mr-2&#34;&gt;${icons.play}&lt;/span&gt; Начать игру
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderResult() {
+            app.className = &#34;min-h-[90vh] bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center p-4 rounded-b-3xl&#34;;
+            const maxScore = levels.length * 10;
+            const message = state.score === maxScore 
+                ? &#34;Великолепно! Ты настоящий математик!&#34; 
+                : &#34;Хороший результат! Но есть куда расти.&#34;;
+
+            app.innerHTML = `
+                &lt;div class=&#34;bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full text-center animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;w-24 h-24 text-yellow-500 mx-auto mb-6&#34;&gt;${icons.trophy}&lt;/div&gt;
+                    &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-2&#34;&gt;Поздравляем!&lt;/h2&gt;
+                    &lt;p class=&#34;text-xl text-gray-600 mb-6&#34;&gt;Твой результат:&lt;/p&gt;
+                    &lt;div class=&#34;text-5xl font-black text-indigo-600 mb-8&#34;&gt;${state.score} / ${maxScore}&lt;/div&gt;
+                    &lt;p class=&#34;mb-8 text-gray-500&#34;&gt;${message}&lt;/p&gt;
+                    &lt;button onclick=&#34;handleStart()&#34; class=&#34;w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors cursor-pointer&#34;&gt;
+                        Играть снова
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderGame() {
+            const currentQ = levels[state.currentLevel];
+            app.className = `min-h-[90vh] ${currentQ.bg} flex flex-col items-center justify-center p-4 transition-colors duration-500 rounded-b-3xl`;
+
+            let badgeText = &#39;&#39;;
+            if (currentQ.type === &#39;logic_football&#39;) badgeText = &#39;⚽ Спортивная логика&#39;;
+            else if (currentQ.type === &#39;logic_market&#39;) badgeText = &#39;🛍️ Задание PISA&#39;;
+            else if (currentQ.type === &#39;comparison&#39;) badgeText = &#39;🔢 Сравнение чисел&#39;;
+            else if (currentQ.type === &#39;units&#39;) badgeText = &#39;📏 Единицы измерения&#39;;
+
+            let contentHtml = &#39;&#39;;
+            if (currentQ.type === &#39;comparison&#39; || currentQ.type === &#39;units&#39;) {
+                let buttonsHtml = &#39;&#39;;
+                if (!state.showFeedback) {
+                    buttonsHtml = `
+                        &lt;button onclick=&#34;checkAnswer(&#39;&lt;&#39;)&#34; class=&#34;w-12 h-12 md:w-16 md:h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 text-2xl font-bold&#34;&gt;&amp;lt;&lt;/button&gt;
+                        &lt;button onclick=&#34;checkAnswer(&#39;=&#39;)&#34; class=&#34;w-12 h-12 md:w-16 md:h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 text-2xl font-bold&#34;&gt;=&lt;/button&gt;
+                        &lt;button onclick=&#34;checkAnswer(&#39;&gt;&#39;)&#34; class=&#34;w-12 h-12 md:w-16 md:h-16 bg-blue-500 hover:bg-blue-600 text-white rounded-lg shadow-lg flex items-center justify-center transition-transform hover:scale-110 active:scale-95 text-2xl font-bold&#34;&gt;&amp;gt;&lt;/button&gt;
+                    `;
+                } else {
+                    const resultColor = state.isCorrect ? &#39;bg-green-500&#39; : &#39;bg-red-500&#39;;
+                    buttonsHtml = `&lt;div class=&#34;w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-xl ${resultColor}&#34;&gt;${state.selectedOption}&lt;/div&gt;`;
+                }
+                contentHtml = `
+                    &lt;div class=&#34;flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 text-2xl md:text-4xl font-black text-gray-700 my-8&#34;&gt;
+                        &lt;div class=&#34;bg-gray-100 p-4 rounded-xl min-w-[120px] text-center shadow-inner border-2 border-gray-200&#34;&gt;${currentQ.left}&lt;/div&gt;
+                        &lt;div class=&#34;flex gap-2&#34;&gt;${buttonsHtml}&lt;/div&gt;
+                        &lt;div class=&#34;bg-gray-100 p-4 rounded-xl min-w-[120px] text-center shadow-inner border-2 border-gray-200&#34;&gt;${currentQ.right}&lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+            } else {
+                const optionsHtml = currentQ.options.map((option) =&gt; {
+                    let btnClass = &#39;bg-white border-2 border-gray-200 hover:border-indigo-500 hover:bg-indigo-50 text-gray-700&#39;;
+                    let iconHtml = &#39;&#39;;
+                    if (state.showFeedback) {
+                        if (option === currentQ.correctAnswer) {
+                            btnClass = &#39;bg-green-100 border-2 border-green-500 text-green-800&#39;;
+                            iconHtml = `&lt;span class=&#34;text-green-600&#34;&gt;${icons.check}&lt;/span&gt;`;
+                        } else if (option === state.selectedOption &amp;&amp; !state.isCorrect) {
+                            btnClass = &#39;bg-red-100 border-2 border-red-500 text-red-800&#39;;
+                            iconHtml = `&lt;span class=&#34;text-red-600&#34;&gt;${icons.x}&lt;/span&gt;`;
+                        }
+                    }
+                    return `&lt;button onclick=&#34;checkAnswer(&#39;${option.replace(/&#39;/g, &#34;\\&#39;&#34;)}&#39;)&#34; ${state.showFeedback ? &#39;disabled&#39; : &#39;&#39;} class=&#34;p-4 rounded-xl font-semibold text-lg transition-all text-left flex items-center justify-between ${btnClass} w-full&#34;&gt;${option}${iconHtml}&lt;/button&gt;`;
+                }).join(&#39;&#39;);
+                contentHtml = `&lt;div class=&#34;space-y-6&#34;&gt;&lt;div class=&#34;bg-blue-50 p-6 rounded-xl border border-blue-100 text-lg leading-relaxed text-gray-800 whitespace-pre-line&#34;&gt;${currentQ.scenario}&lt;/div&gt;&lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-4&#34;&gt;${optionsHtml}&lt;/div&gt;&lt;/div&gt;`;
+            }
+
+            let feedbackHtml = &#39;&#39;;
+            let nextButtonHtml = &#39;&#39;;
+            if (state.showFeedback) {
+                const fbColor = state.isCorrect ? &#39;bg-green-100 text-green-800&#39; : &#39;bg-red-100 text-red-800&#39;;
+                const fbText = state.isCorrect ? &#39;Отлично! Правильный ответ.&#39; : &#39;Не совсем верно.&#39;;
+                feedbackHtml = `
+                    &lt;div class=&#34;rounded-xl p-4 mb-6 animate-fade-in ${fbColor}&#34;&gt;
+                        &lt;div class=&#34;flex items-start gap-3&#34;&gt;
+                            &lt;div class=&#34;w-6 h-6 mt-1&#34;&gt;${state.isCorrect ? icons.check : icons.brain}&lt;/div&gt;
+                            &lt;div&gt;
+                                &lt;p class=&#34;font-bold text-lg&#34;&gt;${fbText}&lt;/p&gt;
+                                ${!state.isCorrect ? `&lt;p class=&#34;mt-1 whitespace-pre-line text-sm md:text-base&#34;&gt;${currentQ.hint}&lt;/p&gt;` : &#39;&#39;}
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+                nextButtonHtml = `
+                    &lt;div class=&#34;flex justify-end&#34;&gt;
+                        &lt;button onclick=&#34;nextLevel()&#34; class=&#34;bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-xl shadow-lg flex items-center text-lg transition-transform active:scale-95&#34;&gt;
+                            Далее &lt;span class=&#34;ml-2&#34;&gt;${icons.arrowRight}&lt;/span&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                `;
+            }
+
+            app.innerHTML = `
+                &lt;div class=&#34;w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl p-4 mb-6 flex justify-between items-center shadow-md&#34;&gt;
+                    &lt;div class=&#34;flex items-center space-x-2&#34;&gt;
+                        &lt;span class=&#34;text-indigo-600&#34;&gt;${icons.activity}&lt;/span&gt;
+                        &lt;span class=&#34;font-bold text-indigo-800&#34;&gt;Уровень ${state.currentLevel &#43; 1}/${levels.length}&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex items-center space-x-2&#34;&gt;
+                        &lt;span class=&#34;text-yellow-500 fill-current&#34;&gt;${icons.star}&lt;/span&gt;
+                        &lt;span class=&#34;font-bold text-gray-800&#34;&gt;${state.score} баллов&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;bg-white rounded-3xl shadow-xl p-6 md:p-10 max-w-2xl w-full relative overflow-hidden animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;absolute top-0 right-0 bg-indigo-100 text-indigo-800 px-4 py-2 rounded-bl-2xl font-bold text-sm&#34;&gt;${badgeText}&lt;/div&gt;
+                    &lt;h2 class=&#34;text-2xl font-bold text-gray-800 mb-2 mt-2&#34;&gt;${currentQ.title}&lt;/h2&gt;
+                    &lt;p class=&#34;text-gray-500 mb-6&#34;&gt;${currentQ.description}&lt;/p&gt;
+                    &lt;div class=&#34;mb-8&#34;&gt;${contentHtml}&lt;/div&gt;
+                    ${feedbackHtml}
+                    ${nextButtonHtml}
+                &lt;/div&gt;
+            `;
+        }
+
+        function handleStart() {
+            state.gameState = &#39;playing&#39;;
+            state.currentLevel = 0;
+            state.score = 0;
+            state.showFeedback = false;
+            render();
+        }
+
+        function checkAnswer(answer) {
+            if(state.showFeedback) return;
+            const currentQ = levels[state.currentLevel];
+            state.selectedOption = answer;
+            state.isCorrect = answer === currentQ.correctAnswer;
+            state.showFeedback = true;
+            if (state.isCorrect) state.score &#43;= 10;
+            render();
+        }
+
+        function nextLevel() {
+            state.showFeedback = false;
+            state.selectedOption = null;
+            if (state.currentLevel &lt; levels.length - 1) {
+                state.currentLevel&#43;&#43;;
+                state.gameState = &#39;playing&#39;;
+            } else {
+                state.gameState = &#39;result&#39;;
+            }
+            render();
+        }
+
+        render();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -507,7 +1235,501 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame134" src="/task/134?lang=kz"
+                            <iframe id="taskFrame134" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Суасты Миссиясы - Қос теңсіздік&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;link href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&#34; rel=&#34;stylesheet&#34;&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&amp;display=swap&#39;);
+        
+        body {
+            font-family: &#39;Fredoka&#39;, sans-serif;
+            background-color: #001e3c;
+            /* ТҮЗЕТУ: &#39;auto&#39; орнына &#39;scroll&#39; қолданылды. 
+               Бұл скролл орнын тұрақты сақтайды және жыпылықтауды жояды. */
+            overflow-y: scroll; 
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        /* Bubbles Animation */
+        #bubbles-container {
+            /* ТҮЗЕТУ: Көпіршіктер шекарадан шыққанда скролл тудырмауы үшін */
+            overflow: hidden; 
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: rise infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% { bottom: -10px; transform: translateX(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { bottom: 100vh; transform: translateX(-20px); opacity: 0; }
+        }
+
+        /* Game Container Styles */
+        .glass-panel {
+            background: rgba(13, 37, 63, 0.9); /* Slightly darker for better text contrast */
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(66, 153, 225, 0.3);
+            box-shadow: 0 0 20px rgba(66, 153, 225, 0.2);
+        }
+
+        /* Custom Range Slider */
+        input[type=range][orient=vertical] {
+            writing-mode: bt-lr; /* IE */
+            -webkit-appearance: slider-vertical; /* WebKit */
+            width: 8px;
+            height: 100%;
+            padding: 0 5px;
+        }
+
+        /* Number Bubble Selection */
+        .num-bubble {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .num-bubble:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        .num-bubble.selected {
+            background-color: #facc15; /* Yellow */
+            color: #000;
+            border-color: #f59e0b;
+            transform: scale(1.15);
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.6);
+        }
+
+        /* Submarine Float Animation */
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen flex items-center justify-center relative bg-gradient-to-b from-sky-900 to-slate-900 text-white py-6&#34;&gt;
+
+    &lt;!-- Background Bubbles --&gt;
+    &lt;div id=&#34;bubbles-container&#34; class=&#34;absolute inset-0 pointer-events-none z-0 fixed&#34;&gt;&lt;/div&gt;
+
+    &lt;!-- Main Game Wrapper --&gt;
+    &lt;!-- Changed h-[90vh] to min-h... and flex layout for responsiveness --&gt;
+    &lt;div class=&#34;w-full max-w-5xl min-h-[90vh] md:h-auto flex flex-col md:flex-row gap-4 p-4 z-10 relative&#34;&gt;
+        
+        &lt;!-- Left Panel: Info &amp; Controls --&gt;
+        &lt;!-- Adjusted width and flexibility --&gt;
+        &lt;div class=&#34;w-full md:w-1/3 flex flex-col gap-4 shrink-0&#34;&gt;
+            &lt;!-- Header Card --&gt;
+            &lt;div class=&#34;glass-panel rounded-2xl p-4 md:p-6 text-center&#34;&gt;
+                &lt;div class=&#34;flex items-center justify-center gap-3 mb-2&#34;&gt;
+                    &lt;div class=&#34;bg-sky-500 p-2 rounded-full shadow-lg shadow-sky-500/50&#34;&gt;
+                        &lt;i class=&#34;fas fa-water text-2xl text-white&#34;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h1 class=&#34;text-xl md:text-2xl font-bold text-white uppercase&#34;&gt;Суасты Миссиясы&lt;/h1&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;flex justify-between text-sm font-semibold text-white bg-slate-800/50 rounded-lg p-2 mt-2 border border-slate-600&#34;&gt;
+                    &lt;div&gt;
+                        &lt;span class=&#34;block text-xs text-slate-200 opacity-90&#34;&gt;Деңгей&lt;/span&gt;
+                        &lt;span id=&#34;level-display&#34; class=&#34;text-yellow-300 text-lg font-bold&#34;&gt;1&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;span class=&#34;block text-xs text-slate-200 opacity-90&#34;&gt;Ұпай&lt;/span&gt;
+                        &lt;span id=&#34;score-display&#34; class=&#34;text-green-300 text-lg font-bold&#34;&gt;0&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Instruction Card --&gt;
+            &lt;div class=&#34;glass-panel rounded-2xl p-4 md:p-6 flex-1 flex flex-col justify-center relative overflow-hidden&#34;&gt;
+                &lt;div class=&#34;absolute top-0 right-0 p-4 opacity-10 pointer-events-none&#34;&gt;
+                    &lt;i class=&#34;fas fa-ship text-6xl md:text-8xl text-white&#34;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                
+                &lt;h2 class=&#34;text-lg md:text-xl font-bold text-yellow-300 mb-2 md:mb-3&#34; id=&#34;task-title&#34;&gt;Тапсырма&lt;/h2&gt;
+                &lt;p class=&#34;text-base md:text-lg leading-relaxed mb-4 text-white font-medium&#34; id=&#34;task-desc&#34;&gt;
+                    Жүктелуде...
+                &lt;/p&gt;
+                
+                &lt;!-- Mathematical Representation --&gt;
+                &lt;div class=&#34;bg-slate-900/80 rounded-xl p-3 md:p-4 text-center border border-sky-500/50 mb-4 shadow-inner&#34;&gt;
+                    &lt;span id=&#34;math-expression&#34; class=&#34;text-2xl md:text-3xl font-mono font-bold text-sky-300 tracking-wider&#34;&gt;
+                        ...
+                    &lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;div id=&#34;feedback-area&#34; class=&#34;hidden text-center font-bold p-3 rounded-lg mb-4 text-sm md:text-base&#34;&gt;&lt;/div&gt;
+
+                &lt;div class=&#34;mt-auto&#34;&gt;
+                    &lt;button id=&#34;action-btn&#34; onclick=&#34;checkAnswer()&#34; class=&#34;w-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-3 md:py-4 px-6 rounded-xl shadow-lg shadow-yellow-500/20 transition transform active:scale-95 text-lg flex items-center justify-center gap-2&#34;&gt;
+                        &lt;span&gt;Тексеру&lt;/span&gt; &lt;i class=&#34;fas fa-check-circle&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                    &lt;button id=&#34;next-btn&#34; onclick=&#34;nextLevel()&#34; class=&#34;hidden w-full bg-green-500 hover:bg-green-400 text-white font-bold py-3 md:py-4 px-6 rounded-xl shadow-lg shadow-green-500/20 transition transform active:scale-95 text-lg flex items-center justify-center gap-2 animate-pulse&#34;&gt;
+                        &lt;span&gt;Келесі&lt;/span&gt; &lt;i class=&#34;fas fa-arrow-right&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Right Panel: Visual Playground --&gt;
+        &lt;!-- Added min-h-[400px] to ensure it has height on mobile --&gt;
+        &lt;div class=&#34;w-full md:w-2/3 glass-panel rounded-2xl p-4 relative flex flex-col items-center justify-center overflow-hidden min-h-[400px] md:min-h-auto&#34;&gt;
+            
+            &lt;!-- MODE 1: Submarine Slider (Depth Control) --&gt;
+            &lt;div id=&#34;mode-slider&#34; class=&#34;w-full h-full flex flex-row items-stretch justify-center gap-4 md:gap-8 hidden absolute inset-0 p-4&#34;&gt;
+                &lt;!-- Ruler / Sea --&gt;
+                &lt;div class=&#34;relative w-full max-w-[300px] h-full bg-gradient-to-b from-sky-800/30 to-slate-900/80 rounded-xl border border-sky-700/30 overflow-hidden&#34; id=&#34;sea-container&#34;&gt;
+                    
+                    &lt;!-- Danger Zone Top --&gt;
+                    &lt;div id=&#34;danger-top&#34; class=&#34;absolute top-0 w-full bg-red-500/30 border-b-2 border-red-500/70 flex items-center justify-center transition-all duration-500&#34;&gt;
+                        &lt;span class=&#34;text-white font-bold uppercase text-[10px] md:text-sm tracking-widest drop-shadow-md&#34;&gt;&lt;i class=&#34;fas fa-skull-crossbones&#34;&gt;&lt;/i&gt; Қауіпті&lt;/span&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Safe Zone (Middle) --&gt;
+                    &lt;div id=&#34;safe-zone&#34; class=&#34;absolute w-full bg-green-500/20 border-y-2 border-green-400/70 flex items-center justify-center transition-all duration-500&#34;&gt;
+                        &lt;span class=&#34;text-white font-bold uppercase text-[10px] md:text-sm tracking-widest opacity-90 drop-shadow-md&#34;&gt;Қауіпсіз жол&lt;/span&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Danger Zone Bottom --&gt;
+                    &lt;div id=&#34;danger-bottom&#34; class=&#34;absolute bottom-0 w-full bg-red-500/30 border-t-2 border-red-500/70 flex items-center justify-center transition-all duration-500&#34;&gt;
+                         &lt;span class=&#34;text-white font-bold uppercase text-[10px] md:text-sm tracking-widest drop-shadow-md&#34;&gt;&lt;i class=&#34;fas fa-skull-crossbones&#34;&gt;&lt;/i&gt; Қауіпті&lt;/span&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Submarine --&gt;
+                    &lt;div id=&#34;submarine&#34; class=&#34;absolute left-1/2 transform -translate-x-1/2 transition-all duration-300 ease-out z-10 text-yellow-400 drop-shadow-[0_0_10px_rgba(250,204,21,0.5)]&#34;&gt;
+                        &lt;div class=&#34;relative&#34;&gt;
+                            &lt;i class=&#34;fas fa-submarine text-4xl md:text-6xl flip-x&#34;&gt;&lt;/i&gt;
+                            &lt;!-- Updated size and positioning for the label --&gt;
+                            &lt;div class=&#34;absolute -right-10 md:-right-12 -top-2 bg-slate-800 text-white text-lg md:text-2xl px-2 py-1 rounded-lg border-2 border-slate-600 font-mono font-bold shadow-md z-20&#34; id=&#34;sub-depth-label&#34;&gt;0&lt;/div&gt;
+                            &lt;!-- Propeller Animation --&gt;
+                            &lt;div class=&#34;absolute -left-1 top-4 w-2 h-6 bg-white/20 blur-sm animate-pulse&#34;&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Grid Lines --&gt;
+                    &lt;div class=&#34;absolute inset-0 z-0 opacity-20&#34; style=&#34;background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 100% 10%;&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Slider Control --&gt;
+                &lt;div class=&#34;h-full flex flex-col items-center justify-center py-4&#34;&gt;
+                    &lt;input type=&#34;range&#34; id=&#34;depth-slider&#34; min=&#34;0&#34; max=&#34;100&#34; value=&#34;0&#34; orient=&#34;vertical&#34; class=&#34;h-full appearance-none bg-slate-700 w-6 md:w-4 rounded-full outline-none slider-thumb-custom cursor-pointer opacity-80 hover:opacity-100 transition shadow-inner&#34;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- MODE 2: Fish Selection (Number Set) --&gt;
+            &lt;div id=&#34;mode-selection&#34; class=&#34;w-full h-full flex flex-col items-center justify-center hidden p-2&#34;&gt;
+                &lt;div class=&#34;grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 p-2 w-full max-w-2xl overflow-y-auto max-h-full&#34; id=&#34;fish-grid&#34;&gt;
+                    &lt;!-- Fish will be generated here --&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- MODE 3: Code Entry (Count) --&gt;
+            &lt;div id=&#34;mode-code&#34; class=&#34;w-full h-full flex flex-col items-center justify-center hidden&#34;&gt;
+                &lt;div class=&#34;bg-slate-800/90 p-6 md:p-8 rounded-3xl border-2 border-yellow-500/50 shadow-2xl text-center w-full max-w-sm relative mx-4&#34;&gt;
+                    &lt;div class=&#34;absolute -top-6 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-slate-900 p-3 rounded-full border-4 border-slate-800&#34;&gt;
+                        &lt;i class=&#34;fas fa-lock text-2xl&#34;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h3 class=&#34;text-lg md:text-xl text-yellow-100 mt-4 mb-6 font-bold&#34;&gt;Құпия сандықты ашу үшін кодты енгіз&lt;/h3&gt;
+                    &lt;p class=&#34;text-white mb-2 text-sm font-medium&#34;&gt;Осы аралықта неше натурал сан бар?&lt;/p&gt;
+                    
+                    &lt;div class=&#34;flex items-center justify-center gap-4 mb-6&#34;&gt;
+                        &lt;button onclick=&#34;adjustCode(-1)&#34; class=&#34;w-12 h-12 bg-slate-700 rounded-xl hover:bg-slate-600 text-2xl font-bold transition flex-shrink-0 text-white&#34;&gt;-&lt;/button&gt;
+                        &lt;input type=&#34;number&#34; id=&#34;code-input&#34; value=&#34;0&#34; readonly class=&#34;w-20 md:w-24 h-16 bg-black text-green-400 text-3xl md:text-4xl font-mono text-center rounded-xl border border-slate-500 focus:outline-none focus:border-green-500 font-bold&#34;&gt;
+                        &lt;button onclick=&#34;adjustCode(1)&#34; class=&#34;w-12 h-12 bg-slate-700 rounded-xl hover:bg-slate-600 text-2xl font-bold transition flex-shrink-0 text-white&#34;&gt;&#43;&lt;/button&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class=&#34;text-sm text-yellow-200 italic bg-slate-900/50 p-2 rounded&#34;&gt;Мысалы: 3 &lt; x &lt; 6 болса, сандар: 4, 5. Жауабы: 2&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Intro Overlay --&gt;
+    &lt;div id=&#34;intro-overlay&#34; class=&#34;absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center text-center p-8 fixed&#34;&gt;
+        &lt;div class=&#34;w-24 h-24 md:w-32 md:h-32 bg-sky-600 rounded-full flex items-center justify-center mb-6 shadow-[0_0_50px_rgba(2,132,199,0.5)] float-anim&#34;&gt;
+            &lt;i class=&#34;fas fa-water text-5xl md:text-6xl text-white&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;h1 class=&#34;text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-teal-300 mb-4 drop-shadow-sm filter&#34;&gt;Суасты Миссиясы&lt;/h1&gt;
+        &lt;p class=&#34;text-white text-lg md:text-xl mb-10 max-w-xl font-medium&#34;&gt;
+            Капитан! Біздің суасты сүңгуірімізге көмек керек. Қос теңсіздіктерді шешіп, кедергілерден өтіңіз.
+        &lt;/p&gt;
+        &lt;button onclick=&#34;startGame()&#34; class=&#34;bg-yellow-500 hover:bg-yellow-400 text-slate-900 text-xl md:text-2xl font-bold py-3 md:py-4 px-8 md:px-12 rounded-full shadow-xl transition transform hover:scale-105&#34;&gt;
+            Бастау
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Win Overlay --&gt;
+    &lt;div id=&#34;win-overlay&#34; class=&#34;hidden absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center text-center p-8 fixed&#34;&gt;
+        &lt;i class=&#34;fas fa-trophy text-6xl md:text-7xl text-yellow-400 mb-6 drop-shadow-[0_0_30px_rgba(250,204,21,0.6)]&#34;&gt;&lt;/i&gt;
+        &lt;h2 class=&#34;text-3xl md:text-4xl font-black text-white mb-4&#34;&gt;Миссия Аяқталды!&lt;/h2&gt;
+        &lt;p class=&#34;text-white text-lg md:text-xl mb-8&#34;&gt;Сіз нағыз теңсіздіктер шеберісіз!&lt;/p&gt;
+        &lt;div class=&#34;bg-slate-800 px-8 py-4 rounded-xl border border-slate-700 mb-8&#34;&gt;
+            &lt;span class=&#34;text-slate-300 uppercase text-xs tracking-widest font-bold&#34;&gt;Жалпы ұпай&lt;/span&gt;
+            &lt;div class=&#34;text-4xl md:text-5xl font-bold text-white mt-2&#34; id=&#34;final-score&#34;&gt;0&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button onclick=&#34;location.reload()&#34; class=&#34;bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 px-8 rounded-lg transition flex items-center gap-2&#34;&gt;
+            &lt;i class=&#34;fas fa-redo&#34;&gt;&lt;/i&gt; Қайта ойнау
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- Game Config &amp; State ---
+        const LEVELS = [
+            { type: &#39;slider&#39;, min: 20, max: 60, desc: &#34;Сүңгуірді қауіпсіз тереңдікке түсір.&#34; },
+            { type: &#39;slider&#39;, min: 40, max: 80, desc: &#34;Терең үңгір! Көрсетілген аралықта бол.&#34; },
+            { type: &#39;selection&#39;, min: 4, max: 9, desc: &#34;Қос теңсіздікке жататын барлық балықтарды тап.&#34; },
+            { type: &#39;selection&#39;, min: 12, max: 18, desc: &#34;Мына аралықтағы барлық сандарды белгіле.&#34; },
+            { type: &#39;code&#39;, min: 2, max: 6, desc: &#34;Сандықты ашу үшін: Аралықта неше натурал сан бар?&#34; }, // 3,4,5 -&gt; 3
+            { type: &#39;code&#39;, min: 10, max: 17, desc: &#34;Кодты тап: Аралықта неше сан бар?&#34; } // 11..16 -&gt; 6
+        ];
+
+        let currentLevelIdx = 0;
+        let score = 0;
+        let currentTask = {};
+        
+        // --- Init ---
+        function createBubbles() {
+            const container = document.getElementById(&#39;bubbles-container&#39;);
+            for(let i=0; i&lt;20; i&#43;&#43;) {
+                const b = document.createElement(&#39;div&#39;);
+                b.className = &#39;bubble&#39;;
+                b.style.left = Math.random() * 100 &#43; &#39;%&#39;;
+                b.style.width = (Math.random() * 20 &#43; 10) &#43; &#39;px&#39;;
+                b.style.height = b.style.width;
+                b.style.animationDuration = (Math.random() * 5 &#43; 5) &#43; &#39;s&#39;;
+                b.style.animationDelay = (Math.random() * 5) &#43; &#39;s&#39;;
+                container.appendChild(b);
+            }
+        }
+        createBubbles();
+
+        function startGame() {
+            document.getElementById(&#39;intro-overlay&#39;).classList.add(&#39;hidden&#39;);
+            loadLevel(0);
+        }
+
+        // --- Level Logic ---
+        function loadLevel(idx) {
+            currentLevelIdx = idx;
+            const levelConfig = LEVELS[idx];
+            
+            // Randomize range slightly to make replay fun
+            const offset = Math.floor(Math.random() * 5); 
+            const a = levelConfig.min &#43; offset;
+            const b = levelConfig.max &#43; offset;
+
+            currentTask = {
+                type: levelConfig.type,
+                a: a,
+                b: b,
+                desc: levelConfig.desc
+            };
+
+            // UI Updates
+            document.getElementById(&#39;level-display&#39;).innerText = idx &#43; 1;
+            document.getElementById(&#39;task-desc&#39;).innerText = currentTask.desc;
+            document.getElementById(&#39;math-expression&#39;).innerHTML = `${a} &lt; &lt;span class=&#34;text-white&#34;&gt;x&lt;/span&gt; &lt; ${b}`;
+            
+            // Reset Controls
+            document.getElementById(&#39;action-btn&#39;).classList.remove(&#39;hidden&#39;);
+            document.getElementById(&#39;next-btn&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;feedback-area&#39;).classList.add(&#39;hidden&#39;);
+            
+            // Hide all modes first
+            document.getElementById(&#39;mode-slider&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;mode-selection&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;mode-code&#39;).classList.add(&#39;hidden&#39;);
+
+            // Setup specific mode
+            if (currentTask.type === &#39;slider&#39;) setupSliderMode();
+            else if (currentTask.type === &#39;selection&#39;) setupSelectionMode();
+            else if (currentTask.type === &#39;code&#39;) setupCodeMode();
+        }
+
+        function setupSliderMode() {
+            const container = document.getElementById(&#39;mode-slider&#39;);
+            container.classList.remove(&#39;hidden&#39;);
+            
+            const slider = document.getElementById(&#39;depth-slider&#39;);
+            const seaHeight = document.getElementById(&#39;sea-container&#39;).clientHeight;
+            
+            // Set slider context (0 to 100 scale for simplicity of UI)
+            slider.value = 0; 
+            updateSubmarinePos(0);
+            
+            // Visualize Safe Zone
+            const topPercent = currentTask.a; // e.g., 20% from top
+            const bottomPercent = currentTask.b; // e.g., 60% from top (so bottom is 40%)
+            const heightPercent = currentTask.b - currentTask.a;
+
+            const safeZone = document.getElementById(&#39;safe-zone&#39;);
+            const dangerTop = document.getElementById(&#39;danger-top&#39;);
+            const dangerBottom = document.getElementById(&#39;danger-bottom&#39;);
+
+            // Invert logic for visual &#34;Depth&#34;: 0 is top, 100 is bottom.
+            // But CSS &#34;top&#34; works perfectly for depth.
+            safeZone.style.top = currentTask.a &#43; &#39;%&#39;;
+            safeZone.style.height = heightPercent &#43; &#39;%&#39;;
+            
+            dangerTop.style.height = currentTask.a &#43; &#39;%&#39;;
+            dangerBottom.style.height = (100 - currentTask.b) &#43; &#39;%&#39;;
+            
+            // Slider listener
+            slider.oninput = (e) =&gt; updateSubmarinePos(e.target.value);
+        }
+
+        function updateSubmarinePos(val) {
+            const sub = document.getElementById(&#39;submarine&#39;);
+            const label = document.getElementById(&#39;sub-depth-label&#39;);
+            // Clamp visual to container
+            sub.style.top = val &#43; &#39;%&#39;;
+            label.innerText = val &#43; &#39;m&#39;;
+        }
+
+        function setupSelectionMode() {
+            const container = document.getElementById(&#39;mode-selection&#39;);
+            container.classList.remove(&#39;hidden&#39;);
+            const grid = document.getElementById(&#39;fish-grid&#39;);
+            grid.innerHTML = &#39;&#39;;
+
+            // Generate numbers: some inside range, some outside
+            // Range (a, b). Valid are a&#43;1 ... b-1
+            const validNumbers = [];
+            for (let i = currentTask.a &#43; 1; i &lt; currentTask.b; i&#43;&#43;) validNumbers.push(i);
+            
+            const distractors = [
+                currentTask.a, // Boundary (wrong)
+                currentTask.b, // Boundary (wrong)
+                currentTask.a - Math.floor(Math.random()*3 &#43; 1),
+                currentTask.b &#43; Math.floor(Math.random()*3 &#43; 1)
+            ];
+
+            let pool = [...validNumbers, ...distractors];
+            pool = pool.sort(() =&gt; Math.random() - 0.5); // Shuffle
+
+            pool.forEach(num =&gt; {
+                const btn = document.createElement(&#39;div&#39;);
+                btn.className = &#34;num-bubble bg-sky-800 border-2 border-sky-600 rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center text-xl md:text-2xl font-bold text-white shadow-lg relative shrink-0 cursor-pointer hover:scale-105 transition-transform&#34;;
+                btn.innerHTML = `
+                    &lt;i class=&#34;fas fa-fish absolute text-3xl md:text-4xl text-sky-400 opacity-20&#34;&gt;&lt;/i&gt;
+                    &lt;span class=&#34;z-10&#34;&gt;${num}&lt;/span&gt;
+                `;
+                btn.onclick = () =&gt; btn.classList.toggle(&#39;selected&#39;);
+                btn.dataset.value = num;
+                grid.appendChild(btn);
+            });
+        }
+
+        function setupCodeMode() {
+            const container = document.getElementById(&#39;mode-code&#39;);
+            container.classList.remove(&#39;hidden&#39;);
+            document.getElementById(&#39;code-input&#39;).value = 0;
+        }
+
+        function adjustCode(amount) {
+            const input = document.getElementById(&#39;code-input&#39;);
+            let val = parseInt(input.value) &#43; amount;
+            if(val &lt; 0) val = 0;
+            input.value = val;
+        }
+
+        // --- Checking Logic ---
+        function checkAnswer() {
+            let correct = false;
+            let msg = &#34;&#34;;
+
+            if (currentTask.type === &#39;slider&#39;) {
+                const val = parseInt(document.getElementById(&#39;depth-slider&#39;).value);
+                // Strict inequality: a &lt; val &lt; b
+                if (val &gt; currentTask.a &amp;&amp; val &lt; currentTask.b) {
+                    correct = true;
+                    msg = &#34;Керемет! Сүңгуір қауіпсіз аймақта.&#34;;
+                } else if (val === currentTask.a || val === currentTask.b) {
+                    msg = &#34;Абайла! Шекараға тиіп тұрсың (қатаң теңсіздік)!&#34;;
+                } else {
+                    msg = &#34;Сүңгуірге қауіп төнді!&#34;;
+                }
+            } 
+            else if (currentTask.type === &#39;selection&#39;) {
+                const selected = Array.from(document.querySelectorAll(&#39;.num-bubble.selected&#39;));
+                const selectedVals = selected.map(el =&gt; parseInt(el.dataset.value));
+                
+                const actualValid = [];
+                for(let i = currentTask.a &#43; 1; i &lt; currentTask.b; i&#43;&#43;) actualValid.push(i);
+                
+                // Check if selected match exactly valid
+                const isAllCorrect = selectedVals.every(v =&gt; actualValid.includes(v));
+                const isAllFound = actualValid.every(v =&gt; selectedVals.includes(v));
+
+                if (isAllCorrect &amp;&amp; isAllFound &amp;&amp; selectedVals.length &gt; 0) {
+                    correct = true;
+                    msg = &#34;Жарайсың! Барлық балықтар дұрыс табылды.&#34;;
+                } else {
+                    msg = &#34;Қате! Аралықтағы сандарды мұқият тексер.&#34;;
+                    // Highlight errors visually? Let&#39;s keep it simple.
+                }
+            }
+            else if (currentTask.type === &#39;code&#39;) {
+                const userCount = parseInt(document.getElementById(&#39;code-input&#39;).value);
+                // Count of integers between a and b exclusive is (b - a - 1)
+                const correctCount = currentTask.b - currentTask.a - 1;
+                
+                if (userCount === correctCount) {
+                    correct = true;
+                    msg = &#34;Код дұрыс! Сандық ашылды.&#34;;
+                } else {
+                    msg = `Қате. ${currentTask.a} мен ${currentTask.b} арасында неше сан бар екенін сана.`;
+                }
+            }
+
+            const feedback = document.getElementById(&#39;feedback-area&#39;);
+            feedback.classList.remove(&#39;hidden&#39;);
+            feedback.innerText = msg;
+            
+            if (correct) {
+                feedback.className = &#34;bg-green-500/20 text-green-300 border border-green-500/50 p-3 rounded-lg mb-4 block&#34;;
+                score &#43;= 10;
+                document.getElementById(&#39;score-display&#39;).innerText = score;
+                document.getElementById(&#39;action-btn&#39;).classList.add(&#39;hidden&#39;);
+                document.getElementById(&#39;next-btn&#39;).classList.remove(&#39;hidden&#39;);
+                // Play sound or visual effect here
+            } else {
+                feedback.className = &#34;bg-red-500/20 text-red-300 border border-red-500/50 p-3 rounded-lg mb-4 block&#34;;
+            }
+        }
+
+        function nextLevel() {
+            if (currentLevelIdx &lt; LEVELS.length - 1) {
+                loadLevel(currentLevelIdx &#43; 1);
+            } else {
+                // Win
+                document.getElementById(&#39;win-overlay&#39;).classList.remove(&#39;hidden&#39;);
+                document.getElementById(&#39;final-score&#39;).innerText = score;
+                saveToServer(score, LEVELS.length);
+            }
+        }
+
+        // --- Mock Server Save ---
+        function saveToServer(finalScore, total) {
+            console.log(`Saving score: ${finalScore}/${total}`);
+            // Fetch logic would go here
+        }
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -549,7 +1771,389 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame134_ru" src="/task/134?lang=ru"
+                            <iframe id="taskFrame134_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Подводная Миссия - Двойные неравенства&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;link href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&#34; rel=&#34;stylesheet&#34;&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&amp;display=swap&#39;);
+        
+        body {
+            font-family: &#39;Fredoka&#39;, sans-serif;
+            background-color: #001e3c;
+            overflow-y: scroll; 
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        #bubbles-container {
+            overflow: hidden; 
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: rise infinite ease-in;
+        }
+
+        @keyframes rise {
+            0% { bottom: -10px; transform: translateX(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { bottom: 100vh; transform: translateX(-20px); opacity: 0; }
+        }
+
+        .glass-panel {
+            background: rgba(13, 37, 63, 0.9);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(66, 153, 225, 0.3);
+            box-shadow: 0 0 20px rgba(66, 153, 225, 0.2);
+        }
+
+        input[type=range][orient=vertical] {
+            writing-mode: bt-lr;
+            -webkit-appearance: slider-vertical;
+            width: 8px;
+            height: 100%;
+            padding: 0 5px;
+        }
+
+        .num-bubble {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .num-bubble:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+        .num-bubble.selected {
+            background-color: #facc15;
+            color: #000;
+            border-color: #f59e0b;
+            transform: scale(1.15);
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.6);
+        }
+
+        .float-anim {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen flex items-center justify-center relative bg-gradient-to-b from-sky-900 to-slate-900 text-white py-6&#34;&gt;
+
+    &lt;div id=&#34;bubbles-container&#34; class=&#34;absolute inset-0 pointer-events-none z-0 fixed&#34;&gt;&lt;/div&gt;
+
+    &lt;div class=&#34;w-full max-w-5xl min-h-[90vh] md:h-auto flex flex-col md:flex-row gap-4 p-4 z-10 relative&#34;&gt;
+        
+        &lt;div class=&#34;w-full md:w-1/3 flex flex-col gap-4 shrink-0&#34;&gt;
+            &lt;div class=&#34;glass-panel rounded-2xl p-4 md:p-6 text-center&#34;&gt;
+                &lt;div class=&#34;flex items-center justify-center gap-3 mb-2&#34;&gt;
+                    &lt;div class=&#34;bg-sky-500 p-2 rounded-full shadow-lg shadow-sky-500/50&#34;&gt;
+                        &lt;i class=&#34;fas fa-water text-2xl text-white&#34;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h1 class=&#34;text-xl md:text-2xl font-bold text-white uppercase&#34;&gt;Подводная Миссия&lt;/h1&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;flex justify-between text-sm font-semibold text-white bg-slate-800/50 rounded-lg p-2 mt-2 border border-slate-600&#34;&gt;
+                    &lt;div&gt;
+                        &lt;span class=&#34;block text-xs text-slate-200 opacity-90&#34;&gt;Уровень&lt;/span&gt;
+                        &lt;span id=&#34;level-display&#34; class=&#34;text-yellow-300 text-lg font-bold&#34;&gt;1&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;span class=&#34;block text-xs text-slate-200 opacity-90&#34;&gt;Баллы&lt;/span&gt;
+                        &lt;span id=&#34;score-display&#34; class=&#34;text-green-300 text-lg font-bold&#34;&gt;0&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;glass-panel rounded-2xl p-4 md:p-6 flex-1 flex flex-col justify-center relative overflow-hidden&#34;&gt;
+                &lt;div class=&#34;absolute top-0 right-0 p-4 opacity-10 pointer-events-none&#34;&gt;
+                    &lt;i class=&#34;fas fa-ship text-6xl md:text-8xl text-white&#34;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                
+                &lt;h2 class=&#34;text-lg md:text-xl font-bold text-yellow-300 mb-2 md:mb-3&#34; id=&#34;task-title&#34;&gt;Задание&lt;/h2&gt;
+                &lt;p class=&#34;text-base md:text-lg leading-relaxed mb-4 text-white font-medium&#34; id=&#34;task-desc&#34;&gt;
+                    Загрузка...
+                &lt;/p&gt;
+                
+                &lt;div class=&#34;bg-slate-900/80 rounded-xl p-3 md:p-4 text-center border border-sky-500/50 mb-4 shadow-inner&#34;&gt;
+                    &lt;span id=&#34;math-expression&#34; class=&#34;text-2xl md:text-3xl font-mono font-bold text-sky-300 tracking-wider&#34;&gt;
+                        ...
+                    &lt;/span&gt;
+                &lt;/div&gt;
+
+                &lt;div id=&#34;feedback-area&#34; class=&#34;hidden text-center font-bold p-3 rounded-lg mb-4 text-sm md:text-base&#34;&gt;&lt;/div&gt;
+
+                &lt;div class=&#34;mt-auto&#34;&gt;
+                    &lt;button id=&#34;action-btn&#34; onclick=&#34;checkAnswer()&#34; class=&#34;w-full bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-3 md:py-4 px-6 rounded-xl shadow-lg shadow-yellow-500/20 transition transform active:scale-95 text-lg flex items-center justify-center gap-2&#34;&gt;
+                        &lt;span&gt;Проверить&lt;/span&gt; &lt;i class=&#34;fas fa-check-circle&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                    &lt;button id=&#34;next-btn&#34; onclick=&#34;nextLevel()&#34; class=&#34;hidden w-full bg-green-500 hover:bg-green-400 text-white font-bold py-3 md:py-4 px-6 rounded-xl shadow-lg shadow-green-500/20 transition transform active:scale-95 text-lg flex items-center justify-center gap-2 animate-pulse&#34;&gt;
+                        &lt;span&gt;Далее&lt;/span&gt; &lt;i class=&#34;fas fa-arrow-right&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;w-full md:w-2/3 glass-panel rounded-2xl p-4 relative flex flex-col items-center justify-center overflow-hidden min-h-[400px]&#34;&gt;
+            
+            &lt;div id=&#34;mode-slider&#34; class=&#34;w-full h-full flex flex-row items-stretch justify-center gap-4 md:gap-8 hidden absolute inset-0 p-4&#34;&gt;
+                &lt;div class=&#34;relative w-full max-w-[300px] h-full bg-gradient-to-b from-sky-800/30 to-slate-900/80 rounded-xl border border-sky-700/30 overflow-hidden&#34; id=&#34;sea-container&#34;&gt;
+                    &lt;div id=&#34;danger-top&#34; class=&#34;absolute top-0 w-full bg-red-500/30 border-b-2 border-red-500/70 flex items-center justify-center transition-all duration-500&#34;&gt;
+                        &lt;span class=&#34;text-white font-bold uppercase text-[10px] md:text-sm tracking-widest drop-shadow-md&#34;&gt;&lt;i class=&#34;fas fa-skull-crossbones&#34;&gt;&lt;/i&gt; Опасно&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div id=&#34;safe-zone&#34; class=&#34;absolute w-full bg-green-500/20 border-y-2 border-green-400/70 flex items-center justify-center transition-all duration-500&#34;&gt;
+                        &lt;span class=&#34;text-white font-bold uppercase text-[10px] md:text-sm tracking-widest opacity-90 drop-shadow-md&#34;&gt;Безопасный путь&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div id=&#34;danger-bottom&#34; class=&#34;absolute bottom-0 w-full bg-red-500/30 border-t-2 border-red-500/70 flex items-center justify-center transition-all duration-500&#34;&gt;
+                         &lt;span class=&#34;text-white font-bold uppercase text-[10px] md:text-sm tracking-widest drop-shadow-md&#34;&gt;&lt;i class=&#34;fas fa-skull-crossbones&#34;&gt;&lt;/i&gt; Опасно&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div id=&#34;submarine&#34; class=&#34;absolute left-1/2 transform -translate-x-1/2 transition-all duration-300 ease-out z-10 text-yellow-400 drop-shadow-[0_0_10px_rgba(250,204,21,0.5)]&#34;&gt;
+                        &lt;div class=&#34;relative&#34;&gt;
+                            &lt;i class=&#34;fas fa-submarine text-4xl md:text-6xl flip-x&#34;&gt;&lt;/i&gt;
+                            &lt;div class=&#34;absolute -right-10 md:-right-12 -top-2 bg-slate-800 text-white text-lg md:text-2xl px-2 py-1 rounded-lg border-2 border-slate-600 font-mono font-bold shadow-md z-20&#34; id=&#34;sub-depth-label&#34;&gt;0&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;h-full flex flex-col items-center justify-center py-4&#34;&gt;
+                    &lt;input type=&#34;range&#34; id=&#34;depth-slider&#34; min=&#34;0&#34; max=&#34;100&#34; value=&#34;0&#34; orient=&#34;vertical&#34; class=&#34;h-full appearance-none bg-slate-700 w-6 md:w-4 rounded-full outline-none cursor-pointer&#34;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;mode-selection&#34; class=&#34;w-full h-full flex flex-col items-center justify-center hidden p-2&#34;&gt;
+                &lt;div class=&#34;grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-6 p-2 w-full max-w-2xl overflow-y-auto max-h-full&#34; id=&#34;fish-grid&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;mode-code&#34; class=&#34;w-full h-full flex flex-col items-center justify-center hidden&#34;&gt;
+                &lt;div class=&#34;bg-slate-800/90 p-6 md:p-8 rounded-3xl border-2 border-yellow-500/50 shadow-2xl text-center w-full max-w-sm relative mx-4&#34;&gt;
+                    &lt;div class=&#34;absolute -top-6 left-1/2 transform -translate-x-1/2 bg-yellow-500 text-slate-900 p-3 rounded-full border-4 border-slate-800&#34;&gt;
+                        &lt;i class=&#34;fas fa-lock text-2xl&#34;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h3 class=&#34;text-lg md:text-xl text-yellow-100 mt-4 mb-6 font-bold&#34;&gt;Введите код, чтобы открыть сундук&lt;/h3&gt;
+                    &lt;p class=&#34;text-white mb-2 text-sm font-medium&#34;&gt;Сколько натуральных чисел в этом промежутке?&lt;/p&gt;
+                    &lt;div class=&#34;flex items-center justify-center gap-4 mb-6&#34;&gt;
+                        &lt;button onclick=&#34;adjustCode(-1)&#34; class=&#34;w-12 h-12 bg-slate-700 rounded-xl hover:bg-slate-600 text-2xl font-bold transition flex-shrink-0 text-white&#34;&gt;-&lt;/button&gt;
+                        &lt;input type=&#34;number&#34; id=&#34;code-input&#34; value=&#34;0&#34; readonly class=&#34;w-20 md:w-24 h-16 bg-black text-green-400 text-3xl md:text-4xl font-mono text-center rounded-xl border border-slate-500 font-bold&#34;&gt;
+                        &lt;button onclick=&#34;adjustCode(1)&#34; class=&#34;w-12 h-12 bg-slate-700 rounded-xl hover:bg-slate-600 text-2xl font-bold transition flex-shrink-0 text-white&#34;&gt;&#43;&lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;text-sm text-yellow-200 italic bg-slate-900/50 p-2 rounded&#34;&gt;Пример: 3 &lt; x &lt; 6, числа: 4, 5. Ответ: 2&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&#34;intro-overlay&#34; class=&#34;absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center text-center p-8 fixed&#34;&gt;
+        &lt;div class=&#34;w-24 h-24 md:w-32 md:h-32 bg-sky-600 rounded-full flex items-center justify-center mb-6 shadow-[0_0_50px_rgba(2,132,199,0.5)] float-anim&#34;&gt;
+            &lt;i class=&#34;fas fa-water text-5xl md:text-6xl text-white&#34;&gt;&lt;/i&gt;
+        &lt;/div&gt;
+        &lt;h1 class=&#34;text-3xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-teal-300 mb-4&#34;&gt;Подводная Миссия&lt;/h1&gt;
+        &lt;p class=&#34;text-white text-lg md:text-xl mb-10 max-w-xl font-medium&#34;&gt;
+            Капитан! Нашей подлодке нужна помощь. Решайте двойные неравенства, чтобы преодолеть препятствия.
+        &lt;/p&gt;
+        &lt;button onclick=&#34;startGame()&#34; class=&#34;bg-yellow-500 hover:bg-yellow-400 text-slate-900 text-xl md:text-2xl font-bold py-3 md:py-4 px-8 md:px-12 rounded-full shadow-xl transition transform hover:scale-105&#34;&gt;
+            Начать
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&#34;win-overlay&#34; class=&#34;hidden absolute inset-0 bg-slate-900/95 z-50 flex flex-col items-center justify-center text-center p-8 fixed&#34;&gt;
+        &lt;i class=&#34;fas fa-trophy text-6xl md:text-7xl text-yellow-400 mb-6 drop-shadow-[0_0_30px_rgba(250,204,21,0.6)]&#34;&gt;&lt;/i&gt;
+        &lt;h2 class=&#34;text-3xl md:text-4xl font-black text-white mb-4&#34;&gt;Миссия завершена!&lt;/h2&gt;
+        &lt;p class=&#34;text-white text-lg md:text-xl mb-8&#34;&gt;Вы настоящий мастер неравенств!&lt;/p&gt;
+        &lt;div class=&#34;bg-slate-800 px-8 py-4 rounded-xl border border-slate-700 mb-8&#34;&gt;
+            &lt;span class=&#34;text-slate-300 uppercase text-xs tracking-widest font-bold&#34;&gt;Итоговый счет&lt;/span&gt;
+            &lt;div class=&#34;text-4xl md:text-5xl font-bold text-white mt-2&#34; id=&#34;final-score&#34;&gt;0&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;button onclick=&#34;location.reload()&#34; class=&#34;bg-sky-600 hover:bg-sky-500 text-white font-bold py-3 px-8 rounded-lg transition flex items-center gap-2&#34;&gt;
+            &lt;i class=&#34;fas fa-redo&#34;&gt;&lt;/i&gt; Играть снова
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const LEVELS = [
+            { type: &#39;slider&#39;, min: 20, max: 60, desc: &#34;Опусти подлодку на безопасную глубину.&#34; },
+            { type: &#39;slider&#39;, min: 40, max: 80, desc: &#34;Глубокая пещера! Оставайся в указанном диапазоне.&#34; },
+            { type: &#39;selection&#39;, min: 4, max: 9, desc: &#34;Найди всех рыб, номера которых подходят под неравенство.&#34; },
+            { type: &#39;selection&#39;, min: 12, max: 18, desc: &#34;Отметь все числа из этого промежутка.&#34; },
+            { type: &#39;code&#39;, min: 2, max: 6, desc: &#34;Чтобы открыть сундук: сколько натуральных чисел в промежутке?&#34; },
+            { type: &#39;code&#39;, min: 10, max: 17, desc: &#34;Найди код: сколько чисел находится в диапазоне?&#34; }
+        ];
+
+        let currentLevelIdx = 0;
+        let score = 0;
+        let currentTask = {};
+        
+        function createBubbles() {
+            const container = document.getElementById(&#39;bubbles-container&#39;);
+            for(let i=0; i&lt;20; i&#43;&#43;) {
+                const b = document.createElement(&#39;div&#39;);
+                b.className = &#39;bubble&#39;;
+                b.style.left = Math.random() * 100 &#43; &#39;%&#39;;
+                b.style.width = (Math.random() * 20 &#43; 10) &#43; &#39;px&#39;;
+                b.style.height = b.style.width;
+                b.style.animationDuration = (Math.random() * 5 &#43; 5) &#43; &#39;s&#39;;
+                b.style.animationDelay = (Math.random() * 5) &#43; &#39;s&#39;;
+                container.appendChild(b);
+            }
+        }
+        createBubbles();
+
+        function startGame() {
+            document.getElementById(&#39;intro-overlay&#39;).classList.add(&#39;hidden&#39;);
+            loadLevel(0);
+        }
+
+        function loadLevel(idx) {
+            currentLevelIdx = idx;
+            const levelConfig = LEVELS[idx];
+            const offset = Math.floor(Math.random() * 5); 
+            const a = levelConfig.min &#43; offset;
+            const b = levelConfig.max &#43; offset;
+
+            currentTask = { type: levelConfig.type, a: a, b: b, desc: levelConfig.desc };
+
+            document.getElementById(&#39;level-display&#39;).innerText = idx &#43; 1;
+            document.getElementById(&#39;task-desc&#39;).innerText = currentTask.desc;
+            document.getElementById(&#39;math-expression&#39;).innerHTML = `${a} &lt; &lt;span class=&#34;text-white&#34;&gt;x&lt;/span&gt; &lt; ${b}`;
+            
+            document.getElementById(&#39;action-btn&#39;).classList.remove(&#39;hidden&#39;);
+            document.getElementById(&#39;next-btn&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;feedback-area&#39;).classList.add(&#39;hidden&#39;);
+            
+            document.getElementById(&#39;mode-slider&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;mode-selection&#39;).classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;mode-code&#39;).classList.add(&#39;hidden&#39;);
+
+            if (currentTask.type === &#39;slider&#39;) setupSliderMode();
+            else if (currentTask.type === &#39;selection&#39;) setupSelectionMode();
+            else if (currentTask.type === &#39;code&#39;) setupCodeMode();
+        }
+
+        function setupSliderMode() {
+            document.getElementById(&#39;mode-slider&#39;).classList.remove(&#39;hidden&#39;);
+            const slider = document.getElementById(&#39;depth-slider&#39;);
+            slider.value = 0; 
+            updateSubmarinePos(0);
+            
+            const heightPercent = currentTask.b - currentTask.a;
+            document.getElementById(&#39;safe-zone&#39;).style.top = currentTask.a &#43; &#39;%&#39;;
+            document.getElementById(&#39;safe-zone&#39;).style.height = heightPercent &#43; &#39;%&#39;;
+            document.getElementById(&#39;danger-top&#39;).style.height = currentTask.a &#43; &#39;%&#39;;
+            document.getElementById(&#39;danger-bottom&#39;).style.height = (100 - currentTask.b) &#43; &#39;%&#39;;
+            
+            slider.oninput = (e) =&gt; updateSubmarinePos(e.target.value);
+        }
+
+        function updateSubmarinePos(val) {
+            document.getElementById(&#39;submarine&#39;).style.top = val &#43; &#39;%&#39;;
+            document.getElementById(&#39;sub-depth-label&#39;).innerText = val &#43; &#39;м&#39;;
+        }
+
+        function setupSelectionMode() {
+            document.getElementById(&#39;mode-selection&#39;).classList.remove(&#39;hidden&#39;);
+            const grid = document.getElementById(&#39;fish-grid&#39;);
+            grid.innerHTML = &#39;&#39;;
+
+            const validNumbers = [];
+            for (let i = currentTask.a &#43; 1; i &lt; currentTask.b; i&#43;&#43;) validNumbers.push(i);
+            const distractors = [currentTask.a, currentTask.b, currentTask.a - 2, currentTask.b &#43; 2];
+
+            let pool = [...validNumbers, ...distractors].sort(() =&gt; Math.random() - 0.5);
+
+            pool.forEach(num =&gt; {
+                const btn = document.createElement(&#39;div&#39;);
+                btn.className = &#34;num-bubble bg-sky-800 border-2 border-sky-600 rounded-full w-16 h-16 md:w-24 md:h-24 flex items-center justify-center text-xl md:text-2xl font-bold text-white shadow-lg relative cursor-pointer&#34;;
+                btn.innerHTML = `&lt;i class=&#34;fas fa-fish absolute text-3xl md:text-4xl text-sky-400 opacity-20&#34;&gt;&lt;/i&gt;&lt;span class=&#34;z-10&#34;&gt;${num}&lt;/span&gt;`;
+                btn.onclick = () =&gt; btn.classList.toggle(&#39;selected&#39;);
+                btn.dataset.value = num;
+                grid.appendChild(btn);
+            });
+        }
+
+        function setupCodeMode() {
+            document.getElementById(&#39;mode-code&#39;).classList.remove(&#39;hidden&#39;);
+            document.getElementById(&#39;code-input&#39;).value = 0;
+        }
+
+        function adjustCode(amount) {
+            const input = document.getElementById(&#39;code-input&#39;);
+            let val = parseInt(input.value) &#43; amount;
+            input.value = val &lt; 0 ? 0 : val;
+        }
+
+        function checkAnswer() {
+            let correct = false;
+            let msg = &#34;&#34;;
+
+            if (currentTask.type === &#39;slider&#39;) {
+                const val = parseInt(document.getElementById(&#39;depth-slider&#39;).value);
+                if (val &gt; currentTask.a &amp;&amp; val &lt; currentTask.b) {
+                    correct = true;
+                    msg = &#34;Отлично! Подлодка в безопасности.&#34;;
+                } else if (val === currentTask.a || val === currentTask.b) {
+                    msg = &#34;Осторожно! Ты на границе (строгое неравенство)!&#34;;
+                } else {
+                    msg = &#34;Подлодка в опасности!&#34;;
+                }
+            } 
+            else if (currentTask.type === &#39;selection&#39;) {
+                const selected = Array.from(document.querySelectorAll(&#39;.num-bubble.selected&#39;)).map(el =&gt; parseInt(el.dataset.value));
+                const actualValid = [];
+                for(let i = currentTask.a &#43; 1; i &lt; currentTask.b; i&#43;&#43;) actualValid.push(i);
+                
+                const isAllCorrect = selected.every(v =&gt; actualValid.includes(v));
+                const isAllFound = actualValid.every(v =&gt; selected.includes(v));
+
+                if (isAllCorrect &amp;&amp; isAllFound &amp;&amp; selected.length &gt; 0) {
+                    correct = true;
+                    msg = &#34;Молодец! Все рыбы найдены верно.&#34;;
+                } else {
+                    msg = &#34;Ошибка! Проверь числа в промежутке внимательнее.&#34;;
+                }
+            }
+            else if (currentTask.type === &#39;code&#39;) {
+                const userCount = parseInt(document.getElementById(&#39;code-input&#39;).value);
+                const correctCount = currentTask.b - currentTask.a - 1;
+                if (userCount === correctCount) {
+                    correct = true;
+                    msg = &#34;Код верный! Сундук открыт.&#34;;
+                } else {
+                    msg = `Ошибка. Посчитай, сколько чисел между ${currentTask.a} и ${currentTask.b}.`;
+                }
+            }
+
+            const feedback = document.getElementById(&#39;feedback-area&#39;);
+            feedback.classList.remove(&#39;hidden&#39;);
+            feedback.innerText = msg;
+            
+            if (correct) {
+                feedback.className = &#34;bg-green-500/20 text-green-300 border border-green-500/50 p-3 rounded-lg mb-4 block&#34;;
+                score &#43;= 10;
+                document.getElementById(&#39;score-display&#39;).innerText = score;
+                document.getElementById(&#39;action-btn&#39;).classList.add(&#39;hidden&#39;);
+                document.getElementById(&#39;next-btn&#39;).classList.remove(&#39;hidden&#39;);
+            } else {
+                feedback.className = &#34;bg-red-500/20 text-red-300 border border-red-500/50 p-3 rounded-lg mb-4 block&#34;;
+            }
+        }
+
+        function nextLevel() {
+            if (currentLevelIdx &lt; LEVELS.length - 1) loadLevel(currentLevelIdx &#43; 1);
+            else {
+                document.getElementById(&#39;win-overlay&#39;).classList.remove(&#39;hidden&#39;);
+                document.getElementById(&#39;final-score&#39;).innerText = score;
+            }
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

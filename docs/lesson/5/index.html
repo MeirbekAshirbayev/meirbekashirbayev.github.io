@@ -417,7 +417,521 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame135" src="/task/135?lang=kz"
+                            <iframe id="taskFrame135" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Математикалық Саяхат&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .slide-in-bottom {
+            animation: slideInBottom 0.3s ease-out forwards;
+        }
+        @keyframes slideInBottom {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Ensure scrolling is smooth and always available */
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;!-- Өзгеріс: min-h-[90vh] қолданылды (Экран биіктігінің 90%) --&gt;
+&lt;body class=&#34;bg-gradient-to-b from-sky-100 to-indigo-100 min-h-[90vh] font-sans text-gray-800&#34;&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;flex flex-col items-center p-3 w-full pb-12&#34;&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- State Management ---
+        const state = {
+            currentLevel: 0,
+            score: 0,
+            showFeedback: false,
+            isCorrect: false,
+            selectedAnswer: &#39;&#39;,
+            gameFinished: false,
+            streak: 0,
+            isVisualVisible: true
+        };
+
+        // --- Data (Levels) ---
+        const levels = [
+            {
+                id: 1,
+                type: &#39;mental&#39;,
+                title: &#39;Жылыну: Ауызша есеп&#39;,
+                question: &#39;70 - 34 өрнегінің мәнін тап.&#39;,
+                visualType: &#39;text&#39;,
+                visualContent: &#39;70 - 34 = ?&#39;,
+                options: [&#39;46&#39;, &#39;36&#39;, &#39;26&#39;, &#39;34&#39;],
+                correctAnswer: &#39;36&#39;,
+                explanation: &#39;70-тен 30-ды азайтсақ 40 қалады, одан тағы 4-ті азайтсақ 36 болады.&#39;,
+                iconName: &#39;brain&#39;,
+                iconColor: &#39;text-purple-500&#39;
+            },
+            {
+                id: 2,
+                type: &#39;expanded&#39;,
+                title: &#39;Разрядтық қосылғыштар&#39;,
+                question: &#39;Разрядтары бойынша жіктелген санды тап: 8000 &#43; 500 &#43; 40 &#43; 2&#39;,
+                visualType: &#39;text&#39;,
+                visualContent: &#39;8000 &#43; 500 &#43; 40 &#43; 2 = ?&#39;,
+                options: [&#39;8524&#39;, &#39;8452&#39;, &#39;80542&#39;, &#39;8542&#39;],
+                correctAnswer: &#39;8542&#39;,
+                explanation: &#39;Мыңдықтар: 8, Жүздіктер: 5, Ондықтар: 4, Бірліктер: 2. Сан: 8542.&#39;,
+                iconName: &#39;calculator&#39;,
+                iconColor: &#39;text-blue-500&#39;
+            },
+            {
+                id: 3,
+                type: &#39;number-line&#39;,
+                title: &#39;Координаталық сәуле&#39;,
+                question: &#39;Координаталық сәуледе A(5) нүктесін оңға қарай 6 бірлікке жылжытсақ, қай нүктеге түсеміз?&#39;,
+                startHidden: true,
+                visualType: &#39;custom-number-line&#39;,
+                options: [&#39;10&#39;, &#39;12&#39;, &#39;11&#39;, &#39;13&#39;],
+                correctAnswer: &#39;11&#39;,
+                explanation: &#39;5 &#43; 6 = 11. Сәуле бойымен оңға жылжу қосу амалын білдіреді.&#39;,
+                iconName: &#39;ruler&#39;,
+                iconColor: &#39;text-green-500&#39;
+            },
+            {
+                id: 4,
+                type: &#39;column&#39;,
+                title: &#39;Баған түрінде қосу&#39;,
+                question: &#39;Қосуды орында: 3629 &#43; 485&#39;,
+                visualType: &#39;custom-column-add&#39;,
+                options: [&#39;4014&#39;, &#39;4104&#39;, &#39;4114&#39;, &#39;5114&#39;],
+                correctAnswer: &#39;4114&#39;,
+                explanation: &#39;9&#43;5=14 (4 жазамыз, 1 ойда), 2&#43;8=10 (&#43;1=11), 6&#43;4=10 (&#43;1=11), 3&#43;1=4.&#39;,
+                iconName: &#39;calculator&#39;,
+                iconColor: &#39;text-orange-500&#39;
+            },
+            {
+                id: 5,
+                type: &#39;column&#39;,
+                title: &#39;Баған түрінде азайту&#39;,
+                question: &#39;Азайтуды орында: 58942 - 3715&#39;,
+                visualType: &#39;custom-column-sub&#39;,
+                options: [&#39;55237&#39;, &#39;54227&#39;, &#39;55127&#39;, &#39;55227&#39;],
+                correctAnswer: &#39;55227&#39;,
+                explanation: &#39;Бірліктерден бастап азайтамыз. 2-ден 5 алынбайды, қарыз аламыз: 12-5=7...&#39;,
+                iconName: &#39;calculator&#39;,
+                iconColor: &#39;text-red-500&#39;
+            },
+            {
+                id: 6,
+                type: &#39;properties&#39;,
+                title: &#39;Қосудың қасиеттері&#39;,
+                question: &#39;Тиімді тәсілмен есепте: 400 &#43; 89 &#43; 600&#39;,
+                startHidden: true,
+                visualType: &#39;text&#39;,
+                visualContent: &#39;(400 &#43; 600) &#43; 89 = ?&#39;,
+                options: [&#39;1089&#39;, &#39;1000&#39;, &#39;1489&#39;, &#39;1890&#39;],
+                correctAnswer: &#39;1089&#39;,
+                explanation: &#39;Қосудың ауыстырымдылық қасиеті: 400 бен 600-ді қосқан оңай (1000), сосын 89-ды қосамыз.&#39;,
+                iconName: &#39;sparkles&#39;,
+                iconColor: &#39;text-yellow-500&#39;
+            },
+            {
+                id: 7,
+                type: &#39;word-problem&#39;,
+                title: &#39;Саяхат есебі&#39;,
+                question: &#39;Алматыдан Таразға дейін 500 км. Ал Тараздан Шымкентке дейін одан 320 км кем. Алматыдан Шымкентке дейін (Тараз арқылы) барлығы неше км?&#39;,
+                visualType: &#39;custom-travel&#39;,
+                options: [&#39;820 км&#39;, &#39;580 км&#39;, &#39;680 км&#39;, &#39;180 км&#39;],
+                correctAnswer: &#39;680 км&#39;,
+                explanation: &#39;1) Тараз-Шымкент: 500 - 320 = 180 км. 2) Барлығы: 500 &#43; 180 = 680 км.&#39;,
+                iconName: &#39;footprints&#39;,
+                iconColor: &#39;text-indigo-500&#39;
+            },
+            {
+                id: 8,
+                type: &#39;word-problem&#39;,
+                title: &#39;Бақтағы жемістер&#39;,
+                question: &#39;Бақта 15 алма ағашы бар. Алмұрт ағашы одан 5-еуі артық. Шие ағашы алма мен алмұрттың қосындысына тең. Барлығы неше ағаш?&#39;,
+                startHidden: true,
+                visualType: &#39;custom-trees&#39;,
+                options: [&#39;50&#39;, &#39;70&#39;, &#39;35&#39;, &#39;60&#39;],
+                correctAnswer: &#39;70&#39;,
+                explanation: &#39;Алмұрт: 20. Шие: 15&#43;20=35. Барлығы: 15&#43;20&#43;35 = 70.&#39;,
+                iconName: &#39;trees&#39;, // Mapped manually
+                iconColor: &#39;text-green-700&#39;
+            },
+            {
+                id: 9,
+                type: &#39;word-problem-sub&#39;,
+                title: &#39;Асық ойыны&#39;,
+                question: &#39;Айдоста 18 асық бар. Нұржанда одан 6 асық кем. Нұржанда неше асық бар?&#39;,
+                visualType: null,
+                options: [&#39;24&#39;, &#39;6&#39;, &#39;12&#39;, &#39;14&#39;],
+                correctAnswer: &#39;12&#39;,
+                explanation: &#39;Нұржанның асығы Айдостікінен 6-ға кем: 18 - 6 = 12.&#39;,
+                iconName: &#39;sparkles&#39;,
+                iconColor: &#39;text-pink-500&#39;
+            },
+            {
+                id: 10,
+                type: &#39;logic&#39;,
+                title: &#39;Логика: Мысық пен Тауық&#39;,
+                question: &#39;Үстел астында 3 мысық және 2 тауық отыр. Барлығы неше аяқ бар?&#39;,
+                visualType: &#39;text&#39;,
+                visualContent: &#39;🐱 &#43; 🐔 = ?&#39;,
+                options: [&#39;14&#39;, &#39;16&#39;, &#39;20&#39;, &#39;18&#39;],
+                correctAnswer: &#39;16&#39;,
+                explanation: &#39;3 мысық: 3 × 4 = 12 аяқ. 2 тауық: 2 × 2 = 4 аяқ. Барлығы: 12 &#43; 4 = 16.&#39;,
+                iconName: &#39;brain&#39;,
+                iconColor: &#39;text-purple-600&#39;
+            }
+        ];
+
+        // --- Logic Functions ---
+
+        function init() {
+            // Set initial visual visibility based on first level
+            state.isVisualVisible = !levels[state.currentLevel].startHidden;
+            render();
+        }
+
+        function handleAnswer(option) {
+            if (state.showFeedback) return;
+
+            state.selectedAnswer = option;
+            const currentQ = levels[state.currentLevel];
+            const correct = option === currentQ.correctAnswer;
+            state.isCorrect = correct;
+            state.showFeedback = true;
+
+            if (correct) {
+                state.score &#43;= 10;
+                state.streak &#43;= 1;
+            } else {
+                state.streak = 0;
+            }
+            render();
+
+            // *** AUTO SCROLL LOGIC ***
+            if (state.showFeedback) {
+                setTimeout(() =&gt; {
+                    const feedbackElement = document.querySelector(&#39;.slide-in-bottom&#39;);
+                    if (feedbackElement) {
+                        feedbackElement.scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;nearest&#39; });
+                    }
+                }, 100);
+            }
+        }
+
+        function nextLevel() {
+            state.showFeedback = false;
+            state.selectedAnswer = &#39;&#39;;
+            
+            if (state.currentLevel &lt; levels.length - 1) {
+                state.currentLevel &#43;= 1;
+                // Reset visual visibility for next level
+                state.isVisualVisible = !levels[state.currentLevel].startHidden;
+                render();
+                // Scroll back to top for new question
+                window.scrollTo({ top: 0, behavior: &#39;smooth&#39; });
+            } else {
+                state.gameFinished = true;
+                render();
+                window.scrollTo({ top: 0, behavior: &#39;smooth&#39; });
+            }
+        }
+
+        function resetGame() {
+            state.currentLevel = 0;
+            state.score = 0;
+            state.gameFinished = false;
+            state.streak = 0;
+            state.showFeedback = false;
+            state.selectedAnswer = &#39;&#39;;
+            state.isVisualVisible = !levels[0].startHidden;
+            render();
+            window.scrollTo({ top: 0, behavior: &#39;smooth&#39; });
+        }
+
+        function toggleVisual() {
+            state.isVisualVisible = !state.isVisualVisible;
+            render();
+        }
+
+        // --- Render Helpers ---
+
+        function getIconHtml(name, colorClass, sizeClass = &#34;w-8 h-8&#34;) {
+            // Special mapping for &#39;trees&#39; which is &#39;tree-pine&#39; in lucide
+            const lucideName = name === &#39;trees&#39; ? &#39;tree-pine&#39; : name;
+            return `&lt;i data-lucide=&#34;${lucideName}&#34; class=&#34;${colorClass} ${sizeClass}&#34;&gt;&lt;/i&gt;`;
+        }
+
+        function renderVisual(level) {
+            if (!level.visualType &amp;&amp; level.visualType !== null) return &#39;&#39;;
+            if (level.visualType === null) return &#39;&#39;;
+
+            // Toggle Button Logic (Биіктігі азайтылды py-6)
+            if (!state.isVisualVisible &amp;&amp; level.startHidden) {
+                return `
+                &lt;div class=&#34;mb-6&#34;&gt;
+                    &lt;button onclick=&#34;toggleVisual()&#34; class=&#34;w-full py-6 bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 font-bold hover:bg-gray-100 hover:border-blue-400 transition-all flex flex-col items-center justify-center gap-2&#34;&gt;
+                        &lt;i data-lucide=&#34;eye&#34; class=&#34;w-8 h-8 text-blue-400&#34;&gt;&lt;/i&gt;
+                        Көмекші суретті көрсету
+                    &lt;/button&gt;
+                &lt;/div&gt;`;
+            }
+
+            // Visible Content Container
+            let contentHtml = &#39;&#39;;
+            
+            // Generate content based on type
+            if (level.visualType === &#39;text&#39;) {
+                contentHtml = `&lt;span class=&#34;text-2xl font-mono font-bold text-gray-700&#34;&gt;${level.visualContent}&lt;/span&gt;`;
+            } else if (level.visualType === &#39;custom-number-line&#39;) {
+                // Level 3 Logic
+                const numDivs = [];
+                for(let i=0; i&lt;=13; i&#43;&#43;) {
+                    const left = (i / 13) * 100;
+                    numDivs.push(`
+                        &lt;div class=&#34;absolute h-3 w-0.5 bg-gray-800 -top-1&#34; style=&#34;left: ${left}%&#34;&gt;
+                             &lt;span class=&#34;absolute -bottom-6 -left-2 text-xs font-bold text-gray-700&#34;&gt;${i}&lt;/span&gt;
+                        &lt;/div&gt;
+                    `);
+                }
+                const arcLeft = (5/13)*100;
+                const arcWidth = (6/13)*100;
+                const arrowLeft = (11/13)*100;
+                const textLeft = ((5&#43;3)/13)*100;
+
+                contentHtml = `
+                    &lt;div class=&#34;w-full h-32 relative flex items-end justify-center pb-8&#34;&gt;
+                        &lt;div class=&#34;w-full h-1 bg-gray-800 relative&#34;&gt;
+                            ${numDivs.join(&#39;&#39;)}
+                            &lt;div class=&#34;absolute border-t-2 border-l-2 border-r-2 border-blue-500 box-border&#34; 
+                                 style=&#34;left: ${arcLeft}%; width: ${arcWidth}%; height: 50px; top: -50px; border-bottom: none; border-radius: 50% 50% 0 0;&#34;&gt;&lt;/div&gt;
+                            &lt;div class=&#34;absolute w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[10px] border-t-blue-500&#34;
+                                 style=&#34;left: ${arrowLeft}%; top: -2px; transform: translateX(-50%);&#34;&gt;&lt;/div&gt;
+                            &lt;div class=&#34;absolute text-blue-600 font-bold text-lg&#34;
+                                 style=&#34;left: ${textLeft}%; top: -75px; transform: translateX(-50%);&#34;&gt;&#43;6&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+            } else if (level.visualType === &#39;custom-column-add&#39;) {
+                contentHtml = `
+                    &lt;div class=&#34;text-3xl font-mono bg-white p-4 rounded-lg shadow-inner inline-block text-right tracking-widest&#34;&gt;
+                        &lt;div&gt;3629&lt;/div&gt;
+                        &lt;div&gt;&#43; 485&lt;/div&gt;
+                        &lt;div class=&#34;border-t-2 border-black w-full mt-1&#34;&gt;&lt;/div&gt;
+                        &lt;div class=&#34;h-8 w-full bg-yellow-50 rounded mt-1 text-gray-400 text-sm flex items-center justify-center&#34;&gt;?&lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+            } else if (level.visualType === &#39;custom-column-sub&#39;) {
+                contentHtml = `
+                    &lt;div class=&#34;text-3xl font-mono bg-white p-4 rounded-lg shadow-inner inline-block text-right tracking-widest&#34;&gt;
+                        &lt;div&gt;58942&lt;/div&gt;
+                        &lt;div&gt;- 3715&lt;/div&gt;
+                        &lt;div class=&#34;border-t-2 border-black w-full mt-1&#34;&gt;&lt;/div&gt;
+                        &lt;div class=&#34;h-8 w-full bg-yellow-50 rounded mt-1 text-gray-400 text-sm flex items-center justify-center&#34;&gt;?&lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+            } else if (level.visualType === &#39;custom-travel&#39;) {
+                contentHtml = `
+                    &lt;div class=&#34;flex items-center justify-center space-x-2 text-sm&#34;&gt;
+                        &lt;div class=&#34;bg-blue-100 p-2 rounded&#34;&gt;Алматы&lt;/div&gt;
+                        &lt;i data-lucide=&#34;arrow-right&#34; class=&#34;text-gray-400 w-4 h-4&#34;&gt;&lt;/i&gt;
+                        &lt;div class=&#34;bg-green-100 p-2 rounded&#34;&gt;Тараз (500км)&lt;/div&gt;
+                        &lt;i data-lucide=&#34;arrow-right&#34; class=&#34;text-gray-400 w-4 h-4&#34;&gt;&lt;/i&gt;
+                        &lt;div class=&#34;bg-red-100 p-2 rounded&#34;&gt;Шымкент (? кем)&lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+            } else if (level.visualType === &#39;custom-trees&#39;) {
+                contentHtml = `
+                    &lt;div class=&#34;grid grid-cols-3 gap-4 text-center text-lg p-2&#34;&gt;
+                        &lt;div class=&#34;bg-green-200 p-4 rounded-xl flex flex-col items-center shadow-sm transform scale-110&#34;&gt;
+                            &lt;i data-lucide=&#34;tree-pine&#34; class=&#34;w-16 h-16 text-green-700 mb-2&#34;&gt;&lt;/i&gt;
+                            &lt;span class=&#34;font-bold&#34;&gt;Алма: 15&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;bg-green-300 p-4 rounded-xl flex flex-col items-center shadow-sm transform scale-110&#34;&gt;
+                             &lt;i data-lucide=&#34;tree-pine&#34; class=&#34;w-16 h-16 text-green-800 mb-2&#34;&gt;&lt;/i&gt;
+                            &lt;span class=&#34;font-bold&#34;&gt;Алмұрт: 15&#43;5&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;bg-green-400 p-4 rounded-xl flex flex-col items-center shadow-sm transform scale-110&#34;&gt;
+                             &lt;i data-lucide=&#34;tree-pine&#34; class=&#34;w-16 h-16 text-green-900 mb-2&#34;&gt;&lt;/i&gt;
+                            &lt;span class=&#34;font-bold&#34;&gt;Шие: Алма&#43;Алмұрт&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+            }
+
+            // Wrapper with Hide button if needed (Margin азайтылды mb-6, min-h азайтылды 150px)
+            let hideBtnHtml = &#39;&#39;;
+            if (level.startHidden) {
+                hideBtnHtml = `&lt;button onclick=&#34;toggleVisual()&#34; class=&#34;absolute top-2 right-2 text-gray-400 hover:text-gray-600 p-2&#34; title=&#34;Жасыру&#34;&gt;&lt;i data-lucide=&#34;eye-off&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt;&lt;/button&gt;`;
+            }
+
+            return `
+                &lt;div class=&#34;mb-6 bg-gray-50 rounded-xl p-4 flex flex-col items-center justify-center min-h-[150px] border-2 border-dashed border-gray-200 relative animate-fade-in&#34;&gt;
+                    ${hideBtnHtml}
+                    ${contentHtml}
+                &lt;/div&gt;
+            `;
+        }
+
+        // --- Main Render Function ---
+        function render() {
+            const app = document.getElementById(&#39;app&#39;);
+
+            // 1. GAME FINISHED SCREEN
+            if (state.gameFinished) {
+                app.innerHTML = `
+                    &lt;div class=&#34;bg-white p-8 rounded-2xl shadow-xl max-w-md w-full text-center mt-20 animate-fade-in&#34;&gt;
+                        &lt;div class=&#34;flex justify-center mb-4&#34;&gt;
+                            &lt;i data-lucide=&#34;trophy&#34; class=&#34;w-24 h-24 text-yellow-400 animate-bounce&#34;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;h1 class=&#34;text-3xl font-bold text-blue-800 mb-2&#34;&gt;Жарайсың!&lt;/h1&gt;
+                        &lt;p class=&#34;text-gray-600 mb-6&#34;&gt;Сен барлық тапсырмаларды орындап шықтың.&lt;/p&gt;
+                        
+                        &lt;div class=&#34;bg-blue-100 p-4 rounded-xl mb-6&#34;&gt;
+                            &lt;p class=&#34;text-lg font-bold text-blue-900&#34;&gt;Жалпы ұпай: ${state.score} / 100&lt;/p&gt;
+                        &lt;/div&gt;
+
+                        &lt;button onclick=&#34;resetGame()&#34; class=&#34;w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2&#34;&gt;
+                             &lt;i data-lucide=&#34;sparkles&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt;
+                            Қайта бастау
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            // 2. GAME PLAY SCREEN
+            const currentQ = levels[state.currentLevel];
+            const progressWidth = ((state.currentLevel &#43; 1) / levels.length) * 100;
+            const streakHtml = state.streak &gt; 1 ? `&lt;span class=&#34;flex items-center text-orange-500 text-sm font-bold animate-pulse&#34;&gt;🔥 ${state.streak} қатарынан!&lt;/span&gt;` : &#39;&#39;;
+
+            // Generate Options HTML
+            const optionsHtml = currentQ.options.map(option =&gt; {
+                let btnClass = &#34;bg-white border-2 border-gray-200 hover:border-blue-400 hover:bg-blue-50 text-gray-700&#34;;
+                
+                if (state.showFeedback) {
+                    if (option === currentQ.correctAnswer) {
+                        btnClass = &#34;bg-green-100 border-green-500 text-green-800&#34;;
+                    } else if (option === state.selectedAnswer) {
+                        btnClass = &#34;bg-red-100 border-red-500 text-red-800&#34;;
+                    } else {
+                        btnClass = &#34;bg-gray-100 border-gray-200 text-gray-400 opacity-50&#34;;
+                    }
+                }
+                
+                const hoverEffect = !state.showFeedback ? &#39;hover:-translate-y-1 hover:shadow-md&#39; : &#39;&#39;;
+                const disabled = state.showFeedback ? &#39;disabled&#39; : &#39;&#39;;
+                const onclick = state.showFeedback ? &#39;&#39; : `onclick=&#34;handleAnswer(&#39;${option}&#39;)&#34;`;
+
+                return `
+                    &lt;button ${onclick} ${disabled} class=&#34;p-4 rounded-xl text-lg font-bold transition-all duration-200 transform ${hoverEffect} ${btnClass}&#34;&gt;
+                        ${option}
+                    &lt;/button&gt;
+                `;
+            }).join(&#39;&#39;);
+
+            // Generate Feedback HTML
+            let feedbackHtml = &#39;&#39;;
+            if (state.showFeedback) {
+                const icon = state.isCorrect ? &#39;check-circle&#39; : &#39;x-circle&#39;;
+                const iconColor = state.isCorrect ? &#39;text-green-500&#39; : &#39;text-red-500&#39;;
+                const titleText = state.isCorrect ? &#39;Тамаша!&#39; : &#39;Қате жауап&#39;;
+                const titleColor = state.isCorrect ? &#39;text-green-800&#39; : &#39;text-red-800&#39;;
+                const bgClass = state.isCorrect ? &#39;bg-green-50&#39; : &#39;bg-red-50&#39;;
+                const btnColor = state.isCorrect ? &#39;bg-green-600 hover:bg-green-700&#39; : &#39;bg-blue-600 hover:bg-blue-700&#39;;
+
+                feedbackHtml = `
+                    &lt;div class=&#34;p-6 border-t ${bgClass} slide-in-bottom&#34;&gt;
+                        &lt;div class=&#34;flex items-start gap-4&#34;&gt;
+                            &lt;i data-lucide=&#34;${icon}&#34; class=&#34;w-8 h-8 ${iconColor} flex-shrink-0&#34;&gt;&lt;/i&gt;
+                            &lt;div class=&#34;flex-1&#34;&gt;
+                                &lt;h4 class=&#34;text-lg font-bold mb-1 ${titleColor}&#34;&gt;${titleText}&lt;/h4&gt;
+                                &lt;p class=&#34;text-gray-700 mb-4&#34;&gt;${currentQ.explanation}&lt;/p&gt;
+                                &lt;button onclick=&#34;nextLevel()&#34; class=&#34;px-6 py-2 rounded-lg font-bold text-white shadow-lg transition-transform transform hover:scale-105 active:scale-95 flex items-center gap-2 ${btnColor}&#34;&gt;
+                                    Келесі тапсырма &lt;i data-lucide=&#34;arrow-right&#34; class=&#34;w-4 h-4&#34;&gt;&lt;/i&gt;
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+            }
+
+            // Build Main HTML
+            // Margin азайтылды (mb-4)
+            app.innerHTML = `
+                &lt;div class=&#34;w-full max-w-2xl flex justify-between items-center mb-4 bg-white p-4 rounded-xl shadow-md&#34;&gt;
+                    &lt;div class=&#34;flex items-center gap-2&#34;&gt;
+                        &lt;div class=&#34;bg-blue-100 p-2 rounded-full&#34;&gt;
+                            ${getIconHtml(currentQ.iconName, currentQ.iconColor)}
+                        &lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;h2 class=&#34;font-bold text-gray-700 text-sm md:text-base&#34;&gt;Деңгей ${state.currentLevel &#43; 1}/10&lt;/h2&gt;
+                            &lt;div class=&#34;w-32 h-2 bg-gray-200 rounded-full mt-1&#34;&gt;
+                                &lt;div class=&#34;h-full bg-green-500 rounded-full transition-all duration-500&#34; style=&#34;width: ${progressWidth}%&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;text-right&#34;&gt;
+                        &lt;div class=&#34;text-sm text-gray-500&#34;&gt;Ұпай&lt;/div&gt;
+                        &lt;div class=&#34;text-xl font-bold text-blue-600&#34;&gt;${state.score}&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&#34;w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300&#34;&gt;
+                    &lt;div class=&#34;p-5 md:p-6&#34;&gt;
+                        &lt;div class=&#34;flex justify-between items-start mb-4&#34;&gt;
+                            &lt;span class=&#34;inline-block px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold uppercase rounded-full tracking-wide&#34;&gt;
+                                ${currentQ.title}
+                            &lt;/span&gt;
+                            ${streakHtml}
+                        &lt;/div&gt;
+
+                        &lt;h3 class=&#34;text-xl md:text-2xl font-bold text-gray-800 mb-4 leading-relaxed&#34;&gt;
+                            ${currentQ.question}
+                        &lt;/h3&gt;
+
+                        ${renderVisual(currentQ)}
+
+                        &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-4&#34;&gt;
+                            ${optionsHtml}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    ${feedbackHtml}
+                &lt;/div&gt;
+                
+                `;
+
+            // Refresh Icons
+            lucide.createIcons();
+        }
+
+        // Initialize App
+        init();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -459,7 +973,359 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame135_ru" src="/task/135?lang=ru"
+                            <iframe id="taskFrame135_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Математическое Путешествие&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .slide-in-bottom {
+            animation: slideInBottom 0.3s ease-out forwards;
+        }
+        @keyframes slideInBottom {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-gradient-to-b from-sky-100 to-indigo-100 min-h-[90vh] font-sans text-gray-800&#34;&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;flex flex-col items-center p-3 w-full pb-12&#34;&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- State Management ---
+        const state = {
+            currentLevel: 0,
+            score: 0,
+            showFeedback: false,
+            isCorrect: false,
+            selectedAnswer: &#39;&#39;,
+            gameFinished: false,
+            streak: 0,
+            isVisualVisible: true
+        };
+
+        // --- Data (Levels) ---
+        const levels = [
+            {
+                id: 1,
+                type: &#39;mental&#39;,
+                title: &#39;Разминка: Устный счёт&#39;,
+                question: &#39;Найди значение выражения: 70 - 34&#39;,
+                visualType: &#39;text&#39;,
+                visualContent: &#39;70 - 34 = ?&#39;,
+                options: [&#39;46&#39;, &#39;36&#39;, &#39;26&#39;, &#39;34&#39;],
+                correctAnswer: &#39;36&#39;,
+                explanation: &#39;Из 70 вычитаем 30, получаем 40, затем вычитаем еще 4, получаем 36.&#39;,
+                iconName: &#39;brain&#39;,
+                iconColor: &#39;text-purple-500&#39;
+            },
+            {
+                id: 2,
+                type: &#39;expanded&#39;,
+                title: &#39;Разрядные слагаемые&#39;,
+                question: &#39;Найди число, разложенное по разрядам: 8000 &#43; 500 &#43; 40 &#43; 2&#39;,
+                visualType: &#39;text&#39;,
+                visualContent: &#39;8000 &#43; 500 &#43; 40 &#43; 2 = ?&#39;,
+                options: [&#39;8524&#39;, &#39;8452&#39;, &#39;80542&#39;, &#39;8542&#39;],
+                correctAnswer: &#39;8542&#39;,
+                explanation: &#39;Тысячи: 8, Сотни: 5, Десятки: 4, Единицы: 2. Число: 8542.&#39;,
+                iconName: &#39;calculator&#39;,
+                iconColor: &#39;text-blue-500&#39;
+            },
+            {
+                id: 3,
+                type: &#39;number-line&#39;,
+                title: &#39;Координатный луч&#39;,
+                question: &#39;Если на координатном луче переместить точку A(5) вправо на 6 единиц, в какую точку мы попадем?&#39;,
+                startHidden: true,
+                visualType: &#39;custom-number-line&#39;,
+                options: [&#39;10&#39;, &#39;12&#39;, &#39;11&#39;, &#39;13&#39;],
+                correctAnswer: &#39;11&#39;,
+                explanation: &#39;5 &#43; 6 = 11. Движение вправо по лучу означает действие сложения.&#39;,
+                iconName: &#39;ruler&#39;,
+                iconColor: &#39;text-green-500&#39;
+            },
+            {
+                id: 4,
+                type: &#39;column&#39;,
+                title: &#39;Сложение столбиком&#39;,
+                question: &#39;Выполни сложение: 3629 &#43; 485&#39;,
+                visualType: &#39;custom-column-add&#39;,
+                options: [&#39;4014&#39;, &#39;4104&#39;, &#39;4114&#39;, &#39;5114&#39;],
+                correctAnswer: &#39;4114&#39;,
+                explanation: &#39;9&#43;5=14 (4 пишем, 1 в уме), 2&#43;8=10 (&#43;1 в уме=11), 6&#43;4=10 (&#43;1=11), 3&#43;1=4.&#39;,
+                iconName: &#39;calculator&#39;,
+                iconColor: &#39;text-orange-500&#39;
+            },
+            {
+                id: 5,
+                type: &#39;column&#39;,
+                title: &#39;Вычитание столбиком&#39;,
+                question: &#39;Выполни вычитание: 58942 - 3715&#39;,
+                visualType: &#39;custom-column-sub&#39;,
+                options: [&#39;55237&#39;, &#39;54227&#39;, &#39;55127&#39;, &#39;55227&#39;],
+                correctAnswer: &#39;55227&#39;,
+                explanation: &#39;Вычитаем по разрядам. Из 2 нельзя вычесть 5, занимаем десяток: 12-5=7...&#39;,
+                iconName: &#39;calculator&#39;,
+                iconColor: &#39;text-red-500&#39;
+            },
+            {
+                id: 6,
+                type: &#39;properties&#39;,
+                title: &#39;Свойства сложения&#39;,
+                question: &#39;Вычисли удобным способом: 400 &#43; 89 &#43; 600&#39;,
+                startHidden: true,
+                visualType: &#39;text&#39;,
+                visualContent: &#39;(400 &#43; 600) &#43; 89 = ?&#39;,
+                options: [&#39;1089&#39;, &#39;1000&#39;, &#39;1489&#39;, &#39;1890&#39;],
+                correctAnswer: &#39;1089&#39;,
+                explanation: &#39;Сочетательное свойство: легче сначала сложить 400 и 600 (1000), а затем добавить 89.&#39;,
+                iconName: &#39;sparkles&#39;,
+                iconColor: &#39;text-yellow-500&#39;
+            },
+            {
+                id: 7,
+                type: &#39;word-problem&#39;,
+                title: &#39;Задача о путешествии&#39;,
+                question: &#39;Расстояние от Алматы до Тараза 500 км. А от Тараза до Шымкента на 320 км меньше. Какое расстояние от Алматы до Шымкента (через Тараз)?&#39;,
+                visualType: &#39;custom-travel&#39;,
+                options: [&#39;820 км&#39;, &#39;580 км&#39;, &#39;680 км&#39;, &#39;180 км&#39;],
+                correctAnswer: &#39;680 км&#39;,
+                explanation: &#39;1) Тараз-Шымкент: 500 - 320 = 180 км. 2) Всего: 500 &#43; 180 = 680 км.&#39;,
+                iconName: &#39;footprints&#39;,
+                iconColor: &#39;text-indigo-500&#39;
+            },
+            {
+                id: 8,
+                type: &#39;word-problem&#39;,
+                title: &#39;Фруктовый сад&#39;,
+                question: &#39;В саду 15 яблонь. Груш на 5 больше. А вишнёвых деревьев столько же, сколько яблонь и груш вместе. Сколько всего деревьев в саду?&#39;,
+                startHidden: true,
+                visualType: &#39;custom-trees&#39;,
+                options: [&#39;50&#39;, &#39;70&#39;, &#39;35&#39;, &#39;60&#39;],
+                correctAnswer: &#39;70&#39;,
+                explanation: &#39;Груш: 20. Вишен: 15&#43;20=35. Всего: 15&#43;20&#43;35 = 70.&#39;,
+                iconName: &#39;trees&#39;,
+                iconColor: &#39;text-green-700&#39;
+            },
+            {
+                id: 9,
+                type: &#39;word-problem-sub&#39;,
+                title: &#39;Игра в асыки&#39;,
+                question: &#39;У Айдоса 18 асыков. У Нуржана на 6 асыков меньше. Сколько асыков у Нуржана?&#39;,
+                visualType: null,
+                options: [&#39;24&#39;, &#39;6&#39;, &#39;12&#39;, &#39;14&#39;],
+                correctAnswer: &#39;12&#39;,
+                explanation: &#39;У Нуржана на 6 меньше: 18 - 6 = 12.&#39;,
+                iconName: &#39;sparkles&#39;,
+                iconColor: &#39;text-pink-500&#39;
+            },
+            {
+                id: 10,
+                type: &#39;logic&#39;,
+                title: &#39;Логика: Кошки и куры&#39;,
+                question: &#39;Под столом сидят 3 кошки и 2 курицы. Сколько всего лап под столом?&#39;,
+                visualType: &#39;text&#39;,
+                visualContent: &#39;🐱 &#43; 🐔 = ?&#39;,
+                options: [&#39;14&#39;, &#39;16&#39;, &#39;20&#39;, &#39;18&#39;],
+                correctAnswer: &#39;16&#39;,
+                explanation: &#39;3 кошки: 3 × 4 = 12 лап. 2 курицы: 2 × 2 = 4 лапы. Всего: 12 &#43; 4 = 16.&#39;,
+                iconName: &#39;brain&#39;,
+                iconColor: &#39;text-purple-600&#39;
+            }
+        ];
+
+        function init() {
+            state.isVisualVisible = !levels[state.currentLevel].startHidden;
+            render();
+        }
+
+        function handleAnswer(option) {
+            if (state.showFeedback) return;
+            state.selectedAnswer = option;
+            const currentQ = levels[state.currentLevel];
+            const correct = option === currentQ.correctAnswer;
+            state.isCorrect = correct;
+            state.showFeedback = true;
+            if (correct) { state.score &#43;= 10; state.streak &#43;= 1; } 
+            else { state.streak = 0; }
+            render();
+            if (state.showFeedback) {
+                setTimeout(() =&gt; {
+                    const feedbackElement = document.querySelector(&#39;.slide-in-bottom&#39;);
+                    if (feedbackElement) feedbackElement.scrollIntoView({ behavior: &#39;smooth&#39;, block: &#39;nearest&#39; });
+                }, 100);
+            }
+        }
+
+        function nextLevel() {
+            state.showFeedback = false;
+            state.selectedAnswer = &#39;&#39;;
+            if (state.currentLevel &lt; levels.length - 1) {
+                state.currentLevel &#43;= 1;
+                state.isVisualVisible = !levels[state.currentLevel].startHidden;
+                render();
+                window.scrollTo({ top: 0, behavior: &#39;smooth&#39; });
+            } else {
+                state.gameFinished = true;
+                render();
+                window.scrollTo({ top: 0, behavior: &#39;smooth&#39; });
+            }
+        }
+
+        function resetGame() {
+            state.currentLevel = 0;
+            state.score = 0;
+            state.gameFinished = false;
+            state.streak = 0;
+            state.showFeedback = false;
+            state.selectedAnswer = &#39;&#39;;
+            state.isVisualVisible = !levels[0].startHidden;
+            render();
+            window.scrollTo({ top: 0, behavior: &#39;smooth&#39; });
+        }
+
+        function toggleVisual() {
+            state.isVisualVisible = !state.isVisualVisible;
+            render();
+        }
+
+        function getIconHtml(name, colorClass, sizeClass = &#34;w-8 h-8&#34;) {
+            const lucideName = name === &#39;trees&#39; ? &#39;tree-pine&#39; : name;
+            return `&lt;i data-lucide=&#34;${lucideName}&#34; class=&#34;${colorClass} ${sizeClass}&#34;&gt;&lt;/i&gt;`;
+        }
+
+        function renderVisual(level) {
+            if (!level.visualType &amp;&amp; level.visualType !== null) return &#39;&#39;;
+            if (level.visualType === null) return &#39;&#39;;
+
+            if (!state.isVisualVisible &amp;&amp; level.startHidden) {
+                return `
+                &lt;div class=&#34;mb-6&#34;&gt;
+                    &lt;button onclick=&#34;toggleVisual()&#34; class=&#34;w-full py-6 bg-gray-50 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 font-bold hover:bg-gray-100 hover:border-blue-400 transition-all flex flex-col items-center justify-center gap-2&#34;&gt;
+                        &lt;i data-lucide=&#34;eye&#34; class=&#34;w-8 h-8 text-blue-400&#34;&gt;&lt;/i&gt;
+                        Показать подсказку
+                    &lt;/button&gt;
+                &lt;/div&gt;`;
+            }
+
+            let contentHtml = &#39;&#39;;
+            if (level.visualType === &#39;text&#39;) {
+                contentHtml = `&lt;span class=&#34;text-2xl font-mono font-bold text-gray-700&#34;&gt;${level.visualContent}&lt;/span&gt;`;
+            } else if (level.visualType === &#39;custom-number-line&#39;) {
+                const numDivs = [];
+                for(let i=0; i&lt;=13; i&#43;&#43;) {
+                    const left = (i / 13) * 100;
+                    numDivs.push(`&lt;div class=&#34;absolute h-3 w-0.5 bg-gray-800 -top-1&#34; style=&#34;left: ${left}%&#34;&gt;&lt;span class=&#34;absolute -bottom-6 -left-2 text-xs font-bold text-gray-700&#34;&gt;${i}&lt;/span&gt;&lt;/div&gt;`);
+                }
+                contentHtml = `&lt;div class=&#34;w-full h-32 relative flex items-end justify-center pb-8&#34;&gt;&lt;div class=&#34;w-full h-1 bg-gray-800 relative&#34;&gt;${numDivs.join(&#39;&#39;)}&lt;div class=&#34;absolute border-t-2 border-l-2 border-r-2 border-blue-500 box-border&#34; style=&#34;left: ${(5/13)*100}%; width: ${(6/13)*100}%; height: 50px; top: -50px; border-bottom: none; border-radius: 50% 50% 0 0;&#34;&gt;&lt;/div&gt;&lt;div class=&#34;absolute w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[10px] border-t-blue-500&#34; style=&#34;left: ${(11/13)*100}%; top: -2px; transform: translateX(-50%);&#34;&gt;&lt;/div&gt;&lt;div class=&#34;absolute text-blue-600 font-bold text-lg&#34; style=&#34;left: ${(8/13)*100}%; top: -75px; transform: translateX(-50%);&#34;&gt;&#43;6&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`;
+            } else if (level.visualType === &#39;custom-column-add&#39;) {
+                contentHtml = `&lt;div class=&#34;text-3xl font-mono bg-white p-4 rounded-lg shadow-inner inline-block text-right tracking-widest&#34;&gt;&lt;div&gt;3629&lt;/div&gt;&lt;div&gt;&#43; 485&lt;/div&gt;&lt;div class=&#34;border-t-2 border-black w-full mt-1&#34;&gt;&lt;/div&gt;&lt;div class=&#34;h-8 w-full bg-yellow-50 rounded mt-1 text-gray-400 text-sm flex items-center justify-center&#34;&gt;?&lt;/div&gt;&lt;/div&gt;`;
+            } else if (level.visualType === &#39;custom-column-sub&#39;) {
+                contentHtml = `&lt;div class=&#34;text-3xl font-mono bg-white p-4 rounded-lg shadow-inner inline-block text-right tracking-widest&#34;&gt;&lt;div&gt;58942&lt;/div&gt;&lt;div&gt;- 3715&lt;/div&gt;&lt;div class=&#34;border-t-2 border-black w-full mt-1&#34;&gt;&lt;/div&gt;&lt;div class=&#34;h-8 w-full bg-yellow-50 rounded mt-1 text-gray-400 text-sm flex items-center justify-center&#34;&gt;?&lt;/div&gt;&lt;/div&gt;`;
+            } else if (level.visualType === &#39;custom-travel&#39;) {
+                contentHtml = `&lt;div class=&#34;flex items-center justify-center space-x-2 text-sm&#34;&gt;&lt;div class=&#34;bg-blue-100 p-2 rounded&#34;&gt;Алматы&lt;/div&gt;&lt;i data-lucide=&#34;arrow-right&#34; class=&#34;text-gray-400 w-4 h-4&#34;&gt;&lt;/i&gt;&lt;div class=&#34;bg-green-100 p-2 rounded&#34;&gt;Тараз (500км)&lt;/div&gt;&lt;i data-lucide=&#34;arrow-right&#34; class=&#34;text-gray-400 w-4 h-4&#34;&gt;&lt;/i&gt;&lt;div class=&#34;bg-red-100 p-2 rounded&#34;&gt;Шымкент (? меньше)&lt;/div&gt;&lt;/div&gt;`;
+            } else if (level.visualType === &#39;custom-trees&#39;) {
+                contentHtml = `&lt;div class=&#34;grid grid-cols-3 gap-4 text-center text-lg p-2&#34;&gt;&lt;div class=&#34;bg-green-200 p-4 rounded-xl flex flex-col items-center shadow-sm&#34;&gt;&lt;i data-lucide=&#34;tree-pine&#34; class=&#34;w-16 h-16 text-green-700 mb-2&#34;&gt;&lt;/i&gt;&lt;span class=&#34;font-bold&#34;&gt;Яблок: 15&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;bg-green-300 p-4 rounded-xl flex flex-col items-center shadow-sm&#34;&gt;&lt;i data-lucide=&#34;tree-pine&#34; class=&#34;w-16 h-16 text-green-800 mb-2&#34;&gt;&lt;/i&gt;&lt;span class=&#34;font-bold&#34;&gt;Груш: 15&#43;5&lt;/span&gt;&lt;/div&gt;&lt;div class=&#34;bg-green-400 p-4 rounded-xl flex flex-col items-center shadow-sm&#34;&gt;&lt;i data-lucide=&#34;tree-pine&#34; class=&#34;w-16 h-16 text-green-900 mb-2&#34;&gt;&lt;/i&gt;&lt;span class=&#34;font-bold&#34;&gt;Вишен: Ябл&#43;Груш&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`;
+            }
+
+            let hideBtnHtml = level.startHidden ? `&lt;button onclick=&#34;toggleVisual()&#34; class=&#34;absolute top-2 right-2 text-gray-400 hover:text-gray-600 p-2&#34; title=&#34;Скрыть&#34;&gt;&lt;i data-lucide=&#34;eye-off&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt;&lt;/button&gt;` : &#39;&#39;;
+
+            return `&lt;div class=&#34;mb-6 bg-gray-50 rounded-xl p-4 flex flex-col items-center justify-center min-h-[150px] border-2 border-dashed border-gray-200 relative animate-fade-in&#34;&gt;${hideBtnHtml}${contentHtml}&lt;/div&gt;`;
+        }
+
+        function render() {
+            const app = document.getElementById(&#39;app&#39;);
+
+            if (state.gameFinished) {
+                app.innerHTML = `
+                    &lt;div class=&#34;bg-white p-8 rounded-2xl shadow-xl max-w-md w-full text-center mt-20 animate-fade-in&#34;&gt;
+                        &lt;div class=&#34;flex justify-center mb-4&#34;&gt;&lt;i data-lucide=&#34;trophy&#34; class=&#34;w-24 h-24 text-yellow-400 animate-bounce&#34;&gt;&lt;/i&gt;&lt;/div&gt;
+                        &lt;h1 class=&#34;text-3xl font-bold text-blue-800 mb-2&#34;&gt;Отлично!&lt;/h1&gt;
+                        &lt;p class=&#34;text-gray-600 mb-6&#34;&gt;Ты выполнил все задания математического путешествия.&lt;/p&gt;
+                        &lt;div class=&#34;bg-blue-100 p-4 rounded-xl mb-6&#34;&gt;&lt;p class=&#34;text-lg font-bold text-blue-900&#34;&gt;Итоговый счет: ${state.score} / 100&lt;/p&gt;&lt;/div&gt;
+                        &lt;button onclick=&#34;resetGame()&#34; class=&#34;w-full py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2&#34;&gt;&lt;i data-lucide=&#34;sparkles&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt;Начать сначала&lt;/button&gt;
+                    &lt;/div&gt;`;
+                lucide.createIcons(); return;
+            }
+
+            const currentQ = levels[state.currentLevel];
+            const progressWidth = ((state.currentLevel &#43; 1) / levels.length) * 100;
+            const streakHtml = state.streak &gt; 1 ? `&lt;span class=&#34;flex items-center text-orange-500 text-sm font-bold animate-pulse&#34;&gt;🔥 ${state.streak} подряд!&lt;/span&gt;` : &#39;&#39;;
+
+            const optionsHtml = currentQ.options.map(option =&gt; {
+                let btnClass = &#34;bg-white border-2 border-gray-200 hover:border-blue-400 hover:bg-blue-50 text-gray-700&#34;;
+                if (state.showFeedback) {
+                    if (option === currentQ.correctAnswer) btnClass = &#34;bg-green-100 border-green-500 text-green-800&#34;;
+                    else if (option === state.selectedAnswer) btnClass = &#34;bg-red-100 border-red-500 text-red-800&#34;;
+                    else btnClass = &#34;bg-gray-100 border-gray-200 text-gray-400 opacity-50&#34;;
+                }
+                return `&lt;button ${state.showFeedback ? &#39;&#39; : `onclick=&#34;handleAnswer(&#39;${option}&#39;)&#34;`} ${state.showFeedback ? &#39;disabled&#39; : &#39;&#39;} class=&#34;p-4 rounded-xl text-lg font-bold transition-all duration-200 transform ${!state.showFeedback ? &#39;hover:-translate-y-1 hover:shadow-md&#39; : &#39;&#39;} ${btnClass}&#34;&gt;${option}&lt;/button&gt;`;
+            }).join(&#39;&#39;);
+
+            let feedbackHtml = &#39;&#39;;
+            if (state.showFeedback) {
+                feedbackHtml = `
+                    &lt;div class=&#34;p-6 border-t ${state.isCorrect ? &#39;bg-green-50&#39; : &#39;bg-red-50&#39;} slide-in-bottom&#34;&gt;
+                        &lt;div class=&#34;flex items-start gap-4&#34;&gt;
+                            &lt;i data-lucide=&#34;${state.isCorrect ? &#39;check-circle&#39; : &#39;x-circle&#39;}&#34; class=&#34;w-8 h-8 ${state.isCorrect ? &#39;text-green-500&#39; : &#39;text-red-500&#39;} flex-shrink-0&#34;&gt;&lt;/i&gt;
+                            &lt;div class=&#34;flex-1&#34;&gt;
+                                &lt;h4 class=&#34;text-lg font-bold mb-1 ${state.isCorrect ? &#39;text-green-800&#39; : &#39;text-red-800&#39;}&#34;&gt;${state.isCorrect ? &#39;Верно!&#39; : &#39;Ошибка&#39;}&lt;/h4&gt;
+                                &lt;p class=&#34;text-gray-700 mb-4&#34;&gt;${currentQ.explanation}&lt;/p&gt;
+                                &lt;button onclick=&#34;nextLevel()&#34; class=&#34;px-6 py-2 rounded-lg font-bold text-white shadow-lg flex items-center gap-2 ${state.isCorrect ? &#39;bg-green-600 hover:bg-green-700&#39; : &#39;bg-blue-600 hover:bg-blue-700&#39;}&#34;&gt;Следующее задание &lt;i data-lucide=&#34;arrow-right&#34; class=&#34;w-4 h-4&#34;&gt;&lt;/i&gt;&lt;/button&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;`;
+            }
+
+            app.innerHTML = `
+                &lt;div class=&#34;w-full max-w-2xl flex justify-between items-center mb-4 bg-white p-4 rounded-xl shadow-md&#34;&gt;
+                    &lt;div class=&#34;flex items-center gap-2&#34;&gt;
+                        &lt;div class=&#34;bg-blue-100 p-2 rounded-full&#34;&gt;${getIconHtml(currentQ.iconName, currentQ.iconColor)}&lt;/div&gt;
+                        &lt;div&gt;&lt;h2 class=&#34;font-bold text-gray-700 text-sm md:text-base&#34;&gt;Уровень ${state.currentLevel &#43; 1}/10&lt;/h2&gt;
+                        &lt;div class=&#34;w-32 h-2 bg-gray-200 rounded-full mt-1&#34;&gt;&lt;div class=&#34;h-full bg-green-500 rounded-full transition-all duration-500&#34; style=&#34;width: ${progressWidth}%&#34;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;text-right&#34;&gt;&lt;div class=&#34;text-sm text-gray-500&#34;&gt;Счет&lt;/div&gt;&lt;div class=&#34;text-xl font-bold text-blue-600&#34;&gt;${state.score}&lt;/div&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;w-full max-w-2xl bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-300&#34;&gt;
+                    &lt;div class=&#34;p-5 md:p-6&#34;&gt;
+                        &lt;div class=&#34;flex justify-between items-start mb-4&#34;&gt;
+                            &lt;span class=&#34;inline-block px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold uppercase rounded-full tracking-wide&#34;&gt;${currentQ.title}&lt;/span&gt;
+                            ${streakHtml}
+                        &lt;/div&gt;
+                        &lt;h3 class=&#34;text-xl md:text-2xl font-bold text-gray-800 mb-4 leading-relaxed&#34;&gt;${currentQ.question}&lt;/h3&gt;
+                        ${renderVisual(currentQ)}
+                        &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-4&#34;&gt;${optionsHtml}&lt;/div&gt;
+                    &lt;/div&gt;
+                    ${feedbackHtml}
+                &lt;/div&gt;`;
+            lucide.createIcons();
+        }
+
+        init();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

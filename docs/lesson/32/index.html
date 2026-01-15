@@ -413,7 +413,585 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame165" src="/task/165?lang=kz"
+                            <iframe id="taskFrame165" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Аликвоттық бөлшектер — Интерактивті тренажер&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4338ca;
+            --primary-light: #e0e7ff;
+            --secondary: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --surface: #ffffff;
+            --bg: #f3f4f6;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --radius: 1.25rem;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: &#39;Inter&#39;, system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* --- Header Section --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            padding: 3rem 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            color: white;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: &#34;&#34;;
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* --- Fraction Component --- */
+        .frac {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            align-items: center;
+            margin: 0 0.2rem;
+            font-weight: 700;
+        }
+
+        .frac .num {
+            border-bottom: 2px solid currentColor;
+            padding: 0 6px;
+            line-height: 1.1;
+        }
+
+        .frac .den {
+            padding: 0 6px;
+            line-height: 1.1;
+        }
+
+        /* --- Navigation --- */
+        .nav-tabs {
+            display: flex;
+            gap: 0.75rem;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 0.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .nav-btn {
+            flex: 1;
+            border: none;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn.active {
+            background: var(--surface);
+            color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* --- Content Area --- */
+        .content-card {
+            background: var(--surface);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            min-height: 600px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: slideUp 0.4s ease-out; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Theory Styles --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card-item {
+            padding: 2rem;
+            border-radius: 1.5rem;
+            background: var(--bg);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .card-item:hover {
+            border-color: var(--primary-light);
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .formula-hero {
+            background: linear-gradient(to right, #fdf2f2, #fff);
+            padding: 3rem;
+            border-radius: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            border: 2px dashed #fecaca;
+        }
+
+        /* --- History (Egypt) --- */
+        .egypt-theme {
+            background: #fffbeb;
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid #fef3c7;
+        }
+
+        .eye-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .eye-part {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        /* --- Lab &amp; Slider --- */
+        .lab-ui {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        #pie-chart-svg {
+            width: 300px;
+            height: 300px;
+            filter: drop-shadow(0 10px 8px rgba(0,0,0,0.04));
+        }
+
+        .control-panel {
+            width: 100%;
+            max-width: 500px;
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: 2rem;
+        }
+
+        input[type=range] {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+            margin: 1.5rem 0;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- Practice / Quiz --- */
+        .question-card {
+            background: #1e1b4b;
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 2.5rem;
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option-button {
+            background: white;
+            border: 2px solid #e5e7eb;
+            padding: 1.25rem 1.5rem;
+            border-radius: 1.25rem;
+            cursor: pointer;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-align: left;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .option-button:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        .option-button.correct {
+            background: #ecfdf5;
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .option-button.wrong {
+            background: #fef2f2;
+            border-color: var(--danger);
+            color: #991b1b;
+        }
+
+        .feedback {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 1.25rem;
+            display: none;
+            font-weight: 500;
+        }
+
+        .feedback.active { display: flex; animation: fadeIn 0.3s ease; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+        }
+
+        /* Icons placeholder styles */
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&#34;container&#34;&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Аликвоттық бөлшектер&lt;/h1&gt;
+        &lt;p&gt;Математика әлеміне интерактивті саяхат&lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;nav class=&#34;nav-tabs&#34;&gt;
+        &lt;button class=&#34;nav-btn active&#34; onclick=&#34;showTab(&#39;theory&#39;)&#34;&gt;📚 Теория&lt;/button&gt;
+        &lt;button class=&#34;nav-btn&#34; onclick=&#34;showTab(&#39;egypt&#39;)&#34;&gt;🏺 Тарих&lt;/button&gt;
+        &lt;button class=&#34;nav-btn&#34; onclick=&#34;showTab(&#39;lab&#39;)&#34;&gt;👁️ Визуал&lt;/button&gt;
+        &lt;button class=&#34;nav-btn&#34; onclick=&#34;showTab(&#39;practice&#39;)&#34;&gt;🎯 Жаттығу&lt;/button&gt;
+    &lt;/nav&gt;
+
+    &lt;main class=&#34;content-card&#34;&gt;
+        &lt;!-- Theory --&gt;
+        &lt;div id=&#34;theory&#34; class=&#34;tab-content active&#34;&gt;
+            &lt;div style=&#34;max-width: 700px;&#34;&gt;
+                &lt;h2 style=&#34;font-size: 2rem; margin-bottom: 1rem;&#34;&gt;Негізгі анықтама&lt;/h2&gt;
+                &lt;p style=&#34;color: var(--text-muted); font-size: 1.1rem;&#34;&gt;Алымы 1-ге тең бөлшектерді &lt;b&gt;аликвоттық бөлшектер&lt;/b&gt; деп атаймыз. Олар бүтіннің бір ғана бөлігін білдіреді.&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;info-grid&#34;&gt;
+                &lt;div class=&#34;card-item&#34;&gt;
+                    &lt;h4 style=&#34;color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; margin-bottom: 1rem;&#34;&gt;Жалпы түрі&lt;/h4&gt;
+                    &lt;div style=&#34;font-size: 3rem;&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;n&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;card-item&#34;&gt;
+                    &lt;h4 style=&#34;color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; margin-bottom: 1rem;&#34;&gt;Ереже&lt;/h4&gt;
+                    &lt;p&gt;Бөлімі (астыңғы сан) неғұрлым үлкен болса, бөлшектің өзі соғұрлым &lt;b&gt;кіші&lt;/b&gt; болады.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;formula-hero&#34;&gt;
+                &lt;h3 style=&#34;margin-bottom: 1.5rem; color: #991b1b;&#34;&gt;Жіктеу формуласы&lt;/h3&gt;
+                &lt;div style=&#34;font-size: 2.5rem; font-family: &#39;serif&#39;;&#34;&gt;
+                    &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;n&lt;/span&gt;&lt;/div&gt; = 
+                    &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;n&#43;1&lt;/span&gt;&lt;/div&gt; &#43; 
+                    &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;n(n&#43;1)&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;p style=&#34;margin-top: 1.5rem; color: var(--text-muted);&#34;&gt;Бұл формула кез келген аликвоттық бөлшекті екі басқа аликвоттық бөлшекке айналдырады.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- History --&gt;
+        &lt;div id=&#34;egypt&#34; class=&#34;tab-content&#34;&gt;
+            &lt;div class=&#34;egypt-theme&#34;&gt;
+                &lt;h2 style=&#34;text-align: center; color: #92400e; margin-bottom: 1rem;&#34;&gt;Ежелгі Египет құпиясы&lt;/h2&gt;
+                &lt;p style=&#34;text-align: center; max-width: 600px; margin: 0 auto;&#34;&gt;Мыңдаған жылдар бұрын египеттіктер бөлшектерді &#34;Хордың көзі&#34; атты қасиетті символ арқылы түсіндірген.&lt;/p&gt;
+                
+                &lt;div class=&#34;eye-container&#34;&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;2&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;4&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;8&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;16&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;32&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;64&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div style=&#34;background: white; padding: 2.5rem; border-radius: 1.5rem; text-align: center; border: 2px solid #fde68a;&#34;&gt;
+                    &lt;p style=&#34;font-weight: 700; font-size: 1.2rem; color: #92400e;&#34;&gt;Барлық бөліктің қосындысы:&lt;/p&gt;
+                    &lt;div style=&#34;font-size: 3rem; margin: 1rem 0;&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;63&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;64&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;p style=&#34;color: var(--text-muted); font-style: italic;&#34;&gt;Бұл бүтінге өте жақын, бірақ дәл 1 емес. Қалған 1/64 бөлігін &#34;сиқырлы күш&#34; деп санаған.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Lab --&gt;
+        &lt;div id=&#34;lab&#34; class=&#34;tab-content&#34;&gt;
+            &lt;div class=&#34;lab-ui&#34;&gt;
+                &lt;div style=&#34;text-align: center;&#34;&gt;
+                    &lt;h2 style=&#34;margin-bottom: 0.5rem;&#34;&gt;Визуалды зертхана&lt;/h2&gt;
+                    &lt;p style=&#34;color: var(--text-muted);&#34;&gt;Бөлімнің өзгеруі бөлшектің көлеміне қалай әсер етеді?&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div style=&#34;font-size: 4rem; color: var(--primary);&#34;&gt;
+                    &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34; id=&#34;lab-den-text&#34;&gt;4&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;svg id=&#34;pie-chart-svg&#34; viewBox=&#34;0 0 100 100&#34;&gt;
+                    &lt;circle cx=&#34;50&#34; cy=&#34;50&#34; r=&#34;48&#34; fill=&#34;#f8fafc&#34; stroke=&#34;#e2e8f0&#34; stroke-width=&#34;1&#34; /&gt;
+                    &lt;path id=&#34;pie-slice&#34; fill=&#34;var(--primary)&#34; /&gt;
+                    &lt;circle cx=&#34;50&#34; cy=&#34;50&#34; r=&#34;48&#34; fill=&#34;none&#34; stroke=&#34;rgba(0,0,0,0.1)&#34; stroke-width=&#34;0.5&#34; /&gt;
+                &lt;/svg&gt;
+
+                &lt;div class=&#34;control-panel&#34;&gt;
+                    &lt;div style=&#34;display: flex; justify-content: space-between; font-weight: 700;&#34;&gt;
+                        &lt;span&gt;Бөлімі (n):&lt;/span&gt;
+                        &lt;span id=&#34;range-val&#34; style=&#34;color: var(--primary); font-size: 1.5rem;&#34;&gt;4&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;input type=&#34;range&#34; id=&#34;den-slider&#34; min=&#34;2&#34; max=&#34;30&#34; value=&#34;4&#34; oninput=&#34;updateLab(this.value)&#34;&gt;
+                    &lt;div style=&#34;display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted);&#34;&gt;
+                        &lt;span&gt;2 (Үлкен бөлік)&lt;/span&gt;
+                        &lt;span&gt;30 (Кіші бөлік)&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Practice --&gt;
+        &lt;div id=&#34;practice&#34; class=&#34;tab-content&#34;&gt;
+            &lt;div id=&#34;quiz-container&#34;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;Математикалық тренажер • 5-сынып оқушыларына арналған&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    const state = { denominator: 4, currentQuestion: 0, score: 0, feedbackActive: false };
+
+    const questions = [
+        {
+            text: `&lt;span&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;8&lt;/span&gt;&lt;/div&gt; бөлшегінің аликвоттық жіктелуін (египеттік бөлшектердің қосындысы) табыңыз:&lt;/span&gt;`,
+            options: [&#34;1/4 &#43; 1/8&#34;, &#34;1/2 &#43; 1/8&#34;, &#34;1/8 &#43; 1/8 &#43; 1/8&#34;],
+            correct: &#34;1/4 &#43; 1/8&#34;,
+            explanation: `Жарайсың! 3/8 = 2/8 &#43; 1/8 = 1/4 &#43; 1/8. Египеттік жазуда бөлшектер әртүрлі болуы шарт.`
+        },
+        {
+            text: `&lt;span&gt;Формула бойынша &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;10&lt;/span&gt;&lt;/div&gt; аликвоттық бөлшегін екі бөлшекке жіктеңіз:&lt;/span&gt;`,
+            options: [&#34;1/11 &#43; 1/110&#34;, &#34;1/10 &#43; 1/10&#34;, &#34;1/11 &#43; 1/100&#34;],
+            correct: &#34;1/11 &#43; 1/110&#34;,
+            explanation: `Дұрыс! 1/n = 1/(n&#43;1) &#43; 1/(n(n&#43;1)) формуласымен 1/11 &#43; 1/110 шығады.`
+        },
+        {
+            text: `&lt;span&gt;Бір адам 3 баласына 11 жылқы қалдырады да, оны былай бөлуді өсиет етеді:&lt;br/&gt;
+                  Үлкеніне – барлық жылқының &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;2&lt;/span&gt;&lt;/div&gt; бөлігін,&lt;br/&gt;
+                  Ортаншысына – &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;4&lt;/span&gt;&lt;/div&gt; бөлігін,&lt;br/&gt;
+                  Кішісіне – &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;6&lt;/span&gt;&lt;/div&gt; бөлігін беру керек.&lt;br/&gt;
+                  Кіші ұлы неше жылқы алады?&lt;/span&gt;`,
+            options: [&#34;2 жылқы&#34;, &#34;3 жылқы&#34;, &#34;6 жылқы&#34;],
+            correct: &#34;2 жылқы&#34;,
+            explanation: `Логикасы: 1 жылқы қосып (12), бөлгенде: 12/6 = 2 жылқы. (Барлығы 6&#43;3&#43;2=11 болады да, қосылған 1 жылқы қайтады).`
+        },
+        {
+            text: `&lt;span&gt;Телескоптық қосындының мәнін табыңыз: &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;1·2&lt;/span&gt;&lt;/div&gt; &#43; &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;2·3&lt;/span&gt;&lt;/div&gt; &#43; &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;3·4&lt;/span&gt;&lt;/div&gt; &#43; &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;4·5&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;`,
+            options: [&#34;4/5&#34;, &#34;1/5&#34;, &#34;3/4&#34;],
+            correct: &#34;4/5&#34;,
+            explanation: `Дұрыс шешім. Барлық ортадағы мүшелер жойылып, 1 - 1/5 қалады. Нәтиже: 4/5.`
+        },
+        {
+            text: `&lt;span&gt;Төмендегілердің ішінен тек аликвоттық бөлшекті көрсетіңіз:&lt;/span&gt;`,
+            options: [&#34;1/12&#34;, &#34;2/3&#34;, &#34;3/1&#34;],
+            correct: &#34;1/12&#34;,
+            explanation: `Аликвоттық бөлшектің алымы міндетті түрде 1-ге тең болады.`
+        }
+    ];
+
+    function showTab(id) {
+        document.querySelectorAll(&#39;.tab-content&#39;).forEach(t =&gt; t.classList.remove(&#39;active&#39;));
+        document.querySelectorAll(&#39;.nav-btn&#39;).forEach(b =&gt; b.classList.remove(&#39;active&#39;));
+        document.getElementById(id).classList.add(&#39;active&#39;);
+        document.querySelector(`[onclick=&#34;showTab(&#39;${id}&#39;)&#34;]`).classList.add(&#39;active&#39;);
+        if (id === &#39;practice&#39;) renderQuiz();
+    }
+
+    function updateLab(val) {
+        state.denominator = parseInt(val);
+        document.getElementById(&#39;range-val&#39;).innerText = val;
+        document.getElementById(&#39;lab-den-text&#39;).innerText = val;
+        const angle = 360 / state.denominator;
+        const rad = (angle - 90) * Math.PI / 180;
+        const x = 50 &#43; 48 * Math.cos(rad);
+        const y = 50 &#43; 48 * Math.sin(rad);
+        const largeArc = angle &gt; 180 ? 1 : 0;
+        document.getElementById(&#39;pie-slice&#39;).setAttribute(&#39;d&#39;, `M 50 50 L 50 2 A 48 48 0 ${largeArc} 1 ${x} ${y} Z`);
+    }
+
+    function formatFractionString(str) {
+        if (!str.includes(&#39;/&#39;)) return str;
+        return str.split(&#39; &#43; &#39;).map(p =&gt; {
+            const parts = p.split(&#39;/&#39;);
+            if (parts.length === 2) {
+                return `&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;${parts[0]}&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;${parts[1]}&lt;/span&gt;&lt;/div&gt;`;
+            }
+            return p;
+        }).join(&#39; &#43; &#39;);
+    }
+
+    function renderQuiz() {
+        const container = document.getElementById(&#39;quiz-container&#39;);
+        if (state.currentQuestion &gt;= questions.length) {
+            container.innerHTML = `
+                &lt;div style=&#34;text-align:center;padding:3rem;&#34;&gt;
+                    &lt;div style=&#34;font-size:5rem;margin-bottom:1rem;&#34;&gt;🏆&lt;/div&gt;
+                    &lt;h2 style=&#34;font-size:2.5rem;margin-bottom:1rem;&#34;&gt;Керемет нәтиже!&lt;/h2&gt;
+                    &lt;p style=&#34;font-size:1.2rem;color:var(--text-muted);margin-bottom:2rem;&#34;&gt;Сенің ұпайың: ${state.score} / ${questions.length}&lt;/p&gt;
+                    &lt;button class=&#34;nav-btn active&#34; style=&#34;padding:1.5rem 3rem;margin:0 auto;&#34; onclick=&#34;resetQuiz()&#34;&gt;Қайталау&lt;/button&gt;
+                &lt;/div&gt;`;
+            return;
+        }
+        const q = questions[state.currentQuestion];
+        container.innerHTML = `
+            &lt;div style=&#34;margin-bottom:1rem;display:flex;justify-content:space-between;color:var(--text-muted);font-weight:700;&#34;&gt;
+                &lt;span&gt;Сұрақ ${state.currentQuestion &#43; 1} / ${questions.length}&lt;/span&gt;
+                &lt;span&gt;Ұпай: ${state.score}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;question-card&#34;&gt;${q.text}&lt;/div&gt;
+            &lt;div class=&#34;options-list&#34;&gt;
+                ${q.options.map((o, i) =&gt; `
+                    &lt;button class=&#34;option-button&#34; onclick=&#34;checkAnswer(&#39;${o}&#39;, this)&#34;&gt;
+                        &lt;span class=&#34;icon-circle&#34;&gt;${String.fromCharCode(65&#43;i)}&lt;/span&gt;
+                        ${formatFractionString(o)}
+                    &lt;/button&gt;
+                `).join(&#39;&#39;)}
+            &lt;/div&gt;
+            &lt;div id=&#34;quiz-feedback&#34; class=&#34;feedback&#34;&gt;&lt;/div&gt;
+        `;
+    }
+
+    function checkAnswer(ans, btn) {
+        if (state.feedbackActive) return;
+        state.feedbackActive = true;
+        const q = questions[state.currentQuestion];
+        const fb = document.getElementById(&#39;quiz-feedback&#39;);
+        
+        if (ans === q.correct) {
+            state.score&#43;&#43;;
+            btn.classList.add(&#39;correct&#39;);
+            fb.innerHTML = `&lt;b&gt;✅ Дұрыс!&lt;/b&gt; &amp;nbsp; ${q.explanation}`;
+            fb.style.background = &#34;#ecfdf5&#34;;
+            fb.style.color = &#34;#065f46&#34;;
+        } else {
+            btn.classList.add(&#39;wrong&#39;);
+            fb.innerHTML = `&lt;b&gt;❌ Қате.&lt;/b&gt; &amp;nbsp; ${q.explanation}`;
+            fb.style.background = &#34;#fef2f2&#34;;
+            fb.style.color = &#34;#991b1b&#34;;
+        }
+        
+        fb.classList.add(&#39;active&#39;);
+        setTimeout(() =&gt; { 
+            state.currentQuestion&#43;&#43;; 
+            state.feedbackActive = false; 
+            renderQuiz(); 
+        }, 4500);
+    }
+
+    function resetQuiz() { state.currentQuestion = 0; state.score = 0; renderQuiz(); }
+    window.onload = () =&gt; updateLab(4);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -455,7 +1033,575 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame165_ru" src="/task/165?lang=ru"
+                            <iframe id="taskFrame165_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Аликвотные дроби — Интерактивный тренажер&lt;/title&gt;
+    &lt;style&gt;
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4338ca;
+            --primary-light: #e0e7ff;
+            --secondary: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --surface: #ffffff;
+            --bg: #f3f4f6;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --radius: 1.25rem;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: &#39;Inter&#39;, system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 1.5rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            padding: 3rem 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            color: white;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: &#34;&#34;;
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .frac {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            align-items: center;
+            margin: 0 0.2rem;
+            font-weight: 700;
+        }
+
+        .frac .num {
+            border-bottom: 2px solid currentColor;
+            padding: 0 6px;
+            line-height: 1.1;
+        }
+
+        .frac .den {
+            padding: 0 6px;
+            line-height: 1.1;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 0.75rem;
+            background: rgba(0, 0, 0, 0.05);
+            padding: 0.5rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+
+        .nav-btn {
+            flex: 1;
+            border: none;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 700;
+            color: var(--text-muted);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn.active {
+            background: var(--surface);
+            color: var(--primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .content-card {
+            background: var(--surface);
+            border-radius: 2rem;
+            padding: 2.5rem;
+            min-height: 600px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: slideUp 0.4s ease-out; }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card-item {
+            padding: 2rem;
+            border-radius: 1.5rem;
+            background: var(--bg);
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .card-item:hover {
+            border-color: var(--primary-light);
+            background: white;
+            box-shadow: var(--shadow);
+        }
+
+        .formula-hero {
+            background: linear-gradient(to right, #fdf2f2, #fff);
+            padding: 3rem;
+            border-radius: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            border: 2px dashed #fecaca;
+        }
+
+        .egypt-theme {
+            background: #fffbeb;
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid #fef3c7;
+        }
+
+        .eye-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .eye-part {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        .lab-ui {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        #pie-chart-svg {
+            width: 300px;
+            height: 300px;
+            filter: drop-shadow(0 10px 8px rgba(0,0,0,0.04));
+        }
+
+        .control-panel {
+            width: 100%;
+            max-width: 500px;
+            background: var(--bg);
+            padding: 2rem;
+            border-radius: 2rem;
+        }
+
+        input[type=range] {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+            margin: 1.5rem 0;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .question-card {
+            background: #1e1b4b;
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 2.5rem;
+            text-align: center;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option-button {
+            background: white;
+            border: 2px solid #e5e7eb;
+            padding: 1.25rem 1.5rem;
+            border-radius: 1.25rem;
+            cursor: pointer;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-align: left;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .option-button:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            transform: translateX(5px);
+        }
+
+        .option-button.correct {
+            background: #ecfdf5;
+            border-color: var(--success);
+            color: #065f46;
+        }
+
+        .option-button.wrong {
+            background: #fef2f2;
+            border-color: var(--danger);
+            color: #991b1b;
+        }
+
+        .feedback {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 1.25rem;
+            display: none;
+            font-weight: 500;
+        }
+
+        .feedback.active { display: flex; animation: fadeIn 0.3s ease; }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding-bottom: 2rem;
+        }
+
+        .icon-circle {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div class=&#34;container&#34;&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Аликвотные дроби&lt;/h1&gt;
+        &lt;p&gt;Интерактивное путешествие в мир математики&lt;/p&gt;
+    &lt;/header&gt;
+
+    &lt;nav class=&#34;nav-tabs&#34;&gt;
+        &lt;button class=&#34;nav-btn active&#34; onclick=&#34;showTab(&#39;theory&#39;)&#34;&gt;📚 Теория&lt;/button&gt;
+        &lt;button class=&#34;nav-btn&#34; onclick=&#34;showTab(&#39;egypt&#39;)&#34;&gt;🏺 История&lt;/button&gt;
+        &lt;button class=&#34;nav-btn&#34; onclick=&#34;showTab(&#39;lab&#39;)&#34;&gt;👁️ Визуал&lt;/button&gt;
+        &lt;button class=&#34;nav-btn&#34; onclick=&#34;showTab(&#39;practice&#39;)&#34;&gt;🎯 Практика&lt;/button&gt;
+    &lt;/nav&gt;
+
+    &lt;main class=&#34;content-card&#34;&gt;
+        &lt;div id=&#34;theory&#34; class=&#34;tab-content active&#34;&gt;
+            &lt;div style=&#34;max-width: 700px;&#34;&gt;
+                &lt;h2 style=&#34;font-size: 2rem; margin-bottom: 1rem;&#34;&gt;Основное определение&lt;/h2&gt;
+                &lt;p style=&#34;color: var(--text-muted); font-size: 1.1rem;&#34;&gt;Обыкновенные дроби, у которых числитель равен 1, называются &lt;b&gt;аликвотными дробями&lt;/b&gt;. Они представляют собой одну часть целого.&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;info-grid&#34;&gt;
+                &lt;div class=&#34;card-item&#34;&gt;
+                    &lt;h4 style=&#34;color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; margin-bottom: 1rem;&#34;&gt;Общий вид&lt;/h4&gt;
+                    &lt;div style=&#34;font-size: 3rem;&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;n&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;card-item&#34;&gt;
+                    &lt;h4 style=&#34;color: var(--primary); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; margin-bottom: 1rem;&#34;&gt;Правило сравнения&lt;/h4&gt;
+                    &lt;p&gt;Чем больше знаменатель (нижнее число), тем &lt;b&gt;меньше&lt;/b&gt; сама дробь.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;formula-hero&#34;&gt;
+                &lt;h3 style=&#34;margin-bottom: 1.5rem; color: #991b1b;&#34;&gt;Формула разложения&lt;/h3&gt;
+                &lt;div style=&#34;font-size: 2.5rem; font-family: &#39;serif&#39;;&#34;&gt;
+                    &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;n&lt;/span&gt;&lt;/div&gt; = 
+                    &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;n&#43;1&lt;/span&gt;&lt;/div&gt; &#43; 
+                    &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;n(n&#43;1)&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;p style=&#34;margin-top: 1.5rem; color: var(--text-muted);&#34;&gt;Эта формула позволяет разложить любую аликвотную дробь на сумму двух других аликвотных дробей.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;egypt&#34; class=&#34;tab-content&#34;&gt;
+            &lt;div class=&#34;egypt-theme&#34;&gt;
+                &lt;h2 style=&#34;text-align: center; color: #92400e; margin-bottom: 1rem;&#34;&gt;Тайны Древнего Египта&lt;/h2&gt;
+                &lt;p style=&#34;text-align: center; max-width: 600px; margin: 0 auto;&#34;&gt;Тысячи лет назад египтяне использовали аликвотные дроби, связывая их со священным символом — Оком Хора.&lt;/p&gt;
+                
+                
+
+                &lt;div class=&#34;eye-container&#34;&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;2&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;4&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;8&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;16&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;32&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;div class=&#34;eye-part&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;64&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div style=&#34;background: white; padding: 2.5rem; border-radius: 1.5rem; text-align: center; border: 2px solid #fde68a;&#34;&gt;
+                    &lt;p style=&#34;font-weight: 700; font-size: 1.2rem; color: #92400e;&#34;&gt;Сумма всех частей:&lt;/p&gt;
+                    &lt;div style=&#34;font-size: 3rem; margin: 1rem 0;&#34;&gt;&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;63&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;64&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+                    &lt;p style=&#34;color: var(--text-muted); font-style: italic;&#34;&gt;Это очень близко к единице, но не равно ей. Недостающую 1/64 часть египтяне приписывали магической силе.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;lab&#34; class=&#34;tab-content&#34;&gt;
+            &lt;div class=&#34;lab-ui&#34;&gt;
+                &lt;div style=&#34;text-align: center;&#34;&gt;
+                    &lt;h2 style=&#34;margin-bottom: 0.5rem;&#34;&gt;Визуальная лаборатория&lt;/h2&gt;
+                    &lt;p style=&#34;color: var(--text-muted);&#34;&gt;Как изменение знаменателя влияет на размер доли?&lt;/p&gt;
+                &lt;/div&gt;
+
+                &lt;div style=&#34;font-size: 4rem; color: var(--primary);&#34;&gt;
+                    &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34; id=&#34;lab-den-text&#34;&gt;4&lt;/span&gt;&lt;/div&gt;
+                &lt;/div&gt;
+
+                
+
+                &lt;svg id=&#34;pie-chart-svg&#34; viewBox=&#34;0 0 100 100&#34;&gt;
+                    &lt;circle cx=&#34;50&#34; cy=&#34;50&#34; r=&#34;48&#34; fill=&#34;#f8fafc&#34; stroke=&#34;#e2e8f0&#34; stroke-width=&#34;1&#34; /&gt;
+                    &lt;path id=&#34;pie-slice&#34; fill=&#34;var(--primary)&#34; /&gt;
+                    &lt;circle cx=&#34;50&#34; cy=&#34;50&#34; r=&#34;48&#34; fill=&#34;none&#34; stroke=&#34;rgba(0,0,0,0.1)&#34; stroke-width=&#34;0.5&#34; /&gt;
+                &lt;/svg&gt;
+
+                &lt;div class=&#34;control-panel&#34;&gt;
+                    &lt;div style=&#34;display: flex; justify-content: space-between; font-weight: 700;&#34;&gt;
+                        &lt;span&gt;Знаменатель (n):&lt;/span&gt;
+                        &lt;span id=&#34;range-val&#34; style=&#34;color: var(--primary); font-size: 1.5rem;&#34;&gt;4&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;input type=&#34;range&#34; id=&#34;den-slider&#34; min=&#34;2&#34; max=&#34;30&#34; value=&#34;4&#34; oninput=&#34;updateLab(this.value)&#34;&gt;
+                    &lt;div style=&#34;display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted);&#34;&gt;
+                        &lt;span&gt;2 (Крупная доля)&lt;/span&gt;
+                        &lt;span&gt;30 (Мелкая доля)&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;practice&#34; class=&#34;tab-content&#34;&gt;
+            &lt;div id=&#34;quiz-container&#34;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;Математический тренажер • Для учеников 5-х классов&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    const state = { denominator: 4, currentQuestion: 0, score: 0, feedbackActive: false };
+
+    const questions = [
+        {
+            text: `&lt;span&gt;Найдите аликвотное разложение (сумму египетских дробей) для дроби &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;8&lt;/span&gt;&lt;/div&gt;:&lt;/span&gt;`,
+            options: [&#34;1/4 &#43; 1/8&#34;, &#34;1/2 &#43; 1/8&#34;, &#34;1/8 &#43; 1/8 &#43; 1/8&#34;],
+            correct: &#34;1/4 &#43; 1/8&#34;,
+            explanation: `Отлично! 3/8 = 2/8 &#43; 1/8 = 1/4 &#43; 1/8. В египетской записи слагаемые обязательно должны быть разными.`
+        },
+        {
+            text: `&lt;span&gt;Используя формулу, разложите аликвотную дробь &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;10&lt;/span&gt;&lt;/div&gt; на две дроби:&lt;/span&gt;`,
+            options: [&#34;1/11 &#43; 1/110&#34;, &#34;1/10 &#43; 1/10&#34;, &#34;1/11 &#43; 1/100&#34;],
+            correct: &#34;1/11 &#43; 1/110&#34;,
+            explanation: `Верно! По формуле 1/n = 1/(n&#43;1) &#43; 1/(n(n&#43;1)) получаем 1/11 &#43; 1/110.`
+        },
+        {
+            text: `&lt;span&gt;Отец завещал 11 лошадей трем сыновьям в следующих долях:&lt;br/&gt;
+                  Старшему — &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;2&lt;/span&gt;&lt;/div&gt; всех лошадей,&lt;br/&gt;
+                  Среднему — &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;4&lt;/span&gt;&lt;/div&gt; лошадей,&lt;br/&gt;
+                  Младшему — &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;6&lt;/span&gt;&lt;/div&gt; лошадей.&lt;br/&gt;
+                  Сколько лошадей получит младший сын?&lt;/span&gt;`,
+            options: [&#34;2 лошади&#34;, &#34;3 лошади&#34;, &#34;6 лошадей&#34;],
+            correct: &#34;2 лошади&#34;,
+            explanation: `Логика: добавив 1 лошадь (всего 12), делим: 12/6 = 2. (Всего 6&#43;3&#43;2=11, и лишняя лошадь возвращается).`
+        },
+        {
+            text: `&lt;span&gt;Найдите значение телескопической суммы: &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;1·2&lt;/span&gt;&lt;/div&gt; &#43; &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;2·3&lt;/span&gt;&lt;/div&gt; &#43; &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;3·4&lt;/span&gt;&lt;/div&gt; &#43; &lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;4·5&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;`,
+            options: [&#34;4/5&#34;, &#34;1/5&#34;, &#34;3/4&#34;],
+            correct: &#34;4/5&#34;,
+            explanation: `Правильно. Промежуточные члены сокращаются, остается 1 - 1/5 = 4/5.`
+        },
+        {
+            text: `&lt;span&gt;Выберите из предложенных вариантов только аликвотную дробь:&lt;/span&gt;`,
+            options: [&#34;1/12&#34;, &#34;2/3&#34;, &#34;3/1&#34;],
+            correct: &#34;1/12&#34;,
+            explanation: `У аликвотной дроби числитель всегда равен 1.`
+        }
+    ];
+
+    function showTab(id) {
+        document.querySelectorAll(&#39;.tab-content&#39;).forEach(t =&gt; t.classList.remove(&#39;active&#39;));
+        document.querySelectorAll(&#39;.nav-btn&#39;).forEach(b =&gt; b.classList.remove(&#39;active&#39;));
+        document.getElementById(id).classList.add(&#39;active&#39;);
+        document.querySelector(`[onclick=&#34;showTab(&#39;${id}&#39;)&#34;]`).classList.add(&#39;active&#39;);
+        if (id === &#39;practice&#39;) renderQuiz();
+    }
+
+    function updateLab(val) {
+        state.denominator = parseInt(val);
+        document.getElementById(&#39;range-val&#39;).innerText = val;
+        document.getElementById(&#39;lab-den-text&#39;).innerText = val;
+        const angle = 360 / state.denominator;
+        const rad = (angle - 90) * Math.PI / 180;
+        const x = 50 &#43; 48 * Math.cos(rad);
+        const y = 50 &#43; 48 * Math.sin(rad);
+        const largeArc = angle &gt; 180 ? 1 : 0;
+        document.getElementById(&#39;pie-slice&#39;).setAttribute(&#39;d&#39;, `M 50 50 L 50 2 A 48 48 0 ${largeArc} 1 ${x} ${y} Z`);
+    }
+
+    function formatFractionString(str) {
+        if (!str.includes(&#39;/&#39;)) return str;
+        return str.split(&#39; &#43; &#39;).map(p =&gt; {
+            const parts = p.split(&#39;/&#39;);
+            if (parts.length === 2) {
+                return `&lt;div class=&#34;frac&#34;&gt;&lt;span class=&#34;num&#34;&gt;${parts[0]}&lt;/span&gt;&lt;span class=&#34;den&#34;&gt;${parts[1]}&lt;/span&gt;&lt;/div&gt;`;
+            }
+            return p;
+        }).join(&#39; &#43; &#39;);
+    }
+
+    function renderQuiz() {
+        const container = document.getElementById(&#39;quiz-container&#39;);
+        if (state.currentQuestion &gt;= questions.length) {
+            container.innerHTML = `
+                &lt;div style=&#34;text-align:center;padding:3rem;&#34;&gt;
+                    &lt;div style=&#34;font-size:5rem;margin-bottom:1rem;&#34;&gt;🏆&lt;/div&gt;
+                    &lt;h2 style=&#34;font-size:2.5rem;margin-bottom:1rem;&#34;&gt;Отличный результат!&lt;/h2&gt;
+                    &lt;p style=&#34;font-size:1.2rem;color:var(--text-muted);margin-bottom:2rem;&#34;&gt;Твой счет: ${state.score} / ${questions.length}&lt;/p&gt;
+                    &lt;button class=&#34;nav-btn active&#34; style=&#34;padding:1.5rem 3rem;margin:0 auto;&#34; onclick=&#34;resetQuiz()&#34;&gt;Пройти еще раз&lt;/button&gt;
+                &lt;/div&gt;`;
+            return;
+        }
+        const q = questions[state.currentQuestion];
+        container.innerHTML = `
+            &lt;div style=&#34;margin-bottom:1rem;display:flex;justify-content:space-between;color:var(--text-muted);font-weight:700;&#34;&gt;
+                &lt;span&gt;Вопрос ${state.currentQuestion &#43; 1} из ${questions.length}&lt;/span&gt;
+                &lt;span&gt;Баллы: ${state.score}&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;question-card&#34;&gt;${q.text}&lt;/div&gt;
+            &lt;div class=&#34;options-list&#34;&gt;
+                ${q.options.map((o, i) =&gt; `
+                    &lt;button class=&#34;option-button&#34; onclick=&#34;checkAnswer(&#39;${o}&#39;, this)&#34;&gt;
+                        &lt;span class=&#34;icon-circle&#34;&gt;${String.fromCharCode(65&#43;i)}&lt;/span&gt;
+                        ${formatFractionString(o)}
+                    &lt;/button&gt;
+                `).join(&#39;&#39;)}
+            &lt;/div&gt;
+            &lt;div id=&#34;quiz-feedback&#34; class=&#34;feedback&#34;&gt;&lt;/div&gt;
+        `;
+    }
+
+    function checkAnswer(ans, btn) {
+        if (state.feedbackActive) return;
+        state.feedbackActive = true;
+        const q = questions[state.currentQuestion];
+        const fb = document.getElementById(&#39;quiz-feedback&#39;);
+        
+        if (ans === q.correct) {
+            state.score&#43;&#43;;
+            btn.classList.add(&#39;correct&#39;);
+            fb.innerHTML = `&lt;b&gt;✅ Верно!&lt;/b&gt; &amp;nbsp; ${q.explanation}`;
+            fb.style.background = &#34;#ecfdf5&#34;;
+            fb.style.color = &#34;#065f46&#34;;
+        } else {
+            btn.classList.add(&#39;wrong&#39;);
+            fb.innerHTML = `&lt;b&gt;❌ Ошибка.&lt;/b&gt; &amp;nbsp; ${q.explanation}`;
+            fb.style.background = &#34;#fef2f2&#34;;
+            fb.style.color = &#34;#991b1b&#34;;
+        }
+        
+        fb.classList.add(&#39;active&#39;);
+        setTimeout(() =&gt; { 
+            state.currentQuestion&#43;&#43;; 
+            state.feedbackActive = false; 
+            renderQuiz(); 
+        }, 4500);
+    }
+
+    function resetQuiz() { state.currentQuestion = 0; state.score = 0; renderQuiz(); }
+    window.onload = () =&gt; updateLab(4);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

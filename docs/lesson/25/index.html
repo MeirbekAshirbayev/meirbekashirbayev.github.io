@@ -409,7 +409,383 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame158" src="/task/158?lang=kz"
+                            <iframe id="taskFrame158" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Бөлшектер Тесті&lt;/title&gt;
+    &lt;!-- Tailwind CSS --&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;!-- Lucide Icons --&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4 font-sans&#34;&gt;
+
+    &lt;div id=&#34;app-container&#34; class=&#34;bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden border border-indigo-100 min-h-[400px]&#34;&gt;
+        &lt;!-- Content will be injected here by JavaScript --&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- Деректер мен Көмекші функциялар ---
+
+        // Бөлшектің HTML кодын қайтаратын функция
+        function getFractionHtml(n, d) {
+            return `&lt;span class=&#34;inline-flex flex-col items-center justify-center align-middle mx-1 font-bold text-lg text-indigo-800&#34; style=&#34;vertical-align: middle; display: inline-flex;&#34;&gt;
+                &lt;span class=&#34;border-b-2 border-indigo-800 px-1 leading-none pb-0.5&#34;&gt;${n}&lt;/span&gt;
+                &lt;span class=&#34;leading-none pt-0.5&#34;&gt;${d}&lt;/span&gt;
+            &lt;/span&gt;`;
+        }
+
+        const questions = [
+            // LEVEL 1: EASY
+            {
+                id: 1,
+                level: &#34;Оңай&#34;,
+                question: &#34;Марат пиццаны 8 тең бөлікке бөлді және оның 3 бөлігін жеді. Бұл желінген бөлік қандай бөлшек болады?&#34;,
+                options: [&#34;Дұрыс бөлшек&#34;, &#34;Бұрыс бөлшек&#34;, &#34;1-ге тең&#34;],
+                correct: &#34;Дұрыс бөлшек&#34;,
+                explanation: `Бұл ${getFractionHtml(3, 8)} бөлшегі. Алымы (3) бөлімінен (8) кіші болғандықтан – бұл дұрыс бөлшек. Сондай-ақ, ол 1 бүтін пиццадан аз.`,
+                iconName: &#34;pie-chart&#34;,
+                iconColor: &#34;text-orange-500&#34;
+            },
+            {
+                id: 2,
+                level: &#34;Оңай&#34;,
+                question: &#34;Сыныпта сабақ 45 минутқа созылады, бірақ бүгін мұғалім сабақты 50 минут өткізді. Уақытты бөлшекпен жазсақ, ол қандай бөлшек болады?&#34;,
+                options: [&#34;Дұрыс бөлшек&#34;, &#34;Бұрыс бөлшек&#34;, &#34;1-ге тең&#34;],
+                correct: &#34;Бұрыс бөлшек&#34;,
+                explanation: `Бұл ${getFractionHtml(50, 45)} бөлшегі. Алымы (50) бөлімінен (45) үлкен. Алымы үлкен болса – бұл бұрыс бөлшек. Яғни, уақыт мөлшерден асып кетті.`,
+                iconName: &#34;clock&#34;,
+                iconColor: &#34;text-blue-500&#34;
+            },
+            {
+                id: 3,
+                level: &#34;Оңай&#34;,
+                question: &#34;Дүкендегі қорапта 10 жұмыртқа бар. Асқар оның барлығын (10-ын да) сатып алды. Бұл жағдайды бөлшек түрінде қалай сипаттаймыз?&#34;,
+                options: [&#34;Ол 1-ден кіші (Дұрыс бөлшек)&#34;, &#34;Ол 1-ге тең (Бұрыс бөлшек)&#34;, &#34;Ол 0-ге тең&#34;],
+                correct: &#34;Ол 1-ге тең (Бұрыс бөлшек)&#34;,
+                explanation: `Бұл ${getFractionHtml(10, 10)} бөлшегі. Алымы мен бөлімі тең болса, ол бұрыс бөлшек және 1-ге тең болады (Толық қорап).`,
+                iconName: &#34;check-circle&#34;,
+                iconColor: &#34;text-green-500&#34;
+            },
+
+            // LEVEL 2: MEDIUM
+            {
+                id: 4,
+                level: &#34;Орташа&#34;,
+                question: &#34;Айжан стақанды ойша 5 бөлікке бөліп, оның 4 бөлігіне дейін қант толтырды. Ол бір толық стақан қант қосты ма?&#34;,
+                options: [&#34;Иә, толық стақан&#34;, &#34;Жоқ, толық емес&#34;, &#34;Бір жарым стақан&#34;],
+                correct: &#34;Жоқ, толық емес&#34;,
+                explanation: `Бұл ${getFractionHtml(4, 5)} бөлшегі – дұрыс бөлшек, өйткені 4 &lt; 5. Кез келген дұрыс бөлшек әрқашан 1-ден кіші болады. Демек, қант толық емес.`,
+                iconName: &#34;coffee&#34;,
+                iconColor: &#34;text-yellow-700&#34;
+            },
+            {
+                id: 5,
+                level: &#34;Орташа&#34;,
+                question: &#34;Жарыс жолы 6 кезеңнен тұрады. Ал спортшы қателесіп 7 кезең жүгіріп қойды. Бұл қашықтық туралы не айтамыз?&#34;,
+                options: [&#34;Ол межеге жетпей қалды&#34;, &#34;Ол дәл межеге келді&#34;, &#34;Ол межеден асып түсті&#34;],
+                correct: &#34;Ол межеден асып түсті&#34;,
+                explanation: `Бұл ${getFractionHtml(7, 6)} бөлшегі – бұрыс бөлшек (7 &gt; 6). Бұрыс бөлшек 1-ден үлкен. Ол жоспарланған қашықтықтан артық жүгірді.`,
+                iconName: &#34;award&#34;,
+                iconColor: &#34;text-yellow-500&#34;
+            },
+            {
+                id: 6,
+                level: &#34;Орташа&#34;,
+                question: &#34;Құрылысшыға алымы 9 және бөлімі 9 болатын тақтай керек. Оған қандай тақтай қажет?&#34;,
+                options: [&#34;9 метрлік&#34;, &#34;1 метрлік&#34;, &#34;Жарты метрлік&#34;],
+                correct: &#34;1 метрлік&#34;,
+                explanation: `${getFractionHtml(9, 9)} бөлшегі. 9-ды 9-ға бөлсе, 1 шығады. Алымы мен бөлімі тең бұрыс бөлшек әрқашан 1 бүтінге тең.`,
+                iconName: &#34;ruler&#34;,
+                iconColor: &#34;text-gray-500&#34;
+            },
+
+            // LEVEL 3: HARD
+            {
+                id: 7,
+                level: &#34;Қиын&#34;,
+                question: &#34;Кітапханада 100 кітап бар. Бірақ оқушылардан 120 кітапқа сұраныс түсті. Бұл жағдайды бөлшек ретінде қалай түсінеміз?&#34;,
+                options: [&#34;Кітаптар жеткілікті (Дұрыс бөлшек)&#34;, &#34;Кітаптар жетпейді (Бұрыс бөлшек)&#34;, &#34;Кітаптар саны дәл келеді&#34;],
+                correct: &#34;Кітаптар жетпейді (Бұрыс бөлшек)&#34;,
+                explanation: `Бұл ${getFractionHtml(120, 100)} бөлшегі. Сұраныс (120) бар болғаннан (100) көп. Бұл &#39;жетіспеушілікті&#39; немесе нормадан асып кеткенді білдіреді.`,
+                iconName: &#34;book-open&#34;,
+                iconColor: &#34;text-indigo-500&#34;
+            },
+            {
+                id: 8,
+                level: &#34;Қиын&#34;,
+                question: &#34;Торт әдетте 8 тілікке бөлінеді. Дастарханда барлығы 15 тілік торт тұр. Үстелде қанша бүтін торт бар?&#34;,
+                options: [&#34;1 бүтін торттан аз&#34;, &#34;1 бүтін торт және тағы бөліктер&#34;, &#34;2 бүтін торт&#34;],
+                correct: &#34;1 бүтін торт және тағы бөліктер&#34;,
+                explanation: `Бұл ${getFractionHtml(15, 8)} бөлшегі. 15 саны 8-ден үлкен, демек бұл 1 бүтін торттан көп (шамамен 2 тортқа жақын).`,
+                iconName: &#34;pie-chart&#34;,
+                iconColor: &#34;text-pink-500&#34;
+            },
+            {
+                id: 9,
+                level: &#34;Қиын&#34;,
+                question: &#34;Әмиянда 4 монета бар. Егер әр монетаны 1 бүтін деп есептесек, 4 монетаны бөлшек түрінде қалай жазамыз және ол қандай бөлшек?&#34;,
+                options: [&#34;Бұрыс бөлшек&#34;, &#34;Дұрыс бөлшек&#34;, &#34;1-ден кіші&#34;],
+                correct: &#34;Бұрыс бөлшек&#34;,
+                explanation: `Бұл ${getFractionHtml(4, 1)} бөлшегі. 4 &gt; 1, сондықтан бұл бұрыс бөлшек. Кез келген натурал санды бөлімі 1 болатын бұрыс бөлшек түрінде жазуға болады.`,
+                iconName: &#34;dollar-sign&#34;,
+                iconColor: &#34;text-green-600&#34;
+            },
+            {
+                id: 10,
+                level: &#34;Қиын&#34;,
+                question: &#34;Қай тұжырым ДҰРЫС?&#34;,
+                options: [&#34;Дұрыс бөлшек әрқашан 1-ден үлкен&#34;, &#34;Бұрыс бөлшек әрқашан дұрыс бөлшектен үлкен&#34;, &#34;Дұрыс бөлшектің алымы бөлімінен үлкен&#34;],
+                correct: &#34;Бұрыс бөлшек әрқашан дұрыс бөлшектен үлкен&#34;,
+                explanation: &#34;Дұрыс бөлшек &lt; 1, ал бұрыс бөлшек ≥ 1. Сондықтан, математикада кез келген бұрыс бөлшек кез келген дұрыс бөлшектен үлкен болады.&#34;,
+                iconName: &#34;check-circle&#34;,
+                iconColor: &#34;text-purple-500&#34;
+            }
+        ];
+
+        // --- State Management ---
+        const state = {
+            currentQuestionIndex: 0,
+            score: 0,
+            showResult: false,
+            isFinished: false,
+            selectedAnswer: null,
+            isCorrect: null
+        };
+
+        const appContainer = document.getElementById(&#39;app-container&#39;);
+
+        // --- Logic Functions ---
+
+        function handleAnswerClick(option) {
+            if (state.showResult) return;
+
+            const currentQuestion = questions[state.currentQuestionIndex];
+            const correct = option === currentQuestion.correct;
+            
+            state.selectedAnswer = option;
+            state.isCorrect = correct;
+            state.showResult = true;
+
+            if (correct) {
+                state.score&#43;&#43;;
+            }
+
+            renderApp();
+        }
+
+        function handleNextQuestion() {
+            if (state.currentQuestionIndex &lt; questions.length - 1) {
+                state.currentQuestionIndex&#43;&#43;;
+                state.showResult = false;
+                state.selectedAnswer = null;
+                state.isCorrect = null;
+                renderApp();
+            } else {
+                state.isFinished = true;
+                renderApp();
+            }
+        }
+
+        function restartQuiz() {
+            state.currentQuestionIndex = 0;
+            state.score = 0;
+            state.showResult = false;
+            state.isFinished = false;
+            state.selectedAnswer = null;
+            state.isCorrect = null;
+            renderApp();
+        }
+
+        // --- Render Functions ---
+
+        function renderFinishedScreen() {
+            let message = &#34;&#34;;
+            let messageColor = &#34;&#34;;
+            
+            if (state.score === 10) {
+                message = &#34;Керемет! Сіз тақырыпты толық меңгердіңіз! 🏆&#34;;
+                messageColor = &#34;text-green-600&#34;;
+            } else if (state.score &gt;= 7) {
+                message = &#34;Жақсы нәтиже! Бірақ әлі де қайталау керек. 👍&#34;;
+                messageColor = &#34;text-blue-600&#34;;
+            } else {
+                message = &#34;Көбірек жаттығу керек! Берілмеңіз! 💪&#34;;
+                messageColor = &#34;text-orange-500&#34;;
+            }
+
+            return `
+                &lt;div class=&#34;p-8 text-center animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex justify-center mb-6&#34;&gt;
+                        &lt;i data-lucide=&#34;award&#34; class=&#34;w-24 h-24 text-yellow-400 drop-shadow-lg&#34;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h2 class=&#34;text-3xl font-bold text-indigo-800 mb-4&#34;&gt;Тест аяқталды!&lt;/h2&gt;
+                    &lt;p class=&#34;text-gray-600 text-lg mb-6&#34;&gt;
+                        Сіздің нәтижеңіз: &lt;span class=&#34;font-bold text-indigo-600 text-2xl&#34;&gt;${state.score} / ${questions.length}&lt;/span&gt;
+                    &lt;/p&gt;
+                    &lt;div class=&#34;mb-8&#34;&gt;
+                         &lt;p class=&#34;${messageColor} font-bold text-xl&#34;&gt;${message}&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;button onclick=&#34;restartQuiz()&#34; class=&#34;w-full py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2 shadow-lg cursor-pointer&#34;&gt;
+                        &lt;i data-lucide=&#34;refresh-ccw&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt; Қайта тапсыру
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderQuizScreen() {
+            const currentQuestion = questions[state.currentQuestionIndex];
+            
+            // Progress Bar calculation
+            const progressWidth = ((state.currentQuestionIndex &#43; 1) / questions.length) * 100;
+            
+            // Level badge style
+            let levelBadgeClass = &#34;&#34;;
+            if (currentQuestion.level === &#34;Оңай&#34;) levelBadgeClass = &#34;bg-green-500 border-green-300&#34;;
+            else if (currentQuestion.level === &#34;Орташа&#34;) levelBadgeClass = &#34;bg-yellow-500 border-yellow-300&#34;;
+            else levelBadgeClass = &#34;bg-red-500 border-red-300&#34;;
+
+            // Options generation
+            const optionsHtml = currentQuestion.options.map(option =&gt; {
+                let btnClass = &#34;w-full p-4 rounded-xl text-left border-2 transition-all duration-200 text-lg font-medium relative &#34;;
+                let iconHtml = &#34;&#34;;
+
+                if (state.showResult) {
+                    if (option === currentQuestion.correct) {
+                        btnClass &#43;= &#34;bg-green-100 border-green-500 text-green-800&#34;;
+                        iconHtml = `&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-6 h-6 text-green-600 absolute right-4 top-1/2 transform -translate-y-1/2&#34;&gt;&lt;/i&gt;`;
+                    } else if (option === state.selectedAnswer) {
+                        btnClass &#43;= &#34;bg-red-100 border-red-500 text-red-800&#34;;
+                        iconHtml = `&lt;i data-lucide=&#34;x-circle&#34; class=&#34;w-6 h-6 text-red-600 absolute right-4 top-1/2 transform -translate-y-1/2&#34;&gt;&lt;/i&gt;`;
+                    } else {
+                        btnClass &#43;= &#34;bg-gray-50 border-gray-200 text-gray-400 opacity-60&#34;;
+                    }
+                } else {
+                    btnClass &#43;= &#34;bg-white border-gray-200 hover:border-indigo-400 hover:bg-indigo-50 text-gray-700 hover:shadow-md cursor-pointer&#34;;
+                }
+
+                // Use a safe way to pass strings to onclick by escaping quotes if necessary, though our options are simple text here.
+                // We use data attributes to avoid quote escaping hell in inline onclick
+                return `
+                    &lt;button 
+                        class=&#34;${btnClass}&#34; 
+                        ${state.showResult ? &#39;disabled&#39; : &#39;&#39;} 
+                        onclick=&#34;handleAnswerClick(&#39;${option.replace(/&#39;/g, &#34;\\&#39;&#34;)}&#39;)&#34;
+                    &gt;
+                        &lt;span class=&#34;pr-8 block&#34;&gt;${option}&lt;/span&gt;
+                        ${iconHtml}
+                    &lt;/button&gt;
+                `;
+            }).join(&#39;&#39;);
+
+            // Explanation Section
+            let resultHtml = &#34;&#34;;
+            if (state.showResult) {
+                const resultClass = state.isCorrect ? &#39;bg-green-50 border border-green-200&#39; : &#39;bg-red-50 border border-red-200&#39;;
+                const resultIcon = state.isCorrect ? &#39;check-circle&#39; : &#39;x-circle&#39;;
+                const resultText = state.isCorrect ? &#39;Дұрыс!&#39; : &#39;Қате!&#39;;
+                const resultTextColor = state.isCorrect ? &#39;text-green-700&#39; : &#39;text-red-700&#39;;
+
+                resultHtml = `
+                    &lt;div class=&#34;rounded-xl p-5 mb-6 animate-fade-in ${resultClass}&#34;&gt;
+                        &lt;div class=&#34;flex items-center gap-2 mb-2&#34;&gt;
+                            &lt;span class=&#34;font-bold ${resultTextColor} flex items-center gap-2&#34;&gt;
+                                &lt;i data-lucide=&#34;${resultIcon}&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt; ${resultText}
+                            &lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;p class=&#34;text-gray-700 leading-relaxed flex items-center flex-wrap gap-1&#34;&gt;
+                            &lt;span class=&#34;font-bold text-indigo-700 mr-1&#34;&gt;Шешімі: &lt;/span&gt;
+                            ${currentQuestion.explanation}
+                        &lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;button
+                        onclick=&#34;handleNextQuestion()&#34;
+                        class=&#34;w-full py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg hover:bg-indigo-700 transition-transform active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer&#34;
+                    &gt;
+                        ${state.currentQuestionIndex === questions.length - 1 ? &#39;Нәтижені көру&#39; : &#39;Келесі сұрақ&#39;}
+                        &lt;i data-lucide=&#34;chevron-right&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                `;
+            }
+
+            return `
+                &lt;div&gt;
+                    &lt;!-- Header --&gt;
+                    &lt;div class=&#34;bg-indigo-600 p-6 text-white relative overflow-hidden&#34;&gt;
+                        &lt;div class=&#34;absolute top-0 right-0 p-4 opacity-10&#34;&gt;
+                            &lt;i data-lucide=&#34;pie-chart&#34; class=&#34;w-32 h-32&#34;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;relative z-10&#34;&gt;
+                            &lt;div class=&#34;flex justify-between items-center mb-4&#34;&gt;
+                                &lt;span class=&#34;bg-indigo-800 px-3 py-1 rounded-full text-sm font-medium border border-indigo-400&#34;&gt;
+                                    Сұрақ ${state.currentQuestionIndex &#43; 1}/${questions.length}
+                                &lt;/span&gt;
+                                &lt;span class=&#34;px-3 py-1 rounded-full text-sm font-bold border ${levelBadgeClass}&#34;&gt;
+                                    Деңгей: ${currentQuestion.level}
+                                &lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;h-2 bg-indigo-900/30 rounded-full overflow-hidden&#34;&gt;
+                                &lt;div class=&#34;h-full bg-yellow-400 transition-all duration-500 ease-out&#34; style=&#34;width: ${progressWidth}%&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Question Content --&gt;
+                    &lt;div class=&#34;p-6&#34;&gt;
+                        &lt;div class=&#34;flex items-start gap-4 mb-6&#34;&gt;
+                            &lt;div class=&#34;bg-indigo-50 p-3 rounded-2xl shrink-0&#34;&gt;
+                                &lt;i data-lucide=&#34;${currentQuestion.iconName}&#34; class=&#34;w-8 h-8 ${currentQuestion.iconColor}&#34;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                            &lt;h2 class=&#34;text-xl font-bold text-gray-800 leading-snug flex-grow flex items-center flex-wrap gap-1&#34;&gt;
+                                ${currentQuestion.question}
+                            &lt;/h2&gt;
+                        &lt;/div&gt;
+
+                        &lt;!-- Options --&gt;
+                        &lt;div class=&#34;space-y-3 mb-6&#34;&gt;
+                            ${optionsHtml}
+                        &lt;/div&gt;
+
+                        &lt;!-- Result --&gt;
+                        ${resultHtml}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderApp() {
+            if (state.isFinished) {
+                appContainer.innerHTML = renderFinishedScreen();
+            } else {
+                appContainer.innerHTML = renderQuizScreen();
+            }
+            // Re-initialize icons after DOM update
+            lucide.createIcons();
+        }
+
+        // --- Init ---
+        // Expose functions to global scope so inline onclick works
+        window.handleAnswerClick = handleAnswerClick;
+        window.handleNextQuestion = handleNextQuestion;
+        window.restartQuiz = restartQuiz;
+
+        // Start the app
+        renderApp();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -451,7 +827,283 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame158_ru" src="/task/158?lang=ru"
+                            <iframe id="taskFrame158_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Тест по дробям&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4 font-sans&#34;&gt;
+
+    &lt;div id=&#34;app-container&#34; class=&#34;bg-white rounded-3xl shadow-2xl max-w-lg w-full overflow-hidden border border-indigo-100 min-h-[400px]&#34;&gt;
+        &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- Данные и Помощники ---
+
+        function getFractionHtml(n, d) {
+            return `&lt;span class=&#34;inline-flex flex-col items-center justify-center align-middle mx-1 font-bold text-lg text-indigo-800&#34; style=&#34;vertical-align: middle; display: inline-flex;&#34;&gt;
+                &lt;span class=&#34;border-b-2 border-indigo-800 px-1 leading-none pb-0.5&#34;&gt;${n}&lt;/span&gt;
+                &lt;span class=&#34;leading-none pt-0.5&#34;&gt;${d}&lt;/span&gt;
+            &lt;/span&gt;`;
+        }
+
+        const questions = [
+            {
+                id: 1,
+                level: &#34;Легкий&#34;,
+                question: &#34;Марат разделил пиццу на 8 равных частей и съел 3 части. Какой дробью выражается съеденная часть?&#34;,
+                options: [&#34;Правильная дробь&#34;, &#34;Неправильная дробь&#34;, &#34;Равна 1&#34;],
+                correct: &#34;Правильная дробь&#34;,
+                explanation: `Это дробь ${getFractionHtml(3, 8)}. Так как числитель (3) меньше знаменателя (8) — это правильная дробь. Она меньше целой пиццы.`,
+                iconName: &#34;pie-chart&#34;,
+                iconColor: &#34;text-orange-500&#34;
+            },
+            {
+                id: 2,
+                level: &#34;Легкий&#34;,
+                question: &#34;Урок длится 45 минут, но учитель сегодня проводил его 50 минут. Если записать время дробью, какой она будет?&#34;,
+                options: [&#34;Правильная дробь&#34;, &#34;Неправильная дробь&#34;, &#34;Равна 1&#34;],
+                correct: &#34;Неправильная дробь&#34;,
+                explanation: `Это дробь ${getFractionHtml(50, 45)}. Числитель (50) больше знаменателя (45). Такая дробь называется неправильной.`,
+                iconName: &#34;clock&#34;,
+                iconColor: &#34;text-blue-500&#34;
+            },
+            {
+                id: 3,
+                level: &#34;Легкий&#34;,
+                question: &#34;В коробке 10 яиц. Аскар купил их все (все 10). Как описать эту ситуацию дробью?&#34;,
+                options: [&#34;Меньше 1 (Правильная)&#34;, &#34;Равна 1 (Неправильная)&#34;, &#34;Равна 0&#34;],
+                correct: &#34;Равна 1 (Неправильная)&#34;,
+                explanation: `Это дробь ${getFractionHtml(10, 10)}. Если числитель равен знаменателю — это неправильная дробь, и она равна 1 (полная коробка).`,
+                iconName: &#34;check-circle&#34;,
+                iconColor: &#34;text-green-500&#34;
+            },
+            {
+                id: 4,
+                level: &#34;Средний&#34;,
+                question: &#34;Айжан разделила стакан на 5 частей и наполнила сахаром 4 из них. Насыпала ли она целый стакан сахара?&#34;,
+                options: [&#34;Да, целый стакан&#34;, &#34;Нет, не целый&#34;, &#34;Полтора стакана&#34;],
+                correct: &#34;Нет, не целый&#34;,
+                explanation: `Это дробь ${getFractionHtml(4, 5)}. Она правильная (4 &lt; 5), а любая правильная дробь меньше 1. Значит, стакан не полон.`,
+                iconName: &#34;coffee&#34;,
+                iconColor: &#34;text-yellow-700&#34;
+            },
+            {
+                id: 5,
+                level: &#34;Средний&#34;,
+                question: &#34;Беговая дорожка состоит из 6 этапов. Спортсмен случайно пробежал 7 этапов. Что можно сказать о дистанции?&#34;,
+                options: [&#34;Не добежал до финиша&#34;, &#34;Прибежал ровно к финишу&#34;, &#34;Пробежал больше финиша&#34;],
+                correct: &#34;Пробежал больше финиша&#34;,
+                explanation: `Это дробь ${getFractionHtml(7, 6)} — неправильная дробь (7 &gt; 6). Она больше 1. Спортсмен пробежал больше плана.`,
+                iconName: &#34;award&#34;,
+                iconColor: &#34;text-yellow-500&#34;
+            },
+            {
+                id: 6,
+                level: &#34;Средний&#34;,
+                question: &#34;Строителю нужна доска, числитель которой 9, а знаменатель 9. Какая доска ему нужна?&#34;,
+                options: [&#34;9-метровая&#34;, &#34;1-метровая&#34;, &#34;Половина метра&#34;],
+                correct: &#34;1-метровая&#34;,
+                explanation: `Дробь ${getFractionHtml(9, 9)}. Если 9 разделить на 9, получится 1. Неправильная дробь с равными частями всегда равна 1 целому.`,
+                iconName: &#34;ruler&#34;,
+                iconColor: &#34;text-gray-500&#34;
+            },
+            {
+                id: 7,
+                level: &#34;Трудный&#34;,
+                question: &#34;В библиотеке 100 книг. Но ученики запросили 120 книг. Как понять эту ситуацию через дробь?&#34;,
+                options: [&#34;Книг достаточно (Правильная)&#34;, &#34;Книг не хватает (Неправильная)&#34;, &#34;Количество книг совпало&#34;],
+                correct: &#34;Книг не хватает (Неправильная)&#34;,
+                explanation: `Это дробь ${getFractionHtml(120, 100)}. Запрос (120) больше наличия (100). Это означает &#39;дефицит&#39; или превышение нормы.`,
+                iconName: &#34;book-open&#34;,
+                iconColor: &#34;text-indigo-500&#34;
+            },
+            {
+                id: 8,
+                level: &#34;Трудный&#34;,
+                question: &#34;Торт обычно режут на 8 кусков. На столе лежит 15 кусков. Сколько целых тортов на столе?&#34;,
+                options: [&#34;Меньше 1 торта&#34;, &#34;Больше 1 торта&#34;, &#34;Ровно 2 торта&#34;],
+                correct: &#34;Больше 1 торта&#34;,
+                explanation: `Это дробь ${getFractionHtml(15, 8)}. 15 больше 8, значит, это больше 1 целого торта (почти 2 торта).`,
+                iconName: &#34;pie-chart&#34;,
+                iconColor: &#34;text-pink-500&#34;
+            },
+            {
+                id: 9,
+                level: &#34;Трудный&#34;,
+                question: &#34;В кошельке 4 монеты. Если считать каждую монету за 1 целое, как записать 4 монеты дробью?&#34;,
+                options: [&#34;Неправильная дробь&#34;, &#34;Правильная дробь&#34;, &#34;Меньше 1&#34;],
+                correct: &#34;Неправильная дробь&#34;,
+                explanation: `Это дробь ${getFractionHtml(4, 1)}. 4 &gt; 1, поэтому это неправильная дробь. Любое целое число можно записать как дробь со знаменателем 1.`,
+                iconName: &#34;dollar-sign&#34;,
+                iconColor: &#34;text-green-600&#34;
+            },
+            {
+                id: 10,
+                level: &#34;Трудный&#34;,
+                question: &#34;Какое утверждение ВЕРНО?&#34;,
+                options: [&#34;Правильная дробь всегда больше 1&#34;, &#34;Неправильная дробь всегда больше правильной&#34;, &#34;У правильной дроби числитель больше&#34;],
+                correct: &#34;Неправильная дробь всегда больше правильной&#34;,
+                explanation: &#34;Правильная дробь &lt; 1, а неправильная ≥ 1. Поэтому любая неправильная дробь больше любой правильной.&#34;,
+                iconName: &#34;check-circle&#34;,
+                iconColor: &#34;text-purple-500&#34;
+            }
+        ];
+
+        // --- Управление состоянием ---
+        const state = {
+            currentQuestionIndex: 0,
+            score: 0,
+            showResult: false,
+            isFinished: false,
+            selectedAnswer: null,
+            isCorrect: null
+        };
+
+        const appContainer = document.getElementById(&#39;app-container&#39;);
+
+        function handleAnswerClick(option) {
+            if (state.showResult) return;
+            const currentQuestion = questions[state.currentQuestionIndex];
+            const correct = option === currentQuestion.correct;
+            state.selectedAnswer = option;
+            state.isCorrect = correct;
+            state.showResult = true;
+            if (correct) state.score&#43;&#43;;
+            renderApp();
+        }
+
+        function handleNextQuestion() {
+            if (state.currentQuestionIndex &lt; questions.length - 1) {
+                state.currentQuestionIndex&#43;&#43;;
+                state.showResult = false;
+                state.selectedAnswer = null;
+                state.isCorrect = null;
+                renderApp();
+            } else {
+                state.isFinished = true;
+                renderApp();
+            }
+        }
+
+        function restartQuiz() {
+            state.currentQuestionIndex = 0;
+            state.score = 0;
+            state.showResult = false;
+            state.isFinished = false;
+            state.selectedAnswer = null;
+            state.isCorrect = null;
+            renderApp();
+        }
+
+        function renderFinishedScreen() {
+            let message = &#34;&#34;;
+            let messageColor = &#34;&#34;;
+            if (state.score === 10) {
+                message = &#34;Великолепно! Ты мастер дробей! 🏆&#34;;
+                messageColor = &#34;text-green-600&#34;;
+            } else if (state.score &gt;= 7) {
+                message = &#34;Хороший результат! Но есть что повторить. 👍&#34;;
+                messageColor = &#34;text-blue-600&#34;;
+            } else {
+                message = &#34;Нужно больше тренироваться! Не сдавайся! 💪&#34;;
+                messageColor = &#34;text-orange-500&#34;;
+            }
+
+            return `
+                &lt;div class=&#34;p-8 text-center animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex justify-center mb-6&#34;&gt;&lt;i data-lucide=&#34;award&#34; class=&#34;w-24 h-24 text-yellow-400&#34;&gt;&lt;/i&gt;&lt;/div&gt;
+                    &lt;h2 class=&#34;text-3xl font-bold text-indigo-800 mb-4&#34;&gt;Тест завершен!&lt;/h2&gt;
+                    &lt;p class=&#34;text-gray-600 text-lg mb-6&#34;&gt;Ваш результат: &lt;span class=&#34;font-bold text-indigo-600 text-2xl&#34;&gt;${state.score} / ${questions.length}&lt;/span&gt;&lt;/p&gt;
+                    &lt;div class=&#34;mb-8&#34;&gt;&lt;p class=&#34;${messageColor} font-bold text-xl&#34;&gt;${message}&lt;/p&gt;&lt;/div&gt;
+                    &lt;button onclick=&#34;restartQuiz()&#34; class=&#34;w-full py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg hover:bg-indigo-700 flex items-center justify-center gap-2 shadow-lg cursor-pointer&#34;&gt;
+                        &lt;i data-lucide=&#34;refresh-ccw&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt; Начать заново
+                    &lt;/button&gt;
+                &lt;/div&gt;`;
+        }
+
+        function renderQuizScreen() {
+            const currentQuestion = questions[state.currentQuestionIndex];
+            const progressWidth = ((state.currentQuestionIndex &#43; 1) / questions.length) * 100;
+            let levelBadgeClass = currentQuestion.level === &#34;Легкий&#34; ? &#34;bg-green-500&#34; : (currentQuestion.level === &#34;Средний&#34; ? &#34;bg-yellow-500&#34; : &#34;bg-red-500&#34;);
+
+            const optionsHtml = currentQuestion.options.map(option =&gt; {
+                let btnClass = &#34;w-full p-4 rounded-xl text-left border-2 transition-all duration-200 text-lg font-medium relative &#34;;
+                let iconHtml = &#34;&#34;;
+                if (state.showResult) {
+                    if (option === currentQuestion.correct) {
+                        btnClass &#43;= &#34;bg-green-100 border-green-500 text-green-800&#34;;
+                        iconHtml = `&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-6 h-6 text-green-600 absolute right-4 top-1/2 -translate-y-1/2&#34;&gt;&lt;/i&gt;`;
+                    } else if (option === state.selectedAnswer) {
+                        btnClass &#43;= &#34;bg-red-100 border-red-500 text-red-800&#34;;
+                        iconHtml = `&lt;i data-lucide=&#34;x-circle&#34; class=&#34;w-6 h-6 text-red-600 absolute right-4 top-1/2 -translate-y-1/2&#34;&gt;&lt;/i&gt;`;
+                    } else btnClass &#43;= &#34;bg-gray-50 border-gray-200 text-gray-400 opacity-60&#34;;
+                } else btnClass &#43;= &#34;bg-white border-gray-200 hover:border-indigo-400 hover:bg-indigo-50 text-gray-700 cursor-pointer&#34;;
+
+                return `&lt;button class=&#34;${btnClass}&#34; ${state.showResult ? &#39;disabled&#39; : &#39;&#39;} onclick=&#34;handleAnswerClick(&#39;${option.replace(/&#39;/g, &#34;\\&#39;&#34;)}&#39;)&#34;&gt;
+                    &lt;span class=&#34;pr-8 block&#34;&gt;${option}&lt;/span&gt;${iconHtml}&lt;/button&gt;`;
+            }).join(&#39;&#39;);
+
+            let resultHtml = state.showResult ? `
+                &lt;div class=&#34;rounded-xl p-5 mb-6 animate-fade-in ${state.isCorrect ? &#39;bg-green-50 border-green-200&#39; : &#39;bg-red-50 border-red-200&#39;}&#34;&gt;
+                    &lt;div class=&#34;flex items-center gap-2 mb-2&#34;&gt;
+                        &lt;span class=&#34;font-bold ${state.isCorrect ? &#39;text-green-700&#39; : &#39;text-red-700&#39;} flex items-center gap-2&#34;&gt;
+                            &lt;i data-lucide=&#34;${state.isCorrect ? &#39;check-circle&#39; : &#39;x-circle&#39;}&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt; ${state.isCorrect ? &#39;Верно!&#39; : &#39;Ошибка!&#39;}
+                        &lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&#34;text-gray-700 leading-relaxed&#34;&gt;&lt;span class=&#34;font-bold text-indigo-700&#34;&gt;Объяснение: &lt;/span&gt;${currentQuestion.explanation}&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;button onclick=&#34;handleNextQuestion()&#34; class=&#34;w-full py-4 bg-indigo-600 text-white rounded-xl font-bold text-lg hover:bg-indigo-700 flex items-center justify-center gap-2 shadow-lg cursor-pointer&#34;&gt;
+                    ${state.currentQuestionIndex === questions.length - 1 ? &#39;Посмотреть итог&#39; : &#39;Следующий вопрос&#39;} &lt;i data-lucide=&#34;chevron-right&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt;
+                &lt;/button&gt;` : &#34;&#34;;
+
+            return `
+                &lt;div&gt;
+                    &lt;div class=&#34;bg-indigo-600 p-6 text-white relative&#34;&gt;
+                        &lt;div class=&#34;flex justify-between items-center mb-4&#34;&gt;
+                            &lt;span class=&#34;bg-indigo-800 px-3 py-1 rounded-full text-sm&#34;&gt;Вопрос ${state.currentQuestionIndex &#43; 1}/${questions.length}&lt;/span&gt;
+                            &lt;span class=&#34;px-3 py-1 rounded-full text-sm font-bold ${levelBadgeClass}&#34;&gt;${currentQuestion.level}&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;h-2 bg-indigo-900/30 rounded-full overflow-hidden&#34;&gt;
+                            &lt;div class=&#34;h-full bg-yellow-400 transition-all duration-500&#34; style=&#34;width: ${progressWidth}%&#34;&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;p-6&#34;&gt;
+                        &lt;div class=&#34;flex items-start gap-4 mb-6&#34;&gt;
+                            &lt;div class=&#34;bg-indigo-50 p-3 rounded-2xl shrink-0&#34;&gt;&lt;i data-lucide=&#34;${currentQuestion.iconName}&#34; class=&#34;w-8 h-8 ${currentQuestion.iconColor}&#34;&gt;&lt;/i&gt;&lt;/div&gt;
+                            &lt;h2 class=&#34;text-xl font-bold text-gray-800 leading-snug&#34;&gt;${currentQuestion.question}&lt;/h2&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;space-y-3 mb-6&#34;&gt;${optionsHtml}&lt;/div&gt;
+                        ${resultHtml}
+                    &lt;/div&gt;
+                &lt;/div&gt;`;
+        }
+
+        function renderApp() {
+            appContainer.innerHTML = state.isFinished ? renderFinishedScreen() : renderQuizScreen();
+            lucide.createIcons();
+        }
+
+        window.handleAnswerClick = handleAnswerClick;
+        window.handleNextQuestion = handleNextQuestion;
+        window.restartQuiz = restartQuiz;
+        renderApp();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

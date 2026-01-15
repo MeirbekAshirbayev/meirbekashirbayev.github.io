@@ -405,7 +405,586 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame148" src="/task/148?lang=kz"
+                            <iframe id="taskFrame148" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Математикалық Квест: Бөлгіштер мен Еселіктер&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;link href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&#34; rel=&#34;stylesheet&#34;&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap&#39;);
+        
+        body {
+            font-family: &#39;Nunito&#39;, sans-serif;
+            background-color: #f0f9ff;
+        }
+
+        .level-card {
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hint-box {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease;
+            opacity: 0;
+        }
+
+        .hint-box.open {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .option-btn.selected {
+            background-color: #3b82f6;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            animation: fall linear forwards;
+            z-index: 100;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(720deg); }
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-blue-50 min-h-screen&#34;&gt;
+
+    &lt;!-- Header --&gt;
+    &lt;header class=&#34;bg-white shadow-md sticky top-0 z-50&#34;&gt;
+        &lt;div class=&#34;max-w-4xl mx-auto px-4 py-4 flex justify-between items-center&#34;&gt;
+            &lt;div class=&#34;flex items-center gap-3&#34;&gt;
+                &lt;div class=&#34;w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl&#34;&gt;
+                    &lt;i class=&#34;fas fa-calculator&#34;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;h1 class=&#34;text-xl md:text-2xl font-bold text-gray-800&#34;&gt;Математикалық Квест&lt;/h1&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;bg-blue-100 px-4 py-2 rounded-full&#34;&gt;
+                &lt;span class=&#34;font-bold text-blue-800&#34;&gt;Ұпай: &lt;span id=&#34;total-score&#34;&gt;0&lt;/span&gt;/100&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Main Content --&gt;
+    &lt;main class=&#34;max-w-3xl mx-auto px-4 py-8 pb-20&#34;&gt;
+        
+        &lt;!-- Intro --&gt;
+        &lt;div class=&#34;bg-white rounded-2xl shadow-lg p-6 mb-8 text-center border-l-8 border-blue-500&#34;&gt;
+            &lt;h2 class=&#34;text-2xl font-bold text-gray-800 mb-2&#34;&gt;Натурал санның бөлгіштері мен еселіктері&lt;/h2&gt;
+            &lt;p class=&#34;text-gray-600&#34;&gt;Деңгейлерді таңдап, тапсырмаларды орында. Әр дұрыс жауап үшін ұпай жина!&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Level Tabs --&gt;
+        &lt;div class=&#34;flex justify-center mb-8 gap-2 md:gap-4&#34;&gt;
+            &lt;button onclick=&#34;switchLevel(&#39;A&#39;)&#34; id=&#34;tab-A&#34; class=&#34;px-6 py-2 rounded-full font-bold bg-blue-600 text-white shadow-md transition transform hover:scale-105&#34;&gt;
+                А Деңгейі (Оңай)
+            &lt;/button&gt;
+            &lt;button onclick=&#34;switchLevel(&#39;B&#39;)&#34; id=&#34;tab-B&#34; class=&#34;px-6 py-2 rounded-full font-bold bg-white text-gray-600 hover:bg-green-100 shadow-md transition transform hover:scale-105&#34;&gt;
+                В Деңгейі (Орташа)
+            &lt;/button&gt;
+            &lt;button onclick=&#34;switchLevel(&#39;C&#39;)&#34; id=&#34;tab-C&#34; class=&#34;px-6 py-2 rounded-full font-bold bg-white text-gray-600 hover:bg-purple-100 shadow-md transition transform hover:scale-105&#34;&gt;
+                С Деңгейі (Қиын)
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Questions Container --&gt;
+        &lt;div id=&#34;questions-container&#34; class=&#34;min-h-[400px]&#34;&gt;
+            &lt;!-- Only ONE Question injected here --&gt;
+        &lt;/div&gt;
+
+    &lt;/main&gt;
+
+    &lt;!-- JavaScript --&gt;
+    &lt;script&gt;
+        // --- Data ---
+        const tasks = [
+            // Level A
+            {
+                id: 1,
+                level: &#39;A&#39;,
+                points: 10,
+                title: &#34;1-тапсырма. «Сандар әлемінде»&#34;,
+                desc: &#34;Төмендегі сандардың ішінен &lt;strong&gt;36 санының барлық бөлгіштерін&lt;/strong&gt; теріп белгіле.&#34;,
+                hint: &#34;36 саны қандай сандарға қалдықсыз бөлінеді? Мысалы, 36:1=36.&#34;,
+                type: &#39;multi-select&#39;,
+                options: [1, 2, 3, 5, 6, 8, 9, 10, 12, 18, 24, 36, 72],
+                correct: [1, 2, 3, 6, 9, 12, 18, 36]
+            },
+            {
+                id: 2,
+                level: &#39;A&#39;,
+                points: 10,
+                title: &#34;2-тапсырма. «Еселіктер эстафетасы»&#34;,
+                desc: &#34;&lt;strong&gt;9 санының&lt;/strong&gt; алғашқы 5 еселігін бос орындарға жаз.&#34;,
+                hint: &#34;9-ды 1-ге, 2-ге, 3-ке, 4-ке және 5-ке көбейтіп көр.&#34;,
+                type: &#39;inputs-list&#39;,
+                count: 5,
+                correct: [9, 18, 27, 36, 45]
+            },
+            {
+                id: 3,
+                level: &#39;A&#39;,
+                points: 10,
+                title: &#34;3-тапсырма. «Шындық па, жалған ба?»&#34;,
+                desc: &#34;12 саны 24-тің еселігі ме?&#34;,
+                hint: &#34;Еселік әрқашан үлкен немесе тең болады. 24 саны 12-ге бөліне ме?&#34;,
+                type: &#39;boolean&#39;,
+                options: [&#39;Иә&#39;, &#39;Жоқ&#39;],
+                correct: &#39;Жоқ&#39; // Updated logic: 12 is a divisor, not a multiple.
+            },
+            
+            // Level B
+            {
+                id: 4,
+                level: &#39;B&#39;,
+                points: 10,
+                title: &#34;4-тапсырма. «Жұмбақ сан»&#34;,
+                desc: &#34;Мен 20 мен 50 санының арасындағы санмын. Мен бір мезгілде 4-ке де, 6-ға да еселікпін. Мен қандай санмын? (Барлық нұсқаларды үтір арқылы жаз, мысалы: 5, 10)&#34;,
+                hint: &#34;4 пен 6-ның ең кіші ортақ еселігін тап (12), содан кейін оның 20 мен 50 арасындағы еселіктерін ізде.&#34;,
+                type: &#39;text&#39;,
+                correct: [&#34;24, 36, 48&#34;, &#34;24,36,48&#34;, &#34;24 36 48&#34;]
+            },
+            {
+                id: 5,
+                level: &#39;B&#39;,
+                points: 10,
+                title: &#34;5-тапсырма. «Сыныпты бөлу»&#34;,
+                desc: &#34;Сыныпта 30 оқушы бар. Мұғалім оларды тең топтарға бөлгісі келеді (топ саны 1-ден көп). Неше түрлі тәсілмен бөлуге болады?&#34;,
+                hint: &#34;30 санының барлық бөлгіштерін тап. Бірақ &#39;1 топ&#39; деген нұсқаны санама.&#34;,
+                type: &#39;radio&#39;,
+                options: [&#39;4 тәсілмен&#39;, &#39;5 тәсілмен&#39;, &#39;6 тәсілмен&#39;, &#39;8 тәсілмен&#39;],
+                correct: &#39;6 тәсілмен&#39;
+            },
+            {
+                id: 6,
+                level: &#39;B&#39;,
+                points: 10,
+                title: &#34;6-тапсырма. «Артығын тап»&#34;,
+                desc: &#34;Мына қатардағы артық санды тап: 7, 14, 21, 29, 35, 42.&#34;,
+                hint: &#34;Бұл сандардың қайсысы 7-ге бөлінбейді?&#34;,
+                type: &#39;radio&#39;,
+                options: [&#39;21&#39;, &#39;29&#39;, &#39;35&#39;, &#39;14&#39;],
+                correct: &#39;29&#39;
+            },
+
+            // Level C
+            {
+                id: 7,
+                level: &#39;C&#39;,
+                points: 10,
+                title: &#34;7-тапсырма. «Уақыт машинасы»&#34;,
+                desc: &#34;Бірінші сағат 12 минут сайын, екіншісі 18 минут сайын шырылдайды. Таңғы 9:00-де бірге шырылдады. Келесі жолы сағат нешеде бірге шырылдайды?&#34;,
+                hint: &#34;12 мен 18 сандарының Ең Кіші Ортақ Еселігін (ЕКОЕ) тап. Сол минутты 9:00-ге қос.&#34;,
+                type: &#39;time&#39;, 
+                correct: [&#34;9:36&#34;, &#34;09:36&#34;]
+            },
+            {
+                id: 8,
+                level: &#39;C&#39;,
+                points: 10,
+                title: &#34;8-тапсырма. «Логикалық сүзгі»&#34;,
+                desc: &#34;Санды тап: 1) Екі таңбалы; 2) 5-ке еселік; 3) Цифрларының қосындысы 9-ға тең.&#34;,
+                hint: &#34;5-ке бөлінетін сандар 0 немесе 5-ке аяқталады. Цифрларын қосып көр (мысалы 1&#43;5=6, бізге 9 керек).&#34;,
+                type: &#39;text&#39;,
+                correct: [&#34;45&#34;]
+            },
+            {
+                id: 9,
+                level: &#39;C&#39;,
+                points: 10,
+                title: &#34;9-тапсырма. «Зерттеу сұрағы»&#34;,
+                desc: &#34;Қандай сандардың бөлгіштерінің саны ТАҚ болады?&#34;,
+                hint: &#34;Мысалы: 16 (бөлгіштері: 1, 2, 4, 8, 16 - 5 дана). 16 қандай сан?&#34;,
+                type: &#39;radio&#39;,
+                options: [&#39;Жұп сандардың&#39;, &#39;Жай сандардың&#39;, &#39;Толық квадрат сандардың&#39;, &#39;Барлық сандардың&#39;],
+                correct: &#39;Толық квадрат сандардың&#39;
+            },
+            {
+                id: 10,
+                level: &#39;C&#39;,
+                points: 10,
+                title: &#34;10-тапсырма. «Сыйлықтар»&#34;,
+                desc: &#34;48 алма мен 36 алмұрттан ең көп дегенде неше бірдей сыйлық пакетін жасауға болады?&#34;,
+                hint: &#34;48 бен 36-ның Ең Үлкен Ортақ Бөлгішін (ЕҮОБ) тап.&#34;,
+                type: &#39;text&#39;,
+                correct: [&#34;12&#34;]
+            }
+        ];
+
+        let currentLevel = &#39;A&#39;;
+        let currentQuestionIndex = 0;
+        let userAnswersData = {}; // Stores the values user entered
+        let score = 0;
+        let answeredQuestions = new Set();
+
+        // --- Init ---
+        document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
+            renderQuestions();
+            updateScore();
+        });
+
+        // --- Functions ---
+        function switchLevel(level) {
+            currentLevel = level;
+            currentQuestionIndex = 0; // Reset index when switching levels
+            
+            // Update tabs UI
+            [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;].forEach(l =&gt; {
+                const btn = document.getElementById(`tab-${l}`);
+                if (l === level) {
+                    btn.classList.remove(&#39;bg-white&#39;, &#39;text-gray-600&#39;);
+                    if(l === &#39;A&#39;) btn.classList.add(&#39;bg-blue-600&#39;, &#39;text-white&#39;);
+                    if(l === &#39;B&#39;) btn.classList.add(&#39;bg-green-600&#39;, &#39;text-white&#39;);
+                    if(l === &#39;C&#39;) btn.classList.add(&#39;bg-purple-600&#39;, &#39;text-white&#39;);
+                } else {
+                    btn.classList.add(&#39;bg-white&#39;, &#39;text-gray-600&#39;);
+                    btn.classList.remove(&#39;bg-blue-600&#39;, &#39;bg-green-600&#39;, &#39;bg-purple-600&#39;, &#39;text-white&#39;);
+                }
+            });
+
+            renderQuestions();
+        }
+
+        function nextQuestion() {
+            const levelTasks = tasks.filter(t =&gt; t.level === currentLevel);
+            if (currentQuestionIndex &lt; levelTasks.length - 1) {
+                currentQuestionIndex&#43;&#43;;
+                renderQuestions();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex &gt; 0) {
+                currentQuestionIndex--;
+                renderQuestions();
+            }
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById(&#39;questions-container&#39;);
+            container.innerHTML = &#39;&#39;;
+            
+            const levelTasks = tasks.filter(t =&gt; t.level === currentLevel);
+            const task = levelTasks[currentQuestionIndex];
+            
+            if (!task) return;
+
+            const isAnswered = answeredQuestions.has(task.id);
+            const card = document.createElement(&#39;div&#39;);
+            card.className = `level-card bg-white rounded-xl shadow-md p-6 mb-6 border-l-4 ${getBorderColor(task.level)}`;
+            
+            // Add Progress Indicator
+            const progressHTML = `&lt;div class=&#34;text-xs font-bold text-gray-400 uppercase tracking-wide mb-2&#34;&gt;
+                ${task.level} Деңгейі: Сұрақ ${currentQuestionIndex &#43; 1} / ${levelTasks.length}
+            &lt;/div&gt;`;
+
+            let inputHTML = &#39;&#39;;
+            
+            // --- Generate Inputs based on Type ---
+            if (task.type === &#39;multi-select&#39;) {
+                inputHTML = `&lt;div class=&#34;flex flex-wrap gap-2 mb-4&#34;&gt;
+                    ${task.options.map(opt =&gt; `
+                        &lt;button onclick=&#34;toggleOption(this, ${task.id})&#34; 
+                            class=&#34;option-btn px-4 py-2 rounded-lg border-2 border-gray-200 hover:border-blue-300 font-bold text-gray-700 transition&#34;
+                            ${isAnswered ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                            ${opt}
+                        &lt;/button&gt;
+                    `).join(&#39;&#39;)}
+                &lt;/div&gt;`;
+            } 
+            else if (task.type === &#39;inputs-list&#39;) {
+                inputHTML = `&lt;div class=&#34;flex flex-wrap gap-2 mb-4&#34;&gt;
+                    ${Array(task.count).fill(0).map((_, i) =&gt; `
+                        &lt;input type=&#34;number&#34; class=&#34;w-20 p-2 border-2 border-gray-200 rounded-lg focus:border-blue-500 outline-none text-center font-bold&#34; 
+                        id=&#34;task-${task.id}-input-${i}&#34; ${isAnswered ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                    `).join(&#39;&#39;)}
+                &lt;/div&gt;`;
+            }
+            else if (task.type === &#39;radio&#39;) {
+                inputHTML = `&lt;div class=&#34;flex flex-col gap-2 mb-4&#34;&gt;
+                    ${task.options.map(opt =&gt; `
+                        &lt;label class=&#34;flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50&#34;&gt;
+                            &lt;input type=&#34;radio&#34; name=&#34;task-${task.id}&#34; value=&#34;${opt}&#34; class=&#34;w-5 h-5 text-blue-600&#34; ${isAnswered ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                            &lt;span class=&#34;font-medium text-gray-700&#34;&gt;${opt}&lt;/span&gt;
+                        &lt;/label&gt;
+                    `).join(&#39;&#39;)}
+                &lt;/div&gt;`;
+            }
+            else if (task.type === &#39;boolean&#39;) {
+                inputHTML = `&lt;div class=&#34;flex gap-4 mb-4&#34;&gt;
+                    &lt;button onclick=&#34;selectBool(this, ${task.id}, &#39;Иә&#39;)&#34; class=&#34;bool-btn px-6 py-2 rounded-lg border-2 border-gray-200 font-bold hover:bg-green-50&#34;&gt;Иә&lt;/button&gt;
+                    &lt;button onclick=&#34;selectBool(this, ${task.id}, &#39;Жоқ&#39;)&#34; class=&#34;bool-btn px-6 py-2 rounded-lg border-2 border-gray-200 font-bold hover:bg-red-50&#34;&gt;Жоқ&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;input type=&#34;hidden&#34; id=&#34;task-${task.id}-input&#34;&gt;`;
+            }
+            else { // text or time
+                inputHTML = `&lt;div class=&#34;mb-4&#34;&gt;
+                    &lt;input type=&#34;text&#34; id=&#34;task-${task.id}-input&#34; 
+                    class=&#34;w-full md:w-1/2 p-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 outline-none font-bold text-gray-700&#34;
+                    placeholder=&#34;Жауабыңды жаз...&#34; ${isAnswered ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                &lt;/div&gt;`;
+            }
+
+            // --- Card HTML ---
+            card.innerHTML = `
+                ${progressHTML}
+                &lt;div class=&#34;flex justify-between items-start mb-4&#34;&gt;
+                    &lt;h3 class=&#34;text-xl font-bold text-gray-800&#34;&gt;${task.title}&lt;/h3&gt;
+                    ${isAnswered ? &#39;&lt;span class=&#34;text-green-500 font-bold&#34;&gt;&lt;i class=&#34;fas fa-check-circle&#34;&gt;&lt;/i&gt; Орындалды&lt;/span&gt;&#39; : &#39;&#39;}
+                &lt;/div&gt;
+                &lt;p class=&#34;text-gray-600 mb-4 text-lg&#34;&gt;${task.desc}&lt;/p&gt;
+                
+                ${inputHTML}
+
+                &lt;div class=&#34;flex flex-wrap items-center justify-between gap-4 mt-6&#34;&gt;
+                    &lt;button onclick=&#34;toggleHint(${task.id})&#34; class=&#34;text-yellow-600 font-bold flex items-center gap-2 hover:text-yellow-700&#34;&gt;
+                        &lt;i class=&#34;far fa-lightbulb&#34;&gt;&lt;/i&gt; Кеңес алу
+                    &lt;/button&gt;
+                    
+                    ${!isAnswered ? `
+                    &lt;button onclick=&#34;checkAnswer(${task.id})&#34; class=&#34;bg-blue-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-blue-700 shadow-md transition transform hover:scale-105 active:scale-95&#34;&gt;
+                        Тексеру
+                    &lt;/button&gt;` : &#39;&#39;}
+                &lt;/div&gt;
+
+                &lt;div id=&#34;hint-${task.id}&#34; class=&#34;hint-box bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-4 text-yellow-800 text-sm&#34;&gt;
+                    &lt;i class=&#34;fas fa-info-circle mr-1&#34;&gt;&lt;/i&gt; ${task.hint}
+                &lt;/div&gt;
+                
+                &lt;div id=&#34;feedback-${task.id}&#34; class=&#34;hidden mt-4 p-4 rounded-lg font-bold text-center&#34;&gt;&lt;/div&gt;
+
+                &lt;!-- Navigation Buttons --&gt;
+                &lt;div class=&#34;flex justify-between items-center mt-8 pt-4 border-t border-gray-100&#34;&gt;
+                    &lt;button onclick=&#34;prevQuestion()&#34; class=&#34;px-4 py-2 text-gray-500 font-bold hover:text-gray-700 ${currentQuestionIndex === 0 ? &#39;invisible&#39; : &#39;&#39;}&#34;&gt;
+                        &lt;i class=&#34;fas fa-arrow-left mr-2&#34;&gt;&lt;/i&gt; Алдыңғы
+                    &lt;/button&gt;
+                    
+                    ${currentQuestionIndex &lt; levelTasks.length - 1 ? 
+                        `&lt;button onclick=&#34;nextQuestion()&#34; class=&#34;px-6 py-2 bg-gray-100 text-gray-700 font-bold rounded-lg hover:bg-gray-200 transition&#34;&gt;
+                            Келесі &lt;i class=&#34;fas fa-arrow-right ml-2&#34;&gt;&lt;/i&gt;
+                        &lt;/button&gt;` 
+                        : 
+                        `&lt;span class=&#34;text-sm text-gray-400 font-bold&#34;&gt;Деңгей аяқталды&lt;/span&gt;`
+                    }
+                &lt;/div&gt;
+            `;
+            
+            container.appendChild(card);
+            
+            // Restore previous inputs if they exist in userAnswersData or DOM logic
+            restoreValues(task);
+            
+            // If already answered, show feedback state
+            if(isAnswered) {
+                const feedbackEl = document.getElementById(`feedback-${task.id}`);
+                feedbackEl.innerHTML = &#34;🎉 Жарайсың! Дұрыс жауап!&#34;;
+                feedbackEl.classList.remove(&#39;hidden&#39;);
+                feedbackEl.classList.add(&#39;bg-green-100&#39;, &#39;text-green-700&#39;);
+            }
+        }
+
+        function restoreValues(task) {
+            if (!userAnswersData[task.id]) return;
+            const data = userAnswersData[task.id];
+
+            if (task.type === &#39;multi-select&#39;) {
+                 // Restore selected buttons
+                 const card = document.getElementById(`questions-container`).firstElementChild;
+                 const btns = card.querySelectorAll(&#39;.option-btn&#39;);
+                 btns.forEach(btn =&gt; {
+                     if (data.includes(parseInt(btn.innerText))) {
+                         btn.classList.add(&#39;selected&#39;);
+                         btn.classList.add(&#39;bg-blue-500&#39;, &#39;text-white&#39;, &#39;border-blue-600&#39;); // Visual fix
+                     }
+                 });
+            }
+            else if (task.type === &#39;inputs-list&#39;) {
+                data.forEach((val, i) =&gt; {
+                    const el = document.getElementById(`task-${task.id}-input-${i}`);
+                    if(el) el.value = val;
+                });
+            }
+            else if (task.type === &#39;radio&#39;) {
+                const radio = document.querySelector(`input[name=&#34;task-${task.id}&#34;][value=&#34;${data}&#34;]`);
+                if(radio) radio.checked = true;
+            }
+            else if (task.type === &#39;boolean&#39;) {
+                const btn = document.querySelector(`button[onclick*=&#34;&#39;${data}&#39;&#34;]`);
+                if(btn) {
+                    btn.classList.add(&#39;bg-blue-500&#39;, &#39;text-white&#39;, &#39;selected&#39;);
+                }
+            }
+            else {
+                const el = document.getElementById(`task-${task.id}-input`);
+                if(el) el.value = data;
+            }
+        }
+
+        function getBorderColor(level) {
+            if(level === &#39;A&#39;) return &#39;border-blue-500&#39;;
+            if(level === &#39;B&#39;) return &#39;border-green-500&#39;;
+            return &#39;border-purple-500&#39;;
+        }
+
+        function toggleHint(id) {
+            const box = document.getElementById(`hint-${id}`);
+            if (box.classList.contains(&#39;open&#39;)) {
+                box.classList.remove(&#39;open&#39;);
+            } else {
+                box.classList.add(&#39;open&#39;);
+            }
+        }
+
+        function toggleOption(btn, taskId) {
+            if (answeredQuestions.has(taskId)) return;
+            btn.classList.toggle(&#39;selected&#39;);
+        }
+
+        function selectBool(btn, taskId, value) {
+            if (answeredQuestions.has(taskId)) return;
+            // Deselect siblings
+            const parent = btn.parentElement;
+            Array.from(parent.children).forEach(c =&gt; c.classList.remove(&#39;bg-blue-500&#39;, &#39;text-white&#39;, &#39;selected&#39;));
+            
+            // Select clicked
+            btn.classList.add(&#39;bg-blue-500&#39;, &#39;text-white&#39;, &#39;selected&#39;);
+            document.getElementById(`task-${taskId}-input`).value = value;
+        }
+
+        function checkAnswer(id) {
+            const task = tasks.find(t =&gt; t.id === id);
+            let isCorrect = false;
+            let feedback = &#34;&#34;;
+            let savedData = null;
+
+            // --- Validation Logic ---
+            
+            if (task.type === &#39;multi-select&#39;) {
+                const card = document.getElementById(`questions-container`).firstElementChild;
+                const selected = Array.from(card.querySelectorAll(&#39;.option-btn.selected&#39;)).map(b =&gt; parseInt(b.innerText));
+                
+                const sortedSelected = selected.sort((a,b)=&gt;a-b);
+                const sortedCorrect = task.correct.sort((a,b)=&gt;a-b);
+                isCorrect = JSON.stringify(sortedSelected) === JSON.stringify(sortedCorrect);
+                
+                if(!isCorrect) feedback = &#34;Қате. Барлық бөлгіштерді дұрыс таңдамадың немесе артық сан белгіледің.&#34;;
+                savedData = selected;
+            }
+            
+            else if (task.type === &#39;inputs-list&#39;) {
+                const inputs = [];
+                for(let i=0; i&lt;task.count; i&#43;&#43;) {
+                    const val = document.getElementById(`task-${id}-input-${i}`).value;
+                    if(val) inputs.push(parseInt(val));
+                }
+                isCorrect = JSON.stringify(inputs) === JSON.stringify(task.correct);
+                if(!isCorrect) feedback = &#34;Сандарды ретімен және дұрыс жаз.&#34;;
+                savedData = inputs;
+            }
+            
+            else if (task.type === &#39;radio&#39;) {
+                const selected = document.querySelector(`input[name=&#34;task-${id}&#34;]:checked`);
+                if (selected) {
+                    isCorrect = selected.value === task.correct;
+                    savedData = selected.value;
+                }
+                if(!isCorrect) feedback = &#34;Дұрыс емес, қайталап ойлан.&#34;;
+            }
+
+            else if (task.type === &#39;boolean&#39;) {
+                 const val = document.getElementById(`task-${id}-input`).value;
+                 isCorrect = val === task.correct;
+                 if(!isCorrect) feedback = &#34;Дұрыс емес. Қайта ойлан.&#34;;
+                 savedData = val;
+            }
+
+            else { // Text / Time
+                const input = document.getElementById(`task-${id}-input`).value.trim();
+                const normalizedInput = input.replace(/\s&#43;/g, &#39;&#39;).replace(&#39;:&#39;, &#39;&#39;).toLowerCase();
+                
+                isCorrect = task.correct.some(ans =&gt; {
+                    const normAns = ans.replace(/\s&#43;/g, &#39;&#39;).replace(&#39;:&#39;, &#39;&#39;).toLowerCase();
+                    return normalizedInput === normAns;
+                });
+
+                if(!isCorrect) feedback = &#34;Жауап сәйкес келмеді. Қайталап көр.&#34;;
+                savedData = input;
+            }
+
+            // --- Result Handling ---
+            const feedbackEl = document.getElementById(`feedback-${id}`);
+            feedbackEl.classList.remove(&#39;hidden&#39;, &#39;bg-red-100&#39;, &#39;text-red-700&#39;, &#39;bg-green-100&#39;, &#39;text-green-700&#39;);
+            
+            if (isCorrect) {
+                feedbackEl.innerHTML = &#34;🎉 Жарайсың! Дұрыс жауап!&#34;;
+                feedbackEl.classList.add(&#39;bg-green-100&#39;, &#39;text-green-700&#39;);
+                
+                // Save state and Score
+                if (!answeredQuestions.has(id)) {
+                    score &#43;= task.points;
+                    updateScore();
+                    answeredQuestions.add(id);
+                    userAnswersData[id] = savedData; // Store correct answer for restoration
+                    celebrate();
+                    renderQuestions(); // Re-render to lock fields and show correct state
+                }
+            } else {
+                feedbackEl.innerHTML = `❌ ${feedback}`;
+                feedbackEl.classList.add(&#39;bg-red-100&#39;, &#39;text-red-700&#39;);
+                
+                const card = feedbackEl.parentElement;
+                card.classList.add(&#39;shake&#39;);
+                setTimeout(() =&gt; card.classList.remove(&#39;shake&#39;), 500);
+            }
+        }
+
+        function updateScore() {
+            document.getElementById(&#39;total-score&#39;).innerText = score;
+        }
+
+        function celebrate() {
+            for(let i=0; i&lt;30; i&#43;&#43;) {
+                const confetti = document.createElement(&#39;div&#39;);
+                confetti.className = &#39;confetti&#39;;
+                confetti.style.left = Math.random() * 100 &#43; &#39;vw&#39;;
+                confetti.style.animationDuration = (Math.random() * 2 &#43; 2) &#43; &#39;s&#39;;
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                document.body.appendChild(confetti);
+                
+                setTimeout(() =&gt; confetti.remove(), 4000);
+            }
+        }
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -447,7 +1026,412 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame148_ru" src="/task/148?lang=ru"
+                            <iframe id="taskFrame148_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Математический Квест: Делители и Кратные&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;link href=&#34;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css&#34; rel=&#34;stylesheet&#34;&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap&#39;);
+        
+        body {
+            font-family: &#39;Nunito&#39;, sans-serif;
+            background-color: #f0f9ff;
+        }
+
+        .level-card {
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hint-box {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease;
+            opacity: 0;
+        }
+
+        .hint-box.open {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        .option-btn.selected {
+            background-color: #3b82f6;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            animation: fall linear forwards;
+            z-index: 100;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(720deg); }
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-blue-50 min-h-screen&#34;&gt;
+
+    &lt;header class=&#34;bg-white shadow-md sticky top-0 z-50&#34;&gt;
+        &lt;div class=&#34;max-w-4xl mx-auto px-4 py-4 flex justify-between items-center&#34;&gt;
+            &lt;div class=&#34;flex items-center gap-3&#34;&gt;
+                &lt;div class=&#34;w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl&#34;&gt;
+                    &lt;i class=&#34;fas fa-calculator&#34;&gt;&lt;/i&gt;
+                &lt;/div&gt;
+                &lt;h1 class=&#34;text-xl md:text-2xl font-bold text-gray-800&#34;&gt;Математический Квест&lt;/h1&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;bg-blue-100 px-4 py-2 rounded-full&#34;&gt;
+                &lt;span class=&#34;font-bold text-blue-800&#34;&gt;Баллы: &lt;span id=&#34;total-score&#34;&gt;0&lt;/span&gt;/100&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;main class=&#34;max-w-3xl mx-auto px-4 py-8 pb-20&#34;&gt;
+        
+        &lt;div class=&#34;bg-white rounded-2xl shadow-lg p-6 mb-8 text-center border-l-8 border-blue-500&#34;&gt;
+            &lt;h2 class=&#34;text-2xl font-bold text-gray-800 mb-2&#34;&gt;Делители и кратные натуральных чисел&lt;/h2&gt;
+            &lt;p class=&#34;text-gray-600&#34;&gt;Выбирай уровни и выполняй задания. За каждый правильный ответ ты получишь баллы!&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;flex justify-center mb-8 gap-2 md:gap-4&#34;&gt;
+            &lt;button onclick=&#34;switchLevel(&#39;A&#39;)&#34; id=&#34;tab-A&#34; class=&#34;px-6 py-2 rounded-full font-bold bg-blue-600 text-white shadow-md transition transform hover:scale-105&#34;&gt;
+                Уровень А (Легкий)
+            &lt;/button&gt;
+            &lt;button onclick=&#34;switchLevel(&#39;B&#39;)&#34; id=&#34;tab-B&#34; class=&#34;px-6 py-2 rounded-full font-bold bg-white text-gray-600 hover:bg-green-100 shadow-md transition transform hover:scale-105&#34;&gt;
+                Уровень В (Средний)
+            &lt;/button&gt;
+            &lt;button onclick=&#34;switchLevel(&#39;C&#39;)&#34; id=&#34;tab-C&#34; class=&#34;px-6 py-2 rounded-full font-bold bg-white text-gray-600 hover:bg-purple-100 shadow-md transition transform hover:scale-105&#34;&gt;
+                Уровень С (Сложный)
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;questions-container&#34; class=&#34;min-h-[400px]&#34;&gt;
+            &lt;/div&gt;
+
+    &lt;/main&gt;
+
+    &lt;script&gt;
+        const tasks = [
+            // Level A
+            {
+                id: 1,
+                level: &#39;A&#39;,
+                points: 10,
+                title: &#34;Задание 1. «В мире чисел»&#34;,
+                desc: &#34;Выбери из списка ниже &lt;strong&gt;все делители числа 36&lt;/strong&gt;.&#34;,
+                hint: &#34;На какие числа 36 делится без остатка? Например, 36:1=36.&#34;,
+                type: &#39;multi-select&#39;,
+                options: [1, 2, 3, 5, 6, 8, 9, 10, 12, 18, 24, 36, 72],
+                correct: [1, 2, 3, 6, 9, 12, 18, 36]
+            },
+            {
+                id: 2,
+                level: &#39;A&#39;,
+                points: 10,
+                title: &#34;Задание 2. «Эстафета кратных»&#34;,
+                desc: &#34;Запиши первые 5 &lt;strong&gt;кратных числа 9&lt;/strong&gt; в пустые поля.&#34;,
+                hint: &#34;Умножь 9 на 1, на 2, на 3, на 4 и на 5.&#34;,
+                type: &#39;inputs-list&#39;,
+                count: 5,
+                correct: [9, 18, 27, 36, 45]
+            },
+            {
+                id: 3,
+                level: &#39;A&#39;,
+                points: 10,
+                title: &#34;Задание 3. «Правда или ложь?»&#34;,
+                desc: &#34;Является ли число 12 кратным числу 24?&#34;,
+                hint: &#34;Кратное всегда больше или равно самому числу. Делится ли 12 на 24 без остатка?&#34;,
+                type: &#39;boolean&#39;,
+                options: [&#39;Да&#39;, &#39;Нет&#39;],
+                correct: &#39;Нет&#39;
+            },
+            
+            // Level B
+            {
+                id: 4,
+                level: &#39;B&#39;,
+                points: 10,
+                title: &#34;Задание 4. «Загадочное число»&#34;,
+                desc: &#34;Я нахожусь между 20 и 50. Я одновременно кратно и 4, и 6. Какое я число? (Запиши все варианты через запятую)&#34;,
+                hint: &#34;Найди наименьшее общее кратное (НОК) для 4 и 6 (это 12), а затем найди его кратные в диапазоне от 20 до 50.&#34;,
+                type: &#39;text&#39;,
+                correct: [&#34;24, 36, 48&#34;, &#34;24,36,48&#34;, &#34;24 36 48&#34;]
+            },
+            {
+                id: 5,
+                level: &#39;B&#39;,
+                points: 10,
+                title: &#34;Задание 5. «Разделение класса»&#34;,
+                desc: &#34;В классе 30 учеников. Учитель хочет разделить их на равные группы (количество групп больше 1). Сколькими способами это можно сделать?&#34;,
+                hint: &#34;Найди все делители числа 30. Исключи вариант &#39;1 группа из 30 человек&#39;.&#34;,
+                type: &#39;radio&#39;,
+                options: [&#39;4 способами&#39;, &#39;5 способами&#39;, &#39;6 способами&#39;, &#39;7 способами&#39;],
+                correct: &#39;7 способами&#39; // Делители: 2, 3, 5, 6, 10, 15, 30
+            },
+            {
+                id: 6,
+                level: &#39;B&#39;,
+                points: 10,
+                title: &#34;Задание 6. «Третий лишний»&#34;,
+                desc: &#34;Найди лишнее число в ряду: 7, 14, 21, 29, 35, 42.&#34;,
+                hint: &#34;Какое из этих чисел не делится на 7 без остатка?&#34;,
+                type: &#39;radio&#39;,
+                options: [&#39;21&#39;, &#39;29&#39;, &#39;35&#39;, &#39;14&#39;],
+                correct: &#39;29&#39;
+            },
+
+            // Level C
+            {
+                id: 7,
+                level: &#39;C&#39;,
+                points: 20,
+                title: &#34;Задание 7. «Машина времени»&#34;,
+                desc: &#34;Первые часы звонят каждые 12 минут, вторые — каждые 18 минут. В 9:00 они прозвонили вместе. В какое время они прозвонят вместе в следующий раз?&#34;,
+                hint: &#34;Найди НОК чисел 12 и 18. Прибавь полученные минуты к 9:00.&#34;,
+                type: &#39;text&#39;,
+                correct: [&#34;9:36&#34;, &#34;09:36&#34;]
+            },
+            {
+                id: 8,
+                level: &#39;C&#39;,
+                points: 20,
+                title: &#34;Задание 8. «Логический фильтр»&#34;,
+                desc: &#34;Найди число: 1) Двузначное; 2) Кратно 5; 3) Сумма цифр равна 9.&#34;,
+                hint: &#34;Числа, кратные 5, оканчиваются на 0 или 5. Проверь те, сумма цифр которых равна 9.&#34;,
+                type: &#39;text&#39;,
+                correct: [&#34;45&#34;]
+            }
+        ];
+
+        let currentLevel = &#39;A&#39;;
+        let currentQuestionIndex = 0;
+        let userAnswersData = {};
+        let score = 0;
+        let answeredQuestions = new Set();
+
+        document.addEventListener(&#39;DOMContentLoaded&#39;, () =&gt; {
+            renderQuestions();
+            updateScore();
+        });
+
+        function switchLevel(level) {
+            currentLevel = level;
+            currentQuestionIndex = 0;
+            [&#39;A&#39;, &#39;B&#39;, &#39;C&#39;].forEach(l =&gt; {
+                const btn = document.getElementById(`tab-${l}`);
+                if (l === level) {
+                    btn.classList.remove(&#39;bg-white&#39;, &#39;text-gray-600&#39;);
+                    if(l === &#39;A&#39;) btn.classList.add(&#39;bg-blue-600&#39;, &#39;text-white&#39;);
+                    if(l === &#39;B&#39;) btn.classList.add(&#39;bg-green-600&#39;, &#39;text-white&#39;);
+                    if(l === &#39;C&#39;) btn.classList.add(&#39;bg-purple-600&#39;, &#39;text-white&#39;);
+                } else {
+                    btn.classList.add(&#39;bg-white&#39;, &#39;text-gray-600&#39;);
+                    btn.classList.remove(&#39;bg-blue-600&#39;, &#39;bg-green-600&#39;, &#39;bg-purple-600&#39;, &#39;text-white&#39;);
+                }
+            });
+            renderQuestions();
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById(&#39;questions-container&#39;);
+            container.innerHTML = &#39;&#39;;
+            const levelTasks = tasks.filter(t =&gt; t.level === currentLevel);
+            const task = levelTasks[currentQuestionIndex];
+            if (!task) return;
+
+            const isAnswered = answeredQuestions.has(task.id);
+            const card = document.createElement(&#39;div&#39;);
+            card.className = `level-card bg-white rounded-xl shadow-md p-6 mb-6 border-l-4 ${getBorderColor(task.level)}`;
+            
+            let inputHTML = &#39;&#39;;
+            if (task.type === &#39;multi-select&#39;) {
+                inputHTML = `&lt;div class=&#34;flex flex-wrap gap-2 mb-4&#34;&gt;
+                    ${task.options.map(opt =&gt; `&lt;button onclick=&#34;toggleOption(this, ${task.id})&#34; class=&#34;option-btn px-4 py-2 rounded-lg border-2 border-gray-200 hover:border-blue-300 font-bold text-gray-700 transition&#34; ${isAnswered ? &#39;disabled&#39; : &#39;&#39;}&gt;${opt}&lt;/button&gt;`).join(&#39;&#39;)}
+                &lt;/div&gt;`;
+            } else if (task.type === &#39;inputs-list&#39;) {
+                inputHTML = `&lt;div class=&#34;flex flex-wrap gap-2 mb-4&#34;&gt;
+                    ${Array(task.count).fill(0).map((_, i) =&gt; `&lt;input type=&#34;number&#34; class=&#34;w-20 p-2 border-2 border-gray-200 rounded-lg focus:border-blue-500 outline-none text-center font-bold&#34; id=&#34;task-${task.id}-input-${i}&#34; ${isAnswered ? &#39;disabled&#39; : &#39;&#39;}&gt;`).join(&#39;&#39;)}
+                &lt;/div&gt;`;
+            } else if (task.type === &#39;radio&#39;) {
+                inputHTML = `&lt;div class=&#34;flex flex-col gap-2 mb-4&#34;&gt;
+                    ${task.options.map(opt =&gt; `&lt;label class=&#34;flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50&#34;&gt;&lt;input type=&#34;radio&#34; name=&#34;task-${task.id}&#34; value=&#34;${opt}&#34; class=&#34;w-5 h-5 text-blue-600&#34; ${isAnswered ? &#39;disabled&#39; : &#39;&#39;}&gt;&lt;span class=&#34;font-medium text-gray-700&#34;&gt;${opt}&lt;/span&gt;&lt;/label&gt;`).join(&#39;&#39;)}
+                &lt;/div&gt;`;
+            } else if (task.type === &#39;boolean&#39;) {
+                inputHTML = `&lt;div class=&#34;flex gap-4 mb-4&#34;&gt;
+                    &lt;button onclick=&#34;selectBool(this, ${task.id}, &#39;Да&#39;)&#34; class=&#34;bool-btn px-6 py-2 rounded-lg border-2 border-gray-200 font-bold hover:bg-green-50&#34;&gt;Да&lt;/button&gt;
+                    &lt;button onclick=&#34;selectBool(this, ${task.id}, &#39;Нет&#39;)&#34; class=&#34;bool-btn px-6 py-2 rounded-lg border-2 border-gray-200 font-bold hover:bg-red-50&#34;&gt;Нет&lt;/button&gt;
+                &lt;/div&gt;&lt;input type=&#34;hidden&#34; id=&#34;task-${task.id}-input&#34;&gt;`;
+            } else {
+                inputHTML = `&lt;div class=&#34;mb-4&#34;&gt;&lt;input type=&#34;text&#34; id=&#34;task-${task.id}-input&#34; class=&#34;w-full md:w-1/2 p-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 outline-none font-bold&#34; placeholder=&#34;Введи ответ...&#34; ${isAnswered ? &#39;disabled&#39; : &#39;&#39;}&gt;&lt;/div&gt;`;
+            }
+
+            card.innerHTML = `
+                &lt;div class=&#34;text-xs font-bold text-gray-400 uppercase tracking-wide mb-2&#34;&gt;Уровень ${task.level}: Вопрос ${currentQuestionIndex &#43; 1} / ${levelTasks.length}&lt;/div&gt;
+                &lt;div class=&#34;flex justify-between items-start mb-4&#34;&gt;
+                    &lt;h3 class=&#34;text-xl font-bold text-gray-800&#34;&gt;${task.title}&lt;/h3&gt;
+                    ${isAnswered ? &#39;&lt;span class=&#34;text-green-500 font-bold&#34;&gt;&lt;i class=&#34;fas fa-check-circle&#34;&gt;&lt;/i&gt; Выполнено&lt;/span&gt;&#39; : &#39;&#39;}
+                &lt;/div&gt;
+                &lt;p class=&#34;text-gray-600 mb-4 text-lg&#34;&gt;${task.desc}&lt;/p&gt;
+                ${inputHTML}
+                &lt;div class=&#34;flex flex-wrap items-center justify-between gap-4 mt-6&#34;&gt;
+                    &lt;button onclick=&#34;toggleHint(${task.id})&#34; class=&#34;text-yellow-600 font-bold flex items-center gap-2 hover:text-yellow-700&#34;&gt;&lt;i class=&#34;far fa-lightbulb&#34;&gt;&lt;/i&gt; Нужен совет&lt;/button&gt;
+                    ${!isAnswered ? `&lt;button onclick=&#34;checkAnswer(${task.id})&#34; class=&#34;bg-blue-600 text-white px-8 py-2 rounded-lg font-bold hover:bg-blue-700 shadow-md transition transform hover:scale-105&#34;&gt;Проверить&lt;/button&gt;` : &#39;&#39;}
+                &lt;/div&gt;
+                &lt;div id=&#34;hint-${task.id}&#34; class=&#34;hint-box bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-4 text-yellow-800 text-sm&#34;&gt;&lt;i class=&#34;fas fa-info-circle mr-1&#34;&gt;&lt;/i&gt; ${task.hint}&lt;/div&gt;
+                &lt;div id=&#34;feedback-${task.id}&#34; class=&#34;hidden mt-4 p-4 rounded-lg font-bold text-center&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;flex justify-between items-center mt-8 pt-4 border-t border-gray-100&#34;&gt;
+                    &lt;button onclick=&#34;prevQuestion()&#34; class=&#34;px-4 py-2 text-gray-500 font-bold hover:text-gray-700 ${currentQuestionIndex === 0 ? &#39;invisible&#39; : &#39;&#39;}&#34;&gt;&lt;i class=&#34;fas fa-arrow-left mr-2&#34;&gt;&lt;/i&gt; Назад&lt;/button&gt;
+                    ${currentQuestionIndex &lt; levelTasks.length - 1 ? `&lt;button onclick=&#34;nextQuestion()&#34; class=&#34;px-6 py-2 bg-gray-100 text-gray-700 font-bold rounded-lg hover:bg-gray-200 transition&#34;&gt;Вперед &lt;i class=&#34;fas fa-arrow-right ml-2&#34;&gt;&lt;/i&gt;&lt;/button&gt;` : `&lt;span class=&#34;text-sm text-gray-400 font-bold&#34;&gt;Уровень завершен&lt;/span&gt;`}
+                &lt;/div&gt;
+            `;
+            container.appendChild(card);
+            restoreValues(task);
+            if(isAnswered) showCorrectFeedback(task.id);
+        }
+
+        function toggleOption(btn, taskId) {
+            if (answeredQuestions.has(taskId)) return;
+            btn.classList.toggle(&#39;selected&#39;);
+        }
+
+        function selectBool(btn, taskId, value) {
+            if (answeredQuestions.has(taskId)) return;
+            Array.from(btn.parentElement.children).forEach(c =&gt; c.classList.remove(&#39;bg-blue-500&#39;, &#39;text-white&#39;, &#39;selected&#39;));
+            btn.classList.add(&#39;bg-blue-500&#39;, &#39;text-white&#39;, &#39;selected&#39;);
+            document.getElementById(`task-${taskId}-input`).value = value;
+        }
+
+        function checkAnswer(id) {
+            const task = tasks.find(t =&gt; t.id === id);
+            let isCorrect = false;
+            let feedback = &#34;&#34;;
+            let savedData = null;
+
+            if (task.type === &#39;multi-select&#39;) {
+                const selected = Array.from(document.querySelectorAll(&#39;.option-btn.selected&#39;)).map(b =&gt; parseInt(b.innerText));
+                isCorrect = JSON.stringify(selected.sort()) === JSON.stringify([...task.correct].sort());
+                feedback = &#34;Не все делители выбраны верно.&#34;;
+                savedData = selected;
+            } else if (task.type === &#39;inputs-list&#39;) {
+                const inputs = Array.from({length: task.count}, (_, i) =&gt; parseInt(document.getElementById(`task-${id}-input-${i}`).value));
+                isCorrect = JSON.stringify(inputs) === JSON.stringify(task.correct);
+                feedback = &#34;Проверь последовательность умножения.&#34;;
+                savedData = inputs;
+            } else if (task.type === &#39;radio&#39;) {
+                const selected = document.querySelector(`input[name=&#34;task-${id}&#34;]:checked`);
+                isCorrect = selected?.value === task.correct;
+                feedback = &#34;Попробуй еще раз.&#34;;
+                savedData = selected?.value;
+            } else if (task.type === &#39;boolean&#39;) {
+                const val = document.getElementById(`task-${id}-input`).value;
+                isCorrect = val === task.correct;
+                feedback = &#34;Неверно. 12 — это делитель, а не кратное.&#34;;
+                savedData = val;
+            } else {
+                const input = document.getElementById(`task-${id}-input`).value.trim().replace(&#39;:&#39;, &#39;&#39;);
+                isCorrect = task.correct.some(c =&gt; c.replace(&#39;:&#39;, &#39;&#39;) === input);
+                feedback = &#34;Ответ не совпал.&#34;;
+                savedData = input;
+            }
+
+            const feedbackEl = document.getElementById(`feedback-${id}`);
+            if (isCorrect) {
+                feedbackEl.innerHTML = &#34;🎉 Отлично! Верно!&#34;;
+                feedbackEl.className = &#34;mt-4 p-4 rounded-lg font-bold text-center bg-green-100 text-green-700&#34;;
+                feedbackEl.classList.remove(&#39;hidden&#39;);
+                if (!answeredQuestions.has(id)) {
+                    score &#43;= task.points;
+                    updateScore();
+                    answeredQuestions.add(id);
+                    userAnswersData[id] = savedData;
+                    celebrate();
+                    renderQuestions();
+                }
+            } else {
+                feedbackEl.innerHTML = `❌ ${feedback}`;
+                feedbackEl.className = &#34;mt-4 p-4 rounded-lg font-bold text-center bg-red-100 text-red-700&#34;;
+                feedbackEl.classList.remove(&#39;hidden&#39;);
+                document.querySelector(&#39;.level-card&#39;).classList.add(&#39;shake&#39;);
+                setTimeout(() =&gt; document.querySelector(&#39;.level-card&#39;).classList.remove(&#39;shake&#39;), 500);
+            }
+        }
+
+        function restoreValues(task) {
+            if (!userAnswersData[task.id]) return;
+            const data = userAnswersData[task.id];
+            if (task.type === &#39;inputs-list&#39;) {
+                data.forEach((v, i) =&gt; document.getElementById(`task-${task.id}-input-${i}`).value = v);
+            } else if (task.type === &#39;text&#39;) {
+                document.getElementById(`task-${task.id}-input`).value = data;
+            }
+        }
+
+        function showCorrectFeedback(id) {
+            const f = document.getElementById(`feedback-${id}`);
+            f.innerHTML = &#34;🎉 Отлично! Верно!&#34;;
+            f.className = &#34;mt-4 p-4 rounded-lg font-bold text-center bg-green-100 text-green-700&#34;;
+            f.classList.remove(&#39;hidden&#39;);
+        }
+
+        function getBorderColor(level) {
+            return level === &#39;A&#39; ? &#39;border-blue-500&#39; : (level === &#39;B&#39; ? &#39;border-green-500&#39; : &#39;border-purple-500&#39;);
+        }
+
+        function toggleHint(id) {
+            document.getElementById(`hint-${id}`).classList.toggle(&#39;open&#39;);
+        }
+
+        function updateScore() {
+            document.getElementById(&#39;total-score&#39;).innerText = score;
+        }
+
+        function prevQuestion() { if (currentQuestionIndex &gt; 0) { currentQuestionIndex--; renderQuestions(); } }
+        function nextQuestion() { 
+            const levelTasks = tasks.filter(t =&gt; t.level === currentLevel);
+            if (currentQuestionIndex &lt; levelTasks.length - 1) { currentQuestionIndex&#43;&#43;; renderQuestions(); } 
+        }
+
+        function celebrate() {
+            for(let i=0; i&lt;30; i&#43;&#43;) {
+                const c = document.createElement(&#39;div&#39;);
+                c.className = &#39;confetti&#39;;
+                c.style.left = Math.random() * 100 &#43; &#39;vw&#39;;
+                c.style.animationDuration = (Math.random() * 2 &#43; 2) &#43; &#39;s&#39;;
+                c.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                document.body.appendChild(c);
+                setTimeout(() =&gt; c.remove(), 4000);
+            }
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

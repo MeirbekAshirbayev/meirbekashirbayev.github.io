@@ -416,7 +416,565 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame140" src="/task/140?lang=kz"
+                            <iframe id="taskFrame140" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Сандық және әріпті өрнектер&lt;/title&gt;
+    &lt;!-- Tailwind CSS --&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;!-- Lucide Icons --&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&#39;);
+        body { font-family: &#39;Inter&#39;, sans-serif; }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out; }
+        .animate-slide-up { animation: slideUp 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4 text-gray-800&#34;&gt;
+
+    &lt;!-- App Container --&gt;
+    &lt;div id=&#34;app&#34; class=&#34;max-w-4xl mx-auto pb-20&#34;&gt;
+        &lt;!-- Dynamic Content will be injected here --&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- STATE MANAGEMENT ---
+        const state = {
+            activeTab: &#39;level1&#39;,
+            currentTaskIndex: 0,
+            score: 0,
+            completedTasks: {}, // { taskId: &#39;correct&#39; | &#39;wrong&#39; }
+            isGameFinished: false
+        };
+
+        const levelConfig = {
+            level1: { count: 3, color: &#39;green&#39;, label: &#39;І деңгей: &#34;Жаттығу алаңы&#34;&#39; },
+            level2: { count: 4, color: &#39;yellow&#39;, label: &#39;ІІ деңгей: &#34;Өмірмен байланыс&#34;&#39; },
+            level3: { count: 3, color: &#39;red&#39;, label: &#39;ІІІ деңгей: &#34;Логика және Шығармашылық&#34;&#39; }
+        };
+
+        const levelsOrder = [&#39;level1&#39;, &#39;level2&#39;, &#39;level3&#39;];
+
+        // --- HELPER FUNCTIONS ---
+
+        const isSolved = (taskId) =&gt; state.completedTasks[taskId] === &#39;correct&#39;;
+        const isWrong = (taskId) =&gt; state.completedTasks[taskId] === &#39;wrong&#39;;
+
+        function handleAnswer(taskId, isCorrect) {
+            if (state.completedTasks[taskId]) return;
+
+            if (isCorrect) {
+                state.score &#43;= 10;
+                state.completedTasks[taskId] = &#39;correct&#39;;
+                render(); // Re-render to show success state
+            } else {
+                state.completedTasks[taskId] = &#39;wrong&#39;;
+                render(); // Re-render to show error state
+                
+                // Reset wrong status after delay
+                setTimeout(() =&gt; {
+                    if (state.completedTasks[taskId] === &#39;wrong&#39;) {
+                        delete state.completedTasks[taskId];
+                        render();
+                    }
+                }, 1500);
+            }
+        }
+
+        function handleNext() {
+            const currentLevelCount = levelConfig[state.activeTab].count;
+            const isLastTaskOfLevel = state.currentTaskIndex === currentLevelCount - 1;
+            const isLastLevel = state.activeTab === &#39;level3&#39;;
+
+            if (state.currentTaskIndex &lt; currentLevelCount - 1) {
+                state.currentTaskIndex&#43;&#43;;
+            } else {
+                const currentLevelIndex = levelsOrder.indexOf(state.activeTab);
+                if (currentLevelIndex &lt; levelsOrder.length - 1) {
+                    state.activeTab = levelsOrder[currentLevelIndex &#43; 1];
+                    state.currentTaskIndex = 0; // Reset index for new level
+                } else if (isLastLevel) {
+                    state.isGameFinished = true;
+                }
+            }
+            render();
+        }
+
+        function handlePrev() {
+            if (state.currentTaskIndex &gt; 0) {
+                state.currentTaskIndex--;
+                render();
+            }
+        }
+
+        function handleRestart() {
+            state.activeTab = &#39;level1&#39;;
+            state.currentTaskIndex = 0;
+            state.score = 0;
+            state.completedTasks = {};
+            state.isGameFinished = false;
+            render();
+        }
+
+        function setTab(tabName) {
+            state.activeTab = tabName;
+            state.currentTaskIndex = 0;
+            render();
+        }
+
+        function getFeedback(finalScore) {
+            // Updated thresholds for 210 total score
+            if (finalScore &gt;= 190) return { title: &#34;Өте жақсы! 🏆&#34;, message: &#34;Сен нағыз математиксің! Тақырыпты толық меңгеріпсің.&#34;, color: &#34;text-green-600&#34;, bg: &#34;bg-green-100&#34;, border: &#34;border-green-300&#34; };
+            if (finalScore &gt;= 150) return { title: &#34;Жақсы! 🌟&#34;, message: &#34;Көп тапсырманы дұрыс орындадың! Сәл ғана мұқияттылық жетіспеді.&#34;, color: &#34;text-blue-600&#34;, bg: &#34;bg-blue-100&#34;, border: &#34;border-blue-300&#34; };
+            if (finalScore &gt;= 85) return { title: &#34;Орташа 🙂&#34;, message: &#34;Жаман емес, бірақ тақырыпты қайталау керек сияқты.&#34;, color: &#34;text-yellow-600&#34;, bg: &#34;bg-yellow-100&#34;, border: &#34;border-yellow-300&#34; };
+            return { title: &#34;Талпын! 💪&#34;, message: &#34;Мұңайма! Қайта дайындалып, басынан бастап көр.&#34;, color: &#34;text-red-600&#34;, bg: &#34;bg-red-100&#34;, border: &#34;border-red-300&#34; };
+        }
+
+        // --- RENDER FUNCTIONS ---
+
+        function renderHeader() {
+            return `
+                &lt;header class=&#34;bg-white rounded-2xl shadow-lg p-6 mb-6 flex flex-col md:flex-row justify-between items-center sticky top-2 z-10 border-b-4 border-blue-500&#34;&gt;
+                    &lt;div class=&#34;mb-4 md:mb-0 text-center md:text-left&#34;&gt;
+                        &lt;h1 class=&#34;text-2xl md:text-3xl font-bold text-blue-800 flex items-center justify-center md:justify-start gap-3&#34;&gt;
+                            &lt;i data-lucide=&#34;calculator&#34; class=&#34;w-10 h-10 text-blue-500&#34;&gt;&lt;/i&gt;
+                            Сандық және әріпті өрнектер
+                        &lt;/h1&gt;
+                        &lt;p class=&#34;text-lg text-gray-500 mt-1&#34;&gt;Бекіту тапсырмалары&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-3 bg-yellow-100 px-6 py-3 rounded-full border-2 border-yellow-300 shadow-sm transform hover:scale-105 transition-transform&#34;&gt;
+                        &lt;i data-lucide=&#34;trophy&#34; class=&#34;w-8 h-8 text-yellow-600&#34;&gt;&lt;/i&gt;
+                        &lt;span class=&#34;font-bold text-2xl text-yellow-800&#34;&gt;${state.score} ұпай&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/header&gt;
+            `;
+        }
+
+        function renderTabs() {
+            const tabs = [
+                { id: &#39;level1&#39;, label: &#39;І деңгей&#39;, icon: &#39;star&#39;, color: &#39;green&#39; },
+                { id: &#39;level2&#39;, label: &#39;ІІ деңгей&#39;, icon: &#39;book-open&#39;, color: &#39;yellow&#39; },
+                { id: &#39;level3&#39;, label: &#39;ІІІ деңгей&#39;, icon: &#39;brain&#39;, color: &#39;red&#39; }
+            ];
+
+            return `
+                &lt;div class=&#34;mb-8 flex flex-wrap gap-3 justify-center&#34;&gt;
+                    ${tabs.map(tab =&gt; {
+                        const isActive = state.activeTab === tab.id;
+                        const activeClass = isActive 
+                            ? `bg-${tab.color}-500 text-white shadow-lg scale-110 ring-4 ring-${tab.color}-200` 
+                            : `bg-white text-gray-600 hover:bg-${tab.color}-50 border border-gray-200`;
+                        
+                        return `
+                            &lt;button onclick=&#34;setTab(&#39;${tab.id}&#39;)&#34; class=&#34;px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center gap-2 ${activeClass}&#34;&gt;
+                                &lt;i data-lucide=&#34;${tab.icon}&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt; ${tab.label}
+                            &lt;/button&gt;
+                        `;
+                    }).join(&#39;&#39;)}
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderLevelBanner() {
+            const config = levelConfig[state.activeTab];
+            let bgClass = &#39;&#39;;
+            if (state.activeTab === &#39;level1&#39;) bgClass = &#39;bg-green-100 border-green-300 text-green-800&#39;;
+            if (state.activeTab === &#39;level2&#39;) bgClass = &#39;bg-yellow-100 border-yellow-300 text-yellow-800&#39;;
+            if (state.activeTab === &#39;level3&#39;) bgClass = &#39;bg-red-100 border-red-300 text-red-800&#39;;
+
+            return `
+                &lt;div class=&#34;p-6 rounded-2xl border-2 mb-6 text-2xl font-bold text-center shadow-sm animate-fade-in ${bgClass}&#34;&gt;
+                   ${config.label}
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderTaskCard(title, desc, content) {
+            return `
+                &lt;div class=&#34;bg-white rounded-3xl shadow-xl border-2 border-gray-100 overflow-hidden animate-slide-up&#34;&gt;
+                    &lt;div class=&#34;bg-gradient-to-r from-gray-50 to-white px-8 py-6 border-b flex items-start gap-4&#34;&gt;
+                        &lt;div class=&#34;bg-blue-100 p-3 rounded-2xl text-blue-600 shadow-sm&#34;&gt;
+                            &lt;i data-lucide=&#34;book-open&#34; class=&#34;w-8 h-8&#34;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;h3 class=&#34;font-extrabold text-2xl md:text-3xl text-gray-800 mb-2&#34;&gt;${title}&lt;/h3&gt;
+                            &lt;p class=&#34;text-gray-600 text-xl font-medium leading-relaxed&#34;&gt;${desc}&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;p-8&#34;&gt;
+                        ${content}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderTaskContent() {
+            // --- LEVEL 1 ---
+            if (state.activeTab === &#39;level1&#39;) {
+                if (state.currentTaskIndex === 0) {
+                    const items = [
+                        { id: &#39;t1_1&#39;, text: &#39;15 &#43; 4&#39;, type: &#39;num&#39; },
+                        { id: &#39;t1_2&#39;, text: &#39;a &#43; 9&#39;, type: &#39;lit&#39; },
+                        { id: &#39;t1_3&#39;, text: &#39;100 - 25&#39;, type: &#39;num&#39; },
+                        { id: &#39;t1_4&#39;, text: &#39;3x &#43; 1&#39;, type: &#39;lit&#39; },
+                        // Restored the 6th item as requested
+                        { id: &#39;t1_5&#39;, text: &#39;(12 · 2) - 5&#39;, type: &#39;num&#39; },
+                        { id: &#39;t1_6&#39;, text: &#39;7b - c&#39;, type: &#39;lit&#39; }
+                    ];
+                    
+                    const itemsHtml = items.map(item =&gt; {
+                        const solved = isSolved(item.id);
+                        const wrong = isWrong(item.id);
+                        return `
+                        &lt;div class=&#34;bg-gray-50 p-6 rounded-2xl border-2 border-gray-200 flex flex-col items-center gap-4 shadow-sm hover:shadow-md transition-shadow&#34;&gt;
+                            &lt;span class=&#34;font-mono text-3xl font-bold bg-white px-6 py-3 rounded-xl shadow-inner text-gray-700&#34;&gt;${item.text}&lt;/span&gt;
+                            &lt;div class=&#34;flex flex-col w-full gap-3&#34;&gt;
+                                &lt;button ${solved ? &#39;disabled&#39; : &#39;&#39;} onclick=&#34;handleAnswer(&#39;${item.id}&#39;, ${item.type === &#39;num&#39;})&#34; class=&#34;py-3 px-4 rounded-xl text-lg font-bold border-2 transition-all ${solved &amp;&amp; item.type === &#39;num&#39; ? &#39;bg-green-500 text-white border-green-600&#39; : &#39;hover:bg-blue-100 bg-white border-blue-200 text-gray-700&#39;}&#34;&gt;🔢 Сандық&lt;/button&gt;
+                                &lt;button ${solved ? &#39;disabled&#39; : &#39;&#39;} onclick=&#34;handleAnswer(&#39;${item.id}&#39;, ${item.type === &#39;lit&#39;})&#34; class=&#34;py-3 px-4 rounded-xl text-lg font-bold border-2 transition-all ${solved &amp;&amp; item.type === &#39;lit&#39; ? &#39;bg-green-500 text-white border-green-600&#39; : &#39;hover:bg-purple-100 bg-white border-purple-200 text-gray-700&#39;}&#34;&gt;🔤 Әріпті&lt;/button&gt;
+                            &lt;/div&gt;
+                            ${solved ? &#39;&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-8 h-8 text-green-500 animate-bounce&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;}
+                            ${wrong ? &#39;&lt;i data-lucide=&#34;x-circle&#34; class=&#34;w-8 h-8 text-red-500 animate-shake&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;}
+                        &lt;/div&gt;`;
+                    }).join(&#39;&#39;);
+
+                    return renderTaskCard(&#34;1-тапсырма: Сиқырлы себеттер 🍎&#34;, &#34;Төмендегі өрнектерді екі себетке бөліп жаз:&#34;, `&lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6&#34;&gt;${itemsHtml}&lt;/div&gt;`);
+                }
+
+                if (state.currentTaskIndex === 1) {
+                    const items = [
+                        {id: &#39;t2_1&#39;, q: &#39;5x&#39;, a: &#39;5&#39;},
+                        {id: &#39;t2_2&#39;, q: &#39;12a&#39;, a: &#39;12&#39;},
+                        {id: &#39;t2_3&#39;, q: &#39;y&#39;, a: &#39;1&#39;},
+                        {id: &#39;t2_4&#39;, q: &#39;24abc&#39;, a: &#39;24&#39;},
+                    ];
+                    const itemsHtml = items.map(item =&gt; `
+                        &lt;div class=&#34;flex items-center justify-between bg-white p-6 rounded-2xl border-2 border-gray-100 shadow-sm&#34;&gt;
+                            &lt;div class=&#34;flex items-center gap-4&#34;&gt;
+                                &lt;span class=&#34;font-mono font-bold text-4xl text-blue-600 w-32 text-right&#34;&gt;${item.q}&lt;/span&gt;
+                                &lt;i data-lucide=&#34;arrow-right&#34; class=&#34;text-gray-400&#34;&gt;&lt;/i&gt;
+                                &lt;span class=&#34;text-xl font-medium text-gray-600&#34;&gt;Коэффициент:&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;flex items-center gap-3&#34;&gt;
+                                &lt;input type=&#34;number&#34; placeholder=&#34;?&#34; value=&#34;${isSolved(item.id) ? item.a : &#39;&#39;}&#34; class=&#34;border-2 border-gray-300 rounded-xl p-3 w-24 text-center text-3xl font-bold focus:border-blue-500 outline-none&#34; ${isSolved(item.id) ? &#39;disabled&#39; : &#39;&#39;} onblur=&#34;handleAnswer(&#39;${item.id}&#39;, this.value === &#39;${item.a}&#39;)&#34; onkeydown=&#34;if(event.key===&#39;Enter&#39;) handleAnswer(&#39;${item.id}&#39;, this.value === &#39;${item.a}&#39;)&#34;&gt;
+                                ${isSolved(item.id) ? &#39;&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-8 h-8 text-green-500&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;}
+                                ${isWrong(item.id) ? &#39;&lt;span class=&#34;text-red-500 text-lg font-bold&#34;&gt;Қате!&lt;/span&gt;&#39; : &#39;&#39;}
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    `).join(&#39;&#39;);
+                    return renderTaskCard(&#34;2-тапсырма: Жасырын агент 🕵️‍♂️&#34;, &#34;Әріпті өрнектердегі коэффициентті (әріптің алдындағы санды) тап.&#34;, `&lt;div class=&#34;space-y-6 max-w-2xl mx-auto&#34;&gt;${itemsHtml}&lt;/div&gt;&lt;div class=&#34;mt-4 text-center text-gray-500 text-lg italic&#34;&gt;Ескерту: Егер сан жазылмаса, коэффициент 1-ге тең!&lt;/div&gt;`);
+                }
+
+                if (state.currentTaskIndex === 2) {
+                    const solved = isSolved(&#39;t3_1&#39;);
+                    const content = `
+                    &lt;div class=&#34;flex flex-col items-center gap-8 py-8&#34;&gt;
+                        &lt;div class=&#34;bg-gray-800 text-green-400 font-mono text-2xl p-8 rounded-2xl w-full max-w-lg text-center shadow-xl border-4 border-gray-600&#34;&gt;
+                            &lt;p class=&#34;mb-2&#34;&gt;INPUT: x = 10&lt;/p&gt;
+                            &lt;p class=&#34;mb-2&#34;&gt;PROCESS: 45 &#43; x&lt;/p&gt;
+                            &lt;p class=&#34;animate-pulse&#34;&gt;OUTPUT: ???&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;flex gap-4 items-center&#34;&gt;
+                            &lt;input id=&#34;t3_input&#34; type=&#34;number&#34; value=&#34;${solved ? &#39;55&#39; : &#39;&#39;}&#34; class=&#34;border-4 border-gray-300 rounded-2xl p-4 text-4xl w-48 text-center focus:border-blue-500 outline-none shadow-inner&#34; placeholder=&#34;?&#34; ${solved ? &#39;disabled&#39; : &#39;&#39;} onkeydown=&#34;if(event.key===&#39;Enter&#39;) handleAnswer(&#39;t3_1&#39;, this.value === &#39;55&#39;)&#34;&gt;
+                            &lt;button onclick=&#34;handleAnswer(&#39;t3_1&#39;, document.getElementById(&#39;t3_input&#39;).value === &#39;55&#39;)&#34; class=&#34;bg-blue-600 text-white text-xl font-bold px-8 py-4 rounded-2xl hover:bg-blue-700 shadow-lg active:scale-95 transition-transform&#34;&gt;Енгізу&lt;/button&gt;
+                        &lt;/div&gt;
+                        ${solved ? &#39;&lt;div class=&#34;text-green-600 font-bold text-3xl flex items-center gap-3 animate-fade-in bg-green-100 px-6 py-3 rounded-full&#34;&gt;&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-8 h-8&#34;&gt;&lt;/i&gt; Робот іске қосылды!&lt;/div&gt;&#39; : &#39;&#39;}
+                    &lt;/div&gt;`;
+                    return renderTaskCard(&#34;3-тапсырма: Роботты іске қос 🤖&#34;, &#34;x = 10 болғанда, 45 &#43; x өрнегінің мәнін тап.&#34;, content);
+                }
+            }
+
+            // --- LEVEL 2 ---
+            if (state.activeTab === &#39;level2&#39;) {
+                 if (state.currentTaskIndex === 0) {
+                     const opts = [
+                         {id: &#39;t4_opt1&#39;, text: &#39;3a &#43; 2b&#39;, correct: true},
+                         {id: &#39;t4_opt2&#39;, text: &#39;(3 &#43; a) · (2 &#43; b)&#39;, correct: false},
+                         {id: &#39;t4_opt3&#39;, text: &#39;3b &#43; 2a&#39;, correct: false},
+                         {id: &#39;t4_opt4&#39;, text: &#39;5 · (a &#43; b)&#39;, correct: false}
+                     ];
+                     const solved = isSolved(&#39;t4_main&#39;);
+                     const optsHtml = opts.map(opt =&gt; `
+                        &lt;button ${solved ? &#39;disabled&#39; : &#39;&#39;} onclick=&#34;handleAnswer(&#39;t4_main&#39;, ${opt.correct})&#34; class=&#34;p-8 rounded-2xl border-4 font-mono text-3xl font-bold transition-all transform hover:scale-105 ${solved &amp;&amp; opt.correct ? &#39;bg-green-100 border-green-500 text-green-800&#39; : &#39;bg-white border-gray-200 hover:border-blue-400 text-gray-700&#39;}&#34;&gt;
+                            ${opt.text}
+                        &lt;/button&gt;
+                     `).join(&#39;&#39;);
+                     
+                     return renderTaskCard(&#34;4-тапсырма: Дүкендегі сауда 🛒&#34;, &#34;Бір дәптердің бағасы — a теңге. Бір қаламның бағасы — b теңге. 3 дәптер және 2 қалам сатып алсаң, барлығы қанша төлейсің?&#34;, `
+                        &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-6 mt-4&#34;&gt;${optsHtml}&lt;/div&gt;
+                        ${solved ? &#39;&lt;div class=&#34;mt-6 text-green-600 text-2xl font-bold text-center bg-green-50 p-4 rounded-xl border border-green-200&#34;&gt;Тамаша! 3 дәптер (3a) және 2 қалам (2b).&lt;/div&gt;&#39; : &#39;&#39;}
+                     `);
+                 }
+
+                 if (state.currentTaskIndex === 1) {
+                    const options = [&#39;m - 15&#39;, &#39;m &#43; 15&#39;, &#39;15m&#39;];
+                    const solved1 = isSolved(&#39;t5_1&#39;);
+                    const btnsHtml = options.map(item =&gt; {
+                        const isCorrect = item === &#39;m &#43; 15&#39;;
+                        const btnClass = solved1 &amp;&amp; isCorrect 
+                             ? &#39;bg-green-500 text-white border-green-600 shadow-lg scale-105&#39; 
+                             : &#39;bg-white border-pink-200 text-gray-700 hover:bg-pink-50 hover:border-pink-400&#39;;
+                        return `&lt;button onclick=&#34;handleAnswer(&#39;t5_1&#39;, ${isCorrect})&#34; ${solved1 ? &#39;disabled&#39; : &#39;&#39;} class=&#34;px-8 py-4 rounded-xl border-4 text-2xl font-bold font-mono transition-all transform hover:scale-105 shadow-sm ${btnClass}&#34;&gt;${item}&lt;/button&gt;`;
+                    }).join(&#39;&#39;);
+
+                    const solved2 = isSolved(&#39;t5_2&#39;);
+                    return renderTaskCard(&#34;5-тапсырма: Insta-Лайктар ❤️&#34;, &#34;Сенің суретіңе таңертең m досың лайк басты, ал кешке тағы 15 адам лайк басты.&#34;, `
+                        &lt;div class=&#34;space-y-8&#34;&gt;
+                            &lt;div class=&#34;p-6 bg-pink-50 rounded-2xl border-2 border-pink-200&#34;&gt;
+                                &lt;p class=&#34;mb-4 font-bold text-xl text-pink-900&#34;&gt;1. Күні бойы жиналған лайк санын көрсететін өрнек:&lt;/p&gt;
+                                &lt;div class=&#34;flex flex-wrap gap-4 justify-center&#34;&gt;${btnsHtml}&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;p-6 bg-pink-50 rounded-2xl border-2 border-pink-200&#34;&gt;
+                                &lt;p class=&#34;mb-4 font-bold text-xl text-pink-900&#34;&gt;2. Егер m = 20 болса, барлығы қанша лайк болды?&lt;/p&gt;
+                                &lt;div class=&#34;flex items-center gap-4 justify-center&#34;&gt;
+                                    &lt;input type=&#34;number&#34; placeholder=&#34;?&#34; value=&#34;${solved2 ? &#39;35&#39; : &#39;&#39;}&#34; class=&#34;border-2 border-pink-300 rounded-xl p-3 w-32 text-center text-3xl font-bold outline-none focus:border-pink-500&#34; ${solved2 ? &#39;disabled&#39; : &#39;&#39;} onblur=&#34;handleAnswer(&#39;t5_2&#39;, this.value === &#39;35&#39;)&#34;&gt;
+                                    ${solved2 ? &#39;&lt;span class=&#34;text-green-600 text-2xl font-bold flex items-center gap-2&#34;&gt;&lt;i data-lucide=&#34;check-circle&#34;&gt;&lt;/i&gt; Дұрыс!&lt;/span&gt;&#39; : &#39;&#39;}
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    `);
+                 }
+                 
+                 if (state.currentTaskIndex === 2) {
+                     const opts = [
+                         {id: &#39;t6_1&#39;, label: &#39;300 &#43; 5k&#39;, correct: true},
+                         {id: &#39;t6_2&#39;, label: &#39;(300 &#43; 5) · k&#39;, correct: false},
+                         {id: &#39;t6_3&#39;, label: &#39;300k &#43; 5&#39;, correct: false}
+                     ];
+                     const solved = isSolved(&#39;t6_1&#39;);
+                     const btns = opts.map(o =&gt; `
+                        &lt;button onclick=&#34;handleAnswer(&#39;t6_1&#39;, ${o.correct})&#34; ${solved ? &#39;disabled&#39; : &#39;&#39;} class=&#34;w-full text-left p-6 rounded-2xl border-2 transition-all text-2xl font-bold font-mono shadow-sm ${solved &amp;&amp; o.correct ? &#39;bg-green-100 border-green-500 text-green-900&#39; : &#39;hover:bg-blue-50 bg-white border-gray-200 hover:border-blue-300 text-gray-700&#39;}&#34;&gt;${o.label}&lt;/button&gt;
+                     `).join(&#39;&#39;);
+
+                     return renderTaskCard(&#34;6-тапсырма: Такси шақыру 🚖&#34;, &#34;Таксиге отыру бағасы — 300 теңге. Әр жүрген километр үшін k теңге қосылады.&#34;, `
+                        &lt;div class=&#34;bg-yellow-50 p-8 rounded-2xl border-2 border-yellow-200&#34;&gt;
+                             &lt;p class=&#34;mb-6 text-xl text-center font-medium&#34;&gt;5 километр жол жүрген жолаушы қанша ақша төлейтінін көрсететін өрнекті тап:&lt;/p&gt;
+                             &lt;div class=&#34;flex flex-col gap-4 max-w-xl mx-auto&#34;&gt;${btns}&lt;/div&gt;
+                        &lt;/div&gt;
+                     `);
+                 }
+
+                 if (state.currentTaskIndex === 3) {
+                     const solved1 = isSolved(&#39;t7_1&#39;);
+                     const solved2 = isSolved(&#39;t7_2&#39;);
+                     return renderTaskCard(&#34;7-тапсырма: Велосипед жарысы 🚴&#34;, &#34;Айдос велосипедпен сағатына 15 км жылдамдықпен жүреді.&#34;, `
+                        &lt;div class=&#34;space-y-8 p-4&#34;&gt;
+                            &lt;div class=&#34;flex flex-col md:flex-row items-center gap-6 justify-between bg-white p-6 rounded-xl border shadow-sm&#34;&gt;
+                                &lt;span class=&#34;text-xl font-bold text-gray-700&#34;&gt;1. Ол t сағатта қанша жол жүреді? (Өрнек)&lt;/span&gt;
+                                &lt;div class=&#34;flex items-center gap-3&#34;&gt;
+                                    &lt;select class=&#34;border-2 border-gray-300 p-3 rounded-xl bg-gray-50 text-2xl font-mono cursor-pointer hover:border-blue-400 focus:border-blue-500 outline-none&#34; onchange=&#34;handleAnswer(&#39;t7_1&#39;, this.value === &#39;15t&#39;)&#34; ${solved1 ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                                        &lt;option&gt;Формуланы таңда...&lt;/option&gt;
+                                        &lt;option value=&#34;15&#43;t&#34;&gt;15 &#43; t&lt;/option&gt;
+                                        &lt;option value=&#34;15t&#34; ${solved1 ? &#39;selected&#39; : &#39;&#39;}&gt;15t&lt;/option&gt;
+                                        &lt;option value=&#34;t/15&#34;&gt;t : 15&lt;/option&gt;
+                                    &lt;/select&gt;
+                                    ${solved1 ? &#39;&lt;i data-lucide=&#34;check-circle&#34; class=&#34;text-green-500 w-8 h-8&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;}
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;flex flex-col md:flex-row items-center gap-6 justify-between bg-white p-6 rounded-xl border shadow-sm&#34;&gt;
+                                &lt;span class=&#34;text-xl font-bold text-gray-700&#34;&gt;2. Егер ол 2 сағат жүрсе, қанша км жүреді?&lt;/span&gt;
+                                &lt;div class=&#34;flex items-center gap-3&#34;&gt;
+                                    &lt;input type=&#34;number&#34; class=&#34;border-2 border-gray-300 p-3 rounded-xl w-32 text-center text-3xl font-bold focus:border-blue-500 outline-none&#34; value=&#34;${solved2 ? &#39;30&#39; : &#39;&#39;}&#34; onblur=&#34;handleAnswer(&#39;t7_2&#39;, this.value === &#39;30&#39;)&#34; ${solved2 ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                                    &lt;span class=&#34;text-xl text-gray-500&#34;&gt;км&lt;/span&gt;
+                                    ${solved2 ? &#39;&lt;span class=&#34;text-green-600 font-bold text-xl ml-2&#34;&gt;Дұрыс!&lt;/span&gt;&#39; : &#39;&#39;}
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                     `);
+                 }
+            }
+
+            // --- LEVEL 3 ---
+            if (state.activeTab === &#39;level3&#39;) {
+                if (state.currentTaskIndex === 0) {
+                    const options = [&#39;a · b&#39;, &#39;2(a &#43; b)&#39;, &#39;a &#43; b&#39;];
+                    const solved1 = isSolved(&#39;t8_1&#39;);
+                    const btns = options.map(item =&gt; {
+                         const isCorrect = item === &#39;2(a &#43; b)&#39;;
+                         const cls = solved1 &amp;&amp; isCorrect ? &#39;bg-green-500 text-white border-green-600 shadow-lg scale-105&#39; : &#39;bg-white border-green-200 text-gray-700 hover:bg-green-50 hover:border-green-400&#39;;
+                         return `&lt;button onclick=&#34;handleAnswer(&#39;t8_1&#39;, ${isCorrect})&#34; ${solved1 ? &#39;disabled&#39; : &#39;&#39;} class=&#34;px-6 py-3 rounded-xl border-4 text-xl font-bold font-mono transition-all transform hover:scale-105 shadow-sm ${cls}&#34;&gt;${item}&lt;/button&gt;`;
+                    }).join(&#39;&#39;);
+
+                    const solved2 = isSolved(&#39;t8_2&#39;);
+
+                    return renderTaskCard(&#34;8-тапсырма: Жас зерттеуші 📏&#34;, &#34;Мектептегі футбол алаңының ұзындығы a метр, ал ені b метр.&#34;, `
+                        &lt;div class=&#34;bg-green-50 p-8 rounded-2xl border-2 border-green-200 relative overflow-hidden&#34;&gt;
+                            &lt;div class=&#34;w-full max-w-md mx-auto h-48 border-4 border-white bg-green-500 rounded-xl flex items-center justify-center mb-8 relative shadow-lg&#34;&gt;
+                                &lt;div class=&#34;absolute top-2 text-white font-bold text-lg&#34;&gt;Ені = b&lt;/div&gt;
+                                &lt;div class=&#34;absolute left-2 top-1/2 -translate-y-1/2 -rotate-90 text-white font-bold text-lg whitespace-nowrap&#34;&gt;Ұзындығы = a&lt;/div&gt;
+                                &lt;div class=&#34;w-20 h-20 border-4 border-white rounded-full opacity-70&#34;&gt;&lt;/div&gt;
+                                &lt;div class=&#34;w-full h-1 bg-white absolute opacity-70&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;space-y-6&#34;&gt;
+                                &lt;div class=&#34;bg-white p-4 rounded-xl border text-center&#34;&gt;
+                                    &lt;p class=&#34;font-bold text-xl mb-4 text-gray-800&#34;&gt;1. Периметрді (барлық қабырғалар қосындысын) табу формуласы:&lt;/p&gt;
+                                    &lt;div class=&#34;flex flex-wrap gap-4 justify-center&#34;&gt;${btns}&lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&#34;bg-white p-4 rounded-xl border flex flex-col items-center gap-3&#34;&gt;
+                                    &lt;p class=&#34;font-bold text-xl text-gray-800&#34;&gt;2. a = 90 м, b = 45 м болса, периметр неше?&lt;/p&gt;
+                                    &lt;div class=&#34;flex gap-3 items-center flex-wrap justify-center&#34;&gt;
+                                        &lt;input type=&#34;number&#34; placeholder=&#34;?&#34; value=&#34;${solved2 ? &#39;270&#39; : &#39;&#39;}&#34; class=&#34;border-2 border-gray-300 p-2 rounded-lg w-32 text-center text-2xl font-bold outline-none focus:border-green-500&#34; onblur=&#34;handleAnswer(&#39;t8_2&#39;, this.value === &#39;270&#39;)&#34; ${solved2 ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                                        ${solved2 ? &#39;&lt;span class=&#34;text-green-600 font-bold text-xl&#34;&gt;270 метр! Жарайсың!&lt;/span&gt;&#39; : &#39;&#39;}
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    `);
+                }
+
+                if (state.currentTaskIndex === 1) {
+                    const opts = [
+                         {id: &#39;t9_1&#39;, label: &#39;1000 - x - y&#39;, correct: true},
+                         {id: &#39;t9_2&#39;, label: &#39;1000 &#43; x &#43; y&#39;, correct: false},
+                         {id: &#39;t9_3&#39;, label: &#39;x &#43; y - 1000&#39;, correct: false}
+                    ];
+                    const solved = isSolved(&#39;t9_1&#39;);
+                    const btns = opts.map(o =&gt; `
+                        &lt;button onclick=&#34;handleAnswer(&#39;t9_1&#39;, ${o.correct})&#34; ${solved ? &#39;disabled&#39; : &#39;&#39;} class=&#34;w-full text-left p-6 rounded-2xl border-2 transition-all text-2xl font-bold font-mono shadow-sm ${solved &amp;&amp; o.correct ? &#39;bg-green-100 border-green-500 text-green-900&#39; : &#39;hover:bg-blue-50 bg-white border-gray-200 hover:border-blue-300 text-gray-700&#39;}&#34;&gt;${o.label}&lt;/button&gt;
+                    `).join(&#39;&#39;);
+
+                    return renderTaskCard(&#34;9-тапсырма: Үнемшіл оқушы 💰&#34;, &#34;Сенің 1000 теңге ақшаң бар еді. Сен x теңгеге балмұздақ және y теңгеге шырын алдың.&#34;, `
+                        &lt;div class=&#34;p-8 bg-blue-50 rounded-2xl border-2 border-blue-100&#34;&gt;
+                            &lt;p class=&#34;mb-6 text-2xl text-center font-bold text-blue-900&#34;&gt;Сенде қанша ақша қалғанын көрсететін өрнек:&lt;/p&gt;
+                            &lt;div class=&#34;grid grid-cols-1 gap-4 max-w-xl mx-auto&#34;&gt;${btns}&lt;/div&gt;
+                            ${solved ? &#39;&lt;p class=&#34;mt-4 text-center text-lg text-gray-600 font-medium&#34;&gt;Керемет! Тағы бір дұрыс жауап: 1000 - (x &#43; y)&lt;/p&gt;&#39; : &#39;&#39;}
+                        &lt;/div&gt;
+                    `);
+                }
+
+                if (state.currentTaskIndex === 2) {
+                    const solved = isSolved(&#39;t10_1&#39;);
+                    return renderTaskCard(&#34;10-тапсырма: Логикалық жұмбақ 🧩&#34;, &#34;Суреттегі жасырын сандарды тауып, өрнектің мәнін есепте.&#34;, `
+                        &lt;div class=&#34;flex flex-col items-center gap-6&#34;&gt;
+                            &lt;div class=&#34;bg-white p-6 rounded-2xl shadow-sm border-2 border-indigo-100 w-full max-w-md space-y-4&#34;&gt;
+                                &lt;div class=&#34;flex items-center justify-between text-2xl font-bold text-indigo-900 border-b pb-2&#34;&gt;
+                                    &lt;div class=&#34;flex items-center gap-2&#34;&gt;🦁 &#43; 🦁&lt;/div&gt;&lt;div class=&#34;text-gray-400&#34;&gt;=&lt;/div&gt;&lt;div class=&#34;text-indigo-600&#34;&gt;40&lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&#34;flex items-center justify-between text-2xl font-bold text-indigo-900 border-b pb-2&#34;&gt;
+                                    &lt;div class=&#34;flex items-center gap-2&#34;&gt;🦁 &#43; 🐼&lt;/div&gt;&lt;div class=&#34;text-gray-400&#34;&gt;=&lt;/div&gt;&lt;div class=&#34;text-indigo-600&#34;&gt;35&lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&#34;flex items-center justify-between text-2xl font-bold text-red-600 pt-2&#34;&gt;
+                                    &lt;div class=&#34;flex items-center gap-2&#34;&gt;2 · 🐼 - 🦁&lt;/div&gt;&lt;div class=&#34;text-gray-400&#34;&gt;=&lt;/div&gt;&lt;div class=&#34;text-red-600&#34;&gt;?&lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;bg-indigo-50 p-6 rounded-2xl w-full max-w-md text-center&#34;&gt;
+                                &lt;p class=&#34;mb-4 text-lg text-indigo-800 font-medium&#34;&gt;Жауабын жаз:&lt;/p&gt;
+                                &lt;div class=&#34;flex justify-center items-center gap-4&#34;&gt;
+                                    &lt;input type=&#34;number&#34; placeholder=&#34;?&#34; value=&#34;${solved ? &#39;10&#39; : &#39;&#39;}&#34; class=&#34;border-4 border-indigo-200 rounded-xl p-3 w-32 text-center text-4xl font-bold outline-none focus:border-indigo-500 text-indigo-900&#34; onblur=&#34;handleAnswer(&#39;t10_1&#39;, this.value === &#39;10&#39;)&#34; onkeydown=&#34;if(event.key===&#39;Enter&#39;) handleAnswer(&#39;t10_1&#39;, this.value === &#39;10&#39;)&#34; ${solved ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                                &lt;/div&gt;
+                                ${solved ? &#39;&lt;div class=&#34;mt-4 text-green-600 font-bold text-xl flex justify-center items-center gap-2 animate-bounce&#34;&gt;&lt;i data-lucide=&#34;check-circle&#34; size=&#34;28&#34;&gt;&lt;/i&gt; Дұрыс! (30 - 20 = 10)&lt;/div&gt;&#39; : &#39;&#39;}
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    `);
+                }
+            }
+            return &#39;&#39;;
+        }
+
+        function renderNavigation() {
+            const currentLevelCount = levelConfig[state.activeTab].count;
+            const isLastTaskOfLevel = state.currentTaskIndex === currentLevelCount - 1;
+            const isLastLevel = state.activeTab === &#39;level3&#39;;
+
+            let nextBtnClass = isLastTaskOfLevel &amp;&amp; isLastLevel
+                ? &#39;bg-purple-600 text-white hover:bg-purple-700 shadow-md ring-4 ring-purple-100&#39;
+                : isLastTaskOfLevel
+                    ? &#39;bg-green-600 text-white hover:bg-green-700 shadow-md ring-4 ring-green-100&#39;
+                    : &#39;bg-blue-600 text-white hover:bg-blue-700 shadow-md&#39;;
+            
+            let nextBtnText = isLastTaskOfLevel &amp;&amp; !isLastLevel ? &#39;Келесі деңгей&#39; : isLastLevel ? &#39;Аяқтау&#39; : &#39;Келесі&#39;;
+
+            return `
+                &lt;div class=&#34;mt-8 flex justify-between items-center bg-white p-4 rounded-2xl shadow-lg border border-gray-100&#34;&gt;
+                    &lt;button onclick=&#34;handlePrev()&#34; ${state.currentTaskIndex === 0 ? &#39;disabled&#39; : &#39;&#39;} class=&#34;flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-lg transition-all ${state.currentTaskIndex === 0 ? &#39;bg-gray-100 text-gray-400 cursor-not-allowed&#39; : &#39;bg-blue-100 text-blue-700 hover:bg-blue-200&#39;}&#34;&gt;
+                        &lt;i data-lucide=&#34;arrow-left&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt; Алдыңғы
+                    &lt;/button&gt;
+
+                    &lt;span class=&#34;text-gray-500 font-bold text-xl&#34;&gt;
+                        Тапсырма ${state.currentTaskIndex &#43; 1} / ${currentLevelCount}
+                    &lt;/span&gt;
+
+                    &lt;button onclick=&#34;handleNext()&#34; class=&#34;flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-lg transition-all ${nextBtnClass}&#34;&gt;
+                        ${nextBtnText} &lt;i data-lucide=&#34;arrow-right&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderGameOver() {
+            const feedback = getFeedback(state.score);
+            const icon = state.score &gt;= 190 ? &#39;trophy&#39; : &#39;star&#39;; // Updated threshold for icon
+            const iconAnim = state.score &gt;= 190 ? &#39;animate-bounce&#39; : &#39;animate-pulse&#39;;
+
+            return `
+                &lt;div class=&#34;min-h-screen flex items-center justify-center&#34;&gt;
+                    &lt;div class=&#34;max-w-2xl w-full bg-white rounded-3xl shadow-2xl p-8 text-center animate-slide-up border-4 ${feedback.border}&#34;&gt;
+                        &lt;div class=&#34;mb-6 flex justify-center&#34;&gt;
+                            &lt;div class=&#34;${feedback.bg} p-6 rounded-full&#34;&gt;
+                                &lt;i data-lucide=&#34;${icon}&#34; class=&#34;w-24 h-24 ${feedback.color} ${iconAnim}&#34;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;h1 class=&#34;text-4xl md:text-5xl font-extrabold mb-4 ${feedback.color}&#34;&gt;${feedback.title}&lt;/h1&gt;
+                        &lt;p class=&#34;text-xl text-gray-600 mb-8 px-4&#34;&gt;${feedback.message}&lt;/p&gt;
+                        
+                        &lt;div class=&#34;bg-gray-50 p-6 rounded-2xl mb-8 border-2 border-gray-200 inline-block min-w-[200px]&#34;&gt;
+                            &lt;span class=&#34;text-gray-500 text-lg font-medium&#34;&gt;Жалпы нәтиже:&lt;/span&gt;
+                            &lt;div class=&#34;text-5xl font-black text-gray-800 mt-2&#34;&gt;${state.score} / 210&lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class=&#34;mt-4&#34;&gt;
+                            &lt;button onclick=&#34;handleRestart()&#34; class=&#34;w-full py-5 rounded-2xl bg-blue-600 text-white text-2xl font-bold flex items-center justify-center gap-3 hover:bg-blue-700 shadow-lg transition-transform hover:scale-105&#34;&gt;
+                                &lt;i data-lucide=&#34;rotate-ccw&#34; class=&#34;w-8 h-8&#34;&gt;&lt;/i&gt; Қайта басынан бастау
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderFooter() {
+            return `
+                &lt;footer class=&#34;max-w-4xl mx-auto text-center text-gray-400 text-base pb-8 font-medium mt-10&#34;&gt;
+                    &lt;p&gt;Математика 5-сынып | Интерактивті оқыту құралы&lt;/p&gt;
+                &lt;/footer&gt;
+            `;
+        }
+
+        // --- MAIN RENDER LOOP ---
+        function render() {
+            const app = document.getElementById(&#39;app&#39;);
+            
+            if (state.isGameFinished) {
+                app.innerHTML = renderGameOver() &#43; renderFooter();
+            } else {
+                app.innerHTML = `
+                    ${renderHeader()}
+                    ${renderTabs()}
+                    &lt;main class=&#34;max-w-4xl mx-auto&#34;&gt;
+                        ${renderLevelBanner()}
+                        &lt;div class=&#34;min-h-[400px]&#34;&gt;
+                            ${renderTaskContent()}
+                        &lt;/div&gt;
+                        ${renderNavigation()}
+                    &lt;/main&gt;
+                    ${renderFooter()}
+                `;
+            }
+
+            // Initialize icons
+            lucide.createIcons();
+        }
+
+        // Initial render
+        render();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -458,7 +1016,491 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame140_ru" src="/task/140?lang=ru"
+                            <iframe id="taskFrame140_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Числовые и буквенные выражения&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&#39;);
+        body { font-family: &#39;Inter&#39;, sans-serif; }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out; }
+        .animate-slide-up { animation: slideUp 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+        .animate-shake { animation: shake 0.2s ease-in-out 0s 2; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 p-4 text-gray-800&#34;&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;max-w-4xl mx-auto pb-20&#34;&gt;
+        &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- STATE MANAGEMENT ---
+        const state = {
+            activeTab: &#39;level1&#39;,
+            currentTaskIndex: 0,
+            score: 0,
+            completedTasks: {}, // { taskId: &#39;correct&#39; | &#39;wrong&#39; }
+            isGameFinished: false
+        };
+
+        const levelConfig = {
+            level1: { count: 3, color: &#39;green&#39;, label: &#39;Уровень I: «Тренировочная площадка»&#39; },
+            level2: { count: 4, color: &#39;yellow&#39;, label: &#39;Уровень II: «Связь с жизнью»&#39; },
+            level3: { count: 3, color: &#39;red&#39;, label: &#39;Уровень III: «Логика и творчество»&#39; }
+        };
+
+        const levelsOrder = [&#39;level1&#39;, &#39;level2&#39;, &#39;level3&#39;];
+
+        // --- HELPER FUNCTIONS ---
+        const isSolved = (taskId) =&gt; state.completedTasks[taskId] === &#39;correct&#39;;
+        const isWrong = (taskId) =&gt; state.completedTasks[taskId] === &#39;wrong&#39;;
+
+        function handleAnswer(taskId, isCorrect) {
+            if (state.completedTasks[taskId] === &#39;correct&#39;) return;
+
+            if (isCorrect) {
+                state.score &#43;= 10;
+                state.completedTasks[taskId] = &#39;correct&#39;;
+                render();
+            } else {
+                state.completedTasks[taskId] = &#39;wrong&#39;;
+                render();
+                setTimeout(() =&gt; {
+                    if (state.completedTasks[taskId] === &#39;wrong&#39;) {
+                        delete state.completedTasks[taskId];
+                        render();
+                    }
+                }, 1500);
+            }
+        }
+
+        function handleNext() {
+            const currentLevelCount = levelConfig[state.activeTab].count;
+            if (state.currentTaskIndex &lt; currentLevelCount - 1) {
+                state.currentTaskIndex&#43;&#43;;
+            } else {
+                const currentLevelIndex = levelsOrder.indexOf(state.activeTab);
+                if (currentLevelIndex &lt; levelsOrder.length - 1) {
+                    state.activeTab = levelsOrder[currentLevelIndex &#43; 1];
+                    state.currentTaskIndex = 0;
+                } else {
+                    state.isGameFinished = true;
+                }
+            }
+            render();
+        }
+
+        function handlePrev() {
+            if (state.currentTaskIndex &gt; 0) {
+                state.currentTaskIndex--;
+                render();
+            }
+        }
+
+        function handleRestart() {
+            state.activeTab = &#39;level1&#39;;
+            state.currentTaskIndex = 0;
+            state.score = 0;
+            state.completedTasks = {};
+            state.isGameFinished = false;
+            render();
+        }
+
+        function setTab(tabName) {
+            state.activeTab = tabName;
+            state.currentTaskIndex = 0;
+            render();
+        }
+
+        function getFeedback(finalScore) {
+            if (finalScore &gt;= 190) return { title: &#34;Великолепно! 🏆&#34;, message: &#34;Ты настоящий математик! Тема освоена в совершенстве.&#34;, color: &#34;text-green-600&#34;, bg: &#34;bg-green-100&#34;, border: &#34;border-green-300&#34; };
+            if (finalScore &gt;= 150) return { title: &#34;Хорошо! 🌟&#34;, message: &#34;Многие задания выполнены верно! Немного больше внимательности — и будет идеал.&#34;, color: &#34;text-blue-600&#34;, bg: &#34;bg-blue-100&#34;, border: &#34;border-blue-300&#34; };
+            if (finalScore &gt;= 85) return { title: &#34;Неплохо 🙂&#34;, message: &#34;Результат средний, стоит еще раз повторить правила темы.&#34;, color: &#34;text-yellow-600&#34;, bg: &#34;bg-yellow-100&#34;, border: &#34;border-yellow-300&#34; };
+            return { title: &#34;Нужно постараться! 💪&#34;, message: &#34;Не расстраивайся! Попробуй пройти тренажер сначала.&#34;, color: &#34;text-red-600&#34;, bg: &#34;bg-red-100&#34;, border: &#34;border-red-300&#34; };
+        }
+
+        // --- RENDER FUNCTIONS ---
+        function renderHeader() {
+            return `
+                &lt;header class=&#34;bg-white rounded-2xl shadow-lg p-6 mb-6 flex flex-col md:flex-row justify-between items-center sticky top-2 z-10 border-b-4 border-blue-500&#34;&gt;
+                    &lt;div class=&#34;mb-4 md:mb-0 text-center md:text-left&#34;&gt;
+                        &lt;h1 class=&#34;text-2xl md:text-3xl font-bold text-blue-800 flex items-center justify-center md:justify-start gap-3&#34;&gt;
+                            &lt;i data-lucide=&#34;calculator&#34; class=&#34;w-10 h-10 text-blue-500&#34;&gt;&lt;/i&gt;
+                            Числовые и буквенные выражения
+                        &lt;/h1&gt;
+                        &lt;p class=&#34;text-lg text-gray-500 mt-1&#34;&gt;Закрепление знаний&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-3 bg-yellow-100 px-6 py-3 rounded-full border-2 border-yellow-300 shadow-sm transform hover:scale-105 transition-transform&#34;&gt;
+                        &lt;i data-lucide=&#34;trophy&#34; class=&#34;w-8 h-8 text-yellow-600&#34;&gt;&lt;/i&gt;
+                        &lt;span class=&#34;font-bold text-2xl text-yellow-800&#34;&gt;${state.score} баллов&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/header&gt;
+            `;
+        }
+
+        function renderTabs() {
+            const tabs = [
+                { id: &#39;level1&#39;, label: &#39;Уровень I&#39;, icon: &#39;star&#39;, color: &#39;green&#39; },
+                { id: &#39;level2&#39;, label: &#39;Уровень II&#39;, icon: &#39;book-open&#39;, color: &#39;yellow&#39; },
+                { id: &#39;level3&#39;, label: &#39;Уровень III&#39;, icon: &#39;brain&#39;, color: &#39;red&#39; }
+            ];
+
+            return `
+                &lt;div class=&#34;mb-8 flex flex-wrap gap-3 justify-center&#34;&gt;
+                    ${tabs.map(tab =&gt; {
+                        const isActive = state.activeTab === tab.id;
+                        const activeClass = isActive 
+                            ? `bg-${tab.color}-500 text-white shadow-lg scale-110 ring-4 ring-${tab.color}-200` 
+                            : `bg-white text-gray-600 hover:bg-${tab.color}-50 border border-gray-200`;
+                        
+                        return `
+                            &lt;button onclick=&#34;setTab(&#39;${tab.id}&#39;)&#34; class=&#34;px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center gap-2 ${activeClass}&#34;&gt;
+                                &lt;i data-lucide=&#34;${tab.icon}&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt; ${tab.label}
+                            &lt;/button&gt;
+                        `;
+                    }).join(&#39;&#39;)}
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderLevelBanner() {
+            const config = levelConfig[state.activeTab];
+            let bgClass = &#39;&#39;;
+            if (state.activeTab === &#39;level1&#39;) bgClass = &#39;bg-green-100 border-green-300 text-green-800&#39;;
+            if (state.activeTab === &#39;level2&#39;) bgClass = &#39;bg-yellow-100 border-yellow-300 text-yellow-800&#39;;
+            if (state.activeTab === &#39;level3&#39;) bgClass = &#39;bg-red-100 border-red-300 text-red-800&#39;;
+
+            return `
+                &lt;div class=&#34;p-6 rounded-2xl border-2 mb-6 text-2xl font-bold text-center shadow-sm animate-fade-in ${bgClass}&#34;&gt;
+                   ${config.label}
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderTaskCard(title, desc, content) {
+            return `
+                &lt;div class=&#34;bg-white rounded-3xl shadow-xl border-2 border-gray-100 overflow-hidden animate-slide-up&#34;&gt;
+                    &lt;div class=&#34;bg-gradient-to-r from-gray-50 to-white px-8 py-6 border-b flex items-start gap-4&#34;&gt;
+                        &lt;div class=&#34;bg-blue-100 p-3 rounded-2xl text-blue-600 shadow-sm&#34;&gt;
+                            &lt;i data-lucide=&#34;book-open&#34; class=&#34;w-8 h-8&#34;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;h3 class=&#34;font-extrabold text-2xl md:text-3xl text-gray-800 mb-2&#34;&gt;${title}&lt;/h3&gt;
+                            &lt;p class=&#34;text-gray-600 text-xl font-medium leading-relaxed&#34;&gt;${desc}&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;p-8&#34;&gt;
+                        ${content}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+        }
+
+        function renderTaskContent() {
+            // --- LEVEL 1 ---
+            if (state.activeTab === &#39;level1&#39;) {
+                if (state.currentTaskIndex === 0) {
+                    const items = [
+                        { id: &#39;t1_1&#39;, text: &#39;15 &#43; 4&#39;, type: &#39;num&#39; },
+                        { id: &#39;t1_2&#39;, text: &#39;a &#43; 9&#39;, type: &#39;lit&#39; },
+                        { id: &#39;t1_3&#39;, text: &#39;100 - 25&#39;, type: &#39;num&#39; },
+                        { id: &#39;t1_4&#39;, text: &#39;3x &#43; 1&#39;, type: &#39;lit&#39; },
+                        { id: &#39;t1_5&#39;, text: &#39;(12 · 2) - 5&#39;, type: &#39;num&#39; },
+                        { id: &#39;t1_6&#39;, text: &#39;7b - c&#39;, type: &#39;lit&#39; }
+                    ];
+                    
+                    const itemsHtml = items.map(item =&gt; {
+                        const solved = isSolved(item.id);
+                        const wrong = isWrong(item.id);
+                        return `
+                        &lt;div class=&#34;bg-gray-50 p-6 rounded-2xl border-2 border-gray-200 flex flex-col items-center gap-4 shadow-sm hover:shadow-md transition-shadow ${wrong ? &#39;animate-shake&#39; : &#39;&#39;}&#34;&gt;
+                            &lt;span class=&#34;font-mono text-3xl font-bold bg-white px-6 py-3 rounded-xl shadow-inner text-gray-700&#34;&gt;${item.text}&lt;/span&gt;
+                            &lt;div class=&#34;flex flex-col w-full gap-3&#34;&gt;
+                                &lt;button ${solved ? &#39;disabled&#39; : &#39;&#39;} onclick=&#34;handleAnswer(&#39;${item.id}&#39;, ${item.type === &#39;num&#39;})&#34; class=&#34;py-3 px-4 rounded-xl text-lg font-bold border-2 transition-all ${solved &amp;&amp; item.type === &#39;num&#39; ? &#39;bg-green-500 text-white border-green-600&#39; : &#39;hover:bg-blue-100 bg-white border-blue-200 text-gray-700&#39;}&#34;&gt;🔢 Числовое&lt;/button&gt;
+                                &lt;button ${solved ? &#39;disabled&#39; : &#39;&#39;} onclick=&#34;handleAnswer(&#39;${item.id}&#39;, ${item.type === &#39;lit&#39;})&#34; class=&#34;py-3 px-4 rounded-xl text-lg font-bold border-2 transition-all ${solved &amp;&amp; item.type === &#39;lit&#39; ? &#39;bg-green-500 text-white border-green-600&#39; : &#39;hover:bg-purple-100 bg-white border-purple-200 text-gray-700&#39;}&#34;&gt;🔤 Буквенное&lt;/button&gt;
+                            &lt;/div&gt;
+                            ${solved ? &#39;&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-8 h-8 text-green-500 animate-bounce&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;}
+                            ${wrong ? &#39;&lt;i data-lucide=&#34;x-circle&#34; class=&#34;w-8 h-8 text-red-500&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;}
+                        &lt;/div&gt;`;
+                    }).join(&#39;&#39;);
+
+                    return renderTaskCard(&#34;Задание 1: Волшебные корзины 🍎&#34;, &#34;Распредели выражения по двум корзинам:&#34;, `&lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6&#34;&gt;${itemsHtml}&lt;/div&gt;`);
+                }
+
+                if (state.currentTaskIndex === 1) {
+                    const items = [
+                        {id: &#39;t2_1&#39;, q: &#39;5x&#39;, a: &#39;5&#39;},
+                        {id: &#39;t2_2&#39;, q: &#39;12a&#39;, a: &#39;12&#39;},
+                        {id: &#39;t2_3&#39;, q: &#39;y&#39;, a: &#39;1&#39;},
+                        {id: &#39;t2_4&#39;, q: &#39;24abc&#39;, a: &#39;24&#39;},
+                    ];
+                    const itemsHtml = items.map(item =&gt; `
+                        &lt;div class=&#34;flex items-center justify-between bg-white p-6 rounded-2xl border-2 border-gray-100 shadow-sm&#34;&gt;
+                            &lt;div class=&#34;flex items-center gap-4&#34;&gt;
+                                &lt;span class=&#34;font-mono font-bold text-4xl text-blue-600 w-32 text-right&#34;&gt;${item.q}&lt;/span&gt;
+                                &lt;i data-lucide=&#34;arrow-right&#34; class=&#34;text-gray-400&#34;&gt;&lt;/i&gt;
+                                &lt;span class=&#34;text-xl font-medium text-gray-600&#34;&gt;Коэффициент:&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;flex items-center gap-3&#34;&gt;
+                                &lt;input type=&#34;number&#34; placeholder=&#34;?&#34; value=&#34;${isSolved(item.id) ? item.a : &#39;&#39;}&#34; class=&#34;border-2 border-gray-300 rounded-xl p-3 w-24 text-center text-3xl font-bold focus:border-blue-500 outline-none&#34; ${isSolved(item.id) ? &#39;disabled&#39; : &#39;&#39;} onblur=&#34;handleAnswer(&#39;${item.id}&#39;, this.value === &#39;${item.a}&#39;)&#34;&gt;
+                                ${isSolved(item.id) ? &#39;&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-8 h-8 text-green-500&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;}
+                                ${isWrong(item.id) ? &#39;&lt;span class=&#34;text-red-500 text-lg font-bold animate-shake&#34;&gt;Ошибка!&lt;/span&gt;&#39; : &#39;&#39;}
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    `).join(&#39;&#39;);
+                    return renderTaskCard(&#34;Задание 2: Тайный агент 🕵️‍♂️&#34;, &#34;Найди коэффициент (число перед буквой) в буквенных выражениях.&#34;, `&lt;div class=&#34;space-y-6 max-w-2xl mx-auto&#34;&gt;${itemsHtml}&lt;/div&gt;&lt;div class=&#34;mt-4 text-center text-gray-500 text-lg italic&#34;&gt;Подсказка: Если числа нет, коэффициент равен 1!&lt;/div&gt;`);
+                }
+
+                if (state.currentTaskIndex === 2) {
+                    const solved = isSolved(&#39;t3_1&#39;);
+                    const content = `
+                    &lt;div class=&#34;flex flex-col items-center gap-8 py-8&#34;&gt;
+                        &lt;div class=&#34;bg-gray-800 text-green-400 font-mono text-2xl p-8 rounded-2xl w-full max-w-lg text-center shadow-xl border-4 border-gray-600&#34;&gt;
+                            &lt;p class=&#34;mb-2&#34;&gt;ВХОД: x = 10&lt;/p&gt;
+                            &lt;p class=&#34;mb-2&#34;&gt;ПРОЦЕСС: 45 &#43; x&lt;/p&gt;
+                            &lt;p class=&#34;animate-pulse&#34;&gt;ВЫХОД: ???&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;flex gap-4 items-center&#34;&gt;
+                            &lt;input id=&#34;t3_input&#34; type=&#34;number&#34; value=&#34;${solved ? &#39;55&#39; : &#39;&#39;}&#34; class=&#34;border-4 border-gray-300 rounded-2xl p-4 text-4xl w-48 text-center focus:border-blue-500 outline-none shadow-inner&#34; placeholder=&#34;?&#34; ${solved ? &#39;disabled&#39; : &#39;&#39;} onkeydown=&#34;if(event.key===&#39;Enter&#39;) handleAnswer(&#39;t3_1&#39;, this.value === &#39;55&#39;)&#34;&gt;
+                            &lt;button onclick=&#34;handleAnswer(&#39;t3_1&#39;, document.getElementById(&#39;t3_input&#39;).value === &#39;55&#39;)&#34; class=&#34;bg-blue-600 text-white text-xl font-bold px-8 py-4 rounded-2xl hover:bg-blue-700 shadow-lg active:scale-95 transition-transform&#34;&gt;Ввод&lt;/button&gt;
+                        &lt;/div&gt;
+                        ${solved ? &#39;&lt;div class=&#34;text-green-600 font-bold text-3xl flex items-center gap-3 animate-fade-in bg-green-100 px-6 py-3 rounded-full&#34;&gt;&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-8 h-8&#34;&gt;&lt;/i&gt; Робот запущен!&lt;/div&gt;&#39; : &#39;&#39;}
+                    &lt;/div&gt;`;
+                    return renderTaskCard(&#34;Задание 3: Запусти робота 🤖&#34;, &#34;Найди значение выражения 45 &#43; x, если x = 10.&#34;, content);
+                }
+            }
+
+            // --- LEVEL 2 ---
+            if (state.activeTab === &#39;level2&#39;) {
+                if (state.currentTaskIndex === 0) {
+                    const opts = [
+                        {id: &#39;t4_opt1&#39;, text: &#39;3a &#43; 2b&#39;, correct: true},
+                        {id: &#39;t4_opt2&#39;, text: &#39;(3 &#43; a) · (2 &#43; b)&#39;, correct: false},
+                        {id: &#39;t4_opt3&#39;, text: &#39;3b &#43; 2a&#39;, correct: false},
+                        {id: &#39;t4_opt4&#39;, text: &#39;5 · (a &#43; b)&#39;, correct: false}
+                    ];
+                    const solved = isSolved(&#39;t4_main&#39;);
+                    const optsHtml = opts.map(opt =&gt; `
+                        &lt;button ${solved ? &#39;disabled&#39; : &#39;&#39;} onclick=&#34;handleAnswer(&#39;t4_main&#39;, ${opt.correct})&#34; class=&#34;p-8 rounded-2xl border-4 font-mono text-3xl font-bold transition-all transform hover:scale-105 ${solved &amp;&amp; opt.correct ? &#39;bg-green-100 border-green-500 text-green-800&#39; : &#39;bg-white border-gray-200 hover:border-blue-400 text-gray-700&#39;}&#34;&gt;
+                            ${opt.text}
+                        &lt;/button&gt;
+                    `).join(&#39;&#39;);
+                    return renderTaskCard(&#34;Задание 4: Поход в магазин 🛒&#34;, &#34;Цена одной тетради — a тенге. Цена одной ручки — b тенге. Сколько ты заплатишь за 3 тетради и 2 ручки?&#34;, `&lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-6 mt-4&#34;&gt;${optsHtml}&lt;/div&gt;${solved ? &#39;&lt;div class=&#34;mt-6 text-green-600 text-2xl font-bold text-center bg-green-50 p-4 rounded-xl border border-green-200&#34;&gt;Отлично! 3 тетради (3a) и 2 ручки (2b).&lt;/div&gt;&#39; : &#39;&#39;}`);
+                }
+
+                if (state.currentTaskIndex === 1) {
+                    const options = [&#39;m - 15&#39;, &#39;m &#43; 15&#39;, &#39;15m&#39;];
+                    const solved1 = isSolved(&#39;t5_1&#39;);
+                    const btnsHtml = options.map(item =&gt; {
+                        const isCorrect = item === &#39;m &#43; 15&#39;;
+                        const btnClass = solved1 &amp;&amp; isCorrect ? &#39;bg-green-500 text-white border-green-600 shadow-lg scale-105&#39; : &#39;bg-white border-pink-200 text-gray-700 hover:bg-pink-50 hover:border-pink-400&#39;;
+                        return `&lt;button onclick=&#34;handleAnswer(&#39;t5_1&#39;, ${isCorrect})&#34; ${solved1 ? &#39;disabled&#39; : &#39;&#39;} class=&#34;px-8 py-4 rounded-xl border-4 text-2xl font-bold font-mono transition-all transform hover:scale-105 shadow-sm ${btnClass}&#34;&gt;${item}&lt;/button&gt;`;
+                    }).join(&#39;&#39;);
+                    const solved2 = isSolved(&#39;t5_2&#39;);
+                    return renderTaskCard(&#34;Задание 5: Инста-Лайки ❤️&#34;, &#34;Утром твое фото лайкнули m друзей, а вечером — еще 15 человек.&#34;, `
+                        &lt;div class=&#34;space-y-8&#34;&gt;
+                            &lt;div class=&#34;p-6 bg-pink-50 rounded-2xl border-2 border-pink-200&#34;&gt;
+                                &lt;p class=&#34;mb-4 font-bold text-xl text-pink-900&#34;&gt;1. Выражение для общего числа лайков за день:&lt;/p&gt;
+                                &lt;div class=&#34;flex flex-wrap gap-4 justify-center&#34;&gt;${btnsHtml}&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;p-6 bg-pink-50 rounded-2xl border-2 border-pink-200&#34;&gt;
+                                &lt;p class=&#34;mb-4 font-bold text-xl text-pink-900&#34;&gt;2. Если m = 20, сколько всего лайков собрало фото?&lt;/p&gt;
+                                &lt;div class=&#34;flex items-center gap-4 justify-center&#34;&gt;
+                                    &lt;input type=&#34;number&#34; placeholder=&#34;?&#34; value=&#34;${solved2 ? &#39;35&#39; : &#39;&#39;}&#34; class=&#34;border-2 border-pink-300 rounded-xl p-3 w-32 text-center text-3xl font-bold outline-none focus:border-pink-500&#34; ${solved2 ? &#39;disabled&#39; : &#39;&#39;} onblur=&#34;handleAnswer(&#39;t5_2&#39;, this.value === &#39;35&#39;)&#34;&gt;
+                                    ${solved2 ? &#39;&lt;span class=&#34;text-green-600 text-2xl font-bold flex items-center gap-2&#34;&gt;&lt;i data-lucide=&#34;check-circle&#34;&gt;&lt;/i&gt; Верно!&lt;/span&gt;&#39; : &#39;&#39;}
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;`);
+                }
+
+                if (state.currentTaskIndex === 2) {
+                    const opts = [ {id: &#39;t6_1&#39;, label: &#39;300 &#43; 5k&#39;, correct: true}, {id: &#39;t6_2&#39;, label: &#39;(300 &#43; 5) · k&#39;, correct: false}, {id: &#39;t6_3&#39;, label: &#39;300k &#43; 5&#39;, correct: false} ];
+                    const solved = isSolved(&#39;t6_1&#39;);
+                    const btns = opts.map(o =&gt; `&lt;button onclick=&#34;handleAnswer(&#39;t6_1&#39;, ${o.correct})&#34; ${solved ? &#39;disabled&#39; : &#39;&#39;} class=&#34;w-full text-left p-6 rounded-2xl border-2 transition-all text-2xl font-bold font-mono shadow-sm ${solved &amp;&amp; o.correct ? &#39;bg-green-100 border-green-500 text-green-900&#39; : &#39;hover:bg-blue-50 bg-white border-gray-200 hover:border-blue-300 text-gray-700&#39;}&#34;&gt;${o.label}&lt;/button&gt;`).join(&#39;&#39;);
+                    return renderTaskCard(&#34;Задание 6: Вызов такси 🚖&#34;, &#34;Посадка в такси стоит 300 тенге. За каждый проеханный километр добавляется k тенге.&#34;, `
+                        &lt;div class=&#34;bg-yellow-50 p-8 rounded-2xl border-2 border-yellow-200&#34;&gt;
+                             &lt;p class=&#34;mb-6 text-xl text-center font-medium&#34;&gt;Найди выражение для стоимости поездки длиной 5 километров:&lt;/p&gt;
+                             &lt;div class=&#34;flex flex-col gap-4 max-w-xl mx-auto&#34;&gt;${btns}&lt;/div&gt;
+                        &lt;/div&gt;`);
+                }
+
+                if (state.currentTaskIndex === 3) {
+                    const solved1 = isSolved(&#39;t7_1&#39;);
+                    const solved2 = isSolved(&#39;t7_2&#39;);
+                    return renderTaskCard(&#34;Задание 7: Велогонка 🚴&#34;, &#34;Айдос едет на велосипеде со скоростью 15 км/ч.&#34;, `
+                        &lt;div class=&#34;space-y-8 p-4&#34;&gt;
+                            &lt;div class=&#34;flex flex-col md:flex-row items-center gap-6 justify-between bg-white p-6 rounded-xl border shadow-sm&#34;&gt;
+                                &lt;span class=&#34;text-xl font-bold text-gray-700&#34;&gt;1. Какой путь он проедет за t часов? (Формула)&lt;/span&gt;
+                                &lt;div class=&#34;flex items-center gap-3&#34;&gt;
+                                    &lt;select class=&#34;border-2 border-gray-300 p-3 rounded-xl bg-gray-50 text-2xl font-mono cursor-pointer&#34; onchange=&#34;handleAnswer(&#39;t7_1&#39;, this.value === &#39;15t&#39;)&#34; ${solved1 ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                                        &lt;option&gt;Выбери...&lt;/option&gt;
+                                        &lt;option value=&#34;15&#43;t&#34;&gt;15 &#43; t&lt;/option&gt;
+                                        &lt;option value=&#34;15t&#34; ${solved1 ? &#39;selected&#39; : &#39;&#39;}&gt;15t&lt;/option&gt;
+                                        &lt;option value=&#34;t/15&#34;&gt;t : 15&lt;/option&gt;
+                                    &lt;/select&gt;
+                                    ${solved1 ? &#39;&lt;i data-lucide=&#34;check-circle&#34; class=&#34;text-green-500 w-8 h-8&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;}
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;flex flex-col md:flex-row items-center gap-6 justify-between bg-white p-6 rounded-xl border shadow-sm&#34;&gt;
+                                &lt;span class=&#34;text-xl font-bold text-gray-700&#34;&gt;2. Если он будет ехать 2 часа, сколько км он проедет?&lt;/span&gt;
+                                &lt;div class=&#34;flex items-center gap-3&#34;&gt;
+                                    &lt;input type=&#34;number&#34; class=&#34;border-2 border-gray-300 p-3 rounded-xl w-32 text-center text-3xl font-bold&#34; value=&#34;${solved2 ? &#39;30&#39; : &#39;&#39;}&#34; onblur=&#34;handleAnswer(&#39;t7_2&#39;, this.value === &#39;30&#39;)&#34; ${solved2 ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                                    &lt;span class=&#34;text-xl text-gray-500&#34;&gt;км&lt;/span&gt;
+                                    ${solved2 ? &#39;&lt;span class=&#34;text-green-600 font-bold text-xl ml-2&#34;&gt;Верно!&lt;/span&gt;&#39; : &#39;&#39;}
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;`);
+                }
+            }
+
+            // --- LEVEL 3 ---
+            if (state.activeTab === &#39;level3&#39;) {
+                if (state.currentTaskIndex === 0) {
+                    const options = [&#39;a · b&#39;, &#39;2(a &#43; b)&#39;, &#39;a &#43; b&#39;];
+                    const solved1 = isSolved(&#39;t8_1&#39;);
+                    const btns = options.map(item =&gt; {
+                         const isCorrect = item === &#39;2(a &#43; b)&#39;;
+                         const cls = solved1 &amp;&amp; isCorrect ? &#39;bg-green-500 text-white border-green-600 shadow-lg scale-105&#39; : &#39;bg-white border-green-200 text-gray-700 hover:bg-green-50 hover:border-green-400&#39;;
+                         return `&lt;button onclick=&#34;handleAnswer(&#39;t8_1&#39;, ${isCorrect})&#34; ${solved1 ? &#39;disabled&#39; : &#39;&#39;} class=&#34;px-6 py-3 rounded-xl border-4 text-xl font-bold font-mono transition-all transform hover:scale-105 ${cls}&#34;&gt;${item}&lt;/button&gt;`;
+                    }).join(&#39;&#39;);
+                    const solved2 = isSolved(&#39;t8_2&#39;);
+                    return renderTaskCard(&#34;Задание 8: Юный исследователь 📏&#34;, &#34;Длина школьного футбольного поля равна a метров, а ширина — b метров.&#34;, `
+                        &lt;div class=&#34;bg-green-50 p-8 rounded-2xl border-2 border-green-200&#34;&gt;
+                            &lt;div class=&#34;w-full max-w-md mx-auto h-48 border-4 border-white bg-green-500 rounded-xl flex items-center justify-center mb-8 relative shadow-lg&#34;&gt;
+                                &lt;div class=&#34;absolute top-2 text-white font-bold text-lg&#34;&gt;Ширина = b&lt;/div&gt;
+                                &lt;div class=&#34;absolute left-2 top-1/2 -translate-y-1/2 -rotate-90 text-white font-bold text-lg&#34;&gt;Длина = a&lt;/div&gt;
+                                &lt;div class=&#34;w-20 h-20 border-4 border-white rounded-full opacity-70&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;space-y-6&#34;&gt;
+                                &lt;div class=&#34;bg-white p-4 rounded-xl border text-center&#34;&gt;
+                                    &lt;p class=&#34;font-bold text-xl mb-4 text-gray-800&#34;&gt;1. Формула для нахождения периметра:&lt;/p&gt;
+                                    &lt;div class=&#34;flex flex-wrap gap-4 justify-center&#34;&gt;${btns}&lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&#34;bg-white p-4 rounded-xl border flex flex-col items-center gap-3&#34;&gt;
+                                    &lt;p class=&#34;font-bold text-xl text-gray-800&#34;&gt;2. Если a = 90 м, b = 45 м, чему равен периметр?&lt;/p&gt;
+                                    &lt;div class=&#34;flex gap-3 items-center justify-center&#34;&gt;
+                                        &lt;input type=&#34;number&#34; placeholder=&#34;?&#34; value=&#34;${solved2 ? &#39;270&#39; : &#39;&#39;}&#34; class=&#34;border-2 border-gray-300 p-2 rounded-lg w-32 text-center text-2xl font-bold outline-none&#34; onblur=&#34;handleAnswer(&#39;t8_2&#39;, this.value === &#39;270&#39;)&#34; ${solved2 ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                                        ${solved2 ? &#39;&lt;span class=&#34;text-green-600 font-bold text-xl&#34;&gt;270 метров! Молодец!&lt;/span&gt;&#39; : &#39;&#39;}
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;`);
+                }
+
+                if (state.currentTaskIndex === 1) {
+                    const opts = [ {id: &#39;t9_1&#39;, label: &#39;1000 - x - y&#39;, correct: true}, {id: &#39;t9_2&#39;, label: &#39;1000 &#43; x &#43; y&#39;, correct: false}, {id: &#39;t9_3&#39;, label: &#39;x &#43; y - 1000&#39;, correct: false} ];
+                    const solved = isSolved(&#39;t9_1&#39;);
+                    const btns = opts.map(o =&gt; `&lt;button onclick=&#34;handleAnswer(&#39;t9_1&#39;, ${o.correct})&#34; ${solved ? &#39;disabled&#39; : &#39;&#39;} class=&#34;w-full text-left p-6 rounded-2xl border-2 transition-all text-2xl font-bold font-mono shadow-sm ${solved &amp;&amp; o.correct ? &#39;bg-green-100 border-green-500 text-green-900&#39; : &#39;hover:bg-blue-50 bg-white border-gray-200 hover:border-blue-300 text-gray-700&#39;}&#34;&gt;${o.label}&lt;/button&gt;`).join(&#39;&#39;);
+                    return renderTaskCard(&#34;Задание 9: Бережливый ученик 💰&#34;, &#34;У тебя было 1000 тенге. Ты купил мороженое за x тенге и сок за y тенге.&#34;, `
+                        &lt;div class=&#34;p-8 bg-blue-50 rounded-2xl border-2 border-blue-100&#34;&gt;
+                            &lt;p class=&#34;mb-6 text-2xl text-center font-bold text-blue-900&#34;&gt;Выражение для остатка денег:&lt;/p&gt;
+                            &lt;div class=&#34;grid grid-cols-1 gap-4 max-w-xl mx-auto&#34;&gt;${btns}&lt;/div&gt;
+                            ${solved ? &#39;&lt;p class=&#34;mt-4 text-center text-lg text-gray-600 font-medium&#34;&gt;Отлично! Также можно записать: 1000 - (x &#43; y)&lt;/p&gt;&#39; : &#39;&#39;}
+                        &lt;/div&gt;`);
+                }
+
+                if (state.currentTaskIndex === 2) {
+                    const solved = isSolved(&#39;t10_1&#39;);
+                    return renderTaskCard(&#34;Задание 10: Логическая головоломка 🧩&#34;, &#34;Найди скрытые числа и вычисли значение выражения.&#34;, `
+                        &lt;div class=&#34;flex flex-col items-center gap-6&#34;&gt;
+                            &lt;div class=&#34;bg-white p-6 rounded-2xl shadow-sm border-2 border-indigo-100 w-full max-w-md space-y-4&#34;&gt;
+                                &lt;div class=&#34;flex items-center justify-between text-2xl font-bold text-indigo-900 border-b pb-2&#34;&gt;
+                                    &lt;div class=&#34;flex items-center gap-2&#34;&gt;🦁 &#43; 🦁&lt;/div&gt;&lt;div class=&#34;text-gray-400&#34;&gt;=&lt;/div&gt;&lt;div class=&#34;text-indigo-600&#34;&gt;40&lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&#34;flex items-center justify-between text-2xl font-bold text-indigo-900 border-b pb-2&#34;&gt;
+                                    &lt;div class=&#34;flex items-center gap-2&#34;&gt;🦁 &#43; 🐼&lt;/div&gt;&lt;div class=&#34;text-gray-400&#34;&gt;=&lt;/div&gt;&lt;div class=&#34;text-indigo-600&#34;&gt;35&lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&#34;flex items-center justify-between text-2xl font-bold text-red-600 pt-2&#34;&gt;
+                                    &lt;div class=&#34;flex items-center gap-2&#34;&gt;2 · 🐼 - 🦁&lt;/div&gt;&lt;div class=&#34;text-gray-400&#34;&gt;=&lt;/div&gt;&lt;div class=&#34;text-red-600&#34;&gt;?&lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&#34;bg-indigo-50 p-6 rounded-2xl w-full max-w-md text-center&#34;&gt;
+                                &lt;p class=&#34;mb-4 text-lg text-indigo-800 font-medium&#34;&gt;Напиши ответ:&lt;/p&gt;
+                                &lt;div class=&#34;flex justify-center items-center gap-4&#34;&gt;
+                                    &lt;input type=&#34;number&#34; placeholder=&#34;?&#34; value=&#34;${solved ? &#39;10&#39; : &#39;&#39;}&#34; class=&#34;border-4 border-indigo-200 rounded-xl p-3 w-32 text-center text-4xl font-bold outline-none focus:border-indigo-500 text-indigo-900&#34; onblur=&#34;handleAnswer(&#39;t10_1&#39;, this.value === &#39;10&#39;)&#34; onkeydown=&#34;if(event.key===&#39;Enter&#39;) handleAnswer(&#39;t10_1&#39;, this.value === &#39;10&#39;)&#34; ${solved ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                                &lt;/div&gt;
+                                ${solved ? &#39;&lt;div class=&#34;mt-4 text-green-600 font-bold text-xl flex justify-center items-center gap-2 animate-bounce&#34;&gt;&lt;i data-lucide=&#34;check-circle&#34; size=&#34;28&#34;&gt;&lt;/i&gt; Верно! (30 - 20 = 10)&lt;/div&gt;&#39; : &#39;&#39;}
+                            &lt;/div&gt;
+                        &lt;/div&gt;`);
+                }
+            }
+            return &#39;&#39;;
+        }
+
+        function renderNavigation() {
+            const currentLevelCount = levelConfig[state.activeTab].count;
+            const isLastTaskOfLevel = state.currentTaskIndex === currentLevelCount - 1;
+            const isLastLevel = state.activeTab === &#39;level3&#39;;
+
+            let nextBtnClass = isLastTaskOfLevel &amp;&amp; isLastLevel ? &#39;bg-purple-600 text-white&#39; : isLastTaskOfLevel ? &#39;bg-green-600 text-white&#39; : &#39;bg-blue-600 text-white&#39;;
+            let nextBtnText = isLastTaskOfLevel &amp;&amp; !isLastLevel ? &#39;Следующий уровень&#39; : isLastLevel ? &#39;Завершить&#39; : &#39;Вперед&#39;;
+
+            return `
+                &lt;div class=&#34;mt-8 flex justify-between items-center bg-white p-4 rounded-2xl shadow-lg border border-gray-100&#34;&gt;
+                    &lt;button onclick=&#34;handlePrev()&#34; ${state.currentTaskIndex === 0 ? &#39;disabled&#39; : &#39;&#39;} class=&#34;flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-lg ${state.currentTaskIndex === 0 ? &#39;bg-gray-100 text-gray-400 cursor-not-allowed&#39; : &#39;bg-blue-100 text-blue-700 hover:bg-blue-200&#39;}&#34;&gt;
+                        &lt;i data-lucide=&#34;arrow-left&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt; Назад
+                    &lt;/button&gt;
+                    &lt;span class=&#34;text-gray-500 font-bold text-xl&#34;&gt;Задание ${state.currentTaskIndex &#43; 1} / ${currentLevelCount}&lt;/span&gt;
+                    &lt;button onclick=&#34;handleNext()&#34; class=&#34;flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-lg transition-all ${nextBtnClass}&#34;&gt;
+                        ${nextBtnText} &lt;i data-lucide=&#34;arrow-right&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;`;
+        }
+
+        function renderGameOver() {
+            const feedback = getFeedback(state.score);
+            return `
+                &lt;div class=&#34;min-h-screen flex items-center justify-center p-4&#34;&gt;
+                    &lt;div class=&#34;max-w-2xl w-full bg-white rounded-3xl shadow-2xl p-8 text-center animate-slide-up border-4 ${feedback.border}&#34;&gt;
+                        &lt;div class=&#34;mb-6 flex justify-center&#34;&gt;
+                            &lt;div class=&#34;${feedback.bg} p-6 rounded-full&#34;&gt;
+                                &lt;i data-lucide=&#34;${state.score &gt;= 190 ? &#39;trophy&#39; : &#39;star&#39;}&#34; class=&#34;w-24 h-24 ${feedback.color} ${state.score &gt;= 190 ? &#39;animate-bounce&#39; : &#39;animate-pulse&#39;}&#34;&gt;&lt;/i&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;h1 class=&#34;text-4xl md:text-5xl font-extrabold mb-4 ${feedback.color}&#34;&gt;${feedback.title}&lt;/h1&gt;
+                        &lt;p class=&#34;text-xl text-gray-600 mb-8 px-4&#34;&gt;${feedback.message}&lt;/p&gt;
+                        &lt;div class=&#34;bg-gray-50 p-6 rounded-2xl mb-8 border-2 border-gray-200 inline-block min-w-[200px]&#34;&gt;
+                            &lt;span class=&#34;text-gray-500 text-lg font-medium&#34;&gt;Твой результат:&lt;/span&gt;
+                            &lt;div class=&#34;text-5xl font-black text-gray-800 mt-2&#34;&gt;${state.score} / 210&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;mt-4&#34;&gt;
+                            &lt;button onclick=&#34;handleRestart()&#34; class=&#34;w-full py-5 rounded-2xl bg-blue-600 text-white text-2xl font-bold flex items-center justify-center gap-3 hover:bg-blue-700 shadow-lg transform hover:scale-105 transition-transform&#34;&gt;
+                                &lt;i data-lucide=&#34;rotate-ccw&#34; class=&#34;w-8 h-8&#34;&gt;&lt;/i&gt; Начать сначала
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;`;
+        }
+
+        function render() {
+            const app = document.getElementById(&#39;app&#39;);
+            if (state.isGameFinished) {
+                app.innerHTML = renderGameOver() &#43; `&lt;footer class=&#34;text-center text-gray-400 mt-10 font-medium pb-10&#34;&gt;&lt;p&gt;Математика 5 класс | Интерактивный тренажер&lt;/p&gt;&lt;/footer&gt;`;
+            } else {
+                app.innerHTML = `
+                    ${renderHeader()}
+                    ${renderTabs()}
+                    &lt;main class=&#34;max-w-4xl mx-auto&#34;&gt;
+                        ${renderLevelBanner()}
+                        &lt;div class=&#34;min-h-[400px]&#34;&gt;${renderTaskContent()}&lt;/div&gt;
+                        ${renderNavigation()}
+                    &lt;/main&gt;
+                    &lt;footer class=&#34;text-center text-gray-400 mt-10 font-medium pb-10&#34;&gt;&lt;p&gt;Математика 5 класс | Интерактивный тренажер&lt;/p&gt;&lt;/footer&gt;`;
+            }
+            lucide.createIcons();
+        }
+
+        render();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

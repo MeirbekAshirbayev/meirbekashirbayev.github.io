@@ -397,7 +397,7 @@
 
                         <!-- Embedded Task - Kazakh -->
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame{{ $task.ID }}" src="{{ path " /task/" }}{{ $task.ID }}?lang=kz"
+                            <iframe id="taskFrame{{ $task.ID }}" srcdoc="{{ $task.Code }}"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -439,7 +439,7 @@
 
                         <!-- Embedded Task - Russian -->
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame{{ $task.ID }}_ru" src="{{ path " /task/" }}{{ $task.ID }}?lang=ru"
+                            <iframe id="taskFrame{{ $task.ID }}_ru" srcdoc="{{ $task.CodeRu }}"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

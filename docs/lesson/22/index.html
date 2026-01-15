@@ -412,7 +412,446 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame156" src="/task/156?lang=kz"
+                            <iframe id="taskFrame156" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Сиқырлы Бақша: Бөлшектер ойыны&lt;/title&gt;
+    &lt;!-- Tailwind CSS for styling --&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        /* Custom animations */
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes spinIn { from { transform: rotate(-180deg) scale(0); } to { transform: rotate(0) scale(1); } }
+        @keyframes shake { 
+            0%, 100% { transform: translateX(0); } 
+            25% { transform: translateX(-5px); } 
+            75% { transform: translateX(5px); } 
+        }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        .animate-spin-in { animation: spinIn 0.4s ease-out forwards; }
+        .animate-shake { animation: shake 0.3s ease-in-out; }
+        
+        /* Range slider styling */
+        input[type=range] { -webkit-appearance: none; background: transparent; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: currentColor; margin-top: -8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #e5e7eb; border-radius: 2px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 font-sans text-gray-800 flex flex-col items-center justify-center p-4&#34;&gt;
+
+    &lt;!-- Main Container --&gt;
+    &lt;div class=&#34;w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-emerald-200&#34;&gt;
+        
+        &lt;!-- Header --&gt;
+        &lt;div class=&#34;bg-emerald-500 p-4 text-white flex justify-between items-center shadow-md z-10 relative&#34;&gt;
+            &lt;h1 class=&#34;text-2xl md:text-3xl font-bold flex items-center gap-2&#34;&gt;
+                &lt;!-- Leaf Icon --&gt;
+                &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;32&#34; height=&#34;32&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.77 10-10 10Z&#34;/&gt;&lt;path d=&#34;M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12&#34;/&gt;&lt;/svg&gt;
+                Сиқырлы Бақша
+            &lt;/h1&gt;
+            
+            &lt;div id=&#34;score-display&#34; class=&#34;hidden bg-emerald-700 px-4 py-1 rounded-full text-lg font-bold flex items-center gap-2&#34;&gt;
+                &lt;!-- Star Icon --&gt;
+                &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;text-yellow-300 fill-yellow-300&#34; width=&#34;20&#34; height=&#34;20&#34; viewBox=&#34;0 0 24 24&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&gt;&lt;polygon points=&#34;12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2&#34;/&gt;&lt;/svg&gt;
+                &lt;span id=&#34;score-value&#34;&gt;0&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;button id=&#34;btn-home&#34; class=&#34;hidden bg-white/20 hover:bg-white/30 px-3 py-1 rounded text-sm transition flex items-center gap-1&#34;&gt;
+                Мәзірге шығу
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Content Area --&gt;
+        &lt;div id=&#34;app-content&#34; class=&#34;p-6 md:p-8 min-h-[500px] flex flex-col items-center justify-center relative&#34;&gt;
+            &lt;!-- Dynamic Content will be injected here --&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;!-- JAVASCRIPT LOGIC --&gt;
+    &lt;script&gt;
+        // --- STATE MANAGEMENT ---
+        const state = {
+            mode: &#39;menu&#39;, // &#39;menu&#39;, &#39;lab&#39;, &#39;game&#39;
+            score: 0,
+            lab: {
+                num: 1,
+                denom: 4
+            },
+            game: {
+                level: 1,
+                targetNum: 0,
+                targetDenom: 0,
+                grid: [], // array of booleans
+                type: &#39;plant&#39;, // &#39;plant&#39;, &#39;read&#39;, &#39;division&#39;
+                feedback: null // null, &#39;correct&#39;, &#39;wrong&#39;
+            }
+        };
+
+        // --- DOM ELEMENTS ---
+        const appContent = document.getElementById(&#39;app-content&#39;);
+        const scoreDisplay = document.getElementById(&#39;score-display&#39;);
+        const scoreValue = document.getElementById(&#39;score-value&#39;);
+        const btnHome = document.getElementById(&#39;btn-home&#39;);
+
+        // --- ICONS (SVG Strings) ---
+        const Icons = {
+            book: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;32&#34; height=&#34;32&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z&#34;/&gt;&lt;path d=&#34;M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z&#34;/&gt;&lt;/svg&gt;`,
+            play: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;32&#34; height=&#34;32&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polygon points=&#34;5 3 19 12 5 21 5 3&#34;/&gt;&lt;/svg&gt;`,
+            flower: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;48&#34; height=&#34;48&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; class=&#34;text-pink-500 animate-spin-in&#34;&gt;&lt;path d=&#34;M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V9m-4.5 3a4.5 4.5 0 1 1 4.5 4.5M7.5 12H9m3 4.5a4.5 4.5 0 1 1 4.5-4.5M12 16.5V15m4.5-3a4.5 4.5 0 1 0-4.5-4.5M15 12H13.5&#34;/&gt;&lt;circle cx=&#34;12&#34; cy=&#34;12&#34; r=&#34;3&#34;/&gt;&lt;path d=&#34;m8 16 2-1&#34;/&gt;&lt;path d=&#34;m14 8 2-1&#34;/&gt;&lt;path d=&#34;m16 16-2-1&#34;/&gt;&lt;path d=&#34;m8 8 2 1&#34;/&gt;&lt;/svg&gt;`,
+            check: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M22 11.08V12a10 10 0 1 1-5.93-9.14&#34;/&gt;&lt;polyline points=&#34;22 4 12 14.01 9 11.01&#34;/&gt;&lt;/svg&gt;`,
+            x: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;circle cx=&#34;12&#34; cy=&#34;12&#34; r=&#34;10&#34;/&gt;&lt;line x1=&#34;15&#34; y1=&#34;9&#34; x2=&#34;9&#34; y2=&#34;15&#34;/&gt;&lt;line x1=&#34;9&#34; y1=&#34;9&#34; x2=&#34;15&#34; y2=&#34;15&#34;/&gt;&lt;/svg&gt;`,
+            refresh: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;18&#34; height=&#34;18&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8&#34;/&gt;&lt;path d=&#34;M21 3v5h-5&#34;/&gt;&lt;path d=&#34;M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16&#34;/&gt;&lt;path d=&#34;M8 16H3v5&#34;/&gt;&lt;/svg&gt;`,
+            arrow: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;18&#34; height=&#34;18&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;line x1=&#34;5&#34; y1=&#34;12&#34; x2=&#34;19&#34; y2=&#34;12&#34;/&gt;&lt;polyline points=&#34;12 5 19 12 12 19&#34;/&gt;&lt;/svg&gt;`,
+            divide: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;64&#34; height=&#34;64&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; class=&#34;text-gray-400&#34;&gt;&lt;circle cx=&#34;12&#34; cy=&#34;6&#34; r=&#34;1&#34;/&gt;&lt;line x1=&#34;5&#34; y1=&#34;12&#34; x2=&#34;19&#34; y2=&#34;12&#34;/&gt;&lt;circle cx=&#34;12&#34; cy=&#34;18&#34; r=&#34;1&#34;/&gt;&lt;/svg&gt;`
+        };
+
+        // --- HELPER FUNCTIONS ---
+        function getReading(num, den) {
+            const numbers = { 1: &#34;бір&#34;, 2: &#34;екі&#34;, 3: &#34;үш&#34;, 4: &#34;төрт&#34;, 5: &#34;бес&#34;, 6: &#34;алты&#34;, 7: &#34;жеті&#34;, 8: &#34;сегіз&#34;, 9: &#34;тоғыз&#34;, 10: &#34;он&#34;, 12: &#34;он екі&#34; };
+            const ordinals = { 1: &#34;бірден&#34;, 2: &#34;екіден&#34;, 3: &#34;үштен&#34;, 4: &#34;төрттен&#34;, 5: &#34;бестен&#34;, 6: &#34;алтыдан&#34;, 7: &#34;жетіден&#34;, 8: &#34;сегізден&#34;, 9: &#34;тоғыздан&#34;, 10: &#34;оннан&#34;, 12: &#34;он екіден&#34; };
+            return `${ordinals[den] || den &#43; &#34;-ден&#34;} ${numbers[num] || num}`;
+        }
+
+        // --- RENDER FUNCTIONS ---
+        
+        function render() {
+            // Update Header
+            if (state.mode === &#39;menu&#39;) {
+                scoreDisplay.classList.add(&#39;hidden&#39;);
+                btnHome.classList.add(&#39;hidden&#39;);
+            } else {
+                btnHome.classList.remove(&#39;hidden&#39;);
+                if (state.mode === &#39;game&#39;) {
+                    scoreDisplay.classList.remove(&#39;hidden&#39;);
+                    scoreValue.innerText = state.score;
+                } else {
+                    scoreDisplay.classList.add(&#39;hidden&#39;);
+                }
+            }
+
+            // Route Content
+            appContent.innerHTML = &#39;&#39;;
+            if (state.mode === &#39;menu&#39;) renderMenu();
+            else if (state.mode === &#39;lab&#39;) renderLab();
+            else if (state.mode === &#39;game&#39;) renderGame();
+        }
+
+        function renderMenu() {
+            const container = document.createElement(&#39;div&#39;);
+            container.className = &#34;text-center space-y-8 animate-fade-in w-full flex flex-col items-center&#34;;
+            container.innerHTML = `
+                &lt;h2 class=&#34;text-3xl font-bold text-gray-700 mb-4&#34;&gt;Бөлшектер әлеміне қош келдіңіз!&lt;/h2&gt;
+                &lt;p class=&#34;text-gray-500 text-lg max-w-lg mb-8&#34;&gt;Жай бөлшектерді оқуды және жазуды үйрену үшін режимді таңдаңыз.&lt;/p&gt;
+                &lt;div class=&#34;grid md:grid-cols-2 gap-6 w-full max-w-2xl&#34;&gt;
+                    &lt;button id=&#34;btn-lab&#34; class=&#34;group relative p-8 bg-blue-50 rounded-2xl border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-100 transition-all shadow-sm hover:shadow-md flex flex-col items-center cursor-pointer&#34;&gt;
+                        &lt;div class=&#34;bg-blue-500 text-white p-4 rounded-full mb-4 group-hover:scale-110 transition-transform&#34;&gt;${Icons.book}&lt;/div&gt;
+                        &lt;h3 class=&#34;text-xl font-bold text-blue-800&#34;&gt;Зертхана&lt;/h3&gt;
+                        &lt;p class=&#34;text-blue-600 mt-2 text-sm&#34;&gt;Бөлшектер қалай құралатынын көріп, зерттеп көр.&lt;/p&gt;
+                    &lt;/button&gt;
+                    &lt;button id=&#34;btn-game&#34; class=&#34;group relative p-8 bg-emerald-50 rounded-2xl border-2 border-emerald-200 hover:border-emerald-400 hover:bg-emerald-100 transition-all shadow-sm hover:shadow-md flex flex-col items-center cursor-pointer&#34;&gt;
+                        &lt;div class=&#34;bg-emerald-500 text-white p-4 rounded-full mb-4 group-hover:scale-110 transition-transform&#34;&gt;${Icons.play}&lt;/div&gt;
+                        &lt;h3 class=&#34;text-xl font-bold text-emerald-800&#34;&gt;Ойын&lt;/h3&gt;
+                        &lt;p class=&#34;text-emerald-600 mt-2 text-sm&#34;&gt;Бақшаға гүл егіп, біліміңді сынап көр.&lt;/p&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+            appContent.appendChild(container);
+
+            document.getElementById(&#39;btn-lab&#39;).onclick = () =&gt; { state.mode = &#39;lab&#39;; render(); };
+            document.getElementById(&#39;btn-game&#39;).onclick = () =&gt; { state.mode = &#39;game&#39;; initGame(); };
+        }
+
+        // --- LAB LOGIC ---
+        function renderLab() {
+            const { num, denom } = state.lab;
+            
+            // Generate Pie Chart SVG
+            const radius = 45;
+            const center = 50;
+            let slicesHtml = &#39;&#39;;
+            
+            for(let i=0; i&lt;denom; i&#43;&#43;) {
+                const angle = 360 / denom;
+                const rotation = angle * i;
+                const isActive = i &lt; num;
+                const fillColor = isActive ? &#39;#3b82f6&#39; : &#39;#ffffff&#39;; // blue-500 : white
+                
+                if (denom === 1) {
+                    slicesHtml &#43;= `&lt;circle cx=&#34;50&#34; cy=&#34;50&#34; r=&#34;${radius}&#34; fill=&#34;${fillColor}&#34; stroke=&#34;#e5e7eb&#34; stroke-width=&#34;1&#34; /&gt;`;
+                } else {
+                    // Calculate path
+                    const x1 = center &#43; radius * Math.cos(0);
+                    const y1 = center &#43; radius * Math.sin(0);
+                    const x2 = center &#43; radius * Math.cos((angle * Math.PI) / 180);
+                    const y2 = center &#43; radius * Math.sin((angle * Math.PI) / 180);
+                    const d = `M${center},${center} L${x1},${y1} A${radius},${radius} 0 0,1 ${x2},${y2} Z`;
+                    slicesHtml &#43;= `&lt;path d=&#34;${d}&#34; transform=&#34;rotate(${rotation} ${center} ${center})&#34; fill=&#34;${fillColor}&#34; stroke=&#34;#a7f3d0&#34; stroke-width=&#34;1&#34; class=&#34;transition-colors duration-300&#34; /&gt;`;
+                }
+            }
+
+            const container = document.createElement(&#39;div&#39;);
+            container.className = &#34;w-full max-w-3xl flex flex-col gap-8 animate-fade-in&#34;;
+            container.innerHTML = `
+                &lt;div class=&#34;text-center&#34;&gt;
+                    &lt;h2 class=&#34;text-2xl font-bold text-gray-700&#34;&gt;Бөлшектер Зертханасы&lt;/h2&gt;
+                    &lt;p class=&#34;text-gray-500&#34;&gt;Сырғытпаларды жылжытып, бөлшекті өзгерт!&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;grid md:grid-cols-2 gap-8 items-center&#34;&gt;
+                    &lt;!-- Controls --&gt;
+                    &lt;div class=&#34;bg-gray-50 p-6 rounded-xl space-y-6&#34;&gt;
+                        &lt;div&gt;
+                            &lt;div class=&#34;flex justify-between mb-2&#34;&gt;
+                                &lt;label class=&#34;font-bold text-blue-600&#34;&gt;Алымы (Бөліктер саны)&lt;/label&gt;
+                                &lt;span class=&#34;font-mono text-xl&#34;&gt;${num}&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;input type=&#34;range&#34; id=&#34;input-num&#34; min=&#34;0&#34; max=&#34;${denom}&#34; value=&#34;${num}&#34; class=&#34;w-full accent-blue-500 h-2 bg-gray-200 rounded-lg text-blue-500&#34;&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;w-full h-px bg-gray-300&#34;&gt;&lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;div class=&#34;flex justify-between mb-2&#34;&gt;
+                                &lt;label class=&#34;font-bold text-emerald-600&#34;&gt;Бөлімі (Барлығы)&lt;/label&gt;
+                                &lt;span class=&#34;font-mono text-xl&#34;&gt;${denom}&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;input type=&#34;range&#34; id=&#34;input-denom&#34; min=&#34;1&#34; max=&#34;12&#34; value=&#34;${denom}&#34; class=&#34;w-full accent-emerald-500 h-2 bg-gray-200 rounded-lg text-emerald-500&#34;&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;!-- Visuals --&gt;
+                    &lt;div class=&#34;flex flex-col items-center justify-center space-y-6&#34;&gt;
+                        &lt;div class=&#34;flex flex-col items-center&#34;&gt;
+                             &lt;div class=&#34;text-6xl font-black text-blue-600 border-b-4 border-gray-800 px-4 mb-2&#34;&gt;${num}&lt;/div&gt;
+                             &lt;div class=&#34;text-6xl font-black text-emerald-600 px-4&#34;&gt;${denom}&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;bg-yellow-100 px-6 py-2 rounded-full border border-yellow-300 text-yellow-800 font-bold text-lg text-center&#34;&gt;
+                            &#34;${getReading(num, denom)}&#34;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;relative w-48 h-48&#34;&gt;
+                            &lt;svg viewBox=&#34;0 0 100 100&#34; class=&#34;w-full h-full transform -rotate-90&#34;&gt;
+                                &lt;circle cx=&#34;50&#34; cy=&#34;50&#34; r=&#34;45&#34; fill=&#34;white&#34; stroke=&#34;#e5e7eb&#34; stroke-width=&#34;2&#34; /&gt;
+                                ${slicesHtml}
+                            &lt;/svg&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+            appContent.appendChild(container);
+
+            // Listeners
+            document.getElementById(&#39;input-num&#39;).oninput = (e) =&gt; {
+                state.lab.num = parseInt(e.target.value);
+                render();
+            };
+            document.getElementById(&#39;input-denom&#39;).oninput = (e) =&gt; {
+                const newDenom = parseInt(e.target.value);
+                state.lab.denom = newDenom;
+                if (state.lab.num &gt; newDenom) state.lab.num = newDenom;
+                render();
+            };
+        }
+
+        // --- GAME LOGIC ---
+        function initGame() {
+            generateLevel();
+            render();
+        }
+
+        function generateLevel() {
+            const denoms = [2, 3, 4, 5, 6, 8, 9, 10];
+            const denom = denoms[Math.floor(Math.random() * denoms.length)];
+            const num = Math.floor(Math.random() * (denom - 1)) &#43; 1;
+            
+            const types = [&#39;plant&#39;, &#39;read&#39;, &#39;division&#39;];
+            const type = types[Math.floor(Math.random() * types.length)];
+
+            state.game = {
+                targetNum: num,
+                targetDenom: denom,
+                grid: Array(denom).fill(false),
+                type: type,
+                feedback: null
+            };
+
+            // Pre-fill grid for &#39;read&#39; mode
+            if (type === &#39;read&#39;) {
+                for(let i=0; i&lt;num; i&#43;&#43;) state.game.grid[i] = true;
+                // Shuffle logic could be added here, but simple fill is fine for now
+            }
+        }
+
+        function renderGame() {
+            const { targetNum, targetDenom, type, grid, feedback } = state.game;
+            
+            const container = document.createElement(&#39;div&#39;);
+            container.className = &#34;w-full max-w-2xl flex flex-col items-center animate-fade-in&#34;;
+            
+            // Question Text Logic
+            let titleText = &#34;&#34;, questionHtml = &#34;&#34;;
+            if (type === &#39;plant&#39;) {
+                titleText = &#34;Тапсырма: Гүл ек!&#34;;
+                questionHtml = `Бақшаның &lt;span class=&#34;font-bold text-2xl mx-1 bg-emerald-100 px-2 rounded inline-block align-middle&#34;&gt;${targetNum}/${targetDenom}&lt;/span&gt; бөлігіне гүл ек.`;
+            } else if (type === &#39;read&#39;) {
+                titleText = &#34;Тапсырма: Бөлшекті тап!&#34;;
+                questionHtml = &#34;Мына бақшаның қандай бөлігіне гүл егілген?&#34;;
+            } else if (type === &#39;division&#39;) {
+                titleText = &#34;Тапсырма: Бөлуді ауыстыр!&#34;;
+                questionHtml = &#34;Мына бөлу амалын бөлшек түрінде қалай жазамыз?&#34;;
+            }
+
+            // --- HTML CONSTRUCTION ---
+            let contentHtml = `
+                &lt;div class=&#34;bg-white rounded-2xl p-6 shadow-sm border-2 border-emerald-100 w-full mb-8 text-center relative overflow-hidden&#34;&gt;
+                    ${type === &#39;division&#39; ? &#39;&lt;div class=&#34;absolute top-0 left-0 w-full bg-yellow-100 text-yellow-800 text-xs py-1 font-bold&#34;&gt;ЖАҢА ТАҚЫРЫП!&lt;/div&gt;&#39; : &#39;&#39;}
+                    &lt;h3 class=&#34;text-xl font-bold text-gray-700 mb-2 mt-2&#34;&gt;${titleText}&lt;/h3&gt;
+                    &lt;p class=&#34;text-lg text-emerald-700&#34;&gt;${questionHtml}&lt;/p&gt;
+                    ${type === &#39;division&#39; &amp;&amp; !feedback ? &#39;&lt;div class=&#34;mt-2 text-sm text-blue-500 bg-blue-50 inline-block px-3 py-1 rounded-full border border-blue-100 animate-pulse&#34;&gt;💡 Есте сақта: Бөлшек сызығы бөлуді білдіреді!&lt;/div&gt;&#39; : &#39;&#39;}
+                &lt;/div&gt;
+            `;
+
+            // GRID RENDER (Plant &amp; Read)
+            if (type === &#39;plant&#39; || type === &#39;read&#39;) {
+                const cols = Math.ceil(Math.sqrt(targetDenom));
+                let gridHtml = `&lt;div class=&#34;grid gap-3 mb-8&#34; style=&#34;grid-template-columns: repeat(${cols}, minmax(0, 1fr))&#34;&gt;`;
+                
+                grid.forEach((isPlanted, idx) =&gt; {
+                    const bgClass = isPlanted ? &#39;bg-pink-100 border-pink-400 scale-105&#39; : &#39;bg-stone-100 border-stone-200 hover:bg-stone-200&#39;;
+                    const cursorClass = (type === &#39;plant&#39; &amp;&amp; !feedback) ? &#39;cursor-pointer hover:shadow-md&#39; : &#39;cursor-default&#39;;
+                    const content = isPlanted ? Icons.flower : &#39;&lt;div class=&#34;w-2 h-2 rounded-full bg-stone-300&#34;&gt;&lt;/div&gt;&#39;;
+                    
+                    gridHtml &#43;= `
+                        &lt;button onclick=&#34;handleGridClick(${idx})&#34; 
+                            class=&#34;w-20 h-20 rounded-xl flex items-center justify-center text-3xl transition-all duration-200 border-2 shadow-sm ${bgClass} ${cursorClass}&#34;
+                            ${(type === &#39;read&#39; || feedback) ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                            ${content}
+                        &lt;/button&gt;
+                    `;
+                });
+                gridHtml &#43;= `&lt;/div&gt;`;
+                contentHtml &#43;= gridHtml;
+            }
+
+            // DIVISION DISPLAY
+            if (type === &#39;division&#39;) {
+                contentHtml &#43;= `
+                    &lt;div class=&#34;flex items-center justify-center gap-4 md:gap-6 mb-8 text-4xl md:text-6xl font-black text-gray-700 bg-gray-50 p-8 rounded-3xl border-2 border-dashed border-gray-300&#34;&gt;
+                        &lt;span class=&#34;text-blue-600&#34;&gt;${targetNum}&lt;/span&gt;
+                        ${Icons.divide}
+                        &lt;span class=&#34;text-emerald-600&#34;&gt;${targetDenom}&lt;/span&gt;
+                        &lt;span class=&#34;text-gray-300&#34;&gt;=&lt;/span&gt;
+                        &lt;span class=&#34;text-gray-400 text-5xl&#34;&gt;?&lt;/span&gt;
+                    &lt;/div&gt;
+                `;
+            }
+
+            // CONTROLS WRAPPER
+            contentHtml &#43;= `&lt;div class=&#34;w-full flex justify-center&#34; id=&#34;controls-area&#34;&gt;`;
+
+            if (!feedback) {
+                // Input Form (Read &amp; Division)
+                if (type === &#39;read&#39; || type === &#39;division&#39;) {
+                    contentHtml &#43;= `
+                        &lt;div class=&#34;flex flex-col items-center gap-4 bg-gray-50 p-4 rounded-xl&#34;&gt;
+                             &lt;div class=&#34;flex flex-col items-center gap-2&#34;&gt;
+                                &lt;input type=&#34;number&#34; id=&#34;ans-num&#34; placeholder=&#34;?&#34; class=&#34;w-16 h-16 text-center text-2xl font-bold border-2 border-blue-300 rounded-lg focus:outline-none focus:border-blue-500&#34;&gt;
+                                &lt;div class=&#34;w-20 h-1 bg-gray-800 rounded&#34;&gt;&lt;/div&gt;
+                                &lt;input type=&#34;number&#34; id=&#34;ans-denom&#34; placeholder=&#34;?&#34; class=&#34;w-16 h-16 text-center text-2xl font-bold border-2 border-emerald-300 rounded-lg focus:outline-none focus:border-emerald-500&#34;&gt;
+                             &lt;/div&gt;
+                             &lt;button onclick=&#34;checkInput()&#34; class=&#34;bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-8 rounded-full shadow-lg transition transform hover:scale-105&#34;&gt;Тексеру&lt;/button&gt;
+                        &lt;/div&gt;
+                    `;
+                }
+                // Check Button (Plant)
+                else if (type === &#39;plant&#39;) {
+                    contentHtml &#43;= `
+                        &lt;button onclick=&#34;checkPlant()&#34; class=&#34;bg-emerald-500 hover:bg-emerald-600 text-white text-xl font-bold py-3 px-10 rounded-full shadow-lg transition transform hover:scale-105 flex items-center gap-2&#34;&gt;
+                            ${Icons.check} Дайын!
+                        &lt;/button&gt;
+                    `;
+                }
+            } else {
+                // Feedback State
+                if (feedback === &#39;correct&#39;) {
+                    contentHtml &#43;= `
+                        &lt;div class=&#34;flex flex-col items-center animate-fade-in&#34;&gt;
+                            &lt;div class=&#34;text-green-600 font-bold text-2xl mb-4 flex items-center gap-2&#34;&gt;
+                                ${Icons.check} &lt;span class=&#34;ml-2&#34;&gt;Жарайсың! Дұрыс!&lt;/span&gt;
+                            &lt;/div&gt;
+                            ${type === &#39;division&#39; ? `&lt;div class=&#34;mb-4 text-gray-500 text-center bg-green-50 p-3 rounded-lg border border-green-100&#34;&gt;Дәл солай! &lt;br/&gt; &lt;span class=&#34;font-bold&#34;&gt;${targetNum} : ${targetDenom}&lt;/span&gt; тең болады &lt;span class=&#34;font-bold&#34;&gt;${targetNum}/${targetDenom}&lt;/span&gt;&lt;/div&gt;` : &#39;&#39;}
+                            &lt;button onclick=&#34;initGame()&#34; class=&#34;bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-full flex items-center gap-2&#34;&gt;
+                                Келесі ${Icons.arrow}
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    `;
+                } else {
+                    contentHtml &#43;= `
+                        &lt;div class=&#34;flex flex-col items-center animate-shake&#34;&gt;
+                            &lt;div class=&#34;text-red-500 font-bold text-xl mb-4 flex items-center gap-2&#34;&gt;
+                                ${Icons.x} &lt;span class=&#34;ml-2&#34;&gt;Қате. Қайта ойланшы!&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;button onclick=&#34;resetLevel()&#34; class=&#34;bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-6 rounded-full flex items-center gap-2&#34;&gt;
+                                ${Icons.refresh} Қайта көру
+                            &lt;/button&gt;
+                        &lt;/div&gt;
+                    `;
+                }
+            }
+
+            contentHtml &#43;= `&lt;/div&gt;`; // End controls area
+            
+            container.innerHTML = contentHtml;
+            appContent.appendChild(container);
+        }
+
+        // --- GAME ACTIONS ---
+        
+        window.handleGridClick = (idx) =&gt; {
+            if (state.game.type !== &#39;plant&#39; || state.game.feedback) return;
+            state.game.grid[idx] = !state.game.grid[idx];
+            render(); // Re-render to show updated grid state
+        };
+
+        window.checkPlant = () =&gt; {
+            const plantedCount = state.game.grid.filter(Boolean).length;
+            evaluateAnswer(plantedCount, state.game.targetDenom);
+        };
+
+        window.checkInput = () =&gt; {
+            const numVal = parseInt(document.getElementById(&#39;ans-num&#39;).value);
+            const denomVal = parseInt(document.getElementById(&#39;ans-denom&#39;).value);
+            evaluateAnswer(numVal, denomVal);
+        };
+
+        function evaluateAnswer(uNum, uDenom) {
+            if (uNum === state.game.targetNum &amp;&amp; uDenom === state.game.targetDenom) {
+                state.game.feedback = &#39;correct&#39;;
+                state.score &#43;= 10;
+            } else {
+                state.game.feedback = &#39;wrong&#39;;
+            }
+            render();
+        }
+
+        window.resetLevel = () =&gt; {
+            state.game.feedback = null;
+            if (state.game.type === &#39;plant&#39;) {
+                state.game.grid.fill(false);
+            }
+            render();
+        };
+
+        // Navigation
+        btnHome.onclick = () =&gt; {
+            state.mode = &#39;menu&#39;;
+            render();
+        };
+
+        // Initial Render
+        render();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -454,7 +893,353 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame156_ru" src="/task/156?lang=ru"
+                            <iframe id="taskFrame156_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Волшебный сад: Игра с дробями&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        /* Custom animations */
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        @keyframes spinIn { from { transform: rotate(-180deg) scale(0); } to { transform: rotate(0) scale(1); } }
+        @keyframes shake { 
+            0%, 100% { transform: translateX(0); } 
+            25% { transform: translateX(-5px); } 
+            75% { transform: translateX(5px); } 
+        }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        .animate-spin-in { animation: spinIn 0.4s ease-out forwards; }
+        .animate-shake { animation: shake 0.3s ease-in-out; }
+        
+        /* Range slider styling */
+        input[type=range] { -webkit-appearance: none; background: transparent; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%; background: currentColor; margin-top: -8px; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 4px; cursor: pointer; background: #e5e7eb; border-radius: 2px; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;min-h-screen bg-gradient-to-br from-green-50 to-emerald-100 font-sans text-gray-800 flex flex-col items-center justify-center p-4&#34;&gt;
+
+    &lt;div class=&#34;w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-emerald-200&#34;&gt;
+        
+        &lt;div class=&#34;bg-emerald-500 p-4 text-white flex justify-between items-center shadow-md z-10 relative&#34;&gt;
+            &lt;h1 class=&#34;text-2xl md:text-3xl font-bold flex items-center gap-2&#34;&gt;
+                &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;32&#34; height=&#34;32&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.77 10-10 10Z&#34;/&gt;&lt;path d=&#34;M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12&#34;/&gt;&lt;/svg&gt;
+                Волшебный сад
+            &lt;/h1&gt;
+            
+            &lt;div id=&#34;score-display&#34; class=&#34;hidden bg-emerald-700 px-4 py-1 rounded-full text-lg font-bold flex items-center gap-2&#34;&gt;
+                &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;text-yellow-300 fill-yellow-300&#34; width=&#34;20&#34; height=&#34;20&#34; viewBox=&#34;0 0 24 24&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34;&gt;&lt;polygon points=&#34;12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2&#34;/&gt;&lt;/svg&gt;
+                &lt;span id=&#34;score-value&#34;&gt;0&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;button id=&#34;btn-home&#34; class=&#34;hidden bg-white/20 hover:bg-white/30 px-3 py-1 rounded text-sm transition flex items-center gap-1&#34;&gt;
+                В меню
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;app-content&#34; class=&#34;p-6 md:p-8 min-h-[500px] flex flex-col items-center justify-center relative&#34;&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const state = {
+            mode: &#39;menu&#39;, 
+            score: 0,
+            lab: { num: 1, denom: 4 },
+            game: { level: 1, targetNum: 0, targetDenom: 0, grid: [], type: &#39;plant&#39;, feedback: null }
+        };
+
+        const appContent = document.getElementById(&#39;app-content&#39;);
+        const scoreDisplay = document.getElementById(&#39;score-display&#39;);
+        const scoreValue = document.getElementById(&#39;score-value&#39;);
+        const btnHome = document.getElementById(&#39;btn-home&#39;);
+
+        const Icons = {
+            book: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;32&#34; height=&#34;32&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z&#34;/&gt;&lt;path d=&#34;M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z&#34;/&gt;&lt;/svg&gt;`,
+            play: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;32&#34; height=&#34;32&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polygon points=&#34;5 3 19 12 5 21 5 3&#34;/&gt;&lt;/svg&gt;`,
+            flower: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;48&#34; height=&#34;48&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; class=&#34;text-pink-500 animate-spin-in&#34;&gt;&lt;path d=&#34;M12 7.5a4.5 4.5 0 1 1 4.5 4.5M12 7.5A4.5 4.5 0 1 0 7.5 12M12 7.5V9m-4.5 3a4.5 4.5 0 1 1 4.5 4.5M7.5 12H9m3 4.5a4.5 4.5 0 1 1 4.5-4.5M12 16.5V15m4.5-3a4.5 4.5 0 1 0-4.5-4.5M15 12H13.5&#34;/&gt;&lt;circle cx=&#34;12&#34; cy=&#34;12&#34; r=&#34;3&#34;/&gt;&lt;path d=&#34;m8 16 2-1&#34;/&gt;&lt;path d=&#34;m14 8 2-1&#34;/&gt;&lt;path d=&#34;m16 16-2-1&#34;/&gt;&lt;path d=&#34;m8 8 2 1&#34;/&gt;&lt;/svg&gt;`,
+            check: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M22 11.08V12a10 10 0 1 1-5.93-9.14&#34;/&gt;&lt;polyline points=&#34;22 4 12 14.01 9 11.01&#34;/&gt;&lt;/svg&gt;`,
+            x: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;circle cx=&#34;12&#34; cy=&#34;12&#34; r=&#34;10&#34;/&gt;&lt;line x1=&#34;15&#34; y1=&#34;9&#34; x2=&#34;9&#34; y2=&#34;15&#34;/&gt;&lt;line x1=&#34;9&#34; y1=&#34;9&#34; x2=&#34;15&#34; y2=&#34;15&#34;/&gt;&lt;/svg&gt;`,
+            refresh: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;18&#34; height=&#34;18&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;path d=&#34;M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8&#34;/&gt;&lt;path d=&#34;M21 3v5h-5&#34;/&gt;&lt;path d=&#34;M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16&#34;/&gt;&lt;path d=&#34;M8 16H3v5&#34;/&gt;&lt;/svg&gt;`,
+            arrow: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;18&#34; height=&#34;18&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;line x1=&#34;5&#34; y1=&#34;12&#34; x2=&#34;19&#34; y2=&#34;12&#34;/&gt;&lt;polyline points=&#34;12 5 19 12 12 19&#34;/&gt;&lt;/svg&gt;`,
+            divide: `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;64&#34; height=&#34;64&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; class=&#34;text-gray-400&#34;&gt;&lt;circle cx=&#34;12&#34; cy=&#34;6&#34; r=&#34;1&#34;/&gt;&lt;line x1=&#34;5&#34; y1=&#34;12&#34; x2=&#34;19&#34; y2=&#34;12&#34;/&gt;&lt;circle cx=&#34;12&#34; cy=&#34;18&#34; r=&#34;1&#34;/&gt;&lt;/svg&gt;`
+        };
+
+        function getReading(num, den) {
+            const numerators = { 1: &#34;одна&#34;, 2: &#34;две&#34;, 3: &#34;три&#34;, 4: &#34;четыре&#34;, 5: &#34;пять&#34;, 6: &#34;шесть&#34;, 7: &#34;семь&#34;, 8: &#34;восемь&#34;, 9: &#34;девять&#34;, 10: &#34;десять&#34; };
+            const denominators = { 
+                2: num === 1 ? &#34;вторая&#34; : &#34;вторых&#34;, 
+                3: num === 1 ? &#34;третья&#34; : &#34;третьих&#34;, 
+                4: num === 1 ? &#34;четвертая&#34; : &#34;четвертых&#34;, 
+                5: num === 1 ? &#34;пятая&#34; : &#34;пятых&#34;, 
+                6: num === 1 ? &#34;шестая&#34; : &#34;шестых&#34;, 
+                8: num === 1 ? &#34;восьмая&#34; : &#34;восьмых&#34;, 
+                10: num === 1 ? &#34;десятая&#34; : &#34;десятых&#34;,
+                12: num === 1 ? &#34;двенадцатая&#34; : &#34;двенадцатых&#34;
+            };
+            return `${numerators[num] || num} ${denominators[den] || den &#43; &#34;-ых&#34;}`;
+        }
+
+        function render() {
+            if (state.mode === &#39;menu&#39;) {
+                scoreDisplay.classList.add(&#39;hidden&#39;);
+                btnHome.classList.add(&#39;hidden&#39;);
+            } else {
+                btnHome.classList.remove(&#39;hidden&#39;);
+                if (state.mode === &#39;game&#39;) {
+                    scoreDisplay.classList.remove(&#39;hidden&#39;);
+                    scoreValue.innerText = state.score;
+                } else {
+                    scoreDisplay.classList.add(&#39;hidden&#39;);
+                }
+            }
+            appContent.innerHTML = &#39;&#39;;
+            if (state.mode === &#39;menu&#39;) renderMenu();
+            else if (state.mode === &#39;lab&#39;) renderLab();
+            else if (state.mode === &#39;game&#39;) renderGame();
+        }
+
+        function renderMenu() {
+            const container = document.createElement(&#39;div&#39;);
+            container.className = &#34;text-center space-y-8 animate-fade-in w-full flex flex-col items-center&#34;;
+            container.innerHTML = `
+                &lt;h2 class=&#34;text-3xl font-bold text-gray-700 mb-4&#34;&gt;Добро пожаловать в мир дробей!&lt;/h2&gt;
+                &lt;p class=&#34;text-gray-500 text-lg max-w-lg mb-8&#34;&gt;Выбери режим, чтобы научиться читать и записывать обыкновенные дроби.&lt;/p&gt;
+                &lt;div class=&#34;grid md:grid-cols-2 gap-6 w-full max-w-2xl&#34;&gt;
+                    &lt;button id=&#34;btn-lab&#34; class=&#34;group relative p-8 bg-blue-50 rounded-2xl border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-100 transition-all shadow-sm hover:shadow-md flex flex-col items-center cursor-pointer&#34;&gt;
+                        &lt;div class=&#34;bg-blue-500 text-white p-4 rounded-full mb-4 group-hover:scale-110 transition-transform&#34;&gt;${Icons.book}&lt;/div&gt;
+                        &lt;h3 class=&#34;text-xl font-bold text-blue-800&#34;&gt;Лаборатория&lt;/h3&gt;
+                        &lt;p class=&#34;text-blue-600 mt-2 text-sm&#34;&gt;Исследуй, как устроены дроби на наглядных примерах.&lt;/p&gt;
+                    &lt;/button&gt;
+                    &lt;button id=&#34;btn-game&#34; class=&#34;group relative p-8 bg-emerald-50 rounded-2xl border-2 border-emerald-200 hover:border-emerald-400 hover:bg-emerald-100 transition-all shadow-sm hover:shadow-md flex flex-col items-center cursor-pointer&#34;&gt;
+                        &lt;div class=&#34;bg-emerald-500 text-white p-4 rounded-full mb-4 group-hover:scale-110 transition-transform&#34;&gt;${Icons.play}&lt;/div&gt;
+                        &lt;h3 class=&#34;text-xl font-bold text-emerald-800&#34;&gt;Игра&lt;/h3&gt;
+                        &lt;p class=&#34;text-emerald-600 mt-2 text-sm&#34;&gt;Сажай цветы в саду и проверяй свои знания.&lt;/p&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+            appContent.appendChild(container);
+            document.getElementById(&#39;btn-lab&#39;).onclick = () =&gt; { state.mode = &#39;lab&#39;; render(); };
+            document.getElementById(&#39;btn-game&#39;).onclick = () =&gt; { state.mode = &#39;game&#39;; initGame(); };
+        }
+
+        function renderLab() {
+            const { num, denom } = state.lab;
+            const radius = 45;
+            const center = 50;
+            let slicesHtml = &#39;&#39;;
+            for(let i=0; i&lt;denom; i&#43;&#43;) {
+                const angle = 360 / denom;
+                const rotation = angle * i;
+                const isActive = i &lt; num;
+                const fillColor = isActive ? &#39;#3b82f6&#39; : &#39;#ffffff&#39;;
+                if (denom === 1) {
+                    slicesHtml &#43;= `&lt;circle cx=&#34;50&#34; cy=&#34;50&#34; r=&#34;${radius}&#34; fill=&#34;${fillColor}&#34; stroke=&#34;#e5e7eb&#34; stroke-width=&#34;1&#34; /&gt;`;
+                } else {
+                    const x1 = center &#43; radius * Math.cos(0);
+                    const y1 = center &#43; radius * Math.sin(0);
+                    const x2 = center &#43; radius * Math.cos((angle * Math.PI) / 180);
+                    const y2 = center &#43; radius * Math.sin((angle * Math.PI) / 180);
+                    const d = `M${center},${center} L${x1},${y1} A${radius},${radius} 0 0,1 ${x2},${y2} Z`;
+                    slicesHtml &#43;= `&lt;path d=&#34;${d}&#34; transform=&#34;rotate(${rotation} ${center} ${center})&#34; fill=&#34;${fillColor}&#34; stroke=&#34;#a7f3d0&#34; stroke-width=&#34;1&#34; class=&#34;transition-colors duration-300&#34; /&gt;`;
+                }
+            }
+
+            const container = document.createElement(&#39;div&#39;);
+            container.className = &#34;w-full max-w-3xl flex flex-col gap-8 animate-fade-in&#34;;
+            container.innerHTML = `
+                &lt;div class=&#34;text-center&#34;&gt;
+                    &lt;h2 class=&#34;text-2xl font-bold text-gray-700&#34;&gt;Лаборатория дробей&lt;/h2&gt;
+                    &lt;p class=&#34;text-gray-500&#34;&gt;Двигай ползунки, чтобы изменить дробь!&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;grid md:grid-cols-2 gap-8 items-center&#34;&gt;
+                    &lt;div class=&#34;bg-gray-50 p-6 rounded-xl space-y-6 text-left&#34;&gt;
+                        &lt;div&gt;
+                            &lt;div class=&#34;flex justify-between mb-2&#34;&gt;
+                                &lt;label class=&#34;font-bold text-blue-600 text-sm&#34;&gt;Числитель (взятые части)&lt;/label&gt;
+                                &lt;span class=&#34;font-mono text-xl font-bold&#34;&gt;${num}&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;input type=&#34;range&#34; id=&#34;input-num&#34; min=&#34;0&#34; max=&#34;${denom}&#34; value=&#34;${num}&#34; class=&#34;w-full accent-blue-500&#34;&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;w-full h-px bg-gray-300&#34;&gt;&lt;/div&gt;
+                        &lt;div&gt;
+                            &lt;div class=&#34;flex justify-between mb-2&#34;&gt;
+                                &lt;label class=&#34;font-bold text-emerald-600 text-sm&#34;&gt;Знаменатель (всего частей)&lt;/label&gt;
+                                &lt;span class=&#34;font-mono text-xl font-bold&#34;&gt;${denom}&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;input type=&#34;range&#34; id=&#34;input-denom&#34; min=&#34;1&#34; max=&#34;12&#34; value=&#34;${denom}&#34; class=&#34;w-full accent-emerald-500&#34;&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex flex-col items-center justify-center space-y-6&#34;&gt;
+                        &lt;div class=&#34;flex flex-col items-center&#34;&gt;
+                             &lt;div class=&#34;text-6xl font-black text-blue-600 border-b-4 border-gray-800 px-4 mb-2&#34;&gt;${num}&lt;/div&gt;
+                             &lt;div class=&#34;text-6xl font-black text-emerald-600 px-4&#34;&gt;${denom}&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;bg-yellow-100 px-6 py-2 rounded-full border border-yellow-300 text-yellow-800 font-bold text-lg text-center&#34;&gt;
+                            &#34;${getReading(num, denom)}&#34;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;relative w-48 h-48&#34;&gt;
+                            &lt;svg viewBox=&#34;0 0 100 100&#34; class=&#34;w-full h-full transform -rotate-90&#34;&gt;
+                                &lt;circle cx=&#34;50&#34; cy=&#34;50&#34; r=&#34;45&#34; fill=&#34;white&#34; stroke=&#34;#e5e7eb&#34; stroke-width=&#34;2&#34; /&gt;
+                                ${slicesHtml}
+                            &lt;/svg&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+            appContent.appendChild(container);
+            document.getElementById(&#39;input-num&#39;).oninput = (e) =&gt; { state.lab.num = parseInt(e.target.value); render(); };
+            document.getElementById(&#39;input-denom&#39;).oninput = (e) =&gt; { 
+                const newDenom = parseInt(e.target.value);
+                state.lab.denom = newDenom;
+                if (state.lab.num &gt; newDenom) state.lab.num = newDenom;
+                render(); 
+            };
+        }
+
+        function initGame() { generateLevel(); render(); }
+
+        function generateLevel() {
+            const denoms = [2, 3, 4, 5, 6, 8, 10];
+            const denom = denoms[Math.floor(Math.random() * denoms.length)];
+            const num = Math.floor(Math.random() * (denom - 1)) &#43; 1;
+            const types = [&#39;plant&#39;, &#39;read&#39;, &#39;division&#39;];
+            state.game = { targetNum: num, targetDenom: denom, grid: Array(denom).fill(false), type: types[Math.floor(Math.random() * types.length)], feedback: null };
+            if (state.game.type === &#39;read&#39;) for(let i=0; i&lt;num; i&#43;&#43;) state.game.grid[i] = true;
+        }
+
+        function renderGame() {
+            const { targetNum, targetDenom, type, grid, feedback } = state.game;
+            const container = document.createElement(&#39;div&#39;);
+            container.className = &#34;w-full max-w-2xl flex flex-col items-center animate-fade-in&#34;;
+            
+            let titleText = &#34;&#34;, questionHtml = &#34;&#34;;
+            if (type === &#39;plant&#39;) {
+                titleText = &#34;Задание: Посади цветы!&#34;;
+                questionHtml = `Засади &lt;span class=&#34;font-bold text-2xl mx-1 bg-emerald-100 px-2 rounded inline-block align-middle&#34;&gt;${targetNum}/${targetDenom}&lt;/span&gt; часть сада.`;
+            } else if (type === &#39;read&#39;) {
+                titleText = &#34;Задание: Какая это дробь?&#34;;
+                questionHtml = &#34;Какая часть сада засажена цветами?&#34;;
+            } else if (type === &#39;division&#39;) {
+                titleText = &#34;Задание: Замени деление!&#34;;
+                questionHtml = &#34;Как записать это деление в виде дроби?&#34;;
+            }
+
+            let contentHtml = `
+                &lt;div class=&#34;bg-white rounded-2xl p-6 shadow-sm border-2 border-emerald-100 w-full mb-8 text-center relative overflow-hidden&#34;&gt;
+                    ${type === &#39;division&#39; ? &#39;&lt;div class=&#34;absolute top-0 left-0 w-full bg-yellow-100 text-yellow-800 text-[10px] py-1 font-bold&#34;&gt;НОВАЯ ТЕМА!&lt;/div&gt;&#39; : &#39;&#39;}
+                    &lt;h3 class=&#34;text-xl font-bold text-gray-700 mb-2 mt-2&#34;&gt;${titleText}&lt;/h3&gt;
+                    &lt;p class=&#34;text-lg text-emerald-700&#34;&gt;${questionHtml}&lt;/p&gt;
+                    ${type === &#39;division&#39; &amp;&amp; !feedback ? &#39;&lt;div class=&#34;mt-2 text-xs text-blue-500 bg-blue-50 inline-block px-3 py-1 rounded-full border border-blue-100&#34;&gt;💡 Помни: черта дроби заменяет деление!&lt;/div&gt;&#39; : &#39;&#39;}
+                &lt;/div&gt;
+            `;
+
+            if (type === &#39;plant&#39; || type === &#39;read&#39;) {
+                const cols = Math.ceil(Math.sqrt(targetDenom));
+                let gridHtml = `&lt;div class=&#34;grid gap-3 mb-8&#34; style=&#34;grid-template-columns: repeat(${cols}, minmax(0, 1fr))&#34;&gt;`;
+                grid.forEach((isPlanted, idx) =&gt; {
+                    const bgClass = isPlanted ? &#39;bg-pink-100 border-pink-400 scale-105&#39; : &#39;bg-stone-100 border-stone-200 hover:bg-stone-200&#39;;
+                    const cursorClass = (type === &#39;plant&#39; &amp;&amp; !feedback) ? &#39;cursor-pointer hover:shadow-md&#39; : &#39;cursor-default&#39;;
+                    gridHtml &#43;= `
+                        &lt;button onclick=&#34;handleGridClick(${idx})&#34; class=&#34;w-16 h-16 md:w-20 md:h-20 rounded-xl flex items-center justify-center transition-all duration-200 border-2 shadow-sm ${bgClass} ${cursorClass}&#34; ${(type === &#39;read&#39; || feedback) ? &#39;disabled&#39; : &#39;&#39;}&gt;
+                            ${isPlanted ? Icons.flower : &#39;&lt;div class=&#34;w-2 h-2 rounded-full bg-stone-300&#34;&gt;&lt;/div&gt;&#39;}
+                        &lt;/button&gt;`;
+                });
+                gridHtml &#43;= `&lt;/div&gt;`;
+                contentHtml &#43;= gridHtml;
+            }
+
+            if (type === &#39;division&#39;) {
+                contentHtml &#43;= `
+                    &lt;div class=&#34;flex items-center justify-center gap-4 md:gap-6 mb-8 text-4xl md:text-6xl font-black text-gray-700 bg-gray-50 p-8 rounded-3xl border-2 border-dashed border-gray-300&#34;&gt;
+                        &lt;span class=&#34;text-blue-600&#34;&gt;${targetNum}&lt;/span&gt; ${Icons.divide} &lt;span class=&#34;text-emerald-600&#34;&gt;${targetDenom}&lt;/span&gt;
+                        &lt;span class=&#34;text-gray-300&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;text-gray-400 text-5xl&#34;&gt;?&lt;/span&gt;
+                    &lt;/div&gt;`;
+            }
+
+            contentHtml &#43;= `&lt;div class=&#34;w-full flex justify-center&#34; id=&#34;controls-area&#34;&gt;`;
+            if (!feedback) {
+                if (type === &#39;read&#39; || type === &#39;division&#39;) {
+                    contentHtml &#43;= `
+                        &lt;div class=&#34;flex flex-col items-center gap-4 bg-gray-50 p-4 rounded-xl&#34;&gt;
+                             &lt;div class=&#34;flex flex-col items-center gap-2&#34;&gt;
+                                &lt;input type=&#34;number&#34; id=&#34;ans-num&#34; placeholder=&#34;?&#34; class=&#34;w-14 h-14 text-center text-xl font-bold border-2 border-blue-300 rounded-lg&#34;&gt;
+                                &lt;div class=&#34;w-16 h-1 bg-gray-800 rounded&#34;&gt;&lt;/div&gt;
+                                &lt;input type=&#34;number&#34; id=&#34;ans-denom&#34; placeholder=&#34;?&#34; class=&#34;w-14 h-14 text-center text-xl font-bold border-2 border-emerald-300 rounded-lg&#34;&gt;
+                             &lt;/div&gt;
+                             &lt;button onclick=&#34;checkInput()&#34; class=&#34;bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-2 px-8 rounded-full shadow-lg&#34;&gt;Проверить&lt;/button&gt;
+                        &lt;/div&gt;`;
+                } else if (type === &#39;plant&#39;) {
+                    contentHtml &#43;= `
+                        &lt;button onclick=&#34;checkPlant()&#34; class=&#34;bg-emerald-500 hover:bg-emerald-600 text-white text-xl font-bold py-3 px-10 rounded-full shadow-lg flex items-center gap-2&#34;&gt;
+                            ${Icons.check} Готово!
+                        &lt;/button&gt;`;
+                }
+            } else {
+                if (feedback === &#39;correct&#39;) {
+                    contentHtml &#43;= `
+                        &lt;div class=&#34;flex flex-col items-center animate-fade-in&#34;&gt;
+                            &lt;div class=&#34;text-green-600 font-bold text-2xl mb-4 flex items-center gap-2&#34;&gt;
+                                ${Icons.check} &lt;span class=&#34;ml-2&#34;&gt;Молодец! Правильно!&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;button onclick=&#34;initGame()&#34; class=&#34;bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-full flex items-center gap-2&#34;&gt;Далее ${Icons.arrow}&lt;/button&gt;
+                        &lt;/div&gt;`;
+                } else {
+                    contentHtml &#43;= `
+                        &lt;div class=&#34;flex flex-col items-center animate-shake&#34;&gt;
+                            &lt;div class=&#34;text-red-500 font-bold text-xl mb-4 flex items-center gap-2&#34;&gt;
+                                ${Icons.x} &lt;span class=&#34;ml-2&#34;&gt;Ошибка. Попробуй еще раз!&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;button onclick=&#34;resetLevel()&#34; class=&#34;bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-6 rounded-full flex items-center gap-2&#34;&gt;${Icons.refresh} Сбросить&lt;/button&gt;
+                        &lt;/div&gt;`;
+                }
+            }
+            contentHtml &#43;= `&lt;/div&gt;`;
+            container.innerHTML = contentHtml;
+            appContent.appendChild(container);
+        }
+
+        window.handleGridClick = (idx) =&gt; {
+            if (state.game.type !== &#39;plant&#39; || state.game.feedback) return;
+            state.game.grid[idx] = !state.game.grid[idx];
+            render();
+        };
+
+        window.checkPlant = () =&gt; {
+            const plantedCount = state.game.grid.filter(Boolean).length;
+            evaluateAnswer(plantedCount, state.game.targetDenom);
+        };
+
+        window.checkInput = () =&gt; {
+            const numVal = parseInt(document.getElementById(&#39;ans-num&#39;).value);
+            const denomVal = parseInt(document.getElementById(&#39;ans-denom&#39;).value);
+            evaluateAnswer(numVal, denomVal);
+        };
+
+        function evaluateAnswer(uNum, uDenom) {
+            if (uNum === state.game.targetNum &amp;&amp; uDenom === state.game.targetDenom) {
+                state.game.feedback = &#39;correct&#39;;
+                state.score &#43;= 10;
+            } else {
+                state.game.feedback = &#39;wrong&#39;;
+            }
+            render();
+        }
+
+        window.resetLevel = () =&gt; {
+            state.game.feedback = null;
+            if (state.game.type === &#39;plant&#39;) state.game.grid.fill(false);
+            render();
+        };
+
+        btnHome.onclick = () =&gt; { state.mode = &#39;menu&#39;; render(); };
+        render();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>

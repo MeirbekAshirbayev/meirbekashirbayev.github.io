@@ -410,7 +410,485 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame162" src="/task/162?lang=kz"
+                            <iframe id="taskFrame162" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Бөлшектер Әлемі&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap&#39;);
+        
+        body {
+            font-family: &#39;Nunito&#39;, sans-serif;
+        }
+
+        .animate-spin-slow {
+            animation: spin 3s linear infinite;
+        }
+
+        .bounce-animation {
+            animation: bounce 2s infinite;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-10%); }
+            50% { transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-gray-50 text-slate-800 min-h-screen&#34;&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;min-h-screen flex flex-col&#34;&gt;
+        &lt;!-- Мазмұны JavaScript арқылы жүктеледі --&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- Көмекші функция: Бөлшек санды HTML ретінде құру ---
+        function getFractionHtml(whole, num, den, isSmall = false) {
+            const sizeClass = isSmall ? &#39;text-lg&#39; : &#39;text-xl md:text-2xl&#39;;
+            const wholeHtml = whole ? `&lt;span class=&#34;mr-1&#34;&gt;${whole}&lt;/span&gt;` : &#39;&#39;;
+            return `
+                &lt;span class=&#34;inline-flex items-center mx-1 font-bold text-indigo-700 align-middle ${sizeClass}&#34;&gt;
+                    ${wholeHtml}
+                    &lt;span class=&#34;flex flex-col items-center justify-center leading-none&#34;&gt;
+                        &lt;span class=&#34;border-b-2 border-indigo-700 px-1&#34;&gt;${num}&lt;/span&gt;
+                        &lt;span&gt;${den}&lt;/span&gt;
+                    &lt;/span&gt;
+                &lt;/span&gt;
+            `;
+        }
+
+        // --- Деректер (Data) ---
+        const questions = [
+            {
+                id: 1,
+                theme: &#34;Пицца кеші&#34;,
+                icon: &#34;pizza&#34;,
+                iconColor: &#34;text-orange-500&#34;,
+                story: `Досың екеуің пицца жедіңдер. Сен пиццаның ${getFractionHtml(null, 3, 8, true)} бөлігін, ал досың ${getFractionHtml(null, 5, 8, true)} бөлігін жеді. Кім көп жеді?`,
+                left: { whole: null, num: 3, den: 8 },
+                right: { whole: null, num: 5, den: 8 },
+                leftLabel: &#34;Сен&#34;,
+                rightLabel: &#34;Досың&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: `Бөлімдері бірдей (8). Алымы үлкен бөлшек үлкен болады (${getFractionHtml(null, 5, 8, true)} &gt; ${getFractionHtml(null, 3, 8, true)}).`
+            },
+            {
+                id: 2,
+                theme: &#34;Жүгіру жарысы&#34;,
+                icon: &#34;activity&#34;,
+                iconColor: &#34;text-green-500&#34;,
+                story: `Арман ${getFractionHtml(3, 1, 2, true)} шақырым, ал Берік ${getFractionHtml(3, 1, 4, true)} шақырым жүгірді. Қайсысы ұзақ жүгірді?`,
+                left: { whole: 3, num: 1, den: 2 },
+                right: { whole: 3, num: 1, den: 4 },
+                leftLabel: &#34;Арман&#34;,
+                rightLabel: &#34;Берік&#34;,
+                correct: &#34;&gt;&#34;,
+                explanation: `Бүтін бөліктері тең (3). Жарты ${getFractionHtml(null, 1, 2, true)} ширектен ${getFractionHtml(null, 1, 4, true)} үлкен.`
+            },
+            {
+                id: 3,
+                theme: &#34;Су ішу&#34;,
+                icon: &#34;droplet&#34;, // Lucide doesn&#39;t have water emoji, used droplet
+                iconColor: &#34;text-blue-500&#34;,
+                story: `Айша бөтелкедегі судың ${getFractionHtml(null, 2, 3, true)} бөлігін, ал Нұрлан ${getFractionHtml(null, 2, 5, true)} бөлігін ішті. Кім көп су ішті?`,
+                left: { whole: null, num: 2, den: 3 },
+                right: { whole: null, num: 2, den: 5 },
+                leftLabel: &#34;Айша&#34;,
+                rightLabel: &#34;Нұрлан&#34;,
+                correct: &#34;&gt;&#34;,
+                explanation: `Алымдары бірдей (2). Бөлімі кіші бөлшек үлкен болады (3 &lt; 5, демек ${getFractionHtml(null, 2, 3, true)} үлкен).`
+            },
+            {
+                id: 4,
+                theme: &#34;Уақытты басқару&#34;,
+                icon: &#34;clock&#34;,
+                iconColor: &#34;text-blue-500&#34;,
+                story: `Әлия үй тапсырмасын орындауға ${getFractionHtml(1, 1, 4, true)} сағат жұмсады, ал музыка тыңдауға ${getFractionHtml(1, 3, 4, true)} сағат кетті. Қай іске уақыт көбірек кетті?`,
+                left: { whole: 1, num: 1, den: 4 },
+                right: { whole: 1, num: 3, den: 4 },
+                leftLabel: &#34;Сабақ&#34;,
+                rightLabel: &#34;Музыка&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: `Бүтіндері тең (1). Бөлімдері бірдей, 3 алымы 1-ден үлкен.`
+            },
+            {
+                id: 5,
+                theme: &#34;Тәтті нан пісіру&#34;,
+                icon: &#34;cake-slice&#34;, // Changed to cake-slice
+                iconColor: &#34;text-pink-500&#34;,
+                story: `Анаң тортқа ${getFractionHtml(2, 1, 2, true)} стақан қант және ${getFractionHtml(2, 1, 2, true)} стақан ұн қосты. Мөлшері қандай?`,
+                left: { whole: 2, num: 1, den: 2 },
+                right: { whole: 2, num: 1, den: 2 },
+                leftLabel: &#34;Қант&#34;,
+                rightLabel: &#34;Ұн&#34;,
+                correct: &#34;=&#34;,
+                explanation: &#34;Бүтін бөліктері де, бөлшек бөліктері де бірдей.&#34;
+            },
+            {
+                id: 6,
+                theme: &#34;Базарлық&#34;,
+                icon: &#34;scale&#34;,
+                iconColor: &#34;text-purple-500&#34;,
+                story: `Сен ${getFractionHtml(4, 3, 10, true)} кг алма сатып алдың, ал досың ${getFractionHtml(4, 7, 10, true)} кг алмұрт сатып алды. Қай жеміс ауыр?`,
+                left: { whole: 4, num: 3, den: 10 },
+                right: { whole: 4, num: 7, den: 10 },
+                leftLabel: &#34;Алма&#34;,
+                rightLabel: &#34;Алмұрт&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: `Бүтіндері тең. ${getFractionHtml(null, 7, 10, true)} бөлшегі ${getFractionHtml(null, 3, 10, true)} бөлшегінен үлкен.`
+            },
+            {
+                id: 7,
+                theme: &#34;Кітап оқу&#34;,
+                icon: &#34;book-open&#34;,
+                iconColor: &#34;text-yellow-600&#34;,
+                story: `Дүйсенбіде кітаптың ${getFractionHtml(null, 1, 5, true)} бөлігін, сейсенбіде ${getFractionHtml(null, 1, 4, true)} бөлігін оқыдың. Қай күні көбірек оқыдың?`,
+                left: { whole: null, num: 1, den: 5 },
+                right: { whole: null, num: 1, den: 4 },
+                leftLabel: &#34;Дүйсенбі&#34;,
+                rightLabel: &#34;Сейсенбі&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: `Алымдары тең (1). Бөлімі кіші сан (4) үлкен болады. Ширек (${getFractionHtml(null, 1, 4, true)}) бестен бірден үлкен.`
+            },
+            {
+                id: 8,
+                theme: &#34;Құрылыс&#34;,
+                icon: &#34;ruler&#34;,
+                iconColor: &#34;text-gray-600&#34;,
+                story: `Ұзындығы ${getFractionHtml(5, 2, 5, true)} метр тақтай мен ${getFractionHtml(5, 3, 5, true)} метр арқан бар. Қайсысы ұзын?`,
+                left: { whole: 5, num: 2, den: 5 },
+                right: { whole: 5, num: 3, den: 5 },
+                leftLabel: &#34;Тақтай&#34;,
+                rightLabel: &#34;Арқан&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: &#34;Бөлімдері тең болғандықтан, алымы үлкен сан (3) үлкен.&#34;
+            },
+            {
+                id: 9,
+                theme: &#34;Шоколад бөлісу&#34;,
+                icon: &#34;cookie&#34;, // Using cookie as chocolate
+                iconColor: &#34;text-amber-800&#34;,
+                story: `Асқар шоколадтың ${getFractionHtml(null, 7, 10, true)} бөлігін, ал Марат ${getFractionHtml(null, 9, 10, true)} бөлігін жегісі келеді. Кімнің үлесі көп?`,
+                left: { whole: null, num: 7, den: 10 },
+                right: { whole: null, num: 9, den: 10 },
+                leftLabel: &#34;Асқар&#34;,
+                rightLabel: &#34;Марат&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: &#34;9 саны 7-ден үлкен (бөлімдері бірдей).&#34;
+            },
+            {
+                id: 10,
+                theme: &#34;Дүкенде&#34;,
+                icon: &#34;shopping-cart&#34;,
+                iconColor: &#34;text-red-500&#34;,
+                story: `Сүт ${getFractionHtml(1, 1, 2, true)} литр, ал айран ${getFractionHtml(1, 1, 3, true)} литр. Қайсысы көп?`,
+                left: { whole: 1, num: 1, den: 2 },
+                right: { whole: 1, num: 1, den: 3 },
+                leftLabel: &#34;Сүт&#34;,
+                rightLabel: &#34;Айран&#34;,
+                correct: &#34;&gt;&#34;,
+                explanation: `Жарты литр ${getFractionHtml(null, 1, 2, true)} үштен бір бөліктен ${getFractionHtml(null, 1, 3, true)} көп.`
+            }
+        ];
+
+        // --- State Management ---
+        let state = {
+            screen: &#39;welcome&#39;, // welcome, playing, result
+            currentQIndex: 0,
+            score: 0,
+            showFeedback: false,
+            isCorrect: false,
+            selectedSign: null,
+            showNumbers: false
+        };
+
+        const app = document.getElementById(&#39;app&#39;);
+
+        // --- Render Functions ---
+
+        function renderWelcome() {
+            app.innerHTML = `
+                &lt;div class=&#34;min-h-screen bg-gradient-to-br from-blue-100 to-purple-200 flex items-center justify-center p-4 font-sans w-full&#34;&gt;
+                    &lt;div class=&#34;bg-white rounded-3xl shadow-2xl p-8 max-w-lg w-full text-center transform transition-all hover:scale-105 duration-300&#34;&gt;
+                        &lt;div class=&#34;flex justify-center mb-6&#34;&gt;
+                            &lt;i data-lucide=&#34;star&#34; class=&#34;w-20 h-20 text-yellow-400 fill-current animate-spin-slow&#34;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;h1 class=&#34;text-4xl font-extrabold text-indigo-800 mb-4&#34;&gt;Бөлшектер Әлемі&lt;/h1&gt;
+                        &lt;p class=&#34;text-gray-600 text-lg mb-8&#34;&gt;
+                            Жай бөлшектер мен аралас сандарды салыстырып, өмірлік есептерді шығар! Дайынсың ба?
+                        &lt;/p&gt;
+                        &lt;button onclick=&#34;startGame()&#34; class=&#34;bg-indigo-600 text-white text-xl py-4 px-10 rounded-full font-bold shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all flex items-center justify-center mx-auto gap-2&#34;&gt;
+                            Бастау &lt;i data-lucide=&#34;arrow-right&#34;&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+            lucide.createIcons();
+        }
+
+        function renderGame() {
+            const currentQ = questions[state.currentQIndex];
+            
+            // Render Sign Buttons
+            const signs = [&#39;&lt;&#39;, &#39;=&#39;, &#39;&gt;&#39;];
+            const buttonsHtml = signs.map(sign =&gt; {
+                let btnClass = &#34;bg-white border-2 border-indigo-100 text-indigo-600 hover:border-indigo-500 hover:bg-indigo-50&#34;;
+                
+                if (state.showFeedback) {
+                    if (sign === currentQ.correct) {
+                        btnClass = &#34;bg-green-500 text-white ring-4 ring-green-200&#34;;
+                    } else if (sign === state.selectedSign) {
+                        btnClass = &#34;bg-red-500 text-white&#34;;
+                    } else {
+                        btnClass = &#34;bg-gray-100 text-gray-300&#34;;
+                    }
+                }
+
+                return `
+                    &lt;button
+                        onclick=&#34;handleAnswer(&#39;${sign}&#39;)&#34;
+                        ${state.showFeedback ? &#39;disabled&#39; : &#39;&#39;}
+                        class=&#34;py-4 rounded-xl text-3xl font-bold transition-all transform hover:-translate-y-1 shadow-md ${btnClass}&#34;
+                    &gt;
+                        ${sign}
+                    &lt;/button&gt;
+                `;
+            }).join(&#39;&#39;);
+
+            // Render Feedback
+            let feedbackHtml = &#39;&#39;;
+            if (state.showFeedback) {
+                const feedbackIcon = state.isCorrect ? &#39;check-circle&#39; : &#39;x-circle&#39;;
+                const feedbackColor = state.isCorrect ? &#39;text-green-600&#39; : &#39;text-red-600&#39;;
+                const feedbackBg = state.isCorrect ? &#39;bg-green-50 border border-green-200&#39; : &#39;bg-red-50 border border-red-200&#39;;
+                const titleColor = state.isCorrect ? &#39;text-green-800&#39; : &#39;text-red-800&#39;;
+                
+                feedbackHtml = `
+                    &lt;div class=&#34;rounded-xl p-4 mb-4 animate-fade-in ${feedbackBg}&#34;&gt;
+                        &lt;div class=&#34;flex items-start gap-3&#34;&gt;
+                            &lt;i data-lucide=&#34;${feedbackIcon}&#34; class=&#34;w-6 h-6 ${feedbackColor} flex-shrink-0&#34;&gt;&lt;/i&gt;
+                            &lt;div&gt;
+                                &lt;h3 class=&#34;font-bold ${titleColor}&#34;&gt;
+                                    ${state.isCorrect ? &#39;Дұрыс!&#39; : &#39;Қате!&#39;}
+                                &lt;/h3&gt;
+                                &lt;div class=&#34;text-gray-700 mt-1&#34;&gt;${currentQ.explanation}&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;button 
+                        onclick=&#34;nextQuestion()&#34;
+                        class=&#34;w-full bg-indigo-600 text-white py-3 rounded-xl font-bold text-lg hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2&#34;
+                    &gt;
+                        ${state.currentQIndex &lt; questions.length - 1 ? &#39;Келесі сұрақ&#39; : &#39;Нәтижені көру&#39;} &lt;i data-lucide=&#34;arrow-right&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                `;
+            }
+
+            // Fraction Display Logic
+            const leftFraction = state.showNumbers 
+                ? `&lt;div class=&#34;animate-fade-in&#34;&gt;${getFractionHtml(currentQ.left.whole, currentQ.left.num, currentQ.left.den)}&lt;/div&gt;`
+                : `&lt;div class=&#34;text-4xl text-gray-200 font-bold&#34;&gt;?&lt;/div&gt;`;
+            
+            const rightFraction = state.showNumbers
+                ? `&lt;div class=&#34;animate-fade-in&#34;&gt;${getFractionHtml(currentQ.right.whole, currentQ.right.num, currentQ.right.den)}&lt;/div&gt;`
+                : `&lt;div class=&#34;text-4xl text-gray-200 font-bold&#34;&gt;?&lt;/div&gt;`;
+
+            // Toggle Button Icon
+            const eyeIcon = state.showNumbers ? &#39;eye-off&#39; : &#39;eye&#39;;
+            const eyeText = state.showNumbers ? &#34;Сандарды жасыру&#34; : &#34;Сандарды көрсету&#34;;
+
+            app.innerHTML = `
+                &lt;div class=&#34;min-h-screen w-full bg-gray-50 flex flex-col items-center justify-center p-4 font-sans text-slate-800&#34;&gt;
+                    &lt;!-- Header --&gt;
+                    &lt;div class=&#34;w-full max-w-2xl mb-6 flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm&#34;&gt;
+                        &lt;div class=&#34;flex items-center gap-2&#34;&gt;
+                            &lt;span class=&#34;text-indigo-600 font-bold text-lg&#34;&gt;Тапсырма ${state.currentQIndex &#43; 1}/10&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&#34;flex items-center gap-2 bg-yellow-100 px-4 py-1 rounded-full&#34;&gt;
+                            &lt;i data-lucide=&#34;star&#34; class=&#34;w-5 h-5 text-yellow-500 fill-current&#34;&gt;&lt;/i&gt;
+                            &lt;span class=&#34;font-bold text-yellow-700&#34;&gt;${state.score} Ұпай&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Main Card --&gt;
+                    &lt;div class=&#34;bg-white rounded-3xl shadow-xl w-full max-w-2xl overflow-hidden relative&#34;&gt;
+                        &lt;div class=&#34;h-2 bg-indigo-500 w-full&#34;&gt;&lt;/div&gt;
+                        
+                        &lt;div class=&#34;p-6 md:p-8&#34;&gt;
+                            &lt;!-- Question Context --&gt;
+                            &lt;div class=&#34;flex flex-col items-center text-center mb-6&#34;&gt;
+                                &lt;div class=&#34;bg-indigo-50 p-4 rounded-full mb-4&#34;&gt;
+                                    &lt;i data-lucide=&#34;${currentQ.icon}&#34; class=&#34;w-8 h-8 ${currentQ.iconColor}&#34;&gt;&lt;/i&gt;
+                                &lt;/div&gt;
+                                &lt;h2 class=&#34;text-xl font-bold text-gray-800 mb-2 uppercase tracking-wide text-xs text-indigo-500&#34;&gt;${currentQ.theme}&lt;/h2&gt;
+                                &lt;div class=&#34;text-lg md:text-xl text-gray-700 leading-relaxed font-medium&#34;&gt;
+                                    ${currentQ.story}
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;!-- Toggle Button --&gt;
+                            &lt;div class=&#34;flex justify-center mb-4&#34;&gt;
+                                &lt;button 
+                                    onclick=&#34;toggleNumbers()&#34;
+                                    class=&#34;flex items-center gap-2 text-sm font-medium text-indigo-500 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition-colors&#34;
+                                &gt;
+                                    &lt;i data-lucide=&#34;${eyeIcon}&#34; class=&#34;w-4 h-4&#34;&gt;&lt;/i&gt;
+                                    ${eyeText}
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+
+                            &lt;!-- Comparison Area --&gt;
+                            &lt;div class=&#34;flex items-end justify-center gap-4 md:gap-8 mb-8 bg-slate-50 p-6 rounded-2xl border border-slate-100 min-h-[160px]&#34;&gt;
+                                &lt;!-- Left Side --&gt;
+                                &lt;div class=&#34;flex flex-col items-center gap-2 w-32&#34;&gt;
+                                    &lt;div class=&#34;h-16 flex items-center justify-center&#34;&gt;
+                                        ${leftFraction}
+                                    &lt;/div&gt;
+                                    &lt;span class=&#34;text-sm font-bold text-indigo-500 bg-indigo-50 px-3 py-1 rounded-full whitespace-nowrap&#34;&gt;
+                                        ${currentQ.leftLabel}
+                                    &lt;/span&gt;
+                                &lt;/div&gt;
+                                
+                                &lt;!-- Sign Box --&gt;
+                                &lt;div class=&#34;w-12 h-12 mb-2 flex-shrink-0 flex items-center justify-center bg-white rounded-lg shadow-inner text-2xl font-bold text-gray-400 border-2 border-dashed border-gray-300&#34;&gt;
+                                    ${state.selectedSign ? `&lt;span class=&#34;text-indigo-600&#34;&gt;${state.selectedSign}&lt;/span&gt;` : &#34;?&#34;}
+                                &lt;/div&gt;
+
+                                &lt;!-- Right Side --&gt;
+                                &lt;div class=&#34;flex flex-col items-center gap-2 w-32&#34;&gt;
+                                    &lt;div class=&#34;h-16 flex items-center justify-center&#34;&gt;
+                                        ${rightFraction}
+                                    &lt;/div&gt;
+                                    &lt;span class=&#34;text-sm font-bold text-indigo-500 bg-indigo-50 px-3 py-1 rounded-full whitespace-nowrap&#34;&gt;
+                                        ${currentQ.rightLabel}
+                                    &lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;!-- Buttons --&gt;
+                            &lt;div class=&#34;grid grid-cols-3 gap-4 mb-6&#34;&gt;
+                                ${buttonsHtml}
+                            &lt;/div&gt;
+
+                            &lt;!-- Feedback --&gt;
+                            ${feedbackHtml}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;p class=&#34;mt-8 text-gray-400 text-sm&#34;&gt;3.7 Жай бөлшектер мен аралас сандарды салыстыру&lt;/p&gt;
+                &lt;/div&gt;
+            `;
+            lucide.createIcons();
+        }
+
+        function renderResult() {
+            let message = &#34;Әлі де жаттығу керек!&#34;;
+            if (state.score === 10) message = &#34;Керемет! Нағыз математик!&#34;;
+            else if (state.score &gt; 7) message = &#34;Өте жақсы нәтиже!&#34;;
+
+            app.innerHTML = `
+                &lt;div class=&#34;min-h-screen w-full bg-gradient-to-br from-green-100 to-blue-200 flex items-center justify-center p-4 font-sans&#34;&gt;
+                    &lt;div class=&#34;bg-white rounded-3xl shadow-2xl p-8 max-w-lg w-full text-center&#34;&gt;
+                        &lt;div class=&#34;flex justify-center mb-6&#34;&gt;
+                            &lt;i data-lucide=&#34;trophy&#34; class=&#34;w-24 h-24 text-yellow-500 fill-current bounce-animation&#34;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-2&#34;&gt;Жарайсың!&lt;/h2&gt;
+                        &lt;p class=&#34;text-xl text-gray-600 mb-6&#34;&gt;Ойын аяқталды&lt;/p&gt;
+                        
+                        &lt;div class=&#34;bg-indigo-50 rounded-xl p-6 mb-8&#34;&gt;
+                            &lt;p class=&#34;text-lg text-gray-500&#34;&gt;Сенің нәтижең:&lt;/p&gt;
+                            &lt;p class=&#34;text-5xl font-extrabold text-indigo-600 my-2&#34;&gt;${state.score} / ${questions.length}&lt;/p&gt;
+                            &lt;p class=&#34;text-indigo-500 font-medium&#34;&gt;
+                                ${message}
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+
+                        &lt;button 
+                            onclick=&#34;startGame()&#34;
+                            class=&#34;bg-green-500 text-white text-lg py-3 px-8 rounded-full font-bold shadow-md hover:bg-green-600 transition-all flex items-center justify-center mx-auto gap-2&#34;
+                        &gt;
+                            &lt;i data-lucide=&#34;rotate-ccw&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt; Қайта бастау
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+            lucide.createIcons();
+        }
+
+        // --- Logic Functions ---
+
+        function updateApp() {
+            if (state.screen === &#39;welcome&#39;) renderWelcome();
+            else if (state.screen === &#39;playing&#39;) renderGame();
+            else if (state.screen === &#39;result&#39;) renderResult();
+        }
+
+        window.startGame = function() {
+            state.screen = &#39;playing&#39;;
+            state.currentQIndex = 0;
+            state.score = 0;
+            state.showFeedback = false;
+            state.selectedSign = null;
+            state.showNumbers = false;
+            updateApp();
+        };
+
+        window.handleAnswer = function(sign) {
+            if (state.showFeedback) return;
+            
+            const currentQ = questions[state.currentQIndex];
+            const correct = sign === currentQ.correct;
+            
+            state.isCorrect = correct;
+            if (correct) state.score&#43;&#43;;
+            state.selectedSign = sign;
+            state.showFeedback = true;
+            state.showNumbers = true; // Auto show numbers on answer
+            
+            updateApp();
+        };
+
+        window.nextQuestion = function() {
+            if (state.currentQIndex &lt; questions.length - 1) {
+                state.currentQIndex&#43;&#43;;
+                state.showFeedback = false;
+                state.selectedSign = null;
+                state.showNumbers = false;
+            } else {
+                state.screen = &#39;result&#39;;
+            }
+            updateApp();
+        };
+
+        window.toggleNumbers = function() {
+            state.showNumbers = !state.showNumbers;
+            updateApp();
+        };
+
+        // --- Initial Render ---
+        updateApp();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
@@ -452,7 +930,402 @@
 
                         
                         <div class="relative bg-gray-50" style="padding-bottom: 75%; height: 0;">
-                            <iframe id="taskFrame162_ru" src="/task/162?lang=ru"
+                            <iframe id="taskFrame162_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Мир Дробей&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap&#39;);
+        
+        body {
+            font-family: &#39;Nunito&#39;, sans-serif;
+        }
+
+        .animate-spin-slow {
+            animation: spin 3s linear infinite;
+        }
+
+        .bounce-animation {
+            animation: bounce 2s infinite;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-10%); }
+            50% { transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-gray-50 text-slate-800 min-h-screen&#34;&gt;
+
+    &lt;div id=&#34;app&#34; class=&#34;min-h-screen flex flex-col&#34;&gt;
+        &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- Вспомогательная функция: создание HTML дроби ---
+        function getFractionHtml(whole, num, den, isSmall = false) {
+            const sizeClass = isSmall ? &#39;text-lg&#39; : &#39;text-xl md:text-2xl&#39;;
+            const wholeHtml = whole ? `&lt;span class=&#34;mr-1&#34;&gt;${whole}&lt;/span&gt;` : &#39;&#39;;
+            return `
+                &lt;span class=&#34;inline-flex items-center mx-1 font-bold text-indigo-700 align-middle ${sizeClass}&#34;&gt;
+                    ${wholeHtml}
+                    &lt;span class=&#34;flex flex-col items-center justify-center leading-none&#34;&gt;
+                        &lt;span class=&#34;border-b-2 border-indigo-700 px-1&#34;&gt;${num}&lt;/span&gt;
+                        &lt;span&gt;${den}&lt;/span&gt;
+                    &lt;/span&gt;
+                &lt;/span&gt;
+            `;
+        }
+
+        // --- Данные (Задачи) ---
+        const questions = [
+            {
+                id: 1,
+                theme: &#34;Вечеринка с пиццей&#34;,
+                icon: &#34;pizza&#34;,
+                iconColor: &#34;text-orange-500&#34;,
+                story: `Вы с другом ели пиццу. Ты съел ${getFractionHtml(null, 3, 8, true)} части пиццы, а твой друг ${getFractionHtml(null, 5, 8, true)} части. Кто съел больше?`,
+                left: { whole: null, num: 3, den: 8 },
+                right: { whole: null, num: 5, den: 8 },
+                leftLabel: &#34;Ты&#34;,
+                rightLabel: &#34;Друг&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: `Знаменатели одинаковые (8). Дробь с большим числителем больше (${getFractionHtml(null, 5, 8, true)} &gt; ${getFractionHtml(null, 3, 8, true)}).`
+            },
+            {
+                id: 2,
+                theme: &#34;Забег&#34;,
+                icon: &#34;activity&#34;,
+                iconColor: &#34;text-green-500&#34;,
+                story: `Арман пробежал ${getFractionHtml(3, 1, 2, true)} км, а Берик ${getFractionHtml(3, 1, 4, true)} км. Кто пробежал больше?`,
+                left: { whole: 3, num: 1, den: 2 },
+                right: { whole: 3, num: 1, den: 4 },
+                leftLabel: &#34;Арман&#34;,
+                rightLabel: &#34;Берик&#34;,
+                correct: &#34;&gt;&#34;,
+                explanation: `Целые части равны (3). Половина ${getFractionHtml(null, 1, 2, true)} больше, чем четверть ${getFractionHtml(null, 1, 4, true)}.`
+            },
+            {
+                id: 3,
+                theme: &#34;Питье воды&#34;,
+                icon: &#34;droplet&#34;,
+                iconColor: &#34;text-blue-500&#34;,
+                story: `Айша выпила ${getFractionHtml(null, 2, 3, true)} бутылки воды, а Нурлан ${getFractionHtml(null, 2, 5, true)}. Кто выпил больше воды?`,
+                left: { whole: null, num: 2, den: 3 },
+                right: { whole: null, num: 2, den: 5 },
+                leftLabel: &#34;Айша&#34;,
+                rightLabel: &#34;Нурлан&#34;,
+                correct: &#34;&gt;&#34;,
+                explanation: `Числители одинаковые (2). Дробь с меньшим знаменателем больше (3 &lt; 5, значит ${getFractionHtml(null, 2, 3, true)} больше).`
+            },
+            {
+                id: 4,
+                theme: &#34;Тайм-менеджмент&#34;,
+                icon: &#34;clock&#34;,
+                iconColor: &#34;text-blue-500&#34;,
+                story: `Алия делала уроки ${getFractionHtml(1, 1, 4, true)} часа, а музыку слушала ${getFractionHtml(1, 3, 4, true)} часа. На что ушло больше времени?`,
+                left: { whole: 1, num: 1, den: 4 },
+                right: { whole: 1, num: 3, den: 4 },
+                leftLabel: &#34;Уроки&#34;,
+                rightLabel: &#34;Музыка&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: `Целые части равны (1). При одинаковых знаменателях числитель 3 больше 1.`
+            },
+            {
+                id: 5,
+                theme: &#34;Выпечка&#34;,
+                icon: &#34;cake-slice&#34;,
+                iconColor: &#34;text-pink-500&#34;,
+                story: `Мама добавила в торт ${getFractionHtml(2, 1, 2, true)} стакана сахара и ${getFractionHtml(2, 1, 2, true)} стакана муки. Сравни их количество.`,
+                left: { whole: 2, num: 1, den: 2 },
+                right: { whole: 2, num: 1, den: 2 },
+                leftLabel: &#34;Сахар&#34;,
+                rightLabel: &#34;Мука&#34;,
+                correct: &#34;=&#34;,
+                explanation: &#34;И целые части, и дробные части абсолютно одинаковы.&#34;
+            },
+            {
+                id: 6,
+                theme: &#34;Поход на рынок&#34;,
+                icon: &#34;scale&#34;,
+                iconColor: &#34;text-purple-500&#34;,
+                story: `Ты купил ${getFractionHtml(4, 3, 10, true)} кг яблок, а друг ${getFractionHtml(4, 7, 10, true)} кг груш. Какой фрукт тяжелее?`,
+                left: { whole: 4, num: 3, den: 10 },
+                right: { whole: 4, num: 7, den: 10 },
+                leftLabel: &#34;Яблоки&#34;,
+                rightLabel: &#34;Груши&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: `Целые части равны. Дробь ${getFractionHtml(null, 7, 10, true)} больше, чем ${getFractionHtml(null, 3, 10, true)}.`
+            },
+            {
+                id: 7,
+                theme: &#34;Чтение книг&#34;,
+                icon: &#34;book-open&#34;,
+                iconColor: &#34;text-yellow-600&#34;,
+                story: `В понедельник ты прочитал ${getFractionHtml(null, 1, 5, true)} книги, а во вторник ${getFractionHtml(null, 1, 4, true)}. В какой день прочитано больше?`,
+                left: { whole: null, num: 1, den: 5 },
+                right: { whole: null, num: 1, den: 4 },
+                leftLabel: &#34;Пн&#34;,
+                rightLabel: &#34;Вт&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: `Числители равны (1). Меньший знаменатель (4) означает большую дробь. Четверть больше одной пятой.`
+            },
+            {
+                id: 8,
+                theme: &#34;Стройка&#34;,
+                icon: &#34;ruler&#34;,
+                iconColor: &#34;text-gray-600&#34;,
+                story: `Есть доска длиной ${getFractionHtml(5, 2, 5, true)} м и веревка длиной ${getFractionHtml(5, 3, 5, true)} м. Что длиннее?`,
+                left: { whole: 5, num: 2, den: 5 },
+                right: { whole: 5, num: 3, den: 5 },
+                leftLabel: &#34;Доска&#34;,
+                rightLabel: &#34;Веревка&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: &#34;При равных знаменателях сравниваем числители: 3 &gt; 2.&#34;
+            },
+            {
+                id: 9,
+                theme: &#34;Шоколад&#34;,
+                icon: &#34;cookie&#34;,
+                iconColor: &#34;text-amber-800&#34;,
+                story: `Аскар хочет съесть ${getFractionHtml(null, 7, 10, true)} шоколадки, а Марат ${getFractionHtml(null, 9, 10, true)}. Чья доля больше?`,
+                left: { whole: null, num: 7, den: 10 },
+                right: { whole: null, num: 9, den: 10 },
+                leftLabel: &#34;Аскар&#34;,
+                rightLabel: &#34;Марат&#34;,
+                correct: &#34;&lt;&#34;,
+                explanation: &#34;Число 9 больше 7 при одинаковом делении на 10 частей.&#34;
+            },
+            {
+                id: 10,
+                theme: &#34;В магазине&#34;,
+                icon: &#34;shopping-cart&#34;,
+                iconColor: &#34;text-red-500&#34;,
+                story: `Молока ${getFractionHtml(1, 1, 2, true)} литра, а кефира ${getFractionHtml(1, 1, 3, true)} литра. Чего больше?`,
+                left: { whole: 1, num: 1, den: 2 },
+                right: { whole: 1, num: 1, den: 3 },
+                leftLabel: &#34;Молоко&#34;,
+                rightLabel: &#34;Кефир&#34;,
+                correct: &#34;&gt;&#34;,
+                explanation: `Половина литра ${getFractionHtml(null, 1, 2, true)} больше, чем треть литра ${getFractionHtml(null, 1, 3, true)}.`
+            }
+        ];
+
+        // --- Управление состоянием ---
+        let state = {
+            screen: &#39;welcome&#39;, 
+            currentQIndex: 0,
+            score: 0,
+            showFeedback: false,
+            isCorrect: false,
+            selectedSign: null,
+            showNumbers: false
+        };
+
+        const app = document.getElementById(&#39;app&#39;);
+
+        // --- Функции отрисовки ---
+
+        function renderWelcome() {
+            app.innerHTML = `
+                &lt;div class=&#34;min-h-screen bg-gradient-to-br from-blue-100 to-purple-200 flex items-center justify-center p-4 font-sans w-full&#34;&gt;
+                    &lt;div class=&#34;bg-white rounded-3xl shadow-2xl p-8 max-w-lg w-full text-center transform transition-all hover:scale-105 duration-300&#34;&gt;
+                        &lt;div class=&#34;flex justify-center mb-6&#34;&gt;
+                            &lt;i data-lucide=&#34;star&#34; class=&#34;w-20 h-20 text-yellow-400 fill-current animate-spin-slow&#34;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        &lt;h1 class=&#34;text-4xl font-extrabold text-indigo-800 mb-4&#34;&gt;Мир Дробей&lt;/h1&gt;
+                        &lt;p class=&#34;text-gray-600 text-lg mb-8&#34;&gt;
+                            Сравнивай обыкновенные дроби и смешанные числа, решая жизненные задачи! Готов начать?
+                        &lt;/p&gt;
+                        &lt;button onclick=&#34;startGame()&#34; class=&#34;bg-indigo-600 text-white text-xl py-4 px-10 rounded-full font-bold shadow-lg hover:bg-indigo-700 hover:shadow-xl transition-all flex items-center justify-center mx-auto gap-2&#34;&gt;
+                            Начать &lt;i data-lucide=&#34;arrow-right&#34;&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+            lucide.createIcons();
+        }
+
+        function renderGame() {
+            const currentQ = questions[state.currentQIndex];
+            const signs = [&#39;&lt;&#39;, &#39;=&#39;, &#39;&gt;&#39;];
+            const buttonsHtml = signs.map(sign =&gt; {
+                let btnClass = &#34;bg-white border-2 border-indigo-100 text-indigo-600 hover:border-indigo-500 hover:bg-indigo-50&#34;;
+                if (state.showFeedback) {
+                    if (sign === currentQ.correct) {
+                        btnClass = &#34;bg-green-500 text-white ring-4 ring-green-200&#34;;
+                    } else if (sign === state.selectedSign) {
+                        btnClass = &#34;bg-red-500 text-white&#34;;
+                    } else {
+                        btnClass = &#34;bg-gray-100 text-gray-300&#34;;
+                    }
+                }
+                return `&lt;button onclick=&#34;handleAnswer(&#39;${sign}&#39;)&#34; ${state.showFeedback ? &#39;disabled&#39; : &#39;&#39;} class=&#34;py-4 rounded-xl text-3xl font-bold transition-all transform hover:-translate-y-1 shadow-md ${btnClass}&#34;&gt;${sign}&lt;/button&gt;`;
+            }).join(&#39;&#39;);
+
+            let feedbackHtml = &#39;&#39;;
+            if (state.showFeedback) {
+                const feedbackBg = state.isCorrect ? &#39;bg-green-50 border border-green-200&#39; : &#39;bg-red-50 border border-red-200&#39;;
+                const feedbackColor = state.isCorrect ? &#39;text-green-600&#39; : &#39;text-red-600&#39;;
+                feedbackHtml = `
+                    &lt;div class=&#34;rounded-xl p-4 mb-4 animate-fade-in ${feedbackBg}&#34;&gt;
+                        &lt;div class=&#34;flex items-start gap-3&#34;&gt;
+                            &lt;i data-lucide=&#34;${state.isCorrect ? &#39;check-circle&#39; : &#39;x-circle&#39;}&#34; class=&#34;w-6 h-6 ${feedbackColor} flex-shrink-0&#34;&gt;&lt;/i&gt;
+                            &lt;div&gt;
+                                &lt;h3 class=&#34;font-bold ${state.isCorrect ? &#39;text-green-800&#39; : &#39;text-red-800&#39;}&#34;&gt;${state.isCorrect ? &#39;Верно!&#39; : &#39;Ошибка!&#39;}&lt;/h3&gt;
+                                &lt;div class=&#34;text-gray-700 mt-1&#34;&gt;${currentQ.explanation}&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;button onclick=&#34;nextQuestion()&#34; class=&#34;w-full bg-indigo-600 text-white py-3 rounded-xl font-bold text-lg hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2&#34;&gt;
+                        ${state.currentQIndex &lt; questions.length - 1 ? &#39;Следующий вопрос&#39; : &#39;Итоги&#39;} &lt;i data-lucide=&#34;arrow-right&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                `;
+            }
+
+            app.innerHTML = `
+                &lt;div class=&#34;min-h-screen w-full bg-gray-50 flex flex-col items-center justify-center p-4 font-sans&#34;&gt;
+                    &lt;div class=&#34;w-full max-w-2xl mb-6 flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm&#34;&gt;
+                        &lt;span class=&#34;text-indigo-600 font-bold text-lg&#34;&gt;Задача ${state.currentQIndex &#43; 1}/10&lt;/span&gt;
+                        &lt;div class=&#34;flex items-center gap-2 bg-yellow-100 px-4 py-1 rounded-full text-yellow-700 font-bold&#34;&gt;
+                            &lt;i data-lucide=&#34;star&#34; class=&#34;w-5 h-5 fill-current&#34;&gt;&lt;/i&gt; ${state.score} Очков
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;bg-white rounded-3xl shadow-xl w-full max-w-2xl overflow-hidden&#34;&gt;
+                        &lt;div class=&#34;h-2 bg-indigo-500 w-full&#34;&gt;&lt;/div&gt;
+                        &lt;div class=&#34;p-6 md:p-8&#34;&gt;
+                            &lt;div class=&#34;flex flex-col items-center text-center mb-6&#34;&gt;
+                                &lt;div class=&#34;bg-indigo-50 p-4 rounded-full mb-4&#34;&gt;
+                                    &lt;i data-lucide=&#34;${currentQ.icon}&#34; class=&#34;w-8 h-8 ${currentQ.iconColor}&#34;&gt;&lt;/i&gt;
+                                &lt;/div&gt;
+                                &lt;h2 class=&#34;text-xs font-bold text-indigo-500 uppercase mb-2 tracking-widest&#34;&gt;${currentQ.theme}&lt;/h2&gt;
+                                &lt;div class=&#34;text-lg md:text-xl text-gray-700 font-medium&#34;&gt;${currentQ.story}&lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&#34;flex justify-center mb-4&#34;&gt;
+                                &lt;button onclick=&#34;toggleNumbers()&#34; class=&#34;flex items-center gap-2 text-sm text-indigo-500 bg-indigo-50 hover:bg-indigo-100 px-4 py-2 rounded-full transition-colors&#34;&gt;
+                                    &lt;i data-lucide=&#34;${state.showNumbers ? &#39;eye-off&#39; : &#39;eye&#39;}&#34; class=&#34;w-4 h-4&#34;&gt;&lt;/i&gt;
+                                    ${state.showNumbers ? &#34;Скрыть числа&#34; : &#34;Показать числа&#34;}
+                                &lt;/button&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&#34;flex items-end justify-center gap-4 md:gap-8 mb-8 bg-slate-50 p-6 rounded-2xl border border-slate-100 min-h-[160px]&#34;&gt;
+                                &lt;div class=&#34;flex flex-col items-center gap-2 w-32&#34;&gt;
+                                    &lt;div class=&#34;h-16 flex items-center justify-center&#34;&gt;
+                                        ${state.showNumbers ? `&lt;div class=&#34;animate-fade-in&#34;&gt;${getFractionHtml(currentQ.left.whole, currentQ.left.num, currentQ.left.den)}&lt;/div&gt;` : `&lt;div class=&#34;text-4xl text-gray-200 font-bold&#34;&gt;?&lt;/div&gt;`}
+                                    &lt;/div&gt;
+                                    &lt;span class=&#34;text-xs font-bold text-indigo-500 bg-indigo-50 px-3 py-1 rounded-full uppercase&#34;&gt;${currentQ.leftLabel}&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&#34;w-12 h-12 mb-2 flex items-center justify-center bg-white rounded-lg shadow-inner text-2xl font-bold text-gray-400 border-2 border-dashed border-gray-300&#34;&gt;
+                                    ${state.selectedSign ? `&lt;span class=&#34;text-indigo-600&#34;&gt;${state.selectedSign}&lt;/span&gt;` : &#34;?&#34;}
+                                &lt;/div&gt;
+                                &lt;div class=&#34;flex flex-col items-center gap-2 w-32&#34;&gt;
+                                    &lt;div class=&#34;h-16 flex items-center justify-center&#34;&gt;
+                                        ${state.showNumbers ? `&lt;div class=&#34;animate-fade-in&#34;&gt;${getFractionHtml(currentQ.right.whole, currentQ.right.num, currentQ.right.den)}&lt;/div&gt;` : `&lt;div class=&#34;text-4xl text-gray-200 font-bold&#34;&gt;?&lt;/div&gt;`}
+                                    &lt;/div&gt;
+                                    &lt;span class=&#34;text-xs font-bold text-indigo-500 bg-indigo-50 px-3 py-1 rounded-full uppercase&#34;&gt;${currentQ.rightLabel}&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&#34;grid grid-cols-3 gap-4 mb-6&#34;&gt;${buttonsHtml}&lt;/div&gt;
+                            ${feedbackHtml}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;p class=&#34;mt-8 text-gray-400 text-sm&#34;&gt;3.7 Сравнение дробей и смешанных чисел&lt;/p&gt;
+                &lt;/div&gt;
+            `;
+            lucide.createIcons();
+        }
+
+        function renderResult() {
+            let message = state.score &gt; 7 ? &#34;Отличный результат!&#34; : &#34;Нужно еще потренироваться!&#34;;
+            if (state.score === 10) message = &#34;Великолепно! Ты мастер математики!&#34;;
+
+            app.innerHTML = `
+                &lt;div class=&#34;min-h-screen w-full bg-gradient-to-br from-green-100 to-blue-200 flex items-center justify-center p-4&#34;&gt;
+                    &lt;div class=&#34;bg-white rounded-3xl shadow-2xl p-8 max-w-lg w-full text-center&#34;&gt;
+                        &lt;i data-lucide=&#34;trophy&#34; class=&#34;w-24 h-24 text-yellow-500 fill-current bounce-animation mx-auto mb-6&#34;&gt;&lt;/i&gt;
+                        &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-2&#34;&gt;Молодец!&lt;/h2&gt;
+                        &lt;p class=&#34;text-xl text-gray-600 mb-6&#34;&gt;Игра окончена&lt;/p&gt;
+                        &lt;div class=&#34;bg-indigo-50 rounded-xl p-6 mb-8&#34;&gt;
+                            &lt;p class=&#34;text-lg text-gray-500&#34;&gt;Твой результат:&lt;/p&gt;
+                            &lt;p class=&#34;text-5xl font-extrabold text-indigo-600 my-2&#34;&gt;${state.score} / ${questions.length}&lt;/p&gt;
+                            &lt;p class=&#34;text-indigo-500 font-medium&#34;&gt;${message}&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;button onclick=&#34;startGame()&#34; class=&#34;bg-green-500 text-white text-lg py-3 px-8 rounded-full font-bold hover:bg-green-600 transition-all flex items-center justify-center mx-auto gap-2&#34;&gt;
+                            &lt;i data-lucide=&#34;rotate-ccw&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt; Начать заново
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+            lucide.createIcons();
+        }
+
+        // --- Логика игры ---
+
+        function updateApp() {
+            if (state.screen === &#39;welcome&#39;) renderWelcome();
+            else if (state.screen === &#39;playing&#39;) renderGame();
+            else if (state.screen === &#39;result&#39;) renderResult();
+        }
+
+        window.startGame = function() {
+            state = { ...state, screen: &#39;playing&#39;, currentQIndex: 0, score: 0, showFeedback: false, selectedSign: null, showNumbers: false };
+            updateApp();
+        };
+
+        window.handleAnswer = function(sign) {
+            if (state.showFeedback) return;
+            const currentQ = questions[state.currentQIndex];
+            const correct = sign === currentQ.correct;
+            state.isCorrect = correct;
+            if (correct) state.score&#43;&#43;;
+            state.selectedSign = sign;
+            state.showFeedback = true;
+            state.showNumbers = true;
+            updateApp();
+        };
+
+        window.nextQuestion = function() {
+            if (state.currentQIndex &lt; questions.length - 1) {
+                state.currentQIndex&#43;&#43;;
+                state.showFeedback = false;
+                state.selectedSign = null;
+                state.showNumbers = false;
+                updateApp();
+            } else {
+                state.screen = &#39;result&#39;;
+                updateApp();
+            }
+        };
+
+        window.toggleNumbers = function() {
+            state.showNumbers = !state.showNumbers;
+            updateApp();
+        };
+
+        updateApp();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
                                 class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
                             </iframe>
                         </div>
