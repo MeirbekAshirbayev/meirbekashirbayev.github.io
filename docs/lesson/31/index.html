@@ -400,7 +400,7 @@
                                     <span class="text-2xl">🇰🇿</span>
                                     <h4 class="text-lg font-bold text-white">Қазақша</h4>
                                 </div>
-                                <button onclick="openTaskFullscreen('164')"
+                                <button onclick="openTaskFullscreen('164', 'kz')"
                                     class="flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg transition-all transform hover:scale-105">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -442,7 +442,7 @@
                                     <span class="text-2xl">🇷🇺</span>
                                     <h4 class="text-lg font-bold text-white">Русский</h4>
                                 </div>
-                                <button onclick="openTaskFullscreen('164')"
+                                <button onclick="openTaskFullscreen('164', 'ru')"
                                     class="flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg transition-all transform hover:scale-105">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -488,7 +488,7 @@
 
         
         <script>
-            function openTaskFullscreen(taskId) {
+            function openTaskFullscreen(taskId, lang) {
                 
                 if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
                     
@@ -501,7 +501,9 @@
                     }
                 } else {
                     
-                    const iframe = document.getElementById('taskFrame' + taskId);
+                    const iframeId = lang === 'ru' ? 'taskFrame' + taskId + '_ru' : 'taskFrame' + taskId;
+                    const iframe = document.getElementById(iframeId);
+
                     if (iframe && iframe.requestFullscreen) {
                         iframe.requestFullscreen();
                     } else if (iframe && iframe.webkitRequestFullscreen) {
@@ -510,7 +512,8 @@
                         iframe.msRequestFullscreen();
                     } else {
                         
-                        window.open('\/task\/' + taskId, '_blank');
+                        const langParam = lang ? '?lang=' + lang : '';
+                        window.open('\/task\/' + taskId + langParam, '_blank');
                     }
                 }
             }
