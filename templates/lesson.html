@@ -133,6 +133,36 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(102, 126, 234, 0.25);
         }
+
+        /* Fix for fullscreen interactive tasks */
+        div[id^="fsContainer"]:fullscreen {
+            padding-bottom: 0 !important;
+            height: 100vh !important;
+            background-color: #f9fafb;
+            /* bg-gray-50 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Vendor prefixes */
+        div[id^="fsContainer"]:-webkit-full-screen {
+            padding-bottom: 0 !important;
+            height: 100vh !important;
+            background-color: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div[id^="fsContainer"]:-ms-fullscreen {
+            padding-bottom: 0 !important;
+            height: 100vh !important;
+            background-color: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 
@@ -493,6 +523,7 @@
 
         <!-- Fullscreen JavaScript -->
         <script>
+            <!-- Fullscreen Exit Button Logic -->
             function openTaskFullscreen(taskId, lang) {
                 // Check if we're already in fullscreen mode
                 if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
