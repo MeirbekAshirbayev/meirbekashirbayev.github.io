@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Санды теңсіздіктер зертханасы | VisualMath</title>
+    <meta name="description" content="Интерактивное задание по математике">
+    <meta name="keywords" content="Санды теңсіздіктер зертханасы, математика, задача, задание, visual math">
+
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Санды теңсіздіктер зертханасы | VisualMath">
+    <meta property="og:description" content="Интерактивное задание по математике">
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "Санды теңсіздіктер зертханасы",
+      "description": "Интерактивное задание по математике",
+      "inLanguage": "ru",
+      "educationalUse": "Assignment"
+    }
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    
+    <link rel="canonical" href="https://meirbekashirbayev.github.io/task/182" />
+
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E38F1VR05Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E38F1VR05Z');
+    </script>
+
+    
+    <meta name="google-adsense-account" content="ca-pub-9724842226086594">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .task-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .task-content iframe {
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh;
+            min-height: 450px;
+            border: none;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            background: white;
+        }
+
+         
+        #fullscreenWrapper:fullscreen,
+        #fullscreenWrapperKz:fullscreen,
+        #fullscreenWrapperRu:fullscreen {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #fullscreenWrapper:fullscreen iframe,
+        #fullscreenWrapperKz:fullscreen iframe,
+        #fullscreenWrapperRu:fullscreen iframe {
+            height: 95vh;
+            width: 100%;
+            max-width: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    
+    <nav class="gradient-bg text-white p-3 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <span class="font-bold text-lg truncate max-w-[200px] sm:max-w-none">Санды теңсіздіктер зертханасы</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="/about"
+                    class="flex items-center gap-1 bg-white/10 hover:bg-white/20 px-2 py-1.5 rounded-lg transition-colors text-xs font-semibold">
+                    <span class="text-sm">💎</span>
+                    <span class="hidden lg:inline">О нас</span>
+                </a>
+                <a href="/lesson/68"
+                    class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium">
+                    <span>←</span>
+                    <span class="hidden sm:inline">Назад к уроку</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow task-content">
+
+        
+        <div class="w-full max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Интерактивные задания</h2>
+
+            
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg kazakh-block">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇰🇿
+                            Казахский</span>
+                        <button onclick="openFullscreenKz()"
+                            class="text-blue-600 hover:text-blue-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperKz">
+                        <iframe id="taskIframeKz" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Санды теңсіздіктер зертханасы&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -7px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.1s ease;
+        }
+        input[type=range]:active::-webkit-slider-thumb {
+            transform: scale(1.2);
+            background: #1d4ed8;
+        }
+        
+        .active-tab {
+            background-color: #2563eb !important;
+            color: white !important;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-slate-50 min-h-screen p-4 md:p-8 font-sans&#34;&gt;
+
+    &lt;div class=&#34;max-w-5xl mx-auto&#34;&gt;
+        &lt;header class=&#34;mb-8 text-center&#34;&gt;
+            &lt;h1 class=&#34;text-3xl md:text-4xl font-extrabold text-slate-800 mb-2&#34;&gt;
+                Санды теңсіздіктер зертханасы
+            &lt;/h1&gt;
+            &lt;p class=&#34;text-slate-600 font-medium italic text-sm&#34;&gt;Оңтайландырылған тегіс интерфейс (0,1 қадам)&lt;/p&gt;
+        &lt;/header&gt;
+
+        &lt;!-- Табтар --&gt;
+        &lt;div id=&#34;tabs-container&#34; class=&#34;flex flex-wrap gap-2 mb-8 justify-center&#34;&gt;&lt;/div&gt;
+
+        &lt;main class=&#34;bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-slate-100 min-h-[550px]&#34;&gt;
+            &lt;!-- Ақпараттық блок --&gt;
+            &lt;div id=&#34;info-box&#34; class=&#34;mb-8 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500&#34;&gt;
+                &lt;h3 id=&#34;property-title&#34; class=&#34;text-lg font-bold text-blue-800 flex items-center gap-2&#34;&gt;&lt;/h3&gt;
+                &lt;p id=&#34;property-desc&#34; class=&#34;text-blue-700 mt-1 text-sm&#34;&gt;&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-8&#34;&gt;
+                &lt;!-- Басқару панелі --&gt;
+                &lt;div class=&#34;bg-gray-50 p-6 rounded-xl border border-gray-200&#34;&gt;
+                    &lt;h4 class=&#34;font-semibold mb-6 text-gray-700&#34;&gt;Мәндерді басқару&lt;/h4&gt;
+                    &lt;div id=&#34;controls-container&#34; class=&#34;space-y-6&#34;&gt;
+                        &lt;!-- Ползуноктар осында бір-ақ рет жасалады --&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;!-- Нәтижелер --&gt;
+                &lt;div class=&#34;space-y-4&#34;&gt;
+                    &lt;h4 class=&#34;font-semibold text-gray-700&#34;&gt;Визуалды нәтиже&lt;/h4&gt;
+                    &lt;div id=&#34;result-container&#34; class=&#34;space-y-4&#34;&gt;
+                        &lt;!-- Тек нәтиже блоктары ғана жаңартылады --&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/main&gt;
+
+        &lt;footer class=&#34;mt-8 bg-slate-800 text-white p-6 rounded-2xl shadow-lg&#34;&gt;
+            &lt;div class=&#34;flex items-center gap-4&#34;&gt;
+                &lt;div class=&#34;bg-green-500 p-2 rounded-lg shrink-0&#34;&gt;
+                    &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;h-6 w-6 text-white&#34; fill=&#34;none&#34; viewBox=&#34;0 0 24 24&#34; stroke=&#34;currentColor&#34;&gt;
+                        &lt;path stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;2&#34; d=&#34;M5 13l4 4L19 7&#34; /&gt;
+                    &lt;/svg&gt;
+                &lt;/div&gt;
+                &lt;p class=&#34;text-slate-300 text-sm&#34;&gt;
+                    &lt;b&gt;Ескерту:&lt;/b&gt; Енді ползуноктарды жылжытқанда интерфейс &#34;қатып&#34; қалмайды, себебі тек сандар ғана жаңартылып отырады.
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/footer&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        let activeTab = &#39;transitivity&#39;;
+        let values = { a: 5.0, b: 10.0, c: 3.5, d: 8.0, multiplier: 2.0, negMultiplier: -2.0 };
+
+        const tabs = [
+            { id: &#39;transitivity&#39;, title: &#39;Транзитивтілік&#39;, desc: &#39;Егер a &lt; b және b &lt; c болса, онда a &lt; c болады.&#39; },
+            { id: &#39;addition&#39;, title: &#39;Қосу (a&#43;c)&#39;, desc: &#39;Теңсіздіктің екі жағына бірдей санды қоссақ, белгі өзгермейді.&#39; },
+            { id: &#39;mult_pos&#39;, title: &#39;Оң санға көбейту&#39;, desc: &#39;Теңсіздіктің екі жағын ОҢ санға көбейтсек, белгі өзгермейді.&#39; },
+            { id: &#39;mult_neg&#39;, title: &#39;Теріс санға көбейту&#39;, desc: &#39;Теңсіздіктің екі жағын ТЕРІС санға көбейтсек, белгі ҚАРАМА-ҚАРСЫҒА өзгереді!&#39; },
+            { id: &#39;member_add&#39;, title: &#39;Мүшелеп қосу&#39;, desc: &#39;Бірдей таңбалы теңсіздіктерді мүшелеп қосуға болады.&#39; },
+            { id: &#39;member_mult&#39;, title: &#39;Мүшелеп көбейту&#39;, desc: &#39;Оң таңбалы теңсіздіктерді мүшелеп көбейтуге болады.&#39; },
+            { id: &#39;reciprocal&#39;, title: &#39;Кері сандар&#39;, desc: &#39;Егер a &lt; b болса, онда 1/a &gt; 1/b болады.&#39; }
+        ];
+
+        const getSign = (x, y) =&gt; {
+            const eps = 0.00001;
+            if (x &lt; y - eps) return &#39;&lt;&#39;;
+            if (x &gt; y &#43; eps) return &#39;&gt;&#39;;
+            return &#39;=&#39;;
+        };
+
+        const format = (val) =&gt; Number(val).toFixed(val % 1 === 0 ? 0 : 2);
+
+        // Тек нәтижені жаңарту (renderResult)
+        const renderResult = () =&gt; {
+            let html = &#39;&#39;;
+            const box = (label, v1, v2, col = &#34;blue&#34;) =&gt; {
+                const colors = { blue: &#39;border-blue-200 text-blue-600&#39;, green: &#39;border-green-200 text-green-600&#39;, red: &#39;border-red-200 text-red-600&#39;, indigo: &#39;border-indigo-200 text-indigo-600&#39;, orange: &#39;border-orange-200 text-orange-600&#39;, purple: &#39;border-purple-200 text-purple-600&#39; };
+                const c = colors[col];
+                return `&lt;div class=&#34;p-6 bg-white border-2 ${c.split(&#39; &#39;)[0]} rounded-xl text-center&#34;&gt;
+                    &lt;div class=&#34;text-sm text-gray-500 mb-1&#34;&gt;${label}&lt;/div&gt;
+                    &lt;div class=&#34;text-3xl font-bold flex items-center justify-center gap-4&#34;&gt;
+                        &lt;span&gt;${format(v1)}&lt;/span&gt;&lt;span class=&#34;text-gray-300&#34;&gt;${getSign(v1, v2)}&lt;/span&gt;&lt;span&gt;${format(v2)}&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;`;
+            };
+
+            if (activeTab === &#39;transitivity&#39;) {
+                html &#43;= box(&#39;1-ші шарт&#39;, values.a, values.b) &#43; box(&#39;2-ші шарт&#39;, values.b, values.c) &#43; 
+                        `&lt;div class=&#34;flex justify-center text-gray-300 rotate-90&#34;&gt;&lt;svg class=&#34;w-6 h-6&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path d=&#34;M9 5l7 7-7 7&#34;/&gt;&lt;/svg&gt;&lt;/div&gt;` &#43; 
+                        box(&#39;Қорытынды&#39;, values.a, values.c, &#34;green&#34;);
+            } else if (activeTab === &#39;addition&#39;) {
+                html &#43;= box(&#39;Бастапқы&#39;, values.a, values.b) &#43; `&lt;div class=&#34;text-center font-bold text-amber-600&#34;&gt;&#43; ${values.c.toFixed(1)}&lt;/div&gt;` &#43; box(&#39;Нәтиже&#39;, values.a &#43; values.c, values.b &#43; values.c, &#34;green&#34;);
+            } else if (activeTab === &#39;mult_pos&#39;) {
+                html &#43;= box(&#39;Бастапқы&#39;, values.a, values.b) &#43; `&lt;div class=&#34;text-center font-bold text-green-600&#34;&gt;× ${values.multiplier.toFixed(1)}&lt;/div&gt;` &#43; box(&#39;Нәтиже&#39;, values.a * values.multiplier, values.b * values.multiplier, &#34;green&#34;);
+            } else if (activeTab === &#39;mult_neg&#39;) {
+                html &#43;= box(&#39;Бастапқы&#39;, values.a, values.b) &#43; `&lt;div class=&#34;text-center font-bold text-red-600&#34;&gt;× ${values.negMultiplier.toFixed(1)}&lt;/div&gt;` &#43; box(&#39;Нәтиже&#39;, values.a * values.negMultiplier, values.b * values.negMultiplier, &#34;red&#34;);
+            } else if (activeTab === &#39;member_add&#39;) {
+                html &#43;= `&lt;div class=&#34;grid grid-cols-2 gap-2&#34;&gt;${box(&#39;1&#39;, values.a, values.b)}${box(&#39;2&#39;, values.c, values.d)}&lt;/div&gt;` &#43; `&lt;div class=&#34;text-center text-gray-400 font-bold&#34;&gt;&#43;&lt;/div&gt;` &#43; box(&#39;Нәтиже&#39;, values.a &#43; values.c, values.b &#43; values.d, &#34;indigo&#34;);
+            } else if (activeTab === &#39;member_mult&#39;) {
+                html &#43;= `&lt;div class=&#34;grid grid-cols-2 gap-2&#34;&gt;${box(&#39;1&#39;, values.a, values.b)}${box(&#39;2&#39;, values.c, values.d)}&lt;/div&gt;` &#43; `&lt;div class=&#34;text-center text-gray-400 font-bold&#34;&gt;×&lt;/div&gt;` &#43; box(&#39;Нәтиже&#39;, values.a * values.c, values.b * values.d, &#34;orange&#34;);
+            } else if (activeTab === &#39;reciprocal&#39;) {
+                html &#43;= box(&#39;Бастапқы&#39;, values.a, values.b) &#43; `&lt;div class=&#34;text-center text-purple-600 italic&#34;&gt;1 / n&lt;/div&gt;` &#43; box(&#39;Нәтиже&#39;, 1/values.a, 1/values.b, &#34;purple&#34;);
+            }
+            document.getElementById(&#39;result-container&#39;).innerHTML = html;
+        };
+
+        // Мәнді жаңарту (тек цифрлар мен нәтижені өгертеді)
+        window.updateValue = (key, val) =&gt; {
+            values[key] = parseFloat(val);
+            const display = document.getElementById(`val-display-${key}`);
+            if (display) display.innerText = values[key].toFixed(1);
+            renderResult();
+        };
+
+        // Басқару панелін құру (тек таб ауысқанда ғана бір рет іске қосылады)
+        const initControls = () =&gt; {
+            const container = document.getElementById(&#39;controls-container&#39;);
+            const data = tabs.find(t =&gt; t.id === activeTab);
+            document.getElementById(&#39;property-title&#39;).innerText = data.title;
+            document.getElementById(&#39;property-desc&#39;).innerText = data.desc;
+            
+            let html = &#39;&#39;;
+            const slider = (lab, key, min=-20, max=20, col=&#34;blue&#34;) =&gt; `
+                &lt;div&gt;
+                    &lt;div class=&#34;flex justify-between mb-1 text-sm font-medium&#34;&gt;
+                        &lt;span&gt;${lab}&lt;/span&gt;&lt;span id=&#34;val-display-${key}&#34; class=&#34;text-${col}-600 font-bold&#34;&gt;${values[key].toFixed(1)}&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;input type=&#34;range&#34; min=&#34;${min}&#34; max=&#34;${max}&#34; step=&#34;0.1&#34; value=&#34;${values[key]}&#34; oninput=&#34;updateValue(&#39;${key}&#39;, this.value)&#34;&gt;
+                &lt;/div&gt;`;
+
+            if (activeTab === &#39;transitivity&#39;) {
+                html &#43;= slider(&#39;a мәні&#39;, &#39;a&#39;) &#43; slider(&#39;b мәні&#39;, &#39;b&#39;) &#43; slider(&#39;c мәні&#39;, &#39;c&#39;);
+            } else if (activeTab === &#39;addition&#39;) {
+                html &#43;= slider(&#39;a мәні&#39;, &#39;a&#39;) &#43; slider(&#39;b мәні&#39;, &#39;b&#39;) &#43; slider(&#39;c мәні&#39;, &#39;c&#39;, -20, 20, &#34;amber&#34;);
+            } else if (activeTab === &#39;mult_pos&#39;) {
+                html &#43;= slider(&#39;a мәні&#39;, &#39;a&#39;) &#43; slider(&#39;b мәні&#39;, &#39;b&#39;) &#43; slider(&#39;Оң сан (c)&#39;, &#39;multiplier&#39;, 0.1, 10, &#34;green&#34;);
+            } else if (activeTab === &#39;mult_neg&#39;) {
+                html &#43;= slider(&#39;a мәні&#39;, &#39;a&#39;) &#43; slider(&#39;b мәні&#39;, &#39;b&#39;) &#43; slider(&#39;Теріс сан (c)&#39;, &#39;negMultiplier&#39;, -10, -0.1, &#34;red&#34;);
+            } else if (activeTab === &#39;member_add&#39; || activeTab === &#39;member_mult&#39;) {
+                const m = activeTab === &#39;member_mult&#39; ? 0.1 : -20;
+                html &#43;= slider(&#39;a&#39;, &#39;a&#39;, m) &#43; slider(&#39;b&#39;, &#39;b&#39;, m) &#43; slider(&#39;c&#39;, &#39;c&#39;, m, 20, &#34;purple&#34;) &#43; slider(&#39;d&#39;, &#39;d&#39;, m, 20, &#34;purple&#34;);
+            } else if (activeTab === &#39;reciprocal&#39;) {
+                html &#43;= slider(&#39;a (оң)&#39;, &#39;a&#39;, 0.1, 30, &#34;purple&#34;) &#43; slider(&#39;b (оң)&#39;, &#39;b&#39;, 0.1, 30, &#34;purple&#34;);
+            }
+            container.innerHTML = html;
+            renderResult();
+        };
+
+        window.switchTab = (id) =&gt; {
+            activeTab = id;
+            document.querySelectorAll(&#39;.tab-btn&#39;).forEach(b =&gt; b.classList.toggle(&#39;active-tab&#39;, b.dataset.id === id));
+            initControls();
+        };
+
+        // Іске қосу
+        const tabsContainer = document.getElementById(&#39;tabs-container&#39;);
+        tabs.forEach(tab =&gt; {
+            const btn = document.createElement(&#39;button&#39;);
+            btn.className = `tab-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-slate-600 border border-slate-200 hover:bg-slate-50`;
+            btn.dataset.id = tab.id;
+            btn.innerText = tab.title;
+            btn.onclick = () =&gt; switchTab(tab.id);
+            if (tab.id === activeTab) btn.classList.add(&#39;active-tab&#39;);
+            tabsContainer.appendChild(btn);
+        });
+
+        initControls();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg russian-block">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇷🇺
+                            Русский</span>
+                        <button onclick="openFullscreenRu()" class="text-red-600 hover:text-red-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperRu">
+                        <iframe id="taskIframeRu" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Лаборатория числовых неравенств&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -7px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.1s ease;
+        }
+        input[type=range]:active::-webkit-slider-thumb {
+            transform: scale(1.2);
+            background: #1d4ed8;
+        }
+        
+        .active-tab {
+            background-color: #2563eb !important;
+            color: white !important;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-slate-50 min-h-screen p-4 md:p-8 font-sans&#34;&gt;
+
+    &lt;div class=&#34;max-w-5xl mx-auto&#34;&gt;
+        &lt;header class=&#34;mb-8 text-center&#34;&gt;
+            &lt;h1 class=&#34;text-3xl md:text-4xl font-extrabold text-slate-800 mb-2&#34;&gt;
+                Лаборатория числовых неравенств
+            &lt;/h1&gt;
+            &lt;p class=&#34;text-slate-600 font-medium italic text-sm&#34;&gt;Оптимизированный плавный интерфейс (шаг 0.1)&lt;/p&gt;
+        &lt;/header&gt;
+
+        &lt;div id=&#34;tabs-container&#34; class=&#34;flex flex-wrap gap-2 mb-8 justify-center&#34;&gt;&lt;/div&gt;
+
+        &lt;main class=&#34;bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-slate-100 min-h-[550px]&#34;&gt;
+            &lt;div id=&#34;info-box&#34; class=&#34;mb-8 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500&#34;&gt;
+                &lt;h3 id=&#34;property-title&#34; class=&#34;text-lg font-bold text-blue-800 flex items-center gap-2&#34;&gt;&lt;/h3&gt;
+                &lt;p id=&#34;property-desc&#34; class=&#34;text-blue-700 mt-1 text-sm&#34;&gt;&lt;/p&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-8&#34;&gt;
+                &lt;div class=&#34;bg-gray-50 p-6 rounded-xl border border-gray-200&#34;&gt;
+                    &lt;h4 class=&#34;font-semibold mb-6 text-gray-700&#34;&gt;Управление значениями&lt;/h4&gt;
+                    &lt;div id=&#34;controls-container&#34; class=&#34;space-y-6&#34;&gt;
+                        &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class=&#34;space-y-4&#34;&gt;
+                    &lt;h4 class=&#34;font-semibold text-gray-700&#34;&gt;Визуальный результат&lt;/h4&gt;
+                    &lt;div id=&#34;result-container&#34; class=&#34;space-y-4&#34;&gt;
+                        &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/main&gt;
+
+        &lt;footer class=&#34;mt-8 bg-slate-800 text-white p-6 rounded-2xl shadow-lg&#34;&gt;
+            &lt;div class=&#34;flex items-center gap-4&#34;&gt;
+                &lt;div class=&#34;bg-green-500 p-2 rounded-lg shrink-0&#34;&gt;
+                    &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; class=&#34;h-6 w-6 text-white&#34; fill=&#34;none&#34; viewBox=&#34;0 0 24 24&#34; stroke=&#34;currentColor&#34;&gt;
+                        &lt;path stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;2&#34; d=&#34;M5 13l4 4L19 7&#34; /&gt;
+                    &lt;/svg&gt;
+                &lt;/div&gt;
+                &lt;p class=&#34;text-slate-300 text-sm&#34;&gt;
+                    &lt;b&gt;Примечание:&lt;/b&gt; Теперь при перемещении ползунков интерфейс не «зависает», так как обновляются только числовые значения.
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/footer&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        let activeTab = &#39;transitivity&#39;;
+        let values = { a: 5.0, b: 10.0, c: 3.5, d: 8.0, multiplier: 2.0, negMultiplier: -2.0 };
+
+        const tabs = [
+            { id: &#39;transitivity&#39;, title: &#39;Транзитивность&#39;, desc: &#39;Если a &lt; b и b &lt; c, то a &lt; c.&#39; },
+            { id: &#39;addition&#39;, title: &#39;Сложение (a&#43;c)&#39;, desc: &#39;При прибавлении к обеим частям неравенства одного и того же числа, знак неравенства не меняется.&#39; },
+            { id: &#39;mult_pos&#39;, title: &#39;Умножение на полож. число&#39;, desc: &#39;При умножении обеих частей неравенства на ПОЛОЖИТЕЛЬНОЕ число, знак неравенства не меняется.&#39; },
+            { id: &#39;mult_neg&#39;, title: &#39;Умножение на отриц. число&#39;, desc: &#39;При умножении обеих частей неравенства на ОТРИЦАТЕЛЬНОЕ число, знак неравенства меняется на ПРОТИВОПОЛОЖНЫЙ!&#39; },
+            { id: &#39;member_add&#39;, title: &#39;Почленное сложение&#39;, desc: &#39;Неравенства одинакового знака можно складывать почленно.&#39; },
+            { id: &#39;member_mult&#39;, title: &#39;Почленное умножение&#39;, desc: &#39;Положительные неравенства одинакового знака можно перемножать почленно.&#39; },
+            { id: &#39;reciprocal&#39;, title: &#39;Обратные числа&#39;, desc: &#39;Если a &lt; b (при a, b &gt; 0), то 1/a &gt; 1/b.&#39; }
+        ];
+
+        const getSign = (x, y) =&gt; {
+            const eps = 0.00001;
+            if (x &lt; y - eps) return &#39;&lt;&#39;;
+            if (x &gt; y &#43; eps) return &#39;&gt;&#39;;
+            return &#39;=&#39;;
+        };
+
+        const format = (val) =&gt; Number(val).toFixed(val % 1 === 0 ? 0 : 2);
+
+        const renderResult = () =&gt; {
+            let html = &#39;&#39;;
+            const box = (label, v1, v2, col = &#34;blue&#34;) =&gt; {
+                const colors = { 
+                    blue: &#39;border-blue-200 text-blue-600&#39;, 
+                    green: &#39;border-green-200 text-green-600&#39;, 
+                    red: &#39;border-red-200 text-red-600&#39;, 
+                    indigo: &#39;border-indigo-200 text-indigo-600&#39;, 
+                    orange: &#39;border-orange-200 text-orange-600&#39;, 
+                    purple: &#39;border-purple-200 text-purple-600&#39; 
+                };
+                const c = colors[col];
+                return `&lt;div class=&#34;p-6 bg-white border-2 ${c.split(&#39; &#39;)[0]} rounded-xl text-center&#34;&gt;
+                    &lt;div class=&#34;text-sm text-gray-500 mb-1&#34;&gt;${label}&lt;/div&gt;
+                    &lt;div class=&#34;text-3xl font-bold flex items-center justify-center gap-4&#34;&gt;
+                        &lt;span&gt;${format(v1)}&lt;/span&gt;&lt;span class=&#34;text-gray-300&#34;&gt;${getSign(v1, v2)}&lt;/span&gt;&lt;span&gt;${format(v2)}&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;`;
+            };
+
+            if (activeTab === &#39;transitivity&#39;) {
+                html &#43;= box(&#39;1-е условие&#39;, values.a, values.b) &#43; box(&#39;2-е условие&#39;, values.b, values.c) &#43; 
+                        `&lt;div class=&#34;flex justify-center text-gray-300 rotate-90&#34;&gt;&lt;svg class=&#34;w-6 h-6&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; viewBox=&#34;0 0 24 24&#34;&gt;&lt;path d=&#34;M9 5l7 7-7 7&#34;/&gt;&lt;/svg&gt;&lt;/div&gt;` &#43; 
+                        box(&#39;Вывод&#39;, values.a, values.c, &#34;green&#34;);
+            } else if (activeTab === &#39;addition&#39;) {
+                html &#43;= box(&#39;Исходное&#39;, values.a, values.b) &#43; `&lt;div class=&#34;text-center font-bold text-amber-600&#34;&gt;&#43; ${values.c.toFixed(1)}&lt;/div&gt;` &#43; box(&#39;Результат&#39;, values.a &#43; values.c, values.b &#43; values.c, &#34;green&#34;);
+            } else if (activeTab === &#39;mult_pos&#39;) {
+                html &#43;= box(&#39;Исходное&#39;, values.a, values.b) &#43; `&lt;div class=&#34;text-center font-bold text-green-600&#34;&gt;× ${values.multiplier.toFixed(1)}&lt;/div&gt;` &#43; box(&#39;Результат&#39;, values.a * values.multiplier, values.b * values.multiplier, &#34;green&#34;);
+            } else if (activeTab === &#39;mult_neg&#39;) {
+                html &#43;= box(&#39;Исходное&#39;, values.a, values.b) &#43; `&lt;div class=&#34;text-center font-bold text-red-600&#34;&gt;× ${values.negMultiplier.toFixed(1)}&lt;/div&gt;` &#43; box(&#39;Результат&#39;, values.a * values.negMultiplier, values.b * values.negMultiplier, &#34;red&#34;);
+            } else if (activeTab === &#39;member_add&#39;) {
+                html &#43;= `&lt;div class=&#34;grid grid-cols-2 gap-2&#34;&gt;${box(&#39;1&#39;, values.a, values.b)}${box(&#39;2&#39;, values.c, values.d)}&lt;/div&gt;` &#43; `&lt;div class=&#34;text-center text-gray-400 font-bold&#34;&gt;&#43;&lt;/div&gt;` &#43; box(&#39;Результат&#39;, values.a &#43; values.c, values.b &#43; values.d, &#34;indigo&#34;);
+            } else if (activeTab === &#39;member_mult&#39;) {
+                html &#43;= `&lt;div class=&#34;grid grid-cols-2 gap-2&#34;&gt;${box(&#39;1&#39;, values.a, values.b)}${box(&#39;2&#39;, values.c, values.d)}&lt;/div&gt;` &#43; `&lt;div class=&#34;text-center text-gray-400 font-bold&#34;&gt;×&lt;/div&gt;` &#43; box(&#39;Результат&#39;, values.a * values.c, values.b * values.d, &#34;orange&#34;);
+            } else if (activeTab === &#39;reciprocal&#39;) {
+                html &#43;= box(&#39;Исходное&#39;, values.a, values.b) &#43; `&lt;div class=&#34;text-center text-purple-600 italic&#34;&gt;1 / n&lt;/div&gt;` &#43; box(&#39;Результат&#39;, 1/values.a, 1/values.b, &#34;purple&#34;);
+            }
+            document.getElementById(&#39;result-container&#39;).innerHTML = html;
+        };
+
+        window.updateValue = (key, val) =&gt; {
+            values[key] = parseFloat(val);
+            const display = document.getElementById(`val-display-${key}`);
+            if (display) display.innerText = values[key].toFixed(1);
+            renderResult();
+        };
+
+        const initControls = () =&gt; {
+            const container = document.getElementById(&#39;controls-container&#39;);
+            const data = tabs.find(t =&gt; t.id === activeTab);
+            document.getElementById(&#39;property-title&#39;).innerText = data.title;
+            document.getElementById(&#39;property-desc&#39;).innerText = data.desc;
+            
+            let html = &#39;&#39;;
+            const slider = (lab, key, min=-20, max=20, col=&#34;blue&#34;) =&gt; `
+                &lt;div&gt;
+                    &lt;div class=&#34;flex justify-between mb-1 text-sm font-medium&#34;&gt;
+                        &lt;span&gt;${lab}&lt;/span&gt;&lt;span id=&#34;val-display-${key}&#34; class=&#34;text-${col}-600 font-bold&#34;&gt;${values[key].toFixed(1)}&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;input type=&#34;range&#34; min=&#34;${min}&#34; max=&#34;${max}&#34; step=&#34;0.1&#34; value=&#34;${values[key]}&#34; oninput=&#34;updateValue(&#39;${key}&#39;, this.value)&#34;&gt;
+                &lt;/div&gt;`;
+
+            if (activeTab === &#39;transitivity&#39;) {
+                html &#43;= slider(&#39;Значение a&#39;, &#39;a&#39;) &#43; slider(&#39;Значение b&#39;, &#39;b&#39;) &#43; slider(&#39;Значение c&#39;, &#39;c&#39;);
+            } else if (activeTab === &#39;addition&#39;) {
+                html &#43;= slider(&#39;Значение a&#39;, &#39;a&#39;) &#43; slider(&#39;Значение b&#39;, &#39;b&#39;) &#43; slider(&#39;Число c&#39;, &#39;c&#39;, -20, 20, &#34;amber&#34;);
+            } else if (activeTab === &#39;mult_pos&#39;) {
+                html &#43;= slider(&#39;Значение a&#39;, &#39;a&#39;) &#43; slider(&#39;Значение b&#39;, &#39;b&#39;) &#43; slider(&#39;Полож. число (c)&#39;, &#39;multiplier&#39;, 0.1, 10, &#34;green&#34;);
+            } else if (activeTab === &#39;mult_neg&#39;) {
+                html &#43;= slider(&#39;Значение a&#39;, &#39;a&#39;) &#43; slider(&#39;Значение b&#39;, &#39;b&#39;) &#43; slider(&#39;Отриц. число (c)&#39;, &#39;negMultiplier&#39;, -10, -0.1, &#34;red&#34;);
+            } else if (activeTab === &#39;member_add&#39; || activeTab === &#39;member_mult&#39;) {
+                const m = activeTab === &#39;member_mult&#39; ? 0.1 : -20;
+                html &#43;= slider(&#39;a&#39;, &#39;a&#39;, m) &#43; slider(&#39;b&#39;, &#39;b&#39;, m) &#43; slider(&#39;c&#39;, &#39;c&#39;, m, 20, &#34;purple&#34;) &#43; slider(&#39;d&#39;, &#39;d&#39;, m, 20, &#34;purple&#34;);
+            } else if (activeTab === &#39;reciprocal&#39;) {
+                html &#43;= slider(&#39;a (полож.)&#39;, &#39;a&#39;, 0.1, 30, &#34;purple&#34;) &#43; slider(&#39;b (полож.)&#39;, &#39;b&#39;, 0.1, 30, &#34;purple&#34;);
+            }
+            container.innerHTML = html;
+            renderResult();
+        };
+
+        window.switchTab = (id) =&gt; {
+            activeTab = id;
+            document.querySelectorAll(&#39;.tab-btn&#39;).forEach(b =&gt; b.classList.toggle(&#39;active-tab&#39;, b.dataset.id === id));
+            initControls();
+        };
+
+        const tabsContainer = document.getElementById(&#39;tabs-container&#39;);
+        tabs.forEach(tab =&gt; {
+            const btn = document.createElement(&#39;button&#39;);
+            btn.className = `tab-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-slate-600 border border-slate-200 hover:bg-slate-50`;
+            btn.dataset.id = tab.id;
+            btn.innerText = tab.title;
+            btn.onclick = () =&gt; switchTab(tab.id);
+            if (tab.id === activeTab) btn.classList.add(&#39;active-tab&#39;);
+            tabsContainer.appendChild(btn);
+        });
+
+        initControls();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+        
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            💡 Екі тілде де қол жетімді / Доступно на двух языках
+        </div>
+        
+
+        <script>
+            
+            var elem = document.getElementById("fullscreenWrapper");
+            var openBtn = document.getElementById("openFsBtn");
+            var closeBtn = document.getElementById("closeFsBtn");
+
+            function openFullscreen() {
+                if (elem && elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem && elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem && elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            function closeFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+
+            function updateButtons() {
+                if (openBtn && closeBtn) {
+                    if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                        openBtn.classList.add("hidden");
+                        closeBtn.classList.remove("hidden");
+                    } else {
+                        openBtn.classList.remove("hidden");
+                        closeBtn.classList.add("hidden");
+                    }
+                }
+            }
+
+            
+            function openFullscreenKz() {
+                var elemKz = document.getElementById("fullscreenWrapperKz");
+                if (elemKz && elemKz.requestFullscreen) {
+                    elemKz.requestFullscreen();
+                } else if (elemKz && elemKz.webkitRequestFullscreen) {
+                    elemKz.webkitRequestFullscreen();
+                } else if (elemKz && elemKz.msRequestFullscreen) {
+                    elemKz.msRequestFullscreen();
+                }
+            }
+
+            
+            function openFullscreenRu() {
+                var elemRu = document.getElementById("fullscreenWrapperRu");
+                if (elemRu && elemRu.requestFullscreen) {
+                    elemRu.requestFullscreen();
+                } else if (elemRu && elemRu.webkitRequestFullscreen) {
+                    elemRu.webkitRequestFullscreen();
+                } else if (elemRu && elemRu.msRequestFullscreen) {
+                    elemRu.msRequestFullscreen();
+                }
+            }
+
+            document.addEventListener("fullscreenchange", updateButtons);
+            document.addEventListener("webkitfullscreenchange", updateButtons);
+            document.addEventListener("msfullscreenchange", updateButtons);
+
+            
+            (function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const lang = urlParams.get('lang'); 
+
+                if (lang === 'kz') {
+                    
+                    const ruBlock = document.querySelector('.russian-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (ruBlock) ruBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                } else if (lang === 'ru') {
+                    
+                    const kzBlock = document.querySelector('.kazakh-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (kzBlock) kzBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                }
+                
+            })();
+        </script>
+
+        
+        
+
+        
+        <div class="w-full max-w-4xl mx-auto my-8 px-4">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9724842226086594"
+                data-ad-slot="7527178719" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    
+    <div class="w-full max-w-4xl mx-auto px-4 py-8">
+        <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 md:p-8 rounded-2xl shadow-lg border-2 border-purple-200">
+            
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center animate-pulse">
+                    <span class="text-2xl">📢</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center">Поделитесь с коллегами!</h3>
+            </div>
+
+            
+            <div class="space-y-2 mb-6 text-center">
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇰🇿</span>
+                    <span>Сайттың дамуына үлес қосу үшін, мұғалімдер чатында бөлісіңіз!</span>
+                </p>
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇷🇺</span>
+                    <span>Помогите развитию сайта — поделитесь в чатах учителей!</span>
+                </p>
+            </div>
+
+            
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                
+                <a id="shareWhatsApp" href="#"
+                    class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
+
+                
+                <a id="shareTelegram" href="#"
+                    class="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                    </svg>
+                    <span>Telegram</span>
+                </a>
+
+                
+                <button id="shareGeneric"
+                    class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                    <span>Поделиться</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        (function () {
+            const pageUrl = window.location.href;
+            const pageTitle = document.title;
+            const shareMessage = `📐 VisualMath - ${pageTitle}\n\nБесплатные презентации и задания по математике!\nМатематика бойынша тегін презентациялар және тапсырмалар!\n\n`;
+
+            
+            document.getElementById('shareWhatsApp').addEventListener('click', function (e) {
+                e.preventDefault();
+                const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage + pageUrl)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+
+            
+            document.getElementById('shareTelegram').addEventListener('click', function (e) {
+                e.preventDefault();
+                const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareMessage)}`;
+                window.open(telegramUrl, '_blank');
+            });
+
+            
+            document.getElementById('shareGeneric').addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: pageTitle,
+                            text: shareMessage,
+                            url: pageUrl
+                        });
+                    } catch (err) {
+                        if (err.name !== 'AbortError') {
+                            copyToClipboard();
+                        }
+                    }
+                } else {
+                    copyToClipboard();
+                }
+            });
+
+            function copyToClipboard() {
+                const textToCopy = shareMessage + pageUrl;
+                navigator.clipboard.writeText(textToCopy).then(function () {
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                }, function (err) {
+                    
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                });
+            }
+        })();
+    </script>
+
+    <footer class="bg-gray-900 text-white p-8 mt-auto relative z-10">
+        <div class="container mx-auto text-center">
+            <div class="text-2xl mb-4">📐 VisualMath</div>
+            <p class="text-gray-400 mb-4">&copy; 2026 VisualMath. Все права защищены.</p>
+            <div class="space-x-6">
+                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Политика
+                    конфиденциальности</a>
+                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Условия
+                    использования</a>
+                <a href="/about" class="text-gray-400 hover:text-white transition-colors">О нас</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
