@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Координаталық сәуле мергені | VisualMath</title>
+    <meta name="description" content="Интерактивное задание по математике">
+    <meta name="keywords" content="Координаталық сәуле мергені, математика, задача, задание, visual math">
+
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Координаталық сәуле мергені | VisualMath">
+    <meta property="og:description" content="Интерактивное задание по математике">
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "Координаталық сәуле мергені",
+      "description": "Интерактивное задание по математике",
+      "inLanguage": "ru",
+      "educationalUse": "Assignment"
+    }
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    
+    <link rel="canonical" href="https://meirbekashirbayev.github.io/task/160" />
+
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E38F1VR05Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E38F1VR05Z');
+    </script>
+
+    
+    <meta name="google-adsense-account" content="ca-pub-9724842226086594">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .task-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .task-content iframe {
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh;
+            min-height: 450px;
+            border: none;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            background: white;
+        }
+
+         
+        #fullscreenWrapper:fullscreen,
+        #fullscreenWrapperKz:fullscreen,
+        #fullscreenWrapperRu:fullscreen {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #fullscreenWrapper:fullscreen iframe,
+        #fullscreenWrapperKz:fullscreen iframe,
+        #fullscreenWrapperRu:fullscreen iframe {
+            height: 95vh;
+            width: 100%;
+            max-width: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    
+    <nav class="gradient-bg text-white p-3 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <span class="font-bold text-lg truncate max-w-[200px] sm:max-w-none">Координаталық сәуле мергені</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="/about"
+                    class="flex items-center gap-1 bg-white/10 hover:bg-white/20 px-2 py-1.5 rounded-lg transition-colors text-xs font-semibold">
+                    <span class="text-sm">💎</span>
+                    <span class="hidden lg:inline">О нас</span>
+                </a>
+                <a href="/lesson/27"
+                    class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium">
+                    <span>←</span>
+                    <span class="hidden sm:inline">Назад к уроку</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow task-content">
+
+        
+        <div class="w-full max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Интерактивные задания</h2>
+
+            
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg kazakh-block">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇰🇿
+                            Казахский</span>
+                        <button onclick="openFullscreenKz()"
+                            class="text-blue-600 hover:text-blue-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperKz">
+                        <iframe id="taskIframeKz" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Координаталық сәуле мергені&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            cursor: crosshair;
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            min-height: 200px; /* Биіктікті бекіту */
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            touch-action: none; 
+        }
+        .fraction {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+        .fraction-top {
+            border-bottom: 2px solid currentColor;
+            display: block;
+            padding: 0 2px;
+        }
+        .fraction-bottom {
+            display: block;
+            padding: 0 2px;
+        }
+        .mixed-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e40af;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div class=&#34;w-full max-w-4xl bg-white rounded-xl shadow-lg border border-blue-100 p-6 animate-fade-in&#34;&gt;
+        &lt;!-- Header --&gt;
+        &lt;div class=&#34;text-center mb-6&#34;&gt;
+            &lt;h1 class=&#34;text-3xl font-bold text-blue-800 mb-2&#34;&gt;Координаталық сәуле мергені&lt;/h1&gt;
+            &lt;p class=&#34;text-gray-600&#34;&gt;Берілген бөлшекті сәуле бойынан дұрыс тап!&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Start Screen --&gt;
+        &lt;div id=&#34;start-screen&#34; class=&#34;text-center py-6&#34;&gt;
+            &lt;div class=&#34;mb-6 flex justify-center&#34;&gt;
+                &lt;i data-lucide=&#34;target&#34; class=&#34;w-24 h-24 text-blue-500&#34;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;h2 class=&#34;text-xl mb-4 font-semibold text-gray-700&#34;&gt;Ережелер:&lt;/h2&gt;
+            &lt;ul class=&#34;text-left max-w-md mx-auto mb-8 space-y-2 text-gray-600 list-disc pl-5&#34;&gt;
+                &lt;li&gt;Экранда жай бөлшек немесе аралас сан шығады.&lt;/li&gt;
+                &lt;li&gt;Координаталық сәуледен сол санның орнын басу керек.&lt;/li&gt;
+                &lt;li&gt;Неғұрлым дәл тапсаң, соғұрлым көп ұпай аласың.&lt;/li&gt;
+                &lt;li&gt;Барлығы 10 сұрақ.&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;button id=&#34;start-btn&#34; class=&#34;px-8 py-3 bg-blue-600 text-white rounded-full text-lg font-bold hover:bg-blue-700 transition shadow-lg flex items-center gap-2 mx-auto&#34;&gt;
+                Ойынды бастау &lt;i data-lucide=&#34;arrow-right&#34;&gt;&lt;/i&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Game Screen --&gt;
+        &lt;div id=&#34;game-screen&#34; class=&#34;bg-gray-50 rounded-lg p-4 hidden&#34;&gt;
+            &lt;div class=&#34;flex justify-between items-center mb-4 px-4&#34;&gt;
+                &lt;div class=&#34;text-lg font-semibold text-gray-700&#34;&gt;
+                    Сұрақ: &lt;span id=&#34;question-count&#34; class=&#34;text-blue-600&#34;&gt;1/10&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;text-lg font-semibold text-gray-700&#34;&gt;
+                    Ұпай: &lt;span id=&#34;score-display&#34; class=&#34;text-green-600&#34;&gt;0&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Task Display --&gt;
+            &lt;div class=&#34;flex flex-col items-center mb-8&#34;&gt;
+                &lt;div class=&#34;text-xl text-gray-600 mb-2&#34;&gt;Мына санды тап:&lt;/div&gt;
+                &lt;div id=&#34;task-display&#34; class=&#34;bg-white px-8 py-4 rounded-xl shadow-sm border border-blue-200 min-w-[150px] flex justify-center&#34;&gt;
+                    &lt;!-- Javascript will insert fraction here --&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Canvas --&gt;
+            &lt;div class=&#34;canvas-container&#34;&gt;
+                &lt;canvas id=&#34;game-canvas&#34;&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Feedback &amp; Next Button --&gt;
+            &lt;div class=&#34;mt-6 text-center h-20&#34;&gt;
+                &lt;p id=&#34;feedback-msg&#34; class=&#34;text-xl font-bold opacity-0 transition-opacity duration-300&#34;&gt;&lt;/p&gt;
+                &lt;button id=&#34;next-btn&#34; class=&#34;mt-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition items-center gap-2 mx-auto hidden&#34;&gt;
+                    Келесі сұрақ &lt;i data-lucide=&#34;arrow-right&#34; width=&#34;18&#34;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;text-center text-sm text-gray-400 mt-4&#34;&gt;
+                Көмек: Санды дәл табу үшін бүтін сандардың арасын көз мөлшерімен бөліп көр.
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Result Screen --&gt;
+        &lt;div id=&#34;result-screen&#34; class=&#34;text-center py-10 hidden&#34;&gt;
+            &lt;div class=&#34;mb-6 flex justify-center&#34;&gt;
+                &lt;i data-lucide=&#34;trophy&#34; class=&#34;w-24 h-24 text-yellow-500&#34;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-2&#34;&gt;Ойын аяқталды!&lt;/h2&gt;
+            &lt;p class=&#34;text-xl text-gray-600 mb-6&#34;&gt;
+                Сенің жалпы ұпайың: &lt;span id=&#34;final-score&#34; class=&#34;font-bold text-blue-600&#34;&gt;0&lt;/span&gt; / 100
+            &lt;/p&gt;
+            
+            &lt;div id=&#34;result-message&#34; class=&#34;mb-8&#34;&gt;&lt;/div&gt;
+
+            &lt;button id=&#34;restart-btn&#34; class=&#34;px-8 py-3 bg-blue-600 text-white rounded-full text-lg font-bold hover:bg-blue-700 transition shadow-lg flex items-center gap-2 mx-auto&#34;&gt;
+                &lt;i data-lucide=&#34;refresh-cw&#34;&gt;&lt;/i&gt; Қайта ойнау
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- CONSTANTS &amp; STATE ---
+        const TOTAL_QUESTIONS = 10;
+        const RANGE_MAX = 4;
+        
+        let state = {
+            phase: &#39;start&#39;, // start, playing, feedback, result
+            score: 0,
+            questionCount: 0,
+            currentTask: null,
+            userGuess: null,
+            canvasWidth: 800
+        };
+
+        // --- DOM ELEMENTS ---
+        const screens = {
+            start: document.getElementById(&#39;start-screen&#39;),
+            game: document.getElementById(&#39;game-screen&#39;),
+            result: document.getElementById(&#39;result-screen&#39;)
+        };
+        const canvas = document.getElementById(&#39;game-canvas&#39;);
+        const ctx = canvas.getContext(&#39;2d&#39;);
+        const startBtn = document.getElementById(&#39;start-btn&#39;);
+        const nextBtn = document.getElementById(&#39;next-btn&#39;);
+        const restartBtn = document.getElementById(&#39;restart-btn&#39;);
+        const taskDisplay = document.getElementById(&#39;task-display&#39;);
+        const feedbackMsg = document.getElementById(&#39;feedback-msg&#39;);
+        const scoreDisplay = document.getElementById(&#39;score-display&#39;);
+        const questionCountDisplay = document.getElementById(&#39;question-count&#39;);
+        const finalScoreDisplay = document.getElementById(&#39;final-score&#39;);
+        const resultMessage = document.getElementById(&#39;result-message&#39;);
+
+        // --- INITIALIZATION ---
+        function init() {
+            lucide.createIcons();
+            
+            startBtn.addEventListener(&#39;click&#39;, startGame);
+            nextBtn.addEventListener(&#39;click&#39;, nextQuestion);
+            restartBtn.addEventListener(&#39;click&#39;, startGame);
+            canvas.addEventListener(&#39;click&#39;, handleCanvasClick);
+            
+            window.addEventListener(&#39;resize&#39;, handleResize);
+            // We don&#39;t call handleResize here immediately for width, 
+            // as the container might be hidden.
+        }
+
+        function handleResize() {
+            if (canvas.parentElement) {
+                const newWidth = canvas.parentElement.clientWidth;
+                // Тек ені 0-ден үлкен болса ғана жаңартамыз
+                if (newWidth &gt; 0) {
+                    state.canvasWidth = newWidth;
+                    draw();
+                }
+            }
+        }
+
+        // --- GAME LOGIC ---
+
+        function startGame() {
+            state.score = 0;
+            state.questionCount = 1;
+            state.phase = &#39;playing&#39;;
+            
+            updateUI();
+            switchScreen(&#39;game&#39;);
+            
+            // МАҢЫЗДЫ ТҮЗЕТУ: Экран ашылғаннан кейін өлшемді қайта есептеу керек
+            // &#34;setTimeout&#34; браузерге экранды салып үлгеруге мүмкіндік береді
+            setTimeout(() =&gt; {
+                handleResize();
+                generateTask(&#39;proper&#39;); // 1-сұрақ әрқашан жай бөлшек
+            }, 50);
+        }
+
+        function switchScreen(screenName) {
+            Object.values(screens).forEach(el =&gt; el.classList.add(&#39;hidden&#39;));
+            screens[screenName].classList.remove(&#39;hidden&#39;);
+        }
+
+        function generateTask(specificType = null) {
+            let type = specificType;
+            if (!type) {
+                const types = [&#39;proper&#39;, &#39;mixed&#39;];
+                type = types[Math.floor(Math.random() * types.length)];
+            }
+
+            let integer = 0;
+            let numerator = 1;
+            let denominator = 2;
+            const denominators = [2, 3, 4, 5, 8, 10];
+            denominator = denominators[Math.floor(Math.random() * denominators.length)];
+
+            if (type === &#39;proper&#39;) {
+                integer = 0;
+                numerator = Math.floor(Math.random() * (denominator - 1)) &#43; 1;
+            } else {
+                // Аралас сан: 1 мен 3 арасында (0 болмауы керек)
+                integer = Math.floor(Math.random() * (RANGE_MAX - 1)) &#43; 1;
+                numerator = Math.floor(Math.random() * (denominator - 1)) &#43; 1;
+            }
+
+            const value = integer &#43; (numerator / denominator);
+
+            state.currentTask = { integer, numerator, denominator, value, type };
+            state.userGuess = null;
+            state.phase = &#39;playing&#39;;
+
+            renderTask();
+            resetFeedback();
+            draw();
+            updateUI();
+        }
+
+        function renderTask() {
+            const task = state.currentTask;
+            let html = `&lt;div class=&#34;mixed-number&#34;&gt;`;
+            
+            if (task.integer &gt; 0) {
+                html &#43;= `&lt;span&gt;${task.integer}&lt;/span&gt;`;
+            }
+            
+            html &#43;= `
+                &lt;div class=&#34;fraction&#34;&gt;
+                    &lt;span class=&#34;fraction-top&#34;&gt;${task.numerator}&lt;/span&gt;
+                    &lt;span class=&#34;fraction-bottom&#34;&gt;${task.denominator}&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;`;
+            
+            taskDisplay.innerHTML = html;
+        }
+
+        function handleCanvasClick(e) {
+            if (state.phase !== &#39;playing&#39;) return;
+
+            const rect = canvas.getBoundingClientRect();
+            
+            // ТҮЗЕТУ: Масштабтау коэффиценті (Scale Fix)
+            const scaleX = canvas.width / rect.width;
+            const x = (e.clientX - rect.left) * scaleX;
+
+            const padding = 40;
+            const effectiveWidth = state.canvasWidth - (padding * 2);
+            const unitPixels = effectiveWidth / (RANGE_MAX &#43; 0.5);
+
+            let value = (x - padding) / unitPixels;
+
+            if (value &lt; 0) value = 0;
+            if (value &gt; RANGE_MAX &#43; 0.5) value = RANGE_MAX &#43; 0.5;
+
+            state.userGuess = value;
+            checkAnswer(value);
+        }
+
+        function checkAnswer(guessValue) {
+            const diff = Math.abs(guessValue - state.currentTask.value);
+            let points = 0;
+            let msg = &#39;&#39;;
+            let colorClass = &#39;&#39;;
+
+            if (diff &lt; 0.05) {
+                points = 10;
+                msg = &#34;Тамаша! Өте дәл!&#34;;
+                colorClass = &#39;text-green-600&#39;;
+            } else if (diff &lt; 0.15) {
+                points = 7;
+                msg = &#34;Жарайсың! Дұрыс!&#34;;
+                colorClass = &#39;text-green-600&#39;;
+            } else if (diff &lt; 0.3) {
+                points = 3;
+                msg = &#34;Жақын, бірақ дәлірек болу керек.&#34;;
+                colorClass = &#39;text-yellow-600&#39;;
+            } else {
+                points = 0;
+                msg = &#34;Қате. Қайтадан мұқият қара.&#34;;
+                colorClass = &#39;text-red-500&#39;;
+            }
+
+            state.score &#43;= points;
+            state.phase = &#39;feedback&#39;;
+            
+            showFeedback(msg, colorClass);
+            draw();
+            updateUI();
+        }
+
+        function nextQuestion() {
+            if (state.questionCount &gt;= TOTAL_QUESTIONS) {
+                showResult();
+            } else {
+                state.questionCount&#43;&#43;;
+                // Кезектестіру: Тақ -&gt; proper, Жұп -&gt; mixed
+                const nextType = state.questionCount % 2 === 0 ? &#39;mixed&#39; : &#39;proper&#39;;
+                generateTask(nextType);
+            }
+        }
+
+        function showResult() {
+            state.phase = &#39;result&#39;;
+            switchScreen(&#39;result&#39;);
+            finalScoreDisplay.textContent = state.score;
+
+            let badge = &#39;&#39;;
+            if (state.score &gt;= 80) {
+                badge = &#39;&lt;span class=&#34;px-4 py-2 bg-green-100 text-green-800 rounded-full font-bold&#34;&gt;Өте тамаша нәтиже! Математик! 🌟&lt;/span&gt;&#39;;
+            } else if (state.score &gt;= 50) {
+                badge = &#39;&lt;span class=&#34;px-4 py-2 bg-blue-100 text-blue-800 rounded-full font-bold&#34;&gt;Жақсы нәтиже! 👍&lt;/span&gt;&#39;;
+            } else {
+                badge = &#39;&lt;span class=&#34;px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full font-bold&#34;&gt;Әлі де жаттығу керек! 📚&lt;/span&gt;&#39;;
+            }
+            resultMessage.innerHTML = badge;
+        }
+
+        // --- DRAWING LOGIC ---
+
+        function draw() {
+            const height = 200;
+            
+            // Тексеру: егер ені жоқ болса, сурет салмау керек
+            if (!state.canvasWidth || state.canvasWidth &lt;= 0) return;
+
+            canvas.width = state.canvasWidth;
+            canvas.height = height;
+
+            const padding = 40;
+            const effectiveWidth = state.canvasWidth - (padding * 2);
+            const unitPixels = effectiveWidth / (RANGE_MAX &#43; 0.5);
+            const lineY = height / 2;
+
+            // Clear
+            ctx.clearRect(0, 0, canvas.width, height);
+            ctx.font = &#39;16px sans-serif&#39;;
+            ctx.textAlign = &#39;center&#39;;
+            ctx.textBaseline = &#39;top&#39;;
+
+            // Негізгі сызық
+            ctx.beginPath();
+            ctx.moveTo(padding, lineY);
+            ctx.lineTo(state.canvasWidth - padding, lineY);
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = &#39;#374151&#39;;
+            ctx.stroke();
+
+            // Стрелка ұшы
+            ctx.beginPath();
+            ctx.moveTo(state.canvasWidth - padding, lineY);
+            ctx.lineTo(state.canvasWidth - padding - 15, lineY - 10);
+            ctx.lineTo(state.canvasWidth - padding - 15, lineY &#43; 10);
+            ctx.fillStyle = &#39;#374151&#39;;
+            ctx.fill();
+            
+            // &#34;x&#34;
+            ctx.fillStyle = &#39;#374151&#39;;
+            ctx.fillText(&#34;x&#34;, state.canvasWidth - padding, lineY &#43; 20);
+
+            // Штрихтар
+            for (let i = 0; i &lt;= RANGE_MAX; i&#43;&#43;) {
+                const x = padding &#43; (i * unitPixels);
+                
+                ctx.beginPath();
+                ctx.moveTo(x, lineY - 10);
+                ctx.lineTo(x, lineY &#43; 10);
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = &#39;#000&#39;;
+                ctx.stroke();
+
+                ctx.fillStyle = &#39;#000&#39;;
+                ctx.font = &#39;bold 20px sans-serif&#39;;
+                ctx.fillText(i.toString(), x, lineY &#43; 20);
+            }
+
+            // User Guess
+            if (state.userGuess !== null) {
+                const guessX = padding &#43; (state.userGuess * unitPixels);
+                
+                ctx.beginPath();
+                ctx.arc(guessX, lineY, 8, 0, Math.PI * 2);
+                ctx.fillStyle = &#39;#EF4444&#39;;
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.moveTo(guessX, lineY);
+                ctx.lineTo(guessX, lineY - 40);
+                ctx.strokeStyle = &#39;#EF4444&#39;;
+                ctx.stroke();
+                
+                ctx.fillStyle = &#39;#EF4444&#39;;
+                ctx.font = &#39;16px sans-serif&#39;;
+                ctx.fillText(&#34;Сенің жауабың&#34;, guessX, lineY - 60);
+            }
+
+            // Correct Answer (Feedback phase)
+            if (state.phase === &#39;feedback&#39; &amp;&amp; state.currentTask) {
+                const correctX = padding &#43; (state.currentTask.value * unitPixels);
+                
+                ctx.beginPath();
+                ctx.arc(correctX, lineY, 8, 0, Math.PI * 2);
+                ctx.fillStyle = &#39;#10B981&#39;;
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(correctX, lineY);
+                ctx.lineTo(correctX, lineY - 40);
+                ctx.strokeStyle = &#39;#10B981&#39;;
+                ctx.stroke();
+
+                ctx.fillStyle = &#39;#10B981&#39;;
+                ctx.font = &#39;bold 16px sans-serif&#39;;
+                
+                const task = state.currentTask;
+                const fractionText = task.integer &gt; 0 
+                    ? `${task.integer} ${task.numerator}/${task.denominator}`
+                    : `${task.numerator}/${task.denominator}`;
+                    
+                ctx.fillText(fractionText, correctX, lineY - 60);
+            }
+        }
+
+        // --- UI HELPERS ---
+
+        function updateUI() {
+            scoreDisplay.textContent = state.score;
+            questionCountDisplay.textContent = `${state.questionCount}/${TOTAL_QUESTIONS}`;
+            
+            if (state.phase === &#39;feedback&#39;) {
+                nextBtn.classList.remove(&#39;hidden&#39;);
+                nextBtn.style.display = &#39;flex&#39;; // Lucide icon fix
+            } else {
+                nextBtn.classList.add(&#39;hidden&#39;);
+                nextBtn.style.display = &#39;none&#39;;
+            }
+            
+            // Re-render icons after display changes
+            lucide.createIcons();
+        }
+
+        function showFeedback(msg, colorClass) {
+            feedbackMsg.textContent = msg;
+            feedbackMsg.className = `text-xl font-bold ${colorClass} opacity-100 transition-opacity duration-300`;
+        }
+
+        function resetFeedback() {
+            feedbackMsg.classList.remove(&#39;opacity-100&#39;);
+            feedbackMsg.classList.add(&#39;opacity-0&#39;);
+            nextBtn.classList.add(&#39;hidden&#39;);
+        }
+
+        // Start
+        init();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg russian-block">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇷🇺
+                            Русский</span>
+                        <button onclick="openFullscreenRu()" class="text-red-600 hover:text-red-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperRu">
+                        <iframe id="taskIframeRu" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Снайпер координатного луча&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        body {
+            font-family: &#39;Segoe UI&#39;, Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            cursor: crosshair;
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            min-height: 200px;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            touch-action: none; 
+        }
+        .fraction {
+            display: inline-block;
+            text-align: center;
+            vertical-align: middle;
+            margin: 0 5px;
+        }
+        .fraction-top {
+            border-bottom: 2px solid currentColor;
+            display: block;
+            padding: 0 2px;
+        }
+        .fraction-bottom {
+            display: block;
+            padding: 0 2px;
+        }
+        .mixed-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1e40af;
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div class=&#34;w-full max-w-4xl bg-white rounded-xl shadow-lg border border-blue-100 p-6 animate-fade-in&#34;&gt;
+        &lt;div class=&#34;text-center mb-6&#34;&gt;
+            &lt;h1 class=&#34;text-3xl font-bold text-blue-800 mb-2&#34;&gt;Снайпер координатного луча&lt;/h1&gt;
+            &lt;p class=&#34;text-gray-600&#34;&gt;Найди точное место дроби на луче!&lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;start-screen&#34; class=&#34;text-center py-6&#34;&gt;
+            &lt;div class=&#34;mb-6 flex justify-center&#34;&gt;
+                &lt;i data-lucide=&#34;target&#34; class=&#34;w-24 h-24 text-blue-500&#34;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;h2 class=&#34;text-xl mb-4 font-semibold text-gray-700&#34;&gt;Правила:&lt;/h2&gt;
+            &lt;ul class=&#34;text-left max-w-md mx-auto mb-8 space-y-2 text-gray-600 list-disc pl-5&#34;&gt;
+                &lt;li&gt;На экране появится обыкновенная дробь или смешанное число.&lt;/li&gt;
+                &lt;li&gt;Тебе нужно нажать на координатный луч в том месте, где находится это число.&lt;/li&gt;
+                &lt;li&gt;Чем точнее попадание, тем больше очков ты получишь.&lt;/li&gt;
+                &lt;li&gt;Всего 10 вопросов.&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;button id=&#34;start-btn&#34; class=&#34;px-8 py-3 bg-blue-600 text-white rounded-full text-lg font-bold hover:bg-blue-700 transition shadow-lg flex items-center gap-2 mx-auto&#34;&gt;
+                Начать игру &lt;i data-lucide=&#34;arrow-right&#34;&gt;&lt;/i&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;game-screen&#34; class=&#34;bg-gray-50 rounded-lg p-4 hidden&#34;&gt;
+            &lt;div class=&#34;flex justify-between items-center mb-4 px-4&#34;&gt;
+                &lt;div class=&#34;text-lg font-semibold text-gray-700&#34;&gt;
+                    Вопрос: &lt;span id=&#34;question-count&#34; class=&#34;text-blue-600&#34;&gt;1/10&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;text-lg font-semibold text-gray-700&#34;&gt;
+                    Очки: &lt;span id=&#34;score-display&#34; class=&#34;text-green-600&#34;&gt;0&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;flex flex-col items-center mb-8&#34;&gt;
+                &lt;div class=&#34;text-xl text-gray-600 mb-2&#34;&gt;Найди число:&lt;/div&gt;
+                &lt;div id=&#34;task-display&#34; class=&#34;bg-white px-8 py-4 rounded-xl shadow-sm border border-blue-200 min-w-[150px] flex justify-center&#34;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;canvas-container&#34;&gt;
+                &lt;canvas id=&#34;game-canvas&#34;&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;mt-6 text-center h-20&#34;&gt;
+                &lt;p id=&#34;feedback-msg&#34; class=&#34;text-xl font-bold opacity-0 transition-opacity duration-300&#34;&gt;&lt;/p&gt;
+                &lt;button id=&#34;next-btn&#34; class=&#34;mt-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition items-center gap-2 mx-auto hidden&#34;&gt;
+                    Следующий вопрос &lt;i data-lucide=&#34;arrow-right&#34; width=&#34;18&#34;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;text-center text-sm text-gray-400 mt-4 italic&#34;&gt;
+                Подсказка: чтобы найти дробь, мысленно раздели расстояние между целыми числами на части.
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;result-screen&#34; class=&#34;text-center py-10 hidden&#34;&gt;
+            &lt;div class=&#34;mb-6 flex justify-center&#34;&gt;
+                &lt;i data-lucide=&#34;trophy&#34; class=&#34;w-24 h-24 text-yellow-500&#34;&gt;&lt;/i&gt;
+            &lt;/div&gt;
+            &lt;h2 class=&#34;text-3xl font-bold text-gray-800 mb-2&#34;&gt;Игра окончена!&lt;/h2&gt;
+            &lt;p class=&#34;text-xl text-gray-600 mb-6&#34;&gt;
+                Твой итоговый результат: &lt;span id=&#34;final-score&#34; class=&#34;font-bold text-blue-600&#34;&gt;0&lt;/span&gt; / 100
+            &lt;/p&gt;
+            
+            &lt;div id=&#34;result-message&#34; class=&#34;mb-8&#34;&gt;&lt;/div&gt;
+
+            &lt;button id=&#34;restart-btn&#34; class=&#34;px-8 py-3 bg-blue-600 text-white rounded-full text-lg font-bold hover:bg-blue-700 transition shadow-lg flex items-center gap-2 mx-auto&#34;&gt;
+                &lt;i data-lucide=&#34;refresh-cw&#34;&gt;&lt;/i&gt; Играть снова
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const TOTAL_QUESTIONS = 10;
+        const RANGE_MAX = 4;
+        
+        let state = {
+            phase: &#39;start&#39;, 
+            score: 0,
+            questionCount: 0,
+            currentTask: null,
+            userGuess: null,
+            canvasWidth: 800
+        };
+
+        const screens = {
+            start: document.getElementById(&#39;start-screen&#39;),
+            game: document.getElementById(&#39;game-screen&#39;),
+            result: document.getElementById(&#39;result-screen&#39;)
+        };
+        const canvas = document.getElementById(&#39;game-canvas&#39;);
+        const ctx = canvas.getContext(&#39;2d&#39;);
+        const startBtn = document.getElementById(&#39;start-btn&#39;);
+        const nextBtn = document.getElementById(&#39;next-btn&#39;);
+        const restartBtn = document.getElementById(&#39;restart-btn&#39;);
+        const taskDisplay = document.getElementById(&#39;task-display&#39;);
+        const feedbackMsg = document.getElementById(&#39;feedback-msg&#39;);
+        const scoreDisplay = document.getElementById(&#39;score-display&#39;);
+        const questionCountDisplay = document.getElementById(&#39;question-count&#39;);
+        const finalScoreDisplay = document.getElementById(&#39;final-score&#39;);
+        const resultMessage = document.getElementById(&#39;result-message&#39;);
+
+        function init() {
+            lucide.createIcons();
+            startBtn.addEventListener(&#39;click&#39;, startGame);
+            nextBtn.addEventListener(&#39;click&#39;, nextQuestion);
+            restartBtn.addEventListener(&#39;click&#39;, startGame);
+            canvas.addEventListener(&#39;click&#39;, handleCanvasClick);
+            window.addEventListener(&#39;resize&#39;, handleResize);
+        }
+
+        function handleResize() {
+            if (canvas.parentElement) {
+                const newWidth = canvas.parentElement.clientWidth;
+                if (newWidth &gt; 0) {
+                    state.canvasWidth = newWidth;
+                    draw();
+                }
+            }
+        }
+
+        function startGame() {
+            state.score = 0;
+            state.questionCount = 1;
+            state.phase = &#39;playing&#39;;
+            updateUI();
+            switchScreen(&#39;game&#39;);
+            setTimeout(() =&gt; {
+                handleResize();
+                generateTask(&#39;proper&#39;); 
+            }, 50);
+        }
+
+        function switchScreen(screenName) {
+            Object.values(screens).forEach(el =&gt; el.classList.add(&#39;hidden&#39;));
+            screens[screenName].classList.remove(&#39;hidden&#39;);
+        }
+
+        function generateTask(specificType = null) {
+            let type = specificType;
+            if (!type) {
+                type = Math.random() &gt; 0.5 ? &#39;proper&#39; : &#39;mixed&#39;;
+            }
+
+            let integer = 0;
+            const denominators = [2, 3, 4, 5, 8, 10];
+            let denominator = denominators[Math.floor(Math.random() * denominators.length)];
+            let numerator = Math.floor(Math.random() * (denominator - 1)) &#43; 1;
+
+            if (type === &#39;mixed&#39;) {
+                integer = Math.floor(Math.random() * (RANGE_MAX - 1)) &#43; 1;
+            }
+
+            const value = integer &#43; (numerator / denominator);
+            state.currentTask = { integer, numerator, denominator, value, type };
+            state.userGuess = null;
+            state.phase = &#39;playing&#39;;
+
+            renderTask();
+            resetFeedback();
+            draw();
+            updateUI();
+        }
+
+        function renderTask() {
+            const task = state.currentTask;
+            let html = `&lt;div class=&#34;mixed-number&#34;&gt;`;
+            if (task.integer &gt; 0) html &#43;= `&lt;span&gt;${task.integer}&lt;/span&gt;`;
+            html &#43;= `&lt;div class=&#34;fraction&#34;&gt;&lt;span class=&#34;fraction-top&#34;&gt;${task.numerator}&lt;/span&gt;&lt;span class=&#34;fraction-bottom&#34;&gt;${task.denominator}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`;
+            taskDisplay.innerHTML = html;
+        }
+
+        function handleCanvasClick(e) {
+            if (state.phase !== &#39;playing&#39;) return;
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const x = (e.clientX - rect.left) * scaleX;
+            const padding = 40;
+            const effectiveWidth = state.canvasWidth - (padding * 2);
+            const unitPixels = effectiveWidth / (RANGE_MAX &#43; 0.5);
+            let value = (x - padding) / unitPixels;
+            if (value &lt; 0) value = 0;
+            state.userGuess = value;
+            checkAnswer(value);
+        }
+
+        function checkAnswer(guessValue) {
+            const diff = Math.abs(guessValue - state.currentTask.value);
+            let points = 0;
+            let msg = &#39;&#39;;
+            let colorClass = &#39;&#39;;
+
+            if (diff &lt; 0.06) {
+                points = 10;
+                msg = &#34;Идеально! Прямо в цель!&#34;;
+                colorClass = &#39;text-green-600&#39;;
+            } else if (diff &lt; 0.18) {
+                points = 7;
+                msg = &#34;Отлично! Очень близко!&#34;;
+                colorClass = &#39;text-green-600&#39;;
+            } else if (diff &lt; 0.35) {
+                points = 3;
+                msg = &#34;Неплохо, но старайся быть точнее.&#34;;
+                colorClass = &#39;text-yellow-600&#39;;
+            } else {
+                points = 0;
+                msg = &#34;Промах! Посмотри, где была точка.&#34;;
+                colorClass = &#39;text-red-500&#39;;
+            }
+
+            state.score &#43;= points;
+            state.phase = &#39;feedback&#39;;
+            showFeedback(msg, colorClass);
+            draw();
+            updateUI();
+        }
+
+        function nextQuestion() {
+            if (state.questionCount &gt;= TOTAL_QUESTIONS) {
+                showResult();
+            } else {
+                state.questionCount&#43;&#43;;
+                const nextType = state.questionCount % 2 === 0 ? &#39;mixed&#39; : &#39;proper&#39;;
+                generateTask(nextType);
+            }
+        }
+
+        function showResult() {
+            state.phase = &#39;result&#39;;
+            switchScreen(&#39;result&#39;);
+            finalScoreDisplay.textContent = state.score;
+            let badge = &#39;&#39;;
+            if (state.score &gt;= 80) badge = &#39;&lt;span class=&#34;px-4 py-2 bg-green-100 text-green-800 rounded-full font-bold&#34;&gt;Ты настоящий мастер математики! 🌟&lt;/span&gt;&#39;;
+            else if (state.score &gt;= 50) badge = &#39;&lt;span class=&#34;px-4 py-2 bg-blue-100 text-blue-800 rounded-full font-bold&#34;&gt;Хороший результат! 👍&lt;/span&gt;&#39;;
+            else badge = &#39;&lt;span class=&#34;px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full font-bold&#34;&gt;Нужно еще потренироваться! 📚&lt;/span&gt;&#39;;
+            resultMessage.innerHTML = badge;
+        }
+
+        function draw() {
+            const height = 200;
+            if (!state.canvasWidth || state.canvasWidth &lt;= 0) return;
+            canvas.width = state.canvasWidth;
+            canvas.height = height;
+            const padding = 40;
+            const effectiveWidth = state.canvasWidth - (padding * 2);
+            const unitPixels = effectiveWidth / (RANGE_MAX &#43; 0.5);
+            const lineY = height / 2;
+
+            ctx.clearRect(0, 0, canvas.width, height);
+            ctx.textAlign = &#39;center&#39;;
+            ctx.textBaseline = &#39;top&#39;;
+
+            // Луч
+            ctx.beginPath();
+            ctx.moveTo(padding, lineY);
+            ctx.lineTo(state.canvasWidth - padding, lineY);
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = &#39;#374151&#39;;
+            ctx.stroke();
+
+            // Стрелка
+            ctx.beginPath();
+            ctx.moveTo(state.canvasWidth - padding, lineY);
+            ctx.lineTo(state.canvasWidth - padding - 15, lineY - 10);
+            ctx.lineTo(state.canvasWidth - padding - 15, lineY &#43; 10);
+            ctx.fillStyle = &#39;#374151&#39;;
+            ctx.fill();
+            
+            ctx.fillStyle = &#39;#374151&#39;;
+            ctx.font = &#39;16px sans-serif&#39;;
+            ctx.fillText(&#34;x&#34;, state.canvasWidth - padding, lineY &#43; 20);
+
+            // Деления
+            for (let i = 0; i &lt;= RANGE_MAX; i&#43;&#43;) {
+                const x = padding &#43; (i * unitPixels);
+                ctx.beginPath();
+                ctx.moveTo(x, lineY - 10);
+                ctx.lineTo(x, lineY &#43; 10);
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = &#39;#000&#39;;
+                ctx.stroke();
+                ctx.fillStyle = &#39;#000&#39;;
+                ctx.font = &#39;bold 20px sans-serif&#39;;
+                ctx.fillText(i.toString(), x, lineY &#43; 20);
+            }
+
+            // Ответ пользователя
+            if (state.userGuess !== null) {
+                const guessX = padding &#43; (state.userGuess * unitPixels);
+                ctx.beginPath();
+                ctx.arc(guessX, lineY, 8, 0, Math.PI * 2);
+                ctx.fillStyle = &#39;#EF4444&#39;;
+                ctx.fill();
+                ctx.fillStyle = &#39;#EF4444&#39;;
+                ctx.font = &#39;14px sans-serif&#39;;
+                ctx.fillText(&#34;Твой ответ&#34;, guessX, lineY - 60);
+            }
+
+            // Правильный ответ
+            if (state.phase === &#39;feedback&#39; &amp;&amp; state.currentTask) {
+                const correctX = padding &#43; (state.currentTask.value * unitPixels);
+                ctx.beginPath();
+                ctx.arc(correctX, lineY, 8, 0, Math.PI * 2);
+                ctx.fillStyle = &#39;#10B981&#39;;
+                ctx.fill();
+                ctx.fillStyle = &#39;#10B981&#39;;
+                ctx.font = &#39;bold 16px sans-serif&#39;;
+                const task = state.currentTask;
+                const fractionText = task.integer &gt; 0 ? `${task.integer} ${task.numerator}/${task.denominator}` : `${task.numerator}/${task.denominator}`;
+                ctx.fillText(fractionText, correctX, lineY - 60);
+            }
+        }
+
+        function updateUI() {
+            scoreDisplay.textContent = state.score;
+            questionCountDisplay.textContent = `${state.questionCount}/${TOTAL_QUESTIONS}`;
+            if (state.phase === &#39;feedback&#39;) {
+                nextBtn.classList.remove(&#39;hidden&#39;);
+                nextBtn.style.display = &#39;flex&#39;;
+            } else {
+                nextBtn.classList.add(&#39;hidden&#39;);
+                nextBtn.style.display = &#39;none&#39;;
+            }
+            lucide.createIcons();
+        }
+
+        function showFeedback(msg, colorClass) {
+            feedbackMsg.textContent = msg;
+            feedbackMsg.className = `text-xl font-bold ${colorClass} opacity-100 transition-opacity duration-300`;
+        }
+
+        function resetFeedback() {
+            feedbackMsg.classList.remove(&#39;opacity-100&#39;);
+            feedbackMsg.classList.add(&#39;opacity-0&#39;);
+        }
+
+        init();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+        
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            💡 Екі тілде де қол жетімді / Доступно на двух языках
+        </div>
+        
+
+        <script>
+            
+            var elem = document.getElementById("fullscreenWrapper");
+            var openBtn = document.getElementById("openFsBtn");
+            var closeBtn = document.getElementById("closeFsBtn");
+
+            function openFullscreen() {
+                if (elem && elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem && elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem && elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            function closeFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+
+            function updateButtons() {
+                if (openBtn && closeBtn) {
+                    if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                        openBtn.classList.add("hidden");
+                        closeBtn.classList.remove("hidden");
+                    } else {
+                        openBtn.classList.remove("hidden");
+                        closeBtn.classList.add("hidden");
+                    }
+                }
+            }
+
+            
+            function openFullscreenKz() {
+                var elemKz = document.getElementById("fullscreenWrapperKz");
+                if (elemKz && elemKz.requestFullscreen) {
+                    elemKz.requestFullscreen();
+                } else if (elemKz && elemKz.webkitRequestFullscreen) {
+                    elemKz.webkitRequestFullscreen();
+                } else if (elemKz && elemKz.msRequestFullscreen) {
+                    elemKz.msRequestFullscreen();
+                }
+            }
+
+            
+            function openFullscreenRu() {
+                var elemRu = document.getElementById("fullscreenWrapperRu");
+                if (elemRu && elemRu.requestFullscreen) {
+                    elemRu.requestFullscreen();
+                } else if (elemRu && elemRu.webkitRequestFullscreen) {
+                    elemRu.webkitRequestFullscreen();
+                } else if (elemRu && elemRu.msRequestFullscreen) {
+                    elemRu.msRequestFullscreen();
+                }
+            }
+
+            document.addEventListener("fullscreenchange", updateButtons);
+            document.addEventListener("webkitfullscreenchange", updateButtons);
+            document.addEventListener("msfullscreenchange", updateButtons);
+
+            
+            (function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const lang = urlParams.get('lang'); 
+
+                if (lang === 'kz') {
+                    
+                    const ruBlock = document.querySelector('.russian-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (ruBlock) ruBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                } else if (lang === 'ru') {
+                    
+                    const kzBlock = document.querySelector('.kazakh-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (kzBlock) kzBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                }
+                
+            })();
+        </script>
+
+        
+        
+        <div class="bg-white p-6 rounded-2xl w-full mt-8 shadow-lg border border-purple-100 max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-4">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                    <span class="text-white text-lg">📋</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Описание задания</h3>
+            </div>
+            <div class="text-gray-700 leading-relaxed prose max-w-none">
+                <div class="space-y-4 font-sans">
+    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
+        <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
+        <p class="text-gray-600 mt-2">💡 Если задание кажется сложным, попробуйте ещё раз!</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <h4 class="font-bold text-blue-800 mb-2 flex items-center gap-2">
+                📍 Обыкновенная дробь
+            </h4>
+            <p class="text-xs text-blue-900 leading-relaxed">
+                Раздели расстояние от 0 до 1 на столько частей, сколько в <b>знаменателе</b>. Отсчитай <b>числитель</b>.
+            </p>
+            <div class="mt-2 p-2 bg-white rounded border border-blue-100 text-[10px] font-mono text-center">
+                Пример 2/5: 2-е деление из 5
+            </div>
+        </div>
+
+        <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
+            <h4 class="font-bold text-emerald-800 mb-2 flex items-center gap-2">
+                📌 Смешанное число
+            </h4>
+            <p class="text-xs text-emerald-900 leading-relaxed">
+                Сначала найди <b>целую часть</b>, а затем отсчитай дробную часть в следующем единичном отрезке.
+            </p>
+            <div class="mt-2 p-2 bg-white rounded border border-emerald-100 text-[10px] font-mono text-center">
+                Пример 1 ¾: между 1 и 2
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400">
+        <h4 class="font-bold text-amber-800 text-sm mb-1">Совет для снайпера:</h4>
+        <p class="text-xs text-amber-900 leading-relaxed">
+            Помни: чем больше <b>знаменатель</b>, тем меньше расстояние между делениями! Мысленно дели клетку на равные части.
+        </p>
+    </div>
+
+    <div class="bg-gray-100 p-3 rounded-lg flex items-center justify-between border border-gray-300 shadow-inner">
+        <span class="text-[10px] text-gray-600 font-bold uppercase tracking-tight">Твоя точность:</span>
+        <div class="flex gap-1 h-2 w-32 bg-gray-300 rounded-full overflow-hidden">
+            <div class="w-1/3 bg-red-400"></div>
+            <div class="w-1/3 bg-yellow-400"></div>
+            <div class="w-1/3 bg-green-400"></div>
+        </div>
+        <span class="text-[10px] text-green-600 font-bold">100%</span>
+    </div>
+</div>
+            </div>
+        </div>
+        
+
+        
+        <div class="w-full max-w-4xl mx-auto my-8 px-4">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9724842226086594"
+                data-ad-slot="7527178719" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    
+    <div class="w-full max-w-4xl mx-auto px-4 py-8">
+        <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 md:p-8 rounded-2xl shadow-lg border-2 border-purple-200">
+            
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center animate-pulse">
+                    <span class="text-2xl">📢</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center">Поделитесь с коллегами!</h3>
+            </div>
+
+            
+            <div class="space-y-2 mb-6 text-center">
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇰🇿</span>
+                    <span>Сайттың дамуына үлес қосу үшін, мұғалімдер чатында бөлісіңіз!</span>
+                </p>
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇷🇺</span>
+                    <span>Помогите развитию сайта — поделитесь в чатах учителей!</span>
+                </p>
+            </div>
+
+            
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                
+                <a id="shareWhatsApp" href="#"
+                    class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
+
+                
+                <a id="shareTelegram" href="#"
+                    class="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                    </svg>
+                    <span>Telegram</span>
+                </a>
+
+                
+                <button id="shareGeneric"
+                    class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                    <span>Поделиться</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        (function () {
+            const pageUrl = window.location.href;
+            const pageTitle = document.title;
+            const shareMessage = `📐 VisualMath - ${pageTitle}\n\nБесплатные презентации и задания по математике!\nМатематика бойынша тегін презентациялар және тапсырмалар!\n\n`;
+
+            
+            document.getElementById('shareWhatsApp').addEventListener('click', function (e) {
+                e.preventDefault();
+                const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage + pageUrl)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+
+            
+            document.getElementById('shareTelegram').addEventListener('click', function (e) {
+                e.preventDefault();
+                const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareMessage)}`;
+                window.open(telegramUrl, '_blank');
+            });
+
+            
+            document.getElementById('shareGeneric').addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: pageTitle,
+                            text: shareMessage,
+                            url: pageUrl
+                        });
+                    } catch (err) {
+                        if (err.name !== 'AbortError') {
+                            copyToClipboard();
+                        }
+                    }
+                } else {
+                    copyToClipboard();
+                }
+            });
+
+            function copyToClipboard() {
+                const textToCopy = shareMessage + pageUrl;
+                navigator.clipboard.writeText(textToCopy).then(function () {
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                }, function (err) {
+                    
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                });
+            }
+        })();
+    </script>
+
+    <footer class="bg-gray-900 text-white p-8 mt-auto relative z-10">
+        <div class="container mx-auto text-center">
+            <div class="text-2xl mb-4">📐 VisualMath</div>
+            <p class="text-gray-400 mb-4">&copy; 2026 VisualMath. Все права защищены.</p>
+            <div class="space-x-6">
+                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Политика
+                    конфиденциальности</a>
+                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Условия
+                    использования</a>
+                <a href="/about" class="text-gray-400 hover:text-white transition-colors">О нас</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

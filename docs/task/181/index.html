@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Геометрия: Жазбалар мен Құрастыру | VisualMath</title>
+    <meta name="description" content="Интерактивное задание по математике">
+    <meta name="keywords" content="3D Геометрия: Жазбалар мен Құрастыру, математика, задача, задание, visual math">
+
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="3D Геометрия: Жазбалар мен Құрастыру | VisualMath">
+    <meta property="og:description" content="Интерактивное задание по математике">
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "3D Геометрия: Жазбалар мен Құрастыру",
+      "description": "Интерактивное задание по математике",
+      "inLanguage": "ru",
+      "educationalUse": "Assignment"
+    }
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    
+    <link rel="canonical" href="https://meirbekashirbayev.github.io/task/181" />
+
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E38F1VR05Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E38F1VR05Z');
+    </script>
+
+    
+    <meta name="google-adsense-account" content="ca-pub-9724842226086594">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .task-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .task-content iframe {
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh;
+            min-height: 450px;
+            border: none;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            background: white;
+        }
+
+         
+        #fullscreenWrapper:fullscreen,
+        #fullscreenWrapperKz:fullscreen,
+        #fullscreenWrapperRu:fullscreen {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #fullscreenWrapper:fullscreen iframe,
+        #fullscreenWrapperKz:fullscreen iframe,
+        #fullscreenWrapperRu:fullscreen iframe {
+            height: 95vh;
+            width: 100%;
+            max-width: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    
+    <nav class="gradient-bg text-white p-3 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <span class="font-bold text-lg truncate max-w-[200px] sm:max-w-none">3D Геометрия: Жазбалар мен Құрастыру</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="/about"
+                    class="flex items-center gap-1 bg-white/10 hover:bg-white/20 px-2 py-1.5 rounded-lg transition-colors text-xs font-semibold">
+                    <span class="text-sm">💎</span>
+                    <span class="hidden lg:inline">О нас</span>
+                </a>
+                <a href="/lesson/61"
+                    class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium">
+                    <span>←</span>
+                    <span class="hidden sm:inline">Назад к уроку</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow task-content">
+
+        
+        <div class="w-full max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Интерактивные задания</h2>
+
+            
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg kazakh-block">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇰🇿
+                            Казахский</span>
+                        <button onclick="openFullscreenKz()"
+                            class="text-blue-600 hover:text-blue-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperKz">
+                        <iframe id="taskIframeKz" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;3D Геометрия: Жазбалар мен Құрастыру&lt;/title&gt;
+    
+    &lt;!-- Tailwind CSS --&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    
+    &lt;!-- Three.js --&gt;
+    &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js&#34;&gt;&lt;/script&gt;
+    
+    &lt;!-- Lucide Icons --&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+
+    &lt;style&gt;
+        body { margin: 0; overflow-x: hidden; }
+        canvas { display: block; }
+        .active-shape { background-color: #2563eb; color: white; }
+        .active-shape-pink { background-color: #db2777; color: white; }
+        .active-variant { border-color: #3b82f6; background-color: #eff6ff; color: #1d4ed8; font-weight: bold; }
+        .btn-default { background-color: #f3f4f6; color: #4b5563; }
+        .btn-default:hover { background-color: #e5e7eb; }
+        
+        /* Grid patterns for Quiz */
+        .grid-t-shape { display: grid; grid-template-columns: repeat(3, 10px); gap: 2px; justify-content: center; }
+        .grid-2x2 { display: grid; grid-template-columns: repeat(2, 10px); gap: 2px; justify-content: center; }
+        .cell { width: 10px; height: 10px; background-color: #cbd5e1; border-radius: 1px; }
+        .cell-blue { background-color: #3b82f6; }
+        .cell-red { background-color: #ef4444; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;flex flex-col min-h-screen bg-gray-50 text-gray-800 font-sans&#34;&gt;
+
+    &lt;!-- Header --&gt;
+    &lt;header class=&#34;bg-blue-600 text-white p-4 shadow-md&#34;&gt;
+        &lt;div class=&#34;max-w-4xl mx-auto flex justify-between items-center&#34;&gt;
+            &lt;h1 class=&#34;text-xl md:text-2xl font-bold flex items-center gap-2&#34;&gt;
+                &lt;i data-lucide=&#34;box&#34;&gt;&lt;/i&gt; 3D Геометрия: Жазбалар мен Құрастыру
+            &lt;/h1&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- Main Content --&gt;
+    &lt;main class=&#34;flex-grow p-4 md:p-6 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6&#34;&gt;
+        
+        &lt;!-- Controls Column --&gt;
+        &lt;div class=&#34;lg:col-span-1 space-y-5&#34;&gt;
+            
+            &lt;!-- Shape Type --&gt;
+            &lt;div class=&#34;bg-white p-4 rounded-xl shadow-sm border border-gray-200&#34;&gt;
+                &lt;h2 class=&#34;font-semibold mb-3 text-lg text-gray-700&#34;&gt;1. Фигураны таңдаңыз:&lt;/h2&gt;
+                &lt;div class=&#34;flex gap-2&#34;&gt;
+                    &lt;button id=&#34;btn-cube&#34; class=&#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors active-shape&#34;&gt;
+                        Текше (Куб)
+                    &lt;/button&gt;
+                    &lt;button id=&#34;btn-para&#34; class=&#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors btn-default&#34;&gt;
+                        Параллелепипед
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Net Variants --&gt;
+            &lt;div class=&#34;bg-white p-4 rounded-xl shadow-sm border border-gray-200&#34;&gt;
+                &lt;h2 class=&#34;font-semibold mb-3 text-lg text-gray-700 flex items-center gap-2&#34;&gt;
+                    &lt;i data-lucide=&#34;layers&#34; size=&#34;18&#34;&gt;&lt;/i&gt;
+                    2. Жазба түрі (Нұсқалар):
+                &lt;/h2&gt;
+                &lt;div class=&#34;grid grid-cols-3 gap-2&#34;&gt;
+                    &lt;button id=&#34;btn-var-0&#34; class=&#34;var-btn py-2 rounded-lg text-sm border-2 transition-all active-variant&#34; onclick=&#34;setVariant(0)&#34;&gt;
+                        1-нұсқа&lt;br/&gt;&lt;span class=&#34;text-xs font-normal opacity-75&#34;&gt;Классик&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;button id=&#34;btn-var-1&#34; class=&#34;var-btn py-2 rounded-lg text-sm border-2 transition-all border-gray-200 text-gray-600 hover:border-blue-300&#34; onclick=&#34;setVariant(1)&#34;&gt;
+                        2-нұсқа&lt;br/&gt;&lt;span class=&#34;text-xs font-normal opacity-75&#34;&gt;Тізбек&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;button id=&#34;btn-var-2&#34; class=&#34;var-btn py-2 rounded-lg text-sm border-2 transition-all border-gray-200 text-gray-600 hover:border-blue-300&#34; onclick=&#34;setVariant(2)&#34;&gt;
+                        3-нұсқа&lt;br/&gt;&lt;span class=&#34;text-xs font-normal opacity-75&#34;&gt;Бүйір&lt;/span&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Animation --&gt;
+            &lt;div class=&#34;bg-white p-4 rounded-xl shadow-sm border border-gray-200&#34;&gt;
+                &lt;h2 class=&#34;font-semibold mb-3 text-lg text-gray-700&#34;&gt;3. Жинау процесі:&lt;/h2&gt;
+                &lt;input 
+                    type=&#34;range&#34; 
+                    id=&#34;fold-slider&#34;
+                    min=&#34;0&#34; max=&#34;1&#34; step=&#34;0.01&#34; 
+                    value=&#34;0&#34;
+                    class=&#34;w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600 mb-4&#34;
+                &gt;
+                &lt;div class=&#34;flex gap-2&#34;&gt;
+                    &lt;button id=&#34;btn-animate&#34; class=&#34;flex-1 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg transition&#34;&gt;
+                        &lt;i id=&#34;icon-play&#34; data-lucide=&#34;play&#34; size=&#34;18&#34;&gt;&lt;/i&gt;
+                        &lt;span id=&#34;text-animate&#34;&gt;Жинау&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;button id=&#34;btn-reset&#34; class=&#34;w-12 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg flex items-center justify-center&#34;&gt;
+                        &lt;i data-lucide=&#34;rotate-ccw&#34; size=&#34;18&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+                
+                &lt;!-- Legend --&gt;
+                &lt;div class=&#34;mt-4 pt-4 border-t grid grid-cols-3 gap-2 text-xs text-gray-500&#34;&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-blue-500 rounded-full&#34;&gt;&lt;/div&gt;Төменгі&lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-green-500 rounded-full&#34;&gt;&lt;/div&gt;Артқы&lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-orange-400 rounded-full&#34;&gt;&lt;/div&gt;Алдыңғы&lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-yellow-300 rounded-full&#34;&gt;&lt;/div&gt;Сол&lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-purple-500 rounded-full&#34;&gt;&lt;/div&gt;Оң&lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-red-500 rounded-full&#34;&gt;&lt;/div&gt;Жоғарғы&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 3D View Column --&gt;
+        &lt;div class=&#34;lg:col-span-2 flex flex-col gap-6&#34;&gt;
+            &lt;div class=&#34;relative bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden h-[450px] cursor-move group&#34;&gt;
+                &lt;div id=&#34;three-mount&#34; class=&#34;w-full h-full&#34;&gt;&lt;/div&gt;
+                
+                &lt;div class=&#34;absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-2 rounded-lg text-sm shadow-sm border border-gray-100&#34;&gt;
+                   &lt;p class=&#34;font-bold text-gray-700&#34;&gt;Күйі: &lt;span id=&#34;progress-text&#34;&gt;0&lt;/span&gt;%&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-medium text-gray-500 pointer-events-none&#34;&gt;
+                  Тінтуірмен бұруға болады
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Quiz --&gt;
+            &lt;div class=&#34;bg-white p-5 rounded-xl shadow-sm border border-gray-200&#34;&gt;
+                &lt;h3 class=&#34;text-md font-bold text-gray-800 mb-2 flex items-center gap-2&#34;&gt;
+                    &lt;i data-lucide=&#34;brain-circuit&#34; class=&#34;text-blue-500&#34;&gt;&lt;/i&gt; Миға шабуыл:
+                &lt;/h3&gt;
+                &lt;p class=&#34;text-gray-600 text-sm mb-4&#34;&gt;
+                    Мына екі суреттің қайсысынан &lt;b&gt;текше (куб)&lt;/b&gt; құрастыруға болады? Дұрыс жауапты бас:
+                &lt;/p&gt;
+                &lt;div class=&#34;flex gap-4 overflow-x-auto pb-2&#34;&gt;
+                     &lt;!-- Option 1: T-Shape (Correct) --&gt;
+                     &lt;button id=&#34;quiz-correct&#34; class=&#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl hover:bg-gray-50 border-gray-200 transition-all group&#34;&gt;
+                        &lt;div class=&#34;h-10 mb-2 flex items-center justify-center&#34;&gt;
+                            &lt;!-- CSS Grid T-Shape --&gt;
+                            &lt;div class=&#34;grid-t-shape&#34;&gt;
+                                &lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;
+                                &lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;
+                                &lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;
+                                &lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;span class=&#34;text-xs font-bold block text-center text-gray-600 group-hover:text-gray-800&#34;&gt;Т-тәрізді&lt;/span&gt;
+                     &lt;/button&gt;
+
+                     &lt;!-- Option 2: 2x2 Square (Wrong) --&gt;
+                     &lt;button id=&#34;quiz-wrong&#34; class=&#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl hover:bg-gray-50 border-gray-200 transition-all group&#34;&gt;
+                        &lt;div class=&#34;h-10 mb-2 flex items-center justify-center&#34;&gt;
+                            &lt;!-- CSS Grid 2x2 --&gt;
+                            &lt;div class=&#34;grid-2x2&#34;&gt;
+                                &lt;div class=&#34;cell cell-red&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-red&#34;&gt;&lt;/div&gt;
+                                &lt;div class=&#34;cell cell-red&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-red&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;span class=&#34;text-xs font-bold block text-center text-gray-600 group-hover:text-gray-800&#34;&gt;2x2 Шаршы&lt;/span&gt;
+                     &lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div id=&#34;quiz-feedback&#34; class=&#34;mt-3 text-sm font-medium p-3 rounded-lg hidden&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+
+    &lt;script&gt;
+        // --- State Management ---
+        const state = {
+            shapeType: &#39;cube&#39;, // &#39;cube&#39; or &#39;parallelepiped&#39;
+            netVariant: 0,     // 0, 1, 2
+            foldProgress: 0,   // 0 to 1
+            isAnimating: false,
+            animationInterval: null
+        };
+
+        // --- DOM Elements ---
+        const els = {
+            mount: document.getElementById(&#39;three-mount&#39;),
+            slider: document.getElementById(&#39;fold-slider&#39;),
+            progressText: document.getElementById(&#39;progress-text&#39;),
+            btnAnimate: document.getElementById(&#39;btn-animate&#39;),
+            textAnimate: document.getElementById(&#39;text-animate&#39;),
+            iconPlay: document.getElementById(&#39;icon-play&#39;),
+            btnReset: document.getElementById(&#39;btn-reset&#39;),
+            btnCube: document.getElementById(&#39;btn-cube&#39;),
+            btnPara: document.getElementById(&#39;btn-para&#39;),
+            btnVars: [
+                document.getElementById(&#39;btn-var-0&#39;),
+                document.getElementById(&#39;btn-var-1&#39;),
+                document.getElementById(&#39;btn-var-2&#39;)
+            ],
+            quizBtns: {
+                correct: document.getElementById(&#39;quiz-correct&#39;),
+                wrong: document.getElementById(&#39;quiz-wrong&#39;)
+            },
+            quizFeedback: document.getElementById(&#39;quiz-feedback&#39;)
+        };
+
+        // --- Three.js Variables ---
+        let scene, camera, renderer, currentGroup;
+        let meshes = {}; 
+        let controls = { isDragging: false, previousMousePosition: { x: 0, y: 0 } };
+
+        // --- Initialization ---
+        function init() {
+            // Icons
+            lucide.createIcons();
+
+            // Scene Setup
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf0f9ff);
+
+            camera = new THREE.PerspectiveCamera(45, els.mount.clientWidth / els.mount.clientHeight, 0.1, 1000);
+            camera.position.set(4, 6, 8);
+            camera.lookAt(0, 0, 0);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(els.mount.clientWidth, els.mount.clientHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.setPixelRatio(window.devicePixelRatio);
+            els.mount.appendChild(renderer.domElement);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            dirLight.position.set(5, 10, 7);
+            scene.add(dirLight);
+
+            // Events
+            window.addEventListener(&#39;resize&#39;, onWindowResize);
+            renderer.domElement.addEventListener(&#39;mousedown&#39;, onMouseDown);
+            renderer.domElement.addEventListener(&#39;mousemove&#39;, onMouseMove);
+            window.addEventListener(&#39;mouseup&#39;, onMouseUp);
+
+            // Initial Build
+            buildShape();
+            animateLoop();
+            
+            setupUIListeners();
+        }
+
+        // --- 3D Logic ---
+        function createFlap(width, height, color, shiftX, shiftZ) {
+            const geometry = new THREE.PlaneGeometry(width, height);
+            const material = new THREE.MeshPhongMaterial({ 
+                color: color, 
+                side: THREE.DoubleSide, 
+                transparent: true, 
+                opacity: 0.9,
+                shininess: 40
+            });
+            const mesh = new THREE.Mesh(geometry, material);
+            
+            const edges = new THREE.EdgesGeometry(geometry);
+            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 2 }));
+            mesh.add(line);
+            
+            mesh.position.set(shiftX, 0, shiftZ); 
+            mesh.rotation.x = -Math.PI / 2;
+            return mesh;
+        }
+
+        function buildShape() {
+            // Clean up old group
+            if (currentGroup) {
+                scene.remove(currentGroup);
+            }
+
+            currentGroup = new THREE.Group();
+            meshes = {}; // Reset mesh references
+
+            let w, h, d;
+            if (state.shapeType === &#39;cube&#39;) {
+                w = h = d = 1.5;
+            } else {
+                w = 1.5; h = 1.0; d = 2.5; 
+            }
+
+            const colors = {
+                base: 0x4287f5,  // Blue
+                back: 0x42f554,  // Green
+                front: 0xf5a742, // Orange
+                left: 0xf5e642,  // Yellow
+                right: 0xa742f5, // Purple
+                top: 0xf54254    // Red
+            };
+
+            const matParams = { color: colors.base, side: THREE.DoubleSide, transparent: true, opacity: 0.9 };
+            const baseMat = new THREE.MeshPhongMaterial(matParams);
+
+            // BASE
+            const baseGeo = new THREE.PlaneGeometry(w, d);
+            const base = new THREE.Mesh(baseGeo, baseMat);
+            base.rotation.x = -Math.PI / 2;
+            base.add(new THREE.LineSegments(new THREE.EdgesGeometry(baseGeo), new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 2 })));
+            currentGroup.add(base);
+
+            // BACK
+            const backPivot = new THREE.Group();
+            backPivot.position.set(0, 0, -d/2);
+            const backMesh = createFlap(w, h, colors.back, 0, -h/2);
+            backPivot.add(backMesh);
+            currentGroup.add(backPivot);
+            meshes.back = backPivot;
+
+            // LEFT
+            const leftPivot = new THREE.Group();
+            leftPivot.position.set(-w/2, 0, 0);
+            const leftMeshGeo = new THREE.PlaneGeometry(h, d);
+            const leftMesh = new THREE.Mesh(leftMeshGeo, new THREE.MeshPhongMaterial({ ...matParams, color: colors.left }));
+            leftMesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(leftMeshGeo), new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 2 })));
+            leftMesh.rotation.x = -Math.PI / 2;
+            leftMesh.position.set(-h/2, 0, 0);
+            leftPivot.add(leftMesh);
+            currentGroup.add(leftPivot);
+            meshes.left = leftPivot;
+
+            // RIGHT
+            const rightPivot = new THREE.Group();
+            rightPivot.position.set(w/2, 0, 0);
+            const rightMeshGeo = new THREE.PlaneGeometry(h, d);
+            const rightMesh = new THREE.Mesh(rightMeshGeo, new THREE.MeshPhongMaterial({ ...matParams, color: colors.right }));
+            rightMesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(rightMeshGeo), new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 2 })));
+            rightMesh.rotation.x = -Math.PI / 2;
+            rightMesh.position.set(h/2, 0, 0);
+            rightPivot.add(rightMesh);
+            currentGroup.add(rightPivot);
+            meshes.right = rightPivot;
+
+            // FRONT (Variant Logic)
+            if (state.netVariant === 1) {
+                // In Variant 1, Front is attached to TOP later
+            } else {
+                const frontPivot = new THREE.Group();
+                frontPivot.position.set(0, 0, d/2);
+                const frontMesh = createFlap(w, h, colors.front, 0, h/2);
+                frontPivot.add(frontMesh);
+                currentGroup.add(frontPivot);
+                meshes.front = frontPivot;
+            }
+
+            // TOP (Variant Logic)
+            const topPivot = new THREE.Group();
+            
+            if (state.netVariant === 0 || state.netVariant === 1) {
+                // Attached to BACK
+                topPivot.position.set(0, 0, -h); 
+                const topMesh = createFlap(w, d, colors.top, 0, -d/2);
+                topPivot.add(topMesh);
+                backPivot.add(topPivot);
+                meshes.top = topPivot;
+            } else if (state.netVariant === 2) {
+                // Attached to LEFT
+                topPivot.position.set(-h, 0, 0);
+                const topMesh = createFlap(w, d, colors.top, -w/2, 0);
+                topPivot.add(topMesh);
+                leftPivot.add(topMesh);
+                meshes.top = topPivot;
+            }
+
+            // Variant 1 Special: Front attached to Top
+            if (state.netVariant === 1) {
+                const frontPivot = new THREE.Group();
+                frontPivot.position.set(0, 0, -d); 
+                const frontMesh = createFlap(w, h, colors.front, 0, -h/2);
+                frontPivot.add(frontMesh);
+                meshes.top.add(frontPivot);
+                meshes.front = frontPivot;
+            }
+
+            scene.add(currentGroup);
+            updateMeshes(); // Apply current rotation state
+        }
+
+        function updateMeshes() {
+            if (!meshes.back) return;
+            const angle = state.foldProgress * (Math.PI / 2);
+
+            meshes.back.rotation.x = angle;
+            meshes.left.rotation.z = -angle;
+            meshes.right.rotation.z = angle;
+
+            if (state.netVariant === 1) {
+                meshes.front.rotation.x = angle;
+            } else {
+                meshes.front.rotation.x = -angle;
+            }
+
+            if (state.netVariant === 0 || state.netVariant === 1) {
+                meshes.top.rotation.x = angle;
+            } else if (state.netVariant === 2) {
+                meshes.top.rotation.z = -angle;
+            }
+        }
+
+        function animateLoop() {
+            requestAnimationFrame(animateLoop);
+            renderer.render(scene, camera);
+        }
+
+        function onWindowResize() {
+            camera.aspect = els.mount.clientWidth / els.mount.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(els.mount.clientWidth, els.mount.clientHeight);
+        }
+
+        // --- Interaction Logic ---
+        function onMouseDown(e) {
+            controls.isDragging = true;
+            controls.previousMousePosition = { x: e.offsetX, y: e.offsetY };
+        }
+
+        function onMouseMove(e) {
+            if (!controls.isDragging) return;
+            
+            const deltaMove = {
+                x: e.offsetX - controls.previousMousePosition.x,
+                y: e.offsetY - controls.previousMousePosition.y
+            };
+
+            if (currentGroup) {
+                const toRadians = (angle) =&gt; angle * (Math.PI / 180);
+                const deltaRotationQuaternion = new THREE.Quaternion()
+                    .setFromEuler(new THREE.Euler(
+                        toRadians(deltaMove.y * 0.5),
+                        toRadians(deltaMove.x * 0.5),
+                        0,
+                        &#39;XYZ&#39;
+                    ));
+                currentGroup.quaternion.multiplyQuaternions(deltaRotationQuaternion, currentGroup.quaternion);
+            }
+            controls.previousMousePosition = { x: e.offsetX, y: e.offsetY };
+        }
+
+        function onMouseUp() {
+            controls.isDragging = false;
+        }
+
+        // --- UI Logic ---
+        function setupUIListeners() {
+            // Shape Buttons
+            els.btnCube.addEventListener(&#39;click&#39;, () =&gt; setShape(&#39;cube&#39;));
+            els.btnPara.addEventListener(&#39;click&#39;, () =&gt; setShape(&#39;parallelepiped&#39;));
+
+            // Slider
+            els.slider.addEventListener(&#39;input&#39;, (e) =&gt; {
+                state.foldProgress = parseFloat(e.target.value);
+                updateUI();
+                stopAnimation();
+            });
+
+            // Animate Button
+            els.btnAnimate.addEventListener(&#39;click&#39;, toggleAnimation);
+            
+            // Reset Button
+            els.btnReset.addEventListener(&#39;click&#39;, reset);
+
+            // Quiz
+            els.quizBtns.correct.addEventListener(&#39;click&#39;, () =&gt; showQuizResult(true));
+            els.quizBtns.wrong.addEventListener(&#39;click&#39;, () =&gt; showQuizResult(false));
+        }
+
+        function setShape(type) {
+            state.shapeType = type;
+            state.foldProgress = 0;
+            stopAnimation();
+            buildShape();
+            updateUI();
+        }
+
+        window.setVariant = function(idx) {
+            state.netVariant = idx;
+            state.foldProgress = 0;
+            stopAnimation();
+            buildShape();
+            updateUI();
+        }
+
+        function toggleAnimation() {
+            if (state.isAnimating) {
+                stopAnimation();
+            } else {
+                startAnimation();
+            }
+        }
+
+        function startAnimation() {
+            state.isAnimating = true;
+            updateUI();
+            
+            state.animationInterval = setInterval(() =&gt; {
+                state.foldProgress &#43;= 0.01;
+                if (state.foldProgress &gt;= 1) {
+                    state.foldProgress = 1;
+                    stopAnimation();
+                }
+                updateUI();
+            }, 20);
+        }
+
+        function stopAnimation() {
+            state.isAnimating = false;
+            clearInterval(state.animationInterval);
+            updateUI();
+        }
+
+        function reset() {
+            state.foldProgress = 0;
+            stopAnimation();
+            updateUI();
+        }
+
+        function updateUI() {
+            // Update Mesh
+            updateMeshes();
+            
+            // Update Slider &amp; Text
+            els.slider.value = state.foldProgress;
+            els.progressText.textContent = Math.round(state.foldProgress * 100);
+
+            // Update Play/Pause Button
+            if (state.isAnimating) {
+                els.textAnimate.textContent = &#34;Тоқтату&#34;;
+                // Lucide icon replacement handled simpler here for pure JS
+                els.btnAnimate.innerHTML = `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;18&#34; height=&#34;18&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;rect x=&#34;6&#34; y=&#34;4&#34; width=&#34;4&#34; height=&#34;16&#34;&gt;&lt;/rect&gt;&lt;rect x=&#34;14&#34; y=&#34;4&#34; width=&#34;4&#34; height=&#34;16&#34;&gt;&lt;/rect&gt;&lt;/svg&gt; Тоқтату`;
+            } else {
+                els.textAnimate.textContent = &#34;Жинау&#34;;
+                els.btnAnimate.innerHTML = `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;18&#34; height=&#34;18&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polygon points=&#34;5 3 19 12 5 21 5 3&#34;&gt;&lt;/polygon&gt;&lt;/svg&gt; Жинау`;
+            }
+
+            // Update Shape Buttons
+            if (state.shapeType === &#39;cube&#39;) {
+                els.btnCube.className = &#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors active-shape&#34;;
+                els.btnPara.className = &#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors btn-default&#34;;
+            } else {
+                els.btnCube.className = &#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors btn-default&#34;;
+                els.btnPara.className = &#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors active-shape-pink&#34;;
+            }
+
+            // Update Variant Buttons
+            els.btnVars.forEach((btn, idx) =&gt; {
+                if (state.netVariant === idx) {
+                    btn.className = &#34;var-btn py-2 rounded-lg text-sm border-2 transition-all active-variant&#34;;
+                } else {
+                    btn.className = &#34;var-btn py-2 rounded-lg text-sm border-2 transition-all border-gray-200 text-gray-600 hover:border-blue-300&#34;;
+                }
+            });
+        }
+
+        function showQuizResult(isCorrect) {
+            els.quizFeedback.classList.remove(&#39;hidden&#39;);
+            els.quizFeedback.classList.remove(&#39;text-green-600&#39;, &#39;text-red-600&#39;, &#39;bg-green-50&#39;, &#39;bg-red-50&#39;);
+            
+            // Reset button styles
+            els.quizBtns.correct.className = &#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl hover:bg-gray-50 border-gray-200 transition-all group&#34;;
+            els.quizBtns.wrong.className = &#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl hover:bg-gray-50 border-gray-200 transition-all group&#34;;
+
+            if (isCorrect) {
+                els.quizFeedback.textContent = &#34;Дұрыс! Т-тәрізді жазба бүктелгенде қабырғалары бір-бірін жауып, толық куб құрайды.&#34;;
+                els.quizFeedback.classList.add(&#39;text-green-700&#39;, &#39;bg-green-100&#39;);
+                els.quizBtns.correct.className = &#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl hover:bg-gray-50 border-green-500 bg-green-50 transition-all group&#34;;
+            } else {
+                els.quizFeedback.textContent = &#34;Қате. 2х2 шаршыны бүктесеңіз, қабырғалар бір-бірінің үстіне түсіп қалады, куб жабылмайды.&#34;;
+                els.quizFeedback.classList.add(&#39;text-red-700&#39;, &#39;bg-red-100&#39;);
+                els.quizBtns.wrong.className = &#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl hover:bg-gray-50 border-red-500 bg-red-50 transition-all group&#34;;
+            }
+        }
+
+        // Run Init
+        init();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg russian-block">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇷🇺
+                            Русский</span>
+                        <button onclick="openFullscreenRu()" class="text-red-600 hover:text-red-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperRu">
+                        <iframe id="taskIframeRu" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;3D Геометрия: Развёртки и Сборка&lt;/title&gt;
+    
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    
+    &lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js&#34;&gt;&lt;/script&gt;
+    
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+
+    &lt;style&gt;
+        body { margin: 0; overflow-x: hidden; }
+        canvas { display: block; }
+        .active-shape { background-color: #2563eb; color: white; }
+        .active-shape-pink { background-color: #db2777; color: white; }
+        .active-variant { border-color: #3b82f6; background-color: #eff6ff; color: #1d4ed8; font-weight: bold; }
+        .btn-default { background-color: #f3f4f6; color: #4b5563; }
+        .btn-default:hover { background-color: #e5e7eb; }
+        
+        /* Grid patterns for Quiz */
+        .grid-t-shape { display: grid; grid-template-columns: repeat(3, 10px); gap: 2px; justify-content: center; }
+        .grid-2x2 { display: grid; grid-template-columns: repeat(2, 10px); gap: 2px; justify-content: center; }
+        .cell { width: 10px; height: 10px; background-color: #cbd5e1; border-radius: 1px; }
+        .cell-blue { background-color: #3b82f6; }
+        .cell-red { background-color: #ef4444; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;flex flex-col min-h-screen bg-gray-50 text-gray-800 font-sans&#34;&gt;
+
+    &lt;header class=&#34;bg-blue-600 text-white p-4 shadow-md&#34;&gt;
+        &lt;div class=&#34;max-w-4xl mx-auto flex justify-between items-center&#34;&gt;
+            &lt;h1 class=&#34;text-xl md:text-2xl font-bold flex items-center gap-2&#34;&gt;
+                &lt;i data-lucide=&#34;box&#34;&gt;&lt;/i&gt; 3D Геометрия: Развёртки и Сборка
+            &lt;/h1&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;main class=&#34;flex-grow p-4 md:p-6 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6&#34;&gt;
+        
+        &lt;div class=&#34;lg:col-span-1 space-y-5&#34;&gt;
+            
+            &lt;div class=&#34;bg-white p-4 rounded-xl shadow-sm border border-gray-200&#34;&gt;
+                &lt;h2 class=&#34;font-semibold mb-3 text-lg text-gray-700&#34;&gt;1. Выберите фигуру:&lt;/h2&gt;
+                &lt;div class=&#34;flex gap-2&#34;&gt;
+                    &lt;button id=&#34;btn-cube&#34; class=&#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors active-shape&#34;&gt;
+                        Куб
+                    &lt;/button&gt;
+                    &lt;button id=&#34;btn-para&#34; class=&#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors btn-default&#34;&gt;
+                        Параллелепипед
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;bg-white p-4 rounded-xl shadow-sm border border-gray-200&#34;&gt;
+                &lt;h2 class=&#34;font-semibold mb-3 text-lg text-gray-700 flex items-center gap-2&#34;&gt;
+                    &lt;i data-lucide=&#34;layers&#34; size=&#34;18&#34;&gt;&lt;/i&gt;
+                    2. Тип развёртки:
+                &lt;/h2&gt;
+                &lt;div class=&#34;grid grid-cols-3 gap-2&#34;&gt;
+                    &lt;button id=&#34;btn-var-0&#34; class=&#34;var-btn py-2 rounded-lg text-sm border-2 transition-all active-variant&#34; onclick=&#34;setVariant(0)&#34;&gt;
+                        Вариант 1&lt;br/&gt;&lt;span class=&#34;text-xs font-normal opacity-75&#34;&gt;Классика&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;button id=&#34;btn-var-1&#34; class=&#34;var-btn py-2 rounded-lg text-sm border-2 transition-all border-gray-200 text-gray-600 hover:border-blue-300&#34; onclick=&#34;setVariant(1)&#34;&gt;
+                        Вариант 2&lt;br/&gt;&lt;span class=&#34;text-xs font-normal opacity-75&#34;&gt;Цепочка&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;button id=&#34;btn-var-2&#34; class=&#34;var-btn py-2 rounded-lg text-sm border-2 transition-all border-gray-200 text-gray-600 hover:border-blue-300&#34; onclick=&#34;setVariant(2)&#34;&gt;
+                        Вариант 3&lt;br/&gt;&lt;span class=&#34;text-xs font-normal opacity-75&#34;&gt;Боковая&lt;/span&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;bg-white p-4 rounded-xl shadow-sm border border-gray-200&#34;&gt;
+                &lt;h2 class=&#34;font-semibold mb-3 text-lg text-gray-700&#34;&gt;3. Процесс сборки:&lt;/h2&gt;
+                &lt;input 
+                    type=&#34;range&#34; 
+                    id=&#34;fold-slider&#34;
+                    min=&#34;0&#34; max=&#34;1&#34; step=&#34;0.01&#34; 
+                    value=&#34;0&#34;
+                    class=&#34;w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600 mb-4&#34;
+                &gt;
+                &lt;div class=&#34;flex gap-2&#34;&gt;
+                    &lt;button id=&#34;btn-animate&#34; class=&#34;flex-1 flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg transition&#34;&gt;
+                        &lt;i id=&#34;icon-play&#34; data-lucide=&#34;play&#34; size=&#34;18&#34;&gt;&lt;/i&gt;
+                        &lt;span id=&#34;text-animate&#34;&gt;Собрать&lt;/span&gt;
+                    &lt;/button&gt;
+                    &lt;button id=&#34;btn-reset&#34; class=&#34;w-12 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg flex items-center justify-center&#34;&gt;
+                        &lt;i data-lucide=&#34;rotate-ccw&#34; size=&#34;18&#34;&gt;&lt;/i&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+                
+                &lt;div class=&#34;mt-4 pt-4 border-t grid grid-cols-3 gap-2 text-xs text-gray-500&#34;&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-blue-500 rounded-full&#34;&gt;&lt;/div&gt;Основание&lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-green-500 rounded-full&#34;&gt;&lt;/div&gt;Задняя&lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-orange-400 rounded-full&#34;&gt;&lt;/div&gt;Передняя&lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-yellow-300 rounded-full&#34;&gt;&lt;/div&gt;Левая&lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-purple-500 rounded-full&#34;&gt;&lt;/div&gt;Правая&lt;/div&gt;
+                    &lt;div class=&#34;flex items-center gap-1&#34;&gt;&lt;div class=&#34;w-3 h-3 bg-red-500 rounded-full&#34;&gt;&lt;/div&gt;Верхняя&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;lg:col-span-2 flex flex-col gap-6&#34;&gt;
+            &lt;div class=&#34;relative bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden h-[450px] cursor-move group&#34;&gt;
+                &lt;div id=&#34;three-mount&#34; class=&#34;w-full h-full&#34;&gt;&lt;/div&gt;
+                
+                &lt;div class=&#34;absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-2 rounded-lg text-sm shadow-sm border border-gray-100&#34;&gt;
+                    &lt;p class=&#34;font-bold text-gray-700&#34;&gt;Сборка: &lt;span id=&#34;progress-text&#34;&gt;0&lt;/span&gt;%&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;absolute bottom-4 left-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-medium text-gray-500 pointer-events-none&#34;&gt;
+                  Можно вращать мышкой
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&#34;bg-white p-5 rounded-xl shadow-sm border border-gray-200&#34;&gt;
+                &lt;h3 class=&#34;text-md font-bold text-gray-800 mb-2 flex items-center gap-2&#34;&gt;
+                    &lt;i data-lucide=&#34;brain-circuit&#34; class=&#34;text-blue-500&#34;&gt;&lt;/i&gt; Мозговой штурм:
+                &lt;/h3&gt;
+                &lt;p class=&#34;text-gray-600 text-sm mb-4&#34;&gt;
+                    Из какой из этих фигур можно собрать **куб**? Нажми на правильный ответ:
+                &lt;/p&gt;
+                &lt;div class=&#34;flex gap-4 overflow-x-auto pb-2&#34;&gt;
+                     &lt;button id=&#34;quiz-correct&#34; class=&#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl hover:bg-gray-50 border-gray-200 transition-all group&#34;&gt;
+                        &lt;div class=&#34;h-10 mb-2 flex items-center justify-center&#34;&gt;
+                            &lt;div class=&#34;grid-t-shape&#34;&gt;
+                                &lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;
+                                &lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;
+                                &lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;
+                                &lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-blue&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;span class=&#34;text-xs font-bold block text-center text-gray-600 group-hover:text-gray-800&#34;&gt;Т-образная&lt;/span&gt;
+                     &lt;/button&gt;
+
+                     &lt;button id=&#34;quiz-wrong&#34; class=&#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl hover:bg-gray-50 border-gray-200 transition-all group&#34;&gt;
+                        &lt;div class=&#34;h-10 mb-2 flex items-center justify-center&#34;&gt;
+                            &lt;div class=&#34;grid-2x2&#34;&gt;
+                                &lt;div class=&#34;cell cell-red&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-red&#34;&gt;&lt;/div&gt;
+                                &lt;div class=&#34;cell cell-red&#34;&gt;&lt;/div&gt;&lt;div class=&#34;cell cell-red&#34;&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;span class=&#34;text-xs font-bold block text-center text-gray-600 group-hover:text-gray-800&#34;&gt;Квадрат 2x2&lt;/span&gt;
+                     &lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div id=&#34;quiz-feedback&#34; class=&#34;mt-3 text-sm font-medium p-3 rounded-lg hidden&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+
+    &lt;script&gt;
+        // --- State Management ---
+        const state = {
+            shapeType: &#39;cube&#39;, 
+            netVariant: 0,     
+            foldProgress: 0,   
+            isAnimating: false,
+            animationInterval: null
+        };
+
+        const els = {
+            mount: document.getElementById(&#39;three-mount&#39;),
+            slider: document.getElementById(&#39;fold-slider&#39;),
+            progressText: document.getElementById(&#39;progress-text&#39;),
+            btnAnimate: document.getElementById(&#39;btn-animate&#39;),
+            textAnimate: document.getElementById(&#39;text-animate&#39;),
+            iconPlay: document.getElementById(&#39;icon-play&#39;),
+            btnReset: document.getElementById(&#39;btn-reset&#39;),
+            btnCube: document.getElementById(&#39;btn-cube&#39;),
+            btnPara: document.getElementById(&#39;btn-para&#39;),
+            btnVars: [
+                document.getElementById(&#39;btn-var-0&#39;),
+                document.getElementById(&#39;btn-var-1&#39;),
+                document.getElementById(&#39;btn-var-2&#39;)
+            ],
+            quizBtns: {
+                correct: document.getElementById(&#39;quiz-correct&#39;),
+                wrong: document.getElementById(&#39;quiz-wrong&#39;)
+            },
+            quizFeedback: document.getElementById(&#39;quiz-feedback&#39;)
+        };
+
+        let scene, camera, renderer, currentGroup;
+        let meshes = {}; 
+        let controls = { isDragging: false, previousMousePosition: { x: 0, y: 0 } };
+
+        function init() {
+            lucide.createIcons();
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xf0f9ff);
+            camera = new THREE.PerspectiveCamera(45, els.mount.clientWidth / els.mount.clientHeight, 0.1, 1000);
+            camera.position.set(4, 6, 8);
+            camera.lookAt(0, 0, 0);
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(els.mount.clientWidth, els.mount.clientHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.setPixelRatio(window.devicePixelRatio);
+            els.mount.appendChild(renderer.domElement);
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            dirLight.position.set(5, 10, 7);
+            scene.add(dirLight);
+            window.addEventListener(&#39;resize&#39;, onWindowResize);
+            renderer.domElement.addEventListener(&#39;mousedown&#39;, onMouseDown);
+            renderer.domElement.addEventListener(&#39;mousemove&#39;, onMouseMove);
+            window.addEventListener(&#39;mouseup&#39;, onMouseUp);
+            buildShape();
+            animateLoop();
+            setupUIListeners();
+        }
+
+        function createFlap(width, height, color, shiftX, shiftZ) {
+            const geometry = new THREE.PlaneGeometry(width, height);
+            const material = new THREE.MeshPhongMaterial({ 
+                color: color, side: THREE.DoubleSide, transparent: true, opacity: 0.9, shininess: 40
+            });
+            const mesh = new THREE.Mesh(geometry, material);
+            const edges = new THREE.EdgesGeometry(geometry);
+            const line = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 2 }));
+            mesh.add(line);
+            mesh.position.set(shiftX, 0, shiftZ); 
+            mesh.rotation.x = -Math.PI / 2;
+            return mesh;
+        }
+
+        function buildShape() {
+            if (currentGroup) scene.remove(currentGroup);
+            currentGroup = new THREE.Group();
+            meshes = {}; 
+            let w, h, d;
+            if (state.shapeType === &#39;cube&#39;) { w = h = d = 1.5; } 
+            else { w = 1.5; h = 1.0; d = 2.5; }
+            const colors = { base: 0x4287f5, back: 0x42f554, front: 0xf5a742, left: 0xf5e642, right: 0xa742f5, top: 0xf54254 };
+            const matParams = { color: colors.base, side: THREE.DoubleSide, transparent: true, opacity: 0.9 };
+            const baseGeo = new THREE.PlaneGeometry(w, d);
+            const base = new THREE.Mesh(baseGeo, new THREE.MeshPhongMaterial(matParams));
+            base.rotation.x = -Math.PI / 2;
+            base.add(new THREE.LineSegments(new THREE.EdgesGeometry(baseGeo), new THREE.LineBasicMaterial({ color: 0x000000 })));
+            currentGroup.add(base);
+            const backPivot = new THREE.Group();
+            backPivot.position.set(0, 0, -d/2);
+            const backMesh = createFlap(w, h, colors.back, 0, -h/2);
+            backPivot.add(backMesh);
+            currentGroup.add(backPivot);
+            meshes.back = backPivot;
+            const leftPivot = new THREE.Group();
+            leftPivot.position.set(-w/2, 0, 0);
+            const leftMeshGeo = new THREE.PlaneGeometry(h, d);
+            const leftMesh = new THREE.Mesh(leftMeshGeo, new THREE.MeshPhongMaterial({ ...matParams, color: colors.left }));
+            leftMesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(leftMeshGeo), new THREE.LineBasicMaterial({ color: 0x000000 })));
+            leftMesh.rotation.x = -Math.PI / 2;
+            leftMesh.position.set(-h/2, 0, 0);
+            leftPivot.add(leftMesh);
+            currentGroup.add(leftPivot);
+            meshes.left = leftPivot;
+            const rightPivot = new THREE.Group();
+            rightPivot.position.set(w/2, 0, 0);
+            const rightMeshGeo = new THREE.PlaneGeometry(h, d);
+            const rightMesh = new THREE.Mesh(rightMeshGeo, new THREE.MeshPhongMaterial({ ...matParams, color: colors.right }));
+            rightMesh.add(new THREE.LineSegments(new THREE.EdgesGeometry(rightMeshGeo), new THREE.LineBasicMaterial({ color: 0x000000 })));
+            rightMesh.rotation.x = -Math.PI / 2;
+            rightMesh.position.set(h/2, 0, 0);
+            rightPivot.add(rightMesh);
+            currentGroup.add(rightPivot);
+            meshes.right = rightPivot;
+            if (state.netVariant !== 1) {
+                const frontPivot = new THREE.Group();
+                frontPivot.position.set(0, 0, d/2);
+                const frontMesh = createFlap(w, h, colors.front, 0, h/2);
+                frontPivot.add(frontMesh);
+                currentGroup.add(frontPivot);
+                meshes.front = frontPivot;
+            }
+            const topPivot = new THREE.Group();
+            if (state.netVariant === 0 || state.netVariant === 1) {
+                topPivot.position.set(0, 0, -h); 
+                const topMesh = createFlap(w, d, colors.top, 0, -d/2);
+                topPivot.add(topMesh);
+                backPivot.add(topPivot);
+                meshes.top = topPivot;
+            } else if (state.netVariant === 2) {
+                topPivot.position.set(-h, 0, 0);
+                const topMesh = createFlap(w, d, colors.top, -w/2, 0);
+                topPivot.add(topMesh);
+                leftPivot.add(topMesh);
+                meshes.top = topPivot;
+            }
+            if (state.netVariant === 1) {
+                const frontPivot = new THREE.Group();
+                frontPivot.position.set(0, 0, -d); 
+                const frontMesh = createFlap(w, h, colors.front, 0, -h/2);
+                frontPivot.add(frontMesh);
+                meshes.top.add(frontPivot);
+                meshes.front = frontPivot;
+            }
+            scene.add(currentGroup);
+            updateMeshes();
+        }
+
+        function updateMeshes() {
+            if (!meshes.back) return;
+            const angle = state.foldProgress * (Math.PI / 2);
+            meshes.back.rotation.x = angle;
+            meshes.left.rotation.z = -angle;
+            meshes.right.rotation.z = angle;
+            if (state.netVariant === 1) meshes.front.rotation.x = angle;
+            else meshes.front.rotation.x = -angle;
+            if (state.netVariant === 0 || state.netVariant === 1) meshes.top.rotation.x = angle;
+            else if (state.netVariant === 2) meshes.top.rotation.z = -angle;
+        }
+
+        function animateLoop() { requestAnimationFrame(animateLoop); renderer.render(scene, camera); }
+        function onWindowResize() {
+            camera.aspect = els.mount.clientWidth / els.mount.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(els.mount.clientWidth, els.mount.clientHeight);
+        }
+
+        function onMouseDown(e) { controls.isDragging = true; controls.previousMousePosition = { x: e.offsetX, y: e.offsetY }; }
+        function onMouseMove(e) {
+            if (!controls.isDragging) return;
+            const deltaMove = { x: e.offsetX - controls.previousMousePosition.x, y: e.offsetY - controls.previousMousePosition.y };
+            const toRadians = (angle) =&gt; angle * (Math.PI / 180);
+            const deltaRotationQuaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(toRadians(deltaMove.y * 0.5), toRadians(deltaMove.x * 0.5), 0, &#39;XYZ&#39;));
+            currentGroup.quaternion.multiplyQuaternions(deltaRotationQuaternion, currentGroup.quaternion);
+            controls.previousMousePosition = { x: e.offsetX, y: e.offsetY };
+        }
+        function onMouseUp() { controls.isDragging = false; }
+
+        function setupUIListeners() {
+            els.btnCube.addEventListener(&#39;click&#39;, () =&gt; setShape(&#39;cube&#39;));
+            els.btnPara.addEventListener(&#39;click&#39;, () =&gt; setShape(&#39;parallelepiped&#39;));
+            els.slider.addEventListener(&#39;input&#39;, (e) =&gt; {
+                state.foldProgress = parseFloat(e.target.value);
+                updateUI(); stopAnimation();
+            });
+            els.btnAnimate.addEventListener(&#39;click&#39;, toggleAnimation);
+            els.btnReset.addEventListener(&#39;click&#39;, reset);
+            els.quizBtns.correct.addEventListener(&#39;click&#39;, () =&gt; showQuizResult(true));
+            els.quizBtns.wrong.addEventListener(&#39;click&#39;, () =&gt; showQuizResult(false));
+        }
+
+        function setShape(type) { state.shapeType = type; state.foldProgress = 0; stopAnimation(); buildShape(); updateUI(); }
+        window.setVariant = function(idx) { state.netVariant = idx; state.foldProgress = 0; stopAnimation(); buildShape(); updateUI(); }
+
+        function toggleAnimation() { if (state.isAnimating) stopAnimation(); else startAnimation(); }
+        function startAnimation() {
+            state.isAnimating = true; updateUI();
+            state.animationInterval = setInterval(() =&gt; {
+                state.foldProgress &#43;= 0.01;
+                if (state.foldProgress &gt;= 1) { state.foldProgress = 1; stopAnimation(); }
+                updateUI();
+            }, 20);
+        }
+        function stopAnimation() { state.isAnimating = false; clearInterval(state.animationInterval); updateUI(); }
+        function reset() { state.foldProgress = 0; stopAnimation(); updateUI(); }
+
+        function updateUI() {
+            updateMeshes();
+            els.slider.value = state.foldProgress;
+            els.progressText.textContent = Math.round(state.foldProgress * 100);
+            if (state.isAnimating) {
+                els.btnAnimate.innerHTML = `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;18&#34; height=&#34;18&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;rect x=&#34;6&#34; y=&#34;4&#34; width=&#34;4&#34; height=&#34;16&#34;&gt;&lt;/rect&gt;&lt;rect x=&#34;14&#34; y=&#34;4&#34; width=&#34;4&#34; height=&#34;16&#34;&gt;&lt;/rect&gt;&lt;/svg&gt; Остановить`;
+            } else {
+                els.btnAnimate.innerHTML = `&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;18&#34; height=&#34;18&#34; viewBox=&#34;0 0 24 24&#34; fill=&#34;none&#34; stroke=&#34;currentColor&#34; stroke-width=&#34;2&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;&lt;polygon points=&#34;5 3 19 12 5 21 5 3&#34;&gt;&lt;/polygon&gt;&lt;/svg&gt; Собрать`;
+            }
+            if (state.shapeType === &#39;cube&#39;) {
+                els.btnCube.className = &#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors active-shape&#34;;
+                els.btnPara.className = &#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors btn-default&#34;;
+            } else {
+                els.btnCube.className = &#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors btn-default&#34;;
+                els.btnPara.className = &#34;flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors active-shape-pink&#34;;
+            }
+            els.btnVars.forEach((btn, idx) =&gt; {
+                btn.className = (state.netVariant === idx) ? &#34;var-btn py-2 rounded-lg text-sm border-2 transition-all active-variant&#34; : &#34;var-btn py-2 rounded-lg text-sm border-2 transition-all border-gray-200 text-gray-600 hover:border-blue-300&#34;;
+            });
+        }
+
+        function showQuizResult(isCorrect) {
+            els.quizFeedback.classList.remove(&#39;hidden&#39;, &#39;text-green-700&#39;, &#39;bg-green-100&#39;, &#39;text-red-700&#39;, &#39;bg-red-100&#39;);
+            els.quizBtns.correct.className = &#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl hover:bg-gray-50 border-gray-200 transition-all group&#34;;
+            els.quizBtns.wrong.className = &#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl hover:bg-gray-50 border-gray-200 transition-all group&#34;;
+            if (isCorrect) {
+                els.quizFeedback.textContent = &#34;Правильно! Т-образная развёртка при складывании образует полный куб.&#34;;
+                els.quizFeedback.classList.add(&#39;text-green-700&#39;, &#39;bg-green-100&#39;);
+                els.quizBtns.correct.className = &#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl border-green-500 bg-green-50 transition-all group&#34;;
+            } else {
+                els.quizFeedback.textContent = &#34;Ошибка. Если сложить квадрат 2х2, грани наложатся друг на друга, и куб не закроется.&#34;;
+                els.quizFeedback.classList.add(&#39;text-red-700&#39;, &#39;bg-red-100&#39;);
+                els.quizBtns.wrong.className = &#34;flex-1 min-w-[100px] p-3 border-2 rounded-xl border-red-500 bg-red-50 transition-all group&#34;;
+            }
+        }
+        init();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+        
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            💡 Екі тілде де қол жетімді / Доступно на двух языках
+        </div>
+        
+
+        <script>
+            
+            var elem = document.getElementById("fullscreenWrapper");
+            var openBtn = document.getElementById("openFsBtn");
+            var closeBtn = document.getElementById("closeFsBtn");
+
+            function openFullscreen() {
+                if (elem && elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem && elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem && elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            function closeFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+
+            function updateButtons() {
+                if (openBtn && closeBtn) {
+                    if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                        openBtn.classList.add("hidden");
+                        closeBtn.classList.remove("hidden");
+                    } else {
+                        openBtn.classList.remove("hidden");
+                        closeBtn.classList.add("hidden");
+                    }
+                }
+            }
+
+            
+            function openFullscreenKz() {
+                var elemKz = document.getElementById("fullscreenWrapperKz");
+                if (elemKz && elemKz.requestFullscreen) {
+                    elemKz.requestFullscreen();
+                } else if (elemKz && elemKz.webkitRequestFullscreen) {
+                    elemKz.webkitRequestFullscreen();
+                } else if (elemKz && elemKz.msRequestFullscreen) {
+                    elemKz.msRequestFullscreen();
+                }
+            }
+
+            
+            function openFullscreenRu() {
+                var elemRu = document.getElementById("fullscreenWrapperRu");
+                if (elemRu && elemRu.requestFullscreen) {
+                    elemRu.requestFullscreen();
+                } else if (elemRu && elemRu.webkitRequestFullscreen) {
+                    elemRu.webkitRequestFullscreen();
+                } else if (elemRu && elemRu.msRequestFullscreen) {
+                    elemRu.msRequestFullscreen();
+                }
+            }
+
+            document.addEventListener("fullscreenchange", updateButtons);
+            document.addEventListener("webkitfullscreenchange", updateButtons);
+            document.addEventListener("msfullscreenchange", updateButtons);
+
+            
+            (function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const lang = urlParams.get('lang'); 
+
+                if (lang === 'kz') {
+                    
+                    const ruBlock = document.querySelector('.russian-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (ruBlock) ruBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                } else if (lang === 'ru') {
+                    
+                    const kzBlock = document.querySelector('.kazakh-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (kzBlock) kzBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                }
+                
+            })();
+        </script>
+
+        
+        
+        <div class="bg-white p-6 rounded-2xl w-full mt-8 shadow-lg border border-purple-100 max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-4">
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                    <span class="text-white text-lg">📋</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800">Описание задания</h3>
+            </div>
+            <div class="text-gray-700 leading-relaxed prose max-w-none">
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg">
+    <p class="text-gray-700">🎯 <strong>Инструкция:</strong> Выполните задание, следуя указаниям на экране.</p>
+    <p class="text-gray-600 mt-2">💡 Если задание кажется сложным, попробуйте ещё раз!</p>
+</div>
+            </div>
+        </div>
+        
+
+        
+        <div class="w-full max-w-4xl mx-auto my-8 px-4">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9724842226086594"
+                data-ad-slot="7527178719" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    
+    <div class="w-full max-w-4xl mx-auto px-4 py-8">
+        <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 md:p-8 rounded-2xl shadow-lg border-2 border-purple-200">
+            
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center animate-pulse">
+                    <span class="text-2xl">📢</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center">Поделитесь с коллегами!</h3>
+            </div>
+
+            
+            <div class="space-y-2 mb-6 text-center">
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇰🇿</span>
+                    <span>Сайттың дамуына үлес қосу үшін, мұғалімдер чатында бөлісіңіз!</span>
+                </p>
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇷🇺</span>
+                    <span>Помогите развитию сайта — поделитесь в чатах учителей!</span>
+                </p>
+            </div>
+
+            
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                
+                <a id="shareWhatsApp" href="#"
+                    class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
+
+                
+                <a id="shareTelegram" href="#"
+                    class="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                    </svg>
+                    <span>Telegram</span>
+                </a>
+
+                
+                <button id="shareGeneric"
+                    class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                    <span>Поделиться</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        (function () {
+            const pageUrl = window.location.href;
+            const pageTitle = document.title;
+            const shareMessage = `📐 VisualMath - ${pageTitle}\n\nБесплатные презентации и задания по математике!\nМатематика бойынша тегін презентациялар және тапсырмалар!\n\n`;
+
+            
+            document.getElementById('shareWhatsApp').addEventListener('click', function (e) {
+                e.preventDefault();
+                const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage + pageUrl)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+
+            
+            document.getElementById('shareTelegram').addEventListener('click', function (e) {
+                e.preventDefault();
+                const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareMessage)}`;
+                window.open(telegramUrl, '_blank');
+            });
+
+            
+            document.getElementById('shareGeneric').addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: pageTitle,
+                            text: shareMessage,
+                            url: pageUrl
+                        });
+                    } catch (err) {
+                        if (err.name !== 'AbortError') {
+                            copyToClipboard();
+                        }
+                    }
+                } else {
+                    copyToClipboard();
+                }
+            });
+
+            function copyToClipboard() {
+                const textToCopy = shareMessage + pageUrl;
+                navigator.clipboard.writeText(textToCopy).then(function () {
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                }, function (err) {
+                    
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                });
+            }
+        })();
+    </script>
+
+    <footer class="bg-gray-900 text-white p-8 mt-auto relative z-10">
+        <div class="container mx-auto text-center">
+            <div class="text-2xl mb-4">📐 VisualMath</div>
+            <p class="text-gray-400 mb-4">&copy; 2026 VisualMath. Все права защищены.</p>
+            <div class="space-x-6">
+                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Политика
+                    конфиденциальности</a>
+                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Условия
+                    использования</a>
+                <a href="/about" class="text-gray-400 hover:text-white transition-colors">О нас</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

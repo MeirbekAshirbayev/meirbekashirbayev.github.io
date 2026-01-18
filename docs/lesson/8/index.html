@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Қосындыны табудың Гаусс әдісі | Метод Гаусса для вычисления суммы - Презентация | VisualMath
+    </title>
+    <meta name="description"
+        content="Метод Гаусса для вычисления суммы - Қосындыны табудың Гаусс әдісі. 5 класс математика. Готовая презентация (PPT), слайды и интерактивные задания. Бесплатно онлайн.">
+    <meta name="keywords"
+        content="Қосындыны табудың Гаусс әдісі, Метод Гаусса для вычисления суммы, 5 класс, 5 сынып, презентация, ppt, слайд, математика, урок, сабақ">
+
+    
+    <link rel="canonical" href="https://meirbekashirbayev.github.io/lesson/8" />
+
+    
+    <link rel="amphtml" href="/lesson/8/amp.html">
+
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title"
+        content="Қосындыны табудың Гаусс әдісі | Метод Гаусса для вычисления суммы - Презентация | VisualMath">
+    <meta property="og:description"
+        content="Метод Гаусса для вычисления суммы - 5 класс математика. Готовая презентация (PPT) и интерактивные задания.">
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Метод Гаусса для вычисления суммы",
+      "description": "Метод Гаусса для вычисления суммы - Қосындыны табудың Гаусс әдісі. 5 класс математика. Готовая презентация (PPT), слайды и интерактивные задания.",
+      "provider": {
+        "@type": "Organization",
+        "name": "VisualMath",
+        "url": "https://meirbekashirbayev.github.io"
+      },
+      "educationalLevel": "Grade 5",
+      "inLanguage": ["kk", "ru"],
+      "learningResourceType": "Презентация",
+      "teaches": "Математика",
+      "keywords": "5 класс математика презентация, ppt скачать бесплатно, слайды, Метод Гаусса для вычисления суммы"
+    }
+    </script>
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://meirbekashirbayev.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "5-класс",
+          "item": "https://meirbekashirbayev.github.io/grade/5"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Метод Гаусса для вычисления суммы"
+        }
+      ]
+    }
+    </script>
+
+    
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E38F1VR05Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E38F1VR05Z');
+    </script>
+
+    
+    <meta name="google-adsense-account" content="ca-pub-9724842226086594">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .embed-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 16px;
+        }
+
+        .embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.25);
+        }
+
+         
+        div[id^="fsContainer"]:fullscreen {
+            padding-bottom: 0 !important;
+            height: 100vh !important;
+            background-color: #f9fafb;
+             
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+         
+        div[id^="fsContainer"]:-webkit-full-screen {
+            padding-bottom: 0 !important;
+            height: 100vh !important;
+            background-color: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div[id^="fsContainer"]:-ms-fullscreen {
+            padding-bottom: 0 !important;
+            height: 100vh !important;
+            background-color: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold flex items-center gap-2 text-purple-600">
+                <span class="text-3xl" role="img" aria-label="Математика геометрия">📐</span>
+                <span>VisualMath</span>
+            </a>
+            <div class="flex items-center gap-3">
+                <a href="/about"
+                    class="flex items-center gap-2 bg-purple-50 hover:bg-purple-100 text-purple-600 px-3 py-2 rounded-lg transition-colors text-sm font-semibold">
+                    <span>💎</span>
+                    <span class="hidden md:inline">О нас</span>
+                </a>
+                <a href="/grade/5"
+                    class="flex items-center gap-2 gradient-bg text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity">
+                    <span>←</span>
+                    <span class="hidden sm:inline">5-класс</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 max-w-4xl flex-grow">
+
+        
+        <nav aria-label="Breadcrumb" class="mb-4">
+            <ol class="flex items-center gap-2 text-sm text-gray-600">
+                <li><a href="/" class="hover:text-purple-600 transition-colors">Главная</a></li>
+                <li><span class="text-gray-400">›</span></li>
+                <li><a href="/grade/5"
+                        class="hover:text-purple-600 transition-colors">5-класс</a></li>
+                <li><span class="text-gray-400">›</span></li>
+                <li class="text-gray-800 font-medium">Метод Гаусса для вычисления суммы</li>
+            </ol>
+        </nav>
+
+        
+        <div class="mb-8">
+            <div class="flex items-center gap-2 text-purple-600 text-sm font-medium mb-2">
+                <span>5-класс</span>
+                <span>•</span>
+                <span>Урок</span>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900">Метод Гаусса для вычисления суммы - 5 класс презентация</h1>
+        </div>
+
+        
+        <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-2xl mb-6 border border-purple-200">
+            <div class="prose max-w-none">
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    <strong>Добро пожаловать на урок математики!</strong> На этой странице вы найдете полный набор
+                    образовательных материалов для 5-го класса по теме
+                    <em>"Метод Гаусса для вычисления суммы"</em>.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    Наша платформа VisualMath предоставляет качественные презентации в формате PPT (слайды) на казахском
+                    и русском языках,
+                    которые помогут учителям провести эффективный урок, а ученикам — лучше усвоить материал. Все
+                    материалы разработаны
+                    в соответствии с программой Республики Казахстан и доступны бесплатно.
+                </p>
+                <p class="text-gray-700 leading-relaxed">
+                    <strong>Что включено в урок:</strong> готовые презентации (Canva), теоретический материал,
+                    интерактивные задания для закрепления знаний.
+                    Материалы подходят для использования в классе и для самостоятельного изучения дома.
+                </p>
+            </div>
+        </div>
+
+        
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+            
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Қосындыны табудың Гаусс әдісі</h2>
+                <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center" role="img"
+                            aria-label="Презентация иконкасы">
+                            <span class="text-white text-lg" role="img" aria-label="Слайды">📊</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800"><span role="img"
+                                aria-label="Қазақстан тілі">🇰🇿</span> Презентация (Қазақша)</h3>
+                    </div>
+                    <div class="embed-container">
+                        <iframe loading="lazy" src="https://www.canva.com/design/DAG5WXsp5bM/5QTKXK6fx-ia8qYF4jk5YQ/view?embed" allowfullscreen="allowfullscreen"
+                            allow="fullscreen"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Метод Гаусса для вычисления суммы</h2>
+                <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center" role="img"
+                            aria-label="Презентация иконкасы">
+                            <span class="text-white text-lg" role="img" aria-label="Слайды">📊</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800"><span role="img"
+                                aria-label="Русский язык">🇷🇺</span> Презентация (Русский)</h3>
+                    </div>
+                    <div class="embed-container">
+                        <iframe loading="lazy" src="https://www.canva.com/design/DAG8cFj8-JM/ab5QHoUe8Vvjl9A07C3BLQ/view?embed" allowfullscreen="allowfullscreen"
+                            allow="fullscreen"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        
+        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-xl mb-6 border border-blue-200 shadow-sm">
+            <div class="flex items-center gap-2 mb-3">
+                <div
+                    class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white text-sm">📚</span>
+                </div>
+                <h2 class="text-lg font-bold text-gray-800">Теория / Основные понятия</h2>
+            </div>
+            <div class="prose prose-sm prose-blue max-w-none text-gray-700">
+                <div class="bg-indigo-50 p-6 rounded-lg border-l-4 border-indigo-500 shadow-sm">
+    <h3 class="font-bold text-indigo-800 text-xl mb-3">🔢 Метод Гаусса: Быстрое сложение</h3>
+    
+    <p class="text-gray-700 leading-relaxed">
+        <strong>Метод Гаусса</strong> — это способ быстрого нахождения суммы последовательных чисел. 
+        Основная идея заключается в том, что сумма пар чисел, равноотстоящих от концов ряда, всегда <strong>одинакова</strong>.
+    </p>
+
+    <div class="my-4 bg-white p-4 rounded-md border border-indigo-100 shadow-inner">
+        <p class="font-bold text-indigo-900 mb-2">Пример: Найдите сумму чисел от 1 до 10</p>
+        <div class="space-y-1 font-mono text-sm text-gray-800">
+            <p>1, 2, 3, 4, 5, 6, 7, 8, 9, 10</p>
+            <p class="text-blue-600">Группируем пары:</p>
+            <p>1 + 10 = <span class="font-bold">11</span></p>
+            <p>2 + 9 = <span class="font-bold">11</span></p>
+            <p>3 + 8 = <span class="font-bold">11</span></p>
+            <p>4 + 7 = <span class="font-bold">11</span></p>
+            <p>5 + 6 = <span class="font-bold">11</span></p>
+        </div>
+        
+        <p class="mt-3 text-gray-700">
+            Всего получилось <strong>5 пар</strong>, каждая из которых равна <strong>11</strong>.
+            <br>
+            <span class="text-lg font-bold text-indigo-700">Итого: 11 × 5 = 55</span>
+        </p>
+    </div>
+
+    <div class="bg-indigo-600 text-white p-4 rounded-lg">
+        <p class="font-bold mb-1">💡 Универсальная формула:</p>
+        <p class="text-xl font-mono text-center">S = (a₁ + aₙ) × n ÷ 2</p>
+        <ul class="text-xs mt-2 opacity-90 list-disc list-inside">
+            <li>a₁ — первое число</li>
+            <li>aₙ — последнее число</li>
+            <li>n — количество чисел в ряду</li>
+        </ul>
+    </div>
+</div>
+            </div>
+        </div>
+        
+
+        
+        <div class="mb-6">
+            <button onclick="toggleMethodology()"
+                class="w-full bg-gradient-to-r from-indigo-50 to-purple-50 hover:from-indigo-100 hover:to-purple-100 p-4 rounded-xl border-2 border-indigo-200 transition-all flex items-center justify-between group">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white text-lg">👨‍🏫</span>
+                    </div>
+                    <span class="text-lg font-bold text-gray-800">Методические рекомендации для учителей</span>
+                </div>
+                <svg id="methodologyIcon" class="w-6 h-6 text-indigo-600 transform transition-transform" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+
+            <div id="methodologyContent" class="hidden mt-3 bg-white p-6 rounded-xl border border-indigo-200 shadow-sm">
+                <div class="prose prose-sm max-w-none text-gray-700">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">📋 Как использовать материалы урока</h3>
+
+                    <p><strong>Презентации:</strong> Используйте интерактивные слайды для объяснения темы. Презентации
+                        доступны в двух вариантах — на казахском и русском языках. Вы можете показывать их как в
+                        полноэкранном режиме, так и встроенными на странице.</p>
+
+                    <p><strong>Теоретический блок:</strong> Ключевые определения, формулы и правила представлены в
+                        удобном формате для быстрого повторения. Рекомендуем сначала объяснить теорию с помощью
+                        презентации, а затем закрепить основные понятия с учениками.</p>
+
+                    <p><strong>Интерактивные задания:</strong> После изучения теории предложите ученикам выполнить
+                        практические задания. Они откроются в новом окне для удобства работы. Задания помогают проверить
+                        понимание материала и развивают навыки применения знаний.</p>
+
+                    <p><strong>Структура урока (рекомендация):</strong></p>
+                    <ul>
+                        <li>5-7 минут — введение в тему с помощью презентации</li>
+                        <li>15-20 минут — объяснение теории и разбор примеров</li>
+                        <li>10-15 минут — самостоятельная работа с интерактивными заданиями</li>
+                        <li>5-8 минут — обсуждение результатов и ответы на вопросы</li>
+                    </ul>
+
+
+                    <p><strong>Дополнительно:</strong> Для получения редактируемой копии презентации на платформе
+                        Canva.com
+                        (дубликат презентации для личного использования и редактирования) стоимость составляет 2000 тг.
+                        Поделитесь ссылкой с коллегами через WhatsApp или Telegram — это поможет другим учителям
+                        получить доступ к
+                        качественным ресурсам.</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function toggleMethodology() {
+                const content = document.getElementById('methodologyContent');
+                const icon = document.getElementById('methodologyIcon');
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            }
+        </script>
+
+        
+        <div class="my-8">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9724842226086594"
+                data-ad-slot="7527178719" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        
+        
+        <div class="mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
+                    <span class="text-white text-lg">🎮</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">Интерактивные задания</h2>
+            </div>
+
+            <div class="space-y-8">
+                
+                
+                <div class="mb-4">
+                    <h3 class="text-xl font-bold text-gray-900 text-center">Юный Гаусс: Мир Сумм</h3>
+                </div>
+
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-purple-200">
+                        
+                        <div class="bg-gradient-to-r from-blue-500 to-cyan-600 p-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl">🇰🇿</span>
+                                    <h4 class="text-lg font-bold text-white">Қазақша</h4>
+                                </div>
+                                <button onclick="openTaskFullscreen('142', 'kz')"
+                                    class="flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg transition-all transform hover:scale-105">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4">
+                                        </path>
+                                    </svg>
+                                    <span class="hidden lg:inline text-sm">Толық экран</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        
+                        <div id="fsContainer142" class="relative bg-gray-50 group"
+                            style="padding-bottom: 75%; height: 0;">
+                            <iframe id="taskFrame142" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Жас Гаусс: Қосындылар Әлемі&lt;/title&gt;
+    &lt;!-- Tailwind CSS --&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;!-- Lucide Icons --&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap&#39;);
+        
+        body {
+            font-family: &#39;Nunito&#39;, sans-serif;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .animate-bounce-short {
+            animation: bounceShort 1s infinite;
+        }
+        
+        .transition-height {
+            transition: height 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceShort {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c7c7cc; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1aa; 
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center p-4 text-slate-800&#34;&gt;
+
+    &lt;div class=&#34;w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden min-h-[650px] flex flex-col relative&#34;&gt;
+        &lt;!-- Header --&gt;
+        &lt;div class=&#34;bg-indigo-600 p-4 text-white flex justify-between items-center shadow-md z-10&#34;&gt;
+            &lt;div class=&#34;flex items-center space-x-2&#34;&gt;
+                &lt;i data-lucide=&#34;calculator&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt;
+                &lt;h1 class=&#34;text-xl font-bold&#34;&gt;Жас Гаусс: Қосындылар Әлемі&lt;/h1&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;flex items-center space-x-4&#34;&gt;
+                &lt;div class=&#34;flex items-center space-x-1 bg-indigo-700 px-3 py-1 rounded-full border border-indigo-500&#34;&gt;
+                    &lt;i data-lucide=&#34;star&#34; class=&#34;w-4 h-4 text-yellow-400 fill-yellow-400&#34;&gt;&lt;/i&gt;
+                    &lt;span id=&#34;score-display&#34; class=&#34;font-bold&#34;&gt;0&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Main Content Area --&gt;
+        &lt;div id=&#34;app-content&#34; class=&#34;flex-1 p-6 overflow-y-auto relative&#34;&gt;
+            &lt;!-- Content will be injected here via JS --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- State Management ---
+        const state = {
+            currentScreen: &#39;menu&#39;,
+            score: 0,
+            completedLevels: [],
+            // Level Specific States
+            introStep: 0,
+            level1SubLevel: 0,
+            level1ShowHint: false,
+            level2Selected: null,
+            level2ShowExplanation: false,
+            level3Piles: [0,0,0,0,0,0],
+            level3Simulated: false,
+            level3Message: null, // Error or success message
+            level4Strikes: 0,
+            level4Time: 1,
+            level4Playing: false,
+            level4Finished: false
+        };
+
+        // --- Data ---
+        const level1Tasks = [
+            { id: 0, label: &#34;а) 11-ден 20-ға дейінгі (20-ны қоса есептегенде)&#34;, start: 11, end: 20, ans: &#39;155&#39;, hint: &#34;11 &#43; 20 = 31. Барлығы 10 сан, яғни 5 жұп.&#34;, pairSum: 31, count: 5 },
+            { id: 1, label: &#34;ә) 21-ден 30-ға дейінгі (30-ды қоса есептегенде)&#34;, start: 21, end: 30, ans: &#39;255&#39;, hint: &#34;21 &#43; 30 = 51. Барлығы 10 сан, яғни 5 жұп.&#34;, pairSum: 51, count: 5 },
+            { id: 2, label: &#34;б) 51-ден 70-ке дейінгі (70-ті қоса есептегенде)&#34;, start: 51, end: 70, ans: &#39;1210&#39;, hint: &#34;51 &#43; 70 = 121. Барлығы 20 сан, яғни 10 жұп.&#34;, pairSum: 121, count: 10 }
+        ];
+
+        // --- Render Engine ---
+        function render() {
+            const container = document.getElementById(&#39;app-content&#39;);
+            const scoreDisplay = document.getElementById(&#39;score-display&#39;);
+            
+            scoreDisplay.textContent = state.score;
+            container.innerHTML = &#39;&#39;; // Clear content
+
+            switch (state.currentScreen) {
+                case &#39;menu&#39;: renderMenu(container); break;
+                case &#39;intro&#39;: renderIntro(container); break;
+                case &#39;level1&#39;: renderLevel1(container); break;
+                case &#39;level2&#39;: renderLevel2(container); break;
+                case &#39;level3&#39;: renderLevel3(container); break;
+                case &#39;level4&#39;: renderLevel4(container); break;
+                case &#39;finish&#39;: renderFinish(container); break;
+            }
+
+            lucide.createIcons();
+        }
+
+        // --- Screens ---
+
+        function renderMenu(container) {
+            const levels = [
+                { id: &#39;intro&#39;, title: &#34;1. Гаусс әдісі (Кіріспе)&#34;, icon: &#39;brain&#39;, color: &#39;text-blue-500&#39;, desc: &#34;1-ден 100-ге дейінгі сандарды қалай тез қосуға болады?&#34;, locked: false },
+                { id: &#39;level1&#39;, title: &#34;2. Жұптарды іздеу&#34;, icon: &#39;calculator&#39;, color: &#39;text-green-500&#39;, desc: &#34;Тізбектелген сандардың қосындысын табу (3 деңгей).&#34;, locked: false },
+                { id: &#39;level2&#39;, title: &#34;3. Алмұрттар құпиясы&#34;, icon: &#39;trophy&#39;, color: &#39;text-orange-500&#39;, desc: &#34;8 бала және 60 алмұрт. Логикалық есеп.&#34;, locked: !state.completedLevels.includes(&#39;level1&#39;) },
+                { id: &#39;level3&#39;, title: &#34;4. Түлкі мен тышқандар&#34;, icon: &#39;arrow-right&#39;, color: &#39;text-purple-500&#39;, desc: &#34;Арифметикалық прогрессия заңдылығы.&#34;, locked: !state.completedLevels.includes(&#39;level2&#39;) },
+                { id: &#39;level4&#39;, title: &#34;5. Уақыт машинасы&#34;, icon: &#39;clock&#39;, color: &#39;text-red-500&#39;, desc: &#34;Сағат неше рет соғады?&#34;, locked: !state.completedLevels.includes(&#39;level3&#39;) }
+            ];
+
+            const wrapper = document.createElement(&#39;div&#39;);
+            wrapper.className = &#34;flex flex-col items-center justify-center h-full space-y-8 animate-fade-in&#34;;
+            
+            wrapper.innerHTML = `
+                &lt;div class=&#34;text-center space-y-2&#34;&gt;
+                    &lt;h2 class=&#34;text-4xl font-bold text-indigo-800&#34;&gt;Сәлем, Жас Математик!&lt;/h2&gt;
+                    &lt;p class=&#34;text-lg text-slate-600&#34;&gt;Карл Гаусстың құпия әдістерін меңгеріп, күрделі есептерді шеш.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl&#34; id=&#34;menu-grid&#34;&gt;&lt;/div&gt;
+            `;
+
+            const grid = wrapper.querySelector(&#39;#menu-grid&#39;);
+            
+            levels.forEach(lvl =&gt; {
+                const isCompleted = state.completedLevels.includes(lvl.id);
+                const btn = document.createElement(&#39;button&#39;);
+                btn.className = `relative p-6 rounded-2xl text-left transition-all duration-300 border-2 w-full
+                    ${lvl.locked 
+                        ? &#39;bg-slate-100 border-slate-200 opacity-70 cursor-not-allowed&#39; 
+                        : &#39;bg-white border-indigo-100 hover:border-indigo-400 hover:shadow-lg hover:-translate-y-1&#39;}
+                    ${isCompleted ? &#39;border-green-400 bg-green-50&#39; : &#39;&#39;}
+                `;
+                btn.disabled = lvl.locked;
+                btn.innerHTML = `
+                    &lt;div class=&#34;flex items-start justify-between mb-2&#34;&gt;
+                        &lt;div class=&#34;p-3 rounded-xl ${lvl.locked ? &#39;bg-slate-200&#39; : &#39;bg-indigo-50&#39;}&#34;&gt;
+                            &lt;i data-lucide=&#34;${lvl.icon}&#34; class=&#34;w-8 h-8 ${lvl.color}&#34;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        ${isCompleted ? &#39;&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-6 h-6 text-green-500&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;}
+                        ${lvl.locked ? &#39;&lt;div class=&#34;text-slate-400 text-sm font-bold&#34;&gt;Құлыптаулы&lt;/div&gt;&#39; : &#39;&#39;}
+                    &lt;/div&gt;
+                    &lt;h3 class=&#34;text-lg font-bold text-slate-800 mb-1&#34;&gt;${lvl.title}&lt;/h3&gt;
+                    &lt;p class=&#34;text-sm text-slate-500&#34;&gt;${lvl.desc}&lt;/p&gt;
+                `;
+                btn.onclick = () =&gt; {
+                    if (!lvl.locked) {
+                        state.currentScreen = lvl.id;
+                        render();
+                    }
+                };
+                grid.appendChild(btn);
+            });
+
+            container.appendChild(wrapper);
+        }
+
+        function renderIntro(container) {
+            const steps = [
+                {
+                    text: &#34;Кішкентай Карл Гауссқа мұғалімі 1-ден 100-ге дейінгі сандарды қосуды тапсырды.&#34;,
+                    content: `&lt;div class=&#34;text-2xl font-mono text-slate-600 py-4 bg-slate-50 rounded-lg overflow-x-auto whitespace-nowrap&#34;&gt;1 &#43; 2 &#43; 3 &#43; ... &#43; 98 &#43; 99 &#43; 100 = ?&lt;/div&gt;&lt;p&gt;Ол мұны бірнеше секундта шешті! Қалай ойлайсың, қалай?&lt;/p&gt;`
+                },
+                {
+                    text: &#34;Ол сандарды шетінен бастап жұптады:&#34;,
+                    content: `
+                        &lt;div class=&#34;flex flex-col items-center space-y-2 font-mono text-xl&#34;&gt;
+                            &lt;div class=&#34;flex justify-between w-64 bg-blue-100 p-2 rounded&#34;&gt;&lt;span&gt;1&lt;/span&gt; &lt;span&gt;&#43;&lt;/span&gt; &lt;span&gt;100&lt;/span&gt; &lt;span&gt;= 101&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class=&#34;flex justify-between w-64 bg-blue-100 p-2 rounded&#34;&gt;&lt;span&gt;2&lt;/span&gt; &lt;span&gt;&#43;&lt;/span&gt; &lt;span&gt;99&lt;/span&gt; &lt;span&gt;= 101&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class=&#34;flex justify-between w-64 bg-blue-100 p-2 rounded&#34;&gt;&lt;span&gt;3&lt;/span&gt; &lt;span&gt;&#43;&lt;/span&gt; &lt;span&gt;98&lt;/span&gt; &lt;span&gt;= 101&lt;/span&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;p class=&#34;mt-4&#34;&gt;Барлық жұптардың қосындысы бірдей болды!&lt;/p&gt;
+                    `
+                },
+                {
+                    text: &#34;1-ден 100-ге дейін 100 сан бар. Демек, 50 жұп бар.&#34;,
+                    content: `&lt;div class=&#34;text-3xl font-bold text-indigo-600 py-4&#34;&gt;101 × 50 = 5050&lt;/div&gt;&lt;p&gt;Бұл — Гаусс әдісі!&lt;/p&gt;`
+                }
+            ];
+
+            const current = steps[state.introStep];
+
+            container.innerHTML = `
+                &lt;div class=&#34;flex flex-col items-center justify-center h-full space-y-6 max-w-3xl mx-auto animate-fade-in&#34;&gt;
+                    &lt;h2 class=&#34;text-3xl font-bold text-indigo-700&#34;&gt;Гаусс әдісі деген не?&lt;/h2&gt;
+                    &lt;div class=&#34;bg-white p-8 rounded-2xl shadow-lg border border-indigo-100 w-full text-center&#34;&gt;
+                        &lt;div class=&#34;space-y-4&#34;&gt;
+                            &lt;p class=&#34;text-lg&#34;&gt;${current.text}&lt;/p&gt;
+                            ${current.content}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex space-x-4&#34;&gt;
+                        ${state.introStep &gt; 0 ? `&lt;button id=&#34;intro-back&#34; class=&#34;px-6 py-2 rounded-full bg-slate-200 hover:bg-slate-300 font-bold&#34;&gt;Артқа&lt;/button&gt;` : &#39;&#39;}
+                        &lt;button id=&#34;intro-next&#34; class=&#34;px-6 py-2 rounded-full ${state.introStep &lt; 2 ? &#39;bg-indigo-600 hover:bg-indigo-700&#39; : &#39;bg-green-600 hover:bg-green-700 animate-bounce&#39;} text-white font-bold flex items-center&#34;&gt;
+                            ${state.introStep &lt; 2 ? &#39;Жалғастыру &lt;i data-lucide=&#34;chevron-right&#34; class=&#34;ml-2 w-4 h-4&#34;&gt;&lt;/i&gt;&#39; : &#39;Тапсырмаларды бастау! &lt;i data-lucide=&#34;play&#34; class=&#34;ml-2 w-4 h-4&#34;&gt;&lt;/i&gt;&#39;}
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            if(document.getElementById(&#39;intro-back&#39;)) {
+                document.getElementById(&#39;intro-back&#39;).onclick = () =&gt; { state.introStep--; render(); };
+            }
+            document.getElementById(&#39;intro-next&#39;).onclick = () =&gt; {
+                if (state.introStep &lt; 2) {
+                    state.introStep&#43;&#43;;
+                    render();
+                } else {
+                    state.currentScreen = &#39;level1&#39;;
+                    render();
+                }
+            };
+        }
+
+        function renderLevel1(container) {
+            const task = level1Tasks[state.level1SubLevel];
+            let rangeHTML = &#39;&#39;;
+            for(let i=task.start; i&lt;=task.end; i&#43;&#43;) {
+                rangeHTML &#43;= `&lt;span class=&#34;bg-slate-100 px-3 py-1 rounded hover:bg-indigo-50 hover:text-indigo-600 transition-colors cursor-default&#34;&gt;${i}&lt;/span&gt;`;
+            }
+
+            container.innerHTML = `
+                &lt;div class=&#34;max-w-3xl mx-auto space-y-6 animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex items-center justify-between&#34;&gt;
+                         &lt;button id=&#34;back-btn&#34; class=&#34;text-slate-500 hover:text-indigo-600 flex items-center&#34;&gt;&lt;i data-lucide=&#34;chevron-right&#34; class=&#34;rotate-180 w-4 h-4 mr-1&#34;&gt;&lt;/i&gt; Мәзірге&lt;/button&gt;
+                         &lt;div class=&#34;text-sm font-bold text-indigo-400&#34;&gt;1-тапсырма (${state.level1SubLevel &#43; 1}/${level1Tasks.length})&lt;/div&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class=&#34;bg-white p-6 rounded-2xl shadow-lg border-2 border-indigo-100&#34;&gt;
+                        &lt;h3 class=&#34;text-3xl font-bold text-indigo-800 mb-4&#34;&gt;Жұптарды тап&lt;/h3&gt;
+                        &lt;p class=&#34;mb-6 text-2xl font-medium text-slate-700 leading-relaxed&#34;&gt;${task.label} натурал сандардың қосындысын тап.&lt;/p&gt;
+                        
+                        &lt;div class=&#34;flex flex-wrap gap-2 justify-center mb-6 font-mono text-lg text-slate-500 max-h-40 overflow-y-auto&#34;&gt;
+                            ${rangeHTML}
+                        &lt;/div&gt;
+
+                        &lt;!-- Hint Box --&gt;
+                        &lt;div class=&#34;bg-blue-50 rounded-xl mb-6 overflow-hidden border border-blue-100&#34;&gt;
+                            &lt;button id=&#34;toggle-hint&#34; class=&#34;w-full p-4 flex items-center justify-between font-bold text-blue-800 hover:bg-blue-100 transition-colors focus:outline-none&#34;&gt;
+                                &lt;div class=&#34;flex items-center&#34;&gt;&lt;i data-lucide=&#34;help-circle&#34; class=&#34;w-5 h-5 mr-2&#34;&gt;&lt;/i&gt;&lt;span&gt;Көмек керек пе?&lt;/span&gt;&lt;/div&gt;
+                                &lt;i data-lucide=&#34;${state.level1ShowHint ? &#39;chevron-up&#39; : &#39;chevron-down&#39;}&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt;
+                            &lt;/button&gt;
+                            &lt;div class=&#34;${state.level1ShowHint ? &#39;block&#39; : &#39;hidden&#39;} p-4 pt-0 text-blue-700 animate-fade-in&#34;&gt;
+                                &lt;div class=&#34;flex flex-col sm:flex-row justify-center items-center sm:space-x-4&#34;&gt;
+                                    &lt;span&gt;${task.start} &#43; ${task.end} = ${task.pairSum}&lt;/span&gt;
+                                    &lt;span class=&#34;hidden sm:inline&#34;&gt;|&lt;/span&gt;
+                                    &lt;span&gt;${task.start &#43; 1} &#43; ${task.end - 1} = ${task.pairSum}&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;p class=&#34;text-center mt-2 text-sm text-blue-600&#34;&gt;Барлығы қанша жұп бар?&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class=&#34;flex items-center justify-center space-x-4&#34;&gt;
+                            &lt;input id=&#34;lvl1-input&#34; type=&#34;number&#34; placeholder=&#34;Жауабы...&#34; class=&#34;border-2 border-indigo-200 rounded-lg px-4 py-2 text-2xl w-40 text-center focus:border-indigo-500 outline-none transition-all&#34;&gt;
+                            &lt;button id=&#34;lvl1-check&#34; class=&#34;bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-700 active:scale-95 transition-transform&#34;&gt;Тексеру&lt;/button&gt;
+                        &lt;/div&gt;
+                        
+                        &lt;div id=&#34;lvl1-feedback&#34; class=&#34;mt-4 hidden&#34;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            document.getElementById(&#39;back-btn&#39;).onclick = () =&gt; { state.currentScreen = &#39;menu&#39;; render(); };
+            document.getElementById(&#39;toggle-hint&#39;).onclick = () =&gt; { state.level1ShowHint = !state.level1ShowHint; render(); };
+            
+            const check = () =&gt; {
+                const val = document.getElementById(&#39;lvl1-input&#39;).value;
+                const fb = document.getElementById(&#39;lvl1-feedback&#39;);
+                fb.classList.remove(&#39;hidden&#39;, &#39;bg-green-100&#39;, &#39;text-green-700&#39;, &#39;bg-red-100&#39;, &#39;text-red-700&#39;);
+
+                if(val === task.ans) {
+                    // Success State with Manual Advance Button
+                    fb.className = &#34;mt-4 p-4 bg-green-100 text-green-700 rounded-xl text-center font-bold animate-bounce-short&#34;;
+                    
+                    const isLast = state.level1SubLevel &gt;= level1Tasks.length - 1;
+                    const btnText = isLast ? &#39;Аяқтау&#39; : &#39;Келесі есеп&#39;;
+                    const btnIcon = isLast ? &#39;check-circle&#39; : &#39;arrow-right&#39;;
+
+                    fb.innerHTML = `
+                        &lt;div class=&#34;mb-4 text-xl&#34;&gt;Дұрыс! ${task.pairSum} × ${task.count} = ${task.ans}.&lt;/div&gt;
+                        &lt;button id=&#34;lvl1-next-btn&#34; class=&#34;bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 shadow-lg flex items-center justify-center mx-auto transition-transform hover:scale-105&#34;&gt;
+                            ${btnText} &lt;i data-lucide=&#34;${btnIcon}&#34; class=&#34;ml-2 w-5 h-5&#34;&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                    `;
+                    
+                    // Re-render icons for the new button
+                    lucide.createIcons();
+                    
+                    // Attach click handler for manual progression
+                    document.getElementById(&#39;lvl1-next-btn&#39;).onclick = () =&gt; {
+                         if (!isLast) {
+                            state.level1SubLevel&#43;&#43;;
+                            state.level1ShowHint = false;
+                            render();
+                        } else {
+                            unlockLevel(&#39;level1&#39;);
+                            state.currentScreen = &#39;menu&#39;;
+                            render();
+                        }
+                    };
+                    
+                    // Hide the input/check area to prevent confusion
+                    document.getElementById(&#39;lvl1-input&#39;).disabled = true;
+                    document.getElementById(&#39;lvl1-check&#39;).style.display = &#39;none&#39;;
+
+                } else {
+                    fb.className = &#34;mt-4 p-4 bg-red-100 text-red-700 rounded-xl text-center animate-fade-in&#34;;
+                    fb.innerHTML = `Қате. Тағы бір ойланып көр.&lt;br&gt;${state.level1ShowHint ? `&lt;span class=&#34;text-sm font-mono mt-1 block&#34;&gt;Жұптар қосындысы: ${task.pairSum}. Жұптар саны: ${task.count}.&lt;/span&gt;` : `&lt;span class=&#34;text-sm font-normal mt-1 block&#34;&gt;Көмек батырмасын басып көр.&lt;/span&gt;`}`;
+                }
+            };
+
+            document.getElementById(&#39;lvl1-check&#39;).onclick = check;
+            document.getElementById(&#39;lvl1-input&#39;).onkeydown = (e) =&gt; { if(e.key === &#39;Enter&#39;) check(); };
+        }
+
+        function renderLevel2(container) {
+            const options = [10, 11, 12, 14];
+
+            container.innerHTML = `
+                &lt;div class=&#34;max-w-3xl mx-auto space-y-6 animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex items-center justify-between&#34;&gt;
+                         &lt;button id=&#34;back-btn&#34; class=&#34;text-slate-500 hover:text-indigo-600 flex items-center&#34;&gt;&lt;i data-lucide=&#34;chevron-right&#34; class=&#34;rotate-180 w-4 h-4 mr-1&#34;&gt;&lt;/i&gt; Мәзірге&lt;/button&gt;
+                         &lt;div class=&#34;text-sm font-bold text-indigo-400&#34;&gt;2-тапсырма&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;bg-white p-6 rounded-2xl shadow-lg border-2 border-indigo-100&#34;&gt;
+                        &lt;h3 class=&#34;text-3xl font-bold text-indigo-800 mb-6&#34;&gt;Алмұрттар есебі&lt;/h3&gt;
+                        &lt;p class=&#34;mb-6 text-2xl font-medium text-slate-700 leading-relaxed&#34;&gt;8 бала 60 алмұрт терді. Олар өзара барлық алмұрттарды сандары әртүрлі етіп бөліп алды. Ең аз алған бала 4 алмұрт алды. Ең көп алған бала неше алмұрт алды?&lt;/p&gt;
+
+                        &lt;div class=&#34;grid grid-cols-2 md:grid-cols-4 gap-4 mb-6&#34; id=&#34;opts-container&#34;&gt;&lt;/div&gt;
+
+                        &lt;button id=&#34;lvl2-check&#34; disabled class=&#34;w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed&#34;&gt;Тексеру&lt;/button&gt;
+
+                        ${state.level2ShowExplanation ? `
+                            &lt;div class=&#34;mt-6 p-4 rounded-xl border-2 ${state.level2Selected === 11 ? &#39;bg-green-50 border-green-200&#39; : &#39;bg-red-50 border-red-200&#39;} animate-fade-in&#34;&gt;
+                                &lt;h4 class=&#34;font-bold text-lg mb-2 ${state.level2Selected === 11 ? &#39;text-green-700&#39; : &#39;text-red-700&#39;}&#34;&gt;${state.level2Selected === 11 ? &#39;Дұрыс!&#39; : &#39;Қате!&#39;}&lt;/h4&gt;
+                                &lt;div class=&#34;text-slate-700 space-y-2&#34;&gt;
+                                    &lt;p&gt;Түсіндірме: Қалған балалар мүмкіндігінше аз алуы керек.&lt;/p&gt;
+                                    &lt;div class=&#34;flex flex-wrap gap-2 text-sm font-mono mt-2&#34;&gt;
+                                        ${[4,5,6,7,8,9,10].map((n,i) =&gt; `&lt;span class=&#34;bg-white px-2 py-1 rounded border&#34;&gt;${i&#43;1}-бала: ${n}&lt;/span&gt;`).join(&#39;&#39;)}
+                                    &lt;/div&gt;
+                                    &lt;p class=&#34;font-bold mt-2&#34;&gt;Қосынды: 49. Барлығы 60. 60 - 49 = &lt;span class=&#34;text-xl font-bold text-indigo-600&#34;&gt;11&lt;/span&gt;.&lt;/p&gt;
+                                &lt;/div&gt;
+                                ${state.level2Selected === 11 ? `
+                                    &lt;button id=&#34;lvl2-finish-btn&#34; class=&#34;mt-4 bg-green-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-green-700 flex items-center justify-center mx-auto shadow-md&#34;&gt;
+                                        Мәзірге оралу &lt;i data-lucide=&#34;home&#34; class=&#34;ml-2 w-4 h-4&#34;&gt;&lt;/i&gt;
+                                    &lt;/button&gt;
+                                ` : &#39;&#39;}
+                            &lt;/div&gt;
+                        ` : &#39;&#39;}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            const optsDiv = document.getElementById(&#39;opts-container&#39;);
+            options.forEach(val =&gt; {
+                const btn = document.createElement(&#39;button&#39;);
+                btn.className = `p-4 rounded-xl border-2 text-xl font-bold transition-all ${state.level2Selected === val ? &#39;border-indigo-500 bg-indigo-50 text-indigo-700&#39; : &#39;border-slate-200 hover:border-indigo-300&#39;}`;
+                btn.textContent = val &#43; &#39; алмұрт&#39;;
+                btn.onclick = () =&gt; {
+                    state.level2Selected = val;
+                    state.level2ShowExplanation = false;
+                    render();
+                };
+                optsDiv.appendChild(btn);
+            });
+
+            document.getElementById(&#39;back-btn&#39;).onclick = () =&gt; { state.currentScreen = &#39;menu&#39;; render(); };
+            const checkBtn = document.getElementById(&#39;lvl2-check&#39;);
+            
+            checkBtn.disabled = !state.level2Selected;
+
+            checkBtn.onclick = () =&gt; {
+                state.level2ShowExplanation = true;
+                render();
+                if(state.level2Selected === 11) {
+                   // Manual navigation handled by lvl2-finish-btn
+                }
+            };
+            
+            if(document.getElementById(&#39;lvl2-finish-btn&#39;)) {
+                document.getElementById(&#39;lvl2-finish-btn&#39;).onclick = () =&gt; {
+                    unlockLevel(&#39;level2&#39;);
+                    state.currentScreen = &#39;menu&#39;;
+                    state.level2Selected = null;
+                    state.level2ShowExplanation = false;
+                    render();
+                }
+            }
+        }
+
+        function renderLevel3(container) {
+            container.innerHTML = `
+                &lt;div class=&#34;max-w-3xl mx-auto space-y-6 animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex items-center justify-between&#34;&gt;
+                         &lt;button id=&#34;back-btn&#34; class=&#34;text-slate-500 hover:text-indigo-600 flex items-center&#34;&gt;&lt;i data-lucide=&#34;chevron-right&#34; class=&#34;rotate-180 w-4 h-4 mr-1&#34;&gt;&lt;/i&gt; Мәзірге&lt;/button&gt;
+                         &lt;div class=&#34;text-sm font-bold text-indigo-400&#34;&gt;3-тапсырма&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;bg-white p-6 rounded-2xl shadow-lg border-2 border-indigo-100&#34;&gt;
+                        &lt;h3 class=&#34;text-3xl font-bold text-indigo-800 mb-6&#34;&gt;Түлкі және тышқандар&lt;/h3&gt;
+                        &lt;p class=&#34;mb-6 text-2xl font-medium text-slate-700 leading-relaxed&#34;&gt;Түлкі 33 тышқан аулап, 6 үймеге бөліп үйді. Ең үлкенінде 8 тышқан бар. Келесі үймеде алдыңғысынан 1 тышқан кем. Соңғы үймеде қанша?&lt;/p&gt;
+
+                        &lt;div class=&#34;bg-green-50 p-6 rounded-xl mb-6 min-h-[150px] flex items-end justify-center space-x-4 border-b-4 border-green-700&#34;&gt;
+                            ${state.level3Piles.map((count, idx) =&gt; `
+                                &lt;div class=&#34;flex flex-col items-center&#34;&gt;
+                                   &lt;div class=&#34;text-sm font-bold text-green-800 mb-1 h-5&#34;&gt;${state.level3Simulated ? (idx === 0 ? count : (idx === 5 ? &#39;?&#39; : &#39;&#39;)) : &#39;?&#39;}&lt;/div&gt;
+                                   &lt;div class=&#34;w-8 sm:w-10 bg-orange-400 rounded-t-lg transition-height relative&#34; style=&#34;height: ${state.level3Simulated ? count * 15 : 10}px&#34;&gt;
+                                        ${state.level3Simulated &amp;&amp; count &gt; 0 ? &#39;&lt;div class=&#34;absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px]&#34;&gt;🐭&lt;/div&gt;&#39; : &#39;&#39;}
+                                   &lt;/div&gt;
+                                   &lt;div class=&#34;mt-2 text-xs text-slate-500&#34;&gt;${idx &#43; 1}-үйме&lt;/div&gt;
+                                &lt;/div&gt;
+                            `).join(&#39;&#39;)}
+                        &lt;/div&gt;
+
+                        ${!state.level3Simulated ? `
+                            &lt;button id=&#34;sim-btn&#34; class=&#34;w-full bg-orange-500 text-white py-3 rounded-xl font-bold hover:bg-orange-600 flex items-center justify-center&#34;&gt;
+                                &lt;i data-lucide=&#34;play&#34; class=&#34;w-5 h-5 mr-2&#34;&gt;&lt;/i&gt; Үймелерді құру
+                            &lt;/button&gt;
+                        ` : `
+                             &lt;div class=&#34;space-y-4 animate-fade-in&#34;&gt;
+                                 &lt;div class=&#34;text-center&#34;&gt;
+                                   &lt;p class=&#34;font-bold text-lg&#34;&gt;Барлығы: 33 тышқан.&lt;/p&gt;
+                                   &lt;p class=&#34;text-slate-600&#34;&gt;Соңғы (6-шы) үймеде нешеу?&lt;/p&gt;
+                                 &lt;/div&gt;
+                                 &lt;div class=&#34;flex justify-center space-x-4&#34; id=&#34;lvl3-opts&#34;&gt;&lt;/div&gt;
+                                 &lt;div id=&#34;lvl3-msg&#34; class=&#34;text-center font-bold&#34;&gt;&lt;/div&gt;
+                             &lt;/div&gt;
+                        `}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            document.getElementById(&#39;back-btn&#39;).onclick = () =&gt; { state.currentScreen = &#39;menu&#39;; render(); };
+            
+            if(!state.level3Simulated) {
+                document.getElementById(&#39;sim-btn&#39;).onclick = () =&gt; {
+                    state.level3Piles = [8, 7, 6, 5, 4, 3];
+                    state.level3Simulated = true;
+                    render(); // Trigger CSS transition
+                };
+            } else {
+                const optsDiv = document.getElementById(&#39;lvl3-opts&#39;);
+                [2, 3, 4, 5].forEach(ans =&gt; {
+                    const btn = document.createElement(&#39;button&#39;);
+                    btn.className = &#34;px-6 py-2 rounded-lg border-2 border-orange-200 hover:bg-orange-100 font-bold text-xl&#34;;
+                    btn.textContent = ans;
+                    btn.onclick = () =&gt; {
+                        if(ans === 3) {
+                            const msgDiv = document.getElementById(&#39;lvl3-msg&#39;);
+                            msgDiv.className = &#34;text-green-600 flex flex-col items-center gap-2 mt-4&#34;;
+                            msgDiv.innerHTML = `
+                                &lt;span class=&#34;text-xl&#34;&gt;Дұрыс! 8&#43;7&#43;6&#43;5&#43;4&#43;3 = 33.&lt;/span&gt;
+                                &lt;button id=&#34;lvl3-finish-btn&#34; class=&#34;mt-2 bg-green-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-green-700 flex items-center shadow-md&#34;&gt;
+                                    Мәзірге оралу &lt;i data-lucide=&#34;home&#34; class=&#34;ml-2 w-4 h-4&#34;&gt;&lt;/i&gt;
+                                &lt;/button&gt;
+                            `;
+                            lucide.createIcons();
+                            
+                            document.getElementById(&#39;lvl3-finish-btn&#39;).onclick = () =&gt; {
+                                unlockLevel(&#39;level3&#39;);
+                                state.currentScreen = &#39;menu&#39;;
+                                state.level3Piles = [0,0,0,0,0,0];
+                                state.level3Simulated = false;
+                                render();
+                            };
+                            
+                            // Disable option buttons
+                            const btns = optsDiv.getElementsByTagName(&#39;button&#39;);
+                            for(let b of btns) b.disabled = true;
+
+                        } else {
+                            document.getElementById(&#39;lvl3-msg&#39;).className = &#34;text-red-600&#34;;
+                            document.getElementById(&#39;lvl3-msg&#39;).textContent = &#34;Қате! Соңғы үймедегі санды суреттен қараңыз.&#34;;
+                        }
+                    };
+                    optsDiv.appendChild(btn);
+                });
+            }
+        }
+
+        function renderLevel4(container) {
+            container.innerHTML = `
+                &lt;div class=&#34;max-w-3xl mx-auto space-y-6 animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex items-center justify-between&#34;&gt;
+                         &lt;button id=&#34;back-btn&#34; class=&#34;text-slate-500 hover:text-indigo-600 flex items-center&#34;&gt;&lt;i data-lucide=&#34;chevron-right&#34; class=&#34;rotate-180 w-4 h-4 mr-1&#34;&gt;&lt;/i&gt; Мәзірге&lt;/button&gt;
+                         &lt;div class=&#34;text-sm font-bold text-indigo-400&#34;&gt;4-тапсырма&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;bg-white p-6 rounded-2xl shadow-lg border-2 border-indigo-100&#34;&gt;
+                        &lt;h3 class=&#34;text-3xl font-bold text-indigo-800 mb-6&#34;&gt;Қоңыраулы сағат&lt;/h3&gt;
+                        &lt;p class=&#34;mb-6 text-2xl font-medium text-slate-700 leading-relaxed&#34;&gt;Сағат 1-де 1 рет, 2-де 2 рет... соғады. Және әр жарты сағат сайын 1 рет соғады. Сағат 1:00-ден 10:00-ге дейін (10-ды қоса алғанда) неше рет соғады?&lt;/p&gt;
+
+                        &lt;div class=&#34;flex flex-col items-center justify-center bg-slate-100 rounded-xl p-8 mb-6&#34;&gt;
+                           &lt;div class=&#34;w-48 h-48 rounded-full bg-white border-8 border-indigo-600 relative flex items-center justify-center shadow-lg mb-4&#34;&gt;
+                              &lt;div class=&#34;text-4xl font-mono font-bold text-indigo-900&#34;&gt;${state.level4Time}:00&lt;/div&gt;
+                              &lt;div class=&#34;absolute w-1 h-20 bg-indigo-300 top-4 rounded origin-bottom transform rotate-0 opacity-20&#34;&gt;&lt;/div&gt;
+                           &lt;/div&gt;
+                           &lt;div class=&#34;text-2xl font-bold text-indigo-700&#34;&gt;Соққылар саны: &lt;span class=&#34;text-4xl&#34;&gt;${state.level4Strikes}&lt;/span&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+
+                        ${!state.level4Playing &amp;&amp; !state.level4Finished ? `
+                            &lt;button id=&#34;clock-start&#34; class=&#34;w-full bg-red-500 text-white py-3 rounded-xl font-bold hover:bg-red-600 flex items-center justify-center&#34;&gt;
+                                &lt;i data-lucide=&#34;play&#34; class=&#34;w-5 h-5 mr-2&#34;&gt;&lt;/i&gt; Есептеуді бастау
+                            &lt;/button&gt;
+                        ` : state.level4Finished ? `
+                           &lt;div class=&#34;text-center animate-fade-in space-y-4&#34;&gt;
+                             &lt;div class=&#34;p-4 bg-green-100 text-green-800 rounded-xl&#34;&gt;
+                                &lt;p class=&#34;font-bold text-xl&#34;&gt;Жауабы: 64 рет!&lt;/p&gt;
+                                &lt;p class=&#34;text-sm&#34;&gt;Толық сағаттар: 55. Жарты сағаттар: 9.&lt;/p&gt;
+                             &lt;/div&gt;
+                             &lt;button id=&#34;clock-finish&#34; class=&#34;px-8 py-3 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-700&#34;&gt;Аяқтау&lt;/button&gt;
+                           &lt;/div&gt;
+                        ` : `
+                            &lt;div class=&#34;text-center text-slate-500 italic&#34;&gt;Есептелуде... ${state.level4Time}-сағат&lt;/div&gt;
+                        `}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            document.getElementById(&#39;back-btn&#39;).onclick = () =&gt; { 
+                state.currentScreen = &#39;menu&#39;; 
+                // Reset clock state if exiting early
+                state.level4Playing = false; 
+                state.level4Finished = false;
+                state.level4Strikes = 0;
+                state.level4Time = 1;
+                render(); 
+            };
+
+            if(document.getElementById(&#39;clock-start&#39;)) {
+                document.getElementById(&#39;clock-start&#39;).onclick = () =&gt; {
+                    state.level4Playing = true;
+                    state.level4Strikes = 0;
+                    state.level4Time = 1;
+                    render();
+                    runClockSimulation();
+                };
+            }
+            if(document.getElementById(&#39;clock-finish&#39;)) {
+                document.getElementById(&#39;clock-finish&#39;).onclick = () =&gt; {
+                    unlockLevel(&#39;level4&#39;);
+                    state.currentScreen = &#39;finish&#39;;
+                    render();
+                };
+            }
+        }
+
+        function runClockSimulation() {
+            if (!state.level4Playing || state.level4Time &gt; 10) {
+                state.level4Playing = false;
+                state.level4Finished = true;
+                render();
+                return;
+            }
+
+            setTimeout(() =&gt; {
+                let add = state.level4Time; // Full hour strike
+                if (state.level4Time &lt; 10) add &#43;= 1; // Half hour strike
+
+                state.level4Strikes &#43;= add;
+                
+                if (state.level4Time &lt; 10) {
+                    state.level4Time&#43;&#43;;
+                    render();
+                    runClockSimulation();
+                } else {
+                    // Finished at 10
+                    state.level4Playing = false;
+                    state.level4Finished = true;
+                    render();
+                }
+            }, 800);
+        }
+
+        function renderFinish(container) {
+            container.innerHTML = `
+                &lt;div class=&#34;flex flex-col items-center justify-center h-full text-center space-y-6 animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;relative&#34;&gt;
+                        &lt;i data-lucide=&#34;trophy&#34; class=&#34;w-32 h-32 text-yellow-400 mx-auto&#34;&gt;&lt;/i&gt;
+                        &lt;i data-lucide=&#34;star&#34; class=&#34;w-12 h-12 text-yellow-200 absolute top-0 right-0 animate-bounce-short&#34;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h2 class=&#34;text-4xl font-bold text-indigo-800&#34;&gt;Құттықтаймыз!&lt;/h2&gt;
+                    &lt;p class=&#34;text-xl text-slate-600&#34;&gt;Сіз барлық деңгейлерден сәтті өтіп, Гаусс әдісін меңгердіңіз!&lt;/p&gt;
+                    &lt;div class=&#34;text-3xl font-bold text-indigo-600 bg-indigo-50 px-8 py-4 rounded-2xl&#34;&gt;
+                        Ұпай: ${state.score}
+                    &lt;/div&gt;
+                    &lt;button id=&#34;restart-btn&#34; class=&#34;px-8 py-3 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-700 flex items-center&#34;&gt;
+                        &lt;i data-lucide=&#34;rotate-ccw&#34; class=&#34;w-5 h-5 mr-2&#34;&gt;&lt;/i&gt; Қайта бастау
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+            
+            document.getElementById(&#39;restart-btn&#39;).onclick = () =&gt; {
+                state.score = 0;
+                state.completedLevels = [];
+                state.currentScreen = &#39;menu&#39;;
+                // Reset all sub-states
+                state.introStep = 0;
+                state.level1SubLevel = 0;
+                state.level4Finished = false;
+                state.level4Strikes = 0;
+                render();
+            };
+        }
+
+        function unlockLevel(lvl) {
+            if (!state.completedLevels.includes(lvl)) {
+                state.completedLevels.push(lvl);
+                state.score &#43;= 100;
+            }
+        }
+
+        // --- Init ---
+        render();
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                                class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
+                            </iframe>
+                            
+                            <button id="exitBtn142" onclick="closeTaskFullscreen()"
+                                class="hidden absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-700 transition-colors z-50 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                                <span>Шығу</span>
+                            </button>
+                        </div>
+
+                        
+                        <div class="bg-gray-50 p-2 border-t border-gray-200">
+                            <a href="/task/142" target="_blank"
+                                class="text-blue-600 hover:text-blue-800 font-medium flex items-center justify-center gap-1 text-sm">
+                                <span>Жаңа терезеде ашу</span>
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-2 border-purple-200">
+                        
+                        <div class="bg-gradient-to-r from-red-500 to-pink-600 p-3">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-2xl">🇷🇺</span>
+                                    <h4 class="text-lg font-bold text-white">Русский</h4>
+                                </div>
+                                <button onclick="openTaskFullscreen('142', 'ru')"
+                                    class="flex items-center gap-2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white px-3 py-1.5 rounded-lg transition-all transform hover:scale-105">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4">
+                                        </path>
+                                    </svg>
+                                    <span class="hidden lg:inline text-sm">Полный экран</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        
+                        <div id="fsContainer142_ru" class="relative bg-gray-50 group"
+                            style="padding-bottom: 75%; height: 0;">
+                            <iframe id="taskFrame142_ru" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Юный Гаусс: Мир Сумм&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;script src=&#34;https://unpkg.com/lucide@latest&#34;&gt;&lt;/script&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap&#39;);
+        
+        body {
+            font-family: &#39;Nunito&#39;, sans-serif;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .animate-bounce-short {
+            animation: bounceShort 1s infinite;
+        }
+        
+        .transition-height {
+            transition: height 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceShort {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c7c7cc; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a1a1aa; 
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen flex items-center justify-center p-4 text-slate-800&#34;&gt;
+
+    &lt;div class=&#34;w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden min-h-[650px] flex flex-col relative&#34;&gt;
+        &lt;div class=&#34;bg-indigo-600 p-4 text-white flex justify-between items-center shadow-md z-10&#34;&gt;
+            &lt;div class=&#34;flex items-center space-x-2&#34;&gt;
+                &lt;i data-lucide=&#34;calculator&#34; class=&#34;w-6 h-6&#34;&gt;&lt;/i&gt;
+                &lt;h1 class=&#34;text-xl font-bold&#34;&gt;Юный Гаусс: Мир Сумм&lt;/h1&gt;
+            &lt;/div&gt;
+            &lt;div class=&#34;flex items-center space-x-4&#34;&gt;
+                &lt;div class=&#34;flex items-center space-x-1 bg-indigo-700 px-3 py-1 rounded-full border border-indigo-500&#34;&gt;
+                    &lt;i data-lucide=&#34;star&#34; class=&#34;w-4 h-4 text-yellow-400 fill-yellow-400&#34;&gt;&lt;/i&gt;
+                    &lt;span id=&#34;score-display&#34; class=&#34;font-bold&#34;&gt;0&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;app-content&#34; class=&#34;flex-1 p-6 overflow-y-auto relative&#34;&gt;
+            &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // --- State Management ---
+        const state = {
+            currentScreen: &#39;menu&#39;,
+            score: 0,
+            completedLevels: [],
+            introStep: 0,
+            level1SubLevel: 0,
+            level1ShowHint: false,
+            level2Selected: null,
+            level2ShowExplanation: false,
+            level3Piles: [0,0,0,0,0,0],
+            level3Simulated: false,
+            level3Message: null,
+            level4Strikes: 0,
+            level4Time: 1,
+            level4Playing: false,
+            level4Finished: false
+        };
+
+        // --- Data ---
+        const level1Tasks = [
+            { id: 0, label: &#34;а) от 11 до 20 (включительно)&#34;, start: 11, end: 20, ans: &#39;155&#39;, hint: &#34;11 &#43; 20 = 31. Всего 10 чисел, значит 5 пар.&#34;, pairSum: 31, count: 5 },
+            { id: 1, label: &#34;б) от 21 до 30 (включительно)&#34;, start: 21, end: 30, ans: &#39;255&#39;, hint: &#34;21 &#43; 30 = 51. Всего 10 чисел, значит 5 пар.&#34;, pairSum: 51, count: 5 },
+            { id: 2, label: &#34;в) от 51 до 70 (включительно)&#34;, start: 51, end: 70, ans: &#39;1210&#39;, hint: &#34;51 &#43; 70 = 121. Всего 20 чисел, значит 10 пар.&#34;, pairSum: 121, count: 10 }
+        ];
+
+        // --- Render Engine ---
+        function render() {
+            const container = document.getElementById(&#39;app-content&#39;);
+            const scoreDisplay = document.getElementById(&#39;score-display&#39;);
+            
+            scoreDisplay.textContent = state.score;
+            container.innerHTML = &#39;&#39;; 
+
+            switch (state.currentScreen) {
+                case &#39;menu&#39;: renderMenu(container); break;
+                case &#39;intro&#39;: renderIntro(container); break;
+                case &#39;level1&#39;: renderLevel1(container); break;
+                case &#39;level2&#39;: renderLevel2(container); break;
+                case &#39;level3&#39;: renderLevel3(container); break;
+                case &#39;level4&#39;: renderLevel4(container); break;
+                case &#39;finish&#39;: renderFinish(container); break;
+            }
+
+            lucide.createIcons();
+        }
+
+        // --- Screens ---
+
+        function renderMenu(container) {
+            const levels = [
+                { id: &#39;intro&#39;, title: &#34;1. Метод Гаусса (Введение)&#34;, icon: &#39;brain&#39;, color: &#39;text-blue-500&#39;, desc: &#34;Как быстро сложить числа от 1 до 100?&#34;, locked: false },
+                { id: &#39;level1&#39;, title: &#34;2. Поиск пар&#34;, icon: &#39;calculator&#39;, color: &#39;text-green-500&#39;, desc: &#34;Нахождение суммы последовательных чисел (3 этапа).&#34;, locked: false },
+                { id: &#39;level2&#39;, title: &#34;3. Секрет груш&#34;, icon: &#39;trophy&#39;, color: &#39;text-orange-500&#39;, desc: &#34;8 детей и 60 груш. Логическая задача.&#34;, locked: !state.completedLevels.includes(&#39;level1&#39;) },
+                { id: &#39;level3&#39;, title: &#34;4. Лиса и мыши&#34;, icon: &#39;arrow-right&#39;, color: &#39;text-purple-500&#39;, desc: &#34;Закономерность арифметической прогрессии.&#34;, locked: !state.completedLevels.includes(&#39;level2&#39;) },
+                { id: &#39;level4&#39;, title: &#34;5. Машина времени&#34;, icon: &#39;clock&#39;, color: &#39;text-red-500&#39;, desc: &#34;Сколько раз пробьют часы?&#34;, locked: !state.completedLevels.includes(&#39;level3&#39;) }
+            ];
+
+            const wrapper = document.createElement(&#39;div&#39;);
+            wrapper.className = &#34;flex flex-col items-center justify-center h-full space-y-8 animate-fade-in&#34;;
+            
+            wrapper.innerHTML = `
+                &lt;div class=&#34;text-center space-y-2&#34;&gt;
+                    &lt;h2 class=&#34;text-4xl font-bold text-indigo-800&#34;&gt;Привет, юный математик!&lt;/h2&gt;
+                    &lt;p class=&#34;text-lg text-slate-600&#34;&gt;Освой секретные методы Карла Гаусса и решай сложные задачи в уме.&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl&#34; id=&#34;menu-grid&#34;&gt;&lt;/div&gt;
+            `;
+
+            const grid = wrapper.querySelector(&#39;#menu-grid&#39;);
+            
+            levels.forEach(lvl =&gt; {
+                const isCompleted = state.completedLevels.includes(lvl.id);
+                const btn = document.createElement(&#39;button&#39;);
+                btn.className = `relative p-6 rounded-2xl text-left transition-all duration-300 border-2 w-full
+                    ${lvl.locked 
+                        ? &#39;bg-slate-100 border-slate-200 opacity-70 cursor-not-allowed&#39; 
+                        : &#39;bg-white border-indigo-100 hover:border-indigo-400 hover:shadow-lg hover:-translate-y-1&#39;}
+                    ${isCompleted ? &#39;border-green-400 bg-green-50&#39; : &#39;&#39;}
+                `;
+                btn.disabled = lvl.locked;
+                btn.innerHTML = `
+                    &lt;div class=&#34;flex items-start justify-between mb-2&#34;&gt;
+                        &lt;div class=&#34;p-3 rounded-xl ${lvl.locked ? &#39;bg-slate-200&#39; : &#39;bg-indigo-50&#39;}&#34;&gt;
+                            &lt;i data-lucide=&#34;${lvl.icon}&#34; class=&#34;w-8 h-8 ${lvl.color}&#34;&gt;&lt;/i&gt;
+                        &lt;/div&gt;
+                        ${isCompleted ? &#39;&lt;i data-lucide=&#34;check-circle&#34; class=&#34;w-6 h-6 text-green-500&#34;&gt;&lt;/i&gt;&#39; : &#39;&#39;}
+                        ${lvl.locked ? &#39;&lt;div class=&#34;text-slate-400 text-sm font-bold&#34;&gt;Закрыто&lt;/div&gt;&#39; : &#39;&#39;}
+                    &lt;/div&gt;
+                    &lt;h3 class=&#34;text-lg font-bold text-slate-800 mb-1&#34;&gt;${lvl.title}&lt;/h3&gt;
+                    &lt;p class=&#34;text-sm text-slate-500&#34;&gt;${lvl.desc}&lt;/p&gt;
+                `;
+                btn.onclick = () =&gt; {
+                    if (!lvl.locked) {
+                        state.currentScreen = lvl.id;
+                        render();
+                    }
+                };
+                grid.appendChild(btn);
+            });
+
+            container.appendChild(wrapper);
+        }
+
+        function renderIntro(container) {
+            const steps = [
+                {
+                    text: &#34;Учитель дал маленькому Карлу Гассу задание: сложить все числа от 1 до 100.&#34;,
+                    content: `&lt;div class=&#34;text-2xl font-mono text-slate-600 py-4 bg-slate-50 rounded-lg overflow-x-auto whitespace-nowrap&#34;&gt;1 &#43; 2 &#43; 3 &#43; ... &#43; 98 &#43; 99 &#43; 100 = ?&lt;/div&gt;&lt;p&gt;Он решил это за несколько секунд! Как ты думаешь, как?&lt;/p&gt;`
+                },
+                {
+                    text: &#34;Он сгруппировал числа по парам с концов ряда:&#34;,
+                    content: `
+                        &lt;div class=&#34;flex flex-col items-center space-y-2 font-mono text-xl&#34;&gt;
+                            &lt;div class=&#34;flex justify-between w-64 bg-blue-100 p-2 rounded&#34;&gt;&lt;span&gt;1&lt;/span&gt; &lt;span&gt;&#43;&lt;/span&gt; &lt;span&gt;100&lt;/span&gt; &lt;span&gt;= 101&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class=&#34;flex justify-between w-64 bg-blue-100 p-2 rounded&#34;&gt;&lt;span&gt;2&lt;/span&gt; &lt;span&gt;&#43;&lt;/span&gt; &lt;span&gt;99&lt;/span&gt; &lt;span&gt;= 101&lt;/span&gt;&lt;/div&gt;
+                            &lt;div class=&#34;flex justify-between w-64 bg-blue-100 p-2 rounded&#34;&gt;&lt;span&gt;3&lt;/span&gt; &lt;span&gt;&#43;&lt;/span&gt; &lt;span&gt;98&lt;/span&gt; &lt;span&gt;= 101&lt;/span&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;p class=&#34;mt-4&#34;&gt;Сумма всех пар оказалась одинаковой!&lt;/p&gt;
+                    `
+                },
+                {
+                    text: &#34;От 1 до 100 ровно 100 чисел. Значит, это 50 пар.&#34;,
+                    content: `&lt;div class=&#34;text-3xl font-bold text-indigo-600 py-4&#34;&gt;101 × 50 = 5050&lt;/div&gt;&lt;p&gt;Это и есть метод Гаусса!&lt;/p&gt;`
+                }
+            ];
+
+            const current = steps[state.introStep];
+
+            container.innerHTML = `
+                &lt;div class=&#34;flex flex-col items-center justify-center h-full space-y-6 max-w-3xl mx-auto animate-fade-in&#34;&gt;
+                    &lt;h2 class=&#34;text-3xl font-bold text-indigo-700&#34;&gt;Что такое метод Гаусса?&lt;/h2&gt;
+                    &lt;div class=&#34;bg-white p-8 rounded-2xl shadow-lg border border-indigo-100 w-full text-center&#34;&gt;
+                        &lt;div class=&#34;space-y-4&#34;&gt;
+                            &lt;p class=&#34;text-lg&#34;&gt;${current.text}&lt;/p&gt;
+                            ${current.content}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;flex space-x-4&#34;&gt;
+                        ${state.introStep &gt; 0 ? `&lt;button id=&#34;intro-back&#34; class=&#34;px-6 py-2 rounded-full bg-slate-200 hover:bg-slate-300 font-bold&#34;&gt;Назад&lt;/button&gt;` : &#39;&#39;}
+                        &lt;button id=&#34;intro-next&#34; class=&#34;px-6 py-2 rounded-full ${state.introStep &lt; 2 ? &#39;bg-indigo-600 hover:bg-indigo-700&#39; : &#39;bg-green-600 hover:bg-green-700 animate-bounce&#39;} text-white font-bold flex items-center&#34;&gt;
+                            ${state.introStep &lt; 2 ? &#39;Далее &lt;i data-lucide=&#34;chevron-right&#34; class=&#34;ml-2 w-4 h-4&#34;&gt;&lt;/i&gt;&#39; : &#39;Начать задания! &lt;i data-lucide=&#34;play&#34; class=&#34;ml-2 w-4 h-4&#34;&gt;&lt;/i&gt;&#39;}
+                        &lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            if(document.getElementById(&#39;intro-back&#39;)) {
+                document.getElementById(&#39;intro-back&#39;).onclick = () =&gt; { state.introStep--; render(); };
+            }
+            document.getElementById(&#39;intro-next&#39;).onclick = () =&gt; {
+                if (state.introStep &lt; 2) {
+                    state.introStep&#43;&#43;;
+                    render();
+                } else {
+                    state.currentScreen = &#39;level1&#39;;
+                    render();
+                }
+            };
+        }
+
+        function renderLevel1(container) {
+            const task = level1Tasks[state.level1SubLevel];
+            let rangeHTML = &#39;&#39;;
+            for(let i=task.start; i&lt;=task.end; i&#43;&#43;) {
+                rangeHTML &#43;= `&lt;span class=&#34;bg-slate-100 px-3 py-1 rounded hover:bg-indigo-50 hover:text-indigo-600 transition-colors cursor-default&#34;&gt;${i}&lt;/span&gt;`;
+            }
+
+            container.innerHTML = `
+                &lt;div class=&#34;max-w-3xl mx-auto space-y-6 animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex items-center justify-between&#34;&gt;
+                         &lt;button id=&#34;back-btn&#34; class=&#34;text-slate-500 hover:text-indigo-600 flex items-center&#34;&gt;&lt;i data-lucide=&#34;chevron-right&#34; class=&#34;rotate-180 w-4 h-4 mr-1&#34;&gt;&lt;/i&gt; В меню&lt;/button&gt;
+                         &lt;div class=&#34;text-sm font-bold text-indigo-400&#34;&gt;Задание 1 (${state.level1SubLevel &#43; 1}/${level1Tasks.length})&lt;/div&gt;
+                    &lt;/div&gt;
+                    
+                    &lt;div class=&#34;bg-white p-6 rounded-2xl shadow-lg border-2 border-indigo-100&#34;&gt;
+                        &lt;h3 class=&#34;text-3xl font-bold text-indigo-800 mb-4&#34;&gt;Найди пары&lt;/h3&gt;
+                        &lt;p class=&#34;mb-6 text-2xl font-medium text-slate-700 leading-relaxed&#34;&gt;Найди сумму натуральных чисел: ${task.label}.&lt;/p&gt;
+                        
+                        &lt;div class=&#34;flex flex-wrap gap-2 justify-center mb-6 font-mono text-lg text-slate-500 max-h-40 overflow-y-auto&#34;&gt;
+                            ${rangeHTML}
+                        &lt;/div&gt;
+
+                        &lt;div class=&#34;bg-blue-50 rounded-xl mb-6 overflow-hidden border border-blue-100&#34;&gt;
+                            &lt;button id=&#34;toggle-hint&#34; class=&#34;w-full p-4 flex items-center justify-between font-bold text-blue-800 hover:bg-blue-100 transition-colors focus:outline-none&#34;&gt;
+                                &lt;div class=&#34;flex items-center&#34;&gt;&lt;i data-lucide=&#34;help-circle&#34; class=&#34;w-5 h-5 mr-2&#34;&gt;&lt;/i&gt;&lt;span&gt;Нужна подсказка?&lt;/span&gt;&lt;/div&gt;
+                                &lt;i data-lucide=&#34;${state.level1ShowHint ? &#39;chevron-up&#39; : &#39;chevron-down&#39;}&#34; class=&#34;w-5 h-5&#34;&gt;&lt;/i&gt;
+                            &lt;/button&gt;
+                            &lt;div class=&#34;${state.level1ShowHint ? &#39;block&#39; : &#39;hidden&#39;} p-4 pt-0 text-blue-700 animate-fade-in&#34;&gt;
+                                &lt;div class=&#34;flex flex-col sm:flex-row justify-center items-center sm:space-x-4&#34;&gt;
+                                    &lt;span&gt;${task.start} &#43; ${task.end} = ${task.pairSum}&lt;/span&gt;
+                                    &lt;span class=&#34;hidden sm:inline&#34;&gt;|&lt;/span&gt;
+                                    &lt;span&gt;${task.start &#43; 1} &#43; ${task.end - 1} = ${task.pairSum}&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;p class=&#34;text-center mt-2 text-sm text-blue-600&#34;&gt;Сколько всего пар получится?&lt;/p&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class=&#34;flex items-center justify-center space-x-4&#34;&gt;
+                            &lt;input id=&#34;lvl1-input&#34; type=&#34;number&#34; placeholder=&#34;Ответ...&#34; class=&#34;border-2 border-indigo-200 rounded-lg px-4 py-2 text-2xl w-40 text-center focus:border-indigo-500 outline-none transition-all&#34;&gt;
+                            &lt;button id=&#34;lvl1-check&#34; class=&#34;bg-indigo-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-indigo-700 active:scale-95 transition-transform&#34;&gt;Проверить&lt;/button&gt;
+                        &lt;/div&gt;
+                        
+                        &lt;div id=&#34;lvl1-feedback&#34; class=&#34;mt-4 hidden&#34;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            document.getElementById(&#39;back-btn&#39;).onclick = () =&gt; { state.currentScreen = &#39;menu&#39;; render(); };
+            document.getElementById(&#39;toggle-hint&#39;).onclick = () =&gt; { state.level1ShowHint = !state.level1ShowHint; render(); };
+            
+            const check = () =&gt; {
+                const val = document.getElementById(&#39;lvl1-input&#39;).value;
+                const fb = document.getElementById(&#39;lvl1-feedback&#39;);
+                fb.classList.remove(&#39;hidden&#39;, &#39;bg-green-100&#39;, &#39;text-green-700&#39;, &#39;bg-red-100&#39;, &#39;text-red-700&#39;);
+
+                if(val === task.ans) {
+                    fb.className = &#34;mt-4 p-4 bg-green-100 text-green-700 rounded-xl text-center font-bold animate-bounce-short&#34;;
+                    const isLast = state.level1SubLevel &gt;= level1Tasks.length - 1;
+                    fb.innerHTML = `
+                        &lt;div class=&#34;mb-4 text-xl&#34;&gt;Верно! ${task.pairSum} × ${task.count} = ${task.ans}.&lt;/div&gt;
+                        &lt;button id=&#34;lvl1-next-btn&#34; class=&#34;bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 shadow-lg flex items-center justify-center mx-auto transition-transform hover:scale-105&#34;&gt;
+                            ${isLast ? &#39;Завершить&#39; : &#39;Следующая задача&#39;} &lt;i data-lucide=&#34;${isLast ? &#39;check-circle&#39; : &#39;arrow-right&#39;}&#34; class=&#34;ml-2 w-5 h-5&#34;&gt;&lt;/i&gt;
+                        &lt;/button&gt;
+                    `;
+                    lucide.createIcons();
+                    document.getElementById(&#39;lvl1-next-btn&#39;).onclick = () =&gt; {
+                         if (!isLast) {
+                            state.level1SubLevel&#43;&#43;;
+                            state.level1ShowHint = false;
+                            render();
+                        } else {
+                            unlockLevel(&#39;level1&#39;);
+                            state.currentScreen = &#39;menu&#39;;
+                            render();
+                        }
+                    };
+                    document.getElementById(&#39;lvl1-input&#39;).disabled = true;
+                    document.getElementById(&#39;lvl1-check&#39;).style.display = &#39;none&#39;;
+
+                } else {
+                    fb.className = &#34;mt-4 p-4 bg-red-100 text-red-700 rounded-xl text-center animate-fade-in&#34;;
+                    fb.innerHTML = `Неверно. Попробуй подумать еще раз.&lt;br&gt;${state.level1ShowHint ? `&lt;span class=&#34;text-sm font-mono mt-1 block&#34;&gt;Сумма пары: ${task.pairSum}. Количество пар: ${task.count}.&lt;/span&gt;` : `&lt;span class=&#34;text-sm font-normal mt-1 block&#34;&gt;Нажми на кнопку подсказки.&lt;/span&gt;`}`;
+                }
+            };
+
+            document.getElementById(&#39;lvl1-check&#39;).onclick = check;
+            document.getElementById(&#39;lvl1-input&#39;).onkeydown = (e) =&gt; { if(e.key === &#39;Enter&#39;) check(); };
+        }
+
+        function renderLevel2(container) {
+            const options = [10, 11, 12, 14];
+            container.innerHTML = `
+                &lt;div class=&#34;max-w-3xl mx-auto space-y-6 animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex items-center justify-between&#34;&gt;
+                         &lt;button id=&#34;back-btn&#34; class=&#34;text-slate-500 hover:text-indigo-600 flex items-center&#34;&gt;&lt;i data-lucide=&#34;chevron-right&#34; class=&#34;rotate-180 w-4 h-4 mr-1&#34;&gt;&lt;/i&gt; В меню&lt;/button&gt;
+                         &lt;div class=&#34;text-sm font-bold text-indigo-400&#34;&gt;Задание 3&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;bg-white p-6 rounded-2xl shadow-lg border-2 border-indigo-100&#34;&gt;
+                        &lt;h3 class=&#34;text-3xl font-bold text-indigo-800 mb-6&#34;&gt;Задача про груши&lt;/h3&gt;
+                        &lt;p class=&#34;mb-6 text-2xl font-medium text-slate-700 leading-relaxed&#34;&gt;8 детей собрали 60 груш. Все поделили их между собой так, что у каждого разное количество груш. Тот, у кого меньше всего, получил 4 штуки. Сколько груш у того, у кого больше всего?&lt;/p&gt;
+                        &lt;div class=&#34;grid grid-cols-2 md:grid-cols-4 gap-4 mb-6&#34; id=&#34;opts-container&#34;&gt;&lt;/div&gt;
+                        &lt;button id=&#34;lvl2-check&#34; disabled class=&#34;w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 disabled:opacity-50&#34;&gt;Проверить&lt;/button&gt;
+                        ${state.level2ShowExplanation ? `
+                            &lt;div class=&#34;mt-6 p-4 rounded-xl border-2 ${state.level2Selected === 11 ? &#39;bg-green-50 border-green-200&#39; : &#39;bg-red-50 border-red-200&#39;} animate-fade-in&#34;&gt;
+                                &lt;h4 class=&#34;font-bold text-lg mb-2 ${state.level2Selected === 11 ? &#39;text-green-700&#39; : &#39;text-red-700&#39;}&#34;&gt;${state.level2Selected === 11 ? &#39;Верно!&#39; : &#39;Неверно!&#39;}&lt;/h4&gt;
+                                &lt;div class=&#34;text-slate-700 space-y-2&#34;&gt;
+                                    &lt;p&gt;Объяснение: Чтобы у последнего было максимум, остальные должны получить минимум (но разное количество).&lt;/p&gt;
+                                    &lt;div class=&#34;flex flex-wrap gap-2 text-sm font-mono mt-2&#34;&gt;
+                                        ${[4,5,6,7,8,9,10].map((n,i) =&gt; `&lt;span class=&#34;bg-white px-2 py-1 rounded border&#34;&gt;${i&#43;1}-й: ${n}&lt;/span&gt;`).join(&#39;&#39;)}
+                                    &lt;/div&gt;
+                                    &lt;p class=&#34;font-bold mt-2&#34;&gt;Сумма первых семи: 49. Всего 60. 60 - 49 = &lt;span class=&#34;text-xl font-bold text-indigo-600&#34;&gt;11&lt;/span&gt;.&lt;/p&gt;
+                                &lt;/div&gt;
+                                ${state.level2Selected === 11 ? `&lt;button id=&#34;lvl2-finish-btn&#34; class=&#34;mt-4 bg-green-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-green-700 flex items-center justify-center mx-auto shadow-md&#34;&gt;Вернуться в меню &lt;i data-lucide=&#34;home&#34; class=&#34;ml-2 w-4 h-4&#34;&gt;&lt;/i&gt;&lt;/button&gt;` : &#39;&#39;}
+                            &lt;/div&gt;
+                        ` : &#39;&#39;}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            const optsDiv = document.getElementById(&#39;opts-container&#39;);
+            options.forEach(val =&gt; {
+                const btn = document.createElement(&#39;button&#39;);
+                btn.className = `p-4 rounded-xl border-2 text-xl font-bold transition-all ${state.level2Selected === val ? &#39;border-indigo-500 bg-indigo-50 text-indigo-700&#39; : &#39;border-slate-200 hover:border-indigo-300&#39;}`;
+                btn.textContent = val &#43; &#39; груш&#39;;
+                btn.onclick = () =&gt; { state.level2Selected = val; state.level2ShowExplanation = false; render(); };
+                optsDiv.appendChild(btn);
+            });
+
+            document.getElementById(&#39;back-btn&#39;).onclick = () =&gt; { state.currentScreen = &#39;menu&#39;; render(); };
+            const checkBtn = document.getElementById(&#39;lvl2-check&#39;);
+            checkBtn.disabled = !state.level2Selected;
+            checkBtn.onclick = () =&gt; { state.level2ShowExplanation = true; render(); };
+            
+            if(document.getElementById(&#39;lvl2-finish-btn&#39;)) {
+                document.getElementById(&#39;lvl2-finish-btn&#39;).onclick = () =&gt; {
+                    unlockLevel(&#39;level2&#39;);
+                    state.currentScreen = &#39;menu&#39;;
+                    state.level2Selected = null;
+                    state.level2ShowExplanation = false;
+                    render();
+                }
+            }
+        }
+
+        function renderLevel3(container) {
+            container.innerHTML = `
+                &lt;div class=&#34;max-w-3xl mx-auto space-y-6 animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex items-center justify-between&#34;&gt;
+                         &lt;button id=&#34;back-btn&#34; class=&#34;text-slate-500 hover:text-indigo-600 flex items-center&#34;&gt;&lt;i data-lucide=&#34;chevron-right&#34; class=&#34;rotate-180 w-4 h-4 mr-1&#34;&gt;&lt;/i&gt; В меню&lt;/button&gt;
+                         &lt;div class=&#34;text-sm font-bold text-indigo-400&#34;&gt;Задание 4&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;bg-white p-6 rounded-2xl shadow-lg border-2 border-indigo-100&#34;&gt;
+                        &lt;h3 class=&#34;text-3xl font-bold text-indigo-800 mb-6&#34;&gt;Лиса и мыши&lt;/h3&gt;
+                        &lt;p class=&#34;mb-6 text-2xl font-medium text-slate-700 leading-relaxed&#34;&gt;Лиса поймала 33 мыши и разложила их в 6 кучек. В самой большой — 8 мышей. В каждой следующей на 1 меньше. Сколько мышей в последней кучке?&lt;/p&gt;
+
+                        &lt;div class=&#34;bg-green-50 p-6 rounded-xl mb-6 min-h-[150px] flex items-end justify-center space-x-4 border-b-4 border-green-700&#34;&gt;
+                            ${state.level3Piles.map((count, idx) =&gt; `
+                                &lt;div class=&#34;flex flex-col items-center&#34;&gt;
+                                   &lt;div class=&#34;text-sm font-bold text-green-800 mb-1 h-5&#34;&gt;${state.level3Simulated ? (idx === 0 ? count : (idx === 5 ? &#39;?&#39; : &#39;&#39;)) : &#39;?&#39;}&lt;/div&gt;
+                                   &lt;div class=&#34;w-8 sm:w-10 bg-orange-400 rounded-t-lg transition-height relative&#34; style=&#34;height: ${state.level3Simulated ? count * 15 : 10}px&#34;&gt;
+                                        ${state.level3Simulated &amp;&amp; count &gt; 0 ? &#39;&lt;div class=&#34;absolute bottom-1 left-1/2 -translate-x-1/2 text-[10px]&#34;&gt;🐭&lt;/div&gt;&#39; : &#39;&#39;}
+                                   &lt;/div&gt;
+                                   &lt;div class=&#34;mt-2 text-xs text-slate-500&#34;&gt;Кучка ${idx &#43; 1}&lt;/div&gt;
+                                &lt;/div&gt;
+                            `).join(&#39;&#39;)}
+                        &lt;/div&gt;
+
+                        ${!state.level3Simulated ? `
+                            &lt;button id=&#34;sim-btn&#34; class=&#34;w-full bg-orange-500 text-white py-3 rounded-xl font-bold hover:bg-orange-600 flex items-center justify-center&#34;&gt;
+                                &lt;i data-lucide=&#34;play&#34; class=&#34;w-5 h-5 mr-2&#34;&gt;&lt;/i&gt; Создать кучки
+                            &lt;/button&gt;
+                        ` : `
+                             &lt;div class=&#34;space-y-4 animate-fade-in&#34;&gt;
+                                 &lt;div class=&#34;text-center&#34;&gt;
+                                   &lt;p class=&#34;font-bold text-lg&#34;&gt;Всего: 33 мыши.&lt;/p&gt;
+                                   &lt;p class=&#34;text-slate-600&#34;&gt;Сколько в последней (6-й) кучке?&lt;/p&gt;
+                                 &lt;/div&gt;
+                                 &lt;div class=&#34;flex justify-center space-x-4&#34; id=&#34;lvl3-opts&#34;&gt;&lt;/div&gt;
+                                 &lt;div id=&#34;lvl3-msg&#34; class=&#34;text-center font-bold&#34;&gt;&lt;/div&gt;
+                             &lt;/div&gt;
+                        `}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            document.getElementById(&#39;back-btn&#39;).onclick = () =&gt; { state.currentScreen = &#39;menu&#39;; render(); };
+            
+            if(!state.level3Simulated) {
+                document.getElementById(&#39;sim-btn&#39;).onclick = () =&gt; {
+                    state.level3Piles = [8, 7, 6, 5, 4, 3];
+                    state.level3Simulated = true;
+                    render();
+                };
+            } else {
+                const optsDiv = document.getElementById(&#39;lvl3-opts&#39;);
+                [2, 3, 4, 5].forEach(ans =&gt; {
+                    const btn = document.createElement(&#39;button&#39;);
+                    btn.className = &#34;px-6 py-2 rounded-lg border-2 border-orange-200 hover:bg-orange-100 font-bold text-xl&#34;;
+                    btn.textContent = ans;
+                    btn.onclick = () =&gt; {
+                        if(ans === 3) {
+                            const msgDiv = document.getElementById(&#39;lvl3-msg&#39;);
+                            msgDiv.className = &#34;text-green-600 flex flex-col items-center gap-2 mt-4&#34;;
+                            msgDiv.innerHTML = `
+                                &lt;span class=&#34;text-xl&#34;&gt;Верно! 8&#43;7&#43;6&#43;5&#43;4&#43;3 = 33.&lt;/span&gt;
+                                &lt;button id=&#34;lvl3-finish-btn&#34; class=&#34;mt-2 bg-green-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-green-700 flex items-center shadow-md&#34;&gt;
+                                    В меню &lt;i data-lucide=&#34;home&#34; class=&#34;ml-2 w-4 h-4&#34;&gt;&lt;/i&gt;
+                                &lt;/button&gt;
+                            `;
+                            lucide.createIcons();
+                            document.getElementById(&#39;lvl3-finish-btn&#39;).onclick = () =&gt; {
+                                unlockLevel(&#39;level3&#39;);
+                                state.currentScreen = &#39;menu&#39;;
+                                state.level3Simulated = false;
+                                render();
+                            };
+                            const btns = optsDiv.getElementsByTagName(&#39;button&#39;);
+                            for(let b of btns) b.disabled = true;
+                        } else {
+                            document.getElementById(&#39;lvl3-msg&#39;).className = &#34;text-red-600&#34;;
+                            document.getElementById(&#39;lvl3-msg&#39;).textContent = &#34;Ошибка! Посмотри на высоту кучек на картинке.&#34;;
+                        }
+                    };
+                    optsDiv.appendChild(btn);
+                });
+            }
+        }
+
+        function renderLevel4(container) {
+            container.innerHTML = `
+                &lt;div class=&#34;max-w-3xl mx-auto space-y-6 animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;flex items-center justify-between&#34;&gt;
+                         &lt;button id=&#34;back-btn&#34; class=&#34;text-slate-500 hover:text-indigo-600 flex items-center&#34;&gt;&lt;i data-lucide=&#34;chevron-right&#34; class=&#34;rotate-180 w-4 h-4 mr-1&#34;&gt;&lt;/i&gt; В меню&lt;/button&gt;
+                         &lt;div class=&#34;text-sm font-bold text-indigo-400&#34;&gt;Задание 5&lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;bg-white p-6 rounded-2xl shadow-lg border-2 border-indigo-100&#34;&gt;
+                        &lt;h3 class=&#34;text-3xl font-bold text-indigo-800 mb-6&#34;&gt;Часы с боем&lt;/h3&gt;
+                        &lt;p class=&#34;mb-6 text-2xl font-medium text-slate-700 leading-relaxed&#34;&gt;Часы бьют 1 раз в 1 час, 2 раза в 2 часа и так далее. Также они бьют 1 раз в каждые полчаса. Сколько всего ударов сделают часы с 1:00 до 10:00 (включительно)?&lt;/p&gt;
+
+                        &lt;div class=&#34;flex flex-col items-center justify-center bg-slate-100 rounded-xl p-8 mb-6&#34;&gt;
+                           &lt;div class=&#34;w-48 h-48 rounded-full bg-white border-8 border-indigo-600 relative flex items-center justify-center shadow-lg mb-4&#34;&gt;
+                              &lt;div class=&#34;text-4xl font-mono font-bold text-indigo-900&#34;&gt;${state.level4Time}:00&lt;/div&gt;
+                           &lt;/div&gt;
+                           &lt;div class=&#34;text-2xl font-bold text-indigo-700&#34;&gt;Всего ударов: &lt;span class=&#34;text-4xl&#34;&gt;${state.level4Strikes}&lt;/span&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+
+                        ${!state.level4Playing &amp;&amp; !state.level4Finished ? `
+                            &lt;button id=&#34;clock-start&#34; class=&#34;w-full bg-red-500 text-white py-3 rounded-xl font-bold hover:bg-red-600 flex items-center justify-center&#34;&gt;
+                                &lt;i data-lucide=&#34;play&#34; class=&#34;w-5 h-5 mr-2&#34;&gt;&lt;/i&gt; Начать расчет
+                            &lt;/button&gt;
+                        ` : state.level4Finished ? `
+                            &lt;div class=&#34;text-center animate-fade-in space-y-4&#34;&gt;
+                              &lt;div class=&#34;p-4 bg-green-100 text-green-800 rounded-xl&#34;&gt;
+                                 &lt;p class=&#34;font-bold text-xl&#34;&gt;Ответ: 64 раза!&lt;/p&gt;
+                                 &lt;p class=&#34;text-sm&#34;&gt;Целые часы: 55 ударов. Половины: 9 ударов.&lt;/p&gt;
+                              &lt;/div&gt;
+                              &lt;button id=&#34;clock-finish&#34; class=&#34;px-8 py-3 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-700&#34;&gt;Завершить&lt;/button&gt;
+                            &lt;/div&gt;
+                        ` : `
+                            &lt;div class=&#34;text-center text-slate-500 italic&#34;&gt;Идет расчет... Час ${state.level4Time}&lt;/div&gt;
+                        `}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            document.getElementById(&#39;back-btn&#39;).onclick = () =&gt; { 
+                state.currentScreen = &#39;menu&#39;; 
+                state.level4Playing = false; 
+                render(); 
+            };
+
+            if(document.getElementById(&#39;clock-start&#39;)) {
+                document.getElementById(&#39;clock-start&#39;).onclick = () =&gt; {
+                    state.level4Playing = true;
+                    state.level4Strikes = 0;
+                    state.level4Time = 1;
+                    render();
+                    runClockSimulation();
+                };
+            }
+            if(document.getElementById(&#39;clock-finish&#39;)) {
+                document.getElementById(&#39;clock-finish&#39;).onclick = () =&gt; {
+                    unlockLevel(&#39;level4&#39;);
+                    state.currentScreen = &#39;finish&#39;;
+                    render();
+                };
+            }
+        }
+
+        function runClockSimulation() {
+            if (!state.level4Playing || state.level4Time &gt; 10) {
+                state.level4Playing = false;
+                state.level4Finished = true;
+                render();
+                return;
+            }
+
+            setTimeout(() =&gt; {
+                let add = state.level4Time; 
+                if (state.level4Time &lt; 10) add &#43;= 1; 
+
+                state.level4Strikes &#43;= add;
+                
+                if (state.level4Time &lt; 10) {
+                    state.level4Time&#43;&#43;;
+                    render();
+                    runClockSimulation();
+                } else {
+                    state.level4Playing = false;
+                    state.level4Finished = true;
+                    render();
+                }
+            }, 800);
+        }
+
+        function renderFinish(container) {
+            container.innerHTML = `
+                &lt;div class=&#34;flex flex-col items-center justify-center h-full text-center space-y-6 animate-fade-in&#34;&gt;
+                    &lt;div class=&#34;relative&#34;&gt;
+                        &lt;i data-lucide=&#34;trophy&#34; class=&#34;w-32 h-32 text-yellow-400 mx-auto&#34;&gt;&lt;/i&gt;
+                        &lt;i data-lucide=&#34;star&#34; class=&#34;w-12 h-12 text-yellow-200 absolute top-0 right-0 animate-bounce-short&#34;&gt;&lt;/i&gt;
+                    &lt;/div&gt;
+                    &lt;h2 class=&#34;text-4xl font-bold text-indigo-800&#34;&gt;Поздравляем!&lt;/h2&gt;
+                    &lt;p class=&#34;text-xl text-slate-600&#34;&gt;Ты успешно прошел все уровни и освоил метод Гаусса!&lt;/p&gt;
+                    &lt;div class=&#34;text-3xl font-bold text-indigo-600 bg-indigo-50 px-8 py-4 rounded-2xl&#34;&gt;
+                        Баллы: ${state.score}
+                    &lt;/div&gt;
+                    &lt;button id=&#34;restart-btn&#34; class=&#34;px-8 py-3 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-700 flex items-center&#34;&gt;
+                        &lt;i data-lucide=&#34;rotate-ccw&#34; class=&#34;w-5 h-5 mr-2&#34;&gt;&lt;/i&gt; Начать заново
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            `;
+            
+            document.getElementById(&#39;restart-btn&#39;).onclick = () =&gt; {
+                state.score = 0;
+                state.completedLevels = [];
+                state.currentScreen = &#39;menu&#39;;
+                state.introStep = 0;
+                state.level1SubLevel = 0;
+                state.level4Finished = false;
+                render();
+            };
+        }
+
+        function unlockLevel(lvl) {
+            if (!state.completedLevels.includes(lvl)) {
+                state.completedLevels.push(lvl);
+                state.score &#43;= 100;
+            }
+        }
+
+        render();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                                class="absolute top-0 left-0 w-full h-full border-0" loading="lazy" allowfullscreen>
+                            </iframe>
+                            
+                            <button id="exitBtn142_ru" onclick="closeTaskFullscreen()"
+                                class="hidden absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-red-700 transition-colors z-50 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                                <span>Закрыть</span>
+                            </button>
+                        </div>
+
+                        
+                        <div class="bg-gray-50 p-2 border-t border-gray-200">
+                            <a href="/task/142" target="_blank"
+                                class="text-red-600 hover:text-red-800 font-medium flex items-center justify-center gap-1 text-sm">
+                                <span>Открыть в новом окне</span>
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="text-center text-sm text-gray-600 mt-2">
+                    <span>💡</span>
+                    <span>Орындап болғаннан кейін келесі тапсырмаға өтіңіз / После выполнения переходите к следующему
+                        заданию</span>
+                </div>
+                
+            </div>
+        </div>
+
+        
+        <script>
+            
+            function openTaskFullscreen(taskId, lang) {
+                
+                if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                    closeTaskFullscreen();
+                } else {
+                    
+                    const containerId = lang === 'ru' ? 'fsContainer' + taskId + '_ru' : 'fsContainer' + taskId;
+                    const exitBtnId = lang === 'ru' ? 'exitBtn' + taskId + '_ru' : 'exitBtn' + taskId;
+
+                    const container = document.getElementById(containerId);
+                    const exitBtn = document.getElementById(exitBtnId);
+
+                    if (container) {
+                        if (container.requestFullscreen) {
+                            container.requestFullscreen();
+                        } else if (container.webkitRequestFullscreen) {
+                            container.webkitRequestFullscreen();
+                        } else if (container.msRequestFullscreen) {
+                            container.msRequestFullscreen();
+                        }
+
+                        
+                        if (exitBtn) {
+                            exitBtn.classList.remove('hidden');
+
+                            
+                            const onFullscreenChange = () => {
+                                if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+                                    exitBtn.classList.add('hidden');
+                                    document.removeEventListener('fullscreenchange', onFullscreenChange);
+                                    document.removeEventListener('webkitfullscreenchange', onFullscreenChange);
+                                    document.removeEventListener('msfullscreenchange', onFullscreenChange);
+                                }
+                            };
+
+                            document.addEventListener('fullscreenchange', onFullscreenChange);
+                            document.addEventListener('webkitfullscreenchange', onFullscreenChange);
+                            document.addEventListener('msfullscreenchange', onFullscreenChange);
+                        }
+                    } else {
+                        
+                        const langParam = lang ? '?lang=' + lang : '';
+                        window.open('\/task\/' + taskId + langParam, '_blank');
+                    }
+                }
+            }
+
+            function closeTaskFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        </script>
+        
+
+        
+        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-2xl mt-8 border-2 border-indigo-200">
+            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                <span role="img" aria-label="Навигация">🧭</span>
+                Навигация по урокам
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4">
+                <a href="/grade/5"
+                    class="flex items-center gap-2 bg-white hover:bg-purple-50 p-4 rounded-xl border-2 border-transparent hover:border-purple-400 transition-all">
+                    <span role="img" aria-label="Назад к классу">📚</span>
+                    <div>
+                        <div class="text-sm text-gray-500">Все уроки</div>
+                        <div class="font-bold text-gray-800">5-класс</div>
+                    </div>
+                </a>
+                <a href="/"
+                    class="flex items-center gap-2 bg-white hover:bg-blue-50 p-4 rounded-xl border-2 border-transparent hover:border-blue-400 transition-all">
+                    <span role="img" aria-label="Главная страница">🏠</span>
+                    <div>
+                        <div class="text-sm text-gray-500">Вернуться</div>
+                        <div class="font-bold text-gray-800">Главная</div>
+                    </div>
+                </a>
+                <a href="/about"
+                    class="flex items-center gap-2 bg-white hover:bg-green-50 p-4 rounded-xl border-2 border-transparent hover:border-green-400 transition-all">
+                    <span role="img" aria-label="О проекте">💎</span>
+                    <div>
+                        <div class="text-sm text-gray-500">О проекте</div>
+                        <div class="font-bold text-gray-800">VisualMath</div>
+                    </div>
+                </a>
+            </div>
+            <div class="mt-4 text-center text-sm text-gray-600">
+                💡 Совет: добавьте сайт в закладки для быстрого доступа
+            </div>
+        </div>
+
+
+        
+        <div class="mb-8">
+            <div
+                class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 md:p-8 rounded-2xl shadow-lg border-2 border-purple-200">
+                
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center animate-pulse">
+                        <span class="text-2xl">📢</span>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center">Поделитесь с коллегами!</h3>
+                </div>
+
+                
+                <div class="space-y-2 mb-6 text-center">
+                    <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                        <span class="text-lg">🇰🇿</span>
+                        <span>Сайттың дамуына үлес қосу үшін, мұғалімдер чатында бөлісіңіз!</span>
+                    </p>
+                    <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                        <span class="text-lg">🇷🇺</span>
+                        <span>Помогите развитию сайта — поделитесь в чатах учителей!</span>
+                    </p>
+                </div>
+
+                
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    
+                    <a id="shareWhatsApp" href="#"
+                        class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                        </svg>
+                        <span>WhatsApp</span>
+                    </a>
+
+                    
+                    <a id="shareTelegram" href="#"
+                        class="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                        </svg>
+                        <span>Telegram</span>
+                    </a>
+
+                    
+                    <button id="shareGeneric"
+                        class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                        </svg>
+                        <span>Поделиться</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+        <script>
+            (function () {
+                const pageUrl = window.location.href;
+                const pageTitle = document.title;
+                const shareMessage = `📐 VisualMath - ${pageTitle}\n\nБесплатные презентации и задания по математике!\nМатематика бойынша тегін презентациялар және тапсырмалар!\n\n`;
+
+                
+                document.getElementById('shareWhatsApp').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage + pageUrl)}`;
+                    window.open(whatsappUrl, '_blank');
+                });
+
+                
+                document.getElementById('shareTelegram').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareMessage)}`;
+                    window.open(telegramUrl, '_blank');
+                });
+
+                
+                document.getElementById('shareGeneric').addEventListener('click', async function (e) {
+                    e.preventDefault();
+
+                    if (navigator.share) {
+                        try {
+                            await navigator.share({
+                                title: pageTitle,
+                                text: shareMessage,
+                                url: pageUrl
+                            });
+                        } catch (err) {
+                            if (err.name !== 'AbortError') {
+                                copyToClipboard();
+                            }
+                        }
+                    } else {
+                        copyToClipboard();
+                    }
+                });
+
+                function copyToClipboard() {
+                    const textToCopy = shareMessage + pageUrl;
+                    navigator.clipboard.writeText(textToCopy).then(function () {
+                        alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                    }, function (err) {
+                        
+                        const textArea = document.createElement('textarea');
+                        textArea.value = textToCopy;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                    });
+                }
+            })();
+        </script>
+
+        
+        <div class="my-8">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9724842226086594"
+                data-ad-slot="7527178719" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-900 text-white p-8 mt-auto">
+        <div class="container mx-auto text-center">
+            <div class="text-2xl mb-4">📐 VisualMath</div>
+            <p class="text-gray-400 mb-4">&copy; 2026 VisualMath. Все права защищены.</p>
+            <div class="space-x-6">
+                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Политика
+                    конфиденциальности</a>
+                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Условия
+                    использования</a>
+                <a href="/about" class="text-gray-400 hover:text-white transition-colors">О нас</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
