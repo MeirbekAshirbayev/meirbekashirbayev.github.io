@@ -305,31 +305,25 @@
                 <h2 class="text-lg font-bold text-gray-800">Теория / Основные понятия</h2>
             </div>
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
-                <div class="space-y-4">
-    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-        <h3 class="font-bold text-blue-800 mb-2">📝 Алгоритм округления</h3>
-        <ol class="list-decimal list-inside space-y-1">
-            <li>Найдите разряд, до которого нужно округлить, и <strong>подчеркните</strong> его.</li>
-            <li>Посмотрите на следующую цифру (справа от подчеркнутой).</li>
-            <li>Все цифры, следующие за ней, отбрасываются (или заменяются нулями).</li>
-        </ol>
-    </div>
-
-    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-        <h3 class="font-bold text-green-800 mb-2">⚖️ Правило выбора цифры</h3>
-        <ul class="list-disc list-inside space-y-2">
-            <li>Если справа стоит <strong>0, 1, 2, 3, 4</strong> — подчеркнутую цифру оставляем <strong>без изменений</strong>.</li>
-            <li>Если справа стоит <strong>5, 6, 7, 8, 9</strong> — подчеркнутую цифру <strong>увеличиваем на 1</strong>.</li>
-        </ul>
-    </div>
-
-    <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
-        <h3 class="font-bold text-yellow-800 mb-2">💡 Примеры</h3>
-        <ul class="space-y-2">
-            <li>✅ <strong>До десятых:</strong> $6,2<u>4</u>8 \approx 6,2$ (т.к. справа 4)</li>
-            <li>✅ <strong>До сотых:</strong> $15,36<u>7</u> \approx 15,37$ (т.к. справа 7)</li>
-            <li>✅ <strong>До целых:</strong> $9,<u>5</u>2 \approx 10$ (т.к. справа 5)</li>
-        </ul>
+                
+<div class="space-y-6">
+    <div class="bg-amber-50 p-6 rounded-xl border-l-4 border-amber-500 shadow-sm">
+        <h3 class="font-bold text-xl text-amber-800 mb-4 flex items-center gap-2">
+            <span class="text-2xl">🎯</span> Саноарды дөңгелектеу
+        </h3>
+        <p class="text-gray-700 mb-4">Дөңгелектеу кезінде "артық" цифрларды алып тастаймыз немесе нөлмен алмастырамыз.</p>
+        
+        <div class="bg-white p-4 rounded border border-amber-200">
+            <h4 class="font-bold text-gray-800 mb-2">Ереже:</h4>
+            <ul class="text-sm space-y-2 text-gray-600">
+                <li>🔴 Егер бірінші алынып тасталатын цифр <strong>0, 1, 2, 3, 4</strong> болса → алдыңғы цифр <strong>өзгермейді</strong>.</li>
+                <li>🟢 Егер бірінші алынып тасталатын цифр <strong>5, 6, 7, 8, 9</strong> болса → алдыңғы цифр <strong>+1-ге артады</strong>.</li>
+            </ul>
+            <div class="grid grid-cols-2 gap-4 mt-4 font-mono text-center font-bold">
+                <div class="bg-red-50 p-2 rounded text-red-800">12,34 ≈ 12,3</div>
+                <div class="bg-green-50 p-2 rounded text-green-800">12,78 ≈ 12,8</div>
+            </div>
+        </div>
     </div>
 </div>
             </div>

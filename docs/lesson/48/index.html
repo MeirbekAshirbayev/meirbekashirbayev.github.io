@@ -305,30 +305,21 @@
                 <h2 class="text-lg font-bold text-gray-800">Теория / Основные понятия</h2>
             </div>
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
-                <div class="space-y-4">
-    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-        <h3 class="font-bold text-blue-800 mb-2">📋 Что такое подмножество?</h3>
-        <ul class="list-disc list-inside space-y-1">
-            <li>Если каждый элемент множества $B$ является элементом множества $A$, то множество $B$ называют <strong>подмножеством</strong> множества $A$.</li>
-            <li><strong>Обозначение:</strong> $B \subset A$ (читается: «B является подмножеством A»).</li>
-            <li><strong>Визуализация:</strong> на диаграмме Эйлера-Венна круг $B$ находится внутри круга $A$.</li>
-        </ul>
-    </div>
-
-    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-        <h3 class="font-bold text-green-800 mb-2">⚙️ Основные свойства</h3>
-        <ul class="list-disc list-inside space-y-1">
-            <li><strong>Пустое множество:</strong> $\varnothing \subset A$ (пустое множество является подмножеством любого множества).</li>
-            <li><strong>Само подмножество:</strong> $A \subset A$ (любое множество является подмножеством самого себя).</li>
-            <li>Если в множестве $n$ элементов, то количество всех его подмножеств равно $2^n$.</li>
-        </ul>
-    </div>
-
-    <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
-        <h3 class="font-bold text-yellow-800 mb-2">💡 Пример</h3>
-        <p>Пусть $A = \{1, 2, 3, 4, 5\}$ и $B = \{2, 4\}$.</p>
-        <p class="mt-1">Так как элементы 2 и 4 принадлежат множеству $A$, то $B \subset A$.</p>
-        <p class="text-sm text-gray-600 mt-1 italic">Все подмножества для $\{1, 2\}$: $\varnothing, \{1\}, \{2\}, \{1, 2\}$.</p>
+                
+<div class="space-y-6">
+    <div class="bg-fuchsia-50 p-6 rounded-xl border-l-4 border-fuchsia-500 shadow-sm">
+        <h3 class="font-bold text-xl text-fuchsia-800 mb-4">Ішкі жиын (Подмножество)</h3>
+        <p class="text-gray-700 mb-4">Егер В жиынының әрбір элементі А жиынына тиісті болса, В жиыны А-ның ішкі жиыны деп аталады.</p>
+        
+        <div class="flex justify-center my-4">
+             <div class="relative w-48 h-32 bg-fuchsia-100 rounded-full border-2 border-fuchsia-400 flex items-center justify-center">
+                 <span class="absolute top-2 left-4 font-bold text-fuchsia-800">A (Сынып)</span>
+                 <div class="w-24 h-16 bg-white rounded-full border-2 border-fuchsia-600 flex items-center justify-center shadow-sm">
+                     <span class="font-bold text-fuchsia-900 text-xs">B (Қыздар)</span>
+                 </div>
+             </div>
+        </div>
+        <div class="text-center font-mono font-bold text-fuchsia-800">B ⊂ A</div>
     </div>
 </div>
             </div>

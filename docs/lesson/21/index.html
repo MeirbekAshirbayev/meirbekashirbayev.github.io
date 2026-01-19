@@ -305,32 +305,33 @@
                 <h2 class="text-lg font-bold text-gray-800">Теория / Основные понятия</h2>
             </div>
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
-                <div class="space-y-4">
-    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-        <h3 class="font-bold text-blue-800 mb-2">🔢 Наибольший общий делитель (НОД)</h3>
-        <p class="text-sm mb-2">Это самое большое число, на которое делятся оба данных числа без остатка.</p>
-        <ul class="list-disc list-inside space-y-1 text-sm">
-            <li><strong>Взаимно простые числа:</strong> числа, у которых НОД равен 1 (например, 8 и 15).</li>
-            <li>Чтобы найти НОД, выпишите общие простые множители и перемножьте их.</li>
-        </ul>
-    </div>
-
-    <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-        <h3 class="font-bold text-green-800 mb-2">🧮 Наименьшее общее кратное (НОК)</h3>
-        <p class="text-sm mb-2">Это самое маленькое число, которое делится на каждое из данных чисел.</p>
-        <p class="text-sm italic bg-white p-2 rounded border border-green-200">
-            <strong>Правило:</strong> Разложите числа на множители. К множителям большего числа добавьте недостающие множители меньшего числа.
-        </p>
-    </div>
-
-    <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
-        <h3 class="font-bold text-yellow-800 mb-2">💡 Пример для чисел 12 и 18</h3>
-        <div class="text-sm space-y-2">
-            <p>12 = 2 × 2 × 3 | 18 = 2 × 3 × 3</p>
-            <p class="font-bold text-blue-700">НОД (12, 18) = 2 × 3 = 6</p>
-            
-            <p class="font-bold text-green-700">НОК (12, 18) = (2 × 3 × 3) × 2 = 36</p>
-            
+                
+<div class="space-y-6">
+    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
+        <h3 class="font-bold text-xl text-blue-800 mb-4 flex items-center gap-2">
+            <span class="text-2xl">🔢</span> ЕҮОБ және ЕКОЕ
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white p-4 rounded-lg shadow-sm border-t-4 border-blue-400">
+                <h4 class="font-bold text-blue-700 mb-2">ЕҮОБ (НОД)</h4>
+                <p class="text-gray-600 text-sm mb-2">Ең үлкен ортақ бөлгіш.</p>
+                <div class="bg-blue-50 p-2 rounded text-sm font-mono">
+                    ЕҮОБ(12, 18) = 6
+                </div>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm border-t-4 border-indigo-400">
+                <h4 class="font-bold text-indigo-700 mb-2">ЕКОЕ (НОК)</h4>
+                <p class="text-gray-600 text-sm mb-2">Ең кіші ортақ еселік.</p>
+                <div class="bg-indigo-50 p-2 rounded text-sm font-mono">
+                    ЕКОЕ(4, 6) = 12
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4 bg-yellow-50 p-4 rounded border border-yellow-200">
+            <h4 class="font-bold text-yellow-800 mb-1">Өзара жай сандар</h4>
+            <p class="text-gray-700 text-sm">Егер сандардың ЕҮОБ-ы 1-ге тең болса, олар өзара жай сандар деп аталады.</p>
+            <p class="text-xs text-gray-500 mt-1">Мысалы: 5 және 7</p>
         </div>
     </div>
 </div>
