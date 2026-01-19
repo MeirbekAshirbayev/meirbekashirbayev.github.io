@@ -225,25 +225,33 @@
                 else }}{{ .Lesson.Title }}{{ end }} - {{ .Lesson.Grade }} класс презентация</h1>
         </div>
 
-        <!-- Intro Section for SEO / AdSense -->
+        <!-- Intro Section for SEO / AdSense - DYNAMIC & UNIQUE -->
         <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-2xl mb-6 border border-purple-200">
             <div class="prose max-w-none">
+                <h2 class="text-xl font-bold text-gray-800 mb-2">
+                    Математика {{ .Lesson.Grade }}-сынып: {{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }}{{ else }}{{
+                    .Lesson.Title }}{{ end }}
+                </h2>
                 <p class="text-gray-700 leading-relaxed mb-4">
-                    <strong>Добро пожаловать на урок математики!</strong> На этой странице вы найдете полный набор
-                    образовательных материалов для {{ .Lesson.Grade }}-го класса по теме
-                    <em>"{{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }}{{ else }}{{ .Lesson.Title }}{{ end }}"</em>.
+                    На этой странице представлен подробный урок по теме <strong>"{{ if .Lesson.TitleRu }}{{
+                        .Lesson.TitleRu }}{{ else }}{{ .Lesson.Title }}{{ end }}"</strong>, разработанный специально для
+                    учеников {{ .Lesson.Grade }} класса.
+                    Материал полностью соответствует обновленной учебной программе Казахстана.
                 </p>
                 <p class="text-gray-700 leading-relaxed mb-4">
-                    Наша платформа VisualMath предоставляет качественные презентации в формате PPT (слайды) на казахском
-                    и русском языках,
-                    которые помогут учителям провести эффективный урок, а ученикам — лучше усвоить материал. Все
-                    материалы разработаны
-                    в соответствии с программой Республики Казахстан и доступны бесплатно.
+                    <strong>В этом уроке вы найдете:</strong>
                 </p>
+                <ul class="list-disc pl-5 mb-4 text-gray-700">
+                    <li>Профессиональную презентацию (слайды) по теме "{{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }}{{
+                        else }}{{ .Lesson.Title }}{{ end }}" для наглядного объяснения.</li>
+                    <li>Разбор основных понятий и формул, необходимых для освоения материала {{ .Lesson.Grade }} класса.
+                    </li>
+                    <li>Интерактивные задания для самостоятельного закрепления темы.</li>
+                </ul>
                 <p class="text-gray-700 leading-relaxed">
-                    <strong>Что включено в урок:</strong> готовые презентации (Canva), теоретический материал,
-                    интерактивные задания для закрепления знаний.
-                    Материалы подходят для использования в классе и для самостоятельного изучения дома.
+                    Использование готовых презентаций VisualMath позволяет учителю сэкономить время на подготовку к
+                    занятиям, а ученикам — глубже понять тему <em>"{{ if .Lesson.TitleRu }}{{ .Lesson.TitleRu }}{{ else
+                        }}{{ .Lesson.Title }}{{ end }}"</em> через визуальные примеры.
                 </p>
             </div>
         </div>
