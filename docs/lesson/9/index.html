@@ -307,35 +307,35 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-pink-50 p-6 rounded-xl border-l-4 border-pink-500 shadow-sm">
-        <h3 class="font-bold text-xl text-pink-800 mb-4 flex items-center gap-2">
-            <span class="text-2xl">abc</span> Буквенные выражения
-        </h3>
-        <p class="text-gray-700 leading-relaxed mb-4"><strong>Буквенное выражение</strong> — это выражение, содержащее буквы, числа и знаки арифметических действий.</p>
-        
-        <div class="bg-white p-6 rounded-xl border border-pink-100 text-center shadow-sm">
-            <div class="text-3xl font-mono font-bold text-gray-800 mb-2">2x + 5</div>
-            <p class="text-sm text-gray-500">где x — переменная</p>
-        </div>
+    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
+        <h3 class="font-bold text-xl text-blue-800 mb-4">Порядок выполнения действий</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            В математике существует строгий порядок выполнения арифметических операций, чтобы при вычислениях всегда получался один и тот же результат.
+        </p>
+        <ol class="list-decimal list-inside space-y-3 text-gray-700 font-medium">
+            <li class="bg-white p-3 rounded shadow-sm border border-blue-100">
+                <span class="text-indigo-600">Действие 1:</span> Если есть скобки, то сначала выполняются действия в скобках.
+            </li>
+            <li class="bg-white p-3 rounded shadow-sm border border-blue-100">
+                <span class="text-indigo-600">Действие 2:</span> Затем выполняются умножение и деление (слева направо).
+            </li>
+            <li class="bg-white p-3 rounded shadow-sm border border-blue-100">
+                <span class="text-indigo-600">Действие 3:</span> В последнюю очередь выполняются сложение и вычитание (слева направо).
+            </li>
+        </ol>
     </div>
 
-    <div class="bg-indigo-50 p-6 rounded-xl border-l-4 border-indigo-500 shadow-sm">
-        <h3 class="font-bold text-xl text-indigo-800 mb-3">Как найти значение?</h3>
-        <p class="text-gray-700 mb-3">Чтобы найти значение буквенного выражения, нужно вместо буквы подставить её числовое значение.</p>
+    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h3 class="font-bold text-xl text-gray-800 mb-4">Разбор примера</h3>
+        <p class="font-mono text-lg mb-4 bg-gray-100 p-2 rounded text-center">40 - (5 + 3) · 2 + 10 : 2</p>
         
-        <div class="bg-white p-4 rounded-lg border border-indigo-100">
-            <p class="font-bold text-indigo-700 mb-1">Пример:</p>
-            <p class="font-mono mb-2">Найти значение <strong>10 - a</strong>, если a = 3.</p>
-            <div class="border-t border-gray-100 pt-2 text-green-600 font-bold">10 - 3 = 7</div>
-        </div>
-    </div>
-    
-    <div class="bg-amber-50 p-6 rounded-xl border-l-4 border-amber-500 shadow-sm">
-        <h3 class="font-bold text-xl text-amber-800 mb-2">Формулы</h3>
-        <p class="text-gray-700 mb-4">Равенство, содержащее переменную, называется формулой.</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-             <div class="bg-white p-3 rounded border border-amber-200 font-mono text-center">S = v · t <br><span class="text-xs text-gray-400 font-sans">Путь</span></div>
-             <div class="bg-white p-3 rounded border border-amber-200 font-mono text-center">P = 2(a + b) <br><span class="text-xs text-gray-400 font-sans">Периметр</span></div>
+        <div class="space-y-2 text-gray-700">
+            <p>1. <strong>Скобки:</strong> 5 + 3 = 8. <br><span class="text-sm text-gray-500">Выражение стало: 40 - 8 · 2 + 10 : 2</span></p>
+            <p>2. <strong>Умножение:</strong> 8 · 2 = 16. <br><span class="text-sm text-gray-500">Выражение стало: 40 - 16 + 10 : 2</span></p>
+            <p>3. <strong>Деление:</strong> 10 : 2 = 5. <br><span class="text-sm text-gray-500">Выражение стало: 40 - 16 + 5</span></p>
+            <p>4. <strong>Вычитание (слева):</strong> 40 - 16 = 24. <br><span class="text-sm text-gray-500">Выражение стало: 24 + 5</span></p>
+            <p>5. <strong>Сложение:</strong> 24 + 5 = 29.</p>
+            <p class="font-bold text-green-600 mt-2">Ответ: 29.</p>
         </div>
     </div>
 </div>

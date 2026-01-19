@@ -307,35 +307,36 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-teal-50 p-6 rounded-xl border-l-4 border-teal-500 shadow-sm">
-        <h3 class="font-bold text-xl text-teal-800 mb-4">Жай көбейткіштерге жіктеу</h3>
-        <p class="text-gray-700 mb-4">Любое составное число можно представить в виде произведения простых множителей единственным образом.</p>
+    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
+        <h3 class="font-bold text-xl text-blue-800 mb-4">Разложение на простые множители</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            Любое составное число можно представить в виде произведения простых множителей. Это представление единственно (с точностью до порядка множителей).
+        </p>
+        <p class="text-gray-700">
+            Процесс нахождения этого произведения называется <strong>разложением числа на простые множители</strong>.
+        </p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h3 class="font-bold text-xl text-gray-800 mb-4">Алгоритм разложения</h3>
+        <p class="text-gray-700 mb-4">Разложим число 60 на простые множители:</p>
         
-        <div class="flex justify-center">
-            <div class="bg-white p-6 rounded-xl shadow border-t-4 border-teal-400 font-mono text-lg">
-                <div class="grid grid-cols-2 gap-x-8 gap-y-1 mb-2 border-b pb-2">
-                    <div class="text-right font-bold">24</div>
-                    <div class="text-left text-teal-600">2</div>
-                </div>
-                <div class="grid grid-cols-2 gap-x-8 gap-y-1 mb-2 border-b pb-2">
-                    <div class="text-right">12</div>
-                    <div class="text-left text-teal-600">2</div>
-                </div>
-                <div class="grid grid-cols-2 gap-x-8 gap-y-1 mb-2 border-b pb-2">
-                    <div class="text-right">6</div>
-                    <div class="text-left text-teal-600">2</div>
-                </div>
-                <div class="grid grid-cols-2 gap-x-8 gap-y-1">
-                    <div class="text-right">3</div>
-                    <div class="text-left text-teal-600">3</div>
-                </div>
-                <div class="grid grid-cols-2 gap-x-8 mt-2">
-                    <div class="text-right text-gray-400">1</div>
-                    <div></div>
-                </div>
+        <div class="flex gap-8 items-start">
+            <div class="font-mono text-lg border-r-2 border-gray-300 pr-4">
+                60 | 2<br>
+                30 | 2<br>
+                15 | 3<br>
+                5 | 5<br>
+                1&nbsp; |
+            </div>
+            <div class="text-gray-700 text-sm py-2">
+                1. Делим 60 на наименьший простой делитель (2). Получаем 30.
+                <br>2. Делим 30 на 2. Получаем 15.
+                <br>3. 15 не делится на 2. Делим на 3. Получаем 5.
+                <br>4. 5 — простое число, делится на 5. Получаем 1.
+                <br><br><strong>Ответ:</strong> <span class="font-mono font-bold">60 = 2 · 2 · 3 · 5 = 2² · 3 · 5</span>
             </div>
         </div>
-        <p class="text-center mt-4 font-mono font-bold text-teal-800 text-lg">24 = 2³ · 3</p>
     </div>
 </div>
             </div>

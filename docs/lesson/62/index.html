@@ -307,25 +307,69 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-indigo-50 p-6 rounded-xl border-l-4 border-indigo-500 shadow-sm">
-        <h3 class="font-bold text-xl text-indigo-800 mb-4">Санды теңдіктер. Тура санды теңдіктердің қасиеттері</h3>
-        <p class="text-gray-700 mb-4">
-            Санды теңдік – екі өрнектің бір‑мәнділік қатынасын білдіретін теңдеу. Ол «=» белгісімен жазылады: <span class="font-mono">A = B</span>. Теңдік қасиеттері (рефлексивті, симметриялық, транзитивті) қамтамасыз етеді, сондықтан теңдікті әртүрлі түрлендірулер арқылы шешуге болады.
+    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
+        <h3 class="font-bold text-xl text-blue-800 mb-4">Числовые равенства и их свойства</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            <strong>Числовое равенство</strong> — это запись, в которой два числовых выражения соединены знаком «=». Если значения выражений слева и справа совпадают, равенство называют <em>верным</em>, иначе — <em>неверным</em>.
         </p>
-        <h4 class="font-bold text-indigo-700 mb-2">Кілттік қасиеттер</h4>
-        <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
-            <li>Рефлексивті: <span class="font-mono">x = x</span></li>
-            <li>Симметриялық: <span class="font-mono">x = y ⇒ y = x</span></li>
-            <li>Транзитивті: <span class="font-mono">x = y ∧ y = z ⇒ x = z</span></li>
+        <p class="text-gray-700 leading-relaxed">
+            Пример верного равенства: <span class="font-mono bg-white px-2 py-1 rounded shadow-sm">3 + 5 = 8</span>.
+            <br>Пример неверного равенства: <span class="font-mono bg-white px-2 py-1 rounded shadow-sm">2 · 5 = 12</span>.
+        </p>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h3 class="font-bold text-xl text-gray-800 mb-6">Основные свойства верных числовых равенств</h3>
+        
+        <div class="space-y-4">
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-bold text-indigo-700">1. Свойство рефлексивности</h4>
+                <p class="text-gray-600">Любое число равно самому себе: <span class="font-mono">a = a</span>.</p>
+            </div>
+            
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-bold text-indigo-700">2. Свойство симметричности</h4>
+                <p class="text-gray-600">Если <span class="font-mono">a = b</span>, то и <span class="font-mono">b = a</span>.</p>
+            </div>
+
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-bold text-indigo-700">3. Свойство транзитивности</h4>
+                <p class="text-gray-600">Если <span class="font-mono">a = b</span> и <span class="font-mono">b = c</span>, то <span class="font-mono">a = c</span>.</p>
+            </div>
+
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-bold text-indigo-700">4. Сложение и вычитание</h4>
+                <p class="text-gray-600">Если к обеим частям верного равенства прибавить (или отнять) одно и то же число, равенство останется верным:
+                <br>Если <span class="font-mono">a = b</span>, то <span class="font-mono">a + c = b + c</span>.</p>
+            </div>
+
+            <div class="p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-bold text-indigo-700">5. Умножение и деление</h4>
+                <p class="text-gray-600">Если обе части верного равенства умножить или разделить на одно и то же число (не равное нулю), равенство останется верным:
+                <br>Если <span class="font-mono">a = b</span>, то <span class="font-mono">a · c = b · c</span>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500 shadow-sm">
+        <h3 class="font-bold text-xl text-green-800 mb-4">Практические примеры</h3>
+        <ul class="space-y-3 text-gray-700">
+            <li class="bg-white p-3 rounded shadow-sm">
+                <strong>Пример 1:</strong> Проверим равенство <span class="font-mono">15 - 7 = 8</span>. Если прибавить 2 к обеим частям: <span class="font-mono">(15 - 7) + 2 = 8 + 2</span> → <span class="font-mono">10 = 10</span>. Верно.
+            </li>
+            <li class="bg-white p-3 rounded shadow-sm">
+                <strong>Пример 2:</strong> Пусть <span class="font-mono">x = 5</span>. Умножим обе части на 3: <span class="font-mono">3x = 15</span>. Это свойство используется при решении уравнений.
+            </li>
+            <li class="bg-white p-3 rounded shadow-sm">
+                <strong>Пример 3:</strong> Сравнение выражений. <span class="font-mono">25 · 4 = 100</span> и <span class="font-mono">10^2 = 100</span>. Значит, <span class="font-mono">25 · 4 = 10^2</span> (по свойству транзитивности).
+            </li>
+            <li class="bg-white p-3 rounded shadow-sm">
+                <strong>Пример 4:</strong> Если <span class="font-mono">a + 2 = 7</span>, то вычтем 2 из обеих частей: <span class="font-mono">a = 5</span>.
+            </li>
+            <li class="bg-white p-3 rounded shadow-sm">
+                <strong>Пример 5:</strong> Деление. <span class="font-mono">20 = 20</span>. Разделим на 4: <span class="font-mono">5 = 5</span>. Равенство сохранилось.
+            </li>
         </ul>
-        <h4 class="font-bold text-indigo-700 mb-2">5 практических примера</h4>
-        <ol class="list-decimal list-inside text-gray-700 space-y-2">
-            <li>Пример 1 – простое уравнение: <span class="font-mono">3x = 12</span>. Делим обе стороны на 3 → <span class="font-mono">x = 4</span>.</li>
-            <li>Пример 2 – перенос членов: <span class="font-mono">5 + y = 12</span>. Вычитаем 5 → <span class="font-mono">y = 7</span>.</li>
-            <li>Пример 3 – объединение одинаковых членов: <span class="font-mono">2a + 3a = 25</span>. Суммируем → <span class="font-mono">5a = 25 ⇒ a = 5</span>.</li>
-            <li>Пример 4 – дробные коэффициенты: <span class="font-mono">(1/2)z = 9</span>. Умножаем на 2 → <span class="font-mono">z = 18</span>.</li>
-            <li>Пример 5 – проверка решения: Подставляем найденное <span class="font-mono">x = 4</span> в исходное уравнение <span class="font-mono">3·4 = 12</span> – верно.</li>
-        </ol>
     </div>
 </div>
             </div>

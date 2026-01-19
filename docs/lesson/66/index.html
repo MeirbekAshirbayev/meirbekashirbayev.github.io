@@ -307,19 +307,83 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-yellow-50 p-6 rounded-xl border-l-4 border-yellow-500 shadow-sm">
-        <h3 class="font-bold text-xl text-yellow-800 mb-4">4.4 Теңдеулер көмегімен мәтінді есептерді шығару</h3>
-        <p class="text-gray-700 mb-4">
-            Текстовая задача – это описание реальной ситуации, требующее математической модели. Основные шаги: 1) выделить неизвестные, 2) записать уравнение, 3) решить уравнение, 4) проверить полученный ответ в контексте задачи.
+    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
+        <h3 class="font-bold text-xl text-blue-800 mb-4">Решение текстовых задач с помощью уравнений</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            Многие жизненные и математические задачи удобно решать методом составления уравнений. Этот метод позволяет перевести условие задачи с обычного языка на язык математики.
         </p>
-        <h4 class="font-bold text-yellow-700 mb-2">5 типовых примеров</h4>
-        <ol class="list-decimal list-inside text-gray-700 space-y-2">
-            <li>«У Пети 3 книга, у Саши в 2 раза больше. Сколько книг у Саши?» → <span class="font-mono">x = 2·3 ⇒ x = 6</span></li>
-            <li>«В магазине продали 120 штук, это в 3 раза больше, чем вчера. Сколько продали вчера?» → <span class="font-mono">y·3 = 120 ⇒ y = 40</span></li>
-            <li>«Коля собрал 15 яблок, а у него в 2 раза меньше, чем у Миши. Сколько яблок у Миши?» → <span class="font-mono">z = 2·15 ⇒ z = 30</span></li>
-            <li>«Автобус проехал 180 км за 3 часы. Какова его средняя скорость?» → <span class="font-mono">v = 180/3 ⇒ v = 60 км/ч</span></li>
-            <li>«В классе 24 ученика, половина из них сидит за первой партой. Сколько учеников сидит за первой партой?» → <span class="font-mono">24·0.5 = 12</span></li>
+        <p class="text-gray-700 font-medium">Общий алгоритм решения:</p>
+        <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
+            <li>Обозначить неизвестную величину переменной (обычно <span class="font-mono">x</span>).</li>
+            <li>Выразить другие величины через эту переменную.</li>
+            <li>На основании условия задачи составить уравнение.</li>
+            <li>Решить полученное уравнение.</li>
+            <li>Проанализировать найденный корень и записать ответ задачи.</li>
         </ol>
+    </div>
+
+    <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500 shadow-sm">
+        <h3 class="font-bold text-xl text-green-800 mb-4">Разбор задач</h3>
+        
+        <div class="space-y-6">
+            <div class="bg-white p-5 rounded-lg shadow-sm">
+                <h4 class="font-bold text-lg text-indigo-700">Задача 1: О числах</h4>
+                <p class="text-gray-800 italic mb-2">Одно число в 3 раза больше другого, а их сумма равна 48. Найдите эти числа.</p>
+                <div class="bg-gray-50 p-3 rounded text-sm text-gray-700">
+                    <p>1. Пусть меньшее число = <strong>x</strong>.</p>
+                    <p>2. Тогда большее число = <strong>3x</strong>.</p>
+                    <p>3. Сумма: <span class="font-mono">x + 3x = 48</span>.</p>
+                    <p>4. Решаем: <span class="font-mono">4x = 48</span> => <span class="font-mono">x = 12</span>.</p>
+                    <p>5. Второе число: 12 * 3 = 36.</p>
+                    <p><strong>Ответ:</strong> 12 и 36.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-lg shadow-sm">
+                <h4 class="font-bold text-lg text-indigo-700">Задача 2: О возрасте</h4>
+                <p class="text-gray-800 italic mb-2">Брат старше сестры на 5 лет. Вместе им 23 года. Сколько лет каждому?</p>
+                <div class="bg-gray-50 p-3 rounded text-sm text-gray-700">
+                    <p>1. Пусть сестре <strong>x</strong> лет.</p>
+                    <p>2. Тогда брату <strong>x + 5</strong> лет.</p>
+                    <p>3. Вместе: <span class="font-mono">x + (x + 5) = 23</span>.</p>
+                    <p>4. <span class="font-mono">2x + 5 = 23</span> => <span class="font-mono">2x = 18</span> => <span class="font-mono">x = 9</span>.</p>
+                    <p><strong>Ответ:</strong> Сестре 9 лет, брату 14 лет.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-lg shadow-sm">
+                <h4 class="font-bold text-lg text-indigo-700">Задача 3: На движение</h4>
+                <p class="text-gray-800 italic mb-2">Из двух городов навстречу друг другу выехали два автомобиля. Скорость первого 60 км/ч, второго — на 10 км/ч больше. Они встретились через 2 часа. Найдите расстояние.</p>
+                <div class="bg-gray-50 p-3 rounded text-sm text-gray-700">
+                    <p>Здесь уравнение можно составить для проверки, но решим арифметически или через x (расстояние).</p>
+                    <p>Пусть скорость второго <span class="font-mono">60 + 10 = 70</span> км/ч.</p>
+                    <p>Скорость сближения: <span class="font-mono">60 + 70 = 130</span> км/ч.</p>
+                    <p>Пусть путь S, тогда <span class="font-mono">S = 130 * 2</span>.</p>
+                    <p>Уравнение: <span class="font-mono">S/2 = 60 + 70</span>.</p>
+                    <p><strong>Ответ:</strong> 260 км.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-lg shadow-sm">
+                <h4 class="font-bold text-lg text-indigo-700">Задача 4: Про периметр</h4>
+                <p class="text-gray-800 italic mb-2">Ширина прямоугольника в 2 раза меньше длины. Периметр равен 30 см.</p>
+                <div class="bg-gray-50 p-3 rounded text-sm text-gray-700">
+                    <p>Пусть ширина <strong>x</strong>, длина <strong>2x</strong>.</p>
+                    <p>Периметр: <span class="font-mono">2(x + 2x) = 30</span>.</p>
+                    <p><span class="font-mono">3x = 15</span> => <span class="font-mono">x = 5</span>.</p>
+                    <p><strong>Ответ:</strong> Ширина 5 см, длина 10 см.</p>
+                </div>
+            </div>
+             <div class="bg-white p-5 rounded-lg shadow-sm">
+                <h4 class="font-bold text-lg text-indigo-700">Задача 5: На распределение</h4>
+                <p class="text-gray-800 italic mb-2">В двух корзинах 50 яблок. В первой в 4 раза больше, чем во второй.</p>
+                <div class="bg-gray-50 p-3 rounded text-sm text-gray-700">
+                     <p>Пусть во второй <strong>x</strong>, в первой <strong>4x</strong>.</p>
+                     <p><span class="font-mono">x + 4x = 50</span> => <span class="font-mono">5x = 50</span> => <span class="font-mono">x = 10</span>.</p>
+                     <p><strong>Ответ:</strong> 10 и 40 яблок.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
             </div>

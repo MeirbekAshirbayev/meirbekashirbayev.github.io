@@ -308,24 +308,36 @@
                 
 <div class="space-y-6">
     <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
-        <h3 class="font-bold text-xl text-blue-800 mb-4 flex items-center gap-2">
-            <span class="text-2xl">🧮</span> Виды выражений
-        </h3>
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white p-4 rounded-lg shadow-sm">
-                <h4 class="font-bold text-gray-800 mb-2">1. Числовые выражения</h4>
-                <p class="text-gray-600 text-sm mb-3">Состоят только из чисел и знаков действий.</p>
-                <div class="font-mono bg-gray-50 p-2 rounded text-center border border-gray-200">
-                    25 + (14 - 6)
+        <h3 class="font-bold text-xl text-blue-800 mb-4">Числовые и буквенные выражения</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <h4 class="font-bold text-lg text-indigo-700 mb-2">Числовые выражения</h4>
+                <p class="text-gray-700">Это выражения, состоящие только из чисел, знаков арифметических действий и скобок.</p>
+                <div class="mt-2 text-center bg-white p-3 rounded font-mono shadow-sm">
+                    15 + 3 · (8 - 2)
                 </div>
+                <p class="text-sm text-gray-600 mt-2">Значение числового выражения — это число, получаемое в результате вычислений.</p>
             </div>
-            <div class="bg-white p-4 rounded-lg shadow-sm">
-                <h4 class="font-bold text-gray-800 mb-2">2. Буквенные выражения</h4>
-                <p class="text-gray-600 text-sm mb-3">Содержат буквы (переменные), числа и знаки.</p>
-                <div class="font-mono bg-gray-50 p-2 rounded text-center border border-gray-200">
-                    3x + 5a - 7
+             <div>
+                <h4 class="font-bold text-lg text-indigo-700 mb-2">Буквенные выражения</h4>
+                <p class="text-gray-700">Это выражения, содержащие буквы, числа, знаки действий и скобки.</p>
+                <div class="mt-2 text-center bg-white p-3 rounded font-mono shadow-sm">
+                    2a + b - 5
                 </div>
+                <p class="text-sm text-gray-600 mt-2">Значение буквенного выражения зависит от значений, которые принимают буквы.</p>
             </div>
+        </div>
+    </div>
+
+    <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500 shadow-sm">
+        <h3 class="font-bold text-xl text-green-800 mb-4">Задача с буквенным выражением</h3>
+        <p class="text-gray-700 mb-4">
+            Пусть дана сторона квадрата равна <strong>a</strong> см. Найдите его периметр <strong>P</strong>.
+        </p>
+        <div class="bg-white p-4 rounded shadow-sm">
+            <p class="text-gray-800">Формула периметра квадрата: <span class="font-mono font-bold">P = 4a</span>.</p>
+            <p class="text-gray-600 mt-3">Если <span class="font-mono">a = 5</span>, то <span class="font-mono">P = 4 · 5 = 20</span>.</p>
+            <p class="text-gray-600">Если <span class="font-mono">a = 12</span>, то <span class="font-mono">P = 4 · 12 = 48</span>.</p>
         </div>
     </div>
 </div>

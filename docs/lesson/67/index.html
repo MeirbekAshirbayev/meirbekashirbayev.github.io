@@ -307,19 +307,77 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-red-50 p-6 rounded-xl border-l-4 border-red-500 shadow-sm">
-        <h3 class="font-bold text-xl text-red-800 mb-4">5.1 Санды теңсіздіктер</h3>
-        <p class="text-gray-700 mb-4">
-            Теңсіздік сравнивает два выражения с помощью знаков <, >, ≤, ≥. При решении переменную изолируют, учитывая, что умножение или деление на отрицательное число меняет знак неравенства.
+    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
+        <h3 class="font-bold text-xl text-blue-800 mb-4">Числовые неравенства</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            В жизни мы часто сравниваем величины: скорость, вес, время, стоимость. Для записи результатов сравнения в математике используют <strong>числовые неравенства</strong>.
         </p>
-        <h4 class="font-bold text-red-700 mb-2">5 примеров</h4>
-        <ol class="list-decimal list-inside text-gray-700 space-y-2">
-            <li><span class="font-mono">2x + 3 > 7</span> → <span class="font-mono">2x > 4 ⇒ x > 2</span></li>
-            <li><span class="font-mono">-3y ≤ 9</span> → <span class="font-mono">y ≥ -3</span> (знак меняется)</li>
-            <li><span class="font-mono">4z - 5 ≥ 11</span> → <span class="font-mono">4z ≥ 16 ⇒ z ≥ 4</span></li>
-            <li><span class="font-mono">(1/2)k < 3</span> → <span class="font-mono">k < 6</span></li>
-            <li><span class="font-mono">x + 5 ≤ x + 2</span> → <span class="font-mono">5 ≤ 2</span> → <strong>нет решений</strong></li>
-        </ol>
+        <p class="text-gray-700 leading-relaxed">
+            Запись, в которой числа или выражения соединены знаками <span class="font-mono bg-white px-1 rounded">&gt;</span> (больше) или <span class="font-mono bg-white px-1 rounded">&lt;</span> (меньше), называется <strong>строгим неравенством</strong>.
+            <br>
+            Запись со знаками <span class="font-mono bg-white px-1 rounded">≥</span> (больше или равно) или <span class="font-mono bg-white px-1 rounded">≤</span> (меньше или равно) — <strong>нестрогим неравенством</strong>.
+        </p>
+        <div class="mt-4 bg-blue-100 p-4 rounded text-blue-900 font-medium">
+            Определение: Число <span class="font-mono">a</span> больше числа <span class="font-mono">b</span>, если разность <span class="font-mono">a - b</span> является положительным числом.
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h3 class="font-bold text-xl text-gray-800 mb-4">Координатная прямая и неравенства</h3>
+        <p class="text-gray-700 mb-4">
+            На координатной прямой большее число всегда лежит <strong>правее</strong> меньшего.
+        </p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <li>Если <span class="font-mono">a > b</span>, точка A(a) лежит правее точки B(b).</li>
+            <li>Если <span class="font-mono">a < b</span>, точка A(a) лежит левее точки B(b).</li>
+            <li>Любое положительное число больше нуля и больше любого отрицательного числа.</li>
+        </ul>
+    </div>
+
+    <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500 shadow-sm">
+        <h3 class="font-bold text-xl text-green-800 mb-4">Практические примеры</h3>
+        
+        <div class="space-y-4">
+            <div class="flex items-start gap-4">
+                <div class="bg-green-200 text-green-800 px-3 py-1 rounded font-bold">1</div>
+                <div>
+                     <p class="font-bold text-gray-800">Сравнение положительных чисел</p>
+                     <p class="text-gray-600">5,4 и 3,2. Так как 5,4 - 3,2 = 2,2 (положительное), то <span class="font-mono">5,4 > 3,2</span>.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+                 <div class="bg-green-200 text-green-800 px-3 py-1 rounded font-bold">2</div>
+                 <div>
+                     <p class="font-bold text-gray-800">Сравнение отрицательных чисел</p>
+                     <p class="text-gray-600">-5 и -3. На координатной прямой -3 лежит правее -5. Значит, <span class="font-mono">-3 > -5</span>.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+                 <div class="bg-green-200 text-green-800 px-3 py-1 rounded font-bold">3</div>
+                 <div>
+                     <p class="font-bold text-gray-800">Сравнение с нулем</p>
+                     <p class="text-gray-600">Любое отрицательное число меньше нуля. <span class="font-mono">-100 < 0</span>.</p>
+                </div>
+            </div>
+
+             <div class="flex items-start gap-4">
+                 <div class="bg-green-200 text-green-800 px-3 py-1 rounded font-bold">4</div>
+                 <div>
+                     <p class="font-bold text-gray-800">Дроби</p>
+                     <p class="text-gray-600">1/2 и 1/3. Приводим к общему знаменателю: 3/6 и 2/6. <span class="font-mono">1/2 > 1/3</span>.</p>
+                </div>
+            </div>
+
+             <div class="flex items-start gap-4">
+                 <div class="bg-green-200 text-green-800 px-3 py-1 rounded font-bold">5</div>
+                 <div>
+                     <p class="font-bold text-gray-800">Доказательство неравенства</p>
+                     <p class="text-gray-600">Докажем, что <span class="font-mono">a^2 + 1 > 0</span>. Квадрат любого числа неотрицателен (<span class="font-mono">a^2 ≥ 0</span>). Прибавляя 1, получаем число строго больше 0.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
             </div>
