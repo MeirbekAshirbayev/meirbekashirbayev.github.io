@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Математикалық тренажер | VisualMath</title>
+    <meta name="description" content="Интерактивное задание по математике">
+    <meta name="keywords" content="Математикалық тренажер, математика, задача, задание, visual math">
+
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Математикалық тренажер | VisualMath">
+    <meta property="og:description" content="Интерактивное задание по математике">
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "Математикалық тренажер",
+      "description": "Интерактивное задание по математике",
+      "inLanguage": "ru",
+      "educationalUse": "Assignment"
+    }
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    
+    <link rel="canonical" href="https://meirbekashirbayev.github.io/task/198" />
+
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E38F1VR05Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E38F1VR05Z');
+    </script>
+
+    
+    <meta name="google-adsense-account" content="ca-pub-9724842226086594">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .task-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .task-content iframe {
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh;
+            min-height: 450px;
+            border: none;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            background: white;
+        }
+
+         
+        #fullscreenWrapper:fullscreen,
+        #fullscreenWrapperKz:fullscreen,
+        #fullscreenWrapperRu:fullscreen {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #fullscreenWrapper:fullscreen iframe,
+        #fullscreenWrapperKz:fullscreen iframe,
+        #fullscreenWrapperRu:fullscreen iframe {
+            height: 95vh;
+            width: 100%;
+            max-width: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    
+    <nav class="gradient-bg text-white p-3 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <span class="font-bold text-lg truncate max-w-[200px] sm:max-w-none">Математикалық тренажер</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="/about"
+                    class="flex items-center gap-1 bg-white/10 hover:bg-white/20 px-2 py-1.5 rounded-lg transition-colors text-xs font-semibold">
+                    <span class="text-sm">💎</span>
+                    <span class="hidden lg:inline">О нас</span>
+                </a>
+                <a href="/lesson/71"
+                    class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium">
+                    <span>←</span>
+                    <span class="hidden sm:inline">Назад к уроку</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow task-content">
+
+        
+        <div class="w-full max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Интерактивные задания</h2>
+
+            
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg kazakh-block">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇰🇿
+                            Казахский</span>
+                        <button onclick="openFullscreenKz()"
+                            class="text-blue-600 hover:text-blue-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperKz">
+                        <iframe id="taskIframeKz" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Математикалық тренажер&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;link href=&#34;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&amp;display=swap&#34; rel=&#34;stylesheet&#34;&gt;
+    &lt;style&gt;
+        body { font-family: &#39;Inter&#39;, sans-serif; }
+        
+        /* Математикалық блоктардың орталықтанған стилі */
+        .math-display-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 1.5rem;
+        }
+
+        .expression-row {
+            font-size: 2.25rem;
+            font-weight: 900;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        /* Ұзартылған бөлшек сызығы */
+        .math-frac {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 1.2;
+            margin: 0 0.5rem;
+        }
+
+        .math-num {
+            display: block;
+            border-bottom: 3px solid #0f172a;
+            padding: 0 1.2rem 0.3rem 1.2rem; /* Алымды кеңейту */
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .math-den {
+            display: block;
+            padding: 0.3rem 1.2rem 0 1.2rem;
+            font-weight: 900;
+        }
+
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-gray-100 min-h-screen&#34;&gt;
+
+&lt;div id=&#34;app&#34; class=&#34;max-w-4xl mx-auto py-10 px-4&#34;&gt;
+    &lt;!-- Контент --&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    const questions = [
+        // --- A ТОБЫ (4 ЕСЕП) ---
+        {
+            level: &#39;A&#39;,
+            title: &#39;Өрнектің мәнін бағалау&#39;,
+            textBefore: &#39;7,6 &#43; 2x - (3x - 6,4) өрнегінің мәні оң сан болатындай&#39;,
+            expression: &#39;&#39;, // Мәтін ішінде болса бос қалдырамыз
+            textAfter: &#39;х-тің барлық мүмкін мәндер жиынын анықтаңдар.&#39;,
+            options: [&#39;x &lt; 14&#39;, &#39;x &gt; 14&#39;, &#39;x &lt; 1,2&#39;, &#39;x &gt; 1,2&#39;],
+            correct: 0,
+            explanation: &#39;1. 7,6 &#43; 2x - 3x &#43; 6,4 &gt; 0\n2. -x &#43; 14 &gt; 0\n3. -x &gt; -14\n4. x &lt; 14&#39;
+        },
+        {
+            level: &#39;A&#39;,
+            title: &#39;Сызықтық теңсіздік&#39;,
+            textBefore: &#39;6 - 5у &gt; 3у - 2 теңсіздігін тура санды теңсіздікке&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;айналдыратын у-тің мәндерін табыңдар.&#39;,
+            options: [&#39;y &lt; 1&#39;, &#39;y &gt; 1&#39;, &#39;y &lt; -1&#39;, &#39;y &gt; -1&#39;],
+            correct: 0,
+            explanation: &#39;1. -5y - 3y &gt; -2 - 6\n2. -8y &gt; -8\n3. y &lt; 1&#39;
+        },
+        {
+            level: &#39;A&#39;,
+            title: &#39;Теріс мәндерді табу&#39;,
+            textBefore: &#39;у &#43; 2,8 &#43; (9,8 - 3у) өрнегінің мәні теріс сан болатындай&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;у айнымалысының қабылдайтын мәндерін бағалаңдар.&#39;,
+            options: [&#39;y &gt; 6,3&#39;, &#39;y &lt; 6,3&#39;, &#39;y &gt; 12,6&#39;, &#39;y &lt; 12,6&#39;],
+            correct: 0,
+            explanation: &#39;1. -2y &#43; 12,6 &lt; 0\n2. -2y &lt; -12,6\n3. y &gt; 6,3&#39;
+        },
+        {
+            level: &#39;A&#39;,
+            title: &#39;Дұрыс бөлшек шарты&#39;,
+            textBefore: &#39;Мына берілген бөлшек&#39;,
+            expression: &#39;&lt;div class=&#34;math-frac&#34;&gt;&lt;div class=&#34;math-num&#34;&gt;x &#43; 9&lt;/div&gt;&lt;div class=&#34;math-den&#34;&gt;25&lt;/div&gt;&lt;/div&gt;&#39;,
+            textAfter: &#39;дұрыс бөлшек болуы үшін х-тің бүтін мәндерін табыңдар.&#39;,
+            options: [&#39;-9 &lt; x &lt; 16&#39;, &#39;x &lt; 16&#39;, &#39;x &gt; 16&#39;, &#39;x &lt; -9&#39;],
+            correct: 0,
+            explanation: &#39;1. 0 &lt; x &#43; 9 &lt; 25\n2. x &gt; -9 және x &lt; 16&#39;
+        },
+
+        // --- B ТОБЫ (3 ЕСЕП) ---
+        {
+            level: &#39;B&#39;,
+            title: &#39;Жақшаны ашу&#39;,
+            textBefore: &#39;3 - 2(u - 1) &gt; 8 &#43; u теңсіздігін шешіп,&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;нәтижесін теңсіздік түрінде көрсетіңдер.&#39;,
+            options: [&#39;u &lt; -1&#39;, &#39;u &gt; -1&#39;, &#39;u &lt; 1&#39;, &#39;u &gt; 1&#39;],
+            correct: 0,
+            explanation: &#39;1. 3 - 2u &#43; 2 &gt; 8 &#43; u\n2. -3u &gt; 3\n3. u &lt; -1&#39;
+        },
+        {
+            level: &#39;B&#39;,
+            title: &#39;Ортақ бөлім беру&#39;,
+            textBefore: &#39;Мына теңсіздікті ортақ бөлімге келтіру арқылы шешіңдер:&#39;,
+            expression: &#39;&lt;div class=&#34;math-frac&#34;&gt;&lt;div class=&#34;math-num&#34;&gt;x&lt;/div&gt;&lt;div class=&#34;math-den&#34;&gt;6&lt;/div&gt;&lt;/div&gt; &#43; &lt;div class=&#34;math-frac&#34;&gt;&lt;div class=&#34;math-num&#34;&gt;1&lt;/div&gt;&lt;div class=&#34;math-den&#34;&gt;2&lt;/div&gt;&lt;/div&gt; &gt; &lt;div class=&#34;math-frac&#34;&gt;&lt;div class=&#34;math-num&#34;&gt;x&lt;/div&gt;&lt;div class=&#34;math-den&#34;&gt;3&lt;/div&gt;&lt;/div&gt; - 1&#39;,
+            textAfter: &#39;&#39;,
+            options: [&#39;x &lt; 9&#39;, &#39;x &gt; 9&#39;, &#39;x &lt; -9&#39;, &#39;x &gt; -9&#39;],
+            correct: 0,
+            explanation: &#39;1. Ортақ бөлім 6.\n2. x &#43; 3 &gt; 2x - 6\n3. -x &gt; -9\n4. x &lt; 9&#39;
+        },
+        {
+            level: &#39;B&#39;,
+            title: &#39;Күрделі түрлендіру&#39;,
+            textBefore: &#39;4(u &#43; 3) &lt; 3(u &#43; 2) теңсіздігінің&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;шешімдер жиынын анықтаңдар.&#39;,
+            options: [&#39;u &lt; -6&#39;, &#39;u &gt; -6&#39;, &#39;u &lt; 6&#39;, &#39;u &gt; 6&#39;],
+            correct: 0,
+            explanation: &#39;1. 4u &#43; 12 &lt; 3u &#43; 6\n2. u &lt; -6&#39;
+        },
+
+        // --- C ТОБЫ (3 ЕСЕП) ---
+        {
+            level: &#39;C&#39;,
+            title: &#39;Геометриялық есеп&#39;,
+            textBefore: &#39;Тік төртбұрыштың ұзындығы 11 см. Оның периметрі қабырғасы 8 см квадраттың периметрінен кем болуы үшін,&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;енін неше сантиметрден кіші болуы керектігін бағалаңдар.&#39;,
+            options: [&#39;0 &lt; x &lt; 5&#39;, &#39;x &lt; 5&#39;, &#39;x &gt; 5&#39;, &#39;x &lt; 10&#39;],
+            correct: 0,
+            explanation: &#39;1. P &lt; 32\n2. 2(11 &#43; x) &lt; 32\n3. x &lt; 5 (x &gt; 0 болуы тиіс)&#39;
+        },
+        {
+            level: &#39;C&#39;,
+            title: &#39;Қайық қозғалысы&#39;,
+            textBefore: &#39;Қайықтың меншікті жылдамдығы 5 км/сағ, ағыс жылдамдығы 2 км/сағ. Саяхатшылар барып-қайтуға 3,5 сағаттан кем уақыт жұмсаса,&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;арақашықтық неше километр болуы мүмкін?&#39;,
+            options: [&#39;S &lt; 7,35 км&#39;, &#39;S &lt; 10 км&#39;, &#39;S &lt; 5 км&#39;, &#39;S &gt; 7,35 км&#39;],
+            correct: 0,
+            explanation: &#39;1. Ағыспен 7, қарсы 3 км/сағ.\n2. S/7 &#43; S/3 &lt; 3,5\n3. S &lt; 7,35&#39;
+        },
+        {
+            level: &#39;C&#39;,
+            title: &#39;Тігін шеберханасы&#39;,
+            textBefore: &#39;Тігін шеберханасы жейделер мен көйлектер тігу үшін дүкеннен 51 м мата сатып алды. Әрбір жейде 2 м матадан тігілсе, әрбір көйлек 2,5 метрден кем емес матадан тігіледі.&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;Тігін шеберханасы сатып алған матадан 8 жейде тіксе, қалған мата неше көйлек тігуге жететінін бағалаңдар.&#39;,
+            options: [&#39;y \u2264 14&#39;, &#39;y \u2265 14&#39;, &#39;y &lt; 10&#39;, &#39;y &gt; 20&#39;],
+            correct: 0,
+            explanation: &#39;1. 51 - (8 * 2) = 35 м.\n2. 35 / 2,5 = 14&#39;
+        }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let results = [];
+    const app = document.getElementById(&#39;app&#39;);
+
+    function renderStart() {
+        app.innerHTML = `
+            &lt;div class=&#34;bg-white rounded-[3rem] shadow-2xl p-12 text-center fade-in border-4 border-white&#34;&gt;
+                &lt;div class=&#34;bg-indigo-600 w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-10 shadow-xl text-white transform rotate-3&#34;&gt;
+                    &lt;svg class=&#34;w-12 h-12&#34; fill=&#34;none&#34; viewBox=&#34;0 0 24 24&#34; stroke=&#34;currentColor&#34;&gt;&lt;path stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;2&#34; d=&#34;M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253&#34; /&gt;&lt;/svg&gt;
+                &lt;/div&gt;
+                &lt;h1 class=&#34;text-4xl font-black text-slate-900 mb-6 uppercase tracking-tighter&#34;&gt;Сызықтық Теңсіздіктер&lt;/h1&gt;
+                &lt;p class=&#34;text-slate-500 mb-12 max-w-lg mx-auto font-medium text-lg leading-relaxed&#34;&gt;Деңгейлік тапсырмалар жинағы. Әр топты кезекпен орындап, біліміңді тексер.&lt;/p&gt;
+                &lt;div class=&#34;grid grid-cols-1 md:grid-cols-3 gap-6 mb-12&#34;&gt;
+                    &lt;div class=&#34;p-6 bg-emerald-50 rounded-3xl border-2 border-emerald-100 font-black text-emerald-600&#34;&gt;A тобы&lt;/div&gt;
+                    &lt;div class=&#34;p-6 bg-amber-50 rounded-3xl border-2 border-amber-100 font-black text-amber-600&#34;&gt;B тобы&lt;/div&gt;
+                    &lt;div class=&#34;p-6 bg-rose-50 rounded-3xl border-2 border-rose-100 font-black text-rose-600&#34;&gt;C тобы&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button onclick=&#34;start()&#34; class=&#34;bg-indigo-600 hover:bg-indigo-700 text-white font-black py-6 px-20 rounded-3xl text-2xl transition-all active:scale-95 shadow-2xl&#34;&gt;БАСТАУ&lt;/button&gt;
+            &lt;/div&gt;
+        `;
+    }
+
+    function start() {
+        current = 0; score = 0; results = [];
+        showQuestion();
+    }
+
+    function showQuestion() {
+        const q = questions[current];
+        const accent = q.level === &#39;A&#39; ? &#39;bg-emerald-500&#39; : q.level === &#39;B&#39; ? &#39;bg-amber-500&#39; : &#39;bg-rose-500&#39;;
+        
+        app.innerHTML = `
+            &lt;div class=&#34;bg-white rounded-[3rem] shadow-2xl overflow-hidden fade-in border border-slate-200 min-h-[650px] flex flex-col&#34;&gt;
+                &lt;div class=&#34;bg-slate-900 p-8 flex justify-between items-center text-white&#34;&gt;
+                    &lt;div class=&#34;flex items-center gap-6&#34;&gt;
+                        &lt;div class=&#34;${accent} w-16 h-16 rounded-2xl flex items-center justify-center text-3xl font-black shadow-lg&#34;&gt;${q.level}&lt;/div&gt;
+                        &lt;h2 class=&#34;text-xl font-bold uppercase tracking-tight&#34;&gt;${q.title}&lt;/h2&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;text-2xl font-black opacity-30&#34;&gt;${current &#43; 1} / ${questions.length}&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;div class=&#34;p-10 flex-1 flex flex-col items-center&#34;&gt;
+                    &lt;div class=&#34;math-display-area&#34;&gt;
+                        &lt;!-- Жоғарғы мәтін --&gt;
+                        &lt;div class=&#34;text-2xl text-slate-700 font-medium text-center leading-relaxed max-w-3xl&#34;&gt;
+                            ${q.textBefore}
+                        &lt;/div&gt;
+                        
+                        &lt;!-- Ортадағы математикалық өрнек (егер бар болса) --&gt;
+                        ${q.expression ? `&lt;div class=&#34;expression-row&#34;&gt;${q.expression}&lt;/div&gt;` : &#39;&#39;}
+
+                        &lt;!-- Төменгі мәтін --&gt;
+                        &lt;div class=&#34;text-2xl text-slate-800 font-bold text-center leading-relaxed max-w-3xl&#34;&gt;
+                            ${q.textAfter}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;!-- Жауаптар --&gt;
+                    &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-5 w-full mt-12&#34;&gt;
+                        ${q.options.map((opt, i) =&gt; `
+                            &lt;button onclick=&#34;handle(${i})&#34; class=&#34;group flex justify-between items-center p-6 bg-white border-2 border-slate-200 rounded-[1.5rem] text-left hover:border-indigo-600 hover:bg-indigo-50 transition-all active:scale-95&#34;&gt;
+                                &lt;span class=&#34;text-2xl font-black text-slate-700&#34;&gt;${opt}&lt;/span&gt;
+                                &lt;div class=&#34;w-8 h-8 border-4 border-slate-200 rounded-full group-hover:border-indigo-400 transition-colors&#34;&gt;&lt;/div&gt;
+                            &lt;/button&gt;
+                        `).join(&#39;&#39;)}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;div class=&#34;px-12 pb-10&#34;&gt;
+                    &lt;div class=&#34;w-full bg-slate-100 h-4 rounded-full overflow-hidden&#34;&gt;
+                        &lt;div class=&#34;bg-indigo-600 h-full transition-all duration-700 ease-out&#34; style=&#34;width: ${((current &#43; 1) / questions.length) * 100}%&#34;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+    }
+
+    function handle(idx) {
+        const isCorrect = idx === questions[current].correct;
+        if (isCorrect) score&#43;&#43;;
+        results.push({ isCorrect, idx });
+
+        if (current &lt; questions.length - 1) {
+            current&#43;&#43;;
+            showQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        const perc = Math.round((score / questions.length) * 100);
+        app.innerHTML = `
+            &lt;div class=&#34;fade-in space-y-10 pb-20&#34;&gt;
+                &lt;div class=&#34;bg-white rounded-[3rem] shadow-2xl p-16 text-center border-4 border-white&#34;&gt;
+                    &lt;div class=&#34;text-8xl mb-8&#34;&gt;${perc &gt;= 80 ? &#39;🥇&#39; : perc &gt;= 50 ? &#39;🥈&#39; : &#39;📚&#39;}&lt;/div&gt;
+                    &lt;h2 class=&#34;text-6xl font-black text-slate-900 mb-4 tracking-tighter&#34;&gt;${score} / ${questions.length}&lt;/h2&gt;
+                    &lt;p class=&#34;text-slate-400 text-2xl font-bold uppercase mb-12 tracking-widest&#34;&gt;Нәтиже: ${perc}%&lt;/p&gt;
+                    &lt;button onclick=&#34;renderStart()&#34; class=&#34;bg-slate-900 text-white font-black py-6 px-16 rounded-[2rem] text-xl hover:bg-black transition-all shadow-2xl&#34;&gt;БАСТЫ БЕТ&lt;/button&gt;
+                &lt;/div&gt;
+                
+                &lt;div class=&#34;bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-slate-200&#34;&gt;
+                    &lt;div class=&#34;bg-slate-900 p-10 text-white flex items-center gap-6&#34;&gt;
+                        &lt;h3 class=&#34;text-3xl font-black uppercase tracking-tight text-indigo-400&#34;&gt;Талдау&lt;/h3&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;p-12 space-y-12&#34;&gt;
+                        ${questions.map((q, i) =&gt; `
+                            &lt;div class=&#34;p-10 rounded-[3rem] border-2 ${results[i].isCorrect ? &#39;bg-emerald-50 border-emerald-100&#39; : &#39;bg-rose-50 border-rose-100&#39;}&#34;&gt;
+                                &lt;h4 class=&#34;text-2xl font-black text-slate-800 mb-6 tracking-tighter uppercase&#34;&gt;Сұрақ ${i &#43; 1}&lt;/h4&gt;
+                                &lt;div class=&#34;text-xl font-bold text-slate-700 mb-10 text-center&#34;&gt;
+                                    ${q.textBefore} &lt;br&gt;
+                                    ${q.expression ? `&lt;div class=&#34;my-6 text-3xl font-black text-slate-900&#34;&gt;${q.expression}&lt;/div&gt;` : &#39;&#39;}
+                                    ${q.textAfter}
+                                &lt;/div&gt;
+                                &lt;div class=&#34;bg-slate-900 p-10 rounded-[2.5rem] text-slate-300 font-mono text-lg leading-relaxed border-l-8 border-indigo-600&#34;&gt;
+                                    &lt;p class=&#34;text-indigo-400 font-black mb-4 uppercase text-xs&#34;&gt;Шешу жолы:&lt;/p&gt;
+                                    ${q.explanation.replace(/\n/g, &#39;&lt;br&gt;&#39;)}
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        `).join(&#39;&#39;)}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+    }
+
+    renderStart();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg russian-block">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇷🇺
+                            Русский</span>
+                        <button onclick="openFullscreenRu()" class="text-red-600 hover:text-red-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperRu">
+                        <iframe id="taskIframeRu" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Математический тренажер&lt;/title&gt;
+    &lt;script src=&#34;https://cdn.tailwindcss.com&#34;&gt;&lt;/script&gt;
+    &lt;link href=&#34;https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&amp;display=swap&#34; rel=&#34;stylesheet&#34;&gt;
+    &lt;style&gt;
+        body { font-family: &#39;Inter&#39;, sans-serif; }
+        
+        /* Централизованный стиль математических блоков */
+        .math-display-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 1.5rem;
+        }
+
+        .expression-row {
+            font-size: 2.25rem;
+            font-weight: 900;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        /* Удлиненная дробная черта */
+        .math-frac {
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 1.2;
+            margin: 0 0.5rem;
+        }
+
+        .math-num {
+            display: block;
+            border-bottom: 3px solid #0f172a;
+            padding: 0 1.2rem 0.3rem 1.2rem; /* Расширение числителя */
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .math-den {
+            display: block;
+            padding: 0.3rem 1.2rem 0 1.2rem;
+            font-weight: 900;
+        }
+
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&#34;bg-gray-100 min-h-screen&#34;&gt;
+
+&lt;div id=&#34;app&#34; class=&#34;max-w-4xl mx-auto py-10 px-4&#34;&gt;
+    &lt;/div&gt;
+
+&lt;script&gt;
+    const questions = [
+        // --- ГРУППА A (4 ЗАДАЧИ) ---
+        {
+            level: &#39;A&#39;,
+            title: &#39;Оценка значения выражения&#39;,
+            textBefore: &#39;При каких значениях x выражение 7,6 &#43; 2x - (3x - 6,4)&#39;,
+            expression: &#39;&#39;, 
+            textAfter: &#39;принимает положительные значения?&#39;,
+            options: [&#39;x &lt; 14&#39;, &#39;x &gt; 14&#39;, &#39;x &lt; 1,2&#39;, &#39;x &gt; 1,2&#39;],
+            correct: 0,
+            explanation: &#39;1. 7,6 &#43; 2x - 3x &#43; 6,4 &gt; 0\n2. -x &#43; 14 &gt; 0\n3. -x &gt; -14\n4. x &lt; 14&#39;
+        },
+        {
+            level: &#39;A&#39;,
+            title: &#39;Линейное неравенство&#39;,
+            textBefore: &#39;Найдите значения y, при которых неравенство 6 - 5у &gt; 3у - 2&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;будет верным числовым неравенством.&#39;,
+            options: [&#39;y &lt; 1&#39;, &#39;y &gt; 1&#39;, &#39;y &lt; -1&#39;, &#39;y &gt; -1&#39;],
+            correct: 0,
+            explanation: &#39;1. -5y - 3y &gt; -2 - 6\n2. -8y &gt; -8\n3. y &lt; 1&#39;
+        },
+        {
+            level: &#39;A&#39;,
+            title: &#39;Поиск отрицательных значений&#39;,
+            textBefore: &#39;Оцените значения переменной y, при которых значение выражения у &#43; 2,8 &#43; (9,8 - 3у)&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;будет отрицательным числом.&#39;,
+            options: [&#39;y &gt; 6,3&#39;, &#39;y &lt; 6,3&#39;, &#39;y &gt; 12,6&#39;, &#39;y &lt; 12,6&#39;],
+            correct: 0,
+            explanation: &#39;1. -2y &#43; 12,6 &lt; 0\n2. -2y &lt; -12,6\n3. y &gt; 6,3&#39;
+        },
+        {
+            level: &#39;A&#39;,
+            title: &#39;Условие правильной дроби&#39;,
+            textBefore: &#39;Найдите целые значения x, при которых данная дробь&#39;,
+            expression: &#39;&lt;div class=&#34;math-frac&#34;&gt;&lt;div class=&#34;math-num&#34;&gt;x &#43; 9&lt;/div&gt;&lt;div class=&#34;math-den&#34;&gt;25&lt;/div&gt;&lt;/div&gt;&#39;,
+            textAfter: &#39;будет правильной.&#39;,
+            options: [&#39;-9 &lt; x &lt; 16&#39;, &#39;x &lt; 16&#39;, &#39;x &gt; 16&#39;, &#39;x &lt; -9&#39;],
+            correct: 0,
+            explanation: &#39;1. 0 &lt; x &#43; 9 &lt; 25\n2. x &gt; -9 и x &lt; 16&#39;
+        },
+
+        // --- ГРУППА B (3 ЗАДАЧИ) ---
+        {
+            level: &#39;B&#39;,
+            title: &#39;Раскрытие скобок&#39;,
+            textBefore: &#39;Решите неравенство 3 - 2(u - 1) &gt; 8 &#43; u и&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;представьте результат в виде неравенства.&#39;,
+            options: [&#39;u &lt; -1&#39;, &#39;u &gt; -1&#39;, &#39;u &lt; 1&#39;, &#39;u &gt; 1&#39;],
+            correct: 0,
+            explanation: &#39;1. 3 - 2u &#43; 2 &gt; 8 &#43; u\n2. -3u &gt; 3\n3. u &lt; -1&#39;
+        },
+        {
+            level: &#39;B&#39;,
+            title: &#39;Общий знаменатель&#39;,
+            textBefore: &#39;Решите неравенство, приведя его к общему знаменателю:&#39;,
+            expression: &#39;&lt;div class=&#34;math-frac&#34;&gt;&lt;div class=&#34;math-num&#34;&gt;x&lt;/div&gt;&lt;div class=&#34;math-den&#34;&gt;6&lt;/div&gt;&lt;/div&gt; &#43; &lt;div class=&#34;math-frac&#34;&gt;&lt;div class=&#34;math-num&#34;&gt;1&lt;/div&gt;&lt;div class=&#34;math-den&#34;&gt;2&lt;/div&gt;&lt;/div&gt; &gt; &lt;div class=&#34;math-frac&#34;&gt;&lt;div class=&#34;math-num&#34;&gt;x&lt;/div&gt;&lt;div class=&#34;math-den&#34;&gt;3&lt;/div&gt;&lt;/div&gt; - 1&#39;,
+            textAfter: &#39;&#39;,
+            options: [&#39;x &lt; 9&#39;, &#39;x &gt; 9&#39;, &#39;x &lt; -9&#39;, &#39;x &gt; -9&#39;],
+            correct: 0,
+            explanation: &#39;1. Общий знаменатель 6.\n2. x &#43; 3 &gt; 2x - 6\n3. -x &gt; -9\n4. x &lt; 9&#39;
+        },
+        {
+            level: &#39;B&#39;,
+            title: &#39;Сложное преобразование&#39;,
+            textBefore: &#39;Найдите множество решений неравенства&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;4(u &#43; 3) &lt; 3(u &#43; 2).&#39;,
+            options: [&#39;u &lt; -6&#39;, &#39;u &gt; -6&#39;, &#39;u &lt; 6&#39;, &#39;u &gt; 6&#39;],
+            correct: 0,
+            explanation: &#39;1. 4u &#43; 12 &lt; 3u &#43; 6\n2. u &lt; -6&#39;
+        },
+
+        // --- ГРУППА C (3 ЗАДАЧИ) ---
+        {
+            level: &#39;C&#39;,
+            title: &#39;Геометрическая задача&#39;,
+            textBefore: &#39;Длина прямоугольника 11 см. Каким должна быть его ширина (в см), чтобы его периметр был меньше периметра квадрата со стороной 8 см?&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;&#39;,
+            options: [&#39;0 &lt; x &lt; 5&#39;, &#39;x &lt; 5&#39;, &#39;x &gt; 5&#39;, &#39;x &lt; 10&#39;],
+            correct: 0,
+            explanation: &#39;1. P &lt; 32\n2. 2(11 &#43; x) &lt; 32\n3. x &lt; 5 (при этом x &gt; 0)&#39;
+        },
+        {
+            level: &#39;C&#39;,
+            title: &#39;Движение лодки&#39;,
+            textBefore: &#39;Собственная скорость лодки 5 км/ч, скорость течения 2 км/ч. Если путешественники затратили на путь туда и обратно менее 3,5 часов,&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;каким может быть расстояние в километрах?&#39;,
+            options: [&#39;S &lt; 7,35 км&#39;, &#39;S &lt; 10 км&#39;, &#39;S &lt; 5 км&#39;, &#39;S &gt; 7,35 км&#39;],
+            correct: 0,
+            explanation: &#39;1. По течению 7, против 3 км/ч.\n2. S/7 &#43; S/3 &lt; 3,5\n3. S &lt; 7,35&#39;
+        },
+        {
+            level: &#39;C&#39;,
+            title: &#39;Швейная мастерская&#39;,
+            textBefore: &#39;Мастерская купила 51 м ткани для пошива рубашек и платьев. На каждую рубашку уходит 2 м, а на каждое платье — не менее 2,5 м.&#39;,
+            expression: &#39;&#39;,
+            textAfter: &#39;Если сшили 8 рубашек, оцените возможное количество платьев.&#39;,
+            options: [&#39;y \u2264 14&#39;, &#39;y \u2265 14&#39;, &#39;y &lt; 10&#39;, &#39;y &gt; 20&#39;],
+            correct: 0,
+            explanation: &#39;1. Остаток ткани: 51 - (8 * 2) = 35 м.\n2. 35 / 2,5 = 14 платьев&#39;
+        }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let results = [];
+    const app = document.getElementById(&#39;app&#39;);
+
+    function renderStart() {
+        app.innerHTML = `
+            &lt;div class=&#34;bg-white rounded-[3rem] shadow-2xl p-12 text-center fade-in border-4 border-white&#34;&gt;
+                &lt;div class=&#34;bg-indigo-600 w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-10 shadow-xl text-white transform rotate-3&#34;&gt;
+                    &lt;svg class=&#34;w-12 h-12&#34; fill=&#34;none&#34; viewBox=&#34;0 0 24 24&#34; stroke=&#34;currentColor&#34;&gt;&lt;path stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34; stroke-width=&#34;2&#34; d=&#34;M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253&#34; /&gt;&lt;/svg&gt;
+                &lt;/div&gt;
+                &lt;h1 class=&#34;text-4xl font-black text-slate-900 mb-6 uppercase tracking-tighter&#34;&gt;Линейные неравенства&lt;/h1&gt;
+                &lt;p class=&#34;text-slate-500 mb-12 max-w-lg mx-auto font-medium text-lg leading-relaxed&#34;&gt;Сборник уровневых задач. Проверь свои знания, проходя каждую группу по очереди.&lt;/p&gt;
+                &lt;div class=&#34;grid grid-cols-1 md:grid-cols-3 gap-6 mb-12&#34;&gt;
+                    &lt;div class=&#34;p-6 bg-emerald-50 rounded-3xl border-2 border-emerald-100 font-black text-emerald-600&#34;&gt;Группа A&lt;/div&gt;
+                    &lt;div class=&#34;p-6 bg-amber-50 rounded-3xl border-2 border-amber-100 font-black text-amber-600&#34;&gt;Группа B&lt;/div&gt;
+                    &lt;div class=&#34;p-6 bg-rose-50 rounded-3xl border-2 border-rose-100 font-black text-rose-600&#34;&gt;Группа C&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;button onclick=&#34;start()&#34; class=&#34;bg-indigo-600 hover:bg-indigo-700 text-white font-black py-6 px-20 rounded-3xl text-2xl transition-all active:scale-95 shadow-2xl&#34;&gt;НАЧАТЬ&lt;/button&gt;
+            &lt;/div&gt;
+        `;
+    }
+
+    function start() {
+        current = 0; score = 0; results = [];
+        showQuestion();
+    }
+
+    function showQuestion() {
+        const q = questions[current];
+        const accent = q.level === &#39;A&#39; ? &#39;bg-emerald-500&#39; : q.level === &#39;B&#39; ? &#39;bg-amber-500&#39; : &#39;bg-rose-500&#39;;
+        
+        app.innerHTML = `
+            &lt;div class=&#34;bg-white rounded-[3rem] shadow-2xl overflow-hidden fade-in border border-slate-200 min-h-[650px] flex flex-col&#34;&gt;
+                &lt;div class=&#34;bg-slate-900 p-8 flex justify-between items-center text-white&#34;&gt;
+                    &lt;div class=&#34;flex items-center gap-6&#34;&gt;
+                        &lt;div class=&#34;${accent} w-16 h-16 rounded-2xl flex items-center justify-center text-3xl font-black shadow-lg&#34;&gt;${q.level}&lt;/div&gt;
+                        &lt;h2 class=&#34;text-xl font-bold uppercase tracking-tight&#34;&gt;${q.title}&lt;/h2&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;text-2xl font-black opacity-30&#34;&gt;${current &#43; 1} / ${questions.length}&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;div class=&#34;p-10 flex-1 flex flex-col items-center&#34;&gt;
+                    &lt;div class=&#34;math-display-area&#34;&gt;
+                        &lt;div class=&#34;text-2xl text-slate-700 font-medium text-center leading-relaxed max-w-3xl&#34;&gt;
+                            ${q.textBefore}
+                        &lt;/div&gt;
+                        
+                        ${q.expression ? `&lt;div class=&#34;expression-row&#34;&gt;${q.expression}&lt;/div&gt;` : &#39;&#39;}
+
+                        &lt;div class=&#34;text-2xl text-slate-800 font-bold text-center leading-relaxed max-w-3xl&#34;&gt;
+                            ${q.textAfter}
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&#34;grid grid-cols-1 md:grid-cols-2 gap-5 w-full mt-12&#34;&gt;
+                        ${q.options.map((opt, i) =&gt; `
+                            &lt;button onclick=&#34;handle(${i})&#34; class=&#34;group flex justify-between items-center p-6 bg-white border-2 border-slate-200 rounded-[1.5rem] text-left hover:border-indigo-600 hover:bg-indigo-50 transition-all active:scale-95&#34;&gt;
+                                &lt;span class=&#34;text-2xl font-black text-slate-700&#34;&gt;${opt}&lt;/span&gt;
+                                &lt;div class=&#34;w-8 h-8 border-4 border-slate-200 rounded-full group-hover:border-indigo-400 transition-colors&#34;&gt;&lt;/div&gt;
+                            &lt;/button&gt;
+                        `).join(&#39;&#39;)}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;div class=&#34;px-12 pb-10&#34;&gt;
+                    &lt;div class=&#34;w-full bg-slate-100 h-4 rounded-full overflow-hidden&#34;&gt;
+                        &lt;div class=&#34;bg-indigo-600 h-full transition-all duration-700 ease-out&#34; style=&#34;width: ${((current &#43; 1) / questions.length) * 100}%&#34;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+    }
+
+    function handle(idx) {
+        const isCorrect = idx === questions[current].correct;
+        if (isCorrect) score&#43;&#43;;
+        results.push({ isCorrect, idx });
+
+        if (current &lt; questions.length - 1) {
+            current&#43;&#43;;
+            showQuestion();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        const perc = Math.round((score / questions.length) * 100);
+        app.innerHTML = `
+            &lt;div class=&#34;fade-in space-y-10 pb-20&#34;&gt;
+                &lt;div class=&#34;bg-white rounded-[3rem] shadow-2xl p-16 text-center border-4 border-white&#34;&gt;
+                    &lt;div class=&#34;text-8xl mb-8&#34;&gt;${perc &gt;= 80 ? &#39;🥇&#39; : perc &gt;= 50 ? &#39;🥈&#39; : &#39;📚&#39;}&lt;/div&gt;
+                    &lt;h2 class=&#34;text-6xl font-black text-slate-900 mb-4 tracking-tighter&#34;&gt;${score} / ${questions.length}&lt;/h2&gt;
+                    &lt;p class=&#34;text-slate-400 text-2xl font-bold uppercase mb-12 tracking-widest&#34;&gt;Результат: ${perc}%&lt;/p&gt;
+                    &lt;button onclick=&#34;renderStart()&#34; class=&#34;bg-slate-900 text-white font-black py-6 px-16 rounded-[2rem] text-xl hover:bg-black transition-all shadow-2xl&#34;&gt;НА ГЛАВНУЮ&lt;/button&gt;
+                &lt;/div&gt;
+                
+                &lt;div class=&#34;bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-slate-200&#34;&gt;
+                    &lt;div class=&#34;bg-slate-900 p-10 text-white flex items-center gap-6&#34;&gt;
+                        &lt;h3 class=&#34;text-3xl font-black uppercase tracking-tight text-indigo-400&#34;&gt;Анализ ответов&lt;/h3&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&#34;p-12 space-y-12&#34;&gt;
+                        ${questions.map((q, i) =&gt; `
+                            &lt;div class=&#34;p-10 rounded-[3rem] border-2 ${results[i].isCorrect ? &#39;bg-emerald-50 border-emerald-100&#39; : &#39;bg-rose-50 border-rose-100&#39;}&#34;&gt;
+                                &lt;h4 class=&#34;text-2xl font-black text-slate-800 mb-6 tracking-tighter uppercase&#34;&gt;Вопрос ${i &#43; 1}&lt;/h4&gt;
+                                &lt;div class=&#34;text-xl font-bold text-slate-700 mb-10 text-center&#34;&gt;
+                                    ${q.textBefore} &lt;br&gt;
+                                    ${q.expression ? `&lt;div class=&#34;my-6 text-3xl font-black text-slate-900&#34;&gt;${q.expression}&lt;/div&gt;` : &#39;&#39;}
+                                    ${q.textAfter}
+                                &lt;/div&gt;
+                                &lt;div class=&#34;bg-slate-900 p-10 rounded-[2.5rem] text-slate-300 font-mono text-lg leading-relaxed border-l-8 border-indigo-600&#34;&gt;
+                                    &lt;p class=&#34;text-indigo-400 font-black mb-4 uppercase text-xs&#34;&gt;Решение:&lt;/p&gt;
+                                    ${q.explanation.replace(/\n/g, &#39;&lt;br&gt;&#39;)}
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        `).join(&#39;&#39;)}
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+    }
+
+    renderStart();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+        
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            💡 Екі тілде де қол жетімді / Доступно на двух языках
+        </div>
+        
+
+        <script>
+            
+            var elem = document.getElementById("fullscreenWrapper");
+            var openBtn = document.getElementById("openFsBtn");
+            var closeBtn = document.getElementById("closeFsBtn");
+
+            function openFullscreen() {
+                if (elem && elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem && elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem && elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            function closeFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+
+            function updateButtons() {
+                if (openBtn && closeBtn) {
+                    if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                        openBtn.classList.add("hidden");
+                        closeBtn.classList.remove("hidden");
+                    } else {
+                        openBtn.classList.remove("hidden");
+                        closeBtn.classList.add("hidden");
+                    }
+                }
+            }
+
+            
+            function openFullscreenKz() {
+                var elemKz = document.getElementById("fullscreenWrapperKz");
+                if (elemKz && elemKz.requestFullscreen) {
+                    elemKz.requestFullscreen();
+                } else if (elemKz && elemKz.webkitRequestFullscreen) {
+                    elemKz.webkitRequestFullscreen();
+                } else if (elemKz && elemKz.msRequestFullscreen) {
+                    elemKz.msRequestFullscreen();
+                }
+            }
+
+            
+            function openFullscreenRu() {
+                var elemRu = document.getElementById("fullscreenWrapperRu");
+                if (elemRu && elemRu.requestFullscreen) {
+                    elemRu.requestFullscreen();
+                } else if (elemRu && elemRu.webkitRequestFullscreen) {
+                    elemRu.webkitRequestFullscreen();
+                } else if (elemRu && elemRu.msRequestFullscreen) {
+                    elemRu.msRequestFullscreen();
+                }
+            }
+
+            document.addEventListener("fullscreenchange", updateButtons);
+            document.addEventListener("webkitfullscreenchange", updateButtons);
+            document.addEventListener("msfullscreenchange", updateButtons);
+
+            
+            (function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const lang = urlParams.get('lang'); 
+
+                if (lang === 'kz') {
+                    
+                    const ruBlock = document.querySelector('.russian-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (ruBlock) ruBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                } else if (lang === 'ru') {
+                    
+                    const kzBlock = document.querySelector('.kazakh-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (kzBlock) kzBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                }
+                
+            })();
+        </script>
+
+        
+        
+
+        
+        <div class="w-full max-w-4xl mx-auto my-8 px-4">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9724842226086594"
+                data-ad-slot="7527178719" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    
+    <div class="w-full max-w-4xl mx-auto px-4 py-8">
+        <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 md:p-8 rounded-2xl shadow-lg border-2 border-purple-200">
+            
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center animate-pulse">
+                    <span class="text-2xl">📢</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center">Поделитесь с коллегами!</h3>
+            </div>
+
+            
+            <div class="space-y-2 mb-6 text-center">
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇰🇿</span>
+                    <span>Сайттың дамуына үлес қосу үшін, мұғалімдер чатында бөлісіңіз!</span>
+                </p>
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇷🇺</span>
+                    <span>Помогите развитию сайта — поделитесь в чатах учителей!</span>
+                </p>
+            </div>
+
+            
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                
+                <a id="shareWhatsApp" href="#"
+                    class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
+
+                
+                <a id="shareTelegram" href="#"
+                    class="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                    </svg>
+                    <span>Telegram</span>
+                </a>
+
+                
+                <button id="shareGeneric"
+                    class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                    <span>Поделиться</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        (function () {
+            const pageUrl = window.location.href;
+            const pageTitle = document.title;
+            const shareMessage = `📐 VisualMath - ${pageTitle}\n\nБесплатные презентации и задания по математике!\nМатематика бойынша тегін презентациялар және тапсырмалар!\n\n`;
+
+            
+            document.getElementById('shareWhatsApp').addEventListener('click', function (e) {
+                e.preventDefault();
+                const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage + pageUrl)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+
+            
+            document.getElementById('shareTelegram').addEventListener('click', function (e) {
+                e.preventDefault();
+                const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareMessage)}`;
+                window.open(telegramUrl, '_blank');
+            });
+
+            
+            document.getElementById('shareGeneric').addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: pageTitle,
+                            text: shareMessage,
+                            url: pageUrl
+                        });
+                    } catch (err) {
+                        if (err.name !== 'AbortError') {
+                            copyToClipboard();
+                        }
+                    }
+                } else {
+                    copyToClipboard();
+                }
+            });
+
+            function copyToClipboard() {
+                const textToCopy = shareMessage + pageUrl;
+                navigator.clipboard.writeText(textToCopy).then(function () {
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                }, function (err) {
+                    
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                });
+            }
+        })();
+    </script>
+
+    <footer class="bg-gray-900 text-white p-8 mt-auto relative z-10">
+        <div class="container mx-auto text-center">
+            <div class="text-2xl mb-4">📐 VisualMath</div>
+            <p class="text-gray-400 mb-4">&copy; 2026 VisualMath. Все права защищены.</p>
+            <div class="space-x-6">
+                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Политика
+                    конфиденциальности</a>
+                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Условия
+                    использования</a>
+                <a href="/about" class="text-gray-400 hover:text-white transition-colors">О нас</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
