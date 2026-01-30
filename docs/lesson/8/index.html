@@ -307,42 +307,47 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-indigo-50 p-6 rounded-xl border-l-4 border-indigo-500 shadow-sm">
-        <h3 class="font-bold text-xl text-indigo-800 mb-4">Метод Гаусса</h3>
-        <p class="text-gray-700 leading-relaxed mb-4">
-            Легенда гласит, что когда великий математик Карл Фридрих Гаусс был маленьким мальчиком, учитель попросил класс сложить все числа от 1 до 100. Гаусс заметил закономерность и дал ответ почти мгновенно.
-        </p>
-        <p class="text-gray-700 leading-relaxed font-bold">
-            Суть метода: Складывать числа парами — первое с последним, второе с предпоследним и так далее.
-        </p>
-    </div>
-
-    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="font-bold text-xl text-gray-800 mb-4">Пример вычисления суммы от 1 до 100</h3>
+    <div class="bg-orange-50 p-6 rounded-xl border-l-4 border-orange-500 shadow-sm">
+        <h3 class="font-bold text-xl text-orange-800 mb-4">Нахождение суммы методом Гаусса</h3>
         <p class="text-gray-700 mb-4">
-            Запишем сумму: <span class="font-mono">S = 1 + 2 + 3 + ... + 98 + 99 + 100</span>.
+            Карл Фридрих Гаусс — великий математик. В детстве учитель дал ему задачу сложить все числа от 1 до 100, надеясь занять его на весь урок. Но Гаусс решил задачу за пару минут. Как он это сделал?
         </p>
-        <ul class="list-decimal list-inside space-y-2 text-gray-700">
-            <li>1 + 100 = 101</li>
-            <li>2 + 99 = 101</li>
-            <li>3 + 98 = 101</li>
-            <li>... и так далее.</li>
-        </ul>
-        <p class="text-gray-700 mt-4">
-            Всего чисел 100. Значит, таких пар будет <span class="font-mono">100 : 2 = 50</span>.
-            <br>Сумма равна: <span class="font-mono">101 · 50 = 5050</span>.
-        </p>
-    </div>
 
-    <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500 shadow-sm">
-        <h3 class="font-bold text-xl text-green-800 mb-4">Общая формула</h3>
+        <h4 class="font-bold text-orange-700 mb-2">Суть метода</h4>
         <p class="text-gray-700 mb-4">
-            Для суммы арифметической прогрессии (ряда чисел с равным шагом):
+            Гаусс заметил, что суммы пар чисел, равноудаленных от концов ряда, равны.
+            <br>
+            <span class="font-mono">1 2 3 ... 98 99 100</span>
+            <br>
+            1 + 100 = 101 <br>
+            2 + 99 = 101 <br>
+            3 + 98 = 101 <br>
+            И так далее.
         </p>
-        <div class="bg-white p-4 rounded text-center">
-            <span class="font-mono text-xl font-bold text-green-700">S = (a₁ + aₙ) · n / 2</span>
-        </div>
-        <p class="text-gray-600 text-sm mt-2 text-center">где a₁ — первое число, aₙ — последнее число, n — количество чисел.</p>
+
+        <p class="text-gray-700 mb-4">
+            Всего чисел 100. Значит, таких пар будет 100 : 2 = 50.
+            <br>
+            Общая сумма = (Значение одной пары) · (Количество пар).
+            <br>
+            <span class="font-mono font-bold">S = 101 · 50 = 5050</span>.
+        </p>
+
+        <h4 class="font-bold text-orange-700 mb-2">Общая формула</h4>
+        <p class="text-gray-700 mb-4">
+            Для суммы чисел от 1 до n:
+            <br>
+            <span class="font-mono font-bold bg-white p-2 rounded block text-center mt-2">S = (1 + n) · n / 2</span>
+        </p>
+        <p class="text-gray-700 mb-4">
+            <em>Пример:</em> Найти сумму чисел от 1 до 20.
+            <br>
+            1. Складываем первое и последнее: 1 + 20 = 21.
+            <br>
+            2. Умножаем на количество чисел: 21 · 20 = 420.
+            <br>
+            3. Делим пополам: 420 : 2 = 210.
+        </p>
     </div>
 </div>
             </div>

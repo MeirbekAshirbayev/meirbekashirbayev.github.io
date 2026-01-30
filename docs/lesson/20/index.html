@@ -307,36 +307,44 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
-        <h3 class="font-bold text-xl text-blue-800 mb-4">Разложение на простые множители</h3>
-        <p class="text-gray-700 leading-relaxed mb-4">
-            Любое составное число можно представить в виде произведения простых множителей. Это представление единственно (с точностью до порядка множителей).
+    <div class="bg-gray-800 text-white p-6 rounded-xl shadow-lg">
+        <h3 class="font-bold text-xl mb-4 text-purple-300">2.7 Разложение составных чисел на простые множители</h3>
+        <p class="text-gray-300 mb-4">
+            Любое составное число можно представить в виде произведения простых чисел. Это называется <strong>разложением на простые множители</strong>. Это разложение единственно (с точностью до порядка множителей).
         </p>
-        <p class="text-gray-700">
-            Процесс нахождения этого произведения называется <strong>разложением числа на простые множители</strong>.
-        </p>
-    </div>
 
-    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="font-bold text-xl text-gray-800 mb-4">Алгоритм разложения</h3>
-        <p class="text-gray-700 mb-4">Разложим число 60 на простые множители:</p>
-        
-        <div class="flex gap-8 items-start">
-            <div class="font-mono text-lg border-r-2 border-gray-300 pr-4">
-                60 | 2<br>
-                30 | 2<br>
-                15 | 3<br>
-                5 | 5<br>
-                1&nbsp; |
-            </div>
-            <div class="text-gray-700 text-sm py-2">
-                1. Делим 60 на наименьший простой делитель (2). Получаем 30.
-                <br>2. Делим 30 на 2. Получаем 15.
-                <br>3. 15 не делится на 2. Делим на 3. Получаем 5.
-                <br>4. 5 — простое число, делится на 5. Получаем 1.
-                <br><br><strong>Ответ:</strong> <span class="font-mono font-bold">60 = 2 · 2 · 3 · 5 = 2² · 3 · 5</span>
+        <h4 class="font-bold text-purple-300 mb-2">Основная теорема арифметики</h4>
+        <p class="text-gray-400 mb-4 text-sm font-italic">
+            "Всякое натуральное число, большее единицы, либо простое, либо может быть записано как произведение простых чисел."
+        </p>
+
+        <h4 class="font-bold text-purple-300 mb-2">Алгоритм "Столбик"</h4>
+        <div class="bg-gray-700 p-4 rounded font-mono text-sm leading-relaxed">
+            <div class="flex gap-8">
+                <div>
+                    72 | 2 <br>
+                    36 | 2 <br>
+                    18 | 2 <br>
+                    9  | 3 <br>
+                    3  | 3 <br>
+                    1  |
+                </div>
+                <div class="flex items-center text-gray-300">
+                    <p>
+                        Делим на наименьший простой делитель.<br>
+                        72 : 2 = 36<br>
+                        36 : 2 = 18<br>
+                        18 : 2 = 9<br>
+                        9 не делится на 2. Делим на 3.<br>
+                        9 : 3 = 3<br>
+                        3 : 3 = 1. Конец.
+                    </p>
+                </div>
             </div>
         </div>
+        <p class="mt-4 text-green-400 font-bold font-mono">
+            Ответ: 72 = 2 · 2 · 2 · 3 · 3 = 2³ · 3²
+        </p>
     </div>
 </div>
             </div>

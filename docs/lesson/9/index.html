@@ -307,36 +307,48 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
-        <h3 class="font-bold text-xl text-blue-800 mb-4">Порядок выполнения действий</h3>
-        <p class="text-gray-700 leading-relaxed mb-4">
-            В математике существует строгий порядок выполнения арифметических операций, чтобы при вычислениях всегда получался один и тот же результат.
+    <div class="bg-teal-50 p-6 rounded-xl border-l-4 border-teal-500 shadow-sm">
+        <h3 class="font-bold text-xl text-teal-800 mb-4">1.7 Порядок выполнения арифметических действий</h3>
+        <p class="text-gray-700 mb-4">
+            Чтобы при вычислениях не возникало путаницы, в математике принят строгий порядок выполнения действий.
         </p>
-        <ol class="list-decimal list-inside space-y-3 text-gray-700 font-medium">
-            <li class="bg-white p-3 rounded shadow-sm border border-blue-100">
-                <span class="text-indigo-600">Действие 1:</span> Если есть скобки, то сначала выполняются действия в скобках.
+
+        <h4 class="font-bold text-teal-700 mb-2">Правила порядка действий</h4>
+        <ol class="list-decimal list-inside text-gray-700 space-y-4 mb-4">
+            <li>
+                <strong>Действия в скобках:</strong> В первую очередь выполняются действия внутри скобок. Если есть вложенные скобки, начинают с самых внутренних.
             </li>
-            <li class="bg-white p-3 rounded shadow-sm border border-blue-100">
-                <span class="text-indigo-600">Действие 2:</span> Затем выполняются умножение и деление (слева направо).
+            <li>
+                <strong>Возведение в степень, квадрат или куб:</strong> Выполняются перед умножением и делением (это вы изучите чуть позже, но полезно знать).
             </li>
-            <li class="bg-white p-3 rounded shadow-sm border border-blue-100">
-                <span class="text-indigo-600">Действие 3:</span> В последнюю очередь выполняются сложение и вычитание (слева направо).
+            <li>
+                <strong>Умножение и деление:</strong> Выполняются по порядку слева направо. Они равнозначны между собой (старшая ступень).
+            </li>
+            <li>
+                <strong>Сложение и вычитание:</strong> Выполняются в последнюю очередь, также по порядку слева направо. Они равнозначны между собой (младшая ступень).
             </li>
         </ol>
-    </div>
 
-    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="font-bold text-xl text-gray-800 mb-4">Разбор примера</h3>
-        <p class="font-mono text-lg mb-4 bg-gray-100 p-2 rounded text-center">40 - (5 + 3) · 2 + 10 : 2</p>
-        
-        <div class="space-y-2 text-gray-700">
-            <p>1. <strong>Скобки:</strong> 5 + 3 = 8. <br><span class="text-sm text-gray-500">Выражение стало: 40 - 8 · 2 + 10 : 2</span></p>
-            <p>2. <strong>Умножение:</strong> 8 · 2 = 16. <br><span class="text-sm text-gray-500">Выражение стало: 40 - 16 + 10 : 2</span></p>
-            <p>3. <strong>Деление:</strong> 10 : 2 = 5. <br><span class="text-sm text-gray-500">Выражение стало: 40 - 16 + 5</span></p>
-            <p>4. <strong>Вычитание (слева):</strong> 40 - 16 = 24. <br><span class="text-sm text-gray-500">Выражение стало: 24 + 5</span></p>
-            <p>5. <strong>Сложение:</strong> 24 + 5 = 29.</p>
-            <p class="font-bold text-green-600 mt-2">Ответ: 29.</p>
+        <h4 class="font-bold text-teal-700 mb-2">Пример разбора</h4>
+        <div class="bg-white p-4 rounded border text-center font-mono text-lg mb-4 shadow-sm">
+            50 - 2 · (10 + 5) : 3
         </div>
+        <p class="text-gray-700">
+            <strong>Шаг 1:</strong> Скобки. <span class="font-mono">10 + 5 = 15</span>. <br>
+            Пример стал: <span class="font-mono">50 - 2 · 15 : 3</span>.
+        </p>
+        <p class="text-gray-700">
+            <strong>Шаг 2:</strong> Умножение (слева направо). <span class="font-mono">2 · 15 = 30</span>. <br>
+            Пример стал: <span class="font-mono">50 - 30 : 3</span>.
+        </p>
+        <p class="text-gray-700">
+            <strong>Шаг 3:</strong> Деление. <span class="font-mono">30 : 3 = 10</span>. <br>
+            Пример стал: <span class="font-mono">50 - 10</span>.
+        </p>
+        <p class="text-gray-700">
+            <strong>Шаг 4:</strong> Вычитание. <span class="font-mono">50 - 10 = 40</span>.
+        </p>
+        <p class="font-bold text-teal-800 mt-2">Ответ: 40</p>
     </div>
 </div>
             </div>

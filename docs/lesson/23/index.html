@@ -307,38 +307,43 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
-        <h3 class="font-bold text-xl text-blue-800 mb-4">Движение по реке</h3>
-        <p class="text-gray-700 leading-relaxed mb-4">
-            Задачи на движение по реке имеют свои особенности, так как вода в реке движется (течет). Скорость течения влияет на скорость объекта (катера, лодки, пловца).
+    <div class="bg-indigo-50 p-6 rounded-xl border-l-4 border-indigo-500 shadow-sm">
+        <h3 class="font-bold text-xl text-indigo-800 mb-4">2.10 Задачи на движение по реке</h3>
+        <p class="text-gray-700 mb-4">
+            При движении по реке нужно учитывать скорость течения воды. Она может помогать или мешать движению.
         </p>
-    </div>
 
-    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="font-bold text-xl text-gray-800 mb-6">Основные формулы</h3>
-        
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-green-50 p-5 rounded-lg">
-                <h4 class="font-bold text-green-800 mb-2">По течению</h4>
-                <p class="text-gray-700 text-sm mb-2">Река "помогает" плыть, подталкивает.</p>
-                <div class="font-mono font-bold text-lg text-center bg-white py-2 rounded shadow-sm text-green-700">
-                    V<sub>по теч</sub> = V<sub>соб</sub> + V<sub>теч</sub>
+            <div class="bg-white p-4 rounded shadow-sm">
+                <h4 class="font-bold text-indigo-700 mb-2">По течению (су ағысымен)</h4>
+                <p class="text-sm text-gray-600 mb-2">Течение помогает, подталкивает лодку. Скорость увеличивается.</p>
+                <div class="bg-indigo-100 p-2 rounded text-center font-mono font-bold">
+                    V<sub>по теч</sub> = V<sub>собств</sub> + V<sub>теч</sub>
                 </div>
             </div>
-            
-            <div class="bg-red-50 p-5 rounded-lg">
-                <h4 class="font-bold text-red-800 mb-2">Против течения</h4>
-                <p class="text-gray-700 text-sm mb-2">Река "мешает" плыть, тормозит.</p>
-                <div class="font-mono font-bold text-lg text-center bg-white py-2 rounded shadow-sm text-red-700">
-                    V<sub>пр теч</sub> = V<sub>соб</sub> - V<sub>теч</sub>
+            <div class="bg-white p-4 rounded shadow-sm">
+                <h4 class="font-bold text-indigo-700 mb-2">Против течения (ағысқа қарсы)</h4>
+                <p class="text-sm text-gray-600 mb-2">Течение мешает, тормозит лодку. Скорость уменьшается.</p>
+                <div class="bg-indigo-100 p-2 rounded text-center font-mono font-bold">
+                    V<sub>пр теч</sub> = V<sub>собств</sub> - V<sub>теч</sub>
                 </div>
             </div>
         </div>
 
-        <div class="mt-6 p-4 bg-gray-50 rounded">
-            <p class="text-gray-700"><strong>V<sub>соб</sub></strong> — собственная скорость (скорость в стоячей воде, озере).</p>
-            <p class="text-gray-700"><strong>V<sub>теч</sub></strong> — скорость течения реки.</p>
-            <p class="text-gray-700 mt-2 italic text-sm">Скорость плота всегда равна скорости течения реки!</p>
+        <h4 class="font-bold text-indigo-700 mt-6 mb-2">Полезные формулы</h4>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+            <li>V<sub>собств</sub> = (V<sub>по теч</sub> + V<sub>пр теч</sub>) : 2</li>
+            <li>V<sub>теч</sub> = (V<sub>по теч</sub> - V<sub>пр теч</sub>) : 2</li>
+        </ul>
+
+        <div class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded">
+            <p class="text-sm text-yellow-800">
+                <strong>Задача:</strong> Скорость катера 20 км/ч, скорость течения 2 км/ч.
+                <br>
+                По течению: 20 + 2 = 22 км/ч.
+                <br>
+                Против течения: 20 - 2 = 18 км/ч.
+            </p>
         </div>
     </div>
 </div>
