@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Теңсіздіктер Жүйесі: Интерактивті Тренажер | VisualMath</title>
+    <meta name="description" content="Интерактивное задание по математике">
+    <meta name="keywords" content="Теңсіздіктер Жүйесі: Интерактивті Тренажер, математика, задача, задание, visual math">
+
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Теңсіздіктер Жүйесі: Интерактивті Тренажер | VisualMath">
+    <meta property="og:description" content="Интерактивное задание по математике">
+
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Quiz",
+      "name": "Теңсіздіктер Жүйесі: Интерактивті Тренажер",
+      "description": "Интерактивное задание по математике",
+      "inLanguage": "ru",
+      "educationalUse": "Assignment"
+    }
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📐</text></svg>">
+
+    
+    <link rel="canonical" href="https://meirbekashirbayev.github.io/task/201" />
+
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E38F1VR05Z"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-E38F1VR05Z');
+    </script>
+
+    
+    <meta name="google-adsense-account" content="ca-pub-9724842226086594">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9724842226086594"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .task-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+        .task-content iframe {
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh;
+            min-height: 450px;
+            border: none;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border-radius: 16px;
+            background: white;
+        }
+
+         
+        #fullscreenWrapper:fullscreen,
+        #fullscreenWrapperKz:fullscreen,
+        #fullscreenWrapperRu:fullscreen {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #fullscreenWrapper:fullscreen iframe,
+        #fullscreenWrapperKz:fullscreen iframe,
+        #fullscreenWrapperRu:fullscreen iframe {
+            height: 95vh;
+            width: 100%;
+            max-width: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    
+    <nav class="gradient-bg text-white p-3 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🎮</span>
+                <span class="font-bold text-lg truncate max-w-[200px] sm:max-w-none">Теңсіздіктер Жүйесі: Интерактивті Тренажер</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <a href="/about"
+                    class="flex items-center gap-1 bg-white/10 hover:bg-white/20 px-2 py-1.5 rounded-lg transition-colors text-xs font-semibold">
+                    <span class="text-sm">💎</span>
+                    <span class="hidden lg:inline">О нас</span>
+                </a>
+                <a href="/lesson/72"
+                    class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-colors text-sm font-medium">
+                    <span>←</span>
+                    <span class="hidden sm:inline">Назад к уроку</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow task-content">
+
+        
+        <div class="w-full max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Интерактивные задания</h2>
+
+            
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg kazakh-block">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-blue-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇰🇿
+                            Казахский</span>
+                        <button onclick="openFullscreenKz()"
+                            class="text-blue-600 hover:text-blue-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperKz">
+                        <iframe id="taskIframeKz" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;kk&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Теңсіздіктер Жүйесі: Интерактивті Тренажер&lt;/title&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap&#39;);
+        
+        :root {
+            --primary-color: #2563eb; /* Blue 600 */
+            --primary-hover: #1d4ed8;
+            --bg-color: #f0f9ff;
+            --white: #ffffff;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --success-color: #16a34a;
+            --success-bg: #f0fdf4;
+            --success-border: #bbf7d0;
+            --error-color: #dc2626;
+            --error-bg: #fef2f2;
+            --error-border: #fecaca;
+            --border-color: #e5e7eb;
+            --radius: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: &#39;Nunito&#39;, sans-serif;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        /* --- Main Layout --- */
+        .app-container {
+            background: var(--white);
+            width: 100%;
+            max-width: 900px;
+            min-height: 600px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .app-container {
+                flex-direction: row;
+            }
+        }
+
+        /* --- Sidebar (Left) --- */
+        .sidebar {
+            flex: 1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .header {
+            margin-bottom: 1.5rem;
+        }
+
+        .level-badge {
+            background-color: #dbeafe;
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        /* --- Question Area --- */
+        .question-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .task-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .equation-box {
+            background-color: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            width: 100%;
+        }
+
+        .option-btn {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-dark);
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: #93c5fd;
+            background-color: #eff6ff;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+            opacity: 0.8;
+        }
+
+        /* State Classes for Buttons */
+        .option-btn.correct {
+            border-color: var(--success-color);
+            background-color: var(--success-bg);
+            color: #14532d;
+        }
+        
+        .option-btn.wrong {
+            border-color: var(--error-color);
+            background-color: var(--error-bg);
+            color: #7f1d1d;
+        }
+
+        .indicator-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .option-btn:hover .indicator-circle {
+            border-color: #60a5fa;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .option-btn.correct .indicator-circle {
+            border-color: var(--success-color);
+        }
+        .option-btn.correct .dot {
+            background-color: var(--success-color);
+            opacity: 1;
+        }
+        .option-btn.wrong .indicator-circle {
+            border-color: var(--error-color);
+        }
+        .option-btn.wrong .dot {
+            background-color: var(--error-color);
+            opacity: 1;
+        }
+
+        /* --- Action Buttons --- */
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* --- Content Area (Right) --- */
+        .content-area {
+            flex: 1;
+            background-color: #f8fafc;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .canvas-wrapper {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            height: 160px;
+            position: relative;
+            margin-bottom: 1rem;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .placeholder-text {
+            position: absolute;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        /* --- Feedback Box --- */
+        .feedback-box {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            flex-grow: 1;
+            display: none; /* JS toggles this */
+            flex-direction: column;
+        }
+
+        .feedback-box.show {
+            display: flex;
+        }
+
+        .feedback-header {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-success { color: var(--success-color); }
+        .text-error { color: var(--error-color); }
+
+        .explanation-text {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .error-tip {
+            margin-top: 0.75rem;
+            background-color: #fffbeb;
+            border: 1px solid #fcd34d;
+            color: #92400e;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .math-steps {
+            margin-top: 0.75rem;
+            background-color: #f1f5f9;
+            padding: 0.75rem;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #334155;
+            display: none;
+        }
+
+        /* --- Completion Screen --- */
+        .completion-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .score-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Math Typography --- */
+        .math-text {
+            font-family: &#39;Times New Roman&#39;, serif;
+            font-style: italic;
+        }
+
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 4px;
+            font-family: &#39;Times New Roman&#39;, serif;
+            font-style: italic;
+        }
+        
+        .fraction .numerator {
+            border-bottom: 1.5px solid #1f2937;
+            padding-bottom: 1px;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+        
+        .fraction .denominator {
+            padding-top: 1px;
+            text-align: center;
+            width: 100%;
+            display: block;
+        }
+
+        .system-brace {
+            font-family: &#39;Times New Roman&#39;, serif;
+            font-size: 3.5rem; /* Adjusted for better fit */
+            line-height: 0.8;
+            font-weight: lighter;
+            color: #1f2937;
+            margin-right: 8px;
+            display: inline-block;
+        }
+
+        .latex-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .equations-col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .equations-col.large {
+            font-size: 1.25rem;
+            gap: 1rem;
+        }
+
+        /* Utilities */
+        .hidden { display: none !important; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        .text-sm { font-size: 0.875rem; }
+        .text-gray { color: var(--text-gray); }
+        .mb-2 { margin-bottom: 0.5rem; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;!-- Main Container --&gt;
+    &lt;div class=&#34;app-container&#34;&gt;
+        
+        &lt;!-- Left Side: Interactive Area --&gt;
+        &lt;div class=&#34;sidebar&#34; id=&#34;sidebar&#34;&gt;
+            
+            &lt;!-- Header --&gt;
+            &lt;div class=&#34;header&#34;&gt;
+                &lt;div class=&#34;flex-between mb-2&#34;&gt;
+                    &lt;span class=&#34;level-badge&#34;&gt;Деңгей: &lt;span id=&#34;level-indicator&#34;&gt;A&lt;/span&gt;&lt;/span&gt;
+                    &lt;span class=&#34;text-sm text-gray&#34;&gt;&lt;span id=&#34;current-step&#34;&gt;1&lt;/span&gt;/8&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;progress-track&#34;&gt;
+                    &lt;div id=&#34;progress-bar&#34; class=&#34;progress-bar&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Question Area --&gt;
+            &lt;div id=&#34;question-container&#34; class=&#34;question-area&#34;&gt;
+                &lt;h2 class=&#34;task-title&#34; id=&#34;task-title&#34;&gt;1-тапсырма&lt;/h2&gt;
+                &lt;div class=&#34;equation-box&#34;&gt;
+                    &lt;div id=&#34;equation-display&#34;&gt;
+                        &lt;!-- Equation will be injected here --&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;p class=&#34;text-sm text-gray mb-2&#34;&gt;Дұрыс жауапты таңдаңыз:&lt;/p&gt;
+                
+                &lt;div id=&#34;options-grid&#34; class=&#34;options-grid&#34;&gt;
+                    &lt;!-- Options injected here --&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Navigation (Hidden initially) --&gt;
+            &lt;button id=&#34;next-btn&#34; onclick=&#34;nextQuestion()&#34; class=&#34;btn-primary hidden&#34;&gt;
+                Келесі тапсырма
+                &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;20&#34; height=&#34;20&#34; viewBox=&#34;0 0 20 20&#34; fill=&#34;currentColor&#34;&gt;
+                    &lt;path fill-rule=&#34;evenodd&#34; d=&#34;M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z&#34; clip-rule=&#34;evenodd&#34; /&gt;
+                &lt;/svg&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Right Side: Visualization &amp; Feedback --&gt;
+        &lt;div class=&#34;content-area&#34; id=&#34;content-area&#34;&gt;
+            
+            &lt;h3 class=&#34;section-title&#34;&gt;
+                &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;20&#34; height=&#34;20&#34; viewBox=&#34;0 0 20 20&#34; fill=&#34;#6366f1&#34;&gt;
+                    &lt;path fill-rule=&#34;evenodd&#34; d=&#34;M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 00-1-1H3zm6 9a1 1 0 100-2 1 1 0 000 2zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z&#34; clip-rule=&#34;evenodd&#34; /&gt;
+                &lt;/svg&gt;
+                Визуализация
+            &lt;/h3&gt;
+
+            &lt;!-- Canvas for Number Line --&gt;
+            &lt;div class=&#34;canvas-wrapper&#34;&gt;
+                &lt;canvas id=&#34;numberLineCanvas&#34; width=&#34;400&#34; height=&#34;150&#34;&gt;&lt;/canvas&gt;
+                &lt;div id=&#34;canvas-placeholder&#34; class=&#34;placeholder-text&#34;&gt;
+                    Жауап берген соң сызба пайда болады
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;!-- Feedback / Error Analysis --&gt;
+            &lt;div id=&#34;feedback-area&#34; class=&#34;feedback-box&#34;&gt;
+                &lt;div id=&#34;feedback-header&#34; class=&#34;feedback-header&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;explanation-scroll&#34;&gt;
+                    &lt;p id=&#34;feedback-text&#34; class=&#34;explanation-text&#34;&gt;&lt;/p&gt;
+                    &lt;div id=&#34;math-steps&#34; class=&#34;math-steps&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Completion Screen (Hidden) --&gt;
+        &lt;div id=&#34;completion-screen&#34; class=&#34;completion-screen&#34;&gt;
+            &lt;div style=&#34;font-size: 4rem; margin-bottom: 1rem;&#34;&gt;🏆&lt;/div&gt;
+            &lt;h2 style=&#34;font-size: 1.5rem; color: var(--success-color); font-weight: bold; margin-bottom: 0.5rem;&#34;&gt;Құттықтаймыз!&lt;/h2&gt;
+            &lt;p style=&#34;color: var(--text-gray); margin-bottom: 1.5rem;&#34;&gt;Сіз барлық деңгейлерден сәтті өттіңіз.&lt;/p&gt;
+            
+            &lt;div class=&#34;score-card&#34;&gt;
+                &lt;p class=&#34;text-sm text-gray&#34;&gt;Жалпы ұпай:&lt;/p&gt;
+                &lt;p style=&#34;font-size: 2rem; font-weight: bold; color: var(--primary-color);&#34;&gt;&lt;span id=&#34;final-score&#34;&gt;0&lt;/span&gt; / 8&lt;/p&gt;
+            &lt;/div&gt;
+            
+            &lt;button onclick=&#34;location.reload()&#34; class=&#34;btn-primary&#34; style=&#34;max-width: 200px;&#34;&gt;
+                Қайтадан бастау
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // Data Structure
+        const quizData = [
+            {
+                id: 1,
+                level: &#34;A&#34;,
+                title: &#34;1-тапсырма: Жүйенің ортақ шешімі&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;x &gt; -1&lt;/span&gt;
+                            &lt;span&gt;x &lt; 4&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;(-1; 4)&#34;, correct: true },
+                    { id: &#39;b&#39;, text: &#34;(-∞; -1) ∪ (4; &#43;∞)&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;[-1; 4]&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;Шешімі жоқ&#34;, correct: false }
+                ],
+                explanation: &#34;Жүйенің шешімі — бұл екі теңсіздіктің қиылысуы. Координаталық түзуде -1-ден оңға және 4-тен солға қарай штрихталғанда, олардың ортақ бөлігі (-1; 4) аралығы болады.&#34;,
+                errorTip: &#34;Оқушылар кейде екі аралықтың бірігуін алады. Есіңізде болсын: жүйе — бұл «және» деген сөз, яғни қиылысу керек.&#34;,
+                drawConfig: { start: -1, end: 4, type: &#39;intersection&#39;, bounds: [-3, 6] }
+            },
+            {
+                id: 2,
+                level: &#34;A&#34;,
+                title: &#34;2-тапсырма: Бір бағытты жүйе&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;x ≥ 5&lt;/span&gt;
+                            &lt;span&gt;x ≥ 2&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;[2; &#43;∞)&#34;, correct: false },
+                    { id: &#39;b&#39;, text: &#34;[5; &#43;∞)&#34;, correct: true },
+                    { id: &#39;c&#39;, text: &#34;[2; 5]&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;(5; &#43;∞)&#34;, correct: false }
+                ],
+                explanation: &#34;Екі теңсіздік те «үлкен» бағытын көрсетіп тұр. Ортақ шешім — үлкен саннан бастап оңға қарай. 5 саны 2-ден үлкен болғандықтан, қиылысу [5; &#43;∞).&#34;,
+                errorTip: &#34;Екі бағыт бірдей болғанда, ең шектеулі шартты (үлкен сан) алу керек.&#34;,
+                drawConfig: { start: 5, end: 10, type: &#39;ray_right&#39;, bounds: [0, 8], secondary: 2 }
+            },
+            {
+                id: 3,
+                level: &#34;B&#34;,
+                title: &#34;3-тапсырма: Теріс санға бөлу&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;-4x ≤ 12&lt;/span&gt;
+                            &lt;span&gt;x - 5 &lt; -2&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;(-∞; -3]&#34;, correct: false },
+                    { id: &#39;b&#39;, text: &#34;[-3; 3)&#34;, correct: true },
+                    { id: &#39;c&#39;, text: &#34;(-3; 3)&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;(3; &#43;∞)&#34;, correct: false }
+                ],
+                explanation: &#34;Бірінші теңсіздік: -4-ке бөлгенде таңба қарама-қарсыға өзгереді (x ≥ -3). Екінші теңсіздік: x &lt; 3. Қиылысу [-3; 3).&#34;,
+                errorTip: &#34;Теріс санға бөлгенде теңсіздік таңбасын өзгертуді ұмытпаңыз! Әйтпесе жауап қате шығады.&#34;,
+                mathSteps: &#34;-4x ≤ 12 ⇒ x ≥ -3&lt;br&gt;x - 5 &lt; -2 ⇒ x &lt; 3&#34;,
+                drawConfig: { start: -3, end: 3, type: &#39;intersection&#39;, bounds: [-5, 5], leftClosed: true, rightClosed: false }
+            },
+            {
+                id: 4,
+                level: &#34;B&#34;,
+                title: &#34;4-тапсырма: Жақшалары бар жүйе&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;2(x &#43; 3) &gt; 10&lt;/span&gt;
+                            &lt;span&gt;3x - 1 ≤ 14&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;(2; 5]&#34;, correct: true },
+                    { id: &#39;b&#39;, text: &#34;(2; 5)&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;[2; 5]&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;(4; 5]&#34;, correct: false }
+                ],
+                explanation: &#34;1) 2x &#43; 6 &gt; 10 ⇒ 2x &gt; 4 ⇒ x &gt; 2.&lt;br&gt;2) 3x ≤ 15 ⇒ x ≤ 5.&lt;br&gt;Ортақ бөлік: (2; 5].&#34;,
+                errorTip: &#34;Классикалық қате: Жақшаны ашқанда коэффициентті тек бірінші мүшеге көбейту (2x&#43;3 деп жазу). 2-ні 3-ке де көбейту керек!&#34;,
+                drawConfig: { start: 2, end: 5, type: &#39;intersection&#39;, bounds: [0, 7], leftClosed: false, rightClosed: true }
+            },
+            {
+                id: 5,
+                level: &#34;Ерекше&#34;,
+                title: &#34;5-тапсырма: Бір ғана шешім&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;3x &#43; 1 ≥ 10&lt;/span&gt;
+                            &lt;span&gt;2x ≤ 6&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;[3; 3]&#34;, correct: false },
+                    { id: &#39;b&#39;, text: &#34;Шешімі жоқ&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;x = 3&#34;, correct: true },
+                    { id: &#39;d&#39;, text: &#34;(-∞; 3] ∪ [3; &#43;∞)&#34;, correct: false }
+                ],
+                explanation: &#34;1) 3x ≥ 9 ⇒ x ≥ 3.&lt;br&gt;2) x ≤ 3.&lt;br&gt;Бір сан бір уақытта ≥3 және ≤3 болса, ол тек 3-ке тең.&#34;,
+                errorTip: &#34;Оқушылар аралық шықпаған соң «шешімі жоқ» деп ойлауы мүмкін. Бірақ екі теңсіздік те қатаң емес, сондықтан 3 саны шешім болады.&#34;,
+                drawConfig: { start: 3, end: 3, type: &#39;point&#39;, bounds: [0, 6] }
+            },
+            {
+                id: 6,
+                level: &#34;Логика&#34;,
+                title: &#34;6-тапсырма: Шешімі жоқ жүйе&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;x &#43; 7 &lt; 3&lt;/span&gt;
+                            &lt;span&gt;5x ≥ 15&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;(-∞; -4) ∪ [3; &#43;∞)&#34;, correct: false },
+                    { id: &#39;b&#39;, text: &#34;(-4; 3)&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;Ø (Шешімі жоқ)&#34;, correct: true },
+                    { id: &#39;d&#39;, text: &#34;x ∈ R&#34;, correct: false }
+                ],
+                explanation: &#34;1) x &lt; -4.&lt;br&gt;2) x ≥ 3.&lt;br&gt;Сан түзуінде -4-тен солға және 3-тен оңға кеткен сәулелер ешқашан қиылыспайды.&#34;,
+                errorTip: &#34;Бірігу (барлық боялған жер) емес, қиылысу (ортақ жер) керек. Ортақ жер жоқ.&#34;,
+                drawConfig: { start: -4, end: 3, type: &#39;no_intersection&#39;, bounds: [-6, 6] }
+            },
+            {
+                id: 7,
+                level: &#34;C&#34;,
+                title: &#34;7-тапсырма: Бөлшегі бар жүйе&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col large math-text&#34;&gt;
+                            &lt;div style=&#34;display:flex; align-items:center;&#34;&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;2x - 1&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;3&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;span style=&#34;margin-left: 0.5rem&#34;&gt;≥ 1&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;span&gt;4(x &#43; 1) &lt; 3x &#43; 9&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;[2; 5)&#34;, correct: true },
+                    { id: &#39;b&#39;, text: &#34;(2; 5)&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;[1; 5)&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;[2; 4]&#34;, correct: false }
+                ],
+                explanation: &#34;1) 2x-1 ≥ 3 ⇒ 2x ≥ 4 ⇒ x ≥ 2.&lt;br&gt;2) 4x&#43;4 &lt; 3x&#43;9 ⇒ x &lt; 5.&lt;br&gt;Жауабы: [2; 5).&#34;,
+                errorTip: &#34;Теңсіздік таңбаларының қатаң (&lt;) және қатаң емес (≥) екеніне мұқият болыңыз.&#34;,
+                drawConfig: { start: 2, end: 5, type: &#39;intersection&#39;, bounds: [0, 7], leftClosed: true, rightClosed: false }
+            },
+            {
+                id: 8,
+                level: &#34;C&#43;&#34;,
+                title: &#34;8-тапсырма: Күрделі бөлшекті жүйе&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col large math-text&#34;&gt;
+                            &lt;div style=&#34;display:flex; align-items:center;&#34;&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;x &#43; 1&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;2&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;span style=&#34;margin: 0 0.5rem&#34;&gt;-&lt;/span&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;x - 2&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;3&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;span style=&#34;margin-left: 0.5rem&#34;&gt;&gt; 2&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;div style=&#34;display:flex; align-items:center;&#34;&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;x&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;3&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;span style=&#34;margin: 0 0.5rem&#34;&gt;&#43;&lt;/span&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;1&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;2&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;span style=&#34;margin: 0 0.5rem&#34;&gt;≤&lt;/span&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;x &#43; 5&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;6&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;(2; 5]&#34;, correct: false },
+                    { id: &#39;b&#39;, text: &#34;x &gt; 5&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;x ≤ 2&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;Ø (Шешімі жоқ)&#34;, correct: true }
+                ],
+                explanation: &#34;Бірінші теңсіздікті шешкенде: x &gt; 5 шығады.&lt;br&gt;Екінші теңсіздік: x ≤ 2 шығады.&lt;br&gt;x &gt; 5 және x ≤ 2 шарттары бір уақытта орындалмайды.&#34;,
+                errorTip: &#34;Ортақ бөлімге келтіргенде жақша ішіндегі таңбаларға (минус) абай болыңыз.&#34;,
+                mathSteps: &#34;1) 3(x&#43;1) - 2(x-2) &gt; 12 ⇒ x &gt; 5&lt;br&gt;2) 2x &#43; 3 ≤ x &#43; 5 ⇒ x ≤ 2&#34;,
+                drawConfig: { start: 2, end: 5, type: &#39;no_intersection_gap&#39;, bounds: [0, 8] }
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        // Elements
+        const questionContainer = document.getElementById(&#39;question-container&#39;);
+        const nextBtn = document.getElementById(&#39;next-btn&#39;);
+        const feedbackArea = document.getElementById(&#39;feedback-area&#39;);
+        const canvas = document.getElementById(&#39;numberLineCanvas&#39;);
+        const ctx = canvas.getContext(&#39;2d&#39;);
+        const progressBar = document.getElementById(&#39;progress-bar&#39;);
+        const levelIndicator = document.getElementById(&#39;level-indicator&#39;);
+        const sidebar = document.getElementById(&#39;sidebar&#39;);
+        const contentArea = document.getElementById(&#39;content-area&#39;);
+        const completionScreen = document.getElementById(&#39;completion-screen&#39;);
+        const optionsGrid = document.getElementById(&#39;options-grid&#39;);
+
+        function startQuiz() {
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const currentQ = quizData[currentQuestionIndex];
+            answered = false;
+            
+            // Update Header
+            document.getElementById(&#39;current-step&#39;).innerText = currentQuestionIndex &#43; 1;
+            document.getElementById(&#39;task-title&#39;).innerText = currentQ.title;
+            document.getElementById(&#39;equation-display&#39;).innerHTML = currentQ.latex;
+            levelIndicator.innerText = currentQ.level;
+            
+            // Update Progress
+            const progress = ((currentQuestionIndex) / 8) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            // Reset UI
+            feedbackArea.classList.remove(&#39;show&#39;);
+            nextBtn.classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;canvas-placeholder&#39;).style.display = &#39;flex&#39;;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Options
+            optionsGrid.innerHTML = &#39;&#39;;
+            
+            currentQ.options.forEach(opt =&gt; {
+                const btn = document.createElement(&#39;button&#39;);
+                btn.className = &#39;option-btn&#39;;
+                btn.innerHTML = `
+                    &lt;span&gt;${opt.text}&lt;/span&gt;
+                    &lt;div class=&#34;indicator-circle&#34;&gt;
+                        &lt;div class=&#34;dot&#34;&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                `;
+                btn.onclick = () =&gt; checkAnswer(opt, btn);
+                optionsGrid.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedOpt, btnElement) {
+            if (answered) return;
+            answered = true;
+            
+            const currentQ = quizData[currentQuestionIndex];
+            const isCorrect = selectedOpt.correct;
+            const options = optionsGrid.children;
+
+            // Update UI for selected button
+            if (isCorrect) {
+                btnElement.classList.add(&#39;correct&#39;);
+                score&#43;&#43;;
+            } else {
+                btnElement.classList.add(&#39;wrong&#39;);
+                // Find correct one
+                const correctOptIndex = currentQ.options.findIndex(o =&gt; o.correct);
+                if (correctOptIndex !== -1) {
+                    options[correctOptIndex].classList.add(&#39;correct&#39;);
+                }
+            }
+
+            // Disable all buttons
+            for (let btn of options) {
+                btn.disabled = true;
+            }
+
+            // Show Feedback
+            showFeedback(isCorrect, currentQ);
+            
+            // Draw visual
+            document.getElementById(&#39;canvas-placeholder&#39;).style.display = &#39;none&#39;;
+            drawNumberLine(currentQ.drawConfig);
+
+            // Show Next Button
+            nextBtn.classList.remove(&#39;hidden&#39;);
+        }
+
+        function showFeedback(isCorrect, data) {
+            feedbackArea.classList.add(&#39;show&#39;);
+            
+            const header = document.getElementById(&#39;feedback-header&#39;);
+            const text = document.getElementById(&#39;feedback-text&#39;);
+            const mathSteps = document.getElementById(&#39;math-steps&#39;);
+
+            if (isCorrect) {
+                header.innerHTML = &#39;&lt;span class=&#34;text-success&#34;&gt;✅ Дұрыс!&lt;/span&gt;&#39;;
+            } else {
+                header.innerHTML = &#39;&lt;span class=&#34;text-error&#34;&gt;⚠️ Қате&lt;/span&gt;&#39;;
+            }
+
+            text.innerHTML = `
+                &lt;strong style=&#34;color: #334155;&#34;&gt;Түсіндірме:&lt;/strong&gt; ${data.explanation}
+                ${!isCorrect ? `&lt;div class=&#34;error-tip&#34;&gt;&lt;strong&gt;Қатемен жұмыс:&lt;/strong&gt; ${data.errorTip}&lt;/div&gt;` : &#39;&#39;}
+            `;
+
+            if (data.mathSteps) {
+                mathSteps.innerHTML = data.mathSteps;
+                mathSteps.style.display = &#39;block&#39;;
+            } else {
+                mathSteps.style.display = &#39;none&#39;;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex&#43;&#43;;
+            if (currentQuestionIndex &lt; quizData.length) {
+                loadQuestion();
+            } else {
+                showCompletion();
+            }
+        }
+
+        function showCompletion() {
+            // Update final progress bar
+            progressBar.style.width = &#39;100%&#39;;
+            
+            // Hide game areas
+            sidebar.style.display = &#39;none&#39;;
+            contentArea.style.display = &#39;none&#39;;
+            
+            // Show Completion Screen
+            completionScreen.style.display = &#39;flex&#39;;
+            document.getElementById(&#39;final-score&#39;).innerText = score;
+        }
+
+        // --- Visualization Engine ---
+        function drawNumberLine(config) {
+            // Helper constants
+            const width = canvas.width;
+            const height = canvas.height;
+            const centerY = height / 2;
+            const padding = 40;
+            
+            // Scale logic
+            const minVal = config.bounds[0];
+            const maxVal = config.bounds[1];
+            const range = maxVal - minVal;
+            const unitPx = (width - 2 * padding) / range;
+
+            const getX = (val) =&gt; padding &#43; (val - minVal) * unitPx;
+
+            // Clear
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw axis
+            ctx.beginPath();
+            ctx.moveTo(10, centerY);
+            ctx.lineTo(width - 10, centerY);
+            ctx.strokeStyle = &#39;#334155&#39;;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Draw arrow
+            ctx.beginPath();
+            ctx.moveTo(width - 15, centerY - 5);
+            ctx.lineTo(width - 5, centerY);
+            ctx.lineTo(width - 15, centerY &#43; 5);
+            ctx.fillStyle = &#39;#334155&#39;;
+            ctx.fill();
+
+            // Draw Ticks
+            ctx.font = &#39;12px Nunito&#39;;
+            ctx.fillStyle = &#39;#64748b&#39;;
+            ctx.textAlign = &#39;center&#39;;
+            for (let i = Math.ceil(minVal); i &lt;= Math.floor(maxVal); i&#43;&#43;) {
+                const x = getX(i);
+                ctx.beginPath();
+                ctx.moveTo(x, centerY - 4);
+                ctx.lineTo(x, centerY &#43; 4);
+                ctx.stroke();
+                // Draw numbers only for key points to avoid clutter, or step by 1 if few
+                if (range &lt; 12) {
+                    ctx.fillText(i, x, centerY &#43; 20);
+                } else if (i % 2 === 0) {
+                     ctx.fillText(i, x, centerY &#43; 20);
+                }
+            }
+
+            // Drawing logic based on type
+            ctx.lineWidth = 4;
+            
+            if (config.type === &#39;intersection&#39;) {
+                const startX = getX(config.start);
+                const endX = getX(config.end);
+
+                // Line 1 (left constraint)
+                ctx.strokeStyle = &#39;rgba(59, 130, 246, 0.3)&#39;; // blue fade
+                ctx.beginPath();
+                ctx.moveTo(startX, centerY - 10);
+                ctx.lineTo(width, centerY - 10);
+                ctx.stroke();
+
+                // Line 2 (right constraint)
+                ctx.strokeStyle = &#39;rgba(239, 68, 68, 0.3)&#39;; // red fade
+                ctx.beginPath();
+                ctx.moveTo(endX, centerY &#43; 10);
+                ctx.lineTo(0, centerY &#43; 10);
+                ctx.stroke();
+
+                // Intersection
+                drawHatch(startX, endX, centerY, &#39;#16a34a&#39;, config.leftClosed, config.rightClosed);
+
+            } else if (config.type === &#39;ray_right&#39;) {
+                // Secondary check (x &gt;= 2)
+                const secX = getX(config.secondary);
+                ctx.strokeStyle = &#39;rgba(148, 163, 184, 0.5)&#39;;
+                ctx.beginPath();
+                ctx.moveTo(secX, centerY &#43; 10);
+                ctx.lineTo(width, centerY &#43; 10);
+                ctx.stroke();
+                drawPoint(secX, centerY &#43; 10, true, &#39;#94a3b8&#39;);
+
+                // Main Answer
+                const startX = getX(config.start);
+                drawRay(startX, width, centerY, &#39;#16a34a&#39;, true); // right
+                drawPoint(startX, centerY, true, &#39;#16a34a&#39;); // closed circle
+
+            } else if (config.type === &#39;point&#39;) {
+                const x = getX(config.start);
+                drawPoint(x, centerY, true, &#39;#16a34a&#39;);
+                ctx.fillText(`x = ${config.start}`, x, centerY - 15);
+
+            } else if (config.type === &#39;no_intersection&#39;) {
+                const x1 = getX(config.start); // -4
+                const x2 = getX(config.end); // 3
+
+                // Left Ray
+                drawRay(x1, 0, centerY, &#39;#ef4444&#39;, false); // left
+                drawPoint(x1, centerY, false, &#39;#ef4444&#39;);
+
+                // Right Ray
+                drawRay(x2, width, centerY, &#39;#ef4444&#39;, false); // right
+                drawPoint(x2, centerY, true, &#39;#ef4444&#39;);
+                
+                ctx.fillStyle = &#39;#ef4444&#39;;
+                ctx.fillText(&#34;Қиылысу жоқ&#34;, width/2, centerY - 25);
+            } else if (config.type === &#39;no_intersection_gap&#39;) {
+                 // x &gt; 5, x &lt;= 2
+                 const x2 = getX(config.start); // 2
+                 const x5 = getX(config.end); // 5
+
+                 drawRay(x2, 0, centerY, &#39;#ef4444&#39;, false); // left from 2
+                 drawPoint(x2, centerY, true, &#39;#ef4444&#39;);
+
+                 drawRay(x5, width, centerY, &#39;#ef4444&#39;, false); // right from 5
+                 drawPoint(x5, centerY, false, &#39;#ef4444&#39;);
+            }
+        }
+
+        // Helpers for Canvas
+        function drawPoint(x, y, filled, color) {
+            ctx.beginPath();
+            ctx.arc(x, y, 5, 0, Math.PI * 2);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            if (filled) {
+                ctx.fillStyle = color;
+                ctx.fill();
+            } else {
+                ctx.fillStyle = &#39;white&#39;;
+                ctx.fill();
+            }
+        }
+
+        function drawHatch(x1, x2, y, color, closedL, closedR) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 3;
+            // Main line
+            ctx.beginPath();
+            ctx.moveTo(x1, y);
+            ctx.lineTo(x2, y);
+            ctx.stroke();
+
+            // Hatches
+            ctx.lineWidth = 1;
+            for(let i = x1 &#43; 5; i &lt; x2; i&#43;=8) {
+                ctx.beginPath();
+                ctx.moveTo(i, y - 5);
+                ctx.lineTo(i-5, y &#43; 5);
+                ctx.stroke();
+            }
+
+            // Endpoints
+            drawPoint(x1, y, closedL, color);
+            drawPoint(x2, y, closedR, color);
+        }
+
+        function drawRay(xStart, xEnd, y, color, isRight) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(xStart, y);
+            ctx.lineTo(xEnd, y);
+            ctx.stroke();
+
+            // Hatches
+            ctx.lineWidth = 1;
+            const step = 8;
+            if(isRight) {
+                for(let i = xStart &#43; 5; i &lt; xEnd; i&#43;=step) {
+                    ctx.beginPath();
+                    ctx.moveTo(i, y - 5);
+                    ctx.lineTo(i-5, y &#43; 5);
+                    ctx.stroke();
+                }
+            } else {
+                 for(let i = xStart - 5; i &gt; xEnd; i-=step) {
+                    ctx.beginPath();
+                    ctx.moveTo(i, y - 5);
+                    ctx.lineTo(i-5, y &#43; 5);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // Initialize
+        startQuiz();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+
+                
+                <div class="bg-white p-4 rounded-2xl shadow-lg russian-block">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="bg-red-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">🇷🇺
+                            Русский</span>
+                        <button onclick="openFullscreenRu()" class="text-red-600 hover:text-red-800 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="fullscreenWrapperRu">
+                        <iframe id="taskIframeRu" srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html lang=&#34;ru&#34;&gt;
+&lt;head&gt;
+    &lt;meta charset=&#34;UTF-8&#34;&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+    &lt;title&gt;Системы неравенств: Интерактивный тренажер&lt;/title&gt;
+    &lt;style&gt;
+        @import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap&#39;);
+        
+        :root {
+            --primary-color: #2563eb; /* Blue 600 */
+            --primary-hover: #1d4ed8;
+            --bg-color: #f0f9ff;
+            --white: #ffffff;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --success-color: #16a34a;
+            --success-bg: #f0fdf4;
+            --success-border: #bbf7d0;
+            --error-color: #dc2626;
+            --error-bg: #fef2f2;
+            --error-border: #fecaca;
+            --border-color: #e5e7eb;
+            --radius: 16px;
+            --radius-sm: 8px;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: &#39;Nunito&#39;, sans-serif;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .app-container {
+            background: var(--white);
+            width: 100%;
+            max-width: 900px;
+            min-height: 600px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .app-container {
+                flex-direction: row;
+            }
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .header {
+            margin-bottom: 1.5rem;
+        }
+
+        .level-badge {
+            background-color: #dbeafe;
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 9999px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+
+        .question-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .task-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .equation-box {
+            background-color: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            width: 100%;
+        }
+
+        .option-btn {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--text-dark);
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover:not(:disabled) {
+            border-color: #93c5fd;
+            background-color: #eff6ff;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .option-btn:disabled {
+            cursor: default;
+            opacity: 0.8;
+        }
+
+        .option-btn.correct {
+            border-color: var(--success-color);
+            background-color: var(--success-bg);
+            color: #14532d;
+        }
+        
+        .option-btn.wrong {
+            border-color: var(--error-color);
+            background-color: var(--error-bg);
+            color: #7f1d1d;
+        }
+
+        .indicator-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .option-btn.correct .dot { background-color: var(--success-color); opacity: 1; }
+        .option-btn.wrong .dot { background-color: var(--error-color); opacity: 1; }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .content-area {
+            flex: 1;
+            background-color: #f8fafc;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .canvas-wrapper {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            height: 160px;
+            position: relative;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas { width: 100%; height: 100%; }
+
+        .placeholder-text {
+            position: absolute;
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .feedback-box {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            flex-grow: 1;
+            display: none;
+            flex-direction: column;
+        }
+
+        .feedback-box.show { display: flex; }
+
+        .feedback-header {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .text-success { color: var(--success-color); }
+        .text-error { color: var(--error-color); }
+
+        .explanation-text {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .error-tip {
+            margin-top: 0.75rem;
+            background-color: #fffbeb;
+            border: 1px solid #fcd34d;
+            color: #92400e;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .math-steps {
+            margin-top: 0.75rem;
+            background-color: #f1f5f9;
+            padding: 0.75rem;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            font-family: monospace;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .completion-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .score-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: var(--radius-sm);
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .math-text { font-family: &#39;Times New Roman&#39;, serif; font-style: italic; }
+
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 4px;
+        }
+        
+        .fraction .numerator { border-bottom: 1.5px solid #1f2937; padding-bottom: 1px; width: 100%; text-align: center; }
+        .fraction .denominator { padding-top: 1px; width: 100%; text-align: center; }
+
+        .system-brace {
+            font-family: &#39;Times New Roman&#39;, serif;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            margin-right: 8px;
+        }
+
+        .latex-container { display: flex; align-items: center; }
+        
+        .equations-col { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; font-size: 1.5rem; }
+        .equations-col.large { font-size: 1.25rem; gap: 1rem; }
+
+        .hidden { display: none !important; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        .text-sm { font-size: 0.875rem; }
+        .text-gray { color: var(--text-gray); }
+        .mb-2 { margin-bottom: 0.5rem; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div class=&#34;app-container&#34;&gt;
+        &lt;div class=&#34;sidebar&#34; id=&#34;sidebar&#34;&gt;
+            &lt;div class=&#34;header&#34;&gt;
+                &lt;div class=&#34;flex-between mb-2&#34;&gt;
+                    &lt;span class=&#34;level-badge&#34;&gt;Уровень: &lt;span id=&#34;level-indicator&#34;&gt;A&lt;/span&gt;&lt;/span&gt;
+                    &lt;span class=&#34;text-sm text-gray&#34;&gt;&lt;span id=&#34;current-step&#34;&gt;1&lt;/span&gt;/8&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&#34;progress-track&#34;&gt;
+                    &lt;div id=&#34;progress-bar&#34; class=&#34;progress-bar&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;question-container&#34; class=&#34;question-area&#34;&gt;
+                &lt;h2 class=&#34;task-title&#34; id=&#34;task-title&#34;&gt;Задание 1&lt;/h2&gt;
+                &lt;div class=&#34;equation-box&#34;&gt;
+                    &lt;div id=&#34;equation-display&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                
+                &lt;p class=&#34;text-sm text-gray mb-2&#34;&gt;Выберите правильный ответ:&lt;/p&gt;
+                
+                &lt;div id=&#34;options-grid&#34; class=&#34;options-grid&#34;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;button id=&#34;next-btn&#34; onclick=&#34;nextQuestion()&#34; class=&#34;btn-primary hidden&#34;&gt;
+                Следующее задание
+                &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;20&#34; height=&#34;20&#34; viewBox=&#34;0 0 20 20&#34; fill=&#34;currentColor&#34;&gt;
+                    &lt;path fill-rule=&#34;evenodd&#34; d=&#34;M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z&#34; clip-rule=&#34;evenodd&#34; /&gt;
+                &lt;/svg&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&#34;content-area&#34; id=&#34;content-area&#34;&gt;
+            &lt;h3 class=&#34;section-title&#34;&gt;
+                &lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;20&#34; height=&#34;20&#34; viewBox=&#34;0 0 20 20&#34; fill=&#34;#6366f1&#34;&gt;
+                    &lt;path fill-rule=&#34;evenodd&#34; d=&#34;M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 00-1-1H3zm6 9a1 1 0 100-2 1 1 0 000 2zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z&#34; clip-rule=&#34;evenodd&#34; /&gt;
+                &lt;/svg&gt;
+                Визуализация
+            &lt;/h3&gt;
+
+            &lt;div class=&#34;canvas-wrapper&#34;&gt;
+                &lt;canvas id=&#34;numberLineCanvas&#34; width=&#34;400&#34; height=&#34;150&#34;&gt;&lt;/canvas&gt;
+                &lt;div id=&#34;canvas-placeholder&#34; class=&#34;placeholder-text&#34;&gt;
+                    Чертеж появится после ответа
+                &lt;/div&gt;
+            &lt;/div&gt;
+
+            &lt;div id=&#34;feedback-area&#34; class=&#34;feedback-box&#34;&gt;
+                &lt;div id=&#34;feedback-header&#34; class=&#34;feedback-header&#34;&gt;&lt;/div&gt;
+                &lt;div class=&#34;explanation-scroll&#34;&gt;
+                    &lt;p id=&#34;feedback-text&#34; class=&#34;explanation-text&#34;&gt;&lt;/p&gt;
+                    &lt;div id=&#34;math-steps&#34; class=&#34;math-steps&#34;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&#34;completion-screen&#34; class=&#34;completion-screen&#34;&gt;
+            &lt;div style=&#34;font-size: 4rem; margin-bottom: 1rem;&#34;&gt;🏆&lt;/div&gt;
+            &lt;h2 style=&#34;font-size: 1.5rem; color: var(--success-color); font-weight: bold; margin-bottom: 0.5rem;&#34;&gt;Поздравляем!&lt;/h2&gt;
+            &lt;p style=&#34;color: var(--text-gray); margin-bottom: 1.5rem;&#34;&gt;Вы успешно прошли все уровни.&lt;/p&gt;
+            
+            &lt;div class=&#34;score-card&#34;&gt;
+                &lt;p class=&#34;text-sm text-gray&#34;&gt;Общий балл:&lt;/p&gt;
+                &lt;p style=&#34;font-size: 2rem; font-weight: bold; color: var(--primary-color);&#34;&gt;&lt;span id=&#34;final-score&#34;&gt;0&lt;/span&gt; / 8&lt;/p&gt;
+            &lt;/div&gt;
+            
+            &lt;button onclick=&#34;location.reload()&#34; class=&#34;btn-primary&#34; style=&#34;max-width: 200px;&#34;&gt;
+                Начать заново
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        const quizData = [
+            {
+                id: 1,
+                level: &#34;A&#34;,
+                title: &#34;Задание 1: Общее решение системы&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;x &gt; -1&lt;/span&gt;
+                            &lt;span&gt;x &lt; 4&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;(-1; 4)&#34;, correct: true },
+                    { id: &#39;b&#39;, text: &#34;(-∞; -1) ∪ (4; &#43;∞)&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;[-1; 4]&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;Решений нет&#34;, correct: false }
+                ],
+                explanation: &#34;Решение системы — это пересечение двух неравенств. На координатной прямой штриховка идет вправо от -1 и влево от 4. Их общая часть — интервал (-1; 4).&#34;,
+                errorTip: &#34;Иногда ученики выбирают объединение интервалов. Помните: система — это союз «и», то есть пересечение.&#34;,
+                drawConfig: { start: -1, end: 4, type: &#39;intersection&#39;, bounds: [-3, 6] }
+            },
+            {
+                id: 2,
+                level: &#34;A&#34;,
+                title: &#34;Задание 2: Однонаправленная система&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;x ≥ 5&lt;/span&gt;
+                            &lt;span&gt;x ≥ 2&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;[2; &#43;∞)&#34;, correct: false },
+                    { id: &#39;b&#39;, text: &#34;[5; &#43;∞)&#34;, correct: true },
+                    { id: &#39;c&#39;, text: &#34;[2; 5]&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;(5; &#43;∞)&#34;, correct: false }
+                ],
+                explanation: &#34;Оба неравенства направлены в сторону «больше». Общее решение начинается от большего числа. Так как 5 &gt; 2, пересечением будет [5; &#43;∞).&#34;,
+                errorTip: &#34;Когда оба знака направлены в одну сторону, выбирайте наиболее строгое ограничение (большее число для знака &gt;).&#34;,
+                drawConfig: { start: 5, end: 10, type: &#39;ray_right&#39;, bounds: [0, 8], secondary: 2 }
+            },
+            {
+                id: 3,
+                level: &#34;B&#34;,
+                title: &#34;Задание 3: Деление на отрицательное число&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;-4x ≤ 12&lt;/span&gt;
+                            &lt;span&gt;x - 5 &lt; -2&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;(-∞; -3]&#34;, correct: false },
+                    { id: &#39;b&#39;, text: &#34;[-3; 3)&#34;, correct: true },
+                    { id: &#39;c&#39;, text: &#34;(-3; 3)&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;(3; &#43;∞)&#34;, correct: false }
+                ],
+                explanation: &#34;В первом неравенстве при делении на -4 знак меняется на противоположный (x ≥ -3). Во втором: x &lt; 3. Пересечение [-3; 3).&#34;,
+                errorTip: &#34;Не забывайте менять знак неравенства при делении на отрицательное число!&#34;,
+                mathSteps: &#34;-4x ≤ 12 ⇒ x ≥ -3&lt;br&gt;x - 5 &lt; -2 ⇒ x &lt; 3&#34;,
+                drawConfig: { start: -3, end: 3, type: &#39;intersection&#39;, bounds: [-5, 5], leftClosed: true, rightClosed: false }
+            },
+            {
+                id: 4,
+                level: &#34;B&#34;,
+                title: &#34;Задание 4: Система со скобками&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;2(x &#43; 3) &gt; 10&lt;/span&gt;
+                            &lt;span&gt;3x - 1 ≤ 14&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;(2; 5]&#34;, correct: true },
+                    { id: &#39;b&#39;, text: &#34;(2; 5)&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;[2; 5]&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;(4; 5]&#34;, correct: false }
+                ],
+                explanation: &#34;1) 2x &#43; 6 &gt; 10 ⇒ 2x &gt; 4 ⇒ x &gt; 2.&lt;br&gt;2) 3x ≤ 15 ⇒ x ≤ 5.&lt;br&gt;Общая часть: (2; 5].&#34;,
+                errorTip: &#34;При раскрытии скобок умножайте коэффициент на каждое слагаемое внутри (2 на x и 2 на 3).&#34;,
+                drawConfig: { start: 2, end: 5, type: &#39;intersection&#39;, bounds: [0, 7], leftClosed: false, rightClosed: true }
+            },
+            {
+                id: 5,
+                level: &#34;Особый&#34;,
+                title: &#34;Задание 5: Единственное решение&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;3x &#43; 1 ≥ 10&lt;/span&gt;
+                            &lt;span&gt;2x ≤ 6&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;[3; 3]&#34;, correct: false },
+                    { id: &#39;b&#39;, text: &#34;Решений нет&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;x = 3&#34;, correct: true },
+                    { id: &#39;d&#39;, text: &#34;(-∞; 3] ∪ [3; &#43;∞)&#34;, correct: false }
+                ],
+                explanation: &#34;1) 3x ≥ 9 ⇒ x ≥ 3.&lt;br&gt;2) x ≤ 3.&lt;br&gt;Число может быть одновременно ≥3 и ≤3 только если оно равно 3.&#34;,
+                errorTip: &#34;Если интервал не получается, проверьте границы. Если знаки нестрогие, точка может быть единственным решением.&#34;,
+                drawConfig: { start: 3, end: 3, type: &#39;point&#39;, bounds: [0, 6] }
+            },
+            {
+                id: 6,
+                level: &#34;Логика&#34;,
+                title: &#34;Задание 6: Система без решений&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col math-text&#34;&gt;
+                            &lt;span&gt;x &#43; 7 &lt; 3&lt;/span&gt;
+                            &lt;span&gt;5x ≥ 15&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;(-∞; -4) ∪ [3; &#43;∞)&#34;, correct: false },
+                    { id: &#39;b&#39;, text: &#34;(-4; 3)&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;Ø (Решений нет)&#34;, correct: true },
+                    { id: &#39;d&#39;, text: &#34;x ∈ R&#34;, correct: false }
+                ],
+                explanation: &#34;1) x &lt; -4.&lt;br&gt;2) x ≥ 3.&lt;br&gt;Лучи, идущие влево от -4 и вправо от 3, никогда не пересекутся.&#34;,
+                errorTip: &#34;Для системы нужно именно пересечение (общая область), а не просто закрашенные места.&#34;,
+                drawConfig: { start: -4, end: 3, type: &#39;no_intersection&#39;, bounds: [-6, 6] }
+            },
+            {
+                id: 7,
+                level: &#34;C&#34;,
+                title: &#34;Задание 7: Система с дробью&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col large math-text&#34;&gt;
+                            &lt;div style=&#34;display:flex; align-items:center;&#34;&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;2x - 1&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;3&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;span style=&#34;margin-left: 0.5rem&#34;&gt;≥ 1&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;span&gt;4(x &#43; 1) &lt; 3x &#43; 9&lt;/span&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;[2; 5)&#34;, correct: true },
+                    { id: &#39;b&#39;, text: &#34;(2; 5)&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;[1; 5)&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;[2; 4]&#34;, correct: false }
+                ],
+                explanation: &#34;1) 2x-1 ≥ 3 ⇒ 2x ≥ 4 ⇒ x ≥ 2.&lt;br&gt;2) 4x&#43;4 &lt; 3x&#43;9 ⇒ x &lt; 5.&lt;br&gt;Ответ: [2; 5).&#34;,
+                errorTip: &#34;Будьте внимательны к строгости знаков (&lt; — пустая точка, ≥ — закрашенная).&#34;,
+                drawConfig: { start: 2, end: 5, type: &#39;intersection&#39;, bounds: [0, 7], leftClosed: true, rightClosed: false }
+            },
+            {
+                id: 8,
+                level: &#34;C&#43;&#34;,
+                title: &#34;Задание 8: Сложная дробная система&#34;,
+                latex: `
+                    &lt;div class=&#34;latex-container&#34;&gt;
+                        &lt;span class=&#34;system-brace&#34;&gt;{&lt;/span&gt;
+                        &lt;div class=&#34;equations-col large math-text&#34;&gt;
+                            &lt;div style=&#34;display:flex; align-items:center;&#34;&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;x &#43; 1&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;2&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;span style=&#34;margin: 0 0.5rem&#34;&gt;-&lt;/span&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;x - 2&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;3&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;span style=&#34;margin-left: 0.5rem&#34;&gt;&gt; 2&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;div style=&#34;display:flex; align-items:center;&#34;&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;x&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;3&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;span style=&#34;margin: 0 0.5rem&#34;&gt;&#43;&lt;/span&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;1&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;2&lt;/span&gt;
+                                &lt;/div&gt;
+                                &lt;span style=&#34;margin: 0 0.5rem&#34;&gt;≤&lt;/span&gt;
+                                &lt;div class=&#34;fraction&#34;&gt;
+                                    &lt;span class=&#34;numerator&#34;&gt;x &#43; 5&lt;/span&gt;
+                                    &lt;span class=&#34;denominator&#34;&gt;6&lt;/span&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                `,
+                options: [
+                    { id: &#39;a&#39;, text: &#34;(2; 5]&#34;, correct: false },
+                    { id: &#39;b&#39;, text: &#34;x &gt; 5&#34;, correct: false },
+                    { id: &#39;c&#39;, text: &#34;x ≤ 2&#34;, correct: false },
+                    { id: &#39;d&#39;, text: &#34;Ø (Решений нет)&#34;, correct: true }
+                ],
+                explanation: &#34;Первое неравенство дает x &gt; 5. Второе: x ≤ 2. Условия x &gt; 5 и x ≤ 2 не могут выполняться одновременно.&#34;,
+                errorTip: &#34;Следите за знаками перед дробями при приведении к общему знаменателю.&#34;,
+                mathSteps: &#34;1) 3(x&#43;1) - 2(x-2) &gt; 12 ⇒ x &gt; 5&lt;br&gt;2) 2x &#43; 3 ≤ x &#43; 5 ⇒ x ≤ 2&#34;,
+                drawConfig: { start: 2, end: 5, type: &#39;no_intersection_gap&#39;, bounds: [0, 8] }
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        const questionContainer = document.getElementById(&#39;question-container&#39;);
+        const nextBtn = document.getElementById(&#39;next-btn&#39;);
+        const feedbackArea = document.getElementById(&#39;feedback-area&#39;);
+        const canvas = document.getElementById(&#39;numberLineCanvas&#39;);
+        const ctx = canvas.getContext(&#39;2d&#39;);
+        const progressBar = document.getElementById(&#39;progress-bar&#39;);
+        const levelIndicator = document.getElementById(&#39;level-indicator&#39;);
+        const optionsGrid = document.getElementById(&#39;options-grid&#39;);
+
+        function loadQuestion() {
+            const currentQ = quizData[currentQuestionIndex];
+            answered = false;
+            document.getElementById(&#39;current-step&#39;).innerText = currentQuestionIndex &#43; 1;
+            document.getElementById(&#39;task-title&#39;).innerText = currentQ.title;
+            document.getElementById(&#39;equation-display&#39;).innerHTML = currentQ.latex;
+            levelIndicator.innerText = currentQ.level;
+            progressBar.style.width = `${(currentQuestionIndex / 8) * 100}%`;
+            feedbackArea.classList.remove(&#39;show&#39;);
+            nextBtn.classList.add(&#39;hidden&#39;);
+            document.getElementById(&#39;canvas-placeholder&#39;).style.display = &#39;flex&#39;;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            optionsGrid.innerHTML = &#39;&#39;;
+            currentQ.options.forEach(opt =&gt; {
+                const btn = document.createElement(&#39;button&#39;);
+                btn.className = &#39;option-btn&#39;;
+                btn.innerHTML = `&lt;span&gt;${opt.text}&lt;/span&gt;&lt;div class=&#34;indicator-circle&#34;&gt;&lt;div class=&#34;dot&#34;&gt;&lt;/div&gt;&lt;/div&gt;`;
+                btn.onclick = () =&gt; checkAnswer(opt, btn);
+                optionsGrid.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selectedOpt, btnElement) {
+            if (answered) return;
+            answered = true;
+            const currentQ = quizData[currentQuestionIndex];
+            if (selectedOpt.correct) {
+                btnElement.classList.add(&#39;correct&#39;);
+                score&#43;&#43;;
+            } else {
+                btnElement.classList.add(&#39;wrong&#39;);
+                const correctIdx = currentQ.options.findIndex(o =&gt; o.correct);
+                optionsGrid.children[correctIdx].classList.add(&#39;correct&#39;);
+            }
+            Array.from(optionsGrid.children).forEach(btn =&gt; btn.disabled = true);
+            showFeedback(selectedOpt.correct, currentQ);
+            document.getElementById(&#39;canvas-placeholder&#39;).style.display = &#39;none&#39;;
+            drawNumberLine(currentQ.drawConfig);
+            nextBtn.classList.remove(&#39;hidden&#39;);
+        }
+
+        function showFeedback(isCorrect, data) {
+            feedbackArea.classList.add(&#39;show&#39;);
+            const header = document.getElementById(&#39;feedback-header&#39;);
+            const text = document.getElementById(&#39;feedback-text&#39;);
+            const mathSteps = document.getElementById(&#39;math-steps&#39;);
+            header.innerHTML = isCorrect ? &#39;&lt;span class=&#34;text-success&#34;&gt;✅ Правильно!&lt;/span&gt;&#39; : &#39;&lt;span class=&#34;text-error&#34;&gt;⚠️ Ошибка&lt;/span&gt;&#39;;
+            text.innerHTML = `&lt;strong&gt;Объяснение:&lt;/strong&gt; ${data.explanation}${!isCorrect ? `&lt;div class=&#34;error-tip&#34;&gt;&lt;strong&gt;Работа над ошибками:&lt;/strong&gt; ${data.errorTip}&lt;/div&gt;` : &#39;&#39;}`;
+            if (data.mathSteps) {
+                mathSteps.innerHTML = data.mathSteps;
+                mathSteps.style.display = &#39;block&#39;;
+            } else {
+                mathSteps.style.display = &#39;none&#39;;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex&#43;&#43;;
+            if (currentQuestionIndex &lt; quizData.length) loadQuestion();
+            else showCompletion();
+        }
+
+        function showCompletion() {
+            progressBar.style.width = &#39;100%&#39;;
+            document.getElementById(&#39;sidebar&#39;).style.display = &#39;none&#39;;
+            document.getElementById(&#39;content-area&#39;).style.display = &#39;none&#39;;
+            document.getElementById(&#39;completion-screen&#39;).style.display = &#39;flex&#39;;
+            document.getElementById(&#39;final-score&#39;).innerText = score;
+        }
+
+        // --- Визуализация (Number Line Engine) ---
+        function drawNumberLine(config) {
+            const width = canvas.width, height = canvas.height, centerY = height / 2, padding = 40;
+            const minVal = config.bounds[0], maxVal = config.bounds[1], range = maxVal - minVal;
+            const getX = (val) =&gt; padding &#43; (val - minVal) * ((width - 2 * padding) / range);
+            ctx.clearRect(0, 0, width, height);
+            ctx.beginPath(); ctx.moveTo(10, centerY); ctx.lineTo(width - 10, centerY);
+            ctx.strokeStyle = &#39;#334155&#39;; ctx.lineWidth = 2; ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(width - 15, centerY - 5); ctx.lineTo(width - 5, centerY); ctx.lineTo(width - 15, centerY &#43; 5); ctx.fill();
+            ctx.font = &#39;12px Nunito&#39;; ctx.fillStyle = &#39;#64748b&#39;; ctx.textAlign = &#39;center&#39;;
+            for (let i = Math.ceil(minVal); i &lt;= Math.floor(maxVal); i&#43;&#43;) {
+                const x = getX(i); ctx.beginPath(); ctx.moveTo(x, centerY - 4); ctx.lineTo(x, centerY &#43; 4); ctx.stroke();
+                if (range &lt; 12 || i % 2 === 0) ctx.fillText(i, x, centerY &#43; 20);
+            }
+            ctx.lineWidth = 4;
+            if (config.type === &#39;intersection&#39;) {
+                const sX = getX(config.start), eX = getX(config.end);
+                ctx.strokeStyle = &#39;rgba(59, 130, 246, 0.3)&#39;; ctx.beginPath(); ctx.moveTo(sX, centerY - 10); ctx.lineTo(width, centerY - 10); ctx.stroke();
+                ctx.strokeStyle = &#39;rgba(239, 68, 68, 0.3)&#39;; ctx.beginPath(); ctx.moveTo(eX, centerY &#43; 10); ctx.lineTo(0, centerY &#43; 10); ctx.stroke();
+                drawHatch(sX, eX, centerY, &#39;#16a34a&#39;, config.leftClosed, config.rightClosed);
+            } else if (config.type === &#39;ray_right&#39;) {
+                const secX = getX(config.secondary);
+                ctx.strokeStyle = &#39;rgba(148, 163, 184, 0.5)&#39;; ctx.beginPath(); ctx.moveTo(secX, centerY &#43; 10); ctx.lineTo(width, centerY &#43; 10); ctx.stroke();
+                drawPoint(secX, centerY &#43; 10, true, &#39;#94a3b8&#39;);
+                drawRay(getX(config.start), width, centerY, &#39;#16a34a&#39;, true);
+                drawPoint(getX(config.start), centerY, true, &#39;#16a34a&#39;);
+            } else if (config.type === &#39;point&#39;) {
+                const x = getX(config.start); drawPoint(x, centerY, true, &#39;#16a34a&#39;);
+                ctx.fillText(`x = ${config.start}`, x, centerY - 15);
+            } else if (config.type === &#39;no_intersection&#39;) {
+                const x1 = getX(config.start), x2 = getX(config.end);
+                drawRay(x1, 0, centerY, &#39;#ef4444&#39;, false); drawPoint(x1, centerY, false, &#39;#ef4444&#39;);
+                drawRay(x2, width, centerY, &#39;#ef4444&#39;, true); drawPoint(x2, centerY, true, &#39;#ef4444&#39;);
+                ctx.fillStyle = &#39;#ef4444&#39;; ctx.fillText(&#34;Нет пересечения&#34;, width/2, centerY - 25);
+            } else if (config.type === &#39;no_intersection_gap&#39;) {
+                const x2 = getX(config.start), x5 = getX(config.end);
+                drawRay(x2, 0, centerY, &#39;#ef4444&#39;, false); drawPoint(x2, centerY, true, &#39;#ef4444&#39;);
+                drawRay(x5, width, centerY, &#39;#ef4444&#39;, true); drawPoint(x5, centerY, false, &#39;#ef4444&#39;);
+            }
+        }
+
+        function drawPoint(x, y, filled, color) {
+            ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.stroke();
+            ctx.fillStyle = filled ? color : &#39;white&#39;; ctx.fill();
+        }
+
+        function drawHatch(x1, x2, y, color, closedL, closedR) {
+            ctx.strokeStyle = color; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x1, y); ctx.lineTo(x2, y); ctx.stroke();
+            ctx.lineWidth = 1; for(let i = x1 &#43; 5; i &lt; x2; i&#43;=8) { ctx.beginPath(); ctx.moveTo(i, y - 5); ctx.lineTo(i-5, y &#43; 5); ctx.stroke(); }
+            drawPoint(x1, y, closedL, color); drawPoint(x2, y, closedR, color);
+        }
+
+        function drawRay(xS, xE, y, color, isR) {
+            ctx.strokeStyle = color; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(xS, y); ctx.lineTo(xE, y); ctx.stroke();
+            ctx.lineWidth = 1; const step = 8;
+            if(isR) for(let i = xS &#43; 5; i &lt; xE; i&#43;=step) { ctx.beginPath(); ctx.moveTo(i, y-5); ctx.lineTo(i-5, y&#43;5); ctx.stroke(); }
+            else for(let i = xS - 5; i &gt; xE; i-=step) { ctx.beginPath(); ctx.moveTo(i, y-5); ctx.lineTo(i-5, y&#43;5); ctx.stroke(); }
+        }
+
+        loadQuestion();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;"
+                            class="w-full h-[600px] border-none rounded-xl"></iframe>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        
+        
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            💡 Екі тілде де қол жетімді / Доступно на двух языках
+        </div>
+        
+
+        <script>
+            
+            var elem = document.getElementById("fullscreenWrapper");
+            var openBtn = document.getElementById("openFsBtn");
+            var closeBtn = document.getElementById("closeFsBtn");
+
+            function openFullscreen() {
+                if (elem && elem.requestFullscreen) {
+                    elem.requestFullscreen();
+                } else if (elem && elem.webkitRequestFullscreen) {
+                    elem.webkitRequestFullscreen();
+                } else if (elem && elem.msRequestFullscreen) {
+                    elem.msRequestFullscreen();
+                }
+            }
+
+            function closeFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+
+            function updateButtons() {
+                if (openBtn && closeBtn) {
+                    if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+                        openBtn.classList.add("hidden");
+                        closeBtn.classList.remove("hidden");
+                    } else {
+                        openBtn.classList.remove("hidden");
+                        closeBtn.classList.add("hidden");
+                    }
+                }
+            }
+
+            
+            function openFullscreenKz() {
+                var elemKz = document.getElementById("fullscreenWrapperKz");
+                if (elemKz && elemKz.requestFullscreen) {
+                    elemKz.requestFullscreen();
+                } else if (elemKz && elemKz.webkitRequestFullscreen) {
+                    elemKz.webkitRequestFullscreen();
+                } else if (elemKz && elemKz.msRequestFullscreen) {
+                    elemKz.msRequestFullscreen();
+                }
+            }
+
+            
+            function openFullscreenRu() {
+                var elemRu = document.getElementById("fullscreenWrapperRu");
+                if (elemRu && elemRu.requestFullscreen) {
+                    elemRu.requestFullscreen();
+                } else if (elemRu && elemRu.webkitRequestFullscreen) {
+                    elemRu.webkitRequestFullscreen();
+                } else if (elemRu && elemRu.msRequestFullscreen) {
+                    elemRu.msRequestFullscreen();
+                }
+            }
+
+            document.addEventListener("fullscreenchange", updateButtons);
+            document.addEventListener("webkitfullscreenchange", updateButtons);
+            document.addEventListener("msfullscreenchange", updateButtons);
+
+            
+            (function () {
+                const urlParams = new URLSearchParams(window.location.search);
+                const lang = urlParams.get('lang'); 
+
+                if (lang === 'kz') {
+                    
+                    const ruBlock = document.querySelector('.russian-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (ruBlock) ruBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                } else if (lang === 'ru') {
+                    
+                    const kzBlock = document.querySelector('.kazakh-block');
+                    const gridContainer = document.querySelector('.grid');
+                    if (kzBlock) kzBlock.style.display = 'none';
+                    if (gridContainer) gridContainer.classList.remove('lg:grid-cols-2');
+                }
+                
+            })();
+        </script>
+
+        
+        
+
+        
+        <div class="w-full max-w-4xl mx-auto my-8 px-4">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9724842226086594"
+                data-ad-slot="7527178719" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    
+    <div class="w-full max-w-4xl mx-auto px-4 py-8">
+        <div
+            class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 md:p-8 rounded-2xl shadow-lg border-2 border-purple-200">
+            
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center animate-pulse">
+                    <span class="text-2xl">📢</span>
+                </div>
+                <h3 class="text-xl md:text-2xl font-bold text-gray-800 text-center">Поделитесь с коллегами!</h3>
+            </div>
+
+            
+            <div class="space-y-2 mb-6 text-center">
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇰🇿</span>
+                    <span>Сайттың дамуына үлес қосу үшін, мұғалімдер чатында бөлісіңіз!</span>
+                </p>
+                <p class="text-gray-700 font-medium flex items-center justify-center gap-2 flex-wrap">
+                    <span class="text-lg">🇷🇺</span>
+                    <span>Помогите развитию сайта — поделитесь в чатах учителей!</span>
+                </p>
+            </div>
+
+            
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                
+                <a id="shareWhatsApp" href="#"
+                    class="flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                    <span>WhatsApp</span>
+                </a>
+
+                
+                <a id="shareTelegram" href="#"
+                    class="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                    </svg>
+                    <span>Telegram</span>
+                </a>
+
+                
+                <button id="shareGeneric"
+                    class="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    </svg>
+                    <span>Поделиться</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        (function () {
+            const pageUrl = window.location.href;
+            const pageTitle = document.title;
+            const shareMessage = `📐 VisualMath - ${pageTitle}\n\nБесплатные презентации и задания по математике!\nМатематика бойынша тегін презентациялар және тапсырмалар!\n\n`;
+
+            
+            document.getElementById('shareWhatsApp').addEventListener('click', function (e) {
+                e.preventDefault();
+                const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage + pageUrl)}`;
+                window.open(whatsappUrl, '_blank');
+            });
+
+            
+            document.getElementById('shareTelegram').addEventListener('click', function (e) {
+                e.preventDefault();
+                const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(shareMessage)}`;
+                window.open(telegramUrl, '_blank');
+            });
+
+            
+            document.getElementById('shareGeneric').addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                if (navigator.share) {
+                    try {
+                        await navigator.share({
+                            title: pageTitle,
+                            text: shareMessage,
+                            url: pageUrl
+                        });
+                    } catch (err) {
+                        if (err.name !== 'AbortError') {
+                            copyToClipboard();
+                        }
+                    }
+                } else {
+                    copyToClipboard();
+                }
+            });
+
+            function copyToClipboard() {
+                const textToCopy = shareMessage + pageUrl;
+                navigator.clipboard.writeText(textToCopy).then(function () {
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                }, function (err) {
+                    
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    alert('✅ Ссылка скопирована! / Сілтеме көшірілді!');
+                });
+            }
+        })();
+    </script>
+
+    <footer class="bg-gray-900 text-white p-8 mt-auto relative z-10">
+        <div class="container mx-auto text-center">
+            <div class="text-2xl mb-4">📐 VisualMath</div>
+            <p class="text-gray-400 mb-4">&copy; 2026 VisualMath. Все права защищены.</p>
+            <div class="space-x-6">
+                <a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Политика
+                    конфиденциальности</a>
+                <a href="/terms" class="text-gray-400 hover:text-white transition-colors">Условия
+                    использования</a>
+                <a href="/about" class="text-gray-400 hover:text-white transition-colors">О нас</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
