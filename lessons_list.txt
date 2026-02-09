@@ -1,0 +1,15 @@
+Total Lessons: 14
+ID: 48 | Grade: 5 | Title: 5.2 Ішкі жиыны | TheoryLen: 1599
+ID: 49 | Grade: 5 | Title: 5.3 Жиындардың бірігуі мен қиылысуы | TheoryLen: 1451
+ID: 50 | Grade: 5 | Title: 6.1 Пайыз | TheoryLen: 1569
+ID: 51 | Grade: 5 | Title: 6.2 Берілген санның пайызын табу | TheoryLen: 1158
+ID: 52 | Grade: 5 | Title: 6.3 Проценті бойынша санды табу | TheoryLen: 1277
+ID: 53 | Grade: 5 | Title: 7.1 Бұрыш. Бұрыштың градустық өлшемі | TheoryLen: 1842
+ID: 54 | Grade: 5 | Title: 7.2 Транспортир. Бұрыштарды өлшеу, бұрыштарды салу  | TheoryLen: 1465
+ID: 55 | Grade: 5 | Title: 7.3 Бұрыштарды салыстыру.  Бұрыштардың түрлері. Үшбұрышты сызғыш.  | TheoryLen: 639
+ID: 56 | Grade: 5 | Title: 3.12 Өзара кері сандар | TheoryLen: 1245
+ID: 57 | Grade: 5 | Title: 3.13 Жай бөлшектерді бөлу.  Аралас сандарды бөлу | TheoryLen: 1028
+ID: 58 | Grade: 5 | Title: 7.4 Көпбұрыштар | TheoryLen: 1170
+ID: 59 | Grade: 5 | Title: 8.1 - 8.2 Шеңбер. Дөңгелек. Сектор | TheoryLen: 1938
+ID: 60 | Grade: 5 | Title: 8.3 Статистикалық деректерді көрсету тәсілдері | TheoryLen: 1310
+ID: 61 | Grade: 5 | Title: 9.1 Тік бұрышты параллелепипед. Тік бұрышты параллелепипедтің жазбасы | TheoryLen: 1791

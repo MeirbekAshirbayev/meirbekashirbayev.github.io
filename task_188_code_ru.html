@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лаборатория числовых неравенств</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 4px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -7px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.1s ease;
+        }
+        input[type=range]:active::-webkit-slider-thumb {
+            transform: scale(1.2);
+            background: #1d4ed8;
+        }
+        
+        .active-tab {
+            background-color: #2563eb !important;
+            color: white !important;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen p-4 md:p-8 font-sans">
+
+    <div class="max-w-5xl mx-auto">
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">
+                Лаборатория числовых неравенств
+            </h1>
+            <p class="text-slate-600 font-medium italic text-sm">Оптимизированный плавный интерфейс (шаг 0.1)</p>
+        </header>
+
+        <div id="tabs-container" class="flex flex-wrap gap-2 mb-8 justify-center"></div>
+
+        <main class="bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-slate-100 min-h-[550px]">
+            <div id="info-box" class="mb-8 bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h3 id="property-title" class="text-lg font-bold text-blue-800 flex items-center gap-2"></h3>
+                <p id="property-desc" class="text-blue-700 mt-1 text-sm"></p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <h4 class="font-semibold mb-6 text-gray-700">Управление значениями</h4>
+                    <div id="controls-container" class="space-y-6">
+                        </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h4 class="font-semibold text-gray-700">Визуальный результат</h4>
+                    <div id="result-container" class="space-y-4">
+                        </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let activeTab = 'transitivity';
+        let values = { a: 5.0, b: 10.0, c: 3.5, d: 8.0, multiplier: 2.0, negMultiplier: -2.0 };
+
+        const tabs = [
+            { id: 'transitivity', title: 'Транзитивность', desc: 'Если a < b и b < c, то a < c.' },
+            { id: 'addition', title: 'Сложение (a+c)', desc: 'Если к обеим частям неравенства прибавить одно и то же число, знак неравенства не изменится.' },
+            { id: 'mult_pos', title: 'Умножение (положит.)', desc: 'Если обе части неравенства умножить на ПОЛОЖИТЕЛЬНОЕ число, знак неравенства не изменится.' },
+            { id: 'mult_neg', title: 'Умножение (отрицат.)', desc: 'Если обе части неравенства умножить на ОТРИЦАТЕЛЬНОЕ число, знак неравенства изменится на ПРОТИВОПОЛОЖНЫЙ!' },
+            { id: 'member_add', title: 'Почленное сложение', desc: 'Неравенства одного знака можно складывать почленно.' },
+            { id: 'member_mult', title: 'Почленное умножение', desc: 'Положительные неравенства одного знака можно перемножать почленно.' },
+            { id: 'reciprocal', title: 'Обратные числа', desc: 'Если a < b (при a, b > 0), то 1/a > 1/b.' }
+        ];
+
+        const getSign = (x, y) => {
+            const eps = 0.00001;
+            if (x < y - eps) return '<';
+            if (x > y + eps) return '>';
+            return '=';
+        };
+
+        const format = (val) => Number(val).toFixed(val % 1 === 0 ? 0 : 2);
+
+        const renderResult = () => {
+            let html = '';
+            const box = (label, v1, v2, col = "blue") => {
+                const colors = { 
+                    blue: 'border-blue-200 text-blue-600', 
+                    green: 'border-green-200 text-green-600', 
+                    red: 'border-red-200 text-red-600', 
+                    indigo: 'border-indigo-200 text-indigo-600', 
+                    orange: 'border-orange-200 text-orange-600', 
+                    purple: 'border-purple-200 text-purple-600' 
+                };
+                const c = colors[col];
+                return `<div class="p-6 bg-white border-2 ${c.split(' ')[0]} rounded-xl text-center">
+                    <div class="text-sm text-gray-500 mb-1">${label}</div>
+                    <div class="text-3xl font-bold flex items-center justify-center gap-4">
+                        <span>${format(v1)}</span><span class="text-gray-300">${getSign(v1, v2)}</span><span>${format(v2)}</span>
+                    </div>
+                </div>`;
+            };
+
+            if (activeTab === 'transitivity') {
+                html += box('Условие 1', values.a, values.b) + box('Условие 2', values.b, values.c) + 
+                        `<div class="flex justify-center text-gray-300 rotate-90"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></div>` + 
+                        box('Вывод', values.a, values.c, "green");
+            } else if (activeTab === 'addition') {
+                html += box('Исходное', values.a, values.b) + `<div class="text-center font-bold text-amber-600">+ ${values.c.toFixed(1)}</div>` + box('Результат', values.a + values.c, values.b + values.c, "green");
+            } else if (activeTab === 'mult_pos') {
+                html += box('Исходное', values.a, values.b) + `<div class="text-center font-bold text-green-600">× ${values.multiplier.toFixed(1)}</div>` + box('Результат', values.a * values.multiplier, values.b * values.multiplier, "green");
+            } else if (activeTab === 'mult_neg') {
+                html += box('Исходное', values.a, values.b) + `<div class="text-center font-bold text-red-600">× ${values.negMultiplier.toFixed(1)}</div>` + box('Результат', values.a * values.negMultiplier, values.b * values.negMultiplier, "red");
+            } else if (activeTab === 'member_add') {
+                html += `<div class="grid grid-cols-2 gap-2">${box('1', values.a, values.b)}${box('2', values.c, values.d)}</div>` + `<div class="text-center text-gray-400 font-bold">+</div>` + box('Результат', values.a + values.c, values.b + values.d, "indigo");
+            } else if (activeTab === 'member_mult') {
+                html += `<div class="grid grid-cols-2 gap-2">${box('1', values.a, values.b)}${box('2', values.c, values.d)}</div>` + `<div class="text-center text-gray-400 font-bold">×</div>` + box('Результат', values.a * values.c, values.b * values.d, "orange");
+            } else if (activeTab === 'reciprocal') {
+                html += box('Исходное', values.a, values.b) + `<div class="text-center text-purple-600 italic">1 / n</div>` + box('Результат', 1/values.a, 1/values.b, "purple");
+            }
+            document.getElementById('result-container').innerHTML = html;
+        };
+
+        window.updateValue = (key, val) => {
+            values[key] = parseFloat(val);
+            const display = document.getElementById(`val-display-${key}`);
+            if (display) display.innerText = values[key].toFixed(1);
+            renderResult();
+        };
+
+        const initControls = () => {
+            const container = document.getElementById('controls-container');
+            const data = tabs.find(t => t.id === activeTab);
+            document.getElementById('property-title').innerText = data.title;
+            document.getElementById('property-desc').innerText = data.desc;
+            
+            let html = '';
+            const slider = (lab, key, min=-20, max=20, col="blue") => `
+                <div>
+                    <div class="flex justify-between mb-1 text-sm font-medium">
+                        <span>${lab}</span><span id="val-display-${key}" class="text-${col}-600 font-bold">${values[key].toFixed(1)}</span>
+                    </div>
+                    <input type="range" min="${min}" max="${max}" step="0.1" value="${values[key]}" oninput="updateValue('${key}', this.value)">
+                </div>`;
+
+            if (activeTab === 'transitivity') {
+                html += slider('Значение a', 'a') + slider('Значение b', 'b') + slider('Значение c', 'c');
+            } else if (activeTab === 'addition') {
+                html += slider('Значение a', 'a') + slider('Значение b', 'b') + slider('Число c', 'c', -20, 20, "amber");
+            } else if (activeTab === 'mult_pos') {
+                html += slider('Значение a', 'a') + slider('Значение b', 'b') + slider('Положит. (c)', 'multiplier', 0.1, 10, "green");
+            } else if (activeTab === 'mult_neg') {
+                html += slider('Значение a', 'a') + slider('Значение b', 'b') + slider('Отрицат. (c)', 'negMultiplier', -10, -0.1, "red");
+            } else if (activeTab === 'member_add' || activeTab === 'member_mult') {
+                const m = activeTab === 'member_mult' ? 0.1 : -20;
+                html += slider('a', 'a', m) + slider('b', 'b', m) + slider('c', 'c', m, 20, "purple") + slider('d', 'd', m, 20, "purple");
+            } else if (activeTab === 'reciprocal') {
+                html += slider('a (полож.)', 'a', 0.1, 30, "purple") + slider('b (полож.)', 'b', 0.1, 30, "purple");
+            }
+            container.innerHTML = html;
+            renderResult();
+        };
+
+        window.switchTab = (id) => {
+            activeTab = id;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active-tab', b.dataset.id === id));
+            initControls();
+        };
+
+        const tabsContainer = document.getElementById('tabs-container');
+        tabs.forEach(tab => {
+            const btn = document.createElement('button');
+            btn.className = `tab-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-slate-600 border border-slate-200 hover:bg-slate-50`;
+            btn.dataset.id = tab.id;
+            btn.innerText = tab.title;
+            btn.onclick = () => switchTab(tab.id);
+            if (tab.id === activeTab) btn.classList.add('active-tab');
+            tabsContainer.appendChild(btn);
+        });
+
+        initControls();
+    </script>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренажёр по неравенствам</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap');
+        
+        .math-var {
+            font-family: 'serif';
+            font-style: italic;
+            font-weight: 700;
+        }
+        .option-btn {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: grab;
+            user-select: none;
+        }
+        .option-btn:active {
+            cursor: grabbing;
+        }
+        .drop-zone {
+            transition: all 0.3s ease;
+        }
+        .drop-zone.drag-over {
+            background-color: #dbeafe;
+            border-color: #3b82f6;
+            transform: scale(1.1);
+        }
+        .drop-zone.placed {
+            background-color: #2563eb;
+            color: white;
+            border-color: #1d4ed8;
+            border-style: solid;
+            transform: scale(1);
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 2s infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen font-sans text-slate-900">
+
+    <div id="app" class="max-w-2xl mx-auto px-4 py-8">
+        <div id="start-screen" class="text-center space-y-8">
+            <h1 class="text-4xl font-black text-slate-800 tracking-tight">Числовые неравенства: <br><span class="text-blue-600">Тренажёр</span></h1>
+            
+            <div class="grid grid-cols-1 gap-3">
+                <button onclick="startLevel(1)" class="p-5 bg-white rounded-2xl shadow-sm border-2 border-transparent hover:border-blue-500 text-left flex justify-between items-center transition-all group">
+                    <span><b class="text-blue-600">Уровень 1:</b> Сложение и вычитание</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </button>
+                <button onclick="startLevel(2)" class="p-5 bg-white rounded-2xl shadow-sm border-2 border-transparent hover:border-green-500 text-left flex justify-between items-center transition-all group">
+                    <span><b class="text-green-600">Уровень 2:</b> Умножение на полож./отриц. число</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </button>
+                <button onclick="startLevel(3)" class="p-5 bg-white rounded-2xl shadow-sm border-2 border-transparent hover:border-orange-500 text-left flex justify-between items-center transition-all group">
+                    <span><b class="text-orange-600">Уровень 3:</b> Почленные действия</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </button>
+                <button onclick="startLevel(4)" class="p-5 bg-white rounded-2xl shadow-sm border-2 border-transparent hover:border-purple-500 text-left flex justify-between items-center transition-all group">
+                    <span><b class="text-purple-600">Уровень 4:</b> Сложная логика</span>
+                    <span class="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="hidden space-y-6">
+            <div class="flex items-center justify-between">
+                <button onclick="goBack()" class="text-slate-400 hover:text-slate-800 font-bold">← Выход</button>
+                <div id="q-counter" class="text-xs font-black text-blue-600 bg-blue-50 px-3 py-1 rounded-lg">Вопрос: 1 / 10</div>
+                <div id="lvl-badge" class="px-3 py-1 bg-slate-800 text-white text-[10px] font-bold rounded-full"></div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                <div class="bg-slate-800 p-4 text-center">
+                    <span class="text-slate-400 text-xs font-bold uppercase tracking-widest">Дано:</span>
+                    <div id="given-area" class="text-white text-2xl font-bold mt-1"></div>
+                </div>
+                
+                <div class="p-8 md:p-12 text-center space-y-10">
+                    <div class="flex items-center justify-center gap-6">
+                        <div id="left-expr" class="text-3xl md:text-4xl font-bold"></div>
+                        
+                        <div id="drop-target" 
+                             class="drop-zone w-16 h-16 md:w-20 md:h-20 border-4 border-dashed border-slate-200 rounded-2xl flex items-center justify-center text-slate-300 text-3xl font-black italic animate-pulse-soft"
+                             ondragover="event.preventDefault(); this.classList.add('drag-over')"
+                             ondragleave="this.classList.remove('drag-over')"
+                             ondrop="handleDrop(event)">
+                            ?
+                        </div>
+                        
+                        <div id="right-expr" class="text-3xl md:text-4xl font-bold"></div>
+                    </div>
+
+                    <p class="text-slate-400 text-xs font-medium">Перетащите знак в ячейку или нажмите на него</p>
+
+                    <div class="grid grid-cols-3 gap-3 max-w-xs mx-auto">
+                        <button draggable="true" ondragstart="handleDragStart(event, '<')" onclick="answer('<')" class="option-btn h-20 bg-blue-600 text-white rounded-2xl text-4xl font-bold shadow-lg">&lt;</button>
+                        <button draggable="true" ondragstart="handleDragStart(event, '=')" onclick="answer('=')" class="option-btn h-20 bg-blue-600 text-white rounded-2xl text-4xl font-bold shadow-lg">=</button>
+                        <button draggable="true" ondragstart="handleDragStart(event, '>')" onclick="answer('>')" class="option-btn h-20 bg-blue-600 text-white rounded-2xl text-4xl font-bold shadow-lg">&gt;</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-1" id="progress-dots"></div>
+        </div>
+
+        <div id="result-screen" class="hidden text-center space-y-6">
+            <div class="p-10 bg-white rounded-3xl shadow-xl space-y-4">
+                <div id="final-score" class="text-6xl font-black text-blue-600">0/10</div>
+                <h2 class="text-2xl font-bold text-slate-800">Упражнение завершено!</h2>
+                <div class="flex flex-col gap-2">
+                    <button onclick="showAnalysis()" class="w-full py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-lg hover:bg-blue-700 transition-all">Работа над ошибками (Анализ)</button>
+                    <button onclick="goBack()" class="w-full py-4 bg-slate-100 text-slate-600 rounded-2xl font-bold hover:bg-slate-200 transition-all">Вернуться в меню</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="analysis-screen" class="hidden space-y-4">
+            <div class="flex items-center justify-between sticky top-0 bg-slate-100/90 backdrop-blur-md py-4 z-10">
+                <h2 class="text-xl font-bold">Анализ задач</h2>
+                <button onclick="goBack()" class="text-blue-600 font-bold">Закрыть</button>
+            </div>
+            <div id="analysis-list" class="space-y-4 pb-10"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentLvl = 1;
+        let questions = [];
+        let currentIndex = 0;
+        let score = 0;
+        let userResponses = [];
+        let draggedSign = null;
+        let isProcessing = false;
+
+        function styleVar(str) {
+            const map = { 'a': 'text-blue-600', 'b': 'text-indigo-600', 'c': 'text-emerald-600', 'd': 'text-amber-600' };
+            return str.replace(/\b(a|b|c|d)\b/g, (match) => `<span class="${map[match]} math-var">${match}</span>`);
+        }
+
+        function generateQuestions(lvl) {
+            let res = [];
+            for (let i = 0; i < 10; i++) {
+                let q = { given: '', left: '', right: '', correct: '', logic: '' };
+                const n = Math.floor(Math.random() * 20) + 1;
+                
+                if (lvl === 1) {
+                    const op = Math.random() > 0.5 ? '+' : '-';
+                    const baseSign = Math.random() > 0.5 ? '<' : '>';
+                    q.given = `a ${baseSign} b`;
+                    q.left = `a ${op} ${n}`;
+                    q.right = `b ${op} ${n}`;
+                    q.correct = baseSign;
+                    q.logic = `Если к обеим частям неравенства прибавить или вычесть одно и то же число, его знак <b>не меняется</b>.`;
+                } else if (lvl === 2) {
+                    const isNeg = Math.random() > 0.5;
+                    const mult = (Math.floor(Math.random() * 8) + 2) * (isNeg ? -1 : 1);
+                    const baseSign = Math.random() > 0.5 ? '<' : '>';
+                    q.given = `a ${baseSign} b`;
+                    q.left = `a · (${mult})`;
+                    q.right = `b · (${mult})`;
+                    if (isNeg) {
+                        q.correct = baseSign === '<' ? '>' : '<';
+                        q.logic = `При умножении обеих частей неравенства на <b>отрицательное число</b>, знак <b>меняется на противоположный</b>.`;
+                    } else {
+                        q.correct = baseSign;
+                        q.logic = `При умножении на положительное число знак <b>не меняется</b>.`;
+                    }
+                } else if (lvl === 3) {
+                    const type = Math.floor(Math.random() * 3);
+                    if (type === 0) {
+                        q.given = 'a < b и c < d';
+                        q.left = 'a + c'; q.right = 'b + d'; q.correct = '<';
+                        q.logic = `Неравенства с одинаковыми знаками можно складывать почленно, знак сохраняется.`;
+                    } else if (type === 1) {
+                        q.given = 'a > b и c > d';
+                        q.left = 'a + c'; q.right = 'b + d'; q.correct = '>';
+                        q.logic = `Неравенства с одинаковыми знаками можно складывать почленно, знак сохраняется.`;
+                    } else {
+                        q.given = 'a < b и c < d (положительные)';
+                        q.left = 'a · c'; q.right = 'b · d'; q.correct = '<';
+                        q.logic = `Неравенства с положительными членами и одинаковыми знаками можно перемножать почленно.`;
+                    }
+                } else {
+                    const type = Math.floor(Math.random() * 4);
+                    if (type === 0) {
+                        q.given = 'a < b (положительные)';
+                        q.left = '1 / a'; q.right = '1 / b'; q.correct = '>';
+                        q.logic = `При переходе к обратным числам (дробям) для положительных чисел знак меняется.`;
+                    } else if (type === 1) {
+                        q.given = 'a > b';
+                        q.left = '-3a + 5'; q.right = '-3b + 5'; q.correct = '<';
+                        q.logic = `Знак меняется при умножении на отрицательное число (сначала умножили на -3, затем прибавили 5).`;
+                    } else if (type === 2) {
+                        q.given = 'a < b';
+                        q.left = 'a / (-4)'; q.right = 'b / (-4)'; q.correct = '>';
+                        q.logic = `При делении на отрицательное число знак меняется на противоположный.`;
+                    } else {
+                        q.given = 'a < b';
+                        q.left = '12 - a'; q.right = '12 - b'; q.correct = '>';
+                        q.logic = `Это выражение 12 + (-1·a). При умножении на -1 знак меняется.`;
+                    }
+                }
+                res.push(q);
+            }
+            return res;
+        }
+
+        // Логика Drag and Drop
+        function handleDragStart(e, val) {
+            if (isProcessing) return;
+            draggedSign = val;
+            e.dataTransfer.setData('text/plain', val);
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            if (isProcessing) return;
+            const target = document.getElementById('drop-target');
+            target.classList.remove('drag-over');
+            const val = e.dataTransfer.getData('text/plain') || draggedSign;
+            if (val) {
+                answer(val);
+            }
+        }
+
+        function startLevel(lvl) {
+            currentLvl = lvl;
+            questions = generateQuestions(lvl);
+            currentIndex = 0;
+            score = 0;
+            userResponses = [];
+            isProcessing = false;
+            
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('quiz-screen').classList.remove('hidden');
+            document.getElementById('lvl-badge').innerText = `УРОВЕНЬ: ${lvl}`;
+            
+            const dots = document.getElementById('progress-dots');
+            dots.innerHTML = '';
+            for(let i=0; i<10; i++) dots.innerHTML += `<div class="w-2 h-2 rounded-full bg-slate-200" id="dot-${i}"></div>`;
+            
+            updateUI();
+        }
+
+        function updateUI() {
+            const q = questions[currentIndex];
+            const target = document.getElementById('drop-target');
+            
+            target.innerText = '?';
+            target.className = "drop-zone w-16 h-16 md:w-20 md:h-20 border-4 border-dashed border-slate-200 rounded-2xl flex items-center justify-center text-slate-300 text-3xl font-black italic animate-pulse-soft";
+            
+            document.getElementById('given-area').innerHTML = styleVar(q.given);
+            document.getElementById('left-expr').innerHTML = styleVar(q.left);
+            document.getElementById('right-expr').innerHTML = styleVar(q.right);
+            document.getElementById('q-counter').innerText = `Вопрос: ${currentIndex + 1} / 10`;
+            
+            const dots = document.getElementById('progress-dots').children;
+            for(let i=0; i<dots.length; i++) {
+                if(i < currentIndex) dots[i].className = "w-2 h-2 rounded-full bg-blue-600 opacity-50";
+                else if(i === currentIndex) dots[i].className = "w-2 h-2 rounded-full bg-blue-600 scale-125 shadow-sm";
+                else dots[i].className = "w-2 h-2 rounded-full bg-slate-200";
+            }
+            isProcessing = false;
+        }
+
+        function answer(val) {
+            if (isProcessing) return;
+            isProcessing = true;
+            
+            const q = questions[currentIndex];
+            const target = document.getElementById('drop-target');
+            
+            target.innerText = val;
+            target.classList.remove('animate-pulse-soft');
+            target.classList.add('placed');
+            
+            userResponses.push(val);
+            if (val === q.correct) score++;
+            
+            setTimeout(() => {
+                currentIndex++;
+                if (currentIndex < 10) {
+                    updateUI();
+                } else {
+                    finish();
+                }
+            }, 600);
+        }
+
+        function finish() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.remove('hidden');
+            document.getElementById('final-score').innerText = `${score}/10`;
+        }
+
+        function showAnalysis() {
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('analysis-screen').classList.remove('hidden');
+            
+            const list = document.getElementById('analysis-list');
+            list.innerHTML = '';
+            
+            questions.forEach((q, i) => {
+                const userAns = userResponses[i];
+                const isRight = userAns === q.correct;
+                
+                const div = document.createElement('div');
+                div.className = `p-5 rounded-2xl border ${isRight ? 'bg-green-50 border-green-100' : 'bg-red-50 border-red-200'}`;
+                div.innerHTML = `
+                    <div class="flex justify-between text-[10px] font-black uppercase tracking-tighter text-slate-400 mb-2">
+                        <span>Задача №${i+1}</span>
+                        <span class="${isRight ? 'text-green-600' : 'text-red-600'}">${isRight ? 'Верно' : 'Ошибка'}</span>
+                    </div>
+                    <div class="text-sm italic text-slate-500 mb-1">Дано: ${styleVar(q.given)}</div>
+                    <div class="text-lg font-bold mb-3">${styleVar(q.left)} <span class="text-blue-600 px-2 bg-white rounded border">${q.correct}</span> ${styleVar(q.right)}</div>
+                    <div class="grid grid-cols-2 gap-2 mb-3">
+                        <div class="bg-white p-2 rounded-lg text-xs">Твой ответ: <b class="${isRight ? 'text-green-600' : 'text-red-600'}">${userAns}</b></div>
+                        <div class="bg-white p-2 rounded-lg text-xs">Правильно: <b class="text-blue-600">${q.correct}</b></div>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">${q.logic}</p>
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function goBack() {
+            document.getElementById('quiz-screen').classList.add('hidden');
+            document.getElementById('result-screen').classList.add('hidden');
+            document.getElementById('analysis-screen').classList.add('hidden');
+            document.getElementById('start-screen').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
