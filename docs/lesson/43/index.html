@@ -305,27 +305,38 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-600 shadow-sm">
-        <h3 class="font-bold text-xl text-blue-800 mb-4">4.8 Ондық бөлшекті ондық бөлшекке бөлу</h3>
-        <p class="text-gray-700 mb-4">
-            Бөлгішті натурал санға айналдыру керек.
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4">Деление на десятичную дробь</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            Мы не умеем делить на дробное число. Но мы можем превратить его в натуральное!
+            Для этого нужно перенести запятую.
         </p>
-        <ol class="list-decimal list-inside text-gray-700 space-y-2 mb-4">
-            <li>Бөлгіштегі үтірден кейін қанша цифр болса, бөлінгіш пен бөлгіштегі үтірді сонша орынға оңға жылжыт.</li>
-            <li>Шыққан ондық бөлшекті натурал санға бөл.</li>
-        </ol>
+    </div>
 
-        <div class="bg-white p-4 rounded font-mono border-l-4 border-blue-300">
-            2,4 : 0,6 = ?
-            <br>
-            Екеуін де 1 орынға жылжытамыз -> 24 : 6 = 4.
-            <br><br>
-            0,12 : 0,4 = ?
-            <br>
-            1 орынға жылжытамыз (бөлгіш 4 болуы керек) -> 1,2 : 4 = 0,3.
+    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-2xl border-l-4 border-green-500 shadow-sm">
+        <h3 class="text-xl font-bold text-green-900 mb-4">Алгоритм деления</h3>
+        <ol class="list-decimal list-inside space-y-3 text-gray-800">
+            <li>В <strong>делителе</strong> перенесите запятую вправо до конца, чтобы получилось натуральное число.</li>
+            <li>В <strong>делимом</strong> перенесите запятую вправо на столько же знаков, на сколько перенесли в делителе.</li>
+            <li>Выполните деление на полученное натуральное число.</li>
+        </ol>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Пример: 12,5 : 0,5</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="space-y-2 text-gray-600 text-sm">
+                <p>1. В делителе (0,5) переносим запятую на <strong>1 знак</strong> вправо -> получаем 5.</p>
+                <p>2. В делимом (12,5) тоже переносим на <strong>1 знак</strong> -> получаем 125.</p>
+                <p>3. Делим 125 на 5.</p>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-xl flex items-center justify-center">
+                <span class="text-xl font-mono font-bold text-gray-800">12,5 : 0,5 = 125 : 5 = <span class="text-green-600">25</span></span>
+            </div>
         </div>
     </div>
 </div>
+
             </div>
         </div>
         
