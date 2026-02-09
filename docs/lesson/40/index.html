@@ -304,28 +304,111 @@
             </div>
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
-<div class="space-y-6">
-    <div class="bg-orange-50 p-6 rounded-xl border-l-4 border-orange-500 shadow-sm">
-        <h3 class="font-bold text-xl text-orange-800 mb-4">4.5 Ондық бөлшекті натурал санға көбейту</h3>
-        <p class="text-gray-700 mb-4">
-            Алгоритм:
+<div class="space-y-8">
+    <!-- Introduction -->
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="text-blue-600">#</span> Что такое умножение десятичной дроби?
+        </h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            В математике часто приходится умножать не только целые числа (например, 5 · 3), но и десятичные дроби (например, 2,5 · 4). 
+            Это действие необходимо нам повсюду: когда мы считаем деньги, измеряем длину или взвешиваем продукты.
         </p>
-        <ol class="list-decimal list-inside text-gray-700 space-y-2 mb-4">
-            <li>Үтірге назар аудармай, натурал сандар сияқты көбейт.</li>
-            <li>Шыққан нәтижеде, бөлшекте үтірден кейін қанша цифр болса, оң жақтан сонша цифрды үтірмен ажырат.</li>
-        </ol>
+        <p class="text-gray-700 leading-relaxed">
+            <strong>Умножение десятичной дроби на натуральное число</strong> — это сложение одинаковых слагаемых, где слагаемым является сама дробь.
+            Например, <span class="font-mono bg-gray-100 px-2 rounded text-blue-800">0,3 · 3</span> означает <span class="font-mono bg-gray-100 px-2 rounded text-blue-800">0,3 + 0,3 + 0,3 = 0,9</span>.
+        </p>
+    </div>
 
-        <div class="bg-white p-4 rounded font-mono border-l-4 border-orange-300">
-            1,25 · 4 = ?
-            <br>
-            125 · 4 = 500
-            <br>
-            1,25-те екі цифр бар. 500-ден екі цифр айырамыз: 5,00.
-            <br>
-            Жауабы: 5.
+    <!-- The Rule (Algorithm) -->
+    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl border-l-4 border-blue-500 shadow-sm">
+        <h3 class="text-xl font-bold text-blue-900 mb-4">📜 Правило (Алгоритм)</h3>
+        <p class="text-blue-800 mb-4 font-medium">Чтобы умножить десятичную дробь на натуральное число, нужно:</p>
+        <ol class="list-decimal list-inside space-y-3 text-gray-800">
+            <li class="pl-2">
+                <strong>Игнорировать запятую:</strong> Выполнить умножение так, как будто мы умножаем натуральные числа (не обращая внимания на запятую).
+            </li>
+            <li class="pl-2">
+                <strong>Посчитать знаки:</strong> Посмотреть, сколько цифр стоит <em>после запятой</em> в десятичной дроби.
+            </li>
+            <li class="pl-2">
+                <strong>Поставить запятую:</strong> В полученном результате отделить справа запятой столько же цифр, сколько их было в дробной части десятичной дроби.
+            </li>
+        </ol>
+    </div>
+
+    <!-- Examples Section -->
+    <div class="space-y-6">
+        <h3 class="text-2xl font-bold text-gray-800">Разбор примеров</h3>
+
+        <!-- Example 1 -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg border border-purple-100 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-purple-100 text-purple-600 px-3 py-1 rounded-bl-xl text-sm font-bold">Пример 1</div>
+            <p class="text-lg text-gray-800 mb-4">Вычислим: <span class="font-bold text-purple-600">1,2 · 4</span></p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2 text-gray-600 text-sm">
+                    <p>1. Умножаем как натуральные числа: <span class="font-mono text-gray-800">12 · 4 = 48</span>.</p>
+                    <p>2. В дроби <span class="font-mono text-gray-800">1,2</span> после запятой стоит <strong>одна</strong> цифра (2).</p>
+                    <p>3. В числе 48 отделяем справа одну цифру запятой: <span class="font-mono text-gray-800">4,8</span>.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-xl flex items-center justify-center">
+                    <span class="text-2xl font-mono font-bold text-gray-800">1,2 · 4 = <span class="text-green-600">4,8</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div class="bg-white p-6 rounded-2xl shadow-lg border border-orange-100 relative overflow-hidden">
+             <div class="absolute top-0 right-0 bg-orange-100 text-orange-600 px-3 py-1 rounded-bl-xl text-sm font-bold">Пример 2</div>
+            <p class="text-lg text-gray-800 mb-4">Вычислим: <span class="font-bold text-orange-600">3,25 · 12</span></p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-2 text-gray-600 text-sm">
+                    <p>1. Умножаем, не обращая внимания на запятую: <span class="font-mono text-gray-800">325 · 12 = 3900</span>.</p>
+                    <p>2. В дроби <span class="font-mono text-gray-800">3,25</span> после запятой <strong>две</strong> цифры.</p>
+                    <p>3. Отделяем две цифры справа: <span class="font-mono text-gray-800">39,00</span>.</p>
+                    <p class="mt-2 text-orange-600 text-xs font-bold italic">Важно! Нули в конце дробной части можно отбросить.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-xl flex items-center justify-center">
+                    <div class="text-center">
+                         <span class="text-lg font-mono text-gray-500 line-through">39,00</span>
+                         <br>
+                         <span class="text-3xl font-mono font-bold text-gray-800">= <span class="text-green-600">39</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Common Mistakes -->
+    <div class="bg-red-50 p-6 rounded-2xl border border-red-100">
+        <h4 class="font-bold text-red-800 mb-3 flex items-center gap-2">
+            <span class="text-xl">⚠️</span> Частые ошибки
+        </h4>
+        <ul class="list-disc list-inside space-y-2 text-red-900 text-sm">
+            <li><strong>Ошибка:</strong> Ученики ставят запятую под запятой при записи в столбик.
+                <br><span class="text-gray-600 ml-5">Как правильно:</span> При умножении числа выравниваются по <em>правому краю</em>, не обращая внимания на запятые.</li>
+            <li><strong>Ошибка:</strong> Забывают отделить запятую в ответе.
+                <br><span class="text-gray-600 ml-5">Как правильно:</span> Всегда делайте проверку. Если 1,2 (чуть больше 1) умножить на 4, ответ должен быть около 4, но никак не 48.</li>
+        </ul>
+    </div>
+
+    <!-- Real World Application -->
+    <div class="bg-green-50 p-6 rounded-2xl border border-green-100 flex items-start gap-4">
+        <div class="text-3xl">🛒</div>
+        <div>
+             <h4 class="font-bold text-green-900 mb-2">Где это пригодится?</h4>
+             <p class="text-green-800 text-sm leading-relaxed">
+                Представьте, что вы покупаете <strong>5 шоколадок</strong>, каждая из которых стоит <strong>250,5 тенге</strong>. 
+                Чтобы узнать сумму покупки, вы умножаете: 
+                <span class="font-mono font-bold">250,5 · 5 = 1252,5</span> тенге.
+                Без этого умения сложно совершать покупки и планировать бюджет!
+             </p>
         </div>
     </div>
 </div>
+
             </div>
         </div>
         
