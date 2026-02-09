@@ -305,36 +305,78 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500 shadow-sm">
-        <h3 class="font-bold text-xl text-green-800 mb-4">1.3 Сравнение натуральных чисел. Двойное неравенство</h3>
-        <p class="text-gray-700 mb-4">
-            Из двух натуральных чисел <strong>больше</strong> то, которое при счете называют позже (или которое на координатном луче лежит правее), и <strong>меньше</strong> то, которое называют раньше (или которое лежит левее).
+    <!-- Introduction -->
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="text-blue-600">#</span> Сравнение чисел
+        </h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            Сравнивать числа — значит определить, какое из них больше, какое меньше, или они равны.
+            Результат сравнения записывается с помощью знаков:
         </p>
-
-        <h4 class="font-bold text-green-700 mb-2">Правила сравнения</h4>
-        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-            <li>Если числа имеют разное количество разрядов, то больше то число, у которого <strong>разрядов больше</strong>. <br><em>Пример:</em> 102 > 98 (3 цифры против 2).</li>
-            <li>Если количество разрядов одинаково, сравнивают цифры поразрядно, начиная со <strong>старшего разряда</strong> (слева направо). <br><em>Пример:</em> 4567 и 4539. Тысяч (4) и сотен (5) поровну. Сравниваем десятки: 6 > 3, значит 4567 > 4539.</li>
-        </ul>
-
-        <h4 class="font-bold text-green-700 mb-2">Знаки сравнения</h4>
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            <div class="bg-white p-3 rounded border text-center font-mono">> (больше)</div>
-            <div class="bg-white p-3 rounded border text-center font-mono">< (меньше)</div>
-            <div class="bg-white p-3 rounded border text-center font-mono">= (равно)</div>
-            <div class="bg-white p-3 rounded border text-center font-mono">≠ (не равно)</div>
+        <div class="flex gap-4 justify-center my-4">
+             <div class="text-center">
+                 <span class="font-bold text-3xl text-blue-600">&lt;</span>
+                 <p class="text-sm text-gray-500">меньше</p>
+             </div>
+             <div class="text-center">
+                 <span class="font-bold text-3xl text-blue-600">&gt;</span>
+                 <p class="text-sm text-gray-500">больше</p>
+             </div>
+             <div class="text-center">
+                 <span class="font-bold text-3xl text-blue-600">=</span>
+                 <p class="text-sm text-gray-500">равно</p>
+             </div>
         </div>
+    </div>
 
-        <h4 class="font-bold text-green-700 mb-2">Двойное неравенство</h4>
-        <p class="text-gray-700 mb-4">
-            Иногда число нужно сравнить сразу с двумя другими числами. Тогда используют двойное неравенство.
-            <br>
-            Запись <span class="font-mono font-bold">5 < x < 10</span> читается так: "x больше 5 и меньше 10".
-            <br>
-            Натуральные решения этого неравенства: 6, 7, 8, 9.
+    <!-- The Rule -->
+    <div class="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-2xl border-l-4 border-blue-500 shadow-sm">
+        <h3 class="text-xl font-bold text-blue-900 mb-4">⚖️ Правила сравнения</h3>
+        
+        <div class="space-y-4">
+            <div>
+                <h4 class="font-bold text-gray-800">Правило 1: По количеству цифр</h4>
+                <p class="text-gray-700">
+                    Из двух натуральных чисел больше то, у которого больше цифр (разрядов).
+                </p>
+                <div class="bg-white p-3 rounded-lg mt-2 border border-blue-100 font-mono text-gray-800">
+                    102 > 99 <span class="text-gray-500 text-sm">(3 цифры против 2)</span>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-gray-800">Правило 2: По разрядам</h4>
+                <p class="text-gray-700">
+                    Если количество цифр одинаковое, начинаем сравнивать цифры слева направо (от старшего разряда к младшему), пока не встретим разные цифры.
+                </p>
+                <div class="bg-white p-3 rounded-lg mt-2 border border-blue-100 font-mono text-gray-800">
+                    <span class="text-red-500 font-bold">5</span>32 > <span class="text-red-500 font-bold">4</span>98 <span class="text-gray-500 text-sm">(5 > 4)</span>
+                    <br>
+                    2<span class="text-green-500 font-bold">7</span>1 < 2<span class="text-green-500 font-bold">8</span>0 <span class="text-gray-500 text-sm">(7 < 8)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Double Inequality -->
+    <div class="bg-white p-6 rounded-2xl shadow-lg border border-purple-100">
+        <h3 class="text-xl font-bold text-purple-800 mb-4">🔗 Двойное неравенство</h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            Иногда число нужно сравнить сразу с двумя другими числами. Тогда используют <strong>двойное неравенство</strong>.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+            Число 5 больше 2, но меньше 9. Запишем это так:
+        </p>
+        <div class="text-center py-4">
+            <span class="text-2xl font-mono bg-purple-50 px-6 py-2 rounded-xl text-purple-900 font-bold">2 < 5 < 9</span>
+        </div>
+        <p class="text-gray-600 text-sm text-center">
+            Читается: "Пять больше двух и меньше девяти".
         </p>
     </div>
 </div>
+
             </div>
         </div>
         
