@@ -303,87 +303,45 @@
                 <h2 class="text-lg font-bold text-gray-800">Теория / Основные понятия</h2>
             </div>
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
-                <div class="space-y-6">
-    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
-        <h3 class="font-bold text-xl text-blue-800 mb-4">5.3 Числовые промежутки</h3>
-        <p class="text-gray-700 mb-4">
-            <strong>Числовой промежуток</strong> — это множество всех действительных чисел, заключённых между двумя данными числами. Это геометрическая модель множества решений неравенств на координатной прямой. Понимание числовых промежутков необходимо для решения линейных неравенств и их систем.
+                
+<div class="space-y-6">
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="text-teal-600">📏</span> Числовые промежутки
+        </h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            Множество чисел, удовлетворяющих неравенству, можно изобразить на координатной прямой или записать в виде промежутка.
         </p>
-        
-        <h4 class="font-bold text-blue-700 mb-2">Виды числовых промежутков</h4>
-        <div class="overflow-x-auto">
-            <table class="min-w-full bg-white border border-gray-300 mb-4 rounded-lg">
-                <thead class="bg-gray-100">
-                    <tr>
-                        <th class="py-2 px-4 border-b text-left">Название / Атауы</th>
-                        <th class="py-2 px-4 border-b text-left">Обозначение / Белгіленуі</th>
-                        <th class="py-2 px-4 border-b text-left">Неравенство / Теңсіздік</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="py-2 px-4 border-b">Интервал (Ашық сәуле)</td>
-                        <td class="py-2 px-4 border-b font-mono">(a; b)</td>
-                        <td class="py-2 px-4 border-b font-mono">a < x < b</td>
-                    </tr>
-                    <tr>
-                        <td class="py-2 px-4 border-b">Отрезок (Кесінді)</td>
-                        <td class="py-2 px-4 border-b font-mono">[a; b]</td>
-                        <td class="py-2 px-4 border-b font-mono">a ≤ x ≤ b</td>
-                    </tr>
-                    <tr>
-                        <td class="py-2 px-4 border-b">Полуинтервал (Жартылай интервал)</td>
-                        <td class="py-2 px-4 border-b font-mono">[a; b)</td>
-                        <td class="py-2 px-4 border-b font-mono">a ≤ x < b</td>
-                    </tr>
-                    <tr>
-                        <td class="py-2 px-4 border-b">Луч (Сәуле)</td>
-                        <td class="py-2 px-4 border-b font-mono">[a; +∞)</td>
-                        <td class="py-2 px-4 border-b font-mono">x ≥ a</td>
-                    </tr>
-                </tbody>
-            </table>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+            <h4 class="font-bold text-gray-800 mb-2">Строгое неравенство (&gt; или &lt;)</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>Точка на прямой: <strong>Выколотая (пустая)</strong> ○</li>
+                <li>Скобки в записи: <strong>Круглые</strong> ( )</li>
+                <li>Пример: x > 5 => (5; +∞)</li>
+            </ul>
         </div>
-
-        <p class="text-gray-700 mb-4">
-            Важно помнить разницу между строгими и нестрогими неравенствами:
-        </p>
-        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
-            <li><strong>Строгое неравенство (<, >):</strong> Точки на координатной прямой обозначаются <em>“выколотыми”</em> (пустыми) кружочками. Скобки используются круглые <span class="font-mono">()</span>.</li>
-            <li><strong>Нестрогое неравенство (≤, ≥):</strong> Точки обозначаются <em>закрашенными</em> кружочками. Скобки используются квадратные <span class="font-mono">[]</span>.</li>
-        </ul>
-
-        <h4 class="font-bold text-blue-700 mb-2">5 практических примеров</h4>
-        <ol class="list-decimal list-inside text-gray-700 space-y-3">
-            <li>
-                <strong>Пример 1:</strong> Изобразите <span class="font-mono">(-2; 3]</span>. <br>
-                <em>Решение:</em> Точка -2 выколотая (строго больше), точка 3 закрашенная (меньше или равно). Числа между ними заштриховываются.
-            </li>
-            <li>
-                <strong>Пример 2:</strong> Запишите неравенство <span class="font-mono">x ≥ 5</span> в виде промежутка. <br>
-                <em>Решение:</em> Это луч, начинающийся от 5 (включительно) и идущий в плюс бесконечность: <span class="font-mono">[5; +∞)</span>.
-            </li>
-            <li>
-                <strong>Пример 3:</strong> Какой промежуток соответствует двойному неравенству <span class="font-mono">-1 < x < 4</span>? <br>
-                <em>Решение:</em> Это интервал <span class="font-mono">(-1; 4)</span>. Оби границы исключены.
-            </li>
-            <li>
-                <strong>Пример 4:</strong> Принадлежит ли число 3 промежутку <span class="font-mono">[0; 3)</span>? <br>
-                <em>Решение:</em> Нет, так как скобка круглая, число 3 не входит в множество.
-            </li>
-            <li>
-                <strong>Пример 5:</strong> Опишите множество всех неотрицательных чисел. <br>
-                <em>Решение:</em> Это луч <span class="font-mono">[0; +∞)</span>.
-            </li>
-        </ol>
         
-        <div class="mt-4 p-4 bg-yellow-50 rounded border border-yellow-200">
-            <p class="text-sm text-yellow-800">
-                <strong>Есте сақтаңыз!</strong> Плюс или минус бесконечность (<span class="font-mono">∞</span>) всегда пишется с круглой скобкой, так как это не конкретное число.
-            </p>
+        <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+            <h4 class="font-bold text-gray-800 mb-2">Нестрогое неравенство (≥ или ≤)</h4>
+            <ul class="list-disc list-inside text-sm text-gray-600 space-y-1">
+                <li>Точка на прямой: <strong>Закрашенная</strong> ●</li>
+                <li>Скобки в записи: <strong>Квадратные</strong> [ ]</li>
+                <li>Пример: x ≥ 5 => [5; +∞)</li>
+            </ul>
         </div>
     </div>
+    
+    <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-200">
+        <h4 class="font-bold text-yellow-900 mb-2">Бесконечность ∞</h4>
+        <p class="text-yellow-800 text-sm">
+            У бесконечности скобка <strong>всегда круглая</strong>!
+        </p>
+    </div>
 </div>
+
             </div>
         </div>
         
