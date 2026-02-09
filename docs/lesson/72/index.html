@@ -305,115 +305,38 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
-        <h3 class="font-bold text-xl text-blue-800 mb-4">5.6 Решение систем линейных неравенств с одной переменной</h3>
-        
-        <p class="text-gray-700 mb-4">
-            В предыдущих темах мы научились решать линейные неравенства и находить пересечение числовых промежутков. Теперь мы объединим эти знания для решения <strong>систем линейных неравенств</strong>.
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="text-purple-600">{</span> Системы неравенств
+        </h3>
+        <p class="text-gray-700 leading-relaxed mb-4">
+            <strong>Система неравенств</strong> — это когда нужно найти такие значения переменной, которые подходят <strong>сразу для всех</strong> неравенств системы.
         </p>
+    </div>
 
-        <h4 class="font-bold text-blue-700 mb-2">Что такое система неравенств?</h4>
-        <p class="text-gray-700 mb-4">
-            <strong>Система неравенств</strong> — это два или более неравенств, для которых нужно найти все общие решения. Решить систему неравенств — значит найти множество значений переменной, которые удовлетворяют <em>одновременно всем</em> неравенствам системы.
-        </p>
-        <p class="text-gray-700 mb-4">
-            Геометрически решением системы является <strong>пересечение</strong> (общая часть) промежутков, являющихся решениями каждого отдельного неравенства.
-        </p>
-        
-        <div class="bg-white p-4 rounded-lg border border-blue-200 mb-6">
-             <h5 class="font-bold text-blue-600 mb-2">Алгоритм решения системы неравенств:</h5>
-             <ol class="list-decimal list-inside text-gray-700 space-y-2">
-                <li>Решить каждое неравенство системы по отдельности.</li>
-                <li>Изобразить полученные решения (числовые промежутки) на одной координатной прямой.</li>
-                <li>Найти пересечение этих промежутков (ту часть, где штриховки накладываются друг на друга).</li>
-                <li>Записать ответ в виде числового промежутка.</li>
-             </ol>
-        </div>
-
-        <h4 class="font-bold text-blue-700 mb-2">Примеры решения</h4>
-
-        <!-- Example 1 -->
-        <div class="mb-6">
-            <h5 class="font-semibold text-gray-800 mb-2">Пример 1: Стандартный случай (Интервал)</h5>
-            <div class="bg-gray-50 p-4 rounded border border-gray-200 font-mono text-sm">
-                { 2x > 4 <br>
-                { x + 3 < 10
+    <div class="bg-purple-50 p-6 rounded-2xl border border-purple-100">
+        <h3 class="text-xl font-bold text-purple-900 mb-4">Как решать?</h3>
+        <ol class="list-decimal list-inside space-y-3 text-gray-800">
+            <li>Решить <strong>каждое</strong> неравенство системы по отдельности.</li>
+            <li>Изобразить решения каждого неравенства на <strong>одной</strong> координатной прямой.</li>
+            <li>Найти пересечение промежутков (где штриховки накладываются/пересекаются).</li>
+            <li>Записать ответ (общую часть).</li>
+        </ol>
+    </div>
+    
+    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Пример</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="font-mono text-gray-700 text-sm">
+                <p>x > 2</p>
+                <p>x < 5</p>
             </div>
-            <p class="text-gray-700 mt-2">
-                <em>Решение:</em><br>
-                1) 2x > 4  ⇒  x > 2  ⇒  (2; +∞)<br>
-                2) x + 3 < 10 ⇒ x < 7  ⇒  (-∞; 7)<br>
-                Пересечение (2; +∞) и (-∞; 7) — это промежуток между 2 и 7.<br>
-            </p>
-            <p class="font-bold text-blue-600 mt-1">Ответ: (2; 7)</p>
-        </div>
-
-        <!-- Example 2 -->
-        <div class="mb-6">
-            <h5 class="font-semibold text-gray-800 mb-2">Пример 2: Пустое множество (Нет решений)</h5>
-            <div class="bg-gray-50 p-4 rounded border border-gray-200 font-mono text-sm">
-                { x > 5 <br>
-                { x < 0
+            <div class="text-gray-700 text-sm">
+                <p>Первое: от 2 до +∞</p>
+                <p>Второе: от -∞ до 5</p>
+                <p class="mt-2 font-bold text-purple-700">Пересечение: (2; 5)</p>
             </div>
-            <p class="text-gray-700 mt-2">
-                <em>Решение:</em><br>
-                Первое неравенство требует чисел больше 5, а второе — меньше 0. Нет ни одного числа, которое было бы одновременно больше 5 и меньше 0. Штриховки на прямой не пересекутся.<br>
-            </p>
-            <p class="font-bold text-blue-600 mt-1">Ответ: Решений нет (∅)</p>
         </div>
-
-        <!-- Example 3 -->
-        <div class="mb-6">
-            <h5 class="font-semibold text-gray-800 mb-2">Пример 3: Один промежуток внутри другого</h5>
-            <div class="bg-gray-50 p-4 rounded border border-gray-200 font-mono text-sm">
-                { x ≥ 3 <br>
-                { x > 0
-            </div>
-            <p class="text-gray-700 mt-2">
-                <em>Решение:</em><br>
-                Второе условие (x > 0) включает в себя первое (x ≥ 3). Если число больше или равно 3, оно автоматически больше 0. Пересечением будет меньшее (более строгое) множество.<br>
-            </p>
-            <p class="font-bold text-blue-600 mt-1">Ответ: [3; +∞)</p>
-        </div>
-
-         <!-- Example 4 -->
-        <div class="mb-6">
-            <h5 class="font-semibold text-gray-800 mb-2">Пример 4: Решение с нестрогими неравенствами</h5>
-            <div class="bg-gray-50 p-4 rounded border border-gray-200 font-mono text-sm">
-                { 3x - 1 ≤ 8 <br>
-                { 2x + 5 ≥ 1
-            </div>
-            <p class="text-gray-700 mt-2">
-                <em>Решение:</em><br>
-                1) 3x ≤ 9 ⇒ x ≤ 3 ⇒ (-∞; 3]<br>
-                2) 2x ≥ -4 ⇒ x ≥ -2 ⇒ [-2; +∞)<br>
-                Пересечение: от -2 до 3 включительно.<br>
-            </p>
-            <p class="font-bold text-blue-600 mt-1">Ответ: [-2; 3]</p>
-        </div>
-
-        <!-- Example 5 -->
-         <div class="mb-6">
-            <h5 class="font-semibold text-gray-800 mb-2">Пример 5: Двойное неравенство как система</h5>
-            <p class="text-gray-700 mb-2">Двойное неравенство <span class="font-mono">4 < 2x < 10</span> можно записать как систему:</p>
-            <div class="bg-gray-50 p-4 rounded border border-gray-200 font-mono text-sm">
-                { 2x > 4 <br>
-                { 2x < 10
-            </div>
-            <p class="text-gray-700 mt-2">
-                <em>Решение:</em><br>
-                1) x > 2<br>
-                2) x < 5<br>
-            </p>
-            <p class="font-bold text-blue-600 mt-1">Ответ: (2; 5)</p>
-        </div>
-
-        <div class="mt-4 p-4 bg-yellow-50 rounded border border-yellow-200">
-            <p class="text-sm text-yellow-800">
-                <strong>Важный совет:</strong> Всегда рисуйте координатную прямую! Это лучший способ избежать ошибок при поиске пересечения промежутков.
-            </p>
-        </div>
-
     </div>
 </div>
 

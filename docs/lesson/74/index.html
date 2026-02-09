@@ -305,146 +305,34 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <!-- Introduction Section -->
-    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
-        <h3 class="font-bold text-xl text-blue-800 mb-4">Линейные неравенства с модулем</h3>
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="text-red-500">|x| &lt; a</span> Неравенства с модулем
+        </h3>
         <p class="text-gray-700 leading-relaxed mb-4">
-             В этом уроке мы разберем, как решать линейные неравенства, содержащие переменную под знаком модуля. 
-             Напомним, что модуль числа — это расстояние от начала отсчета (нуля) до точки, изображающей это число на координатной прямой.
-        </p>
-        <p class="text-gray-700 leading-relaxed">
-            Геометрический смысл модуля позволяет легко переходить от неравенств с модулем к системам или совокупностям обычных линейных неравенств.
+            Модуль — это расстояние. Расстояние меньше числа <strong>a</strong> означает, что мы находимся "близко" к нулю (между -a и a).
+            Расстояние больше <strong>a</strong> — мы "далеко" от нуля.
         </p>
     </div>
 
-    <!-- Rule 1: |x| < a -->
-    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="font-bold text-xl text-gray-800 mb-6">Случай 1: Неравенство вида <span class="font-mono text-indigo-600">|x| &lt; a</span></h3>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-green-50 p-6 rounded-2xl border-l-4 border-green-500 shadow-sm">
+            <h4 class="font-bold text-green-900 mb-2">|x| < a</h4>
+            <p class="text-sm text-green-800 mb-2">"Между"</p>
+            <div class="bg-white p-2 rounded text-center font-mono text-green-900">
+                -a < x < a
+            </div>
+            <p class="text-xs text-green-600 mt-2 text-center">Пример: |x| < 3  =>  (-3; 3)</p>
+        </div>
         
-        <div class="flex flex-col md:flex-row gap-6 items-start">
-             <div class="flex-1">
-                <p class="text-gray-700 mb-4">
-                    Если <span class="font-mono">a > 0</span>, то неравенство <span class="font-mono">|x| < a</span> означает, что расстояние от точки <span class="font-mono">x</span> до нуля меньше <span class="font-mono">a</span>.
-                </p>
-                <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mb-4">
-                    <p class="font-bold text-indigo-800">Правило:</p>
-                    <p class="text-gray-700 mt-1">
-                        Неравенство <span class="font-mono bg-white px-2 py-0.5 rounded border">|x| &lt; a</span> равносильно двойному неравенству:
-                        <br><span class="block text-center text-lg font-bold my-2 text-indigo-700">-a &lt; x &lt; a</span>
-                        Или системе неравенств:
-                        <br><span class="block font-mono mt-2 ml-4">
-                            { x &lt; a <br>
-                            { x &gt; -a
-                        </span>
-                    </p>
-                </div>
-                <p class="text-sm text-gray-500 italic">
-                    Аналогично для нестрогого неравенства: <span class="font-mono">|x| &le; a</span> ⇔ <span class="font-mono">-a &le; x &le; a</span>.
-                </p>
-             </div>
+        <div class="bg-red-50 p-6 rounded-2xl border-l-4 border-red-500 shadow-sm">
+            <h4 class="font-bold text-red-900 mb-2">|x| > a</h4>
+            <p class="text-sm text-red-800 mb-2">"По краям"</p>
+            <div class="bg-white p-2 rounded text-center font-mono text-red-900">
+                x < -a  или  x > a
+            </div>
+            <p class="text-xs text-red-600 mt-2 text-center">Пример: |x| > 3  =>  (-∞; -3) ∪ (3; +∞)</p>
         </div>
-    </div>
-
-    <!-- Rule 2: |x| > a -->
-    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="font-bold text-xl text-gray-800 mb-6">Случай 2: Неравенство вида <span class="font-mono text-purple-600">|x| &gt; a</span></h3>
-        
-        <div class="flex flex-col md:flex-row gap-6 items-start">
-             <div class="flex-1">
-                <p class="text-gray-700 mb-4">
-                    Если <span class="font-mono">a > 0</span>, то неравенство <span class="font-mono">|x| > a</span> означает, что расстояние от точки <span class="font-mono">x</span> до нуля больше <span class="font-mono">a</span>.
-                </p>
-                <div class="bg-purple-50 p-4 rounded-lg border border-purple-100 mb-4">
-                     <p class="font-bold text-purple-800">Правило:</p>
-                    <p class="text-gray-700 mt-1">
-                        Неравенство <span class="font-mono bg-white px-2 py-0.5 rounded border">|x| &gt; a</span> равносильно совокупности неравенств:
-                        <br><span class="block font-mono mt-2 ml-4 text-lg">
-                            [ x &gt; a <br>
-                            [ x &lt; -a
-                        </span>
-                    </p>
-                </div>
-                 <p class="text-sm text-gray-500 italic">
-                    Аналогично для нестрогого неравенства: <span class="font-mono">|x| &ge; a</span> ⇔ <span class="font-mono">x &ge; a</span> или <span class="font-mono">x &le; -a</span>.
-                </p>
-             </div>
-        </div>
-    </div>
-
-    <!-- Practical Examples Section -->
-    <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500 shadow-sm">
-        <h3 class="font-bold text-xl text-green-800 mb-4">5 Практических примеров</h3>
-
-        <div class="grid grid-cols-1 gap-4">
-            <!-- Example 1 -->
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-green-100">
-                <span class="text-green-600 font-bold block mb-2">Пример 1: Простейшее неравенство вида |x| < a</span>
-                <p class="text-gray-700">Решите неравенство: <span class="font-mono">|x| < 5</span>.</p>
-                <p class="text-gray-600 mt-1">
-                    По правилу для знака "<" переходим к двойному неравенству:
-                    <span class="font-mono block my-1">-5 < x < 5</span>
-                </p>
-                <p class="font-bold text-gray-800 mt-2">Ответ: (-5; 5).</p>
-            </div>
-
-            <!-- Example 2 -->
-             <div class="bg-white p-4 rounded-lg shadow-sm border border-green-100">
-                <span class="text-green-600 font-bold block mb-2">Пример 2: Простейшее неравенство вида |x| > a</span>
-                <p class="text-gray-700">Решите неравенство: <span class="font-mono">|x| &ge; 3</span>.</p>
-                <p class="text-gray-600 mt-1">
-                    По правилу для знака ">" переходим к совокупности:
-                    <span class="font-mono block my-1">x &ge; 3 или x &le; -3</span>
-                </p>
-                <p class="font-bold text-gray-800 mt-2">Ответ: (-∞; -3] ∪ [3; +∞).</p>
-            </div>
-
-            <!-- Example 3 -->
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-green-100">
-                <span class="text-green-600 font-bold block mb-2">Пример 3: Линейное выражение под модулем (|ax + b| < c)</span>
-                <p class="text-gray-700">Решите неравенство: <span class="font-mono">|x - 2| < 3</span>.</p>
-                <div class="text-gray-600 mt-1 pl-2 border-l-2 border-gray-200">
-                    <p>Переходим к двойному неравенству:</p>
-                    <p class="font-mono">-3 < x - 2 < 3</p>
-                    <p>Прибавим 2 ко всем частям:</p>
-                    <p class="font-mono">-3 + 2 < x < 3 + 2</p>
-                    <p class="font-mono">-1 < x < 5</p>
-                </div>
-                <p class="font-bold text-gray-800 mt-2">Ответ: (-1; 5).</p>
-            </div>
-
-            <!-- Example 4 -->
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-green-100">
-                <span class="text-green-600 font-bold block mb-2">Пример 4: Линейное выражение под модулем (|ax + b| > c)</span>
-                <p class="text-gray-700">Решите неравенство: <span class="font-mono">|2x + 1| > 5</span>.</p>
-                 <div class="text-gray-600 mt-1 pl-2 border-l-2 border-gray-200">
-                    <p>Это равносильно совокупности двух неравенств:</p>
-                    <ol class="list-decimal list-inside mt-1">
-                        <li><span class="font-mono">2x + 1 > 5</span> ⇒ <span class="font-mono">2x > 4</span> ⇒ <span class="font-mono">x > 2</span></li>
-                        <li><span class="font-mono">2x + 1 < -5</span> ⇒ <span class="font-mono">2x < -6</span> ⇒ <span class="font-mono">x < -3</span></li>
-                    </ol>
-                </div>
-                <p class="font-bold text-gray-800 mt-2">Ответ: (-∞; -3) ∪ (2; +∞).</p>
-            </div>
-
-            <!-- Example 5 -->
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-green-100">
-                <span class="text-green-600 font-bold block mb-2">Пример 5: Особый случай (отрицательное число справа)</span>
-                <p class="text-gray-700">Решите неравенство: <span class="font-mono">|x + 4| > -2</span>.</p>
-                <p class="text-gray-600 mt-1">
-                    Так как модуль любого числа всегда неотрицателен (≥ 0), он всегда будет больше любого отрицательного числа.
-                    Значит, неравенство верно при любых значениях переменной.
-                </p>
-                <p class="font-bold text-gray-800 mt-2">Ответ: (-∞; +∞).</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Warning/Tip Section -->
-    <div class="bg-yellow-50 p-6 rounded-xl border border-yellow-200">
-        <h4 class="font-bold text-gray-800 mb-2">Обратите внимание!</h4>
-        <p class="text-gray-700">
-            Если неравенство имеет вид <span class="font-mono">|f(x)| < -a</span> (где a > 0), то у него <strong>нет решений</strong>, так как модуль не может быть меньше отрицательного числа.
-        </p>
     </div>
 </div>
 
