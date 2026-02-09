@@ -305,71 +305,40 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
-        <h3 class="font-bold text-xl text-blue-800 mb-4">Числовые равенства и их свойства</h3>
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="text-blue-600">⚖️</span> Числовые равенства
+        </h3>
         <p class="text-gray-700 leading-relaxed mb-4">
-            <strong>Числовое равенство</strong> — это запись, в которой два числовых выражения соединены знаком «=». Если значения выражений слева и справа совпадают, равенство называют <em>верным</em>, иначе — <em>неверным</em>.
+            Если два числовых выражения соединены знаком <span class="font-bold text-blue-600">=</span>, то такая запись называется <strong>числовым равенством</strong>.
         </p>
-        <p class="text-gray-700 leading-relaxed">
-            Пример верного равенства: <span class="font-mono bg-white px-2 py-1 rounded shadow-sm">3 + 5 = 8</span>.
-            <br>Пример неверного равенства: <span class="font-mono bg-white px-2 py-1 rounded shadow-sm">2 · 5 = 12</span>.
-        </p>
-    </div>
-
-    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="font-bold text-xl text-gray-800 mb-6">Основные свойства верных числовых равенств</h3>
-        
-        <div class="space-y-4">
-            <div class="p-4 bg-gray-50 rounded-lg">
-                <h4 class="font-bold text-indigo-700">1. Свойство рефлексивности</h4>
-                <p class="text-gray-600">Любое число равно самому себе: <span class="font-mono">a = a</span>.</p>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="bg-green-50 p-4 rounded-xl border border-green-200">
+                <h4 class="font-bold text-green-900 mb-2">Верное равенство</h4>
+                <p class="text-green-800 text-sm font-mono">3 + 5 = 8</p>
+                <p class="text-green-800 text-sm font-mono">2 · 2 = 4</p>
             </div>
-            
-            <div class="p-4 bg-gray-50 rounded-lg">
-                <h4 class="font-bold text-indigo-700">2. Свойство симметричности</h4>
-                <p class="text-gray-600">Если <span class="font-mono">a = b</span>, то и <span class="font-mono">b = a</span>.</p>
-            </div>
-
-            <div class="p-4 bg-gray-50 rounded-lg">
-                <h4 class="font-bold text-indigo-700">3. Свойство транзитивности</h4>
-                <p class="text-gray-600">Если <span class="font-mono">a = b</span> и <span class="font-mono">b = c</span>, то <span class="font-mono">a = c</span>.</p>
-            </div>
-
-            <div class="p-4 bg-gray-50 rounded-lg">
-                <h4 class="font-bold text-indigo-700">4. Сложение и вычитание</h4>
-                <p class="text-gray-600">Если к обеим частям верного равенства прибавить (или отнять) одно и то же число, равенство останется верным:
-                <br>Если <span class="font-mono">a = b</span>, то <span class="font-mono">a + c = b + c</span>.</p>
-            </div>
-
-            <div class="p-4 bg-gray-50 rounded-lg">
-                <h4 class="font-bold text-indigo-700">5. Умножение и деление</h4>
-                <p class="text-gray-600">Если обе части верного равенства умножить или разделить на одно и то же число (не равное нулю), равенство останется верным:
-                <br>Если <span class="font-mono">a = b</span>, то <span class="font-mono">a · c = b · c</span>.</p>
+            <div class="bg-red-50 p-4 rounded-xl border border-red-200">
+                <h4 class="font-bold text-red-900 mb-2">Неверное равенство</h4>
+                <p class="text-red-800 text-sm font-mono">3 + 5 = 10</p>
+                <p class="text-red-800 text-sm font-mono">7 - 1 = 5</p>
             </div>
         </div>
     </div>
 
-    <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500 shadow-sm">
-        <h3 class="font-bold text-xl text-green-800 mb-4">Практические примеры</h3>
-        <ul class="space-y-3 text-gray-700">
-            <li class="bg-white p-3 rounded shadow-sm">
-                <strong>Пример 1:</strong> Проверим равенство <span class="font-mono">15 - 7 = 8</span>. Если прибавить 2 к обеим частям: <span class="font-mono">(15 - 7) + 2 = 8 + 2</span> → <span class="font-mono">10 = 10</span>. Верно.
+    <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-2xl border-l-4 border-indigo-500 shadow-sm">
+        <h3 class="text-xl font-bold text-indigo-900 mb-4">Свойства</h3>
+        <ul class="list-disc list-inside space-y-3 text-gray-800">
+            <li>Если к обеим частям верного равенства прибавить одно и то же число, то получится верное равенство.
+                <br><span class="text-sm text-gray-500 ml-5">Если a = b, то a + c = b + c</span>
             </li>
-            <li class="bg-white p-3 rounded shadow-sm">
-                <strong>Пример 2:</strong> Пусть <span class="font-mono">x = 5</span>. Умножим обе части на 3: <span class="font-mono">3x = 15</span>. Это свойство используется при решении уравнений.
-            </li>
-            <li class="bg-white p-3 rounded shadow-sm">
-                <strong>Пример 3:</strong> Сравнение выражений. <span class="font-mono">25 · 4 = 100</span> и <span class="font-mono">10^2 = 100</span>. Значит, <span class="font-mono">25 · 4 = 10^2</span> (по свойству транзитивности).
-            </li>
-            <li class="bg-white p-3 rounded shadow-sm">
-                <strong>Пример 4:</strong> Если <span class="font-mono">a + 2 = 7</span>, то вычтем 2 из обеих частей: <span class="font-mono">a = 5</span>.
-            </li>
-            <li class="bg-white p-3 rounded shadow-sm">
-                <strong>Пример 5:</strong> Деление. <span class="font-mono">20 = 20</span>. Разделим на 4: <span class="font-mono">5 = 5</span>. Равенство сохранилось.
+            <li>Если обе части верного равенства умножить или разделить на одно и то же число (не равное нулю), то получится верное равенство.
+                 <br><span class="text-sm text-gray-500 ml-5">Если a = b, то a · c = b · c</span>
             </li>
         </ul>
     </div>
 </div>
+
             </div>
         </div>
         

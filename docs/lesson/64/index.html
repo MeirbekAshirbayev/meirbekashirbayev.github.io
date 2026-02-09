@@ -305,81 +305,40 @@
             <div class="prose prose-sm prose-blue max-w-none text-gray-700">
                 
 <div class="space-y-6">
-    <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-blue-500 shadow-sm">
-        <h3 class="font-bold text-xl text-blue-800 mb-4">Линейные уравнения с одной переменной</h3>
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+        <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+            <span class="text-purple-600">x</span> Уравнение
+        </h3>
         <p class="text-gray-700 leading-relaxed mb-4">
-            <strong>Уравнение</strong> — это равенство, содержащее неизвестное число, которое нужно найти. Неизвестное обычно обозначают латинскими буквами (<span class="font-mono">x, y, z</span> и т.д.).
-        </p>
-        <p class="text-gray-700 leading-relaxed">
-            <strong>Линейным уравнением</strong> с одной переменной называется уравнение вида <span class="font-mono bg-white px-2 py-1 rounded font-bold">ax + b = 0</span>, где <span class="font-mono">x</span> — переменная, а <span class="font-mono">a</span> и <span class="font-mono">b</span> — числа.
-        </p>
-        <p class="text-gray-700 mt-2">
-            <strong>Корень уравнения</strong> — это значение переменной, при котором уравнение обращается в верное числовое равенство. Решить уравнение — значит найти все его корни или доказать, что их нет.
+            <strong>Уравнение</strong> — это равенство, содержащее неизвестное число (переменную), значение которого нужно найти.
+            <br>
+            <strong>Корень уравнения</strong> — это значение переменной, при котором уравнение превращается в верное числовое равенство.
         </p>
     </div>
 
-    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="font-bold text-xl text-gray-800 mb-4">Равносильные уравнения</h3>
-        <p class="text-gray-700 mb-4">
-            Уравнения, имеющие одни и те же корни, называют <strong>равносильными</strong>. Уравнения, не имеющие корней, также считаются равносильными.
+    <div class="bg-yellow-50 p-6 rounded-2xl border border-yellow-100">
+        <h3 class="text-xl font-bold text-yellow-900 mb-4">Линейное уравнение</h3>
+        <p class="text-gray-800 font-medium mb-4">
+            Уравнение вида <span class="font-mono bg-white px-2 py-1 rounded border border-yellow-300">ax = b</span>, где <em>x</em> — переменная, а <em>a</em> и <em>b</em> — некоторые числа, называется <strong>линейным уравнением</strong> с одной переменной.
         </p>
-        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-            <h4 class="font-bold text-yellow-800 mb-2">Основные преобразования:</h4>
-            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                <li>Если перенести слагаемое из одной части уравнения в другую, изменив его знак на противоположный, получится равносильное уравнение.</li>
-                <li>Если обе части уравнения умножить или разделить на одно и то же число, отличное от нуля, получится равносильное уравнение.</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="bg-green-50 p-6 rounded-xl border-l-4 border-green-500 shadow-sm">
-        <h3 class="font-bold text-xl text-green-800 mb-4">Алгоритм решения и Примеры</h3>
         
-        <div class="space-y-4">
-            <div class="bg-white p-4 rounded-lg shadow-sm">
-                <h4 class="font-bold text-green-700">Пример 1: Простой перенос</h4>
-                <p class="font-mono text-lg mt-1">x + 5 = 12</p>
-                <p class="text-gray-600">Перенесем 5 вправо со знаком минус:</p>
-                <p class="font-mono">x = 12 - 5</p>
-                <p class="font-mono font-bold">x = 7</p>
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+                <p class="font-bold text-gray-800">1. Если a ≠ 0</p>
+                <p class="text-gray-600">Один корень: <strong>x = b : a</strong></p>
             </div>
-
-            <div class="bg-white p-4 rounded-lg shadow-sm">
-                <h4 class="font-bold text-green-700">Пример 2: Уравнение вида ax + b = c</h4>
-                <p class="font-mono text-lg mt-1">2x - 3 = 7</p>
-                <p class="text-gray-600">Перенесем -3 вправо:</p>
-                <p class="font-mono">2x = 7 + 3  =>  2x = 10</p>
-                <p class="text-gray-600">Разделим на 2:</p>
-                <p class="font-mono font-bold">x = 5</p>
+            <div class="bg-white p-3 rounded-lg shadow-sm">
+                <p class="font-bold text-gray-800">2. Если a = 0 и b ≠ 0</p>
+                <p class="text-gray-600">Нет корней (0 · x = 5 — невозможно)</p>
             </div>
-
-            <div class="bg-white p-4 rounded-lg shadow-sm">
-                <h4 class="font-bold text-green-700">Пример 3: Переменная в обеих частях</h4>
-                <p class="font-mono text-lg mt-1">5x = 2x + 9</p>
-                <p class="text-gray-600">Соберем слагаемые с x слева, без x — справа:</p>
-                <p class="font-mono">5x - 2x = 9</p>
-                <p class="font-mono">3x = 9</p>
-                <p class="font-mono font-bold">x = 3</p>
-            </div>
-
-             <div class="bg-white p-4 rounded-lg shadow-sm">
-                <h4 class="font-bold text-green-700">Пример 4: Скобки</h4>
-                <p class="font-mono text-lg mt-1">3(x - 2) = 6</p>
-                <p class="text-gray-600">Раскроем скобки:</p>
-                <p class="font-mono">3x - 6 = 6</p>
-                <p class="font-mono">3x = 12</p>
-                <p class="font-mono font-bold">x = 4</p>
-            </div>
-
-            <div class="bg-white p-4 rounded-lg shadow-sm">
-                <h4 class="font-bold text-green-700">Пример 5: Дробные коэффициенты</h4>
-                <p class="font-mono text-lg mt-1">0.5x = 2.5</p>
-                <p class="text-gray-600">Разделим на 0.5:</p>
-                <p class="font-mono font-bold">x = 5</p>
+             <div class="bg-white p-3 rounded-lg shadow-sm">
+                <p class="font-bold text-gray-800">3. Если a = 0 и b = 0</p>
+                <p class="text-gray-600">Бесконечно много корней (0 · x = 0 — верно при любом x)</p>
             </div>
         </div>
     </div>
 </div>
+
             </div>
         </div>
         
