@@ -1,0 +1,17 @@
+[33mcommit 02fbd4f5f400d73118031eef7da4eef1d5306dee[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Meirbek <53935454+MeirbekAshirbayev@users.noreply.github.com>
+Date:   Thu Mar 5 22:13:08 2026 +0500
+
+    Fix header language and donation block
+
+[33mcommit 4aacd310426520789a6987faef79a39201097184[m
+Author: Meirbek <53935454+MeirbekAshirbayev@users.noreply.github.com>
+Date:   Thu Mar 5 22:05:56 2026 +0500
+
+    Add Kaspi donation block to pages
+
+[33mcommit 522fb450884f26642f0992ebe690868bcb4dc4fa[m
+Author: Meirbek <53935454+MeirbekAshirbayev@users.noreply.github.com>
+Date:   Thu Mar 5 16:22:03 2026 +0500
+
+    Update Canva duplicate service info: 2000 tg price
